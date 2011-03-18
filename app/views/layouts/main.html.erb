@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+
+  <link rel="icon" type="image/vnd.microsoft.icon" href="http://www.researchnation.com/favicon.ico?1296436156">
+
+  <title>Research Nation : Find, buy and sell research online</title>
+
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+
+  <%=stylesheet_link_tag "style"%>
+  <%=stylesheet_link_tag "application"%>
+  <%=stylesheet_link_tag "form"%>
+  <%=stylesheet_link_tag "reset"%>
+  <%=stylesheet_link_tag "new"%>
+  <%=stylesheet_link_tag "request"%>
+  <%=stylesheet_link_tag "resource"%>
+  <%=stylesheet_link_tag "show"%>
+
+  <%= javascript_include_tag "js"%>
+  <%= javascript_include_tag "jquery" %>
+  <%= javascript_include_tag "form" %>
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "new" %>
+
+  </head>
+  <body>
+
+    <div id="main">
+		<%= render :partial => '/layouts/header'%>
+    <%= yield %>
+
+		<%= render :partial => '/layouts/footer'%>
+
+      <!-- Feedback popup -->
+      <a href="#" id="feedbackLink"></a>
+      <div id="feedbackPopup" class="jqmWindow jqmID1">
+	<div class="jqmPage page">
+	  <a href="#" class="jqmClose"><img alt="close" src="/images/close_button.png"></a>
+	  <h3>We <strong>really</strong> value your feedback.  Thanks!</h3>
+	  <form action="/feedbacks" class="new_feedback" id="new_feedback" method="post">
+	    <div class="shortForm">
+	      <div class="input textarea">
+		<label for="feedback_message">Questions, comments or concerns?</label>
+		<textarea cols="40" id="feedback_message" name="feedback[message]" rows="8" tabindex="5"></textarea>
+	      </div>
+	      <div class="input text">
+		<label for="feedback_email">E-mail Address (optional)</label>
+		<input id="feedback_email" name="feedback[email]" size="30" tabindex="6" type="text">
+	      </div>
+	      <div class="submit">
+		<input id="feedback_submit" name="commit" tabindex="7" value="Send" type="submit">
+	      </div>
+	    </div>
+	  </form>
+      </div>
+    </div>
+
+      <%= render :partail => '/layouts/google_analytics'%>
+
+  </body>
+</html>
