@@ -1,0 +1,236 @@
+/* --------------------------------------------------------------------------
+Applies Data Marketplace default CSS properties
+*/
+
+body {
+  font-size: 13px; /* Note: 100% => 16px fonts, 87.5% => 14px fonts, 75% => 12px fonts, 62.5% => 10px fonts */
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica", "Arial", "FreeSans", sans-serif;
+  color: #666;
+}
+
+
+/* text, headers & paragraphs */
+h1, h2, h3, h4, h5, h6 {
+  color: #4c4c4c;
+  font-weight: bold;
+}
+
+/* page title text */
+h1 {
+  font-size: 28px;
+  letter-spacing: -0.5px;
+  line-height: 28px;
+  margin: 6px 0 6px 0;
+  color: #0F2E4D;
+}
+
+/* detailed page title */
+h2 {
+  font-size: 24px;
+  letter-spacing: -0.5px;
+  color: #333;
+  line-height: 28px;
+  margin: 12px 0 6px 0;
+  font-weight: bold;
+}
+
+/* sidebar header / sub header */
+h3 {
+  font-size: 20px;
+  letter-spacing: -0.5px;
+  color: #333;
+  font-weight: normal;
+  line-height: 26px;
+  margin-bottom: 12px;
+}
+
+.sideBar h3 {
+  margin-bottom: 6px;
+}
+
+/* miscellaneous paragraph titles, listed resource titles */
+h4 {
+  font-weight: normal;
+  font-size: 18px;
+  letter-spacing: -0.5px;
+  color: #333;
+  margin-bottom: 18px;
+}
+
+/* descriptive attributes, usually formatted in a padded box */
+h5 {
+  font-size: 11px;
+  color: #666;
+  font-weight: normal;
+  line-height: 14px;
+}
+
+h5 img {
+  vertical-align: middle;
+  padding-bottom: 4px;
+  margin-right: 8px;
+}
+
+/* footnotes */
+h6 {
+  font-size: 11px;
+  color: #666;
+  font-weight: normal;
+  line-height: 14px;
+}
+
+p {
+  font-size: 22px;
+  line-height: 18px;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.emphasize {
+  font-weight: bold;
+}
+
+/* links */
+a {}
+a:link,
+a:visited {
+  color: #297acc;
+  text-decoration: none;
+}
+a:hover,
+a:active {
+  color: #297acc;
+  text-decoration: underline;
+}
+
+a:focus {
+  outline: #303d49 dotted thin;
+}
+
+/* tables */
+table {
+  width: 100%;
+}
+
+table caption,
+table th {
+  font-size: 13px;
+  font-weight: bold;
+  text-align: left;
+  line-height: 20px;
+}
+
+table caption {
+  color: #fff;
+  border: 1px solid #4d4d4d;
+  background: url('/images/style/table_caption_bg.png') repeat-x center;
+  padding: 0 8px;
+  -moz-border-radius-topleft: 7px;
+  -moz-border-radius-topright: 7px;
+  -webkit-border-top-left-radius: 7px;
+  -webkit-border-top-right-radius: 7px;
+}
+
+table th {
+  color: #333;
+  border-bottom: 1px solid #dfdfdf;
+  border-right: 1px solid white;
+  background: url('/images/style/table_head_bg.png') repeat-x 0 0;
+  padding: 0 8px;
+}
+
+table th.last {
+  border-right: 0;
+}
+
+table th.selected {
+  background-image: none;
+  background-color: #ccc;
+  border-right: 1px solid #e5e5e5;
+  color: #333;
+}
+
+/* table cells */
+table td {
+  color: #666;
+  font-size: 13px;
+  vertical-align: top;
+  height: 20px;
+  line-height: 20px;
+  padding: 0 8px;
+  border-right: 1px solid #f3f3f3;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+table td.last {
+  border-right: 0;
+}
+
+table tr.last td {
+  border-bottom: 0;
+}
+
+table td.selected {
+  background-color: #fbf3cb;
+  border-right: 1px solid #e5e5e5;
+}
+
+table tr.even td {
+  background: #e0e9fa;
+}
+
+table tr.even td.selected {
+  background-color: #e4e3c7;
+  border-right: 1px solid #e5e5e5;
+}
+
+table .spacer {
+  width: 8px;
+  padding: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+#page table p {
+  margin: 0 0 6px 0;
+}
+
+
+/* lists */
+ul {
+  line-height: 18px;
+  float:left;
+  margin-top: 12px;
+}
+
+dl {
+  margin-bottom: 1.0em;
+}
+
+dt {
+  font-weight: bold;
+  line-height: 1.3em;
+}
+
+dd {
+  line-height: 1.3em;
+}
+
+.marketplace{
+	background-image:url(/images/secured1.png);
+	width:85px;
+	border: medium none;
+	cursor:pointer;
+	height:48px;
+}
+
+.paypall{
+	float:left;
+	background-image:url(/images/paypall.png);
+	width:77px;
+	border: medium none;
+	cursor:pointer;
+	margin-right:10px;
+	height:48px;
+}
+/* tables */
