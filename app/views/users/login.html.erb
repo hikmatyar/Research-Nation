@@ -1,0 +1,27 @@
+<div class="wrapper" id="page">
+	<div id="narrowPage">
+		<div class="sideBar">
+		  <div id="currentUserSignIn" class="panel">
+        <p>Dont Have an Account? <br><%= link_to 'Click here to Sign Up', :controller => "users", :action => "register" %></p>
+      </div>
+    </div>
+    <h1>Sign In</h1>
+    <%= form_tag :controller => 'users', :action => 'authenticate' %>
+
+	    <div class="input text">
+        <label for="user_email">Email Address</label>
+        <%= text_field 'login', 'email' %>
+      </div>
+	    <div class="input text">
+        <label for="user_password">Password</label>
+        <%= password_field 'login', 'password' %>
+      </div>
+	    <div class="submit">
+	      <%= submit_tag 'Login' %>
+      </div>
+      <div style="color:red"><%= flash[:error] %></div>
+    </form>
+	</div>
+  <div style="clear: both;"></div>
+</div>
+
