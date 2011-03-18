@@ -1,0 +1,42 @@
+<%= error_messages_for :user %>
+<div style="color:red"><%= flash[:error] %></div>
+<div class="wrapper" id="page">
+	<div id="narrowPage">
+		<div class="sideBar">
+		  <div id="currentUserSignIn" class="panel">
+        <p>Already registered? <br><%= link_to 'Click here to sign in.', :controller => "users", :action => "login" %></p>
+      </div>
+    </div>
+    <h1>Register</h1>
+    <%= form_tag :controller => 'users', :action => 'create' %>
+	    <div class="input text">
+        <label for="user_name">Name</label>
+        <label style="display: inline;" class="firstName overlay" for="user_first_name">First Name</label>
+        <%= text_field 'user', 'first_name', :class => "firstName overlay" %>
+	      <label style="display: inline;" class="lastName overlay" for="user_last_name">Last Name</label>
+        <%= text_field 'user', 'last_name', :class => "lastName overlay" %>
+      </div>
+	    <div class="input text">
+        <label for="user_company">Company (optional)</label>
+        <%= text_field 'user', 'company' %>
+      </div>
+	    <div class="input text">
+        <label for="user_email">E-mail Address</label>
+        <%= text_field 'user', 'email' %>
+      </div>
+	    <div class="input password">
+        <label for="user_password">Choose a Password</label>
+		    <%= password_field 'user', 'password' %>
+      </div>
+      <div class="input password">
+        <label for="linkedin_profile">Linked Public Profile Url</label>
+		    <%= text_field 'user', 'linked_in_profile' %>
+      </div>
+	    <div class="submit">
+	      <%= submit_tag 'Register' %>
+      </div>
+    </form>
+	</div>
+  <div style="clear: both;"></div>
+</div>
+
