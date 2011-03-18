@@ -1,0 +1,132 @@
+#findData {
+  width: 920px;
+  margin: 50px auto;
+}
+
+#createRequestHeader,
+#howTo {
+  padding-left: 8px;
+}
+
+#recentRequests, #recentResources {
+  width: 440px;
+  overflow: hidden;
+}
+
+#recentRequests {
+  float: left;
+}
+
+#recentResources {
+  float: right;
+}
+
+#new_request {
+  border: 1px solid #d9d9d9;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  padding: 7px 10px 5px 10px;
+  background-color: #f5f5f5;
+  margin: 0 auto;
+}
+
+#new_request #description.input {
+  width: auto;
+}
+
+#new_request textarea#request_description {
+  overflow: hidden;
+  width: 890px;
+  height: 3.7em;
+  font-size: 18px;
+  color: #333;
+}
+
+#new_request .formError {
+  margin: 0;
+}
+
+#formOptions {
+  padding-left: 4px;
+  padding-right: 4px;
+  height: 30px;
+}
+
+#formOptions .formOption {
+  float: left;
+  height: 30px;
+  width: auto;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  padding-left: 24px;
+  margin-right: 18px;
+}
+
+#formOptions a.formOption {
+  line-height: 30px;
+}
+
+#formOptions .input {
+  clear: none;
+}
+
+#formOptions .input .closeLink {
+  float: right;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 4px;
+}
+
+#formOptions .input .closeLink img {
+  margin-top: 8px;
+}
+
+#formOptions a#addDeadlineLink,
+#formOptions #deadline {
+  background: url('/images/deadline.png') no-repeat center left;
+}
+
+#formOptions a#addBudgetLink,
+#formOptions #budget {
+  background: url('/images/budget.png') no-repeat center left;
+}
+
+#budget.text input {
+  width: 80px;
+}
+
+#formOptions .submit {
+  float: right;
+  line-height: 30px;
+  margin: 0;
+}
+
+#formOptions .submit input {
+  margin: 0;
+}
+
+#helperMessage {
+  margin: 0 0 10px 0;
+  padding: 8px 10px;
+  position: relative;
+  font-size: 11px;
+  line-height: 15px;
+  margin: 0;
+}
+
+.search {
+  margin-bottom: 16px;
+}
+
+.search .text label {
+  width: auto;
+}
+
+.search .text input {
+  width: 220px;
+}
+
+.search input[type=submit] {
+  height: 26px;
+}

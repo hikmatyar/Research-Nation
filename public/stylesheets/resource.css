@@ -1,0 +1,151 @@
+.resource {
+  width: 650px;
+  position: relative;
+  padding: 6px 0;
+  margin-top: 6px;
+}
+
+.mini_resource {
+	float:left;
+	margin-bottom:10px;
+	width:440px;
+}
+
+/* logo */
+.resource .logo {
+  position: absolute;
+  top: 8px;
+  right: 0;
+  width: 150px;
+  padding: 4px;
+  height: 70px;
+}
+
+.mini_resource .logo {
+  width: 120px;
+  height: 60px;
+}
+
+.resource .logo a {
+  vertical-align: top;
+}
+
+.resource .textLogo {
+  display: table;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+  border: 1px solid #d9d9d9;
+  text-align: center;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+
+.resource .textLogo .text {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+/* title, description, actions */
+.resource .title,
+.resource .description,
+.resource .details {
+  width: 480px;
+}
+
+.mini_resource .title,
+.mini_resource .description,
+.mini_resource .details {
+  width: 305px;
+}
+
+.resource h4.title {
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.mini_resource h4.title {
+  font-size: 15px;
+  line-height: 18px;
+  margin-bottom: 4px;
+}
+
+.resource h4.title .fadeOut {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 20px;
+  background: transparent url('/images//images/fade_out.png') top right repeat-y;
+}
+
+.title{
+	float:left !important;
+	width:300px !important;
+}
+.title h4{
+	float:left !important;
+	width:300px !important;
+}
+
+.title a{
+	float:left;
+	width:300px !important;
+}
+
+.resource p.description {
+  line-height: 15px;
+  overflow: hidden;
+  margin: 0;
+  margin-bottom: 1px;
+}
+
+.mini_resource p.description {
+  font-size: 11px;
+  line-height: 14px;
+}
+
+.resource ul.details {
+  font-size: 10px;
+  height: 20px;
+  line-height: 20px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.resource .details li {
+  float: left;
+  padding: 0 10px 0 0;
+  line-height: 20px;
+  vertical-align: middle;
+}
+
+.resource .details li:first-child {
+  padding-left: 0;
+  border-left: none;
+}
+
+.resource .details .price {
+  background: transparent url('/images/budget.png') top left no-repeat;
+  padding-left: 24px;
+}
+
+.resource .details .comments a {
+  background: transparent url('/images/comments.png') top left no-repeat;
+  padding-left: 24px;
+  display: block;
+}
+
+.resource .details .edit a {
+  background: transparent url('/images/edit.png') top left no-repeat;
+  padding-left: 24px;
+  display: block;
+}
+
+.resource .details .download a {
+  background: transparent url('/images/download.png') top left no-repeat;
+  padding-left: 24px;
+  display: block;
+}

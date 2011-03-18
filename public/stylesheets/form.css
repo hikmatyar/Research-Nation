@@ -1,0 +1,421 @@
+fieldset {
+  border: 0;
+  margin-top: 22px;
+}
+
+legend {
+  font-size: 27px;
+  line-height: 36px;
+  padding-bottom: 6px;
+}
+
+legend .step {
+  color: #3af;
+  float: left;
+  width: 95px;
+  /*margin-left: 20px;*/
+  margin-right: 15px;
+}
+
+/* -- form styling -- */
+.input {
+  position: relative;
+  width: 520px;
+  padding: 1px 0;
+  clear: left;
+}
+
+fieldset .input {
+  margin-left: 130px;
+}
+
+.input label,
+.input div.label {
+  color: #666;
+  font-size: 13px;
+  display: block;
+  float: left;
+  height: 30px;
+  line-height: 30px;
+  margin-right: 10px;
+  text-align: left;
+  width: 216px;
+}
+
+.input .noLabel {
+  margin-left: 226px;
+}
+
+/* links to optional fly-open inputs */
+.option {
+  line-height: 24px;
+  margin-bottom: 12px;
+}
+
+/* text fields, passwords, and text area inputs */
+.text label,
+.password label,
+.textarea label {
+}
+
+.text input,
+.password input,
+.textarea textarea {
+  /*color: #808080;*/
+  font-family:sans-serif;
+  height: 16px;
+  font-size: 13px;
+  border: 1px solid #bfbfbf;
+  padding: 4px;
+  margin: 2px 0;
+  /*margin-right: 10px;*/
+  width: 280px;
+}
+
+.text input.notModifiable {
+  color: #333;
+}
+
+.textarea textarea {
+  height: auto;
+}
+
+.text input:focus,
+.password input:focus,
+.textarea textarea:focus {
+  border: 1px solid #303d49;
+}
+
+/* select boxes */
+.select select {
+  color: #808080;
+  height: 26px;
+  line-height: 26px;
+  font-size: 13px;
+  border: 1px solid #bfbfbf;
+  margin: 2px 0;
+  padding: 2px;
+  background: white;
+}
+
+.select option {
+  font-size: 13px;
+  padding: 2px;
+}
+
+.select select:focus {
+  border: 1px solid #303d49;
+}
+
+/* checkbox inputs */
+.checkbox {
+  line-height: 18px;
+}
+
+.checkbox label {
+  width: auto;
+  float: none;
+  display: inline;
+  line-height: 18px;
+  height: 18px;
+}
+
+/* radio inputs */
+.radio div.label { /* label tags are reserved for the buttons themselves, so the prompt text is just a div.label */
+}
+
+.radio label,
+fieldset .radio label {
+  margin-left: 0;
+  float: none;
+  display: inline-block;
+  vertical-align: middle;
+  width: auto;
+}
+
+.radio input {
+  vertical-align: middle;
+}
+
+/* file inputs */
+.file label {
+}
+
+.file input {
+  /*border: 1px solid #bfbfbf;*/
+  width: 280px;
+  padding: 4px;
+}
+
+.file input:focus {
+  /*border: 1px solid #303d49;*/
+}
+
+/* buttons */
+.submit,
+.button {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.submit input,
+.button input,
+a.button {
+  height: 22px;
+  line-height: 22px;
+  text-align: center;
+  background: #297acc url('/images/button_bg.png') repeat-x top;
+  border: 1px solid #297acc;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  -moz-border-radius: 64px;
+  -webkit-border-radius: 64px;
+  margin: 0;
+  padding: 0 10px;
+  cursor: pointer;
+  text-shadow: #3674b3 0 1px;
+}
+
+a.button {
+  display: inline-block;
+}
+
+.submit input:hover,
+.button input:hover,
+a.button:hover {
+  border: 1px solid #1f5c99;
+  text-decoration: none;
+}
+
+.submit input:focus,
+.button input:focus,
+a.button:focus {
+  border: 1px solid #1f5c99;
+  text-decoration: none;
+}
+
+.submit input:active,
+.button input:active,
+a.button:active {
+  background-image: none;
+  border: 1px solid #1f5c99;
+  text-decoration: none;
+}
+
+/* vertical forms */
+
+.shortForm .input {
+  width: auto;
+  padding: 0;
+  margin-bottom: 8px;
+}
+
+.shortForm .option {
+  margin-bottom: 16px;
+}
+
+.shortForm .input label {
+  float: none;
+  height: auto;
+  width: auto;
+  margin: 0;
+  line-height: 1.4em;
+}
+
+.shortForm .textarea textarea {
+  width: 640px;
+}
+
+.shortForm .submit {
+  margin-top: 0;
+}
+
+.shortForm .formError,
+.shortForm .formSuccess {
+  display: inline-block;
+  margin: 0;
+  margin-left: 6px;
+  background-position: 0 center;
+  padding-left: 20px;
+}
+
+.shortForm .textarea .formError {
+  display: block;
+  margin-left: 0;
+}
+
+
+/* special form elements */
+form input.overlay {
+}
+
+form input.firstName {
+  width: 133px;
+}
+
+form input.lastName {
+  width: 132px;
+  margin-left: 1px;
+}
+
+form input.city {
+  width: 133px;
+}
+
+form input.state {
+  width: 42px;
+  margin-left: 1px;
+}
+
+form input.zip {
+  width: 75px;
+  margin-left: 1px;
+}
+
+form label.overlay,
+form label.firstName,
+form label.lastName,
+form label.street,
+form label.city,
+form label.state,
+form label.zipcode {
+  position: absolute;
+  left: 7px;
+  color: #808080;
+}
+
+form label.firstName,
+form label.street,
+form label.city {
+  left: 233px;
+}
+
+form label.lastName,
+form label.state {
+  left: 381px;
+}
+
+form label.zipcode {
+  left: 438px;
+}
+
+form label.overlay {
+  display: none;
+  width: auto;
+}
+
+form label.overlayFocused {
+  color: #ccc;
+}
+
+/* error messages */
+.formLoading {
+  vertical-align: middle;
+  margin-left: 8px;
+}
+
+.fieldWithErrors {
+  display: inline;
+  vertical-align: top;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.fieldWithErrors label {
+}
+
+.fieldWithErrors input,
+.fieldWithErrors textarea,
+.fieldWithErrors select {
+  background: #fcc;
+  border-color: #cd2133;
+}
+
+.baseFormError {
+  color: white;
+  line-height: 18px;
+  width: 624px;
+  padding: 2px 0 2px 26px;
+  margin-bottom: 4px;
+  background: #cd2133 url('/images/style/validation_error_base.png') no-repeat 6px center;
+}
+
+.formError,
+.formSuccess {
+  font-size: 11px;
+  line-height: 14px;
+  padding: 2px 0 2px 26px;
+  margin-left: 226px;
+  margin-top: 0;
+  margin-bottom: 8px;
+  white-space: normal;
+}
+
+.formError {
+  color: #cd2133;
+  background: url('/images/style/validation_error.png') no-repeat 6px center;
+}
+
+.formSuccess {
+  color: #047000;
+  background: url('/images/style/validation_success.png') no-repeat 6px center;
+}
+
+.checkbox .formError {
+  margin-left: 0;
+}
+
+/* narrow styles */
+#narrowPage .input {
+  width: 390px;
+  margin-left: -10px;
+  padding-left: 10px;
+}
+
+#narrowPage .text label,
+#narrowPage .password label {
+  width: 140px;
+}
+
+#narrowPage .text input,
+#narrowPage .password input {
+  width: 230px;
+}
+
+#narrowPage .noLabel {
+  margin-left: 150px;
+}
+
+#narrowPage .submit {
+  margin-top: 12px;
+}
+
+#narrowPage input.firstName,
+#narrowPage input.lastName {
+  width: 108px;
+}
+
+#narrowPage input.lastName {
+  width: 107px;
+}
+
+#narrowPage label.firstName {
+  left: 168px;
+}
+
+#narrowPage label.lastName {
+  left: 290px;
+}
+
+#narrowPage .baseFormError {
+  padding-left: 26px;
+  width: 376px;
+}
+
+#narrowPage .formError {
+  margin-left: 150px;
+  width: 214px;
+}
+
+
