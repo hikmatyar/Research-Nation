@@ -1,0 +1,12 @@
+log
+*.log
+tmp
+config/local.rb
+.DS_Store
+.htaccess
+*~
+*.swp
+*.swo
+web_cache
+.ftpquota
+db/schema.rb
