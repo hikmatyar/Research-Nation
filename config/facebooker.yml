@@ -1,0 +1,24 @@
+development:
+  api_key: bf0b960956f5fdffb862e1acaa79731b
+  secret_key: 47e2f7e6d01f2f09e22e39c2110113c6
+  callback_url: http://127.0.0.1:3000/
+  pretty_errors: true
+  set_asset_host_to_callback_url: false
+  tunnel:
+    public_host_username:
+    public_host:
+    public_port: 4007
+    local_port: 3000
+    server_alive_interval: 0
+
+production:
+  api_key: bf0b960956f5fdffb862e1acaa79731b
+  secret_key: 47e2f7e6d01f2f09e22e39c2110113c6
+  callback_url: http://www.researchnation.net
+  set_asset_host_to_callback_url: false
+  tunnel:
+    public_host_username:
+    public_host:
+    public_port: 4007
+    local_port: 3000
+    server_alive_interval: 0
