@@ -1,0 +1,15 @@
+<div id="header">
+  <div id="header_center" class="wrapper">
+    <a href="#"><img alt="ResearchNation.net" src="/images/logo.png"></a>
+    <div id="siteNav">
+      <a href="#">Buy Research</a>
+      <a href="#">Sell Research</a>
+      <img alt="Divider" src="/images/divider.png">
+      <% unless logged_in? %>
+        <a href="/users/login">Sign In</a>
+      <% else %>
+        <%= link_to 'Logout' ,:controller => "users", :action => "logout" %>
+      <% end %>
+    </div>
+  </div>
+</div>
