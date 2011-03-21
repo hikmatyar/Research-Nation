@@ -1,0 +1,44 @@
+	<div class="wrapper" id="page">
+    <h1>Data Set</h1>
+    <div class="contentWithSideBar">
+
+					<h3>Ask a Questions or post a comment</h3>
+          <%= form_tag   ({:controller => 'requests', :action => 'create' }, { :class => "new_comment", :id => "new_comment" }) %>
+					<img src="/images/budget.png" alt="deadline" title="Deadline" />
+					<a href="#" class="formOption" id="addBudgetLink" onclick="return false;">Add budget</a>
+          <div id="budget" class="input text formOption" style="display: none;">
+            <a href="#" class="closeLink" id="closeBudgetLink" onclick="return false;"><img alt="X_light" src="/images/x_light.png"></a>
+            <%= text_field 'request', 'budget' %>
+					</div>
+					<img src="/images/deadline.png" alt="deadline" title="Deadline" />
+          <a href="#" class="formOption" id="addDeadlineLink" onclick="return false;">Add deadline</a>
+					<div id="deadline" class="input select formOption" style="display: none;">
+						<a href="#" class="closeLink" id="closeDeadlineLink" onclick="return false;"><img alt="X_light" src="/images/x_light.png"></a>
+            <%= select(:request, :deadline, [ 'No Deadline', Date.current-1 , Date.current-7 , Date.current-30] ) %>
+					</div>
+          <div class="shortForm">
+	          <div class="input text">
+              <label for="comment_name">Name</label>
+              <%= text_field 'request', 'title' %>
+	          </div>
+	          <div class="input text">
+              <label for="comment_email">E-mail Address (optional, will not be shared)</label>
+							<%= text_field 'request', 'email' %>
+	          </div>
+	          <div class="input textarea">
+              <label for="comment_body">Comment</label>
+							<%= text_area 'request', 'comment' %>
+	          </div>
+	          <div class="submit">
+            <%= submit_tag 'Post' , { :id => "comment_submit" } %>
+	          </div>
+          </div>
+				<div id="attachPopup" class="jqmWindow jqmID2">
+					<div class="jqmPage page">
+            <a href="#" class="jqmClose"><img alt="close" src="european-union-with-category-information_files/close_button.png"></a>
+			            You must be logged in.  <a href="http://www.datamarketplace.com/login">Sign in now</a>.
+		            </div>
+              </div>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
