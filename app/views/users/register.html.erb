@@ -24,11 +24,13 @@
         <label for="user_email">E-mail Address</label>
         <%= text_field 'user', 'email' %>
       </div>
+	    <% unless (@user_type == "facebook_user") %>
 	    <div class="input password">
         <label for="user_password">Choose a Password</label>
 		    <%= password_field 'user', 'password' %>
       </div>
-      <div class="input password">
+      <% end %>
+      <div class="input text">
         <label for="linkedin_profile">Linked Public Profile Url</label>
 		    <%= text_field 'user', 'linked_in_profile' %>
       </div>
@@ -36,7 +38,9 @@
 	      <%= submit_tag 'Register' %>
       </div>
     </form>
+    <% unless (@user_type == "facebook_user") %>
+      <%= link_to (image_tag "/images/FB_login_short.gif"), :controller => "users", :action => "facebook_connect" %>
+    <% end %>
 	</div>
   <div style="clear: both;"></div>
 </div>
-

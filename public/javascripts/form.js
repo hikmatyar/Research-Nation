@@ -6,6 +6,9 @@ $(function(){
       ? $this.parent().prev().children('label.overlay')
       : $this.prev('label.overlay');
 
+    if($('input.overlay').val()){
+      $prev_label.hide();
+    }
     var hideLabel = function() {
       if ($this.val() == '') {
         $prev_label.show();
@@ -16,7 +19,6 @@ $(function(){
 
     $this.change(hideLabel)
     $this.keyup(hideLabel);
-
     /* dim labels on input focus */
     $this.focus(function(){
       $prev_label.addClass('overlayFocused');
