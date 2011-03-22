@@ -5,4 +5,8 @@ class MainController < ApplicationController
 
   end
 
+  def index
+    @requests = Request.find :all, :limit => 5
+  end
+
 end
