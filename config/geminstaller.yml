@@ -1,8 +1,9 @@
 defaults:
-    install_options: --include-dependencies
-  gems:
+    install_options: --include-dependencies --no-ri --no-rdoc
+gems:
   - name: facebooker
-    version: '= 1.0.75'
+    version: 1.0.75
   - name: koala
-    version: '= 1.0.0'
-
+    version: 0.9.1
+  - name: aws-s3
+    version: 0.6.2
