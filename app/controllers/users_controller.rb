@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def facebook_connect
     facebook_settings = YAML::load(File.open("#{RAILS_ROOT}/config/facebooker.yml"))
-    redirect_to "https://graph.facebook.com/oauth/authorize?client_id=#{facebook_settings[RAILS_ENV]['application_id']}&redirect_uri=http://localhost:3000/users/facebook_oauth_callback&scope=email, offline_access,publish_stream"
+    redirect_to "https://graph.facebook.com/oauth/authorize?client_id=#{facebook_settings[RAILS_ENV]['application_id']}&redirect_uri=http://localhost:3000/users/facebook_oauth_callback&scope=email,offline_access,publish_stream"
   end
 
   def facebook_oauth_callback
@@ -53,9 +53,12 @@ class UsersController < ApplicationController
   def create
     user = User.new(params[:user])
     if user.save
-      flash[:success] = "User has been created Successfully"
+      UserMailer.deliver_registration_email(user.first_name, user.last_name, user.email)
+      flash[:error] = ""
+      flash[:success] = "User has been created Successfully. Please Login to continue"
       redirect_to :controller => 'main', :action => 'index'
     else
+      flash[:success] = ""
       flash[:error] = "Could not Create User. Please Review your form"
       render :action => 'register'
     end
@@ -99,4 +102,5 @@ class UsersController < ApplicationController
       redirect_to :action=> 'login'
     end
   end
+
 end
