@@ -3,15 +3,23 @@ class RequestsController < ApplicationController
   layout 'main'
 
   def create
-    request = Request.new(params[:request])
-    request.user_id = session[:user]
-    if request.save
-      flash[:success] = "Your Request has been submitted"
-      redirect_to :controller => 'main' , :action => 'index'
+    if logged_in?
+      request = Request.new(params[:request])
+      request.user_id = session[:user]
+      if request.save
+        flash[:success] = "Your Request has been submitted"
+        return redirect_to :controller => 'main' , :action => 'index'
+      else
+        flash[:error] = "Request Could not be processed. Please try again."
+        return redirect_to :controller => 'main', :action => 'index'
+      end
     else
-      flash[:error] = "Request Could not be processed. Please try again."
-      render :action => 'new'
+      return redirect_to :controller => 'users', :action => 'register'
     end
+  end
 
+  def what_others_are_requesting
+    @request = Request.find(params[:id])
+    @user = User.find(session[:user]) if logged_in?
   end
 end

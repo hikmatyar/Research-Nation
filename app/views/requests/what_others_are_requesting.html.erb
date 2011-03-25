@@ -1,0 +1,33 @@
+<div class="wrapper" id="page">
+	<h1><%= @request.description %></h1>
+	<div class="contentWithSideBar">
+		<h3>Ask a Questions or post a comment</h3>
+
+		<img src="/images/budget.png" alt="deadline" title="Deadline" />
+      <%= @request.budget %>
+		</div>
+		<img src="/images/deadline.png" alt="deadline" title="Deadline" />
+    <%= @request.deadline %>
+	</div>
+  <div class="shortForm">
+    <div class="input text">
+      <label for="comment_name">Name</label>
+      <%= text_field 'post', 'user_name', 'size' => 30, :disabled => ('true' unless @user.blank? ) , :value => ( @user.first_name unless @user.blank? ) %>
+    </div>
+    <div class="input text">
+      <label for="comment_email">E-mail Address (optional, will not be shared)</label>
+      <%= text_field 'post', 'user_name', 'size' => 30, :disabled => ('true' unless @user.blank? ), :value => ( @user.email unless @user.blank? ) %> 
+    </div>
+    <div class="input textarea">
+      <label for="comment_body">Comment</label>
+      <textarea name="Comment" rows="5" cols="30"></textarea>
+    </div>
+  </div>
+	<div id="attachPopup" class="jqmWindow jqmID2">
+		<div class="jqmPage page">
+	    <a href="#" class="jqmClose"><img alt="close" src="european-union-with-category-information_files/close_button.png"></a>
+      You must be logged in.  <a href="/users/login">Sign in now</a>.
+    </div>
+  </div>
+	<div style="clear: both;"></div>
+</div>
