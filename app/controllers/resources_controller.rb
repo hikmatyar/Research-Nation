@@ -12,7 +12,7 @@ class ResourcesController < ApplicationController
   end
 
   def create
-    @user = User.find( params[:user] )
+    @user = User.find( session[:user] )
     resource = Resource.new params[:post]
     resource.user_id = @user.id
     if resource.save
