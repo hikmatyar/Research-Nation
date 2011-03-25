@@ -5,30 +5,31 @@
 <div class="wrapper" id="page">
   <div id="findData">
     <p id="howTo">Describe the information you're looking for and we'll <strong>help you find it</strong> for less than US$200</p>
-    <form action="/requests/new" class="new_request" id="new_request" method="post">
+    <%= form_tag   ({:controller => 'requests', :action => 'create' }, { :class => "new_request", :id => "new_request" }) %>
       <div id="description" class="input textarea">
-        <textarea class="overlay" cols="40" id="request_description" name="request[description]" rows="1" tabindex="1"></textarea>
+        <%= text_area 'request', 'description' %>
       </div>
       <div id="formOptions">
         <a href="#" class="formOption" id="addDeadlineLink" onclick="return false;">Add deadline</a>
         <div id="deadline" class="input select formOption" style="display: none;">
           <a href="#" class="closeLink" id="closeDeadlineLink" onclick="return false;">
-          <img alt="X_light" src="/images/x_light.png"></a>
+          <%= image_tag '/images/x_light.png' %></a>
           <select id="request_deadline" name="request[deadline]" tabindex="2">
             <option value="" selected="selected">No deadline</option>
-            <option value="2011-02-18 01:25:29 UTC">1 day</option>
-            <option value="2011-02-24 01:25:29 UTC">1 week</option>
-            <option value="2011-03-17 01:25:29 UTC">1 month</option>
+            <option value="<%= Date.current+1 %>">1 day</option>
+            <option value="<%= Date.current+7 %>">1 week</option>
+            <option value="<%= Date.new(Date.current.year, Date.current.month+1, Date.current.day) %>">1 month</option>
           </select>
         </div>
         <a href="#" class="formOption" id="addBudgetLink" onclick="return false;">Add budget
         </a>
         <div id="budget" class="input text formOption" style="display: none;">
-          <a href="#" class="closeLink" id="closeBudgetLink" onclick="return false;"><img alt="X_light" src="/images/x_light.png"></a>
-          <input id="request_budget" maxlength="8" name="request[budget]" size="8" tabindex="3" type="text">
+          <a href="#" class="closeLink" id="closeBudgetLink" onclick="return false;">
+          <%= image_tag '/images/x_light.png' %></a>
+          <%= text_field 'request', 'budget' %>
         </div>
         <div class="submit">
-          <input id="request_submit" name="commit" tabindex="4" value="Create Request" type="submit">
+          <%= submit_tag 'Create Request'%>
         </div>
         <div style="clear: both;"></div>
         </div>
@@ -42,11 +43,13 @@
       <% @requests.each do |request| %>
       <div class="request mini_request">
         <h4 class="description">
-        <%= link_to request.title , :controller => "requests", :action => "what_others_are_requesting", :id => request.id %>
+        <%= link_to request.description , :controller => "requests", :action => "what_others_are_requesting", :id => request.id %>
         </h4>
         <ul class="details">
           <li class="date"><%= request.deadline %></li>
-          <li class="date">$<%= request.budget.to_i %></li>
+          <% unless request.budget.blank? %>
+          <li class="date">$<%= request.budget %></li>
+          <% end %>
           <li class="comments"></li>
           <div class="facebook">
             <iframe src="http://www.facebook.com/plugins/like.php?href=/requests/what_others_are_requesting/<%= request.id %>&amp;layout=button_count&amp;show_faces=true&amp;width=60&amp;action=like&amp;font&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:60px; height:21px;" allowTransparency="true"></iframe>
@@ -63,106 +66,33 @@
     </div>
     <div id="recentResources">
       <h3>What others are selling</h3>
-      <!-- <div class="search">
-        <form action="/resources" method="get">
-          <span class="input text">
-            <label class="overlay" for="q2">Search</label>
-            <input class="overlay" id="q2" name="q" type="text" />
-          </span>
-          <input type="submit" value="Go" />
-        </form>
-      </div>  -->
+      <% @resources.each do |resource| %>
       <div class="resource mini_resource">
         <div class="logo textLogo">
           <div class="text">
             Provided by:<br>
-            <a href="#">Faisal K.</a>
+            <a href="#"><%= resource.user.first_name%></a>
           </div>
         </div>
         <h4 class="title">
           <a href="#">Interviews with UK Luxury Hotel Managers'</a>
         </h4>
         <p class="description">
-          Includes The Landmark, Berkeley, Langham and others
+          <%= resource.description %>
         </p>
         <ul class="details">
-          <li class="date">Fab 16</li>
-          <li class="comments"><a href="#">0 </a></li>
+          <li class="date"><%= resource.created_at.strftime "%m %d"%></li>
+          <li class="comments"><a href="#">0</a></li>
           <div class="facebook">
-            <iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.researchnation.net&amp;layout=button_count&amp;show_faces=true&amp;width=60&amp;action=like&amp;font&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:60px; height:21px;" allowTransparency="true"></iframe>
+            <iframe src="http://www.facebook.com/plugins/like.php?href=/resources/what_others_are_selling/<%= resource.id %>&amp;layout=button_count&amp;show_faces=true&amp;width=60&amp;action=like&amp;font&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:60px; height:21px;" allowTransparency="true"></iframe>
           </div>
         </ul>
       </div>
-      <div class="resource mini_resource">
-        <div class="logo textLogo">
-        <div class="text">
-          Provided by:<br>
-          <a href="#">Private Sale</a>
-        </div>
-      </div>
-      <h4 class="title">
-        <a href="#">Pakistan Tech Industry Research</a>
-        <div class="fadeOut"></div>
-      </h4>
-      <p class="description">
-        Interviews with top techies + opportunity to make introductions
-      </p>
-      <ul class="details">
-        <li class="date">Fab 15</li>
-        <li class="comments"><a href="#">4 </a></li>
-        <div class="facebook">
-          <iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.researchnation.net&amp;layout=button_count&amp;show_faces=true&amp;width=60&amp;action=like&amp;font&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:60px; height:21px;" allowTransparency="true"></iframe>
-        </div>
-      </ul>
     </div>
-    <div class="resource mini_resource">
-      <div class="logo textLogo">
-        <div class="text">
-          Provided by:<br>
-          <a href="#">Private Sale</a>
-        </div>
-      </div>
-      <h4 class="title">
-        <a href="#">Market Research on Online Recruitment Sites</a>
-        <div class="fadeOut"></div>
-      </h4>
-      <p class="description">
-        Results from a LinkedIn poll
-      </p>
-      <ul class="details">
-        <li class="date">Fab 14</li>
-        <li class="comments"><a href="#">1 </a></li>
-        <div class="facebook">
-          <iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.researchnation.net&amp;layout=button_count&amp;show_faces=true&amp;width=60&amp;action=like&amp;font&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:60px; height:21px;" allowTransparency="true"></iframe>
-        </div>
-      </ul>
-    </div>
-    <div class="resource mini_resource">
-      <div class="logo textLogo">
-        <div class="text">
-          Provided by:<br>
-          <a href="#">Michael A.</a>
-        </div>
-    </div>
-    <h4 class="title">
-      <a href="#">Student Loan Market in the US</a>
-      <div class="fadeOut"></div>
-    </h4>
-    <p class="description">
-      Research report published by leading US bank
-    </p>
-    <ul class="details">
-      <li class="date">Fab 13</li>
-      <li class="comments"><a href="#">0 </a></li>
-      <div class="facebook">
-        <iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.researchnation.net&amp;layout=button_count&amp;show_faces=true&amp;width=60&amp;action=like&amp;font&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:60px; height:21px;" allowTransparency="true"></iframe>
-      </div>
-    </ul>
+    <% end %>
+    <div style="clear: both;"></div>
   </div>
-</div>
-<div style="clear: both;"></div>
-</div>
-<div class="facebook_facepile">
-Facebook FacePile
-<iframe src="http://www.facebook.com/plugins/facepile.php?href=researchnation.net&amp;width=200&amp;max_rows=5" scrolling="no" frameborder="1" style="border:none; overflow:hidden; width:200px;" allowTransparency="true"></iframe>
-</div>
+  <div class="facebook_facepile">
+  Facebook FacePile
+    <iframe src="http://www.facebook.com/plugins/facepile.php?href=researchnation.net&amp;width=200&amp;max_rows=5" scrolling="no" frameborder="1" style="border:none; overflow:hidden; width:200px;" allowTransparency="true"></iframe>
+  </div>
