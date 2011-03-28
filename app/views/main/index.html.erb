@@ -52,13 +52,14 @@
           <% end %>
           <li class="comments"></li>
           <div class="facebook">
-            <iframe src="http://www.facebook.com/plugins/like.php?href=/requests/what_others_are_requesting/<%= request.id %>&amp;layout=button_count&amp;show_faces=true&amp;width=60&amp;action=like&amp;font&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:60px; height:21px;" allowTransparency="true"></iframe>
+            <iframe src="http://www.facebook.com/plugins/like.php?href=http://@{request.host}/requests/what_others_are_requesting/<%= request.id %>&amp;layout=button_count&amp;show_faces=true&amp;width=60&amp;action=like&amp;font&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:60px; height:21px;" allowTransparency="true"></iframe>
           </div>
         </ul>
         <div class="private_sale">
           <div class="text">
             Requested by:<br>
-            <a class="linkedin-profileinsider-popup" href="<%= request.user.linked_in_profile %>" > <%= request.user.first_name %></a>
+            <a class="linkedin-profileinsider-popup" href="<%= request.user.linked_in_profile %>" > <%= "#{request.user.first_name}  #{request.user.last_name}" %>
+            </a>
           </div>
         </div>
       </div>
@@ -71,11 +72,11 @@
         <div class="logo textLogo">
           <div class="text">
             Provided by:<br>
-            <a href="#"><%= resource.user.first_name%></a>
+            <a class="linkedin-profileinsider-popup" href="<%= resource.user.linked_in_profile %>" > <%= "#{resource.user.first_name} #{resource.user.last_name}" %></a>
           </div>
         </div>
         <h4 class="title">
-          <a href="#">Interviews with UK Luxury Hotel Managers'</a>
+          <%= link_to resource.title, :controller => 'resources', :action => 'what_others_are_selling', :id => resource.id %>
         </h4>
         <p class="description">
           <%= resource.description %>
@@ -84,7 +85,7 @@
           <li class="date"><%= resource.created_at.strftime "%m %d"%></li>
           <li class="comments"><a href="#">0</a></li>
           <div class="facebook">
-            <iframe src="http://www.facebook.com/plugins/like.php?href=/resources/what_others_are_selling/<%= resource.id %>&amp;layout=button_count&amp;show_faces=true&amp;width=60&amp;action=like&amp;font&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:60px; height:21px;" allowTransparency="true"></iframe>
+            <iframe src="http://www.facebook.com/plugins/like.php?href=http://#{request.host}/resources/what_others_are_selling/<%= resource.id %>&amp;layout=button_count&amp;show_faces=true&amp;width=60&amp;action=like&amp;font&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:60px; height:21px;" allowTransparency="true"></iframe>
           </div>
         </ul>
       </div>
