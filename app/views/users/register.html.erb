@@ -34,6 +34,9 @@
         <label for="linkedin_profile">Linked Public Profile Url</label>
 		    <%= text_field 'user', 'linked_in_profile' %>
       </div>
+      <div class="hidden text">
+        <%= hidden_field 'user', 'facebook_uid' %>
+      </div>
 	    <div class="submit">
 	      <%= submit_tag 'Register' %>
       </div>

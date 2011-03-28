@@ -33,7 +33,7 @@ class UsersController < ApplicationController
         session[:user] = valid_user.id
         redirect_to :controller => 'main', :action => 'index'
       else
-        redirect_to :controller => 'users', :action => 'register', :first_name => user_data_obj["first_name"], :last_name => user_data_obj["last_name"], :email => user_data_obj["email"], :user_type => "facebook_user"
+        redirect_to :controller => 'users', :action => 'register', :first_name => user_data_obj["first_name"], :last_name => user_data_obj["last_name"], :email => user_data_obj["email"], :user_type => "facebook_user", :uid => user_data_obj["id"]
       end
     end
   end
@@ -43,6 +43,7 @@ class UsersController < ApplicationController
     @user.first_name = params[:first_name]
     @user.last_name = params[:last_name]
     @user.email = params[:email]
+    @user.facebook_uid = params[:uid]
     @user_type = params[:user_type]
   end
 
@@ -55,7 +56,8 @@ class UsersController < ApplicationController
     if user.save
       UserMailer.deliver_registration_email(user.first_name, user.last_name, user.email)
       flash[:error] = ""
-      flash[:success] = "User has been created Successfully. Please Login to continue"
+      flash[:success] = "User has been created Successfully."
+      session[:user] = user.id
       redirect_to :controller => 'main', :action => 'index'
     else
       flash[:success] = ""
