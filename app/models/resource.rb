@@ -3,5 +3,6 @@ class Resource < ActiveRecord::Base
   has_many :attachments
 
   validates_presence_of :selling_price
+  validates_presence_of :title
   validates_numericality_of :selling_price
 end

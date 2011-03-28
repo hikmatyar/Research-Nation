@@ -21,7 +21,7 @@ class ResourcesController < ApplicationController
         documents.each do |key, doc|
           if upload_to_s3(doc)
             attachment = Attachment.new
-            attachment.file_name = doc.original_filename
+            attachment.file_name = File.basename(doc.original_filename) + "_#{@user.id.to_s}"
             attachment.resource_id = resource.id
             attachment.save
           else

@@ -1,0 +1,72 @@
+<div class="wrapper" id="page">
+	<h1>Data Set</h1>
+	<div id="resource" class="contentWithSideBar">
+    <h2>I would sell all segment data</h2>
+      <div id="buyBar">
+        <form action="/orders" class="new_order" id="new_order" method="post">
+          <div id="buyNow" class="submit">
+            <input id="order_resource_id" name="order[resource_id]" value="1195" type="hidden">
+            <input id="order_submit" name="commit" value="Buy Now" type="submit">
+          </div>
+        </form>
+        <ul id="resourceNotes">
+          <li id="cost"><h5>$<%= @resource.selling_price %></h5></li>
+          <li id="fieldAndRowCount"><h5><%= @resource.attachments.count %> File(s)</h5></li>
+          <li id="updatedAt"><h5>Updated: <%= @resource.created_at.strftime("%B %d, %Y")%></h5></li>
+        </ul>
+      </div>
+      <b>Executive Summary</b>
+      <div id="description">
+      <p><%= @resource.description %></p>
+			</div>
+	</div>
+	<a name="comments"></a>
+	<h3>Comments &amp; Questions</h3>
+	<div id="comments">
+	</div>
+		<p id="noComments">No one has commented on this resource.  Be the first to comment or ask a question.</p>
+		<h4>Post a comment or question</h4>
+		<form action="/resources/i-would-sell-all-segment-data/comments" class="new_comment" id="new_comment" method="post">
+		  <div class="shortForm">
+	<div class="hidden">
+		<input id="comment_commentable" name="comment[commentable]" value="Resource" type="hidden">
+		  </div>
+		  <div id="resourceId" class="hidden"></div>
+		    <div class="input text">
+		      <label for="comment_name">Name</label>
+		      <%= text_field 'post', 'user_name', 'size' => 30, :disabled => 'true'  , :value => "#{@resource.user.first_name} #{@resource.user.last_name}"  %>
+		    </div>
+		    <div class="input text">
+		      <label for="comment_email">E-mail Address (optional, will not be shared)</label>
+					<%= text_field 'post', 'email', 'size' => 30, :disabled => 'true', :value => @resource.user.email %>
+		    </div>
+		    <div class="input textarea">
+		      <label for="comment_body">Comment</label>
+		      <div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=106573539424936&amp;xfbml=1"></script><fb:comments href="http://localhost:3000/what_others_are_selling/<%= @resource.id %>" num_posts="2" width="500"></fb:comments>
+		      </div>
+		   </div>
+		   <div class="submit">
+			   <input id="comment_submit" name="commit" tabindex="4" value="Post Comment" type="submit">
+		   </div>
+		 </div>
+	 </form>
+	 <div id="attachPopup" class="jqmWindow jqmID2">
+		 <div class="jqmPage page">
+		   <a href="#" class="jqmClose"><img alt="close" src="i-would-sell-all-segment-data_files/close_button.png"></a>
+		   You must be logged in.  <a href="http://www.datamarketplace.com/login">Sign in now</a>.
+		 </div>
+	 </div>
+	</div>
+	<div class="sideBar">
+		<div id="formats" class="panel">
+		  <h3>Did you know?</h3>
+		  <p>All of the data sold at Data Marketplace is available immediately for download in the following easy to access formats:</p>
+		  <ul>
+		    <li><img alt="Icon_csv" src="i-would-sell-all-segment-data_files/icon_csv.png"></li>
+		    <li><img alt="Icon_xlsx" src="i-would-sell-all-segment-data_files/icon_xlsx.png"></li>
+		    <li><img alt="Icon_xml" src="i-would-sell-all-segment-data_files/icon_xml.png"></li>
+		  </ul>
+		</div>
+	</div>
+	<div style="clear: both;"></div>
+	</div>
