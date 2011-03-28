@@ -12,15 +12,15 @@
   <div class="shortForm">
     <div class="input text">
       <label for="comment_name">Name</label>
-      <%= text_field 'post', 'user_name', 'size' => 30, :disabled => ('true' unless @user.blank? ) , :value => ( @user.first_name unless @user.blank? ) %>
+      <%= text_field 'post', 'user_name', 'size' => 30, :disabled => 'true'  , :value => "#{@request.user.first_name} #{@request.user.last_name}"  %>
     </div>
     <div class="input text">
       <label for="comment_email">E-mail Address (optional, will not be shared)</label>
-      <%= text_field 'post', 'user_name', 'size' => 30, :disabled => ('true' unless @user.blank? ), :value => ( @user.email unless @user.blank? ) %> 
+      <%= text_field 'post', 'email', 'size' => 30, :disabled => 'true', :value => @request.user.email %>
     </div>
     <div class="input textarea">
       <label for="comment_body">Comment</label>
-      <textarea name="Comment" rows="5" cols="30"></textarea>
+      <div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=106573539424936&amp;xfbml=1"></script><fb:comments href="http://#{request.host}/what_others_are_requesting/<%= @request.id %>" num_posts="2" width="500"></fb:comments>
     </div>
   </div>
 	<div id="attachPopup" class="jqmWindow jqmID2">
