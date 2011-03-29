@@ -3,6 +3,8 @@ class ResourcesController < ApplicationController
   layout 'main'
   require 'aws/s3'
 
+  before_filter :redirect_to_login
+
   def post
     if logged_in?
       @user = User.find(session[:user])

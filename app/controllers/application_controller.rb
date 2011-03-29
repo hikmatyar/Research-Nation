@@ -15,4 +15,8 @@ class ApplicationController < ActionController::Base
     false
   end
 
+  def redirect_to_login
+    return redirect_to(:controller => "users", :action =>"facebook_connect") unless logged_in?
+  end
+
 end
