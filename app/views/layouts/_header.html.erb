@@ -1,16 +1,13 @@
-<div id="header">
-  <div id="header_center" class="wrapper">
-    <a href="/"><img alt="ResearchNation.net" src="/images/logo.png"></a>
-    <div id="siteNav">
-      <a href="#">Buy Research</a>
-      <a href="/resources/post">Sell Research</a>
-      <img alt="Divider" src="/images/divider.png">
-      <% unless logged_in? %>
-        <%= link_to (image_tag "/images/FB_login_short.gif"), :controller => "users", :action => "facebook_connect" %>
-      <% else %>
-        Logged in as <%= @user.first_name + " " + @user.last_name %>
-        <%= link_to 'Logout' ,:controller => "users", :action => "logout" %>
-      <% end %>
+<div class="header">
+  <div class="header_inner">
+    <div class="logo"><a href="/"><img src="/images/logo.png" alt="description" title="description" /></a></div>
+    <div class="main_menu">
+      <ul>
+        <li><%= link_to_remote 'Buy' ,:url => {:controller => 'main', :action => 'buying_list'}, :html => { :id => 'buying' }, :update => 'results' %></li>
+          <li><%= link_to_remote 'Sell' ,:url => {:controller => 'main', :action => 'buying_list'}, :html => { :id => 'selling' }, :update => 'results' %></li>
+        <li><a href="#">Blog</a></li>
+        <%= link_to (logged_in? ? 'Logout' : 'Login'), :controller => 'users', :action => (logged_in? ? 'logout' : 'facebook_connect') %>
+      </ul>
     </div>
   </div>
 </div>

@@ -11,21 +11,10 @@
   <meta name="description" content="">
 
   <%=stylesheet_link_tag "style"%>
-  <%=stylesheet_link_tag "application"%>
-  <%=stylesheet_link_tag "form"%>
-  <%=stylesheet_link_tag "reset"%>
-  <%=stylesheet_link_tag "new"%>
-  <%=stylesheet_link_tag "request"%>
-  <%=stylesheet_link_tag "resource"%>
-  <%=stylesheet_link_tag "show"%>
 
-  <%= javascript_include_tag "js"%>
   <%= javascript_include_tag "jquery" %>
-  <%= javascript_include_tag "jquery_002" %>
-  <%= javascript_include_tag "jquery_003" %>
-  <%= javascript_include_tag "form" %>
-  <%= javascript_include_tag "application" %>
-  <%= javascript_include_tag "new" %>
+  <%= javascript_include_tag "researchnation" %>
+  <%= javascript_include_tag :defaults %>
 
   </head>
   <body>
@@ -36,33 +25,6 @@
     <div style="float:left;color:red;"><%= flash[:error]%></div>
     <%= yield %>
 
-		<%= render :partial => '/layouts/footer'%>
-
-      <!-- Feedback popup -->
-      <a href="#" id="feedbackLink"></a>
-      <div id="feedbackPopup" class="jqmWindow jqmID1">
-	<div class="jqmPage page">
-	  <a href="#" class="jqmClose"><img alt="close" src="/images/close_button.png"></a>
-	  <h3>We <strong>really</strong> value your feedback.  Thanks!</h3>
-	  <form action="/feedbacks" class="new_feedback" id="new_feedback" method="post">
-	    <div class="shortForm">
-	      <div class="input textarea">
-		<label for="feedback_message">Questions, comments or concerns?</label>
-		<textarea cols="40" id="feedback_message" name="feedback[message]" rows="8" tabindex="5"></textarea>
-	      </div>
-	      <div class="input text">
-		<label for="feedback_email">E-mail Address (optional)</label>
-		<input id="feedback_email" name="feedback[email]" size="30" tabindex="6" type="text">
-	      </div>
-	      <div class="submit">
-		<input id="feedback_submit" name="commit" tabindex="7" value="Send" type="submit">
-	      </div>
-	    </div>
-	  </form>
-      </div>
-    </div>
-
-      <%= render :partail => '/layouts/google_analytics'%>
-
+    <%= render :partail => '/layouts/google_analytics'%>
   </body>
 </html>
