@@ -4,6 +4,6 @@ class AddTitleToWhatOthersAreSelling < ActiveRecord::Migration
   end
 
   def self.down
-    remove_column :resources, :title, :string
+    remove_column :resources, :title
   end
 end
