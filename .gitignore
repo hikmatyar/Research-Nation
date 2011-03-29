@@ -1,5 +1,6 @@
 log
 *.log
+config/database.yml
 tmp
 config/local.rb
 .DS_Store
