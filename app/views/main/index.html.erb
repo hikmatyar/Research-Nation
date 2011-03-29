@@ -1,99 +1,63 @@
-<script type="text/javascript" src="http://www.linkedin.com/js/public-profile/widget-os.js"></script>
-<div class="infochimps">
+<div class="wrapper">
+  <div class="left_contant">
+    <div class="selling_buying_box">
+	    <span>View:</span> <%= link_to_remote 'Buying' ,:url => {:controller => 'main', :action => 'buying_list'}, :update => 'results' %> | <%= link_to_remote 'Selling' ,:url => {:controller => 'main', :action => 'selling_list'}, :update => 'results' %>
+    </div>
+    <div id="results"></div>
+  </div>
+
+<div class="right_contant">
+<%= form_tag  ( { :controller => 'main', :action => 'post' } , { :class => 'created_id' ,  :multipart => true, :onsubmit => 'return validate();' } )%>
+  <div class="field" id="user_name" >
+    <label>Name:</label>
+    <%= text_field 'user', 'name', :value => ("#{@user.first_name} #{@user.last_name}" unless @user.blank?) , :id => 'name' %>
+    </div>
+    <div class="field" id="user_email">
+      <label>Email:</label>
+      <%= text_field 'user', 'email', :id => 'email' %>
+    </div>
+    <div class="field" id="post_title" >
+      <label>Title:</label>
+      <%= text_area 'post', 'title', :maxlength => 140, :id => 'title' %>
+    </div>
+    <div class="field" id="post_details" >
+      <label>Details:</label>
+      <%= text_area 'post', 'description', :maxlength => 700, :id => 'details' %>
+    </div>
+    <div class="field">
+      <label>Do:</label>
+      <select name="do" id="option">
+        <option>Select One</option>
+        <option >Buy</option>
+        <option >Sell</option>
+      </select>
+    </div>
+    <div id="sell_fields">
+      <div class="field" id="post_price">
+        <label>Price:</label>
+        <%= text_field 'price', 'selling_price', :id => 'price' %>
+        <i>Negotiate directly with the buyer using Skype</i>
+      </div>
+      <div class="atach_field" id="attachments">
+        <label>Atach:</label>
+        <%= file_field 'attachments', 'sample' %>
+        <%= file_field 'attachments', 'actual' %>
+      </div>
+    </div>
+    <div class="field">
+      <label>Skype:</label>
+      <%= text_field 'user', 'skype_name' %>
+      <i>Only users you add on Skype can call you </i>
+    </div>
+    <%= submit_tag 'Submit', :class => 'submit' %>
+    <div class="subscribe_box">
+      <span>subscribe to newsletter</span>
+      <a href="#" class="facebook">
+        <img src="/images/facebook.jpg" />
+      </a>
+      <a href="#" class="twitter">
+        <img src="/images/twitter.jpg" />
+      </a>
+    </div>
+  </form>
 </div>
-	<h1>Sick of paying thousands of dollars for research that's no good?  So are we!</h1>
-<div class="wrapper" id="page">
-  <div id="findData">
-    <p id="howTo">Describe the information you're looking for and we'll <strong>help you find it</strong> for less than US$200</p>
-    <%= form_tag   ({:controller => 'requests', :action => 'create' }, { :class => "new_request", :id => "new_request" }) %>
-      <div id="description" class="input textarea">
-        <%= text_area 'request', 'description' %>
-      </div>
-      <div id="formOptions">
-        <a href="#" class="formOption" id="addDeadlineLink" onclick="return false;">Add deadline</a>
-        <div id="deadline" class="input select formOption" style="display: none;">
-          <a href="#" class="closeLink" id="closeDeadlineLink" onclick="return false;">
-          <%= image_tag '/images/x_light.png' %></a>
-          <select id="request_deadline" name="request[deadline]" tabindex="2">
-            <option value="" selected="selected">No deadline</option>
-            <option value="<%= Date.current+1 %>">1 day</option>
-            <option value="<%= Date.current+7 %>">1 week</option>
-            <option value="<%= Date.new(Date.current.year, Date.current.month+1, Date.current.day) %>">1 month</option>
-          </select>
-        </div>
-        <a href="#" class="formOption" id="addBudgetLink" onclick="return false;">Add budget
-        </a>
-        <div id="budget" class="input text formOption" style="display: none;">
-          <a href="#" class="closeLink" id="closeBudgetLink" onclick="return false;">
-          <%= image_tag '/images/x_light.png' %></a>
-          <%= text_field 'request', 'budget' %>
-        </div>
-        <div class="submit">
-          <%= submit_tag 'Create Request'%>
-        </div>
-        <div style="clear: both;"></div>
-        </div>
-      </form>
-      <p id="helperMessage">
-      <strong>Tip #1:&nbsp;</strong>  Be articulate and specify exactly what you are looking for (industry, company or commodity research; opinion polls; field survey results etc.)
-      </p>
-    </div>
-    <div id="recentRequests">
-      <h3>What others are requesting</h3>
-      <% @requests.each do |request| %>
-      <div class="request mini_request">
-        <h4 class="description">
-        <%= link_to request.description , :controller => "requests", :action => "what_others_are_requesting", :id => request.id %>
-        </h4>
-        <ul class="details">
-          <li class="date"><%= request.deadline %></li>
-          <% unless request.budget.blank? %>
-          <li class="date">$<%= request.budget %></li>
-          <% end %>
-          <li class="comments"></li>
-          <div class="facebook">
-            <iframe src="http://www.facebook.com/plugins/like.php?href=http://@{request.host}/requests/what_others_are_requesting/<%= request.id %>&amp;layout=button_count&amp;show_faces=true&amp;width=60&amp;action=like&amp;font&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:60px; height:21px;" allowTransparency="true"></iframe>
-          </div>
-        </ul>
-        <div class="private_sale">
-          <div class="text">
-            Requested by:<br>
-            <a class="linkedin-profileinsider-popup" href="<%= request.user.linked_in_profile %>" > <%= "#{request.user.first_name}  #{request.user.last_name}" %>
-            </a>
-          </div>
-        </div>
-      </div>
-      <% end %>
-    </div>
-    <div id="recentResources">
-      <h3>What others are selling</h3>
-      <% @resources.each do |resource| %>
-      <div class="resource mini_resource">
-        <div class="logo textLogo">
-          <div class="text">
-            Provided by:<br>
-            <a class="linkedin-profileinsider-popup" href="<%= resource.user.linked_in_profile %>" > <%= "#{resource.user.first_name} #{resource.user.last_name}" %></a>
-          </div>
-        </div>
-        <h4 class="title">
-          <%= link_to resource.title, :controller => 'resources', :action => 'what_others_are_selling', :id => resource.id %>
-        </h4>
-        <p class="description">
-          <%= resource.description %>
-        </p>
-        <ul class="details">
-          <li class="date"><%= resource.created_at.strftime "%m %d"%></li>
-          <li class="comments"><a href="#">0</a></li>
-          <div class="facebook">
-            <iframe src="http://www.facebook.com/plugins/like.php?href=http://#{request.host}/resources/what_others_are_selling/<%= resource.id %>&amp;layout=button_count&amp;show_faces=true&amp;width=60&amp;action=like&amp;font&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:60px; height:21px;" allowTransparency="true"></iframe>
-          </div>
-        </ul>
-      </div>
-    </div>
-    <% end %>
-    <div style="clear: both;"></div>
-  </div>
-  <div class="facebook_facepile">
-  Facebook FacePile
-    <iframe src="http://www.facebook.com/plugins/facepile.php?href=researchnation.net&amp;width=200&amp;max_rows=5" scrolling="no" frameborder="1" style="border:none; overflow:hidden; width:200px;" allowTransparency="true"></iframe>
-  </div>

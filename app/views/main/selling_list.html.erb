@@ -1,0 +1,15 @@
+<%= stylesheet_link_tag 'style'%>
+  <% @resources.each do |resource| %>
+  <div class="post">
+    <img src="http://graph.facebook.com/<%= resource.user.facebook_uid %>/picture" />
+    <div class="description">
+      <%= link_to resource.title , :controller => "resources", :action => "what_others_are_selling", :id => resource.id %>
+    </div>
+    <div class="message">
+      <img src="/images/Skype.jpg" width="29" height="28" />
+      <input class="mail_button" type="button" name="mail" value="" />
+      <span>2 mutual friends</span>
+    </div>
+    <div class="download"> $<%= resource.selling_price %> | <a href="#">download sample</a> | <a href="#">delete</a></div>
+  </div>
+  <% end %>
