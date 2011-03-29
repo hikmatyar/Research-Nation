@@ -21,9 +21,11 @@ class MainController < ApplicationController
       resource.user_id = user.id
       new_resource = Resource.create_resource (resource)
       unless new_resource.blank?
-        actual_file = params[:attachments][:actual]
-        sample_file = params[:attachments][:sample]
-        Attachment.add_files(actual_file, sample_file, new_resource.id)
+        unless params[:attachments].blank?
+          actual_file = params[:attachments][:actual] if params[:attachments][:actual]
+          sample_file = params[:attachments][:sample] if params[:attachments][:sample]
+          Attachment.add_files(actual_file, sample_file, new_resource.id)
+        end
       end
     else
       request = Request.new(params[:post])
