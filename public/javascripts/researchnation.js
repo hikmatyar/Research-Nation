@@ -29,8 +29,6 @@ function validate(){
 }
 
 jQuery(document).ready(function(){
-
-  validate();
   jQuery('#option').change(function(){
     if(jQuery(this).val()=="Buy"){
       jQuery('#sell_fields').hide();
