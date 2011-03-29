@@ -37,9 +37,9 @@ test:
     server_alive_interval: 0
 
 production:
-  application_id: 106573539424936
-  api_key: bf0b960956f5fdffb862e1acaa79731b
-  secret_key: 47e2f7e6d01f2f09e22e39c2110113c6
+  application_id: 175351785849270
+  api_key: 03d8b71c6110f99fc2df6c58f1c3760e
+  secret_key: 12d1b9d8b50c714517d0d8fd947a0522
   canvas_page_name:
   callback_url:
   set_asset_host_to_callback_url: true
