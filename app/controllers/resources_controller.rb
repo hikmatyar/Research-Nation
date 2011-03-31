@@ -18,4 +18,10 @@ class ResourcesController < ApplicationController
     @resource = Resource.find(params[:id])
   end
 
+  def delete
+    resource = Resource.find(params[:id])
+    resource.destroy
+    return redirect_to :controller => 'main', :action => 'index', :type => "selling_list"
+  end
+
 end
