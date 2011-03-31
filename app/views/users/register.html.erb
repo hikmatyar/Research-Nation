@@ -24,6 +24,10 @@
         <label for="user_email">E-mail Address</label>
         <%= text_field 'user', 'email' %>
       </div>
+      <div class="input text">
+        <label for="skype_name">Skype Name</label>
+        <%= text_field 'user', 'skype_name' %>
+      </div>
 	    <% unless (@user_type == "facebook_user") %>
 	    <div class="input password">
         <label for="user_password">Choose a Password</label>
@@ -37,13 +41,13 @@
       <div class="hidden text">
         <%= hidden_field 'user', 'facebook_uid' %>
       </div>
-	    <div class="submit">
-	      <%= submit_tag 'Register' %>
-      </div>
+	    <div class="login_buttons">
+	      <%= submit_tag 'Register', :class => "submit_login" %>
     </form>
     <% unless (@user_type == "facebook_user") %>
-      <%= link_to (image_tag "/images/FB_login_short.gif"), :controller => "users", :action => "facebook_connect" %>
+		    <%= link_to (image_tag "/images/FB_login_short.gif"), { :controller => "users", :action => "facebook_connect"} , :class => 'fbconnect' %>
     <% end %>
+    </div>
 	</div>
   <div style="clear: both;"></div>
 </div>

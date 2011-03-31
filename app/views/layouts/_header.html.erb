@@ -6,7 +6,7 @@
         <li><%= link_to_remote 'Buy' ,:url => {:controller => 'main', :action => 'buying_list'}, :html => { :id => 'buying' }, :update => 'results' %></li>
           <li><%= link_to_remote 'Sell' ,:url => {:controller => 'main', :action => 'buying_list'}, :html => { :id => 'selling' }, :update => 'results' %></li>
         <li><a href="#">Blog</a></li>
-        <%= link_to (logged_in? ? 'Logout' : 'Login'), :controller => 'users', :action => (logged_in? ? 'logout' : 'facebook_connect') %>
+        <%= link_to (logged_in? ? 'Logout' : 'Login'), :controller => 'users', :action => (logged_in? ? 'logout' : 'login') %>
       </ul>
     </div>
   </div>

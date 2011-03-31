@@ -16,10 +16,10 @@
         <label for="user_password">Password</label>
         <%= password_field 'login', 'password' %>
       </div>
-	    <div class="submit">
-	      <%= submit_tag 'Login' %>
+      <div class="login_buttons">
+		    <%= submit_tag 'Login', :class => "submit_login" %>
+		    <%= link_to (image_tag "/images/FB_login_short.gif"), { :controller => "users", :action => "facebook_connect"} , :class => 'fbconnect' %>
       </div>
-      <%= link_to (image_tag "/images/FB_login_short.gif"), :controller => "users", :action => "facebook_connect" %>
       <div style="color:red"><%= flash[:error] %></div>
     </form>
 	</div>
