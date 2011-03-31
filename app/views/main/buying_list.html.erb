@@ -15,6 +15,6 @@
       <input class="mail_button" type="button" name="mail" value="" />
       <span>2 mutual friends</span>
     </div>
-    <div class="download"><a href="#">delete</a></div>
+    <div class="download"><%= (link_to_remote 'delete' , :url => {:controller => 'requests', :action => 'delete', :id => request.id } , :confirm => 'Are you sure you want to delete this post?') if logged_in? and session[:user] == request.user.id %></div>
   </div>
   <% end %>
