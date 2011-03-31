@@ -101,7 +101,7 @@ class UsersController < ApplicationController
   def logout
     if logged_in?
       reset_session
-      redirect_to :action=> 'login'
+      redirect_to :controller => 'main', :action=> 'index'
     end
   end
 
