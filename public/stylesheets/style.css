@@ -360,3 +360,25 @@ a:focus {
   margin-top: 3px;
 }
 
+.fbconnect{
+	float:right;
+}
+.fbconnect img{
+	padding:2px;
+	width: 100px;
+}
+.login_buttons{
+	float:left;
+	margin-left:150px;
+}
+.submit_login{
+	float:left;
+	background-color: #D15139;
+	border: medium none;
+	color: white;
+	cursor: pointer;
+	float: left;
+	font-weight: bold;
+	width: 100px;
+	height:25px;
+}
