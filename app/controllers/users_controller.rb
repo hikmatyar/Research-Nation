@@ -8,17 +8,20 @@ class UsersController < ApplicationController
   end
 
   def facebook_oauth_callback
-    if not params[:code].nil?
+    unless params[:code].nil?
       facebook_settings = YAML::load(File.open("#{RAILS_ROOT}/config/facebooker.yml"))
       callback = "http://#{request.host}/users/facebook_oauth_callback"
+
       url = URI.parse("https://graph.facebook.com/oauth/access_token?client_id=#{facebook_settings[RAILS_ENV]['application_id']}&redirect_uri=#{callback}&client_secret=#{facebook_settings[RAILS_ENV]['secret_key']}&code=#{CGI::escape(params[:code])}")
       http = Net::HTTP.new(url.host, url.port)
       http.use_ssl = (url.scheme == 'https')
+
       tmp_url = url.path+"?"+url.query
       request = Net::HTTP::Get.new(tmp_url)
       response = http.request(request)
       data = response.body
       access_token = data.split("=")[1]
+
       url = URI.parse("https://graph.facebook.com/me?access_token=#{CGI::escape(access_token)}")
       http = Net::HTTP.new(url.host, url.port)
       http.use_ssl = (url.scheme == 'https')
@@ -27,7 +30,9 @@ class UsersController < ApplicationController
       response = http.request(request)
       user_data = response.body
       user_data_obj = JSON.parse(user_data)
+
       flash[:notice] = 'Facebook successfully connected.'
+
       valid_user = User.find_by_email(user_data_obj["email"])
       unless valid_user.blank?
         session[:user] = valid_user.id
@@ -40,12 +45,8 @@ class UsersController < ApplicationController
   end
 
   def register
-    @user = User.new
-    @user.first_name = params[:first_name]
-    @user.last_name = params[:last_name]
-    @user.email = params[:email]
-    @user.facebook_uid = params[:uid]
-    @user_type = params[:user_type]
+    @user = User.new(params[:user])
+    @user_type = params[:user_type]? params[:user_type] : "normal"
   end
 
   def login
@@ -53,19 +54,16 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.new(params[:user])
-    if user.save
-      UserMailer.deliver_registration_email(user.first_name, user.last_name, user.email)
+    @user = User.new(params[:user])
+    if @user.save
+      session[:user] = @user.id
+      UserMailer.deliver_registration_email(@user.first_name, @user.last_name, @user.email)
       flash[:error] = ""
-      flash[:success] = "User has been created Successfully."
-      session[:user] = user.id
-      post_data = session[:post]? true : false
-      return redirect_to :controller => 'main', :action => 'post', :post_data => post_data
-    else
-      flash[:success] = ""
-      flash[:error] = "Could not Create User. Please Review your form"
-      render :action => 'register'
+      flash[:success] = "Your account has been created successfully."
+      return redirect_to :controller => 'main', :action => 'post' if session[:post]
+      return redirect_to :controller => "main", :action => "index"
     end
+    return render :action => 'register'
   end
 
   def edit
