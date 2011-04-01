@@ -1,0 +1,17 @@
+<%= render :partial => '/layouts/header' if params[:page]%>
+<%= stylesheet_link_tag 'style'%>
+  <% @resources.each do |resource| %>
+  <div class="post_<%= resource.id %>">
+    <img src="http://graph.facebook.com/<%= resource.user.facebook_uid %>/picture" />
+    <div class="description">
+      <%= link_to resource.title , :controller => "resources", :action => "what_others_are_selling", :id => resource.id %>
+    </div>
+    <div class="message">
+      <img src="/images/Skype.jpg" width="29" height="28" />
+      <input class="mail_button" type="button" name="mail" value="" />
+      <span>2 mutual friends</span>
+    </div>
+    <div class="download"> $<%= resource.selling_price %>  <%= link_to "| download sample", :controller => 'resources', :action => 'download', :id => resource.id unless resource.attachments.blank? %><%= "|" if logged_in? and session[:user] == resource.user.id %> <%= (link_to_remote 'delete' , :url => {:controller => 'resources', :action => 'delete', :id => resource.id } , :confirm => 'Are you sure you want to delete this post?', :update => 'results') if logged_in? and session[:user] == resource.user.id %></div>
+  </div>
+  <% end %>
+<%= will_paginate @resources %>
