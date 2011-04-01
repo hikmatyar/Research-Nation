@@ -388,3 +388,6 @@ a:focus {
 	text-align:center;
   
 }
+.error {
+	color:red !important;
+}
