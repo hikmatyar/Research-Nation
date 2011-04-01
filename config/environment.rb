@@ -19,6 +19,8 @@ Rails::Initializer.run do |config|
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"'
+  config.gem 'will_paginate', :version => '~> 2.3.11', :source => 'http://gemcutter.org'
+
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
@@ -42,3 +44,4 @@ end
 
 ActionMailer::Base.raise_delivery_errors = true
 ActionMailer::Base.delivery_method = :sendmail
+require "will_paginate"
