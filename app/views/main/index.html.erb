@@ -10,7 +10,7 @@
   </div>
 
 <div class="right_contant">
-<%= form_tag  ( { :controller => 'main', :action => 'post' } , { :class => 'created_id' ,  :multipart => true, :onsubmit => 'return validate();' } )%>
+<%= form_tag  ( { :controller => 'main', :action => 'post' } , { :class => 'created_id' ,  :multipart => true } )%>
   <div class="field" id="user_name" >
     <label>Name:</label>
     <%= text_field 'user', 'name', :value => ("#{@user.first_name} #{@user.last_name}" unless @user.blank?) , :id => 'name' %>

@@ -28,8 +28,6 @@ class MainController < ApplicationController
         end
       end
 =end
-      type = "selling_list"
-
 =begin
     elsif user_request == "Buy"
       request = Request.new(params[:post])
@@ -41,7 +39,7 @@ class MainController < ApplicationController
     end
 =end
     flash[:success] = "New resource created successfully"
-    return redirect_to :action => 'index', :type => type
+    return redirect_to :action => 'index'
   end
 
 
