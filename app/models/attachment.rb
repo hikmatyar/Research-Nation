@@ -5,7 +5,7 @@ class Attachment < ActiveRecord::Base
 
     if self.upload_to_s3(file, resource_id)
       attachment = Attachment.new
-      attachment.file_name = File.basename(file.original_filename) + "_file#{resource_id.to_s}"
+      attachment.file_name = "File#{resource_id.to_s}_" + File.basename(file.original_filename)
       attachment.attachment_type = attachment_type
       attachment.resource_id = resource_id
       attachment.save
@@ -23,7 +23,7 @@ class Attachment < ActiveRecord::Base
       :secret_access_key => s3_settings[RAILS_ENV]['secret_key']
     )
 
-    base_name =  File.basename(doc.original_filename) + "_file#{resource_id.to_s}"
+    base_name =  "File#{resource_id.to_s}_" + File.basename(doc.original_filename) 
 
     obj = AWS::S3::S3Object.store(
       base_name,
