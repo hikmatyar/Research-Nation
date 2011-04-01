@@ -3,7 +3,7 @@
     <div class="logo"><a href="/"><img src="/images/logo.png" alt="description" title="description" /></a></div>
     <div class="main_menu">
       <ul>
-        <li><%= link_to_remote 'Buy' ,:url => {:controller => 'main', :action => 'buying_list'}, :html => { :id => 'buying' }, :update => 'results' %></li>
+        <!-- <li><%= link_to_remote 'Buy' ,:url => {:controller => 'main', :action => 'buying_list'}, :html => { :id => 'buying' }, :update => 'results' %></li> -->
           <li><%= link_to_remote 'Sell' ,:url => {:controller => 'main', :action => 'buying_list'}, :html => { :id => 'selling' }, :update => 'results' %></li>
         <li><a href="#">Blog</a></li>
         <%= link_to (logged_in? ? 'Logout' : 'Login'), :controller => 'users', :action => (logged_in? ? 'logout' : 'login') %>

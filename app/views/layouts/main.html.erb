@@ -21,8 +21,10 @@
 
     <div id="main">
 		<%= render :partial => '/layouts/header'%>
-    <div style="float:left;color:green;"><%= flash[:success]%></div>
-    <div style="float:left;color:red;"><%= flash[:error]%></div>
+    <div class="flash_messages">
+      <div style="float:left;color:green;width:100%;"><%= flash[:success]%></div>
+      <div style="float:left;color:red;width:100%;"><%= flash[:error]%></div>
+    </div>
     <%= yield %>
 
     <%= render :partail => '/layouts/google_analytics'%>
