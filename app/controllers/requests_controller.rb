@@ -8,8 +8,9 @@ class RequestsController < ApplicationController
   end
 
   def delete
-    resource = Resource.find(params[:id])
-    resource.destroy
-    return redirect_to :controller => 'main', :action => 'index', :type => "selling_list"
+    request = Request.find(params[:id])
+    request.destroy
+    return render :layout => false
+    render :partial => '/layouts/buying_list'
   end
 end
