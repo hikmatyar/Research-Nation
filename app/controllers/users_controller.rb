@@ -4,13 +4,13 @@ class UsersController < ApplicationController
 
   def facebook_connect
     facebook_settings = YAML::load(File.open("#{RAILS_ROOT}/config/facebooker.yml"))
-    redirect_to "https://graph.facebook.com/oauth/authorize?client_id=#{facebook_settings[RAILS_ENV]['application_id']}&redirect_uri=http://#{request.host}/users/facebook_oauth_callback&scope=email,offline_access,publish_stream"
+    redirect_to "https://graph.facebook.com/oauth/authorize?client_id=#{facebook_settings[RAILS_ENV]['application_id']}&redirect_uri=http://#{request.host}0/users/facebook_oauth_callback&scope=email,offline_access,publish_stream"
   end
 
   def facebook_oauth_callback
     unless params[:code].nil?
       facebook_settings = YAML::load(File.open("#{RAILS_ROOT}/config/facebooker.yml"))
-      callback = "http://#{request.host}/users/facebook_oauth_callback"
+      callback = "http://#{request.host}0/users/facebook_oauth_callback"
 
       url = URI.parse("https://graph.facebook.com/oauth/access_token?client_id=#{facebook_settings[RAILS_ENV]['application_id']}&redirect_uri=#{callback}&client_secret=#{facebook_settings[RAILS_ENV]['secret_key']}&code=#{CGI::escape(params[:code])}")
       http = Net::HTTP.new(url.host, url.port)
@@ -39,7 +39,10 @@ class UsersController < ApplicationController
         return redirect_to :controller => 'main', :action => 'post', :post_data => true
         redirect_to :controller => 'main', :action => 'index'
       else
-        redirect_to :controller => 'users', :action => 'register', :first_name => user_data_obj["first_name"], :last_name => user_data_obj["last_name"], :email => user_data_obj["email"], :user_type => "facebook_user", :uid => user_data_obj["id"]
+
+        user = User.create_facebook_user(user_data_obj["first_name"], user_data_obj["last_name"], user_data_obj["email"], user_data_obj["id"], "facebook_user" )
+        session[:user] = user.id
+        return redirect_to :controller => 'main', :action => 'index'
       end
     end
   end
