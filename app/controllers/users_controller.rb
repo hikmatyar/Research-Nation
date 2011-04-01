@@ -31,6 +31,7 @@ class UsersController < ApplicationController
       valid_user = User.find_by_email(user_data_obj["email"])
       unless valid_user.blank?
         session[:user] = valid_user.id
+        return redirect_to :controller => 'main', :action => 'post', :post_data => true
         redirect_to :controller => 'main', :action => 'index'
       else
         redirect_to :controller => 'users', :action => 'register', :first_name => user_data_obj["first_name"], :last_name => user_data_obj["last_name"], :email => user_data_obj["email"], :user_type => "facebook_user", :uid => user_data_obj["id"]
@@ -58,7 +59,8 @@ class UsersController < ApplicationController
       flash[:error] = ""
       flash[:success] = "User has been created Successfully."
       session[:user] = user.id
-      redirect_to :controller => 'main', :action => 'index'
+      post_data = session[:post]? true : false
+      return redirect_to :controller => 'main', :action => 'post', :post_data => post_data
     else
       flash[:success] = ""
       flash[:error] = "Could not Create User. Please Review your form"
@@ -87,7 +89,7 @@ class UsersController < ApplicationController
     valid_user = User.find(:first,:conditions => ["email = ? and password = ?", @user.email, @user.password])
     if valid_user
       session[:user] = valid_user.id
-      redirect_to :controller => 'main', :action => 'index'
+      return redirect_to :controller => 'main', :action => 'post', :post_data => true
     else
       flash[:error] = "Invalid username/password"
       render :action => 'login'

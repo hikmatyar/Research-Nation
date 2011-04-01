@@ -1,8 +1,11 @@
 <div class="wrapper">
   <div class="left_contant">
+<!--
     <div class="selling_buying_box">
+
 	    <span>View:</span> <%= link_to_remote 'Buying' ,:url => {:controller => 'main', :action => 'buying_list'}, :update => 'results' %> | <%= link_to_remote 'Selling' ,:url => {:controller => 'main', :action => 'selling_list'}, :update => 'results' %>
     </div>
+  -->
     <div id="results"></div>
   </div>
 
@@ -11,6 +14,7 @@
   <div class="field" id="user_name" >
     <label>Name:</label>
     <%= text_field 'user', 'name', :value => ("#{@user.first_name} #{@user.last_name}" unless @user.blank?) , :id => 'name' %>
+    <i></i>
     </div>
     <div class="field" id="user_email">
       <label>Email:</label>
@@ -24,6 +28,7 @@
       <label>Details:</label>
       <%= text_area 'post', 'description', :maxlength => 700, :id => 'details' %>
     </div>
+<!--
     <div class="field">
       <label>Do:</label>
       <select name="do" id="option">
@@ -32,10 +37,11 @@
         <option >Sell</option>
       </select>
     </div>
+    -->
     <div id="sell_fields">
       <div class="field" id="post_price">
         <label>Price:</label>
-        <%= text_field 'price', 'selling_price', :id => 'price' %>
+        <%= text_field 'post', 'selling_price', :id => 'price' %>
         <i>Negotiate directly with the buyer using Skype</i>
       </div>
       <div class="atach_field" id="attachments">
