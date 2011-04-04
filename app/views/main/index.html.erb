@@ -1,3 +1,4 @@
+
 <div class="wrapper">
   <div class="left_contant">
 <!--
@@ -6,9 +7,9 @@
 	    <span>View:</span> <%= link_to_remote 'Buying' ,:url => {:controller => 'main', :action => 'buying_list'}, :update => 'results' %> | <%= link_to_remote 'Selling' ,:url => {:controller => 'main', :action => 'selling_list'}, :update => 'results' %>
     </div>
   -->
+
     <div id="results"></div>
   </div>
-
 <div class="right_contant">
 <%= form_tag  ( { :controller => 'main', :action => 'post' } , { :class => 'created_id' ,  :multipart => true } )%>
   <div class="field" id="user_name" >
