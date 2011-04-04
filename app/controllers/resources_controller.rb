@@ -25,6 +25,10 @@ class ResourcesController < ApplicationController
     render :layout => false
   end
 
+  def edit
+    @resource = Resource.find(params[:id])
+  end
+
   def download
     resource_id = params[:id]
     resource = Resource.find resource_id
@@ -39,5 +43,16 @@ class ResourcesController < ApplicationController
     obj = AWS::S3::S3Object.find(sample.file_name, bucket)
     return redirect_to obj.url
     return redirect_to :controller => 'main', :action => 'index'
+  end
+
+  def update
+    resource = Resource.find(params[:id])
+    if resource.update_attributes(params[:resource])
+      flash[:success] = "The Post was updated successfully."
+    else
+      flash[:error] = "Unable to update post."
+    end
+    return redirect_to :controller => 'main', :action => 'index'
+
   end
 end

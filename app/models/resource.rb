@@ -2,6 +2,8 @@ class Resource < ActiveRecord::Base
   belongs_to :user
   has_many :attachments
 
+  acts_as_paranoid
+
   cattr_reader :per_page
   @@per_page = 10
 
