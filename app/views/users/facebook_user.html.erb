@@ -1,0 +1,10 @@
+<div >
+  <img src="http://graph.facebook.com/<%= @user.facebook_uid %>/picture" alt="facebook_pic" title="<%= @user.first_name%> Picture" width="80" height="50" />
+  <p><%= @user.first_name %> <%= @user.last_name %></p>
+  <p><%= @user.gender.titleize %></p>
+  <p><%= @user.birthday.strftime "%Y %A %d" %></p>
+  <p><%= @user.work %></p>
+  <p><%= @user.education %></p>
+  
+</div>
+

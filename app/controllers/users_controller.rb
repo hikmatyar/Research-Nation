@@ -4,13 +4,13 @@ class UsersController < ApplicationController
 
   def facebook_connect
     facebook_settings = YAML::load(File.open("#{RAILS_ROOT}/config/facebooker.yml"))
-    redirect_to "https://graph.facebook.com/oauth/authorize?client_id=#{facebook_settings[RAILS_ENV]['application_id']}&redirect_uri=http://#{request.host}0/users/facebook_oauth_callback&scope=email,offline_access,publish_stream"
+    redirect_to "https://graph.facebook.com/oauth/authorize?client_id=#{facebook_settings[RAILS_ENV]['application_id']}&redirect_uri=http://#{request.host}/users/facebook_oauth_callback&scope=offline_access,publish_stream,user_birthday,user_location, user_education_history,user_location,email,user_work_history"
   end
 
   def facebook_oauth_callback
     unless params[:code].nil?
       facebook_settings = YAML::load(File.open("#{RAILS_ROOT}/config/facebooker.yml"))
-      callback = "http://#{request.host}0/users/facebook_oauth_callback"
+      callback = "http://#{request.host}/users/facebook_oauth_callback"
 
       url = URI.parse("https://graph.facebook.com/oauth/access_token?client_id=#{facebook_settings[RAILS_ENV]['application_id']}&redirect_uri=#{callback}&client_secret=#{facebook_settings[RAILS_ENV]['secret_key']}&code=#{CGI::escape(params[:code])}")
       http = Net::HTTP.new(url.host, url.port)
@@ -30,7 +30,6 @@ class UsersController < ApplicationController
       response = http.request(request)
       user_data = response.body
       user_data_obj = JSON.parse(user_data)
-
       flash[:notice] = 'Facebook successfully connected.'
 
       valid_user = User.find_by_email(user_data_obj["email"])
@@ -40,7 +39,7 @@ class UsersController < ApplicationController
         redirect_to :controller => 'main', :action => 'index'
       else
 
-        user = User.create_facebook_user(user_data_obj["first_name"], user_data_obj["last_name"], user_data_obj["email"], user_data_obj["id"], "facebook_user" )
+        user = User.create_facebook_user(user_data_obj["first_name"], user_data_obj["last_name"], user_data_obj["email"], user_data_obj["id"], "facebook_user",  user_data_obj["gender"], user_data_obj["birthday"], user_data_obj["location"])
         session[:user] = user.id
         return redirect_to :controller => 'main', :action => 'index'
       end
@@ -106,6 +105,10 @@ class UsersController < ApplicationController
       reset_session
       redirect_to :controller => 'main', :action=> 'index'
     end
+  end
+
+  def facebook_user
+    @user = User.find_by_facebook_uid params[:id]
   end
 
 end

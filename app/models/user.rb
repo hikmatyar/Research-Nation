@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
 
+
   has_many :requests
   has_many :resources
 
@@ -18,13 +19,16 @@ class User < ActiveRecord::Base
     end
   end
   
-  def self.create_facebook_user(first_name, last_name, email, id, password )
+  def self.create_facebook_user(first_name, last_name, email, id, password, gender, birthday,location )
     user = User.new
     user.first_name = first_name
     user.last_name = last_name
     user.email = email
     user.facebook_uid = id
     user.password = password
+    user.gender = gender
+    user.birthday = birthday
+    user.location = location
     user.save
     return user
   end
