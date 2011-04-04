@@ -1,0 +1,14 @@
+<div class="left_contant">
+  <div id="menu" class="menu">
+    <b><%= link_to 'Dashboard', :controller => 'admin', :action => 'dashboard' %></b> | <b><%= link_to 'Page Views', :controller => 'admin', :action => 'page_visits' %>  </b> | <b> <%= link_to 'See Authentications' , :controller => 'admin', :action => 'see_authentications' %> </b>
+  </div>
+<% @resources.each do |resource| %>
+  <div class="post_<%= resource.id %>">
+    <img src="http://graph.facebook.com/<%= resource.user.facebook_uid %>/picture" />
+    <div class="description">
+      <%= link_to resource.title , :controller => "resources", :action => "what_others_are_selling", :id => resource.id %>
+    </div>
+    <div class="download"> $<%= resource.selling_price %> | <%= link_to 'edit' , :controller => "resources", :action => "edit", :id => resource.id %> | <%= (link_to 'delete' , {:controller => 'resources', :action => 'delete', :id => resource.id } , :confirm => 'Are you sure you want to delete this post?') %></div>
+  </div>
+  <% end %>
+  </div>

@@ -1,0 +1,12 @@
+<div class="left_contant">
+  <h3>FaceBook Users on this Site</h3>
+  <% @users.each do |user| %>
+    <div class="facebook_user">
+      <p>
+        <img src="http://graph.facebook.com/<%= user.facebook_uid%>/picture" alt="<%= user.first_name%> Profile Image" title="<%= user.first_name%>'s Profile Picture" width="" height="" />
+        <%=link_to (user.first_name + " " + user.last_name, :controller => 'users', :action => 'facebook_user', :id => user.facebook_uid ) %>
+      <p>
+    </div>
+  <% end %>
+
+</div>
