@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+	<title>Email Template - Meagan Fisher - CM2</title>
+
+	<style type="text/css">
+	strong{
+		font-variant: small-caps;
+		text-transform: lowercase;
+		color:#949494;
+	}
+	</style>
+
+	</head>
+
+	<body marginheight="0" topmargin="0" marginwidth="0" leftmargin="0" style="margin: 0px; background-color: #FFFFFF; font-family: Helvetica, Arial, sans-serif;">
+		<table cellspacing="0" border="0" style="margin: 0; padding: 0; border: 0;" cellpadding="0" align="left">
+			<tbody>
+				<tr style="margin: 0; padding: 0; border: 0;" height="50">
+					<td style="margin: 0; padding: 0; border: 0;" width="25">
+					</td>
+					<td style="margin: 0; padding: 0; border: 0;" width="576">
+						<h2 style="font-size: 24px; font-weight: bold; border: 0; color: #767676; display: inline; padding: 0; margin: 0; font-family: Helvetica, Arial, sans-serif"><%= @subject %></h2>
+					</td>
+				</tr>
+				<tr style="margin: 0; padding: 0; border: 0;">
+					<td colspan="2" style="margin: 0; padding: 0; border: 0;">
+
+						<p style="margin: 0; padding: 0; font-size: 12px; padding-bottom: 10px; font-family: Helvetica, Arial, sans-serif; color:#949494; margin-left:30px"><%= @message %></p>
+					</td>
+				</tr>
+				<tr style="margin: 0; padding: 0; border: 0;">
+					<td colspan="2" style="margin: 0; padding: 0; border: 0;">
+						<p style="margin: 0; padding: 0; font-size: 12px; padding-bottom: 10px; font-family: Helvetica, Arial, sans-serif; color:#949494; margin-left:30px">Sent By:<%= @name %></p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>
+

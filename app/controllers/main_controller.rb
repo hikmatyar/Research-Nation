@@ -54,6 +54,18 @@ class MainController < ApplicationController
     render :layout => false
   end
 
+  def send_mail_to_seller
+    recipient = params[:email]
+    mail_body = params[:contact]
+
+    if PostMailer.deliver_post_email(mail_body["name"], mail_body["email"], mail_body["subject"], mail_body["message"], recipient)
+      flash[:success] = "Your mail has successfully been sent"
+    else
+      flash[:error] = "An error occured while sending email"
+    end
+    return redirect_to :controller => 'main', :action => 'index'
+  end
+
   private
 
   def check_attachments
