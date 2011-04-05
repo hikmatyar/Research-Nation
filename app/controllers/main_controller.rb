@@ -38,7 +38,7 @@ class MainController < ApplicationController
 =begin
     end
 =end
-    flash[:success] = "New resource created successfully"
+    flash[:success] = "New resource created successfully" if new_resource
     return redirect_to :action => 'index'
   end
 
@@ -50,11 +50,13 @@ class MainController < ApplicationController
 
   def selling_list
     #@resources = Resource.find :all, :order => 'created_at DESC'
+    @user = User.find(session[:user]) if logged_in?
     @resources = Resource.paginate :page => params[:page], :order => 'created_at DESC'
     render :layout => false
   end
 
   def send_mail_to_seller
+    return redirect_to :controller => 'main', :action => 'index' unless logged_in?
     recipient = params[:email]
     mail_body = params[:contact]
 
@@ -66,6 +68,22 @@ class MainController < ApplicationController
     return redirect_to :controller => 'main', :action => 'index'
   end
 
+  def mutual_friends
+    return render :text => 'Login to see mutual friends' unless logged_in?
+    source_user = User.find session[:user]
+    target_user = User.find params[:id]
+    facebook_settings = YAML::load(File.open("#{RAILS_ROOT}/config/facebooker.yml"))
+    url = URI.parse "https://api.facebook.com/method/friends.getMutualFriends?target_uid=#{target_user.facebook_uid}&source_uid=#{source_user.facebook_uid}&access_token="+CGI.escape("106573539424936|2558f0741b0f2c304b70f1fe-586083691|ThxqKRhUrolOusMxC1COh7Wf3CM")+"&format=json"
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = (url.scheme == 'https')
+
+    tmp_url = url.path+"?"+url.query
+    request = Net::HTTP::Get.new(tmp_url)
+    response = http.request(request)
+    data = response.body
+    return render :text => data.split(",").count.to_s+" Mutual Friends"
+
+  end
   private
 
   def check_attachments
