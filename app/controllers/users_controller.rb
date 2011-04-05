@@ -52,7 +52,6 @@ class UsersController < ApplicationController
   end
 
   def login
-
   end
 
   def create
@@ -89,6 +88,7 @@ class UsersController < ApplicationController
     valid_user = User.find(:first,:conditions => ["email = ? and password = ?", @user.email, @user.password])
     if valid_user
       session[:user] = valid_user.id
+      session[:admin]= valid_user.id if valid_user.is_admin?
       return redirect_to :controller => 'main', :action => 'post', :post_data => true
     else
       flash[:error] = "Invalid username/password"

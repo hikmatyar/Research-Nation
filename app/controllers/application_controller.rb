@@ -15,6 +15,15 @@ class ApplicationController < ActionController::Base
     false
   end
 
+  def is_admin?
+    return true unless session[:admin].blank?
+    false
+  end
+
+  def redirect_to_admin_login
+    return redirect_to(:controller => "users", :action =>"login") unless is_admin?
+  end
+
   def redirect_to_login
     return redirect_to(:controller => "users", :action =>"facebook_connect") unless logged_in?
   end
