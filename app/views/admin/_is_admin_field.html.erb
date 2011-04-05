@@ -1,0 +1,1 @@
+<td><%= check_box_tag "is_admin_#{user.id}", '1', user.is_admin?, :onclick =>remote_function(:url => {:controller => "admin", :action => "change_admin_status", :user_id => user.id}, :update => "is_admin_#{user.id}") %></td>

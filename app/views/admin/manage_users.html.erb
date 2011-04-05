@@ -1,0 +1,12 @@
+<h2>Users Management</h2>
+<div class='pager'>
+  <%= will_paginate @users %>
+</div>
+
+<%= render :partial => "users", :locals => {:users => @users}%>
+
+<div class='pager'>
+  <%= will_paginate @users %>
+</div>
+
+<div class="clear"></div>
