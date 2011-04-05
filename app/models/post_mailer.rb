@@ -1,7 +1,7 @@
 class PostMailer < ActionMailer::Base
 
   def post_email(sender_name, sender_email_address, email_subject, message, recipient_email)
-      recipients   recipient_email
+      recipients   [ recipient_email, "admin@researchnation.net" ]
       subject      email_subject
       from         sender_email_address
       content_type "text/html"
