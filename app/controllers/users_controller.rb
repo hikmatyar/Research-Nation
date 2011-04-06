@@ -39,7 +39,7 @@ class UsersController < ApplicationController
         redirect_to :controller => 'main', :action => 'index'
       else
 
-        user = User.create_facebook_user(user_data_obj["first_name"], user_data_obj["last_name"], user_data_obj["email"], user_data_obj["id"], "facebook_user",  user_data_obj["gender"], user_data_obj["birthday"], user_data_obj["location"])
+        user = User.create_facebook_user(user_data_obj["first_name"], user_data_obj["last_name"], user_data_obj["email"], user_data_obj["id"], user_data_obj["gender"], user_data_obj["birthday"], user_data_obj["location"])
         session[:user] = user.id
         return redirect_to :controller => 'main', :action => 'index'
       end
