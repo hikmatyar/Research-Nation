@@ -9,3 +9,5 @@ gems:
     version: 0.6.2
   - name: i18n
     version: 0.4.2
+  - name: monkeywrench
+    version: 0.1.7

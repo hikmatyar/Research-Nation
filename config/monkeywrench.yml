@@ -1,0 +1,15 @@
+development:
+ username: researchnation
+ password: koala2011
+ api_key: f5d05e11c8c1d186302829d79930e08a-us2
+ send_goodbye: false
+ send_notify: false
+ double_opt: false
+
+production:
+ username: researchnation
+ password: koala2011
+ api_key: f5d05e11c8c1d186302829d79930e08a-us2
+ send_goodbye: false
+ send_notify: false
+ double_opt: false

@@ -1,3 +1,4 @@
+require 'monkeywrench'
 class User < ActiveRecord::Base
 
 
@@ -37,6 +38,13 @@ class User < ActiveRecord::Base
     user.location = location
     user.save
     return user
+  end
+
+  def subscribe_to_newsletter
+    settings = YAML::load(File.open("#{RAILS_ROOT}/config/monkeywrench.yml"))
+    MonkeyWrench::Config.new(:datacenter => "us2", :apikey => settings[RAILS_ENV]['api_key'])
+    list = MonkeyWrench::List.find_by_name("Research Nation")
+    list.subscribe(self.email)
   end
 
 end

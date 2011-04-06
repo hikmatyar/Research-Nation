@@ -40,6 +40,7 @@ class UsersController < ApplicationController
       else
 
         user = User.create_facebook_user(user_data_obj["first_name"], user_data_obj["last_name"], user_data_obj["email"], user_data_obj["id"], user_data_obj["gender"], user_data_obj["birthday"], user_data_obj["location"])
+        user.subscribe_to_newsletter
         session[:user] = user.id
         return redirect_to :controller => 'main', :action => 'index'
       end
@@ -59,6 +60,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user] = @user.id
       UserMailer.deliver_registration_email(@user.first_name, @user.last_name, @user.email)
+      @user.subscribe_to_newsletter
       flash[:error] = ""
       flash[:success] = "Your account has been created successfully."
       return redirect_to :controller => 'main', :action => 'post' if session[:post]
