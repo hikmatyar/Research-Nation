@@ -16,6 +16,7 @@ development:
   callback_url:
   pretty_errors: true
   set_asset_host_to_callback_url: true
+  access_token: 106573539424936|2558f0741b0f2c304b70f1fe-586083691|ThxqKRhUrolOusMxC1COh7Wf3CM
   tunnel:
     public_host_username:
     public_host:
@@ -43,6 +44,7 @@ production:
   canvas_page_name:
   callback_url:
   set_asset_host_to_callback_url: true
+  access_token: 175351785849270|2.goU4FV8SwcSxXYXzQO0rGg__.3600.1302073200-586083691|sH4KDDjTLyJIK-EmnuoBG4DcVaA
   tunnel:
     public_host_username:
     public_host:

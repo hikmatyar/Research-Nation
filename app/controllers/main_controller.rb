@@ -73,7 +73,7 @@ class MainController < ApplicationController
     source_user = User.find session[:user]
     target_user = User.find params[:id]
     facebook_settings = YAML::load(File.open("#{RAILS_ROOT}/config/facebooker.yml"))
-    url = URI.parse "https://api.facebook.com/method/friends.getMutualFriends?target_uid=#{target_user.facebook_uid}&source_uid=#{source_user.facebook_uid}&access_token="+CGI.escape("106573539424936|2558f0741b0f2c304b70f1fe-586083691|ThxqKRhUrolOusMxC1COh7Wf3CM")+"&format=json"
+    url = URI.parse "https://api.facebook.com/method/friends.getMutualFriends?target_uid=#{target_user.facebook_uid}&source_uid=#{source_user.facebook_uid}&access_token="+CGI.escape(facebook_settings[RAILS_ENV]['access_token'])+"&format=json"
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = (url.scheme == 'https')
 
