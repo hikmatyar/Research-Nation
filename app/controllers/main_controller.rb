@@ -81,7 +81,8 @@ class MainController < ApplicationController
     request = Net::HTTP::Get.new(tmp_url)
     response = http.request(request)
     data = response.body
-    return render :text => data.split(",").count.to_s+" Mutual Friends"
+    text_to_render = (source_user == target_user)? "" : data.split(",").count.to_s+" Mutual Friends"
+    return render :text => text_to_render
 
   end
   private
