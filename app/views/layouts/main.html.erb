@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!-- <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
   <head>
 
@@ -27,8 +27,35 @@
       <div style="float:left;color:green;width:100%;"><%= flash[:success]%></div>
       <div style="float:left;color:red;width:100%;"><%= flash[:error]%></div>
     </div>
-    <%= yield %>
 
     <%= render :partail => '/layouts/google_analytics'%>
   </body>
 </html>
+
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Research Nation</title>
+
+    <%= stylesheet_link_tag "style" %>
+    <%= stylesheet_link_tag "validations" %>
+
+    <%= javascript_include_tag "jquery" %>
+    <%= javascript_include_tag "researchnation" %>
+    <%= javascript_include_tag "verticaltabs.pack" %>
+    <%= javascript_include_tag "verticaltabs" %>
+
+  </head>
+  <body>
+	  <div class="wrapper">
+	    <%= render :partial => '/layouts/header'%>
+      <%= yield %>
+      <%= render :partial => '/layouts/footer'%>
+    </div>
+    <%= render :partail => '/layouts/google_analytics'%>
+  </body>
+</html>
+
