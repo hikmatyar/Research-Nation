@@ -1,13 +1,11 @@
 <div class="header">
-  <div class="header_inner">
-    <div class="logo"><a href="/"><img src="/images/logo.png" alt="description" title="description" /></a></div>
-    <div class="main_menu">
-      <ul>
-        <!-- <li><%= link_to_remote 'Buy' ,:url => {:controller => 'main', :action => 'buying_list'}, :html => { :id => 'buying' }, :update => 'results' %></li> -->
-          <li><%= link_to_remote 'Sell' ,:url => {:controller => 'main', :action => 'buying_list'}, :html => { :id => 'selling' }, :update => 'results' %></li>
-        <li><a href="#">Blog</a></li>
-        <%= link_to (logged_in? ? 'Logout' : 'Login'), :controller => 'users', :action => (logged_in? ? 'logout' : 'login') %>
-      </ul>
-    </div>
-  </div>
+	<%= link_to image_tag("logo.jpg"),:controller => "main", :action => "index" %>
+  <ul class="main_menu">
+  	<li><li><%= link_to "How It Works", :controller => "main", :action => "how_it_works" %></li></li>
+    <li><%= link_to "View Posts", :controller => "resources", :action => "view_posts" %></li>
+    <li><%= link_to "Create Post", :controller => "resources", :action => "new" %></li>
+    <li><%= (link_to 'Login', :controller => 'users', :action => 'register', :opt => 'login') unless logged_in? %></li>
+    <li style="border:none !important;"><%= link_to 'Sign Up', :controller => 'users', :action => 'register' unless logged_in?%></li>
+    <li style="border:none !important;"><%= (link_to 'Logout', :controller => 'users', :action => 'logout') if logged_in? %></li>
+  </ul>
 </div>
