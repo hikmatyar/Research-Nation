@@ -23,21 +23,23 @@ class User < ActiveRecord::Base
     end
   end
 
+  def name
+    name = first_name + " " + last_name
+    name
+  end
+
+  def name=(user_name)
+    name = user_name.split(" ")
+    self.first_name = name[0]
+    self.last_name = name[1..name.length].join(" ")
+  end
   def change_admin_status
     self.update_attributes :is_admin => !self.is_admin
   end
 
-  def self.create_facebook_user(first_name, last_name, email, id, gender, birthday,location )
-    user = User.new
-    user.first_name = first_name
-    user.last_name = last_name
-    user.email = email
-    user.facebook_uid = id
-    user.gender = gender
-    user.birthday = birthday
-    user.location = location
-    user.save
-    return user
+  def self.create_facebook_user new_user
+    user = User.new(new_user)
+    return user if user.save
   end
 
   def subscribe_to_newsletter
@@ -47,4 +49,10 @@ class User < ActiveRecord::Base
     list.subscribe(self.email)
   end
 
+  def generate_token(length=6)
+    chars = 'abcdefghjkmnpqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ23456789'
+    token = ''
+    length.times { |i| token << chars[rand(chars.length)] }
+    token
+  end
 end
