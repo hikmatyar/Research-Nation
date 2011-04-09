@@ -1,54 +1,65 @@
-<%= error_messages_for :user %>
-<div class="wrapper" id="page">
-	<div id="narrowPage">
-		<div class="sideBar">
-		  <div id="currentUserSignIn" class="panel">
-        <p>Already registered? <br><%= link_to 'Click here to sign in.', :controller => "users", :action => "login" %></p>
-      </div>
-    </div>
-    <h1>Register</h1>
-    <% form_for(@user, :url => {:controller => "users", :action => "create"}) do |f| %>
-	    <div class="input text">
-        <label for="user_name">Name</label>
-        <label style="display: inline;" class="firstName overlay" for="user_first_name">First Name</label>
-        <%= f.text_field 'first_name', :class => "firstName overlay" %>
-	      <label style="display: inline;" class="lastName overlay" for="user_last_name">Last Name</label>
-        <%= f.text_field 'last_name', :class => "lastName overlay" %>
-      </div>
-	    <div class="input text">
-        <label for="user_company">Company (optional)</label>
-        <%= f.text_field 'company' %>
-      </div>
-	    <div class="input text">
-        <label for="user_email">E-mail Address</label>
-        <%= f.text_field 'email' %>
-      </div>
-      <div class="input text">
-        <label for="skype_name">Skype Name</label>
-        <%= f.text_field 'skype_name' %>
-      </div>
-	    <% unless (@user_type == "facebook_user") %>
-	      <div class="input password">
-          <label for="user_password">Choose a Password</label>
-		      <%= f.password_field 'password', :value => "" %>
-        </div>
-      <% else %>
-  		    <%= f.hidden_field 'password', :value => @user_type %>
-      <% end %>
-      <div class="input text">
-        <label for="linkedin_profile">Linked Public Profile Url</label>
-		    <%= f.text_field 'linked_in_profile' %>
-      </div>
-      <div class="hidden text">
-        <%= f.hidden_field 'facebook_uid' %>
-      </div>
-	    <div class="login_buttons">
-	      <%= f.submit 'Register', :class => "submit_login" %>
-    <% end %>
-    <% unless (@user_type == "facebook_user") %>
-		    <%= link_to (image_tag "/images/FB_login_short.gif"), { :controller => "users", :action => "facebook_connect"} , :class => 'fbconnect' %>
-    <% end %>
-    </div>
+<%= javascript_include_tag "registration_validations" %>
+<div class="content">
+	<div class="register_back">
+		<div class="login_box">
+		<div class="round_box">
+		<div class="login_tab">
+		<a href="#" onclick="showTab('signup');" style="" class="sign_up" id="tab2">Sign Up</a>
+		<a href="#" onclick="showTab('login');" class="login" id="tab1">Log In</a>
+		<div style="display: block;" class="sign_up_box" id="tabOne">
+		<div class="facebook_box">
+		<b>Sign up using Facebook:</b>
+			<%= link_to image_tag("facebook_connect.jpg"), :controller => 'users', :action => 'facebook_connect'%>
+		</div>
+		<b>Or standard sign up: </b>
+		<div class="register_form">
+
+		<% form_for(@user , :url => {:controller => "users", :action => "create" } ) do |f| %>
+		<div class="field">
+		<label>Frist Name</label>
+		<%= f.text_field 'first_name', :id => "first_name" %>
+		</div>
+		<div class="field">
+		<label>Last Name</label>
+		<%= f.text_field 'last_name', :id => "last_name" %>
+		</div>
+		<div class="field">
+		<label>E-mail</label>
+		<%= f.text_field 'email', :id => "email" %>
+		</div>
+		<div class="field">
+		<label>Password</label>
+		<%= f.password_field 'password', :id => "password" %>
+		</div>
+		<div class="check_box">
+		<%= check_box_tag 'get_updates', "yes", true %><span>Please send me koala updates (via a newsletter) every now and then</span>
+		</div>
+		</div>
+		<div class="sign_up_button"><%= submit_tag 'Sign up'%></div>
+		</div>
+		<% end %>
+		<div style="display: none;" class="login_tab_box" id="tabTwo">
+		<div class="facebook_box">
+		<b>Sign in using Facebook:</b>
+		<%= link_to image_tag("facebook_connect.jpg"), :controller => 'users', :action => 'facebook_connect'%>
+		</div>
+		<b>Or standard sign in:</b>
+		<div class="register_form">
+		<%= form_tag :controller => "users", :action => "authenticate", :opt => 'login' %>
+		<div class="field">
+			<label>E-mail</label>
+			<%= text_field 'login', 'email' %>
+		</div>
+		<div class="field">
+			<label>Password</label>
+			<%= password_field 'login', 'password' %>
+		</div>
+		<div class="forgot"><%= link_to "Forgot my password", :controller => "users", :action => "forgot_password" %></div>
+		</div>
+		<div class="sign_up_button"><%= submit_tag 'Log In', :onSubmit => 'return validate();' %></div>
+		</div>
+		</div>
+		</div>
+		</div>
 	</div>
-  <div style="clear: both;"></div>
 </div>
