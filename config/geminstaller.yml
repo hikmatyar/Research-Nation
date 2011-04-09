@@ -11,3 +11,6 @@ gems:
     version: 0.4.2
   - name: monkeywrench
     version: 0.1.7
+  - name: rscribd
+    version: 1.2.0
+
