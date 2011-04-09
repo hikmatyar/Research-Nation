@@ -1,0 +1,60 @@
+<div class="content">
+	<div class="search_content">
+    <div class="left_content">
+      <% @resources.each do |resource| %>
+      <div class="post">
+        <% link_to (:action => 'seller_page', :id => resource.id) do %>
+        <div class="post_title">
+          <%= (image_tag "https://graph.facebook.com/#{resource.user.facebook_uid}/picture") unless resource.user.facebook_uid.blank? %>
+          <%= (image_tag "gray koala image.jpg") if resource.user.facebook_uid.blank? %>
+          <span clas><%= resource.title %></span>
+        </div>
+        <div class="reviews_box">
+          <div class="reviews_link">
+            <span> Pakistan,</span>
+            <span> Technology,</span>
+            <span> Software,</span>
+            <span> Development</span>
+          </div>
+          <div class="reviews">
+            <span>$<%= resource.selling_price %></span>
+            -
+            <span>2 reviews</span>
+          </div>
+        </div>
+        <div class="description">
+            <p><%= truncate(resource.description , 230, "...(more)") %></p>
+          </div>
+      <% end %>
+      </div>
+      <% end %>
+    </div>
+    <div class="right_content">
+    	<div class="fixed_box"
+        <div class="price_box">
+          <div id="search_filters_wrapper" class="rounded_bottom_right">
+            <div style="top: 0pt;" class="fixed" id="search_filters">
+              <ul class="collapsable_filters">
+                <li class="search_filter" id="price_container">
+                  <a class="filter_toggle"></a>
+                  <a class="filter_header" href="javascript:void(0);">Price</a>
+                  <div class="search_filter_content">
+                    <ul id="slider_values">
+                      <li id="slider_user_min">$10</li>
+                      <li id="slider_user_max">$300+ </li>
+                    </ul>
+                    <div class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" id="slider-range">
+                      <div style="left: 0%; width: 100%;" class="ui-slider-range ui-widget-header"></div>
+                      <a style="left: 0%;" class="ui-slider-handle ui-state-default ui-corner-all" href="#"></a>
+                      <a style="left: 100%;" class="ui-slider-handle ui-state-default ui-corner-all" href="#"></a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+					</div>
+        </div>
+      </div>
+  	</div>
+  </div>
+</div>

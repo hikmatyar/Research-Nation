@@ -1,0 +1,121 @@
+<%= javascript_include_tag "seller" %>
+<div class="content">
+  <div class="content_back">
+  	<div class="categories_box">
+    	<b><a href="#">Pakistan</a> <a href="#">Technology </a> <a href="#">Software Development</a></b>
+    </div>
+  	<div class="resource_buttons">
+  		<h2><%= @resource.title %></h2>
+      <a href="#">Purchase</a>
+    </div>
+    <div class="seller_left">
+      <div class="author">
+      	<b>By <%= "#{@resource.user.name}" %>, 
+      	<span><%= @resource.user.work %> at <%= @resource.user.company %></span>
+      	<a href="#" data-reveal-id="myModal" id="abc"><%= image_tag("mail.jpg")%></a>
+      	</b>
+      	<b>Price: US$<%= @resource.selling_price %></b>
+      </div>
+      <div class="seller_back">
+        <div class="login_tab">
+          <a href="#" class="sign_up" id="tab2">Summary</a>
+          <a href="#" class="login" id="tab1">About Seller</a>
+          <a href="#" class="login" id="tab3">View Sample</a>
+          <div style="display: block;" class="sign_up_box" id="tabOne">
+            <div class="summary">
+              <p><%= @resource.description %></p>
+            </div>
+          </div>  
+          <div style="display: none;" class="login_tab_box" id="tabTwo">
+            <div class="about_seller">
+              <%= @resource.user.about_me %>
+            </div>
+          </div>
+          <div style="display: none;" class="sign_up_box" id="tabThree">
+            <div class="view_sample">
+              <script type='text/javascript' src='http://www.scribd.com/javascripts/view.js'></script>
+							<div id='embedded_flash'><a href="http://www.scribd.com">Scribd</a></div>
+							<% unless @sample.blank? %>
+							<script type="text/javascript">
+								var scribd_doc = scribd.Document.getDoc( <%= @sample.document_id.to_i %>, '<%= @sample.access_key %>' );
+
+								var oniPaperReady = function(e){
+								// scribd_doc.api.setPage(3);
+								}
+								scribd_doc.addParam( 'jsapi_version', 1 );
+								scribd_doc.addEventListener( 'iPaperReady', oniPaperReady );
+								scribd_doc.write( 'embedded_flash' );
+								</script>
+								<% end %>
+            	</div>
+          	</div>
+        	</div>
+      	</div>
+      <div class="facebook_back">
+        <div class="login_tab">
+          <a href="#" onclick="showTab('one');" style="" class="sign_up" id="tab2">Reviews & Comments</a>
+          <div style="display: block;" class="sign_up_box" id="tabOne">
+            <div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=175351785849270&amp;xfbml=1"></script><fb:comments href="http://localhost:3000/resources/seller_page/119" num_posts="2" width="500"></fb:comments>
+          </div>  
+        </div>
+      </div>
+  	</div>
+    <div class="seller_right">
+      <div class="koala_review">
+        <h2>Koala Review</h2>
+        <p>Documents an entrepreneur's journey home to get smart on his local tech industry. Easy to read, useful references on prices, contact individuals and trends</p>
+      </div>
+      <div class="related_posts">
+        <h2>Related Posts</h2>
+        <div class="related_posts_box">
+        	<a href="#">Consumer Report on Silicon Valley's Tech Industry</a>
+        </div>
+        <div class="related_posts_box">
+        	<a href="#">Lessons Learned by a Location Based Mobile Startup in London</a>
+        </div>
+        <div class="related_posts_box">
+        	<a href="#">Industry Report on Pakistan's Development Services Market</a>
+        </div>
+        <div class="related_posts_box">
+        	<a href="#">Market Survey on Technology Trends in South Asia in 2011</a>
+        </div>
+        <div class="related_posts_box">
+        	<a href="#">Poll Results</a>
+        </div>
+        <a href="#">More</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="myModal" class="reveal-modal" >
+			<%= javascript_include_tag :defaults %>
+			<%= form_remote_tag :update => 'message',
+          :url => { :controller => 'main', :action => 'send_mail_to_seller', :email => @resource.user.email } %>
+      <h2>Contact <%= @resource.user.first_name %></h2>
+      <div class="field">
+        <label>Name</label>
+        <input type="text" name="contact[name]" id="contact_name" >
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input type="text" name="contact[email]" id="contact_email" >
+      </div>
+      <div class="field">
+        <label>Subject</label>
+        <input type="text" name="contact[subject]" id="contact_subject" >
+      </div>
+      <div class="field">
+        <label>Message</label>
+        <textarea name="contact[message]" rows="8" cols="25" id="contact_message" ></textarea>
+      </div>
+      <div class="sign_up_button">
+        <%= submit_tag 'Send Message' %>
+      </div>
+    	<p id="message" style="color:green;float:left;"></p>
+     <a class="close-reveal-modal">&#215;</a>
+
+</div>
+
+<script type="text/javascript" language="javascript" charset="utf-8">
+</script>

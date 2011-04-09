@@ -1,0 +1,56 @@
+<div class="content">
+	<div class="content_back">
+    	<div class="round_box">
+        	<h3>Create a Post</h3>
+            <img src="/images/looding_image2.jpg" />
+            <div class="looding_text">
+              <%= link_to "YOUR DETAILS", :action => 'new', :user => params[:user] %>
+              <b>UPLOAD & SELL DOCS</b>
+              <h6>COMPLETE</h6>
+            </div>
+        	<div class="register_form">
+              <h2>2. Upload Your Documents</h2>
+                <%= form_tag  ({ :controller => 'resources', :action => 'create_post', :user => params[:user] } , :multipart => true ) %>
+                    <div class="field">
+                        <label>Title*</label>
+                        <%= text_field 'resource', 'title'%>
+                    </div>
+                    <div class="field">
+                        <label>Exec Summary</label>
+                        <%= text_area 'resource', 'description'%>
+                    </div>
+                    <div class="field">
+                        <label>Price(US$)*</label>
+                        <%= text_field 'resource', 'selling_price'%>
+                        <i>Your document will be rated and reviewed by us, and we may edit it if needed</i>
+                    </div>
+                    <div class="field">Attachment(s): </div>
+                    <div class="field"><label>Sample Document</label><%= file_field_tag 'sample' %></div>
+                    <div class="field"><label>Original File</label><%= file_field_tag 'original' %></div>
+                    <div class="check_box">
+                    	<input type="checkbox" checked="checked" name="checkbox" value="" />
+                        <span>Please send me koala updates (via a newsletter) every now and then</span>
+                    </div>
+            </div>
+            <div class="sign_up_button"><%= submit_tag "Proceed to Next Step" %></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" language="javascript" charset="utf-8">
+    $(document).ready(function(){
+        var title_validation = new LiveValidation('resource_title');
+        title_validation.add( Validate.Presence );
+        title_validation.add( Validate.Length, { maximum : 60 } );
+
+        var price_validation = new LiveValidation('resource_selling_price');
+        price_validation.add( Validate.Presence );
+        price_validation.add( Validate.Numericality, { minimum: 0, maximum: 1000 } );
+
+
+        var file_validation = new LiveValidation('original')
+        file_validation.add( Validate.Presence );
+
+    });
+
+</script>
