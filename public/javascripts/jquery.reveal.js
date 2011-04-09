@@ -33,7 +33,7 @@
         var defaults = {  
 	    	animation: 'fadeAndPop', //fade, fadeAndPop, none
 		    animationspeed: 300, //how fast animtions are
-		    closeonbackgroundclick: true, //if you click background will modal close?
+		    closeonbackgroundclick: false, //if you click background will modal close?
 		    dismissmodalclass: 'close-reveal-modal' //the class of a button or element that will close an open modal
     	}; 
     	
@@ -82,7 +82,7 @@
 				if(!locked) {
 					lockModal();
 					if(options.animation == "fadeAndPop") {
-						modal.css({'top': $(document).scrollTop()-topOffset, 'opacity' : 0, 'visibility' : 'visible'});
+						modal.css({'top': $(document).scrollTop()-topOffset, 'opacity' : 1, 'visibility' : 'visible'});
 						modalBG.fadeIn(options.animationspeed/2);
 						modal.delay(options.animationspeed/2).animate({
 							"top": $(document).scrollTop()+topMeasure,
@@ -90,7 +90,7 @@
 						}, options.animationspeed,unlockModal());					
 					}
 					if(options.animation == "fade") {
-						modal.css({'opacity' : 0, 'visibility' : 'visible', 'top': $(document).scrollTop()+topMeasure});
+						modal.css({'opacity' : 1, 'visibility' : 'visible', 'top': $(document).scrollTop()+topMeasure});
 						modalBG.fadeIn(options.animationspeed/2);
 						modal.delay(options.animationspeed/2).animate({
 							"opacity" : 1
