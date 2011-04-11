@@ -1,7 +1,6 @@
 class ResourcesController < ApplicationController
 
   require 'aws/s3'
-  require 'prawn'
   #before_filter :redirect_to_login, :only => [:delete, edit]
 
   def new
@@ -11,8 +10,9 @@ class ResourcesController < ApplicationController
   def post
       user = logged_in? ? (User.find(session[:user])) : (User.new(params[:user]))
       user.update_attributes(params[:user]) if logged_in?
-      puts user.inspect
-      return redirect_to :action => 'upload_docs', :user => ( logged_in? ? user : params[:user] )
+      ( session[:user_details] = params[:user] and session[:post] = true ) unless logged_in?
+      return redirect_to (:controller => 'users', :action => 'register' ) unless logged_in?
+      return redirect_to :action => 'upload_docs'
   end
 
   def seller_page
@@ -38,14 +38,21 @@ class ResourcesController < ApplicationController
   end
 
   def create_post
-  	if logged_in?
-    	resource = Resource.new(params[:resource])
-    	resource.user_id = session[:user]
-    	if resource.save
-    	  Attachment.add_file( params[:sample], resource.id, "sample" )
-    	  Attachment.add_file( params[:original], resource.id, "original" )
-	    return redirect_to :action => 'seller_page', :id => resource.id
-	    end
+
+    if logged_in?
+      resource = Resource.new(params[:resource])
+      user = User.find session[:user]
+      user.update_attributes(session[:user_details])
+      resource.user_id = session[:user]
+      if resource.save
+        Attachment.add_file( params[:sample], resource.id, "sample" ) unless params[:sample].blank?
+        Attachment.add_file( params[:original], resource.id, "original" )
+        session[:user_details] = nil
+        session[:post] = nil
+        return redirect_to :action => 'seller_page', :id => resource.id
+      end
+    else
+      return redirect_to :controller => 'users', :action => 'register'
     end
   end
 
