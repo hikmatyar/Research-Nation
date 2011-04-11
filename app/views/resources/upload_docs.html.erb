@@ -10,7 +10,7 @@
             </div>
         	<div class="register_form">
               <h2>2. Upload Your Documents</h2>
-                <%= form_tag  ({ :controller => 'resources', :action => 'create_post', :user => params[:user] } , :multipart => true ) %>
+                <%= form_tag  ({ :controller => 'resources', :action => 'create_post', :user => params[:user] } , :multipart => true, :id => "upload_form" ) %>
                     <div class="field">
                         <label>Title*</label>
                         <%= text_field 'resource', 'title'%>
@@ -18,6 +18,7 @@
                     <div class="field">
                         <label>Exec Summary</label>
                         <%= text_area 'resource', 'description'%>
+                        <h5>700</h5>
                     </div>
                     <div class="field">
                         <label>Price(US$)*</label>
@@ -39,17 +40,47 @@
 
 <script type="text/javascript" language="javascript" charset="utf-8">
     $(document).ready(function(){
-        var title_validation = new LiveValidation('resource_title');
-        title_validation.add( Validate.Presence );
-        title_validation.add( Validate.Length, { maximum : 60 } );
 
-        var price_validation = new LiveValidation('resource_selling_price');
-        price_validation.add( Validate.Presence );
-        price_validation.add( Validate.Numericality, { minimum: 0, maximum: 1000 } );
+        show_text_count();
+        function show_text_count(){
+            var len = 700 - $('#resource_description').val().length
+            $('.field h5').text(len);
+        }
 
+        $('#resource_description').keypress(function(){
+           show_text_count();
+        });
 
-        var file_validation = new LiveValidation('original')
-        file_validation.add( Validate.Presence );
+        $('#upload_form').submit(function(){
+            valid = true;
+            $('.error').text("");
+            if ($('#resource_title').val()=="")
+            {
+                $('#resource_title').after('<p class="error">Field cannot be blank</p>');
+                valid = false;
+            }
+            if ($('#resource_title').val().length > 60)
+            {
+                $('#resource_title').after('<p class="error">Title cannot exceed 60 characters limit</p>');
+                valid = false;
+            }
+
+            if ($('#resource_description').val().length > 700)
+            {
+                $('#resource_description').after('<p class="error">Summary cannot exceed 700 characters limit</p>');
+                valid = false;
+            }
+            if ($('#resource_selling_price').val() == "")
+            {
+                $('#resource_selling_price').after('<p class="error">Price cannot be blank</p>');
+                valid = false;
+            }
+            if ($('#resource_selling_price').val() != $('#resource_selling_price').val().match(/[0-9]{3}/)){
+                $('#resource_selling_price').after('<p class="error">Price should be numeric and between 0 to 999</p>');
+                valid = false;
+            }
+            return valid;
+        });
 
     });
 

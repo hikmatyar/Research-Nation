@@ -43,7 +43,8 @@
                 </div>
                 <div class="field">
                     <label>About You*</label>
-                    <%= text_area 'user', 'about_me' %>
+                    <%= text_area 'user', 'about_me', :max_length => 700 %>
+                    <h5>700</h5>
                 </div>
         </div>
         <div class="sign_up_button"><%= submit_tag "Proceed to Next Step"%></div>
@@ -53,27 +54,15 @@
 
 <script type="text/javascript" language="javascript" charset="utf-8">
     $(document).ready(function(){
-        var name_validation = new LiveValidation('user_name');
-        name_validation.add( Validate.Presence );
-        name_validation.add( Validate.Length, { minimum : 2 } );
+show_text_count();
+        function show_text_count(){
+            var len = 700 - $('#user_about_me').val().length
+            $('.field h5').text(len);
+        }
 
-        var email_validation = new LiveValidation('user_email');
-        email_validation.add( Validate.Presence );
-        email_validation.add( Validate.Email );
-
-        var company_validation = new LiveValidation('user_company');
-        company_validation.add( Validate.Presence );
-
-        var company_validation = new LiveValidation('user_work');
-        company_validation.add( Validate.Presence );
-
-        var contact_validation = new LiveValidation('user_contact')
-        contact_validation.add( Validate.Presence );
-
-        var about_me_validation = new LiveValidation('user_about_me')
-        about_me_validation.add( Validate.Presence );
-        about_me_validation.add( Validate.Length, { maximum : 700} )
-
+        $('#user_about_me').keypress(function(){
+           show_text_count();
+        });
     });
 
 </script>
