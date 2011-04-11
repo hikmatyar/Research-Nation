@@ -666,7 +666,13 @@ a:focus {
 	font-size:11px;
 	position:static !important;
 }
-
+.field h5{
+	margin-top: 150px;
+	float: none;
+	margin-left: 448px;
+	font-weight: bold;
+	font-size: 14px;
+}
 .check_box{
 	float:left;
 	width:454px;
@@ -1410,4 +1416,8 @@ background:#FFFFFF; border:1px solid #666666 !important; height:15px; width:15px
 .seller_right h2{
 	margin-bottom:20px;
 	
+}
+
+.error{
+	color:red;
 }
