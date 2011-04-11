@@ -5,13 +5,13 @@ class UsersController < ApplicationController
 
   def facebook_connect
     facebook_settings = YAML::load(File.open("#{RAILS_ROOT}/config/facebooker.yml"))
-    redirect_to "https://graph.facebook.com/oauth/authorize?client_id=#{facebook_settings[RAILS_ENV]['application_id']}&redirect_uri=http://localhost:3000/users/facebook_oauth_callback&scope=offline_access,publish_stream,user_birthday,user_location, user_education_history,user_location,email,user_work_history"
+    redirect_to "https://graph.facebook.com/oauth/authorize?client_id=#{facebook_settings[RAILS_ENV]['application_id']}&redirect_uri=http://#{request.host}/users/facebook_oauth_callback&scope=offline_access,publish_stream,user_birthday,user_location, user_education_history,user_location,email,user_work_history"
   end
 
   def facebook_oauth_callback
     unless params[:code].nil?
       facebook_settings = YAML::load(File.open("#{RAILS_ROOT}/config/facebooker.yml"))
-      callback = "http://localhost:3000/users/facebook_oauth_callback"
+      callback = "http://#{request.host}/users/facebook_oauth_callback"
 
       url = URI.parse("https://graph.facebook.com/oauth/access_token?client_id=#{facebook_settings[RAILS_ENV]['application_id']}&redirect_uri=#{callback}&client_secret=#{facebook_settings[RAILS_ENV]['secret_key']}&code=#{CGI::escape(params[:code])}")
       http = Net::HTTP.new(url.host, url.port)
