@@ -13,21 +13,23 @@
                 <%= form_tag  ({ :controller => 'resources', :action => 'create_post', :user => params[:user] } , :multipart => true, :id => "upload_form" ) %>
                     <div class="field">
                         <label>Title*</label>
-                        <%= text_field 'resource', 'title'%>
+                        <%= text_field 'resource', 'title', :class => 'required max_len', :max_length => 60 %>
                     </div>
                     <div class="field">
                         <label>Exec Summary</label>
-                        <%= text_area 'resource', 'description'%>
+                        <%= text_area 'resource', 'description', :class => 'max_len', :max_length => 700 %>
                         <h5>700</h5>
                     </div>
                     <div class="field">
                         <label>Price(US$)*</label>
-                        <%= text_field 'resource', 'selling_price'%>
+                        <%= text_field 'resource', 'selling_price', :class => 'required' %>
                         <i>Your document will be rated and reviewed by us, and we may edit it if needed</i>
                     </div>
                     <div class="field">Attachment(s): </div>
                     <div class="field"><label>Sample Document</label><%= file_field_tag 'sample' %></div>
-                    <div class="field"><label>Original File</label><%= file_field_tag 'original' %></div>
+                    <div class="field"><label>Original File</label><%= file_field_tag 'original', :class => 'required file' %></div>
+                    <input type="hidden" name="original_file_name" value="" id="original_file_name" />
+                    <input type="hidden" name="sample_file_name" value="" id="sample_file_name" />
                     <div class="check_box">
                     	<input type="checkbox" checked="checked" name="checkbox" value="" />
                         <span>Please send me koala updates (via a newsletter) every now and then</span>
@@ -52,36 +54,14 @@
         });
 
         $('#upload_form').submit(function(){
-            valid = true;
-            $('.error').text("");
-            if ($('#resource_title').val()=="")
-            {
-                $('#resource_title').after('<p class="error">Field cannot be blank</p>');
-                valid = false;
-            }
-            if ($('#resource_title').val().length > 60)
-            {
-                $('#resource_title').after('<p class="error">Title cannot exceed 60 characters limit</p>');
-                valid = false;
-            }
-
-            if ($('#resource_description').val().length > 700)
-            {
-                $('#resource_description').after('<p class="error">Summary cannot exceed 700 characters limit</p>');
-                valid = false;
-            }
-            if ($('#resource_selling_price').val() == "")
-            {
-                $('#resource_selling_price').after('<p class="error">Price cannot be blank</p>');
-                valid = false;
-            }
-            if ($('#resource_selling_price').val() != $('#resource_selling_price').val().match(/[0-9]{3}/)){
-                $('#resource_selling_price').after('<p class="error">Price should be numeric and between 0 to 999</p>');
-                valid = false;
-            }
-            return valid;
+            return validate_form();
         });
-
+        $("#original").change(function(){
+            $("#original_file_name").val($(this).val());
+        });
+        $("#sample").change(function(){
+            $("#sample_file_name").val($(this).val());
+        });
     });
 
 </script>

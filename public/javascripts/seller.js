@@ -1,21 +1,5 @@
 		jQuery(document).ready(function(){
 
-			var contact_name_validation = new LiveValidation('contact_name');
-			contact_name_validation.add( Validate.Presence );
-			contact_name_validation.add( Validate.Length, { minimum : 2 } );
-
-			var contact_email_validation = new LiveValidation('contact_email');
-			contact_email_validation.add( Validate.Presence );
-			contact_email_validation.add( Validate.Email );
-
-			var contact_subject_validation = new LiveValidation('contact_subject');
-			contact_subject_validation.add( Validate.Presence );
-			contact_subject_validation.add( Validate.Length, { minimum : 2 } );
-
-			var contact_message_validation = new LiveValidation('contact_message');
-			contact_message_validation.add( Validate.Presence );
-			contact_message_validation.add( Validate.Length, { minimum : 2 } );
-
 		jQuery("#tab2").click(function(){
 			jQuery("#tabOne").show();
 			jQuery("#tabTwo").hide();

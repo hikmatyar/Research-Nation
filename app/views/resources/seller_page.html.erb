@@ -6,7 +6,7 @@
     </div>
   	<div class="resource_buttons">
   		<h2><%= @resource.title %></h2>
-      <a href="#">Purchase</a>
+      <%= link_to 'Purchase', :action => 'payment', :id => @resource.id %>
     </div>
     <div class="seller_left">
       <div class="author">
@@ -18,9 +18,10 @@
       </div>
       <div class="seller_back">
         <div class="login_tab">
-          <a href="#" class="sign_up" id="tab2">Summary</a>
-          <a href="#" class="login" id="tab1">About Seller</a>
-          <a href="#" class="login" id="tab3">View Sample</a>
+          <%= link_to 'Summary','#', :class => 'sign_up', :id => 'tab1', :onclick => 'showTab("one");' %>
+          <%= link_to 'About Seller','#', :class => 'login', :id => 'tab2', :onclick => 'showTab("two");' %>
+          <%= (link_to 'View Sample','#', :class => 'login', :id => 'tab3', :onclick => 'showTab("three");') if @sample %>
+          <a href="#" class="login" id="tab3" onclick="showTab('three');">View Sample</a>
           <div style="display: block;" class="sign_up_box" id="tabOne">
             <div class="summary">
               <p><%= @resource.description %></p>
@@ -55,7 +56,7 @@
         <div class="login_tab">
           <a href="#" onclick="showTab('one');" style="" class="sign_up" id="tab2">Reviews & Comments</a>
           <div style="display: block;" class="sign_up_box" id="tabOne">
-            <div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=175351785849270&amp;xfbml=1"></script><fb:comments href="http://localhost:3000/resources/seller_page/119" num_posts="2" width="500"></fb:comments>
+            <div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=175351785849270&amp;xfbml=1"></script><fb:comments href="http://<%= request.host %>/resources/seller_page/<%= @resource.id %>" num_posts="2" width="500"></fb:comments>
           </div>  
         </div>
       </div>
@@ -63,24 +64,24 @@
     <div class="seller_right">
       <div class="koala_review">
         <h2>Koala Review</h2>
-        <p>Documents an entrepreneur's journey home to get smart on his local tech industry. Easy to read, useful references on prices, contact individuals and trends</p>
+        <p></p>
       </div>
       <div class="related_posts">
         <h2>Related Posts</h2>
         <div class="related_posts_box">
-        	<a href="#">Consumer Report on Silicon Valley's Tech Industry</a>
+          <a href="#"></a>
         </div>
         <div class="related_posts_box">
-        	<a href="#">Lessons Learned by a Location Based Mobile Startup in London</a>
+          <a href="#"></a>
         </div>
         <div class="related_posts_box">
-        	<a href="#">Industry Report on Pakistan's Development Services Market</a>
+          <a href="#"></a>
         </div>
         <div class="related_posts_box">
-        	<a href="#">Market Survey on Technology Trends in South Asia in 2011</a>
+          <a href="#"></a>
         </div>
         <div class="related_posts_box">
-        	<a href="#">Poll Results</a>
+          <a href="#"></a>
         </div>
         <a href="#">More</a>
       </div>
@@ -116,6 +117,3 @@
      <a class="close-reveal-modal">&#215;</a>
 
 </div>
-
-<script type="text/javascript" language="javascript" charset="utf-8">
-</script>
