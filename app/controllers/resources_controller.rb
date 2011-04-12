@@ -67,4 +67,8 @@ class ResourcesController < ApplicationController
 
   end
 
+  def payment
+    @resource = Resource.find params[:id]
+  end
+
 end
