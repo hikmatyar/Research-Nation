@@ -1,4 +1,5 @@
 <script type="text/javascript">
+
 $(document).ready(function(){
 $("#textExample").verticaltabs({speed: 1,slideShow: false,activeIndex: 1});
 $("#imageExample").verticaltabs({speed: 1000,slideShow: true,slideShowSpeed: 3000,activeIndex: 0,playPausePos: "topRight"});
@@ -10,7 +11,7 @@ $("#imageExample").verticaltabs({speed: 1000,slideShow: true,slideShowSpeed: 300
     <ul class="verticalslider_contents left_side">
       <li>&nbsp</li>
       <li>
-      	<h1>Why Entrepreneurs Love Us</h1>
+        <h1 id="entreprenerus">Why Entrepreneurs Love Us</h1>
         <h3>Make money off of failed startups</h3>
         <p>Wondering how you can make money off of a failed startup? Share your lesson learned and the market research that you did. It's easier than starting a blog, and much, much better than letting the files go to waste on your hard drive!</p>
          <h3>Establish functional expertise</h3>
@@ -19,7 +20,7 @@ $("#imageExample").verticaltabs({speed: 1000,slideShow: true,slideShowSpeed: 300
          <p>Sick of scrambling around on an ugly website, scouting around research for under US$100 (and failing miserably at it)? Reserach Nation make researh affordable and puts it within your reach</p>
       </li>
       <li>
-      	<h1>Why Freelancers Love Us</h1>
+        <h1 id="freelancers">Why Freelancers Love Us</h1>
         <h3>Save time on selling</h3>
         <p>With Research Nation you no longer have to worry about how to sell your work. Forget about Craig's List - all you have to do is write, upload and start selling!</p>
         <h3>Make money</h3>
@@ -32,7 +33,7 @@ $("#imageExample").verticaltabs({speed: 1000,slideShow: true,slideShowSpeed: 300
         <p>Would you like to know who's checking out your posts? If so, let us know and we'll speed up addition of this feature.</p>
       </li>
       <li>
-      	<h1>Why Small Businesses Love Us</h1>
+        <h1 id="business">Why Small Businesses Love Us</h1>
         <h3>Easy to use, easy to understand</h3>
         <p>Research Nation's easy to use format means that you can find what you're looking for in less than 30 seconds. </p>
         <h3>Savings</h3>
@@ -41,7 +42,7 @@ $("#imageExample").verticaltabs({speed: 1000,slideShow: true,slideShowSpeed: 300
         <p>Most sites make you spend US$1,000 without providing any reviews or comments to help you decide. We do things differently - try and let us know if you like it!</p>
       </li>
       <li>
-      	<h1>Many Benefits, Free to Use</h1>
+        <h1 id="firms">Many Benefits, Free to Use</h1>
         <h3>Gain access to new customers</h3>
         <p>Want to bring on new customers, but don't have the ad budget? Research Nation can help you with that. It can also help diversify your customer base. If you want to sell through us, but are worried about pricing and other matters, let us know and we can put together a white label  offering for you</p>
         <h3>Manage your reputation through reviews</h3>
@@ -53,7 +54,7 @@ $("#imageExample").verticaltabs({speed: 1000,slideShow: true,slideShowSpeed: 300
       </li>
       <li> &nbsp; </li>
       <li>
-      	<h1>Simple, Easy to Use Features</h1>
+        <h1 id="features">Simple, Easy to Use Features</h1>
         <h3>Crispy, Original Research</h3>
         <p>All the materials that you see on Research Nation are original and user-generated.We don't recycle or re-use any information, so you can rest assured that when yo buy through us, you get it hot and fresh!</p>
          <h3>Expert Database</h3>
@@ -74,7 +75,7 @@ $("#imageExample").verticaltabs({speed: 1000,slideShow: true,slideShowSpeed: 300
       <li>&nbsp;</li>
       <li> &nbsp; </li>             
       <li>
-      	<h1 id="link1">General Questions</h1>
+        <h1 id="link1">General Questions</h1>
         <h3>What is Research Nation?</h3>
         <p>Research Nation is an online marketplace for market research</p>
         <h3>What's different about it?</h3>
@@ -204,6 +205,11 @@ experts online, so as to protect their privacy.</p>
           <textarea name="About_you"></textarea>
         </div>
         <a href="#">Submit</a>
+        <div class="follow_field">
+          <label>&nbsp;</label>
+          <a href=""><img src="/images/facebook.png" /></a>
+          <a href=""><img src="/images/twitter.png" /></a>
+        </div>
       </form>
       </li>
       <li>
@@ -220,12 +226,12 @@ experts online, so as to protect their privacy.</p>
         </div>
         <h2>Team</h2>
         <div class="field">
-        	<img src="images/user_pic.jpg" />
+          <img src="/images/user_pic.jpg" />
           <b>Faisal Khalid, Founder & CEO</b>
           <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
         </div>
         <div class="field">
-        	<img src="images/Ali Ibrahim.jpg" />
+          <img src="/images/Ali Ibrahim.jpg" />
           <b>Ali Ibrahim, CTO</b>
           <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here,</p>
         </div>

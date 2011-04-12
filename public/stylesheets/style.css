@@ -548,6 +548,10 @@ a:focus {
 	border:medium none;	
 }
 
+.facebook_box a{
+	background:none !important;
+}
+
 .sign_up_box b{
 	float:left;
 	font-size:18px;
@@ -601,6 +605,13 @@ a:focus {
 	width:100%;
 	margin-bottom:20px;	
 	margin-left:8px;
+}
+
+.register_form .error{
+	color: red;
+  margin-bottom: 2px;
+  margin-left: 111px;
+  margin-top: 4px;
 }
 
 .register_form{
@@ -789,9 +800,11 @@ a:focus {
 	float:left;
 	border-bottom:1px solid #666;
 	width:613px;
-	margin-bottom:30px;
 }
 
+.address1{
+	width:74px;
+}
 
 .post_title{
 	float:left;
@@ -1231,7 +1244,7 @@ a:focus {
 
 
 .left_side h1{
-	margin:10px 0 30px !important;
+	margin:30px 0 20px !important;
 	float:left;
 	color:#245A83;
 	width:100%;
@@ -1317,7 +1330,6 @@ a:focus {
 	height:auto !important; 
 	padding: 0px;
 	display: none;
-	position:relative;
 	list-style-type: none; 
 }
 .verticalslider_contents li p{
@@ -1418,6 +1430,204 @@ background:#FFFFFF; border:1px solid #666666 !important; height:15px; width:15px
 	
 }
 
-.error{
-	color:red;
+.error_field{
+	border: 2px solid #cb6119 !important;
+}
+
+/*---- payment_page_css ---- */
+
+.inner_round_box{
+	float:left;
+	border-radius:10px;
+	border:1px solid #CCC;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	width:550px;
+	margin-bottom:10px;
+	margin-top:10px;
+	background-color:#F0F0E9;
+	padding:10px;
+
+}
+
+.inner_round_box b{
+	float:left;
+	width:100%;
+	font-size:16px !important;
+	font-weight:bold !important;
+	margin:0px !important;
+}
+
+.inner_round_box span{
+	float:left;
+	margin-top:10px;
+	line-height:18px;
+}
+
+.inner_round_box h4{
+	float:left;
+	width:100%;
+	font-size:12px !important;
+	font-weight:bold;
+	margin-top:10px;
+	margin-bottom:10px !important;
+}
+
+.inner_round_box h5{
+	float:left;
+	width:100%;
+	font-size:12px !important;
+	margin:0px !important;
+}
+
+.sign_up_box span{
+	float:left;
+	font-size:12px;
+	font-weight:bold;
+	width:98%;
+	border-bottom:1px solid #CCC;
+	padding:5px;
+}
+
+.payment_form, .paymeny_card_box{
+	float:left;
+	width:280px;
+	padding:10px;
+}
+
+.field select{
+	width:280px;
+	border:1px solid #CCC;
+}
+
+.card_type{
+	width:200px !important;
+	margin-left:6px;
+}
+
+.day{
+	width:50px !important;
+}
+
+.birthyear{
+	width:68px !important;
+}
+
+.question{
+	padding-top:10px;
+	border-top:1px solid #CCC;
+		
+}
+
+.question1{
+	padding-top:10px;
+	padding-bottom:10px;
+	border-bottom:1px solid #CCC;
+}
+
+.policies{
+	float:left;
+	width:96%;
+	padding:10px;
+	border:1px solid #CCC;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+}
+
+.policies_filed{
+	float:left;
+	width:94%;
+	padding:10px;
+}
+
+.policies_filed b{
+	float:left;
+	width:150px;
+	margin:0px !important;
+	font-size:14px;
+}
+
+.policies_filed span{
+	float:left;
+	width:390px;
+}
+
+
+.policies_filed a{
+	-webkit-border-radius: 4px 4px 4px 4px;
+	background: -moz-linear-gradient(center bottom , #8EAF32 22%, #AAC84A 81%) repeat scroll 0 0 transparent;
+	-moz-border-radius: 4px 4px 4px 4px;
+	background: -moz-linear-gradient(center bottom, #8eaf32 22%, #AAC84A 81%);
+	background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #8eaf32), color-stop(0.81, #AAC84A));
+	background: -moz-linear-gradient(center bottom, #8eaf32 22%, #AAC84A 81%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#8eaf32, endColorStr=#AAC84A);	
+	border: medium none;
+	color: #FFFFFF;
+	cursor: pointer;
+	float: left;
+	font-size: 16px;
+	font-weight: bold;
+	padding: 10px 20px 10px 20px;
+	text-align: center;
+}	
+
+
+.policies_filed a:hover{
+	text-decoration:none !important;
+	background-color:#8eaf32 !important;
+	-moz-border-radius: 4px 4px 4px 4px;
+	-webkit-border-radius: 4px 4px 4px 4px;
+	background: -moz-linear-gradient(center bottom, #8eaf32 22%, #8eaf32 81%);
+	background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #8eaf32), color-stop(0.81, #8eaf32));
+	background: -moz-linear-gradient(center bottom, #8eaf32 22%, #8eaf32 81%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#8eaf32, endColorStr=#8eaf32);	
+	width:auto !important;
+}
+
+
+
+.field, .follow_field{
+	float:left;
+	width:100%;
+	margin-bottom:10px;	
+}
+
+.follow_field{
+	float:left;
+	margin-top:50px !important ;
+}
+
+.follow_field a{
+	background:none !important;
+	padding:0px !important;
+	margin:0 20px 0 0 !important
+	
+}
+
+.follow_field a:hover{
+	background:none !important;
+}
+
+.follow_field label{
+	float:left;
+	width:100px;
+	margin-top:5px;
+	padding-left:8px;
+}
+
+
+
+.form{
+	float:left;
+	width:330px;
+}
+
+.register_form img{
+	float: left;
+	width: 214px;
+}
+
+.register_form i{
+	float: right;
+	font-size: 9px;
 }
