@@ -1311,7 +1311,7 @@ a:focus {
 .verticalslider_contents{float: left;
 	width: 500px;
 	display: inline; 
-	margin: 0px; padding: 0px;
+	margin: -40px; padding: 0px;
 }
 .verticalslider_contents li{
 	margin: 0px; 
