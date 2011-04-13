@@ -2,6 +2,7 @@ development:
  username: researchnation
  password: koala2011
  api_key: f5d05e11c8c1d186302829d79930e08a-us2
+ list_id: ad861311ae
  send_goodbye: false
  send_notify: false
  double_opt: false
@@ -9,6 +10,7 @@ development:
 production:
  username: researchnation
  password: koala2011
+ list_id: ad861311ae
  api_key: f5d05e11c8c1d186302829d79930e08a-us2
  send_goodbye: false
  send_notify: false

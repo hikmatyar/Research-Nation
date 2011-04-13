@@ -42,13 +42,6 @@ class User < ActiveRecord::Base
     return user if user.save
   end
 
-  def subscribe_to_newsletter
-    settings = YAML::load(File.open("#{RAILS_ROOT}/config/monkeywrench.yml"))
-    MonkeyWrench::Config.new(:datacenter => "us2", :apikey => settings[RAILS_ENV]['api_key'])
-    list = MonkeyWrench::List.find_by_name("Research Nation")
-    list.subscribe(self.email)
-  end
-
   def generate_token(length=6)
     chars = 'abcdefghjkmnpqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ23456789'
     token = ''

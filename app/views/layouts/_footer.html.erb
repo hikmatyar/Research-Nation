@@ -1,13 +1,16 @@
 <div class="footer_menu">
 	<ul>
-      <li><%= link_to "About Us", :controller => 'main', :action => 'about_us' %></li>
+      <a href="/main/how_it_works#about_us">About Us</a>
       <li><a href="#">Blog</a></li>
-      <li><%= link_to "FAQs", :controller => 'main', :action => 'faq' %></li>
-      <li><%= link_to "Contact Us", :controller => 'main', :action => 'contact_us' %></li>
+      <a href="/main/how_it_works#faqs">FAQs</a>
+      <a href="/main/how_it_works#contact_us">Contact Us</a>
+      <li><%= link_to "Privacy", :controller => 'main', :action => 'privacy' %></li>
       <li><%= link_to "Terms & Conditions", :controller => 'main', :action => 'terms_and_conditions' %></li>
     </ul>
     <ul class="footer_box">
       <li><span>Join us on:</span> <a href="#">Twitter</a><span> & </span><a href="#"> Facebook</a></li>
-      <li style="border:none !important; width:336px !important"><span style="margin-right:5px;">Sign up for:</span><input type="text" size="27" value="Enter Your Email Address" name="E-mail"></li>
+      <form name="subscribe" id="subscribe" method="post" action="/users/subscribe" >
+        <li style="border:none !important; width:336px !important"><span style="margin-right:5px;">Sign up for:</span><input type="text" size="27" value="Enter Your Email Address" name="E-mail"></li>
+        </form>
     </ul>
 </div>
