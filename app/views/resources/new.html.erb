@@ -11,41 +11,47 @@
     	<div class="register_form">
         <h2>1. Your Details </h2>
             <%= form_tag ( { :controller => "resources", :action => "post" }, :id => "user_form" ) %>
+                <div class="form">
+                    <div class="field">
+                        <label>Full Name</label>
+                        <%= text_field 'user', "name", :class => 'required min_len', :value => "#{@user.name if logged_in? }", :disabled => (logged_in? ? true : false), :min_length => 2, :size => 23 %>
+                    </div>
+                    <div class="field">
+                        <label>E-mail</label>
+                        <%= text_field 'user', 'email', :class => 'required email' , :disabled => (logged_in? ? true : false), :size => 23 %>
+                    </div>
+                    <div class="field">
+                        <label>Company*</label>
+                        <%= text_field 'user', 'company', :class => 'required', :size => 23 %>
+                    </div>
+                    <div class="field">
+                        <label>Title*</label>
+                        <%= text_field 'user', 'work', :class => 'required', :size => 23 %>
+                    </div>
+                    <div class="field">
+                        <label>Website</label>
+                        <%= text_field 'user', 'website', :size => 23 %>
+                    </div>
+                    <div class="field">
+                        <label>Contact*</label>
+                        <%= text_field 'user', 'contact', :class => 'required', :size => 23 %>
+                    </div>
+                    <div class="field">
+                        <label>LinkedIn</label>
+                        <%= text_field 'user', 'linked_in_profile', :size => 23 %>
+                    </div>
+                </div>
                 <a href="#" data-reveal-id="imageModal" id="abc"><img src="/images/sample_image.jpg" /></a>
                 <i>This is what your post will look like, once completed</i>
-                <div class="field">
-                    <label>Full Name</label>
-                    <%= text_field 'user', "name", :class => 'required min_len', :value => "#{@user.name if logged_in? }", :disabled => (logged_in? ? true : false), :min_length => 2%>
-                </div>
-                <div class="field">
-                    <label>E-mail</label>
-                    <%= text_field 'user', 'email', :class => 'required email' , :disabled => (logged_in? ? true : false) %>
-                </div>
-                <div class="field">
-                    <label>Company*</label>
-                    <%= text_field 'user', 'company', :class => 'required' %>
-                </div>
-                <div class="field">
-                    <label>Title*</label>
-                    <%= text_field 'user', 'work', :class => 'required' %>
-                </div>
-                <div class="field">
-                    <label>Website</label>
-                    <%= text_field 'user', 'website' %>
-                </div>
-                <div class="field">
-                    <label>Contact*</label>
-                    <%= text_field 'user', 'contact', :class => 'required' %>
-                </div>
-                <div class="field">
-                    <label>LinkedIn</label>
-                    <%= text_field 'user', 'linked_in_profile' %>
-                </div>
                 <div class="field">
                     <label>About You*</label>
                     <%= text_area 'user', 'about_me', :max_length => 700, :class => 'required max_len' %>
                     <h5>700</h5>
                 </div>
+                <div class="check_box">
+                    <input type="checkbox" value="" name="checkbox" checked="checked">
+                    <span>Please send me koala updates (via a newsletter) every now and then</span>
+                </div
         </div>
         <div class="sign_up_button"><%= submit_tag "Proceed to Next Step"%></div>
     </div>
@@ -65,12 +71,13 @@ show_text_count();
 
         $('#user_form').submit(function(){
             return validate_form();
-            false;
         });
     });
 
 </script>
+<!--
 <div id="imageModal" class="reveal-modal">
     <img src="/images/preview.png" width="1024" height="768" />
     <a class="close-reveal-modal">&#215;</a>
 </div>
+-->

@@ -110,7 +110,7 @@ a:focus {
 	width:100%;
 	margin-top:60px;
 	margin-bottom:60px;
-	text-align:center;	
+	text-align:left;
 }
 
 
@@ -626,23 +626,6 @@ a:focus {
 	padding:10px;
 }
 
-.register_form img{
-		float: left;
-    margin-top: 48px;
-    position: absolute;
-    right: 596px;
-    width: 184px;
-}
-
-.register_form i{
-	float: right;
-  font-size: 9px;
-  margin-top: 224px;
-  position: absolute;
-  right: 560px;
-  width: 215px;
-}
-
 .field{
 	float:left;
 	width:100%;
@@ -654,6 +637,7 @@ a:focus {
 	width:100px;
 	margin-top:5px;
 	padding-left:8px;
+	text-align:left;
 }
 
 .field input{
@@ -683,10 +667,11 @@ a:focus {
 	margin-left: 448px;
 	font-weight: bold;
 	font-size: 14px;
+	margin-bottom:0px;
 }
 .check_box{
 	float:left;
-	width:454px;
+	width:550px;
 }
 
 .check_box input{
@@ -695,9 +680,13 @@ a:focus {
 }
 
 .check_box span{
-	float:left;
-	padding-top:2px;
-	width:auto !important;
+	 border: 0 none !important;
+    float: left;
+    font-weight: normal !important;
+    padding-top: 3px;
+    position: relative;
+    width: 515px !important;
+
 }
 
 .sign_up_button{
@@ -897,6 +886,7 @@ a:focus {
 	height:445px;
 	border:1px solid #CCC;
 	overflow:hidden;
+	font-size:18px;
 }
 
 .summary p{
@@ -1156,10 +1146,6 @@ a:focus {
 	display:none !important;
 }
 
-#tabOne{
-	text-align:center;
-}
-
 .author{
   color: #245A83;
   float: left;
@@ -1240,6 +1226,10 @@ a:focus {
 	background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #8eaf32), color-stop(0.81, #8eaf32));
 	background: -moz-linear-gradient(center bottom, #8eaf32 22%, #8eaf32 81%);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#8eaf32, endColorStr=#8eaf32);	
+}
+
+.left_side p{
+	font-size:14px;
 }
 
 
@@ -1483,10 +1473,9 @@ background:#FFFFFF; border:1px solid #666666 !important; height:15px; width:15px
 .sign_up_box span{
 	float:left;
 	font-size:12px;
-	font-weight:bold;
-	width:98%;
+	width:380px !important;
 	border-bottom:1px solid #CCC;
-	padding:5px;
+	padding:3px;
 }
 
 .payment_form, .paymeny_card_box{
@@ -1584,8 +1573,6 @@ background:#FFFFFF; border:1px solid #666666 !important; height:15px; width:15px
 	width:auto !important;
 }
 
-
-
 .field, .follow_field{
 	float:left;
 	width:100%;
@@ -1624,10 +1611,92 @@ background:#FFFFFF; border:1px solid #666666 !important; height:15px; width:15px
 
 .register_form img{
 	float: left;
-	width: 214px;
+	width: 177px;
 }
 
 .register_form i{
-	float: right;
+	float: left;
 	font-size: 9px;
+	margin-top: 10px;
+}
+
+.facebook_like1, .facebook_like2, .facebook_like3 {
+    float: left;
+    margin-bottom: 10px;
+    width: 100%;
+}
+.facebook_like1 span, .facebook_like2 span, .facebook_like3 span {
+    float: left;
+    font-size: 14px;
+}
+.facebook_like1 a, .facebook_like2 a, .facebook_like3 a {
+    -moz-border-radius: 4px 4px 4px 4px;
+    background: -moz-linear-gradient(center bottom , #8EAF32 22%, #AAC84A 81%) repeat scroll 0 0 transparent;
+    border: medium none;
+    color: #FFFFFF;
+    cursor: pointer;
+    float: left;
+    font-size: 12px !important;
+    font-weight: normal !important;
+    margin-left: 20px !important;
+    padding: 3px !important;
+    text-align: center;
+}
+.field a {
+    -moz-border-radius: 4px 4px 4px 4px;
+    background: -moz-linear-gradient(center bottom , #8EAF32 22%, #AAC84A 81%) repeat scroll 0 0 transparent;
+    border: medium none;
+    color: #FFFFFF;
+    cursor: pointer;
+    float: left;
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 10px !important;
+    margin-right: 0 !important;
+    margin-top: 0 !important;
+    padding: 5px 10px !important;
+    text-align: center;
+}
+
+ .field a:hover{
+ text-decoration:none !important;
+ background-color:#8eaf32 !important;
+ background: -moz-linear-gradient(center bottom, #8eaf32 22%, #8eaf32 81%);
+ background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #8eaf32), color-stop(0.81, #8eaf32));
+ background: -moz-linear-gradient(center bottom, #8eaf32 22%, #8eaf32 81%);
+ filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#8eaf32, endColorStr=#8eaf32); 
+}
+
+.facebook_like1 a:hover, .facebook_like2 a:hover, .facebook_like3 a:hover{
+ text-decoration:none !important;
+ background-color:#8eaf32 !important;
+ background: -moz-linear-gradient(center bottom, #8eaf32 22%, #8eaf32 81%);
+ background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #8eaf32), color-stop(0.81, #8eaf32));
+ background: -moz-linear-gradient(center bottom, #8eaf32 22%, #8eaf32 81%);
+ filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#8eaf32, endColorStr=#8eaf32); 
+}
+
+.field b {
+  color: #245A83;
+  float: left;
+  font-size: 16px;
+  width: 540px;
+}
+
+.field p {
+  float: left;
+  margin-bottom: 30px;
+  margin-top: 5px;
+  width: 540px;
+}
+
+.field img {
+    float: left;
+    margin-right: 10px;
+}
+
+.footer_menu li input{
+	margin-top:-5px;
+	color: #848484;
+	font-size:12px;
 }
