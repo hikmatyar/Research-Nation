@@ -28,4 +28,7 @@ class ApplicationController < ActionController::Base
     return redirect_to(:controller => "users", :action =>"facebook_connect") unless logged_in?
   end
 
+  def production_env?
+    return RAILS_ENV == "production"
+  end
 end
