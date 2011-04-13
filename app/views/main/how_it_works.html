@@ -5,6 +5,17 @@ $("#textExample").verticaltabs({speed: 1,slideShow: false,activeIndex: 1});
 $("#imageExample").verticaltabs({speed: 1000,slideShow: true,slideShowSpeed: 3000,activeIndex: 0,playPausePos: "topRight"});
 selector = "#" + location.href.split("#")[1]
 $(selector).trigger('click');
+
+$("#toggle_views").click(function(){     
+    $('.benefit').toggle();
+    if ($(this).val()=="+"){
+      $(this).val("-");
+    }
+    else if ($(this).val()=="-")
+    {
+      $(this).val("+");
+    }
+});
 });
 </script>
 
@@ -252,11 +263,11 @@ experts online, so as to protect their privacy.</p>
       </li>
     </ul>
     <ul class="verticalslider_tabs right_side">
-      <b>Benefits</b>
-      <li><a href="#" id="entrepreneurs">Entrepreneurs</a></li>
-      <li><a href="#" id="freelancers">Freelancers & MBAs</a></li>
-      <li><a href="#" id="business">Small Businesses </a></li>
-      <li><a href="#" id="firms">Market Research Firms</a></li>
+      <b>Benefits <input type="button" name="toggle_view" value="-" id="toggle_views" /></b>
+      <li class="benefit"><a href="#" id="entrepreneurs">Entrepreneurs</a></li>
+      <li class="benefit"><a href="#" id="freelancers">Freelancers & MBAs</a></li>
+      <li class="benefit"><a href="#" id="business">Small Businesses </a></li>
+      <li class="benefit"><a href="#" id="firms">Market Research Firms</a></li>
       <br />
       <li class="features_link" ><a  id="features" href="#">Features</a></li>
       <li class="features_link" ><a id="faqs" href="#">FAQs</a></li>
