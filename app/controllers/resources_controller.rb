@@ -8,8 +8,7 @@ class ResourcesController < ApplicationController
   end
 
   def post
-      user = logged_in? ? (User.find(session[:user])) : (User.new(params[:user]))
-      user.update_attributes(params[:user]) if logged_in?
+      user = User.new params[:user]
       ( session[:user_details] = params[:user] and session[:post] = true ) unless logged_in?
       return redirect_to (:controller => 'users', :action => 'register' ) unless logged_in?
       return redirect_to :action => 'upload_docs'
