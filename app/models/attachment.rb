@@ -8,10 +8,10 @@ class Attachment < ActiveRecord::Base
       attachment.file_name = "File#{resource_id.to_s}_" + File.basename(file.path)
       attachment.attachment_type = attachment_type
       attachment.resource_id = resource_id
-      attachment.save
       if attachment.validate_file_size( file)
         attachment.upload_to_s3(file) if attachment_type == "original"
         attachment.upload_sample( file.path ) if attachment_type == "sample"
+        attachment.save
       else
         error = "File should be within specified limits"
       end
