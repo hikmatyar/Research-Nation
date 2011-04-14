@@ -1,3 +1,9 @@
+$('document').ready(function(){
+	$('.email').click(function(){
+		$(this).val("");
+		$(this).css("color","#000");
+	});
+});
 function showTab(value) 
 	{
 		if(value == "signup")

@@ -5,7 +5,7 @@
 	</div>
 	<div class="field">
 		<label>Email</label>
-		<%= text_field 'user', 'email' %>
+		<%= text_field 'user', 'email', :value => "#{params[:email]}" %>
 	</div>
 	<div class="sign_up_button"><%= submit_tag 'Subscribe' %></div>
 
