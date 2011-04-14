@@ -1,6 +1,7 @@
+
 # Filters added to this controller apply to all controllers in the application.
 # Likewise, all the methods added will be available for all controllers.
-
+require 'monkeywrench'
 class ApplicationController < ActionController::Base
 
   helper :all # include all helpers, all the time
@@ -8,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
-  helper_method :logged_in?
+  helper_method :logged_in?, :is_admin?
 
   def logged_in?
     return true unless session[:user].blank?
@@ -30,5 +31,12 @@ class ApplicationController < ActionController::Base
 
   def production_env?
     return RAILS_ENV == "production"
+  end
+
+  def get_mailchimp_list_members
+    settings = YAML::load(File.open("#{RAILS_ROOT}/config/monkeywrench.yml"))
+    MonkeyWrench::Config.new(:datacenter => "us2", :apikey => settings[RAILS_ENV]['api_key'])
+    list = MonkeyWrench::List.find_by_name("Research Nation")
+    return list.members(:full_details => true )
   end
 end
