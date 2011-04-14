@@ -1,0 +1,24 @@
+<div class="tab_container">
+<table border="0" cellspacing="10" cellpadding="10" id=" posts_table" align="left">
+  <tbody>
+    <tr>
+      <th><b>Title</b></th>
+      <th>Posted By</th>
+      <th>Price</th>
+      <th>Date</th>
+      <th></th>
+    </tr>
+    <% @posts.each do |post|%>
+      <tr>
+        <td><%= link_to post.title, :controller => 'posts', :action => 'edit', :id => post.id %></td>
+        <td ><%= post.user.name %></td>
+        <td ><%= post.selling_price %></td>
+        <td ><%= post.created_at.strftime("%B %d, %Y") %></td>
+        <td ><%= link_to 'Delete', { :controller => 'posts', :action => 'delete', :id => post.id }, :confirm => "Are you sure you want to delete this post?"  %>
+        </td> 
+      </tr>
+    <% end %>
+  <tbody>
+</table>
+<%= will_paginate @posts %>
+</div>

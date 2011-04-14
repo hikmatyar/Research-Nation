@@ -1,18 +1,23 @@
-<table border="0" cellspacing="5px" cellpadding="5px" id="users_table">
+<div class="tab_container">
+  <table border="0" cellspacing="5px" cellpadding="5px" id="users_table" >
   <tbody>
     <tr>
       <th>Name</th>
       <th>Email</th>
-      <th>Is_Admin?</th>
-      <th>Change Admin Status</th>
+      <th>Title</th>
+      <th>Company</th>
+      <th>Date Signed Up</th>
     </tr>
-    <% users.each do |user|%>
+    <% @users.each do |user|%>
       <tr>
-        <td><%= user.first_name + " " + user.last_name %></td>
-        <td ><%= user.email%></td>
-        <td ><%= user.is_admin?%></td>
-        <%= render :partial => "is_admin_field", :locals => {:user => user}%>
+        <td><%=link_to user.name, :controller => 'users', :action => 'edit', :id => user.id %></td>
+        <td ><%= user.email %></td>
+        <td ><%= user.work %></td>
+        <td ><%= user.company %></td>
+        <td ><%= user.created_at.strftime("%B %d, %Y") %></td>
       </tr>
     <% end %>
   <tbody>
-</table>
+  </table>
+  <%= will_paginate @users %>
+</div>
