@@ -7,11 +7,13 @@
 		<a href="#" onclick="showTab('signup');" style="" class="sign_up" id="tab2">Sign Up</a>
 		<a href="#" onclick="showTab('login');" class="login" id="tab1">Log In</a>
 		<div style="display: block;" class="sign_up_box" id="tabOne">
+<!--
 		<div class="facebook_box">
 		<b>Sign up using Facebook:</b>
 			<%= link_to image_tag("facebook_connect.jpg"), :controller => 'users', :action => 'facebook_connect'%>
 		</div>
 		<b>Or standard sign up: </b>
+-->
 		<div class="register_form">
 
 		<% form_for(@user , :url => {:controller => "users", :action => "create" } ) do |f| %>
@@ -39,11 +41,14 @@
 		</div>
 		<% end %>
 		<div style="display: none;" class="login_tab_box" id="tabTwo">
+<!--
 		<div class="facebook_box">
 		<b>Sign in using Facebook:</b>
 		<%= link_to image_tag("facebook_connect.jpg"), :controller => 'users', :action => 'facebook_connect'%>
 		</div>
+
 		<b>Or standard sign in:</b>
+-->
 		<div class="register_form">
 		<%= form_tag :controller => "users", :action => "authenticate", :opt => 'login' %>
 		<div class="field">

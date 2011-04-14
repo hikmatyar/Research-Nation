@@ -1,33 +1,27 @@
-<%= error_messages_for :user %>
-<div style="color:red"><%= flash[:error] %></div>
-<div class="wrapper" id="page">
-	<div id="narrowPage">
-    <h1>Edit Profile</h1>
-    <%= form_tag :controller => 'users', :action => 'update', :id => @user.id %>
-	    <div class="input text">
-        <label for="user_name">Name</label>
-        <label style="display: inline;" class="firstName overlay" for="user_first_name">First Name</label>
-        <%= text_field 'user', 'first_name', :class => "firstName overlay" %>
-	      <label style="display: inline;" class="lastName overlay" for="user_last_name">Last Name</label>
-        <%= text_field 'user', 'last_name', :class => "lastName overlay" %>
-      </div>
-	    <div class="input text">
-        <label for="user_company">Company (optional)</label>
-        <%= text_field 'user', 'company' %>
-      </div>
-	    <div class="input text">
-        <label for="user_email">E-mail Address</label>
-        <%= text_field 'user', 'email' %>
-      </div>
-      <div class="input password">
-        <label for="linkedin_profile">Linked Public Profile Url</label>
-		    <%= text_field 'user', 'linked_in_profile' %>
-      </div>
-	    <div class="submit">
-	      <%= submit_tag 'Update' %>
-      </div>
-    </form>
-	</div>
-  <div style="clear: both;"></div>
-</div>
 
+<div class="register_form">
+<h2>Edit User Details Here</h2>
+<% form_for(@user , :url => {:controller => "users", :action => "update", :id => @user.id } ) do |f| %>
+		<div class="field">
+		<label>Frist Name</label>
+		<%= f.text_field 'first_name', :id => "first_name" %>
+		</div>
+		<div class="field">
+		<label>Last Name</label>
+		<%= f.text_field 'last_name', :id => "last_name" %>
+		</div>
+		<div class="field">
+		<label>E-mail</label>
+		<%= f.text_field 'email', :id => "email" %>
+		</div>
+		<div class="field">
+		<label>Title</label>
+		<%= f.text_field 'work' %>
+		</div>
+		<div class="field">
+		<label>Company</label>
+		<%= f.text_field 'company' %>
+		</div>
+		<div class="sign_up_button"><%= submit_tag 'Update'%></div>
+		<% end %>
+</div>
