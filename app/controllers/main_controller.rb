@@ -33,7 +33,7 @@ class MainController < ApplicationController
   end
 
   def send_mail_to_seller
-    recipient = params[:email]
+    recipient = User.find_by_email params[:email]
     mail_body = params[:contact]
 
     if PostMailer.deliver_post_email(mail_body["name"], mail_body["email"], mail_body["subject"], mail_body["message"], recipient)

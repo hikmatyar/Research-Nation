@@ -20,22 +20,6 @@ class ResourcesController < ApplicationController
     @sample = @resource.attachments.sample.first
   end
 
-  def delete
-    resource = Resource.find(params[:id])
-    resource.destroy
-    @resources = Resource.paginate :page => params[:page], :order => 'created_at DESC'
-    render :layout => false
-  end
-
-  def edit
-    @resource = Resource.find(params[:id])
-  end
-
-  def view_posts
-    @user = User.find(session[:user]) if logged_in?
-    @resources = Resource.paginate :page => params[:page], :order => 'created_at DESC'
-  end
-
   def create_post
 
     if logged_in?
@@ -55,15 +39,40 @@ class ResourcesController < ApplicationController
     end
   end
 
+  def edit
+    @resource = Resource.find(params[:id])
+  end
+
+  def view_posts
+    @user = User.find(session[:user]) if logged_in?
+    @resources = Resource.paginate :page => params[:page], :order => 'created_at DESC'
+  end
+
   def update
     resource = Resource.find(params[:id])
+
     if resource.update_attributes(params[:resource])
+      user = User.find resource.user.id
+      user.update_attribute(:about_me => params[:about_me])
       flash[:success] = "The Post was updated successfully."
     else
       flash[:error] = "Unable to update post."
     end
     return redirect_to :controller => 'main', :action => 'index'
 
+  end
+
+  def delete
+    resource = Resource.find(params[:id])
+    resource.destroy
+    @resources = Resource.paginate :page => params[:page], :order => 'created_at DESC'
+    return redirect_to :controller => 'admin', :action => 'dashboard'
+  end
+
+  def add_vote
+    vote = Vote.new
+    vote.resource_id = params[:resource]
+    vote.user_id = session[:user]
   end
 
   def payment

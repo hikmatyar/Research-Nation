@@ -1,0 +1,12 @@
+<div class="register_form">
+<h3>Add Review</h3>
+<% form_for(@review, :url => {:controller => "resources", :action => "save_review", :resource => params[:resource] }) do |f| %>
+  <div class="field">
+    <label for = "title">Title</label>
+    <%= f.text_area 'review' %>
+  </div>
+  <div class="sign_up_button">
+    <%= f.submit 'Add' %>
+  </div>
+<% end %>
+</div>
