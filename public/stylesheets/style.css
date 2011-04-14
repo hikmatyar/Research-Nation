@@ -110,7 +110,7 @@ a:focus {
 	width:100%;
 	margin-top:60px;
 	margin-bottom:60px;
-	text-align:left;
+	text-align:center;
 }
 
 
@@ -152,7 +152,7 @@ a:focus {
 	float:left !important;
 	width:auto !important;	
 	margin-left:20px;
-	margin-right:20px;
+	margin-right:10px;
 }
 
 .main_menu a:hover {
@@ -233,6 +233,7 @@ a:focus {
 .box1, .box2, .box3{
 	float:left;
 	width: 357px;
+	height:339px;
 	border-right:1px solid #CCC;
 	padding:10px;	
 }
@@ -270,6 +271,7 @@ a:focus {
 	border: 0 none;
   float: left;
   margin-right: 10px;
+  width:65px;
 }
 
 .category b{
@@ -292,6 +294,7 @@ a:focus {
   background-repeat: no-repeat;
   float: left;
   width: 360px;
+  padding:13px 0px;
 }
 
 .category a:hover {
@@ -361,7 +364,7 @@ a:focus {
 }
 
 .footer_box li{
-	width:185px !important;
+	width:206px !important;
 	margin-bottom:40px;
 	
 }
@@ -373,7 +376,7 @@ a:focus {
 .footer_box span{
 	float:left;
 	color:#848484;
-	margin-left:3px;	
+	margin-left:14px;	
 }
 
 
@@ -1182,6 +1185,7 @@ a:focus {
     float:right !important;
     position:relative;
     top:-35px;
+    margin-left:10px;
 }
 
 
@@ -1198,7 +1202,8 @@ a:focus {
 }
 .left_side{
 		float:left !important;
-		width:640px !important;
+		width:570px !important;
+		padding:0 22px !important
 }
 
 .left_side a{
@@ -1248,7 +1253,7 @@ a:focus {
 }
 
 /* Container */
-.verticalslider {  width: 940px; margin: 0 auto; margin-top: 25px; }
+.verticalslider {  width: 1024px; margin: 0 auto; margin-top: 25px; }
 
 
 /* Tabs */
@@ -1274,11 +1279,9 @@ a:focus {
   background-color: #E5E5E5;
 }
 .verticalslider_tabs b{
-	bottom: 10px;
-	left: 6px;
-	position: relative;
-	top: 0;
 	width: 100%;
+	float:left;
+	margin-bottom:5px;
 }
 .verticalslider_tabs a:link, .verticalslider_tabs a:visited{
 	display: block; 
@@ -1308,10 +1311,11 @@ a:focus {
 }
 
 /* Contents */
-.verticalslider_contents{float: left;
+.verticalslider_contents{
+	float: left;
 	width: 500px;
 	display: inline; 
-	margin: -40px; padding: 0px;
+	padding: 0px;
 }
 .verticalslider_contents li{
 	margin: 0px; 
@@ -1346,6 +1350,11 @@ a:focus {
 
 .contact_us_link{
 	border:0px !important;
+}
+
+.guidelines_box{
+	border-bottom:1px sold #e3e3e3;
+	border-top:0px !important;
 }
 
 .field h2{
@@ -1699,4 +1708,105 @@ background:#FFFFFF; border:1px solid #666666 !important; height:15px; width:15px
 	margin-top:-5px;
 	color: #848484;
 	font-size:12px;
+}
+
+/*--- admin_dashbord---- */
+
+ul.tabs {
+	margin: 0;
+	padding: 0;
+	float: left;
+	list-style: none;
+	height: 32px; /*--Set height of tabs--*/
+	border-bottom: 1px solid #999;
+	border-left: 1px solid #999;
+	width: 100%;
+}
+ul.tabs li {
+	float: left;
+	margin: 0;
+	padding: 0;
+	height: 31px; /*--Subtract 1px from the height of the unordered list--*/
+	line-height: 31px; /*--Vertically aligns the text within the tab--*/
+	border: 1px solid #999;
+	border-left: none;
+	margin-bottom: -1px; /*--Pull the list item down 1px--*/
+	overflow: hidden;
+	position: relative;
+	background: #e0e0e0;
+}
+ul.tabs li a {
+	text-decoration: none;
+	color: #000;
+	display: block;
+	font-size: 1.2em;
+	padding: 0 20px;
+	border: 1px solid #fff; /*--Gives the bevel look with a 1px white border inside the list item--*/
+	outline: none;
+}
+ul.tabs li a:hover {
+	background: #ccc;
+}
+html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that the active tab does not listen to the hover properties--*/
+	background: #fff;
+	border-bottom: 1px solid #fff; /*--Makes the active tab look like it's connected with its content--*/
+}
+
+.tab_container {
+	border: 1px solid #999;
+	border-top: none;
+	overflow: hidden;
+	clear: both;
+	float: left; width: 100%;
+	background: #fff;
+}
+.tab_content {
+	font-size: 1.2em;
+	float:left;
+	text-align:left;
+}
+
+.users_table, .user_detail{
+	float:left;
+	width:100%;
+	padding:10px;
+}
+
+.users_table ul{
+	margin:0px;
+	padding:0px;
+}
+
+.users_table li{
+	float:left;
+	list-style:none;
+	list-style-type:none
+}
+
+.name{
+	width:250px;
+}
+.title_company{
+	width:470px;
+}
+.edit_post{
+	width:150px;
+}
+.delete_post{
+	width:100px;
+}
+
+.pagination{
+	width:100%;
+	text-align:center;
+	margin:10px 0px 10px;
+}
+
+#toggle_views{
+	float: right;
+}
+
+
+.faq{
+	border:0px !important;
 }
