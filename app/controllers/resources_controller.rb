@@ -28,8 +28,8 @@ class ResourcesController < ApplicationController
       user.update_attributes(session[:user_details])
       resource.user_id = session[:user]
       if resource.save
-        Attachment.add_file( params[:sample], resource.id, "sample" ) unless params[:sample].blank?
-        Attachment.add_file( params[:original], resource.id, "original" )
+        Attachment.add_file(params[:sample], resource.id, "sample") unless params[:sample].blank?
+        Attachment.add_file(params[:original], resource.id, "original")  unless params[:original].blank?
         session[:user_details] = nil
         session[:post] = nil
         return redirect_to :action => 'seller_page', :id => resource.id
