@@ -1797,7 +1797,7 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 }
 
 .pagination{
-	width:100%;
+	width:57%;
 	text-align:center;
 	margin:10px 0px 10px;
 }
@@ -1809,4 +1809,133 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 
 .faq{
 	border:0px !important;
+}
+
+/*-- download page css --- */
+
+.download_box{
+	float:left;
+	width:100%;
+	margin-bottom:10px;
+}
+
+.spread img{
+	border:0px;
+}
+
+.heading{
+	float:left;
+	width:100%;
+	margin-bottom:10px;
+}
+
+.heading h2{
+	float:left;
+	font-size:24px;
+	margin-bottom:20px;
+}
+
+.download_image{
+	float:left;
+	width:135px;
+	text-align:center;
+}
+
+.download_image img{
+	float:left;
+	width:128px;
+	height:128px;
+	border:1px solid #CCC;
+}
+
+.download_image i{
+	width:150px;
+	text-align:center;
+	float:left;
+	margin-top:8px;
+}
+
+.download_text{
+	float:left;
+	width:480px;
+}
+
+.download_text b{
+	float:left;
+	width:70%;
+	font-size:18px;
+	margin-left:10px;
+}
+
+.download_text span{
+	float:left;
+	width:70%;
+	font-size:14px;
+	margin-left:10px;
+}
+.spread{
+	float:left;
+	width:100%;
+	margin-top:10px;
+}
+
+.spread h2{
+	margin-bottom:20px;
+	font-size:24px;
+}
+
+.spread a{
+	margin-right:8px;
+}
+
+
+.error_image{
+	float:left;
+	width:450px;
+}
+.error_text{
+	float:left;
+	width:500px;
+}
+
+.error_text h1{
+	float:left;
+	text-align:left !important;
+	font-size:150px;
+}
+
+.error_text h2{
+	float:left;
+	width:100%;
+	text-align:left !important;
+	font-size:72px;
+}
+
+.error_text h3 {
+    float: left;
+    font-size: 36px;
+    font-weight: bold;
+    text-align: left !important;
+    width: 100%;
+		line-height:0px !important;
+		margin-bottom:0px;
+}
+
+.error_text h4 {
+    float: left;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: left !important;
+    width: 100%;
+		line-height:0px !important;
+		margin-bottom:0px;
+}
+
+.flash{
+	  -moz-border-radius: 4px 4px 4px 4px;
+    background-color: #F5F69B;
+    color: #245B83 !important;
+    padding: 14px !important;
+    width: 250px;background-color: #F5F69B;
+    margin:10px;
 }

@@ -18,18 +18,12 @@
 	    <%= render :partial => '/layouts/header'%>
 			<div class="content">
 				<div style="margin-top: 20px; clear:both;" class="resource_buttons">
-					<a href="browse.html" style="font-size:1.2em; padding:2px !important; margin-left:10px;" >Google Analytics</a>
+					<a target="_blank" href="http://google.com/analytics" style="font-size:1.2em; padding:2px !important; margin-left:10px;" >Google Analytics</a>
 				</div>
 				<div style="margin-top: 20px;" class="resource_buttons">
-					<a href="browse.html" style="font-size:1.2em; padding:2px !important;" >Admin E-mail</a>
+					<a target="_blank" href="http://google.com/a/researchnation.net" style="font-size:1.2em; padding:2px !important;" >Admin E-mail</a>
+						<a target="_blank" href="http://mailchimp.com" style="font-size:1.2em; padding:2px !important;" >MailChimp</a>
 				</div>
-				<ul class="tabs">
-          <li><%= link_to "Users (#{User.count})", { :controller => 'admin', :action => 'users' }  %></li>
-          <li><%= link_to "Posts (#{Resource.count})", :controller => 'admin', :action => 'posts' %></li>
-          <li><%= link_to "Admin Rights (#{})", { :controller => 'admin', :action => 'admin_rights'} , { :id => 'admin_rights' }%></li>
-          <li><%= link_to "Mailchimp", :controller => 'admin', :action => 'mail_chimp_list' %></li>
-          <li><a href="#">Payments</a></li>
-        </ul>
       	<%= yield %>
     	</div>
     <%= render :partial => '/layouts/footer'%>

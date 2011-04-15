@@ -11,10 +11,10 @@ function validate_form(){
 	});
 
 	jQuery(".email").each(function(){
-		if (!(jQuery(this).hasClass("error_field")) && jQuery(this).val() != jQuery(this).val().match(/^([^\s]+)((?:[-a-z0-9]\.)[a-z]{2,})/)[0]){
-		  jQuery(this).after("<span class='error'>Please enter a valid email address</span>");
-		  jQuery(this).addClass("error_field");
-	  }
+
+		if (!(jQuery(this).hasClass("error_field"))){
+					validate_email(jQuery(this), jQuery(this).val());
+				}
 	});
 
 	jQuery(".max_len").each(function(){
@@ -24,6 +24,7 @@ function validate_form(){
 			jQuery(this).addClass("error_field");
 		}
 	});
+
 jQuery(".file").each(function(){
 		
 		file_name = jQuery(this).val();
@@ -33,6 +34,7 @@ jQuery(".file").each(function(){
 			jQuery(this).addClass("error_field");
 		}
 	});
+
 	jQuery(".min_len").each(function(){
 		len = Number(jQuery(this).attr("min_length"));
 		if (jQuery(this).val().length < len){
@@ -62,4 +64,14 @@ jQuery(".file").each(function(){
 		image = '<img src="/images/loading_bar.gif" />'
 		jQuery('.register_form').append(image);
 	}
+}
+
+function validate_email(element, email) {
+   var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+   var address = email
+   if(reg.test(address) == false) {
+      jQuery(element).after("<span class='error'>Please enter a valid email address</span>");
+			jQuery(element).addClass("error_field");
+      return false;
+   }
 }

@@ -1,8 +1,16 @@
 $('document').ready(function(){
-	$('.email').click(function(){
+	if($('.email_address')){
+	$('.email_address').click(function(){
 		$(this).val("");
 		$(this).css("color","#000");
 	});
+	$("form").submit(function(){
+    if ($(".email_address").val()==""){
+    	$('.email_address').addClass("error_field");
+    	return false;	
+    }
+});
+	}
 });
 function showTab(value) 
 	{
