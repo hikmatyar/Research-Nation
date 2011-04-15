@@ -1,3 +1,4 @@
+<%= render :partial => 'admin_links' %>
 <div class="tab_container">
   <table border="0" cellspacing="5px" cellpadding="5px" id="users_table" >
   <tbody>
@@ -8,15 +9,17 @@
       <th>Title</th>
       <th>Company</th>
       <th>Date Signed Up</th>
+      <th>Post Count</th>
     </tr>
     <% @users.each_with_index do |user, index|%>
       <tr>
-        <td><%= (@users_count - index ).to_s %></td>
+        <td><%= @experts_count - index %></td>
         <td><%= user.name %></td>
         <td ><%= user.email %></td>
         <td ><%= user.work %></td>
         <td ><%= user.company %></td>
         <td ><%= user.created_at.strftime("%B %d, %Y") %></td>
+        <td><%= link_to user.resources.count, :controller => 'users', :action => 'resources_list', :id => user.id %></td>
       </tr>
     <% end %>
   <tbody>

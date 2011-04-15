@@ -1,8 +1,2 @@
-<script type="text/javascript" language="javascript" charset="utf-8">
-
-	$(document).ready(function() {
-			$('#admin_rights').text("Admin Rights(<%= @admin_count %>)");
-	});
-
-</script>
+<%= render :partial => 'admin_links' %>
 <%= render :partial => 'users' %>

@@ -1,0 +1,8 @@
+<ul class="tabs">
+  <li><%= link_to "Users (#{@users_count})", { :controller => 'admin', :action => 'users' }  %></li>
+  <li><%= link_to "Posts (#{@resources_count})", :controller => 'admin', :action => 'posts' %></li>
+  <li><%= link_to "Experts (#{@experts_count})", { :controller => 'admin', :action => 'experts' }  %></li>
+  <li><%= link_to "Admin Rights (#{@admin_count})", { :controller => 'admin', :action => 'admin_rights'} , { :id => 'admin_rights' }%></li>
+  <li><%= link_to "Mailchimp (#{@memebers_count})", :controller => 'admin', :action => 'mail_chimp_list' %></li>
+  <li><a href="#">Payments</a></li>
+</ul>

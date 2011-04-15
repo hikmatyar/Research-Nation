@@ -1,16 +1,17 @@
+<%= render :partial => 'admin_links' %>
 <div class="tab_container">
 <table border="0" cellspacing="5px" cellpadding="5px" id="mail_chimp_list_table">
   <tbody>
     <tr>
-
+      <th>No.</th>
       <th>First Name</th>
       <th>Last Name</th>
       <th>Email Address</th>
       <th>Subscribed At</th>
     </tr>
-    <% @members.each do |m|%>
+    <% @members.each_with_index do |m, index|%>
       <tr>
-
+        <td><%= @memebers_count - index %></td>
         <td><%= m.FNAME %></td>
         <td><%= m.LNAME %></td>
         <td><%= m.email %></td>
