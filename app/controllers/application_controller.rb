@@ -39,4 +39,19 @@ class ApplicationController < ActionController::Base
     list = MonkeyWrench::List.find_by_name("Research Nation")
     return list.members(:full_details => true )
   end
+
+  def subscribe_to_newsletter user
+    settings = YAML::load(File.open("#{RAILS_ROOT}/config/monkeywrench.yml"))
+    url = URI.parse "http://us2.api.mailchimp.com/1.3/?method=listSubscribe&apikey=#{settings[RAILS_ENV]['api_key']}&id=#{settings[RAILS_ENV]['list_id']}&email_address=#{user.email}&merge_vars[FNAME]=#{user.first_name}&merge_vars[LNAME]=#{user.last_name}&double_optin=false&send_welcome=true&output=json"
+
+      http = Net::HTTP.new(url.host, url.port)
+      http.use_ssl = (url.scheme == 'https')
+
+      tmp_url = url.path+"?"+url.query
+      request = Net::HTTP::Get.new(tmp_url)
+      response = http.request(request)
+      data = response.body
+      flash.now[:notice] = "You are now subscribed to Research Nation Newsletters" if data == "true"
+      flash.now[:error] = "An error occured" unless data == "true"
+  end
 end
