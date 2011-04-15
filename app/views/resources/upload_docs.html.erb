@@ -39,7 +39,7 @@
                     <input type="hidden" name="original_file_name" value="" id="original_file_name" />
                     <input type="hidden" name="sample_file_name" value="" id="sample_file_name" />
                     <div class="check_box">
-                      <input type="checkbox" value="" name="checkbox" checked="checked">
+                      <input type="checkbox" value="true" name="checkbox" checked="checked">
                       <span>For individuals only: check this box if you want to get added to our expert database (completely private, and we share your information with your permission only). Click here to see more details on how it works</span>
                     </div>
             </div>
@@ -71,5 +71,8 @@
             $("#sample_file_name").val($(this).val());
         });
     });
+    $('input:checkbox').click(function(){
+        $(this).val($(this).attr("checked"));
+    })
 
 </script>

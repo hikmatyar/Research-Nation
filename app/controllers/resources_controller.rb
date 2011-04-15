@@ -25,6 +25,7 @@ class ResourcesController < ApplicationController
     if logged_in?
       resource = Resource.new(params[:resource])
       user = User.find session[:user]
+      user.update_attributes(:is_expert => (params[:checkbox]=="true"? true : false ))
       user.update_attributes(session[:user_details])
       resource.user_id = session[:user]
       if resource.save
@@ -32,6 +33,7 @@ class ResourcesController < ApplicationController
         Attachment.add_file(params[:original], resource.id, "original")  unless params[:original].blank?
         session[:user_details] = nil
         session[:post] = nil
+        flash[:success] = "Thank you! Your post has been created"
         return redirect_to :action => 'seller_page', :id => resource.id
       end
     else
@@ -41,6 +43,7 @@ class ResourcesController < ApplicationController
 
   def edit
     @resource = Resource.find(params[:id])
+    @user = User.find(params[:user])
   end
 
   def view_posts
@@ -52,13 +55,13 @@ class ResourcesController < ApplicationController
     resource = Resource.find(params[:id])
 
     if resource.update_attributes(params[:resource])
-      user = User.find resource.user.id
-      user.update_attribute(:about_me => params[:about_me])
+      user = User.find(params[:user_id])
+      user.update_attributes(params[:user])
       flash[:success] = "The Post was updated successfully."
     else
       flash[:error] = "Unable to update post."
     end
-    return redirect_to :controller => 'main', :action => 'index'
+    return redirect_to :controller => 'admin', :action => 'posts'
 
   end
 
@@ -78,5 +81,10 @@ class ResourcesController < ApplicationController
   def payment
     @resource = Resource.find params[:id]
   end
-
+  
+  def remove_sample
+    sample = Attachment.find params[:id]
+    sample.remove_doc
+    return redirect_to :controller => 'admin', :action => 'dashboard'
+  end
 end

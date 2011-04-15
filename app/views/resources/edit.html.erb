@@ -1,24 +1,54 @@
+<div class="sign_up_box">
 <div class="register_form">
 <h3>Edit the post here</h3>
-<% form_for(@resource, :url => {:controller => "resources", :action => "update", :id => @resource.id }) do |f| %>
+<%= form_tag :controller => "resources", :action => "update", :id => @resource.id, :user_id => @user.id  %>
   <div class="field">
     <label for = "title">Title</label>
-    <%= f.text_field 'title', :class => "firstName overlay" %>
+    <%= text_field 'resource', 'title'%>
   </div>
   <div class="field">
     <label for="selling_price">Selling Price</label>
-    <%= f.text_field 'selling_price' %>
+    <%= text_field 'resource', 'selling_price'%>
   </div>
   <div class="field">
     <label for="summary">Summary</label>
-    <%= f.text_area 'description' %>
+    <%= text_area 'resource', 'description'%>
+  </div>
+  <div class="field">
+    <label for="website">Website</label>
+    <%= text_field 'user', 'website'%>
+  </div>
+  <div class="field">
+    <label for="contact">Contact</label>
+    <%= text_field 'user', 'contact'%>
+  </div>
+  <div class="field">
+    <label for="linkedin">Linkedin </label>
+    <%= text_field 'user', 'linked_in_profile'%>
   </div>
   <div class="field">
     <label for="about_seller">About Seller</label>
-    <%= text_area_tag 'about_me', "#{@resource.user.about_me}"  %>
+    <%= text_area 'user', 'about_me'%>
   </div>
-  <div class="sign_up_button">
-    <%= f.submit 'Update' %>
+  <div class="field">
+    <label for="title">Title</label>
+    <%= text_field 'user', 'work'%>
   </div>
-<% end %>
+  <div class="field">
+    <label for="company">Company</label>
+    <%= text_field 'user', 'company'%>
+  </div>
+  <% unless @resource.attachments.sample.blank? %>
+  <div class="sample">
+    <p>Sample : <%= @resource.attachments.sample.first.file_name %> </p>
+    <%= link_to "Delete", :controller => 'resources', :action => 'remove_sample', :id => @resource.attachments.sample.first.id %>
+  <% end %>
+  </div>
+  <b>Expert : <%= check_box_tag 'expert', "#{@resource.user.is_expert}", @resource.user.is_expert %></b>
+  
+
+</div>
+<div class="sign_up_button">
+  <%= submit_tag 'Update' %>
+</div>
 </div>

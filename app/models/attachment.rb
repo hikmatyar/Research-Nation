@@ -46,6 +46,16 @@ class Attachment < ActiveRecord::Base
     self.document_id = doc.id
   end
 
+  def remove_doc
+    Scribd::API.instance.key = '1giabk0f2hynsdgi6xhkf'
+    Scribd::API.instance.secret = 'sec-aaaywibb8rd32862k7aylqtfhw'
+    Scribd::User.login 'usmanalikr', '@scribd.com'
+    doc = Scribd::Document.find self.document_id
+    if doc.destroy
+      self.destroy
+    end
+  end
+
   def validate_file_size( file )
 
     size = File.size file.path
