@@ -10,7 +10,7 @@ class UserMailer < ActionMailer::Base
                    :email => email
     sent_on Time.now
   end
-  
+
   def password_reset_email(user, token)
 
       recipients   user.email
@@ -21,4 +21,5 @@ class UserMailer < ActionMailer::Base
                    :url => "http://amazing.pk/users/new_password/#{user.id}?email=#{user.email}&token=#{token}"
     sent_on Time.now
   end
+
 end

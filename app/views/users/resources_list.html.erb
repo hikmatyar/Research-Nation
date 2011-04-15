@@ -1,0 +1,17 @@
+<div class="tab_container">
+  <table border="0" cellspacing="5px" cellpadding="5px" id="resources_table" >
+  <tbody>
+    <tr>
+      <th>Title</th>
+      <th>Date Created</th>
+    </tr>
+    <% @resources.each do |resource |%>
+      <tr>
+        <td><%= link_to resource.title, :controller => 'resources', :action => 'edit', :id => resource.id, :user => resource.user.id %></td>
+        <td ><%= resource.created_at.strftime("%B %d, %Y") %></td>
+
+      </tr>
+    <% end %>
+  <tbody>
+  </table>
+</div>

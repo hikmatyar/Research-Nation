@@ -51,7 +51,7 @@ class UsersController < ApplicationController
         user["company"] = user_data_obj["work"][0]["employer"]["name"] unless user_data_obj["work"].blank?
 
         if ( new_user = User.create_facebook_user user)
-          new_user.subscribe_to_newsletter
+          return redirect_to :action => "subscribe_newsletter", :user =>  params[:user] if params["get_updates"]=="yes"
           session[:user] = new_user.id
         end
         return redirect_to :controller => 'resources', :action => 'upload_docs' if session[:post]
@@ -65,15 +65,12 @@ class UsersController < ApplicationController
     @user_type = params[:user_type]? params[:user_type] : "normal"
   end
 
-  def login
-  end
-
   def create
     @user = User.new(params[:user])
     if @user.save
       session[:user] = @user.id
       UserMailer.deliver_registration_email(@user.first_name, @user.last_name, @user.email)
-      @user.subscribe_to_newsletter if params["get_updates"]=="yes"
+      subscribe_to_newsletter @user if params["get_updates"]=="yes"
       return redirect_to :controller => 'resources', :action => 'upload_docs' if session[:post]
       return redirect_to :controller => "resources", :action => "view_posts"
     end
@@ -89,7 +86,7 @@ class UsersController < ApplicationController
     @user = User.find_by_id(params[:id])
     if @user.update_attributes params[:user]
       flash[:success] = "User details Updated"
-      redirect_to :controller => 'main', :action => 'index'
+      redirect_to :controller => 'admin', :action => 'users'
     else
       flash[:error] = "Unable to update User Details"
       render :action => 'edit', :id => params[:id]
@@ -97,6 +94,7 @@ class UsersController < ApplicationController
   end
 
   def authenticate
+    flash[:error] = ""
     @user = User.new(params[:login])
     valid_user = User.find(:first,:conditions => ["email = ? and password = ?", @user.email, @user.password])
     if valid_user
@@ -105,7 +103,7 @@ class UsersController < ApplicationController
       return redirect_to :controller => 'resources', :action => 'upload_docs' if session[:post]
       return redirect_to :controller => 'resources', :action => 'view_posts'
     else
-      flash[:error] = "Invalid username/password"
+      flash[:error] = "Oops! Something wrong with your username/password"
       render :action => 'register', :opt => 'login'
     end
   end
@@ -117,6 +115,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def resources_list
+    user = User.find params[:id]
+    @resources = user.resources
+  end
   def facebook_user
     @user = User.find_by_facebook_uid params[:id]
   end
@@ -124,8 +126,9 @@ class UsersController < ApplicationController
   def forgot_password
 
     if request.post?
-      user = User.find_by_email params[:email]
-      flash[:error] = "Could not find User with email #{params[:email]}" if user.blank?
+      flash[:error] = ""
+      user = User.find_by_email params[:email_address]
+      flash[:error] = "Oops! Please try again" if user.blank?
       unless user.blank?
         session[:token]=user.generate_token
         UserMailer.deliver_password_reset_email(user, session[:token])
@@ -147,21 +150,9 @@ class UsersController < ApplicationController
   end
 
   def subscribe_newsletter
-
-    user = User.new(params[:user])
-    settings = YAML::load(File.open("#{RAILS_ROOT}/config/monkeywrench.yml"))
-    url = URI.parse "http://us2.api.mailchimp.com/1.3/?method=listSubscribe&apikey=#{settings[RAILS_ENV]['api_key']}&id=#{settings[RAILS_ENV]['list_id']}&email_address=#{user.email}&merge_vars[FNAME]=#{user.first_name}&merge_vars[LNAME]=#{user.last_name}&double_optin=false&send_welcome=true&output=json"
-
-      http = Net::HTTP.new(url.host, url.port)
-      http.use_ssl = (url.scheme == 'https')
-
-      tmp_url = url.path+"?"+url.query
-      request = Net::HTTP::Get.new(tmp_url)
-      response = http.request(request)
-      data = response.body
-      flash.now[:notice] = "You are now subscribed to Research Nation Newsletters" if data == "true"
-      flash.now[:error] = "An error occured" unless data == "true"
-      redirect_to :controller => 'main', :action => 'index'
+    user = User.new params[:user]
+    subscribe_to_newsletter user
+    return redirect_to :controller => 'main', :action => 'index'
   end
 
   private

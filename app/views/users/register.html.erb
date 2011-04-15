@@ -15,7 +15,6 @@
 		<b>Or standard sign up: </b>
 -->
 		<div class="register_form">
-
 		<% form_for(@user , :url => {:controller => "users", :action => "create" } ) do |f| %>
 		<div class="field">
 		<label>First Name</label>
@@ -59,6 +58,8 @@
 			<label>Password</label>
 			<%= password_field 'login', 'password' %>
 		</div>
+		<p class="error"><%= flash[:error] %></p>
+		<%= flash[:error] = "" %>
 		<div class="forgot"><%= link_to "Forgot my password", :controller => "users", :action => "forgot_password" %></div>
 		</div>
 		<div class="sign_up_button"><%= submit_tag 'Log In', :onSubmit => 'return validate();' %></div>
