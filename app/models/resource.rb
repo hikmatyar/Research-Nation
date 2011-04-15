@@ -2,11 +2,12 @@ class Resource < ActiveRecord::Base
 
   belongs_to :user
   has_many :attachments
+  has_one :votes
 
   acts_as_paranoid
 
   cattr_reader :per_page
-  @@per_page = 10
+  @@per_page = 1000
 
   validates_presence_of :selling_price
   validates_presence_of :title

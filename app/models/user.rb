@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 
   has_many :requests
   has_many :resources
+  has_many :votes
 
   validates_presence_of :first_name
   validates_presence_of :last_name
@@ -13,7 +14,7 @@ class User < ActiveRecord::Base
   validates_format_of :email, :with => /^([^\s]+)((?:[-a-z0-9]\.)[a-z]{2,})$/i, :message => "format is not valid"
 
   cattr_reader :per_page
-  @@per_page = 10
+  @@per_page = 1000
 
   def password=(value ="")
     if value.length >=6 && value.length <= 20
