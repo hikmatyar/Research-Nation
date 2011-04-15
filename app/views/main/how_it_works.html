@@ -5,7 +5,9 @@ $("#textExample").verticaltabs({speed: 1,slideShow: false,activeIndex: 1});
 $("#imageExample").verticaltabs({speed: 1000,slideShow: true,slideShowSpeed: 3000,activeIndex: 0,playPausePos: "topRight"});
 selector = "#" + location.href.split("#")[1]
 $(selector).trigger('click');
-
+$("a").click(function(){
+  $(".flash").hide();
+});
 $("#toggle_views").click(function(){     
     $('.benefit').toggle();
     if ($(this).val()=="+"){
@@ -191,38 +193,45 @@ experts online, so as to protect their privacy.</p>
         <p>Attach a sample if you want, else we will create one for you. Permitted doc types are Word, Excel and PPT - we do this to ensure all documents we get are original</p>
       </li>
       <li>
-      <form name="Contact_us">
+      <% unless flash[:success].blank? %><p class="flash"><%= flash[:success] %></p><% end %>
+      <%= form_tag :controller => 'main', :action => 'contact_us'%>
       	<h1>Get in touch!</h1>
         <div class="field">
           <label>Name</label>
-          <input type="text" name="Frist Name" size="30" value="">
+          <%= text_field_tag 'name', "" , :size => '30' %>
         </div>
         <div class="field">
           <label>E-mail</label>
-          <input type="text" name="Email" size="30" value="">
+          <%= text_field_tag 'email', "" , :size => '30' %>
         </div>
         <div class="field">
           <label>Subject</label>
-          <input type="text" name="Email" size="30" value="">
+          <%= text_field_tag 'subject', "" , :size => '30' %>
         </div>
         <div class="field">
           <label>Message</label>
-          <textarea name="About_you"></textarea>
+          <%= text_area_tag 'message', "" , :size => '30' %>
         </div>
-        <a href="#">Submit</a>
+        <div class="sign_up_button">
+          <%= submit_tag 'Submit' %>          
+        </div>
         <div class="follow_field">
           <label>&nbsp;</label>
           <a href=""><img src="/images/facebook.png" /></a>
-          <a href=""><img src="/images/twitter.png" /></a>
+          <a target="_blank" href="http://twitter.com/researchnation"><img src="/images/twitter.png" /></a>
         </div>
       </form>
       </li>
       <li>
-      	<form name="Contact_us">
+        <% unless flash[:success].blank? %><p class="flash"><%= flash[:success] %></p><% end %>
+
+        <%= form_tag :controller => 'main', :action => 'send_feedback'%>
           <div class="field">
             <h2>We want to hear from you!</h2>
-            <textarea name="About_you" style="width:580px; margin-bottom:10px;"></textarea>
-            <a href="#" style="margin:0px !important;">Submit Feedback</a>
+            <%= text_area_tag 'feedback', "", :style => "width:580px; margin-bottom:10px;" %>
+            <div class="sign_up_button">
+              <%= submit_tag 'Submit Feedback'%>
+            </div>
           </div>
         </form>
         <div class="field">

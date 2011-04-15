@@ -37,24 +37,22 @@ class MainController < ApplicationController
     mail_body = params[:contact]
 
     if PostMailer.deliver_post_email(mail_body["name"], mail_body["email"], mail_body["subject"], mail_body["message"], recipient)
-      return render :text => "Thank you for your submission. Please close this box to proceed."
+      return render :text => "<p class='flash'>Thank you! Your message has been sent</p>"
     else
       render :text => "An error occured while sending your query"
     end
   end
 
-  private
+  def send_feedback
+    message = params[:feedback]
+    flash[:success] = "Thank you for your submission" if ContactMailer.deliver_feedback_email message
+    return redirect_to '/main/how_it_works#about_us'
+  end
 
-  def check_attachments
-    @actual_attachment_limits = true
-    @sample_attachment_limits = true
-
-    unless params[:attachments].blank?
-      @actual_file = params[:attachments][:actual] if params[:attachments][:actual]
-      @sample_file = params[:attachments][:sample] if params[:attachments][:sample]
-    end
-    @actual_attachment_limits = Attachment.check_file_limits_for? @actual_file if @actual_file
-    @sample_attachment_limits = Attachment.check_file_limits_for? @sample_file if @sample_file
+  def contact_us
+    message = params[:feedback]
+    flash[:success] = "Thank you for your submission" if ContactMailer.deliver_contact_us_email params[:name], params[:email], params[:subject], params[:message]
+    return redirect_to '/main/how_it_works#contact_us'
   end
 
 end
