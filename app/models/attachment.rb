@@ -2,6 +2,7 @@ require 'rscribd'
 class Attachment < ActiveRecord::Base
   belongs_to :resource
   named_scope :sample , Proc.new { {:conditions => {:attachment_type => "sample" }}}
+  named_scope :original , Proc.new { {:conditions => {:attachment_type => "original" }}}
   def self.add_file(file, resource_id, attachment_type)
 
       attachment = Attachment.new
