@@ -4,7 +4,7 @@
   <% flash[:success] = "" %>
   <div class="content_back">
   	<div class="categories_box">
-    	<b><a href="#">Pakistan</a> <a href="#">Technology </a> <a href="#">Software Development</a></b>
+    	<b><span><%= @resource.industry %></span> <span><%= @resource.geography %></span></b>
     </div>
   	<div class="resource_buttons">
   		<h2><%= @resource.title %></h2>
@@ -23,6 +23,7 @@
           <%= link_to 'Summary','#', :class => 'sign_up', :id => 'tab1', :onclick => 'showTab("one");' %>
           <%= link_to 'About Seller','#', :class => 'login', :id => 'tab2', :onclick => 'showTab("two");' %>
           <%= (link_to 'View Sample','#', :class => 'login', :id => 'tab3', :onclick => 'showTab("three");') if @sample %>
+          <%= (link_to 'Terms and Conditions','#', :class => 'login', :id => 'tab4', :onclick => 'showTab("four");') unless @resource.terms_and_conditions.blank? %>
           <div style="display: block;" class="sign_up_box" id="tabOne">
             <div class="summary">
               <p><%= @resource.description %></p>
@@ -50,6 +51,11 @@
 								</script>
 								<% end %>
             	</div>
+          	</div>
+        	</div>
+        	<div style="display: none;" class="sign_up_box" id="tabFour">
+            <div class="summary">
+              <%= @resource.terms_and_conditions %>
           	</div>
         	</div>
       	</div>
