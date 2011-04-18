@@ -1,0 +1,56 @@
+<div class="contant">
+<div class="how_it_work_left_side">
+<ul>
+<li>
+<% unless flash[:success].blank? %><p class="flash"><%= flash[:success] %></p><% end %>
+<%= flash[:success] = nil %>
+<%= form_tag :controller => 'main', :action => 'send_feedback'%>
+<div class="field">
+<h1>We want to hear from you!</h1>
+<%= text_area_tag 'feedback', "", :style => "width:580px; margin-bottom:10px;" %>
+<div class="sign_up_button" style="margin:0px 0px 30px 0px;">
+  <%= submit_tag 'Submit Feedback'%>
+</div>
+</div>
+</form>
+<div class="field">
+<h1>The Story</h1>
+<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
+</div>
+<h1>Team</h1>
+<div class="field">
+<img src="/images/user_pic.jpg" />
+<b>Faisal Khalid, Founder & CEO</b>
+<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+</div>
+<div class="field">
+<img src="/images/Ali Ibrahim.jpg" />
+<b>Ali Ibrahim, CTO</b>
+<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here,</p>
+</div>
+<div class="field">
+<h2>Vote on New Features</h2>
+<div class="facebook_like1"> 
+<span> 1) Lorem Ipsum is simply dummy text of the printing and typesetting industry. </span>
+<a href="#">Like</a>
+</div>
+<div class="facebook_like2"> 
+<span> 2) Lorem Ipsum is simply dummy text of the printing and typesetting industry. </span>
+<a href="#">Like</a>
+</div>
+<div class="facebook_like3"> 
+<span> 3) Lorem Ipsum is simply dummy text of the printing and typesetting industry. </span>
+<a href="#">Like</a>
+</div>
+<div class="field email_box">
+<h2>Get on the Koala Express!</h2>
+<form action="/users/subscribe" method="post">
+  <input type="text" size="40" value="Enter Your Email Address" name="email" class="email_address" />
+</form>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<%= render :partial => 'how_it_works_links' %>
+</div>

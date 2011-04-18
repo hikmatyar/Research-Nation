@@ -1,0 +1,35 @@
+<script type="text/javascript" language="javascript" charset="utf-8">
+
+  $('document').ready(function(){
+    $("#toggle_views").click(function(){     
+      $('.benefit').toggle();
+      if ($(this).val()=="+"){
+        $(this).val("-");
+      }
+      else if ($(this).val()=="-")
+      {
+        $(this).val("+");
+      }
+    });
+  });
+
+</script>
+
+<div class="right_side">
+  <ul class="verticalslider_tabs right_side">
+    <li class="features_link" style="border-top:0px;">
+      <b>Benefits <input type="button" id="toggle_views" value="-" name="toggle_view"></b>
+      <ul class="inner_link">
+        <li class="benefit inner_link"><a href="/main/entrepreneurs">Entrepreneurs</a></li>
+        <li class="benefit inner_link"><a href="/main/freelancers">Freelancers &amp; MBAs</a></li>
+        <li class="benefit inner_link"><a href="/main/small_business">Small Businesses </a></li>
+        <li class="benefit inner_link"><a href="/main/market_research">Market Research Firms</a></li>
+      </ul>
+    </li>
+    <li class="features_link faq"><a href="/main/features" id="features">Features</a></li>
+    <li class="features_link"><a href="/main/faqs" id="faqs">FAQs</a></li>
+    <li class="guidelines_box"><a id="guidelines" href="/main/guidelines">Guidelines</a></li>
+    <li class="contact_us_link"><a id="contact" href="/main/contact_us">Contact Us</a></li>
+    <li class="about_us" style="border-bottom:0px;"><a href="/main/about" id="about_us">About Us</a></li>
+  </ul>
+</div>

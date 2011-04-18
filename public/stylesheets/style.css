@@ -508,7 +508,6 @@ a:focus {
 	text-align:center;
 	list-style:none;
 	list-style-type:none;
-	width: 122px;	
 	font-size:18px;
 	font-weight:bold;
 }
@@ -642,7 +641,7 @@ a:focus {
 
 .field label{
 	float:left;
-	width:100%;
+	width:105px;
 	margin-top:5px;
 	padding-left:8px;
 	text-align:left;
@@ -670,9 +669,9 @@ a:focus {
 	position:static !important;
 }
 .field h5{
-	margin-top: 175px;
+	margin-top: 150px;
 	float: none;
-	margin-left: 335px;
+	margin-left: 450px;
 	font-weight: bold;
 	font-size: 14px;
 	margin-bottom:0px;
@@ -847,11 +846,12 @@ a:focus {
 	height: 20px;
 	padding-top:5px;
 	overflow: hidden;
+	margin-left:10px;
 }
 
 .reviews_link{
 	float:left;
-	width:470px;
+	width:440px;
 }
 
 
@@ -868,7 +868,7 @@ a:focus {
 
 .reviews{
 	float:left;
-	width:120px;
+	width:145px;
 	text-align:right;
 }
 
@@ -878,6 +878,7 @@ a:focus {
 	overflow:hidden;
 	height:55px;
 	margin-bottom:20px;
+	margin-left:10px;
 }
 
 .description p{
@@ -1116,7 +1117,7 @@ a:focus {
 .related_posts_box a:hover{
 	text-decoration:underline;
 }
-.categories_box a{
+.categories_box span{
 	-moz-border-radius:4px;
 	-webkit-border-radius:4px;
 	background-color:#E5E5E5;
@@ -1127,14 +1128,6 @@ a:focus {
 .categories_box{
 	float:left;
 	width:100%;
-}
-
-.categories_box a{
-	-moz-border-radius:4px;
-	-webkit-border-radius:4px;
-	background-color:#E5E5E5;
-	padding:5px 10px 5px 10px;
-	margin-right:5px;
 }
 
 #embedded_flash{
@@ -1245,7 +1238,7 @@ a:focus {
 
 
 .left_side h1{
-	margin:-36px 0 20px !important;
+	margin:20px 0 20px !important;
 	float:left;
 	color:#245A83;
 	width:100%;
@@ -1254,7 +1247,7 @@ a:focus {
 
 .right_side{
 	float:right !important;
-	margin-top: 0px !important;
+	margin-top: 20px !important;
 	width:230px !important;
 }
 
@@ -1618,7 +1611,9 @@ background:#FFFFFF; border:1px solid #666666 !important; height:15px; width:15px
 	margin-top:5px;
 	padding-left:8px;
 }
-
+.follow_field img{
+	border:0px;
+}
 
 
 .form{
@@ -1682,6 +1677,22 @@ background:#FFFFFF; border:1px solid #666666 !important; height:15px; width:15px
  background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #8eaf32), color-stop(0.81, #8eaf32));
  background: -moz-linear-gradient(center bottom, #8eaf32 22%, #8eaf32 81%);
  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#8eaf32, endColorStr=#8eaf32); 
+}
+
+.field input#submit {
+    -moz-border-radius: 4px 4px 4px 4px;
+    background: -moz-linear-gradient(center bottom , #8EAF32 22%, #AAC84A 81%) repeat scroll 0 0 transparent;
+    border: medium none;
+    color: #FFFFFF;
+    cursor: pointer;
+    float: left;
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 10px !important;
+    margin-right: 0 !important;
+    margin-top: 0 !important;
+    padding: 5px 10px !important;
+    text-align: center;
 }
 
 .facebook_like1 a:hover, .facebook_like2 a:hover, .facebook_like3 a:hover{
@@ -1951,12 +1962,111 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 
 
 .inner_link{
+		float:left;
+		width:240px;
+    margin:0px;
+    padding:0px;
+}
+
+.inner_link li{
     list-style:none;
-    margin:10px;
+    margin:5px;
 }
 
 .inner_link a{
     float:left;
-    padding:10px;
+    padding:5px;
+		margin-left:8px;
+		font-weight:normal !important;
     color:#245A83;
+}
+
+.loading{
+	float:right;
+}
+
+.loading img{
+	width:32px;
+	height:32px;
+}
+
+.user_name_box{
+	float: left;
+  height: 20px;
+  margin-left: 10px;
+  overflow: hidden;
+  padding-top: 5px;
+  width: 42%;
+}
+
+
+.tags_box span{
+	  -moz-border-radius: 4px 4px 4px 4px;
+    background-color: #E5E5E5;
+    float: right;
+    margin-right: 5px;
+    padding: 5px 10px;
+}
+
+.tags_box{
+	float:left;
+	width:54%;
+}
+
+.how_it_works_field img{
+	float:left;
+	margin-right:65px;
+}
+
+.how_it_works_field2 img{
+	margin-left:50px;
+}
+
+.how_it_works_field{
+	float:left;
+	margin-top:5px;
+	margin-bottom:40px;
+}
+
+.how_it_works_field2{
+	float:left;
+	margin-top:5px;
+	margin-bottom:40px;
+}
+
+.how_it_work_left_side{
+	float:left;
+	width:750px;
+}
+
+.how_it_work_left_side h1{
+    color: #245A83;
+    float: left;
+    margin: 20px 0 !important;
+    text-align: left !important;
+    width: 100%;
+}
+
+.how_it_work_left_side p{
+  font-size:14px;
+}
+.how_it_works_field h3{
+	float:right;
+	width:425px;
+	margin-left: 90px;
+}
+
+.how_it_works_field2 h3{
+	float:left;
+	width:500px;	
+}
+
+.how_it_works_field p{
+	float: right;
+	width: 427px;
+}
+
+.how_it_works_field2 p{
+	float:left;
+	width:455px;
 }
