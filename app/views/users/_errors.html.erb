@@ -1,0 +1,6 @@
+<div class="error">
+<% @user.errors.each do |err| %>
+<p><%= err.join(" ").capitalize %><p>
+<% end %>
+</div>
+

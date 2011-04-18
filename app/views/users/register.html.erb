@@ -15,6 +15,7 @@
 		<b>Or standard sign up: </b>
 -->
 		<div class="register_form">
+		<%= render :partial => 'errors' %>
 		<% form_for(@user , :url => {:controller => "users", :action => "create" } ) do |f| %>
 		<div class="field">
 		<label>First Name</label>
