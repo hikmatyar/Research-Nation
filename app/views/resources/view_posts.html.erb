@@ -1,33 +1,9 @@
+<%= javascript_include_tag :defaults %>
+
 <div class="content">
 	<div class="search_content">
-    <div class="left_content">
-      <% @resources.each do |resource| %>
-      <div class="post">
-        <% link_to (:action => 'seller_page', :id => resource.id) do %>
-        <div class="post_title">
-          <%= (image_tag "https://graph.facebook.com/#{resource.user.facebook_uid}/picture") unless resource.user.facebook_uid.blank? %>
-          <%= (image_tag "gray koala image.jpg") if resource.user.facebook_uid.blank? %>
-          <span clas><%= resource.title %></span>
-        </div>
-        <div class="reviews_box">
-          <div class="reviews_link">
-            <span> Pakistan,</span>
-            <span> Technology,</span>
-            <span> Software,</span>
-            <span> Development</span>
-          </div>
-          <div class="reviews">
-            <span>$<%= resource.selling_price %></span>
-            -
-            <span>2 reviews</span>
-          </div>
-        </div>
-        <div class="description">
-            <p><%= truncate(resource.description , 230, "...(more)") %></p>
-          </div>
-      <% end %>
-      </div>
-      <% end %>
+    <div class="left_content" id="left_content">
+      <%= render :partial => 'posts'%>
     </div>
     <div class="right_content">
     	<div class="fixed_box"
@@ -36,12 +12,18 @@
           <link rel="stylesheet" type="text/css" href="/stylesheets/rangeinput.css"/>
           <!-- HTML5 range input -->
           <input type="range" name="test" min="0" max="1000" value="150" class="range" />
+          <input type="text" name="suggest" min="0" value="" class="suggest" id="suggest" />
           <!-- make it happen -->
           <script>
-          $(":range").rangeinput();
-        </script>
+            jQuery(":range").rangeinput().change(function(){
+              url = "/resources/filter_by_price?price=" + jQuery(this).val();
+              new Ajax.Updater('left_content', url, {asynchronous: true,});
+            });
+          </script>
         </div>
       </div>
   	</div>
   </div>
 </div>
+
+

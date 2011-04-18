@@ -48,7 +48,7 @@ class ResourcesController < ApplicationController
 
   def view_posts
     @user = User.find(session[:user]) if logged_in?
-    @resources = Resource.paginate :page => params[:page], :order => 'created_at DESC'
+    @resources = Resource.find :all, :order => 'created_at DESC'
   end
 
   def update
@@ -67,6 +67,9 @@ class ResourcesController < ApplicationController
 
   def delete
     resource = Resource.find(params[:id])
+    sample = resource.attachments.sample
+    original_doc = resource.attachments.original
+    sample.remove_doc unless sample.blank?
     resource.destroy
     @resources = Resource.paginate :page => params[:page], :order => 'created_at DESC'
     return redirect_to :controller => 'admin', :action => 'dashboard'
@@ -86,5 +89,14 @@ class ResourcesController < ApplicationController
     sample = Attachment.find params[:id]
     sample.remove_doc
     return redirect_to :controller => 'admin', :action => 'dashboard'
+  end
+
+  def filter_by_price
+    @resources = Resource.find :all, :conditions => ['selling_price <= ?', params[:price]], :order => 'selling_price ASC'
+    render :partial => 'posts'
+  end
+  def users
+    @users = User.find :all
+    render :json => @users.collect(&:first_name)
   end
 end
