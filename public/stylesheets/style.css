@@ -316,6 +316,7 @@ a:focus {
 	float:left;
 	padding:5px;
 	color:#999;
+	width:295px;
 	border:1px solid #CCC;
 	margin-top:5px;
 	margin-bottom:20px;
@@ -332,8 +333,9 @@ a:focus {
 
 .footer_menu{
 	float:left;
-	width:100%;
+	width:800px;
 	margin-top:20px;
+	padding-left:165px;
 }
 
 .footer_menu ul{
@@ -363,13 +365,20 @@ a:focus {
 	margin:0px;
 }
 
+.footer_box p{
+    float:left;
+    width:15px;
+    text-align:center;
+}
+
 .footer_box li{
-	width:206px !important;
+	width:195px !important;
 	margin-bottom:40px;
+	border-right:0px !important;
 	
 }
 .footer_box a{
-	margin-left: 2px !important;
+	margin-left: 0px !important;
     margin-right: 0 !important;
 }
 
@@ -520,10 +529,6 @@ a:focus {
 	width:100%;
 	border:1px solid #CCC;	
 	margin-top:10px;
-
-
-
-
 }
 
 .facebook_box{
@@ -637,7 +642,7 @@ a:focus {
 
 .field label{
 	float:left;
-	width:100px;
+	width:100%;
 	margin-top:5px;
 	padding-left:8px;
 	text-align:left;
@@ -665,9 +670,9 @@ a:focus {
 	position:static !important;
 }
 .field h5{
-	margin-top: 150px;
+	margin-top: 175px;
 	float: none;
-	margin-left: 448px;
+	margin-left: 335px;
 	font-weight: bold;
 	font-size: 14px;
 	margin-bottom:0px;
@@ -693,8 +698,9 @@ a:focus {
 }
 
 .sign_up_button{
-	float:left;	
-	margin:10px;
+	float:left;
+	margin: 10px;
+
 }
 
 .sign_up_button input{
@@ -774,7 +780,7 @@ a:focus {
 	width:258px;
 }
 .right_content{
-	float:left;
+	float:right;
 	width:365px;
 	padding:20px;
 }
@@ -1203,7 +1209,7 @@ a:focus {
 .left_side{
 		float:left !important;
 		width:570px !important;
-		padding:0 22px !important
+		padding:20px 22px !important
 }
 
 .left_side a{
@@ -1239,7 +1245,7 @@ a:focus {
 
 
 .left_side h1{
-	margin:30px 0 20px !important;
+	margin:-36px 0 20px !important;
 	float:left;
 	color:#245A83;
 	width:100%;
@@ -1248,7 +1254,7 @@ a:focus {
 
 .right_side{
 	float:right !important;
-	margin-top: 10px !important;
+	margin-top: 0px !important;
 	width:230px !important;
 }
 
@@ -1293,8 +1299,7 @@ a:focus {
 
 }
 .verticalslider_tabs li:first-child a:link, .verticalslider_tabs li:first-child a:visited{
-	border-top: none; 
-	height: 30px;
+	border-top: none;
 }
 .verticalslider_tabs .activeTab a:link, .verticalslider_tabs .activeTab a:visited{
 	background: #ffffff; 
@@ -1336,11 +1341,13 @@ a:focus {
 }
 
 .features_link, .faq_link, .contact_us_link, .guidelines_box, .about_us{
+    float:left;
 	border-bottom:1px solid #e3e3e3;
 	border-top:1px solid #e3e3e3;
 	font-weight:bold;
+	width:210px;
 	padding-bottom: 10px !important;
-  padding-top: 10px !important;
+    padding-top: 10px !important;
 	margin:0px !important;
 }
 
@@ -1359,6 +1366,7 @@ a:focus {
 
 .field h2{
 	margin-top:20px;
+	color:#245A83;
 }
 /************************
  * Filters
@@ -1686,7 +1694,7 @@ background:#FFFFFF; border:1px solid #666666 !important; height:15px; width:15px
 }
 
 .field b {
-  color: #245A83;
+  color: #525252;
   float: left;
   font-size: 16px;
   width: 540px;
@@ -1758,6 +1766,7 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 	overflow: hidden;
 	clear: both;
 	float: left; width: 100%;
+	text-align:left;
 	background: #fff;
 }
 .tab_content {
@@ -1917,8 +1926,8 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
     font-weight: bold;
     text-align: left !important;
     width: 100%;
-		line-height:0px !important;
-		margin-bottom:0px;
+	line-height:0px !important;
+	margin-bottom:0px;
 }
 
 .error_text h4 {
@@ -1927,8 +1936,8 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
     font-weight: bold;
     text-align: left !important;
     width: 100%;
-		line-height:0px !important;
-		margin-bottom:0px;
+	line-height:0px !important;
+	margin-bottom:0px;
 }
 
 .flash{
@@ -1937,5 +1946,17 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
     color: #245B83 !important;
     padding: 14px !important;
     width: 250px;background-color: #F5F69B;
+    margin:10px 0;
+}
+
+
+.inner_link{
+    list-style:none;
     margin:10px;
+}
+
+.inner_link a{
+    float:left;
+    padding:10px;
+    color:#245A83;
 }
