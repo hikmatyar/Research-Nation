@@ -13,20 +13,23 @@
                 <%= form_tag  ({ :controller => 'resources', :action => 'create_post', :user => params[:user] } , :multipart => true, :id => "upload_form" ) %>
                     <div class="field">
                         <label>Title*</label>
-                        <%= text_field 'resource', 'title', :class => 'required max_len', :max_length => 60 %>
+                        <%= text_field 'resource', 'title', :class => 'required max_len', :max_length => 140 %>
                     </div>
                     <div class="field">
                         <label>Exec Summary</label>
-                        <%= text_area 'resource', 'description', :class => 'max_len', :max_length => 700 %>
-                        <h5>700</h5>
+                        <%= text_area 'resource', 'description', :class => 'max_len', :max_length => 1000 %>
+                        <h5>1000</h5>
                     </div>
                     <div class="field">
                         <label>Industry*</label>
-                        <input type="text" name="Frist Name" size="30" value="">
+                        <%= text_field 'resource', 'industry', :class => 'required max_len', :max_length => 70 %>
                     </div>
                     <div class="field">
                         <label>Geography*</label>
-                        <input type="text" name="Frist Name" size="30" value="">
+                        <%= text_field 'resource', 'geography', :class => 'required max_len', :max_length => 70 %>
+                        <div class="loading">
+                          <img src="/images/loading_big.gif" alt="uploading files..." title="uploading files..." />
+                        </div>
                     </div>
                     <div class="field">
                         <label>Price(US$)*</label>
@@ -38,6 +41,10 @@
                     <div class="field"><label>Original File</label><%= file_field_tag 'original', :class => 'required file' %></div>
                     <input type="hidden" name="original_file_name" value="" id="original_file_name" />
                     <input type="hidden" name="sample_file_name" value="" id="sample_file_name" />
+                    <div class="field">
+                        <label>Terms and Conditions</label>
+                        <%= text_area 'resource', 'terms_and_conditions', :class => 'max_len', :max_length => 3000 %>
+                    </div>
                     <div class="check_box">
                       <input type="checkbox" value="true" name="checkbox" checked="checked">
                       <span>For individuals only: check this box if you want to get added to our expert database (completely private, and we share your information with your permission only). Click here to see more details on how it works</span>
@@ -51,6 +58,7 @@
 <script type="text/javascript" language="javascript" charset="utf-8">
     $(document).ready(function(){
 
+        $(".loading").hide();
         show_text_count();
         function show_text_count(){
             var len = 700 - $('#resource_description').val().length
@@ -62,7 +70,14 @@
         });
 
         $('#upload_form').submit(function(){
-            return validate_form();
+
+            $(".loading").show();
+             validated = validate_form();
+            if(!validated)
+            {
+	            $(".loading").hide();  
+            }
+            return validated;
         });
         $("#original").change(function(){
             $("#original_file_name").val($(this).val());
