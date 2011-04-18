@@ -5,7 +5,7 @@ function validate_form(){
 	jQuery(".required").each(function(){
 		if(jQuery(this).val()=="")
 		{
-			jQuery(this).after("<span class='error'>Field Cannot be blank</span>");
+			jQuery(this).after("<span class='error'>Hey, please fill out this field</span>");
 			jQuery(this).addClass("error_field");
 		}
 	});
@@ -30,7 +30,7 @@ jQuery(".file").each(function(){
 		file_name = jQuery(this).val();
 		if (file_name && !file_name.match(/^.*\.(doc|DOC|ppt|PPT|xls|xls|pdf|PDF|docx|DOCX|pptx|PPTX|xlsx|XLSX)/))
 		{
-			jQuery(this).after("<span class='error'>Please select a valid File format</span>");
+			jQuery(this).after("<span class='error'>Please use a valid file format</span>");
 			jQuery(this).addClass("error_field");
 		}
 	});
@@ -46,12 +46,12 @@ jQuery(".file").each(function(){
 	jQuery(".valid_price").each(function(){
 		price = Number(jQuery(this).val());
 		if(price < 0 || price > 1000){
-			jQuery(this).after("<span class='error'>Price range should be between 0 and 1000</span>");
+			jQuery(this).after("<span class='error'>Price should be between US$0 and US$1000</span>");
 			jQuery(this).addClass("error_field");
 		}
 		if (String(price).match(/[.]/))
 		{
-			jQuery(this).after("<span class='error'>Price should be whole number</span>");
+			jQuery(this).after("<span class='error'>Price should be a whole number</span>");
 			jQuery(this).addClass("error_field");
 		}
 	});

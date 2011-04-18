@@ -1,16 +1,20 @@
 $('document').ready(function(){
 	if($('.email_address')){
-	$('.email_address').click(function(){
-		$(this).val("");
-		$(this).css("color","#000");
+		$('.email_address').blur(function(){
+		$(this).removeClass("error_field");
 	});
-	$("form").submit(function(){
-    if ($(".email_address").val()==""){
-    	$('.email_address').addClass("error_field");
-    	return false;	
-    }
-});
+		$('.email_address').click(function(){
+			$(this).val("");
+			$(this).css("color","#000");
+		});
+		$("form").submit(function(){
+		  if ($(".email_address").val()==""){
+		  	$('.email_address').addClass("error_field");
+		  	return false;	
+		  }
+		});
 	}
+	
 });
 function showTab(value) 
 	{

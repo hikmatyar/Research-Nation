@@ -6,7 +6,7 @@ $("a").click(function(){
 	showTab(location.href.split("=")[1]);
 
 $("#new_user").submit(function(){
-		$('.error').text("");
+		$('.error').remove();
 		valid = true;
 		if($("#first_name").val()==""){
 			$("#first_name").after("<p class='error'>First Name cannot be blank</p>");
