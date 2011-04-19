@@ -61,8 +61,7 @@ jQuery(".file").each(function(){
 		return false;
 	}
 	else{
-		image = '<img src="/images/loading_bar.gif" />'
-		jQuery('.register_form').append(image);
+		return true;
 	}
 }
 

@@ -70,12 +70,10 @@
         });
 
         $('#upload_form').submit(function(){
-
-            $(".loading").show();
-             validated = validate_form();
-            if(!validated)
+            validated = validate_form();
+            if(validated)
             {
-	            $(".loading").hide();  
+	          $(".loading").show();
             }
             return validated;
         });
