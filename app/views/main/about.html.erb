@@ -3,7 +3,7 @@
 <ul>
 <li>
 <% unless flash[:success].blank? %><p class="flash"><%= flash[:success] %></p><% end %>
-<%= flash[:success] = nil %>
+<% flash[:success] = nil %>
 <%= form_tag :controller => 'main', :action => 'send_feedback'%>
 <div class="field">
 <h1>We want to hear from you!</h1>

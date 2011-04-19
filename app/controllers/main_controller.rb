@@ -50,8 +50,7 @@ class MainController < ApplicationController
   end
 
   def contact_us
-    message = params[:feedback]
-    flash[:success] = "Thank you for your submission" if ContactMailer.deliver_contact_us_email params[:name], params[:email], params[:subject], params[:message]
+    flash[:notice] = "Thank you for your submission" if ContactMailer.deliver_contact_us_email params[:name], params[:email], params[:subject], params[:message]
     return redirect_to :controller => 'main', :action => 'contact'
   end
 
