@@ -84,19 +84,51 @@ class ResourcesController < ApplicationController
   def payment
     @resource = Resource.find params[:id]
   end
-  
+
   def remove_sample
     sample = Attachment.find params[:id]
     sample.remove_doc
     return redirect_to :controller => 'admin', :action => 'dashboard'
   end
 
-  def filter_by_price
-    @resources = Resource.find :all, :conditions => ['selling_price <= ?', params[:price]], :order => 'selling_price ASC'
+  def filter_results
+    geography = params[:geography].blank? ? Resource.all(:select => 'distinct(geography)').collect(&:geography) : params[:geography].split(",");
+    industries = params[:industry].blank? ? Resource.all(:select => 'distinct(industry)').collect(&:industry) : params[:industry].split(",");
+    @resources = Resource.find :all, :conditions => [ 'selling_price <= ? and geography IN(?) and industry IN(?)',  params[:price], geography , industries ], :order => 'selling_price ASC'
     render :partial => 'posts'
   end
-  def users
-    @users = User.find :all
-    render :json => @users.collect(&:first_name)
+
+  def reset
+    @resources = Resource.find :all, :order => 'created_at DESC'
+    render :partial => 'posts'
+  end
+  def filter_by_author_name
+
+    name = params[:name].split(" ")
+    resources = Array.new
+    users = User.find :all, :conditions => ['first_name = ? and last_name = ? ', name.first, name[1..name.length].join(" ") ]
+    users.each do |user|
+      resources.push(user.resources)
+    end
+    @resources = resources.flatten
+    render :partial => 'posts'
+  end
+
+  def get_industries
+    @industries = Resource.all(:select => 'distinct(industry)').collect(&:industry)
+    render :text => @industries.join("\n")
+  end
+
+  def get_geography_list
+    @geography = Resource.all(:select => 'distinct(geography)').collect(&:geography)
+    render :text => @geography.join("\n")
+  end
+
+  def industries_count
+    render :text => (Resource.find_all_by_industry params[:industry]).count
+  end
+
+  def geography_count
+    render :text => (Resource.find_all_by_geography params[:geography]).count
   end
 end

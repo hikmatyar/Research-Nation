@@ -83,9 +83,9 @@
         $("#sample").change(function(){
             $("#sample_file_name").val($(this).val());
         });
+        $('input:checkbox').click(function(){
+            $(this).val($(this).attr("checked"));
+        })
     });
-    $('input:checkbox').click(function(){
-        $(this).val($(this).attr("checked"));
-    })
 
 </script>

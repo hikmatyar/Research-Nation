@@ -1,18 +1,16 @@
 
 /* slider root element */
 .slider { 
-	background:#3C72E6 url(../../../img/gradient/h30.png) repeat-x 0 0; 
+	background: url(/images/price_back.jpg) repeat-x 0 0; 
 	height:9px; 
 	position:relative; 
 	cursor:pointer;
-	border:1px solid #333;
-	width:300px;
+	width:345px;
 	float:left; 
+	top:33px;
 	clear:right;
+	margin-left:8px;
 	margin-top:10px;
-	-moz-border-radius:5px; 
-	-webkit-border-radius:5px; 
-	-moz-box-shadow:inset 0 0 8px #000;
 }
 
 /* progress bar (enabled with progress: true) */
@@ -25,7 +23,7 @@
 
 /* drag handle */
 .handle { 
-	background:#fff url(../../../img/gradient/h30.png) repeat-x 0 0; 
+	background:#245A83 url(../../../img/gradient/h30.png) repeat-x 0 0; 
 	height:14px;
 	width:14px;
 	top:-5px;
@@ -44,12 +42,34 @@
 /* the input field */
 .range {
 	border:1px inset #ddd;
-	float:left;
-	font-size:20px;
+	float:right;
+	font-size:12px;
 	margin:0 0 0 15px;
-	padding:3px 0;
+	padding:3px;
+	font-weight: bold;
 	text-align:center;
-	width:50px;
+	width:35px;
+	color:#FFFFFF;
+	position:relative;
+	background-color:#A0A0A0;
+	top:-22px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+}
+
+.start_range {
+	border:1px inset #ddd;
+	float:left;
+	font-size:12px;
+	font-weight: bold;
+	margin:0 0 0 6px;
+	padding:3px;
+	text-align:center;
+	width:35px;
+	color:#FFFFFF;
+	position:relative;
+	background-color:#A0A0A0;
+	top:20px;
 	-moz-border-radius:5px; 
 	-webkit-border-radius:5px; 		
 }

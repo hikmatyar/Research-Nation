@@ -1,0 +1,65 @@
+var industries = new Array();
+var geographies = new Array();
+var count = 0;
+
+function populate_array_text(){
+  jQuery('#industry_result p').each(function(){
+        industries.push(jQuery(this).text());
+    });
+
+    jQuery('#geography_result p').each(function(){
+        geographies.push(jQuery(this).text());
+    });
+}
+
+jQuery('document').ready(function(){
+
+  jQuery(':range').val("1000");
+  jQuery('.handle').css("left","286px");
+
+  jQuery('#author_name').autocomplete('/users/unique_users');
+  jQuery('#industry').autocomplete('/resources/get_industries');
+  jQuery('#geography').autocomplete('/resources/get_geography_list');
+
+  jQuery('#author_name').result(function(event, data, formatted) {
+    url = "/resources/filter_by_author_name?name="+ formatted +"&price=" + jQuery(":range").val();
+    new Ajax.Updater('left_content', url, {asynchronous: true,});
+  });
+
+  jQuery(":range").rangeinput().change(function(){
+      populate_array_text();
+
+      url = "/resources/filter_results?industry="+ industries.join(",") +"&geography="+ geographies.join(",") +"&price=" + jQuery(":range").val();
+
+      new Ajax.Updater('left_content', url, {asynchronous: true,});
+    });
+  jQuery('#industry').result(function(event, data, formatted) {
+
+      
+      industries.push(formatted);
+
+      url = "/resources/filter_results?industry="+ industries.join(",") +"&geography="+ geographies.join(",") +"&price=" + jQuery(":range").val();
+
+      jQuery("#industry_result").append('<p> ' + formatted +'</p> <span id="industry_tag'+count+'"></span>');
+      new Ajax.Updater('industry_tag'+count, "/resources/industries_count?industry="+formatted, {asynchronous: true,});
+      count++;
+      new Ajax.Updater('left_content', url, {asynchronous: true,});
+  });
+
+  jQuery('#geography').result(function(event, data, formatted) {
+
+      populate_array_text();
+      geographies.push(formatted);
+
+      url = "/resources/filter_results?industry="+ industries.join(",") +"&geography="+ geographies.join(",") +"&price=" + jQuery(":range").val();
+
+      jQuery("#geography_result").append('<p> ' + formatted +'</p> <span id="geography_tag'+count+'"></span>');
+      new Ajax.Updater('geography_tag'+count, "/resources/geography_count?geography="+formatted, {asynchronous: true,});
+      count++;
+      new Ajax.Updater('left_content', url, {asynchronous: true,});
+  });
+
+  jQuery("#reset").click(function(){
+    new Ajax.Updater('content', '/resources/view_posts', {asynchronous: true,});
+  });
+});
