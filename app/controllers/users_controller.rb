@@ -155,6 +155,11 @@ class UsersController < ApplicationController
     return redirect_to :controller => 'main', :action => 'index'
   end
 
+  def unique_users
+    @users = User.all.collect(&:name).uniq
+    render :text => @users.join("\n")
+  end
+
   private
 
   def check_session
