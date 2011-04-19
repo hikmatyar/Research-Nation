@@ -1,9 +1,10 @@
 <div class="header">
 	<%= link_to image_tag("logo.jpg"),:controller => "main", :action => "index" %>
   <ul class="main_menu">
-  	<li><li><%= link_to "How It Works", :controller => "main", :action => "entrepreneurs" %></li></li>
-    <li><%= link_to "View Posts", :controller => "resources", :action => "view_posts" %></li>
+    <li><%= link_to "How It Works", :controller => "main", :action => "entrepreneurs" %></li>
+    <li><%= link_to "Browse", :controller => "resources", :action => "view_posts" %></li>
     <li><%= link_to "Create Post", :controller => "resources", :action => "new" %></li>
+    <li><%= link_to "Create Profile", :controller => "profiles", :action => "new" %></li>
     <li><%= (link_to 'Login', :controller => 'users', :action => 'register', :opt => 'login') unless logged_in? %></li>
     <li style="border:none !important;"><%= link_to 'Sign Up', :controller => 'users', :action => 'register' unless logged_in?%></li>
     <li><li><%= (link_to "Admin Dashboard", :controller => "admin", :action => "dashboard") if is_admin? %></li></li>
