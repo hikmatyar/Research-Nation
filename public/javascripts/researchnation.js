@@ -13,6 +13,9 @@ $('document').ready(function(){
 		  	return false;	
 		  }
 		});
+		if(jQuery('.flash')){
+			setTimeout("jQuery('.flash').remove();",3000);
+		}
 	}
 	
 });
