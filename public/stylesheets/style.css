@@ -128,17 +128,17 @@ a:focus {
 
 .header a{
 	float:left;
-	width:480px;
+	width:430px;
 }
 
 .main_menu{
 	float:right;
 	margin:20px 0px 0px 0px;
-	width:500px;
+	width:550px;
 }
 
 .main_menu ul{
-	margin:0px;	
+	margin:0px;
 }
 
 .main_menu li{
@@ -150,18 +150,18 @@ a:focus {
 
 .main_menu a{
 	float:left !important;
-	width:auto !important;	
+	width:auto !important;
 	margin-left:20px;
 	margin-right:10px;
 }
 
 .main_menu a:hover {
-	text-decoration:underline;	
+	text-decoration:underline;
 }
 
 .banner{
 	float:left;
-	width:100%;	
+	width:100%;
 }
 
 .facebook_like{
@@ -171,7 +171,7 @@ a:focus {
 }
 
 .connect_widget {
-	float:right !important;	
+	float:right !important;
 }
 
 .banner h2{
@@ -216,7 +216,7 @@ a:focus {
 	background: -moz-linear-gradient(center bottom, #8eaf32 22%, #8eaf32 81%);
 	background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #8eaf32), color-stop(0.81, #8eaf32));
 	background: -moz-linear-gradient(center bottom, #8eaf32 22%, #8eaf32 81%);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#8eaf32, endColorStr=#8eaf32);	
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#8eaf32, endColorStr=#8eaf32);
 }
 
 .banner img{
@@ -235,7 +235,7 @@ a:focus {
 	width: 357px;
 	height:339px;
 	border-right:1px solid #CCC;
-	padding:10px;	
+	padding:10px;
 }
 
 .box3{
@@ -253,7 +253,7 @@ a:focus {
 	float:left;
 	width:100%;
 	padding:0px;
-	margin:30px 0 0;	
+	margin:30px 0 0;
 }
 
 .category li{
@@ -263,7 +263,7 @@ a:focus {
 	list-style:none;
 	margin-bottom:5px;
 	padding-bottom:5px;
-	list-style-type:none;	
+	list-style-type:none;
 }
 
 
@@ -302,7 +302,7 @@ a:focus {
 }
 .email_box{
 	float:left;
-	margin-top:30px;	
+	margin-top:30px;
 }
 
 .email_box b{
@@ -324,7 +324,7 @@ a:focus {
 
 .video{
 	float:left;
-	margin-top:10px;	
+	margin-top:10px;
 }
 
 
@@ -340,24 +340,24 @@ a:focus {
 
 .footer_menu ul{
 	margin:0px;
-	padding:0px;	
+	padding:0px;
 }
 
 .footer_menu li{
 	float:left;
 	list-style:none;
 	list-style-type:none;
-	border-right:1px solid #CCC;	
+	border-right:1px solid #CCC;
 }
 
 .footer_menu a{
 	float:left;
 	margin-right:15px;
-	margin-left:15px;	
+	margin-left:15px;
 }
 
 .footer_menu a:hover{
-	text-decoration:underline;	
+	text-decoration:underline;
 }
 
 .footer_box{
@@ -637,6 +637,7 @@ a:focus {
 	float:left;
 	width:100%;
 	margin-bottom:10px;	
+	height:auto !important;
 }
 
 .field label{
@@ -2019,71 +2020,18 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 	width:60%;
 }
 
-.how_it_works_field img{
-	float:left;
-	margin-right:65px;
-}
-
-.how_it_works_field2 img{
-	margin-left:50px;
-}
-
-.how_it_works_field{
-	float:left;
-	margin-top:5px;
-	margin-bottom:40px;
-}
-
-.how_it_works_field2{
-	float:left;
-	margin-top:5px;
-	margin-bottom:40px;
-}
-
-.how_it_work_left_side{
-	float:left;
-	width:750px;
-}
-
-.how_it_work_left_side h1{
-    color: #245A83;
-    float: left;
-    margin: 20px 0 !important;
-    text-align: left !important;
-    width: 100%;
-}
-
-.how_it_work_left_side p{
-  font-size:14px;
-}
-.how_it_works_field h3{
-	float:right;
-	width:425px;
-	margin-left: 90px;
-}
-
-.how_it_works_field2 h3{
-	float:left;
-	width:500px;	
-}
-
-.how_it_works_field p{
-	float: right;
-	width: 427px;
-}
-
-.how_it_works_field2 p{
-	float:left;
-	width:455px;
-}
-
 .price_rang{
 	float: left;
 	width:352px;
 	height: 135px;
 }
 
-.field h2, .price_rang h2{
+.field h2{
+    float: left;
+    width:100%;
+}
+
+.price_rang h2 {
 	float:left;
 	width:340px;
 	background-color:#bebeb4;
@@ -2196,7 +2144,7 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
     text-align: center;
     float:right !important;
     position:relative;
-    top:-35px;
+    margin-right:10px;
     margin-left:10px;
 }
 
@@ -2213,3 +2161,43 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 	width:auto !important;
 }
 
+.how_it_works_field{
+	float:left;
+	margin-top:5px;
+	margin-bottom:40px;
+}
+
+.how_it_works_field2{
+	float:left;
+	margin-top:5px;
+	margin-bottom:40px;
+}
+
+.how_it_work_left_side{
+	float:left;
+	width:750px;
+}
+
+.how_it_work_left_side h1{
+    color: #245A83;
+    float: left;
+    margin: 20px 0 !important;
+    text-align: left !important;
+    width: 100%;
+}
+
+.image_box{
+    float:left;
+    width:350px;
+    text-align:center;
+}
+
+.text_box{
+    float:left;
+    width:360px;
+}
+
+.text_box img{
+    float:right;
+    text-align:center;
+}
