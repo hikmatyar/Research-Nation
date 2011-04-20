@@ -1,0 +1,54 @@
+<script language="JavaScript1.2" type="text/javascript" src=http://cdn.jquerytools.org/1.1.0/jquery.tools.min.js"></script> 
+<script language="JavaScript1.2" type="text/javascript" src="http://jquery.bassistance.de/autocomplete/jquery.autocomplete.js" ></script>
+
+<%= stylesheet_link_tag 'autocomplete'%>
+<%= javascript_include_tag :defaults %>
+<%= javascript_include_tag 'profiles_search_filters' %>
+
+<div class="content">
+	<div class="search_content">
+    <div class="left_content" id="left_content">
+    	<%= render :partial => 'profiles' %>
+    </div>
+		<div class="right_content">
+		<div class="fixed_box">
+		  <script src="http://cdn.jquerytools.org/1.2.5/form/jquery.tools.min.js"></script>
+		    <link rel="stylesheet" type="text/css" href="/stylesheets/rangeinput.css"/>
+		    <div class="price_rang field">
+		      <h2>
+		      	Profile Type
+		      	<input type="button" class="reset_button" name="reset" value="Reset" id="reset" />
+		      </h2>
+		      <input type="text" name="suggest" min="0" value="Start typing to begin" class="suggestion" id="profile_type" />
+		    </div>
+		    <div class="field result_count" id="profile_type_result"></div>
+		    <div class="field price_rang">
+		      <h2>
+		        Location
+		        <input type="button" class="reset_button" name="reset" value="Reset" id="reset" />
+		      </h2>
+		      <input type="text" name="suggest" min="0" value="Start typing to begin" class="suggestion" id="location" />
+		    </div>
+		    <div class="field result_count" id = "location_result" >
+		    </div>
+		    <div class="field price_rang">
+		      <h2>
+		        Expertise
+		        <input type="button" class="reset_button" name="reset" value="Reset" />
+		      </h2>
+		      <input type="text" name="suggest" min="0" value="Start typing to begin" class="suggestion" id="expertise" style="border: 1px thin #CCC !important;"/>
+		    </div>
+		    <div class="field result_count" id = "expertise_result"></div>
+		    <div class="field price_rang">
+		      <h2>
+		        Interested In
+		        <input type="button" class="reset_button" name="reset" value="Reset" />
+		      </h2>
+		      <input type="text" name="suggest" min="0" value="Start typing to begin" class="suggestion" id="interested_in" style="border: 1px thin #CCC !important;"/>
+		    </div>
+		    <div class="field result_count" id="interested_result"></div>
+			</div>
+		</div>
+	</div>
+</div>
+

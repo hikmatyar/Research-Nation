@@ -230,6 +230,10 @@ a:focus {
 	margin-bottom:30px;
 }
 
+.how_it_work_left_side p{
+	font-size:16px !important;
+}
+
 .box1, .box2, .box3{
 	float:left;
 	width: 357px;
@@ -2040,18 +2044,20 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 	-webkit-border-radius:5px;
 	padding:5px 5px 5px 10px;
 	font-size:16px;
+	margin:0px;
 	color:#245A83;
 }
 
 .suggestion{
-	float:left;
-	margin-left:10px;
-	margin-top:5px;
-	width:260px;
-	-moz-border-radius-topleft:5px;
-	-moz-border-radius-bottomleft:5px;
+	-moz-border-radius: 5px 5px 5px 5px;
+  color: #BEBEB4;
+  float: left;
+  margin-top: 5px;
+  width: 344px;
 	-webkit-border-top-left-radius:5px;
 	-webkit-border-bottom-left-radius:5px;
+	-webkit-border-top-right-radius:5px;
+	-webkit-border-bottom-right-radius:5px;
 }
 
 .add_more{
@@ -2080,10 +2086,10 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 	font-size: 12px;
 	margin-right: 10px;
 	padding: 5px 5px 5px 10px;
-	width: 253px;
+	width: 275px;
 	margin-top:0px !important;
 	background-color:#FFF;
-	margin-left:10px;
+	margin-bottom: 5px;
 	border-radius:5px;
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
@@ -2108,10 +2114,10 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 	font-size: 12px;
 	margin-right: 10px;
 	padding: 5px 5px 5px 10px;
-	width: 253px;
+	width: 275px;
 	margin-top:0px !important;
 	background-color:#FFF;
-	margin-left:10px;
+	margin-bottom: 5px;
 	border-radius:5px;
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
@@ -2138,14 +2144,12 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
     border: medium none;
     color: #FFFFFF;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 10px;
     font-weight: bold;
-    padding: 10px 10px 10px 10px !important;
+    padding: 5px !important;
     text-align: center;
     float:right !important;
     position:relative;
-    margin-right:10px;
-    margin-left:10px;
 }
 
 
@@ -2200,4 +2204,88 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 .text_box img{
     float:right;
     text-align:center;
+}
+.ac_results{
+	margin-top:-1px !important;
+	width : 354px !important;
+	background:#FFF;
+	border:1px solid #CCC !important;
+}
+
+.profile_heading{
+		float: left;
+    font-size: 28px;
+    font-weight: bold;
+    margin: 10px 5px;	
+}
+
+
+.profile_boxs{
+	float:	left;
+	text-align:center;
+	width:100%;
+	margin:0px auto;
+	margin-left:90px;
+}
+
+.profile_box{
+	width:375px;
+	height:375px;
+	float:left;
+	margin-right:20px;
+	border:3px solid #E9E9E9;
+}
+
+.inner_profile_box{
+	float:left;
+	width:271px;
+	float:left;
+	padding:50px;
+	border:2px solid #FFF;
+	background-color:#F2F2F2;
+	height:271px;
+}
+
+.inner_profile_box:hover{
+	background:#E9E9E9;
+}
+
+.inner_profile_box img{
+	margin-top:60px;
+	border:0px;
+}
+
+.inner_profile_box span{
+	float:left;
+	text-align:center;
+	font-size:16px;
+	color:#333;
+	font-weight:bold;
+	width:100%;
+}
+
+.result_count p{
+	float: left;
+	font-size: 12px;
+	margin-right: 10px;
+	padding: 5px 5px 5px 10px;
+	width: 275px;
+	margin-top:0px !important;
+	background-color:#FFF;
+	margin-bottom: 5px;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+}
+
+.result_count span{
+	float: left;
+	font-size: 12px;
+	padding: 5px 5px 5px 10px;
+	width: 40px;
+	margin-top:0px !important;
+	background-color:#FFF;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
 }

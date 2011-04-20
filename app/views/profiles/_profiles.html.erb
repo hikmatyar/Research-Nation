@@ -1,0 +1,19 @@
+<% @profiles.each do |profile| %>
+	<div class="post">
+		<% link_to (:action => 'profile_page', :id => profile.id) do %>
+			<div class="post_title">
+				<span clas><%= profile.name %></span>
+				<p><%= profile.profile_type %></p>
+			</div>
+			<div class="user_name_box">
+				<span> <%= profile.country %> </span>
+			</div>
+			<div class="tags_box">
+				<span> <%= profile.expertise %> </span>
+			</div>
+			<div class="description">
+				<p><%= truncate(profile.description , 230, "...(more)") %></p>
+			</div>
+		<% end %>
+	</div>
+<% end %>

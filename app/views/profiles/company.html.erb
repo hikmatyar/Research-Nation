@@ -1,0 +1,144 @@
+<div class="content">
+  <div class="content_back">
+    <div class="seller_left">
+       <div class="seller_back">
+        <div class="register_form">
+          <h2>2. Company Details* </h2>
+          <% form_for(@profile , :url => {:controller => "profiles", :action => "create" } ) do |f| %>
+            <div class="field">
+              <label>Name</label>
+              <%= f.text_field 'name', :class => 'required max_len', :max_length => 70 %>
+            </div>
+            <div class="field">
+              <label>Address</label>
+              <%= f.text_area 'address', :style => "width:200px; height:60px;", :class => 'required max_len', :max_length => 400 %>
+            </div>
+            <div class="field">
+              <label>Country</label>
+              <%= ( f.select "country", @countries,  { :include_blank => true } , {:class => 'required'}) %>
+            </div>
+            <div class="field">
+              <label>Telephone</label>
+              <%= f.text_field 'phone_number', :class => 'required' %>
+            </div>
+            <div class="field">
+              <label>Website</label>
+              <%= f.text_field 'website', :class => 'required' %>
+            </div>
+            <div class="field">
+              <label>Description</label>
+              <%= f.text_area 'description', :class => 'required max_len', :max_length => 1000 %>
+            </div>
+            <div class="field">
+              <label>Competitors</label>
+              <%= f.text_field 'competitors', :class => 'required max_len', :max_length => 500 %>
+            </div>
+            <div class="field">
+              <label>Expertise Tags</label>
+              <%= ( f.select "expertise", @expertise,  { :include_blank => true } , {:class => 'required max_len'}) %>
+            </div>
+        </div>
+        <div class="register_form">
+          <h2>3. Key Individual*</h2>
+            <div class="field">
+              <label>Name</label>
+              <%= text_field 'key_individual', 'name', :class => 'required' %>
+            </div>
+            <div class="field">
+              <label>Title</label>
+              <%= text_field 'key_individual', 'title', :class => 'required' %>
+            </div>
+            <div class="field">
+              <label>Email</label>
+              <%= text_field 'key_individual', 'email', :class => 'required email' %>
+            </div>
+            <div class="field">
+              <label>Skype ID</label>
+              <%= text_field 'key_individual', 'skype_id' , :class => 'required' %>
+              <i>
+                <input type="checkbox" value="" name="checkbox" checked="checked" />
+                <span>Available to Skype chat any time</span>
+              </i>
+            </div>
+            <div class="field">
+              <label>Linkedin</label>
+              <%= text_field 'key_individual', 'linkedin', :class => 'required' %>
+             </div>
+        </div>
+        <div class="register_form">
+          <h2>4. Humor Me</h2>
+            <div class="field">
+              <label>Optional</label>
+              <%= f.text_area 'humor_me', :class => 'max_len', :max_length => 1000 %>
+            </div>
+        </div>
+        <%= f.hidden_field 'interested_in', :id => 'interested_in' %>
+        <%= f.hidden_field 'profile_type', :value => params[:profile_type] %>
+        <%= hidden_field 'key_individual', 'skype_availability' %>
+        <div class="register_form interests">
+          <h2>5. Interested In</h2>
+            <div class="field">
+              <input type="checkbox" value="FT projects" name="checkbox" checked="checked" />
+              <label>FT projects</label>
+              <input type="checkbox" value="PT projects" name="checkbox" checked="checked" />
+              <label>PT projects</label>
+              <input type="checkbox" value="Immediate start" name="checkbox" checked="checked" />
+              <label>Immediate start</label>
+            </div>
+            <div class="field">
+              <input type="checkbox" value="Local only" name="checkbox" checked="checked" />
+              <label>Local only</label>
+              <input type="checkbox" value="30 mins free phone consultation" name="checkbox" checked="checked" />
+              <label style="width:200px;">30 mins free phone consultation</label>
+            </div>
+          <div class="sign_up_button">
+            <%= f.submit 'Submit' %>
+          </div>
+        
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="seller_right">
+      <div class="koala_review">
+        <div class="guidelines">
+          <h2>Guidelines</h2>
+          <h3>Heading 1</h3>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when a
+          <h3>Heading 1</h3>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when a
+          <h3>Heading 1</h3>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when a
+          <h3>Heading 1</h3>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when a
+          <h3>Heading 1</h3>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when a
+          <h3>Heading 1</h3>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when a
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+<script type="text/javascript" language="javascript" charset="utf-8">
+      $('document').ready(function(){
+
+        $("#new_profile").submit(function(){
+          return validate_form();
+        });
+
+        $(".interests input:checkbox").change(function(){
+          var interests = new Array();
+          $(".interests input:checkbox:checked").each(function(){
+            interests.push($(this).val());
+            $("#interested_in").val(interests.join(", "));
+          });
+        });
+
+        $('#key_individual_skype_availability').change(function(){
+            $(this).val($(this).attr("checked"));
+        });
+
+      });
+</script>
+
