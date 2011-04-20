@@ -44,6 +44,7 @@ jQuery('document').ready(function(){
       new Ajax.Updater('industry_tag'+count, "/resources/industries_count?industry="+formatted, {asynchronous: true,});
       count++;
       new Ajax.Updater('left_content', url, {asynchronous: true,});
+      jQuery('#industry').val("");
   });
 
   jQuery('#geography').result(function(event, data, formatted) {
@@ -57,9 +58,18 @@ jQuery('document').ready(function(){
       new Ajax.Updater('geography_tag'+count, "/resources/geography_count?geography="+formatted, {asynchronous: true,});
       count++;
       new Ajax.Updater('left_content', url, {asynchronous: true,});
+      jQuery('#geography').val("");
   });
 
-  jQuery("#reset").click(function(){
-    new Ajax.Updater('content', '/resources/view_posts', {asynchronous: true,});
+  jQuery(".reset_button").click(function(){
+    window.location.reload();
+  });
+  jQuery("#geography").click(function(){
+    jQuery(this).css("color","#000");
+    jQuery(this).val("");
+  });
+  jQuery("#industry").click(function(){
+    jQuery(this).css("color","#000");
+    jQuery(this).val("");
   });
 });

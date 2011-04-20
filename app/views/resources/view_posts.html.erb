@@ -10,41 +10,6 @@
     <div class="left_content" id="left_content">
       <%= render :partial => 'posts'%>
     </div>
-    <div class="right_content">
-    	<div class="fixed_box">
-        <script src="http://cdn.jquerytools.org/1.2.5/form/jquery.tools.min.js"></script>
-          <!-- rangeinput styling -->
-          <link rel="stylesheet" type="text/css" href="/stylesheets/rangeinput.css"/>
-          <input type="button" class="reset_button" name="reset" value="Reset All" id="reset" />
-          <!-- HTML5 range input -->
-          <div class="price_rang">
-            <h2>Price</h2>
-            <span class="start_range">$0</span>
-            <span class="price_line">&nbsp;</span>
-            <input type="range" name="test" min="0" max="1000" value="150" class="range" />
-          </div>
-          <!--
-          <div class="field">
-            <label>Name</label>
-            <input type="text" name="suggest" min="0" value="" class="suggestion" id="author_name" />
-          </div>
-          -->
-          <div class="field price_rang">
-            <h2>Industry</h2>
-            <input type="text" name="suggest" min="0" value="" class="suggestion" id="industry" />
-            <input type="submit" name="add" value="" class="add_more">
-          </div>
-          <div class="field" id = "industry_result" >
-          </div>
-          <div class="field price_rang">
-            <h2>Geography</h2>
-            <input type="text" name="suggest" min="0" value="" class="suggestion" id="geography" />
-            <input type="submit" name="add" value="" class="add_more">
-          </div>
-          <div class="field" id = "geography_result" ></div>
-          <!-- make it happen -->
-        </div>
-      </div>
-  	</div>
+		<%= render :partial => 'right_content' %>
   </div>
 </div>
