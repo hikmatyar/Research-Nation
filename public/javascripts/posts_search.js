@@ -14,11 +14,12 @@ function populate_array_text(){
 
 jQuery('document').ready(function(){
 
-  jQuery(':range').val("1000");
-  jQuery('.handle').css("left","286px");
+  jQuery('input').click(function() {
+    jQuery(this).trigger("focus");  
+   });
 
   jQuery('#author_name').autocomplete('/users/unique_users');
-  jQuery('#industry').autocomplete('/resources/get_industries');
+  jQuery('#industry').autocomplete('/resources/get_industries', { autoFill : true});
   jQuery('#geography').autocomplete('/resources/get_geography_list');
 
   jQuery('#author_name').result(function(event, data, formatted) {
@@ -32,8 +33,9 @@ jQuery('document').ready(function(){
       url = "/resources/filter_results?industry="+ industries.join(",") +"&geography="+ geographies.join(",") +"&price=" + jQuery(":range").val();
 
       new Ajax.Updater('left_content', url, {asynchronous: true,});
+      jQuery(':range').val("$" + jQuery(':range').val() );
     });
-  jQuery('#industry').result(function(event, data, formatted) {
+    jQuery('#industry').result(function(event, data, formatted) {
 
       
       industries.push(formatted);
@@ -72,4 +74,6 @@ jQuery('document').ready(function(){
     jQuery(this).css("color","#000");
     jQuery(this).val("");
   });
+  jQuery(":range").val("$1000");
+  jQuery('.handle').css("left","331px");
 });

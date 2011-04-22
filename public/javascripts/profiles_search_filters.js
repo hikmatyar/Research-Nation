@@ -2,6 +2,11 @@ count = 0;
   jQuery('document').ready(function(){
     
    profile_type = ["individual","company"];
+
+   jQuery('input').click(function() {
+    jQuery(this).trigger("focus");
+   });
+
    jQuery('#profile_type').autocomplete(profile_type);
 
    jQuery('#profile_type').result(function(event, data, formatted) {
@@ -20,16 +25,15 @@ count = 0;
    });
 
 
-   jQuery('#expertise').autocomplete('/profiles/get_expertise');
-   jQuery('#expertise').result(function(event, data, formatted) {
-     url = "/profiles/filter_by_expertise?expertise="+ formatted;
+   jQuery('#industry_focus').autocomplete('/profiles/get_industry_focus');
+   jQuery('#industry_focus').result(function(event, data, formatted) {
+     url = "/profiles/filter_by_industry_focus?industry="+ formatted;
      new Ajax.Updater('left_content', url, {asynchronous: true,});
-     jQuery("#expertise_result").append('<p> ' + formatted +'</p> <span id="expertise_tag'+count+'"></span>');
+     jQuery("#industry_focus_result").append('<p> ' + formatted +'</p> <span id="industry_focus_tag'+count+'"></span>');
    });
 
-
    jQuery('#interested_in').autocomplete('/profiles/get_interests');
-   jQuery('#expertise').result(function(event, data, formatted) {
+   jQuery('#industry_focus').result(function(event, data, formatted) {
      url = "/profiles/filter_by_interests?interests="+ formatted;
      new Ajax.Updater('left_content', url, {asynchronous: true,});
      jQuery("#interested_result").append('<p> ' + formatted +'</p> <span id="interested_in_tag'+count+'"></span>');
@@ -52,7 +56,7 @@ count = 0;
      jQuery(this).val("");
    });
 
-   jQuery("#expertise").click(function(){
+   jQuery("#industry_focus").click(function(){
      jQuery(this).css("color","#000");
      jQuery(this).val("");
    });
