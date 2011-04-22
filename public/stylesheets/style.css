@@ -128,13 +128,13 @@ a:focus {
 
 .header a{
 	float:left;
-	width:430px;
+	width:320px;
 }
 
 .main_menu{
 	float:right;
 	margin:20px 0px 0px 0px;
-	width:550px;
+	width:660px;
 }
 
 .main_menu ul{
@@ -288,7 +288,7 @@ a:focus {
 
 .category p{
 	float: left;
-    width: 275px;
+	width: 280px;
 	color:#525252;
 }
 
@@ -1052,7 +1052,19 @@ a:focus {
 
 
 .koala_review{
-	margin-top:20px;	
+	height:938px;
+}
+
+.koala_review1{
+	height:708px;
+}
+
+.koala_review3{
+	height:1348px;
+}
+
+.koala_review4{
+	height:1182px;
 }
 
 .koala_review img{

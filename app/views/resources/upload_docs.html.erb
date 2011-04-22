@@ -1,58 +1,78 @@
 <div class="content">
 	<div class="content_back">
-    	<div class="round_box">
-        	<h3>Create a Post</h3>
-            <img src="/images/looding_image2.jpg" />
-            <div class="looding_text">
-              <%= link_to "YOUR DETAILS", :action => 'new', :user => params[:user] %>
-              <b>UPLOAD & SELL DOCS</b>
-              <h6>COMPLETE</h6>
-            </div>
-        	<div class="register_form">
-              <h2>2. Upload Your Documents</h2>
-                <%= form_tag  ({ :controller => 'resources', :action => 'create_post', :user => params[:user] } , :multipart => true, :id => "upload_form" ) %>
-                    <div class="field">
-                        <label>Title*</label>
-                        <%= text_field 'resource', 'title', :class => 'required max_len', :max_length => 140 %>
-                    </div>
-                    <div class="field">
-                        <label>Exec Summary</label>
-                        <%= text_area 'resource', 'description', :class => 'max_len', :max_length => 1000 %>
-                        <h5>1000</h5>
-                    </div>
-                    <div class="field">
-                        <label>Industry*</label>
-                        <%= text_field 'resource', 'industry', :class => 'required max_len', :max_length => 70 %>
-                    </div>
-                    <div class="field">
-                        <label>Geography*</label>
-                        <%= text_field 'resource', 'geography', :class => 'required max_len', :max_length => 70 %>
-                        <div class="loading">
-                          <img src="/images/loading_big.gif" alt="uploading files..." title="uploading files..." />
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label>Price(US$)*</label>
-                        <%= text_field 'resource', 'selling_price', :class => 'required valid_price' %>
-                        <i>Your document will be rated and reviewed by us, and we may edit it if needed</i>
-                    </div>
-                    <div class="field"><label>Attachment(s): </label></div>
-                    <div class="field"><label>Sample Document</label><%= file_field_tag 'sample', :class => 'file' %></div>
-                    <div class="field"><label>Original File</label><%= file_field_tag 'original', :class => 'required file' %></div>
-                    <input type="hidden" name="original_file_name" value="" id="original_file_name" />
-                    <input type="hidden" name="sample_file_name" value="" id="sample_file_name" />
-                    <div class="field">
-                        <label>Terms and Conditions</label>
-                        <%= text_area 'resource', 'terms_and_conditions', :class => 'max_len', :max_length => 3000 %>
-                    </div>
-                    <div class="check_box">
-                      <input type="checkbox" value="true" name="checkbox" checked="checked">
-                      <span>For individuals only: check this box if you want to get added to our expert database (completely private, and we share your information with your permission only). Click here to see more details on how it works</span>
-                    </div>
+    <div class="seller_left">
+      <div class="seller_back">
+        <h3>Create a Post</h3>
+          <img src="/images/looding_image2.jpg" />
+          <div class="looding_text">
+            <%= link_to "YOUR DETAILS", :action => 'new', :user => params[:user] %>
+            <b>UPLOAD & SELL DOCS</b>
+            <h6>COMPLETE</h6>
+          </div>
+          <div class="register_form">
+            <h2>2. Upload Your Documents</h2>
+              <%= form_tag  ({ :controller => 'resources', :action => 'create_post', :user => params[:user] } , :multipart => true, :id => "upload_form" ) %>
+              <div class="field">
+                  <label>Title*</label>
+                  <%= text_field 'resource', 'title', :class => 'required max_len', :max_length => 140 %>
+              </div>
+              <div class="field">
+                  <label>Exec Summary</label>
+                  <%= text_area 'resource', 'description', :class => 'max_len', :max_length => 1000 %>
+                  <h5>1000</h5>
+              </div>
+              <div class="field">
+                  <label>Industry*</label>
+                  <%= text_field 'resource', 'industry', :class => 'required max_len', :max_length => 70 %>
+              </div>
+              <div class="field">
+                  <label>Geography*</label>
+                  <%= text_field 'resource', 'geography', :class => 'required max_len', :max_length => 70 %>
+                  <div class="loading">
+                    <img src="/images/loading_big.gif" alt="uploading files..." title="uploading files..." />
+                  </div>
+              </div>
+              <div class="field">
+                  <label>Price(US$)*</label>
+                  <%= text_field 'resource', 'selling_price', :class => 'required valid_price' %>
+                  <i>Your document will be rated and reviewed by us, and we may edit it if needed</i>
+              </div>
+              <div class="field"><label>Attachment(s): </label></div>
+              <div class="field"><label>Sample Document</label><%= file_field_tag 'sample', :class => 'file' %></div>
+              <div class="field"><label>Original File</label><%= file_field_tag 'original', :class => 'required file' %></div>
+              <input type="hidden" name="original_file_name" value="" id="original_file_name" />
+              <input type="hidden" name="sample_file_name" value="" id="sample_file_name" />
+              <div class="field">
+                  <label>Terms and Conditions</label>
+                  <%= text_area 'resource', 'terms_and_conditions', :class => 'max_len', :max_length => 3000 %>
+              </div>
+              <div class="check_box">
+                <input type="checkbox" value="true" name="checkbox" checked="checked">
+                <span>For individuals only: check this box if you want to get added to our expert database (completely private, and we share your information with your permission only). Click here to see more details on how it works</span>
+              </div>
             </div>
             <div class="sign_up_button"><%= submit_tag "Proceed to Next Step" %></div>
+          </div>
+      </div>
+    <div class="seller_right">
+      <div class="koala_review">
+        <div class="guidelines">
+          <h2>Koala Tips</h2>
+          <h3>Add your LinkedIn profile</h3>
+          <p>It's a great way to showcase your talents, and makes your post just a tad bit more personal
+          <h3>Publish free</h3>
+          <p>Odd as it may sound, you might want to consider publishing your first report free of charge. Build a repu tation first, then start charging - you're more likely to get paid traffic that way
+          <h3>Choose your words wisely</h3>
+          <p> Use the 'About Me' in your profile to talk about what your core expertise is, and try to connect it to the research that you are sharing/publishing
+          <h3>Follow the rules</h3>
+          <p>Please don't share information that doesn't belong to you! Copyright violations are not cool
+          <h3>Privacy and Confidentiality</h3>
+          <p>Rest assured, we will NEVER compromise your information. Your e-mail address remains hidden at all times, unless you want it to be shown
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 
 <script type="text/javascript" language="javascript" charset="utf-8">
