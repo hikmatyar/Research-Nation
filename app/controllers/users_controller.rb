@@ -42,6 +42,7 @@ class UsersController < ApplicationController
       unless valid_user.blank?
         session[:user] = valid_user.id
         return redirect_to :controller => 'resources', :action => 'upload_docs' if session[:post]
+        return redirect_to :controller => 'profiles', :action => 'create' if session[:profile]
         redirect_to :controller => 'resources', :action => 'view_posts'
 
       else
@@ -55,6 +56,7 @@ class UsersController < ApplicationController
           session[:user] = new_user.id
         end
         return redirect_to :controller => 'resources', :action => 'upload_docs' if session[:post]
+        return redirect_to :controller => 'profiles', :action => 'create' if session[:profile]
         return redirect_to :controller => 'resources', :action => 'view_posts'
       end
     end
@@ -72,6 +74,7 @@ class UsersController < ApplicationController
       UserMailer.deliver_registration_email(@user.first_name, @user.last_name, @user.email)
       subscribe_to_newsletter @user if params["get_updates"]=="yes"
       return redirect_to :controller => 'resources', :action => 'upload_docs' if session[:post]
+      return redirect_to :controller => 'profiles', :action => 'create' if session[:profile]
       return redirect_to :controller => "resources", :action => "view_posts"
     end
     return render :action => 'register'
@@ -101,6 +104,7 @@ class UsersController < ApplicationController
       session[:user] = valid_user.id
       session[:admin]= valid_user.id if valid_user.is_admin?
       return redirect_to :controller => 'resources', :action => 'upload_docs' if session[:post]
+      return redirect_to :controller => 'profiles', :action => 'create' if session[:profile]
       return redirect_to :controller => 'resources', :action => 'view_posts'
     else
       flash[:error] = "Oops! Something wrong with your username/password"
