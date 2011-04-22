@@ -1,0 +1,62 @@
+<div class="content">
+  <% unless flash[:success].blank? %>
+    <p class="flash"><%= flash[:success] %></p>
+  <% end %>
+  <% flash[:success] = "" %>
+  <div class="content_back">
+  	<div class="categories_box">
+    	<!-- <b><span><%= @profile.industry_focus %></span> </b> -->
+    </div>
+  	<div class="resource_buttons">
+  		<h2><%= @profile.name %></h2>
+      <a href="#" data-reveal-id="myModal" id="abc">Send Message</a>
+    </div>
+    <% if @profile.profile_type == "company" %>
+      <%= render :partial => 'company_details' %>
+  	<% end %>
+  	<% if @profile.profile_type == "individual" %>
+  	  <%= render :partial => 'user_details' %>
+  	<% end %>
+  	<div class="facebook_back">
+  <div class="login_tab">
+    <span href="#" onclick="showTab('one');" style="" class="sign_up" id="tab2">Reviews & Comments</span>
+    <div style="display: block;" class="sign_up_box" id="tabOne">
+      <div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=175351785849270&amp;xfbml=1"></script><fb:comments href="http://<%= request.host %>/profiles/profile_page/<%= @profile.id %>" num_posts="2" width="500"></fb:comments>
+    </div>  
+  </div>
+</div>
+  </div>
+</div>
+
+<div id="myModal" class="reveal-modal contact" >
+  <div id="form">
+			<%= javascript_include_tag :defaults %>
+			<div id="message"></div>
+			<%= form_remote_tag ( :update => 'message',
+          :url => { :controller => 'profiles', :action => 'send_mail_to_profile', :email => @profile.key_individual.email }, :after => 'jQuery("#reset").trigger("click");' ) %>
+      <h2>Contact <%= @profile.name %></h2>
+      <div class="field">
+        <label>Name</label>
+        <input type="text" name="contact[name]" id="contact_name" class="required" />
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input type="text" name="contact[email]" id="contact_email" class="required" />
+      </div>
+      <div class="field">
+        <label>Subject</label>
+        <input type="text" name="contact[subject]" id="contact_subject" class="required" />
+      </div>
+      <div class="field">
+        <label>Message</label>
+        <textarea name="contact[message]" rows="8" cols="25" id="contact_message" class="required" /></textarea>
+      </div>
+      <div class="sign_up_button">
+        <%= submit_tag 'Send Message', :id => 'submit' %>
+        <input type="reset" id="reset" name="reset" value="Reset" id="" style="display:none;" />
+      </div>
+  </div>
+
+  <a class="close-reveal-modal">&#215;</a>
+
+</div>

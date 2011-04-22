@@ -1,0 +1,72 @@
+<div class="seller_left">
+  <div class="register_form">
+    <h2>Company Details* </h2>
+      <div class="field">
+        <b class="bold_text">Address</b>
+        <span class="field_text"><%= @profile.address %></span>
+      </div>
+      <div class="field">
+        <b class="bold_text">Country</b>
+        <span class="field_text"><%= @profile.country %></span>
+      </div>
+      <div class="field">
+        <b class="bold_text">Telephone</b>
+        <span class="field_text"><%= @profile.phone_number %></span>
+      </div>
+      <div class="field">
+        <b class="bold_text">Website</b>
+        <span class="field_text"><%= (link_to "#{@profile.website }", @profile.website, :target => "_blank", :class => 'web_link') %></span>
+      </div>
+      <div class="field">
+        <b class="bold_text">Description</b>
+        <span class="field_text"><%= @profile.description %></span>
+      </div>
+      <div class="field">
+        <b class="bold_text">Competitors</b>
+        <span class="field_text"><%= @profile.competitors %></span>
+      </div>
+      <div class="field">
+        <b class="bold_text">Research Type</b>
+        <span class="field_text"><%= @profile.research_type %></span>
+      </div>
+      <div class="field">
+        <b class="bold_text">Industry Focus</b>
+        <span class="field_text"><%= @profile.industry_focus %></span>
+      </div>
+  </div>
+  <div class="register_form">
+    <h2>Key Individual*</h2>
+      <div class="field">
+        <label>Name</label>
+        <span class="field_text"><%= @profile.key_individual.name %></span>
+      </div>
+      <div class="field">
+        <label>Title</label>
+        <span class="field_text"><%= @profile.key_individual.title %></span>
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <span class="field_text"><%= @profile.key_individual.email %></span>
+      </div>
+      <div class="field">
+        <label>Linkedin</label>
+        <span class="field_text"><%= (link_to "#{@profile.key_individual.linkedin }", @profile.key_individual.linkedin, :target => "_blank", :class => 'web_link') %></span>
+       </div>
+  </div>
+  <% unless @profile.humor_me.blank? %>
+  <div class="register_form">
+    <h2>Humor Me</h2>
+      <div class="field">
+        <span class="field_text"><%= @profile.humor_me %></span>
+      </div>
+  </div>
+  <% end %>
+  <% unless @profile.interested_in.blank? %>
+  <div class="register_form">
+    <h2>Interested In</h2>
+    <div class="field">
+      <span class="field_text"><%= @profile.interested_in %></span>
+    </div>
+  </div>
+  <% end %>
+</div>

@@ -14,6 +14,19 @@ class ContactMailer < ActionMailer::Base
     from         "no-reply@researchnation.net"
     content_type "text/html"
     body         :name => name, :email => email, :mail_subject => mail_subject, :message => message
-  end  
+  end
+
+  def profile_email (sender_name, sender_email_address, email_subject, message, recipient)
+      recipients   [ recipient ]
+      subject      "You have a message from #{sender_name}"
+      from         "admin@researchnation.net"
+      bcc          ["admin@researchnation.net"]
+      reply_to      sender_email_address
+      content_type "text/html"
+      body         :sender_name => sender_name,
+                   :subject => email_subject,
+                   :message => message, :sender_email => sender_email_address
+    sent_on Time.now
+  end
 
 end
