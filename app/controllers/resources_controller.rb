@@ -5,6 +5,7 @@ class ResourcesController < ApplicationController
 
   def new
     @user = User.find(session[:user]) if logged_in?
+    return redirect_to :action => 'upload_docs' if (logged_in? and @user.resources )
   end
 
   def post
