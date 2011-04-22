@@ -39,12 +39,16 @@
               </div>
               <div class="field"><label>Attachment(s): </label></div>
               <div class="field"><label>Sample Document</label><%= file_field_tag 'sample', :class => 'file' %></div>
-              <div class="field"><label>Original File</label><%= file_field_tag 'original', :class => 'required file' %></div>
+              <div class="field"><label>Original File*</label><%= file_field_tag 'original', :class => 'required file' %></div>
               <input type="hidden" name="original_file_name" value="" id="original_file_name" />
               <input type="hidden" name="sample_file_name" value="" id="sample_file_name" />
               <div class="field">
-                  <label>Terms and Conditions</label>
-                  <%= text_area 'resource', 'terms_and_conditions', :class => 'max_len', :max_length => 3000 %>
+                <label>Sources*</label>
+                <%= text_area 'resource', 'sources', :class => 'required max_len', :max_length => 3000 %>
+              </div>
+              <div class="field">
+                <label>Terms and Conditions</label>
+                <%= text_area 'resource', 'terms_and_conditions', :class => 'max_len', :max_length => 3000 %>
               </div>
               <div class="check_box">
                 <input type="checkbox" value="true" name="checkbox" checked="checked">

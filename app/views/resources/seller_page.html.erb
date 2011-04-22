@@ -21,9 +21,10 @@
       <div class="seller_back">
         <div class="login_tab">
           <%= link_to 'Summary','#', :class => 'sign_up', :id => 'tab1', :onclick => 'showTab("one");' %>
-          <%= link_to 'About Seller','#', :class => 'login', :id => 'tab2', :onclick => 'showTab("two");' %>
-          <%= (link_to 'View Sample','#', :class => 'login', :id => 'tab3', :onclick => 'showTab("three");') if @sample %>
-          <%= (link_to 'Terms and Conditions','#', :class => 'login', :id => 'tab4', :onclick => 'showTab("four");') unless @resource.terms_and_conditions.blank? %>
+          <%= (link_to 'Sources','#', :class => 'login', :id => 'tab4', :onclick => 'showTab("four");') unless @resource.terms_and_conditions.blank? %>
+          <%= link_to 'Seller','#', :class => 'login', :id => 'tab2', :onclick => 'showTab("two");' %>
+          <%= (link_to 'Sample','#', :class => 'login', :id => 'tab3', :onclick => 'showTab("three");') if @sample %>
+
           <div style="display: block;" class="sign_up_box" id="tabOne">
             <div class="summary">
               <p><%= @resource.description %></p>
@@ -31,7 +32,14 @@
           </div>  
           <div style="display: none;" class="login_tab_box" id="tabTwo">
             <div class="about_seller">
-              <%= @resource.user.about_me %>
+              <b>Profile: </b>
+              <p><%= @resource.user.about_me %></p>
+              <% unless @resource.user.linked_in_profile.blank? %>
+                <b>LinkedIn:</b><p><%= (link_to "#{@resource.user.linked_in_profile}", @resource.user.linked_in_profile, :target => "_blank", :style => 'color:#525252 !important;') unless @resource.user.linked_in_profile.blank? %></p>
+              <% end %>
+              <% unless @resource.user.website.blank? %>
+                <b>Website:</b><p><%= (link_to "#{@resource.user.website }", @resource.user.website, :target => "_blank", :style => 'color:#525252 !important;') %></p>
+              <% end %>
             </div>
           </div>
           <div style="display: none;" class="sign_up_box" id="tabThree">
@@ -55,7 +63,7 @@
         	</div>
         	<div style="display: none;" class="sign_up_box" id="tabFour">
             <div class="summary">
-              <%= @resource.terms_and_conditions %>
+              <%= @resource.sources %>
           	</div>
         	</div>
       	</div>
@@ -74,12 +82,12 @@
         <p></p>
       </div>
       <div class="related_posts">
-        <h2>Related Posts</h2>
-        <div class="related_posts_box">
-          <a href="#"></a>
-        </div>
-        <div class="related_posts_box">
-          <a href="#"></a>
+        <h2>Share It!</h2>
+          <div >
+           <script>function fbs_click() {u=location.href;t=document.title;window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent(u)+'&t='+encodeURIComponent(t),'sharer','toolbar=0,status=0,width=626,height=436');return false;}</script><style> html .fb_share_button { display: -moz-inline-block; display:inline-block; padding:1px 20px 0 5px; height:15px; border:1px solid #d8dfea; background:url(http://static.ak.facebook.com/images/share/facebook_share_icon.gif?6:26981)  no-repeat top right; } html .fb_share_button:hover { color:#fff; border-color:#295582; background:#3b5998 url(http://static.ak.facebook.com/images/share/facebook_share_icon.gif?6:26981) no-repeat top right; text-decoration:none; } </style> <a rel="nofollow" href="http://www.facebook.com/share.php?u=" class="fb_share_button" onclick="return fbs_click()" target="_blank" style="text-decoration:none;">Share</a>
+          </div>
+        <div>
+          <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
         </div>
         <div class="related_posts_box">
           <a href="#"></a>
