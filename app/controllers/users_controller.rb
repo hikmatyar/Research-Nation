@@ -70,11 +70,13 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
+      profile_type = params[:profile_type]
       session[:user] = @user.id
       UserMailer.deliver_registration_email(@user.first_name, @user.last_name, @user.email)
       subscribe_to_newsletter @user if params["get_updates"]=="yes"
       return redirect_to :controller => 'resources', :action => 'upload_docs' if session[:post]
       return redirect_to :controller => 'profiles', :action => 'create' if session[:profile]
+      return redirect_to :controller => 'profiles', :action => profile_type.downcase, :profile_type => profile_type.downcase unless profile_type.blank?
       return redirect_to :controller => "resources", :action => "view_posts"
     end
     return render :action => 'register'

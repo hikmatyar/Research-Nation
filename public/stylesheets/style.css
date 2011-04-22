@@ -131,6 +131,26 @@ a:focus {
 	width:320px;
 }
 
+.banner_text {
+    float: left;
+    margin-right: 200px;
+    width: 365px;
+}
+.banner_text h2 {
+    color: #525252;
+    float: left;
+    font-size: 30px;
+    line-height: 40px;
+    margin-top: 70px;
+    width: 100%;
+}
+.banner_text p {
+    color: #525252;
+    float: left;
+    font-size: 16px;
+    line-height: 24px;
+    width: 100%;
+}
 .main_menu{
 	float:right;
 	margin:20px 0px 0px 0px;
@@ -174,24 +194,7 @@ a:focus {
 	float:right !important;
 }
 
-.banner h2{
-	float:left;
-	width:310px;
-	line-height:40px;
-	font-size:30px;
-	color:#525252;
-	margin-top:70px;
-}
-
-.banner p{
-	float:left; 
-	width:310px;
-	font-size:16px;
-	color:#525252;
-	line-height:24px;
-}
-
-.banner a{
+.banner_text a{
 	text-align:center;
 	background: -moz-linear-gradient(center bottom, #8eaf32 22%, #aac84a 81%);
 	background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #8eaf32), color-stop(0.81, #aac84a));
@@ -210,7 +213,7 @@ a:focus {
 	border:medium none;
 }
 
-.banner a:hover{
+.banner_text a:hover{
 	text-decoration:none !important;
 	background-color:#8eaf32 !important;
 	background: -moz-linear-gradient(center bottom, #8eaf32 22%, #8eaf32 81%);
@@ -219,8 +222,10 @@ a:focus {
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#8eaf32, endColorStr=#8eaf32);
 }
 
-.banner img{
-	float:right;
+.banner img {
+    float: left;
+    margin-top: 50px;
+    width: 185px;
 }
 
 .content{
@@ -522,7 +527,6 @@ a:focus {
 	-webkit-border-radius:10px;
 	background-color:#E5E5E5;
 	text-decoration:none;
-	float:left;
 	list-style:none;	
 }
 
@@ -578,7 +582,7 @@ a:focus {
 	font-size:18px;
 	width:100%;
 	margin-left:10px;
-	margin-top:10px;	
+	margin-top:10px;
 }
 
 .forgot{
@@ -680,6 +684,16 @@ a:focus {
 	font-weight: bold;
 	font-size: 14px;
 	margin-bottom:0px;
+}
+
+.field_text{
+	width:500px !important;
+	margin-top:5px !important;
+}
+
+.bold_text{
+	width:120px !important;
+	margin-top:2px !important;
 }
 .check_box{
 	float:left;
@@ -904,7 +918,7 @@ a:focus {
 .summary, .view_sample, .about_seller{
 	float:left;
 	width:100%;
-	height:445px;
+	min-height:445px;
 	border:1px solid #CCC;
 	overflow:hidden;
 	font-size:18px;
@@ -1052,7 +1066,7 @@ a:focus {
 
 
 .koala_review{
-	height:938px;
+	height:330px;
 }
 
 .koala_review1{
@@ -1365,6 +1379,20 @@ a:focus {
 	padding-bottom: 10px !important;
     padding-top: 10px !important;
 	margin:0px !important;
+}
+
+.about_seller p{
+	font-size:18px;
+	line-height:24px;
+	padding:10px;
+	text-align:left;
+}
+
+.about_seller a{
+	font-size:18px;
+	line-height:24px;
+	padding:10px;
+	text-align:left;
 }
 
 .features_link a, .contact_us_link a, .guidelines_box a, .about_us a{
@@ -2242,7 +2270,6 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 
 .profile_box{
 	width:375px;
-	height:375px;
 	float:left;
 	margin-right:20px;
 	border:3px solid #E9E9E9;
@@ -2300,4 +2327,49 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 	border-radius:5px;
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
+}
+
+.web_link{
+	font-size: 18px !important;
+  line-height: 24px !important;
+  text-align: left !important;
+	color:#525252 !important;
+	background:none !important;
+}
+
+.web_link a:hover{
+	font-size: 18px !important;
+  line-height: 24px !important;
+  text-align: left !important;
+	color:#525252 !important;
+	background:none !important;
+}
+
+.inner_profile_box {
+    background-color: #F2F2F2;
+    border: 2px solid #FFFFFF;
+    float: left;
+    height: 289px;
+    padding: 45px 0 0;
+    width: 183px;
+}
+
+.profile_box b, .post_box b {
+    background-color: #F2F2F2;
+    color: #333333;
+    float: left;
+    font-size: 28px;
+    margin: 0;
+    padding: 10px;
+    text-align: center !important;
+    width: 355px;
+}
+
+.inner_post_box {
+    background-color: #F2F2F2;
+    border: 2px solid #FFFFFF;
+    float: left;
+    height: 234px;
+    padding: 50px;
+    width: 271px;
 }
