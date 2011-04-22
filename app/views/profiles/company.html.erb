@@ -3,7 +3,7 @@
     <div class="seller_left">
        <div class="seller_back">
         <div class="register_form">
-          <h2>2. Company Details* </h2>
+          <h2>1. Company Details* </h2>
           <% form_for(@profile , :url => {:controller => "profiles", :action => "create" } ) do |f| %>
             <div class="field">
               <label>Name</label>
@@ -39,7 +39,7 @@
             </div>
         </div>
         <div class="register_form">
-          <h2>3. Key Individual*</h2>
+          <h2>2. Key Individual*</h2>
             <div class="field">
               <label>Name</label>
               <%= text_field 'key_individual', 'name', :class => 'required' %>
@@ -66,7 +66,7 @@
              </div>
         </div>
         <div class="register_form">
-          <h2>4. Humor Me</h2>
+          <h2>3. Humor Me</h2>
             <div class="field">
               <label>Optional</label>
               <%= f.text_area 'humor_me', :class => 'max_len', :max_length => 1000 %>
@@ -76,7 +76,7 @@
         <%= f.hidden_field 'profile_type', :value => params[:profile_type] %>
         <%= hidden_field 'key_individual', 'skype_availability' %>
         <div class="register_form interests">
-          <h2>5. Interested In</h2>
+          <h2>4. Interested In</h2>
             <div class="field">
               <input type="checkbox" value="FT projects" name="checkbox" checked="checked" />
               <label>FT projects</label>
@@ -100,21 +100,19 @@
       </div>
     </div>
     <div class="seller_right">
-      <div class="koala_review">
+      <div class="koala_review koala_review3 ">
         <div class="guidelines">
-          <h2>Guidelines</h2>
-          <h3>Heading 1</h3>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when a
-          <h3>Heading 1</h3>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when a
-          <h3>Heading 1</h3>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when a
-          <h3>Heading 1</h3>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when a
-          <h3>Heading 1</h3>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when a
-          <h3>Heading 1</h3>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when a
+          <h2>Koala Tips</h2>
+           <h3>Get featured</h3>
+          <p>Build a reputation on our site and establish your credibility by publishing/selling through the 'Create Post' 
+          <h3>Show your lighter side!</h3>
+          <p>Profiles that show their humorous side (see 'humor section) are more likely to be viewed
+          <h3>Don't misrepresent</h3>
+          <p>Please make sure all representations are accurate, and if you're creating a company profile, that you are authorized to do so
+          <h3>Choose your words wisely</h3>
+          <p> Use the 'Description' in your profile to talk about what your company is really, REALLY good at. Don't try to be a jack of all trades - it doesn't sell
+          <h3>Privacy and Confidentiality</h3>
+          <p>Rest assured, we will NEVER compromise your information. Your e-mail address remains hidden at all times, unless you want it to be shown
          </div>
        </div>
      </div>
