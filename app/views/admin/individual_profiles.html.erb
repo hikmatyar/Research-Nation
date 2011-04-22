@@ -1,0 +1,23 @@
+<%= render :partial => 'admin_links' %>
+<div class="tab_container">
+<table border="0" cellspacing="20px" cellpadding="20px" id="users_table">
+  <tbody>
+    <tr>
+      <th>No.</th>
+      <th>Name</th>
+      <th>Title</th>
+      <th>Company</th>
+      <th></th>
+    </tr>
+    <% @profiles.each_with_index do |p, index|%>
+      <tr>
+        <td><%= @company_profiles_count - index %></td>
+        <td><%= link_to p.name, :controller => 'profiles', :action => 'edit_individual_profile', :id => p.id %></td>
+        <td ><%= p.key_individual.title %></td>
+        <td ><%= p.key_individual.name %></td>
+        <td ><%= link_to 'Delete', { :controller => 'profiles', :action => 'delete', :id => p.id }, :confirm => "Are you sure you want to delete this post?"  %>
+      </tr>
+    <% end %>
+  <tbody>
+</table>
+</div>

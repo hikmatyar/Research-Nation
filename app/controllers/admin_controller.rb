@@ -39,6 +39,14 @@ class AdminController < ApplicationController
     return render :partial => "is_admin_field", :locals => {:user => user}
   end
 
+  def company_profiles
+    @profiles = Profile.find_all_by_profile_type "company", :order => 'created_at DESC'
+  end
+
+  def individual_profiles
+    @profiles = Profile.find_all_by_profile_type "individual", :order => 'created_at DESC'
+  end
+
   def get_counts
     session[:members_count] = get_mailchimp_list_members.count if session[:members_count].blank?
     @resources_count = Resource.count
@@ -46,6 +54,8 @@ class AdminController < ApplicationController
     @admin_count = (User.find_all_by_is_admin true).count
     @memebers_count = session[:members_count]
     @experts_count = (User.find_all_by_is_expert(true)).count
+    @company_profiles_count = (Profile.find_all_by_profile_type "company").count
+    @individual_profiles_count = (Profile.find_all_by_profile_type "individual").count
   end
 
 end
