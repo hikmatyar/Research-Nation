@@ -34,7 +34,7 @@
 		<%= f.password_field 'password', :id => "password" %>
 		</div>
 		<div class="field">
-			<label>User Type</label>
+			<label>I am a</label>
 			<%= ( f.select "user_type", ["Buyer", "Seller" ], { :include_blank => true }, {:class => 'required' }) %>
 		</div>
 		<div class="field" style="display:none;" id = "profile_type">

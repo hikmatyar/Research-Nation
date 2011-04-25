@@ -324,7 +324,7 @@ a:focus {
 	float:left;
 	padding:5px;
 	color:#999;
-	width:295px;
+	width:235px;
 	border:1px solid #CCC;
 	margin-top:5px;
 	margin-bottom:20px;
@@ -537,13 +537,16 @@ a:focus {
 }
 
 
-.sign_up_box, .login_tab_box{
+.sign_up_box, .sign_up_box1, .login_tab_box{
 	float:left;
 	width:100%;
 	border:1px solid #CCC;	
 	margin-top:10px;
 }
 
+.sign_up_box1{
+    padding-top:10px;
+}
 .facebook_box{
 	float:left;
 	padding:10px;
@@ -582,6 +585,13 @@ a:focus {
 	text-align:left;
 }
 
+.field1{
+    margin-bottom:0px !important;
+}
+
+.field1 span{
+	border:0px !important;
+}
 
 .login_tab_box b{
 	float:left;
@@ -672,7 +682,7 @@ a:focus {
 	border: 1px solid #CCCCCC;
     float: left;
     height: 130px;
-    width: 350px;
+    width: 284px;
 	padding:5px;
 }
 
@@ -991,6 +1001,10 @@ a:focus {
 	font-size:18px;
 }
 
+.summary{
+    border:none;
+}
+
 .summary p{
 	font-size:18px;
 	line-height:24px;
@@ -1280,7 +1294,7 @@ a:focus {
 
 .profile_img{
 	float:	left;
-	width:80px;
+	width:100px;
 	height:80px;
 	margin-right:10px;
 }
@@ -1294,8 +1308,13 @@ a:focus {
 
 .resource_buttons{
 	float: right;
-	margin-top: 57px;
 	width: 260px;
+}
+
+.resource_buttons b{
+    text-align:right;
+    font-size:24px;
+    color:#000;
 }
 
 .resource_buttons a {
@@ -1313,7 +1332,6 @@ a:focus {
     text-align: center;
     float:right !important;
     position:relative;
-    top:-35px;
     margin-left:10px;
 }
 
@@ -1640,7 +1658,7 @@ background:#FFFFFF; border:1px solid #666666 !important; height:15px; width:15px
 }
 
 .field select{
-	width:280px;
+	width:298px;
 	border:1px solid #CCC;
 }
 
