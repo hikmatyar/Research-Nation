@@ -1,4 +1,4 @@
-<div class="register_form">
+  <div class="register_form">
     <h2>Individual Details* </h2>
     <div class="field">
       <label>Title</label>
@@ -22,7 +22,7 @@
     </div>
     <div class="field">
       <label>Website</label>
-      <span class="field_text"><%= (link_to "#{@profile.website }", @profile.website, :target => "_blank", :class => 'web_link') %></span>
+      <div class="field_text"><%= (link_to "#{@profile.website }", @profile.website, :target => "_blank", :class => 'web_link') %></div>
     </div>
     <div class="field">
       <label>Skype ID</label>
@@ -30,28 +30,30 @@
     </div>
     <div class="field">
       <label>Linkedin</label>
-      <span class="field_text"><%= (link_to "#{@profile.key_individual.linkedin }", @profile.key_individual.linkedin, :target => "_blank", :class => 'web_link') %></span>
-   </div>
+      <div class="field_text"><%= (link_to "#{@profile.key_individual.linkedin }", @profile.key_individual.linkedin, :target => "_blank", :class => 'web_link') %>
+      </div>
+    </div>
     <div class="field">
       <label>About Me</label>
       <span class="field_text"><%= @profile.description %></span>
     </div>
-    <% unless @profile.humor_me.blank? %>
-    <div class="register_form">
-      <h2>Humor Me</h2>
-        <div class="field">
-          <span class="field_text"><%= @profile.humor_me %></span>
-        </div>
-    </div>
-    <% end %>
-    <% unless @profile.interested_in.blank? %>
-      <div class="register_form interests">
-        <h2>Interested In</h2>
-        <div class="field">
-        <% @interests.each do |i|%>
-          <input type="checkbox" name="interests" checked="checked" disabled="disabled" />
-          <label><%= i %></label>
-        <% end %>
+  </div>
+  <% unless @profile.humor_me.blank? %>
+  <div class="register_form">
+    <h2>Humor Me</h2>
+      <div class="field">
+        <span class="field_text"><%= @profile.humor_me %></span>
       </div>
-    <% end %>
-</div>
+  </div>
+  <% end %>
+  <% unless @profile.interested_in.blank? %>
+    <div class="register_form interests">
+      <h2>Interested In</h2>
+      <div class="field">
+      <% @interests.each do |i|%>
+        <input type="checkbox" name="interests" checked="checked" disabled="disabled" />
+        <label><%= i %></label>
+      <% end %>
+    </div>
+  <% end %>
+  </div>

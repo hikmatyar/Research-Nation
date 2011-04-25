@@ -2,6 +2,8 @@
   <div class="post">
     <% link_to (:action => 'seller_page', :id => resource.id) do %>
     <div class="post_title">
+      <%= (image_tag resource.user.profile.picture.picture_path) unless resource.user.profile.blank? %>
+      <%= (image_tag "avatar.png") if resource.user.profile.blank? or resource.user.profile.blank?  %>
       <span clas><%= resource.title %></span>
       <p>$<%= resource.selling_price %></p>
     </div>

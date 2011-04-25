@@ -6,6 +6,12 @@
 <%= javascript_include_tag 'profiles_search_filters' %>
 
 <div class="content">
+	<div class="ptofile_tabs">
+				<ul class="tabs">
+					<li style="-moz-border-radius-topleft: 10px !important; -webkit-border-top-left-radius: 10px !important;"><%= link_to 'Posts', :controller => 'resources', :action => 'view_posts'%></li>
+					<li style="-moz-border-radius-topright: 10px !important; -webkit-border-top-right-radius: 10px !important;"><%= link_to 'Profiles', :controller => 'profiles', :action => 'view_profile_list'%></li>
+				</ul>
+			</div>
 	<div class="search_content">
     <div class="left_content" id="left_content">
     	<%= render :partial => 'profiles' %>

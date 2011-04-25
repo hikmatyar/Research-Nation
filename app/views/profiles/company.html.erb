@@ -76,10 +76,15 @@
               <%= f.text_area 'humor_me', :class => 'max_len', :max_length => 1000 %>
             </div>
         </div>
+        <div class="register_form">
+          <label>File</label>
+          <img src="/images/img2.png" alt="description" title="user avatar" width="64" height="64" />
+          <input type="file" name="picture" size="" accept="true" id = "user_image"/>
+        </div>
         <%= f.hidden_field 'interested_in', :id => 'interested_in' %>
         <%= f.hidden_field 'profile_type', :value => params[:profile_type] %>
         <%= hidden_field 'key_individual', 'skype_availability' %>
-        <%= hidden_field 'key_individual', 'skype_availability' %>
+        <%= hidden_field_tag 'picture_path',:id => "picture_path" %>
         <div class="register_form interests">
           <h2>4. Interested In</h2>
             <div class="field">
@@ -141,7 +146,14 @@
         $('#key_individual_skype_availability').change(function(){
             $(this).val($(this).attr("checked"));
         });
-				$(".interests input:checkbox").trigger('change');
+
+				$("#user_image").change(function(){
+          $("#picture_path").val($("#user_image").val());
+        });
+
+        $(".interests input:checkbox").trigger('change');
+
+        $("#user_image").trigger('change');
       });
 </script>
 

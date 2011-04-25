@@ -445,7 +445,14 @@ a:focus {
 .looding_text{
 	float:left;
 	width:100%;
+	margin-left:12px;
 	margin-bottom:20px;
+}
+
+.looding_text img{
+	float:left;
+	width:640px;
+	border-left: 1px solid #AAC84A;
 }
 
 .looding_text b{
@@ -475,11 +482,11 @@ a:focus {
 }
 
 .looding_text h6{
-	float:left;	
-	width:75px;
-	margin:0px;
-	padding:0px;
-	font-size:12px;
+	float: right;
+	font-size: 12px;
+	margin: 0 19px 0 0;
+	padding: 0;
+	width: 75px;
 }
 
 .login_tab{
@@ -596,7 +603,7 @@ a:focus {
 .register_form h2{
 	background-color:#ebebeb;
 	-moz-border-radius-topleft: 10px;
-    -moz-border-radius-topright: 10px;
+  -moz-border-radius-topright: 10px;
 	-webkit-border-top-right-radius: 10px;
 	-webkit-border-top-left-radius: 10px;
 	bottom: 10px;
@@ -686,11 +693,39 @@ a:focus {
 }
 
 .field_text{
+	float:left;
 	width:500px !important;
 	margin-top:5px !important;
 }
 
+.field_text a{
+	 -moz-border-radius:0x !important;
+    background: none !important
+    border:none !important;
+    color: #FFFFFF;
+    float: left;
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: 0px !important;
+    margin-right: 0 !important;
+    margin-top: 0 !important;
+    padding:0px !important;
+    text-align: left !important;
+}
+
+.field_text a:hover{
+	-moz-background-clip: 0px !important
+	-moz-background-origin: 0px !important
+	-moz-background-size:  0px !important
+	background-attachment: 0px !important
+	background-color: none !important;
+	background-image: none;
+	background-position:;
+	background-repeat:none;
+	text-decoration: none !important;
+}
 .field span{
+    text-align:left;
     font-size:14px;    
 }
 
@@ -769,6 +804,12 @@ a:focus {
 	padding:10px;
 }
 
+.seller_back h3{
+	float:left;
+	font-size:24px;
+	font-weight: bold;
+	margin-left:15px;
+}
 .facebook_back{
 	margin-top:30px;
 }
@@ -781,11 +822,34 @@ a:focus {
 	background-repeat:repeat-y;
 	min-height: 431px;
 	border-radius:10px;
-	-moz-border-radius:10px;
-	-webkit-border-radius:10px;
+	-moz-border-radius-topleft: 0px;
+  -moz-border-radius-topright: 10px;
+  -moz-border-radius-bottomright: 10px;
+  -moz-border-radius-bottomleft: 10px;
+	-webkit-border-top-right-radius: 0px;
+	-webkit-border-top-left-radius: 10px;
+	-webkit-border-bottom-left-radius: 10px;
+	-webkit-border-bottom-right-radius: 10px;
 	border:1px solid #999;
 }
 
+
+.ptofile_tabs{
+	float: left;	
+}
+
+.ptofile_tabs ul{
+	border:0px !important;
+	margin-bottom:1px !important;
+}
+
+.ptofile_tabs li{
+	border:1px solid #ccc !important;
+}
+
+.ptofile_tabs a{
+	border:0px !important;
+}
 
 .left_content{
 	float:left;
@@ -1131,7 +1195,6 @@ a:focus {
 	margin-top: 10px;
 	padding-right: 11px;
 	text-align: right;
-	width: 100%;
 }
 
 .related_posts a:hover{
@@ -1198,21 +1261,43 @@ a:focus {
   float: left;
   font-size: 14px;
   margin-bottom: 5px;
-  margin-top: 1px;
-  width: 100%;
+  margin-top: 10px;
+  width: 680px;
   font-weight:normal !important;
 }
 
 .author b{
+	float:left;
+	width:550px;
   color: #333333 !important;
 }
 
-.author img{
-  border:0px;
-  width:14px;
-  height:14px;
-  margin-left:5px;
+.author h2{
+	float:left;
+	width:550px;
+	margin-top:0px !important;
 }
+
+.profile_img{
+	float:	left;
+	width:80px;
+	height:80px;
+	margin-right:10px;
+}
+.profile_img img{
+	border: 0 none;
+	float: left;
+	height: 80px;
+	margin-right: 10px;
+	min-width: 80px;
+}
+
+.resource_buttons{
+	float: right;
+	margin-top: 57px;
+	width: 260px;
+}
+
 .resource_buttons a {
     -moz-border-radius: 4px 4px 4px 4px;
     -webkit-border-radius: 4px 4px 4px 4px;
@@ -1326,6 +1411,7 @@ a:focus {
 	width: 100%;
 	float:left;
 	margin-bottom:5px;
+	padding-left:5px;
 }
 .verticalslider_tabs a:link, .verticalslider_tabs a:visited{
 	display: block; 
@@ -2349,7 +2435,7 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 	background:none !important;
 }
 
-.web_link a:hover{
+.web_link:hover{
 	font-size: 18px !important;
   line-height: 24px !important;
   text-align: left !important;
@@ -2384,4 +2470,3 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
     height: 234px;
     padding: 50px;
     width: 271px;
-}
