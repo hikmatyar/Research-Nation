@@ -33,9 +33,6 @@
 		<label>Password</label>
 		<%= f.password_field 'password', :id => "password" %>
 		</div>
-		<div class="check_box">
-		<%= check_box_tag 'get_updates', "yes", true %><span>Please send me koala updates (via a newsletter) every now and then</span>
-		</div>
 		<div class="field">
 			<label>User Type</label>
 			<%= ( f.select "user_type", ["Buyer", "Seller" ], { :include_blank => true }, {:class => 'required' }) %>
