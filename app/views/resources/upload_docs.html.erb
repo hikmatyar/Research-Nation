@@ -10,7 +10,7 @@
             <h6>COMPLETE</h6>
           </div>
           <div class="register_form">
-            <h2>2. Upload Your Documents</h2>
+            <h2>Upload Your Documents</h2>
               <%= form_tag  ({ :controller => 'resources', :action => 'create_post', :user => params[:user] } , :multipart => true, :id => "upload_form" ) %>
               <div class="field">
                   <label>Title*</label>
@@ -35,7 +35,6 @@
               <div class="field">
                   <label>Price(US$)*</label>
                   <%= text_field 'resource', 'selling_price', :class => 'required valid_price' %>
-                  <i>Your document will be rated and reviewed by us, and we may edit it if needed</i>
               </div>
               <div class="field"><label>Attachment(s): </label></div>
               <div class="field"><label>Sample Document</label><%= file_field_tag 'sample', :class => 'file' %></div>
@@ -49,10 +48,6 @@
               <div class="field">
                 <label>Terms and Conditions</label>
                 <%= text_area 'resource', 'terms_and_conditions', :class => 'max_len', :max_length => 3000 %>
-              </div>
-              <div class="check_box">
-                <input type="checkbox" value="true" name="checkbox" checked="checked">
-                <span>For individuals only: check this box if you want to get added to our expert database (completely private, and we share your information with your permission only). Click here to see more details on how it works</span>
               </div>
             </div>
             <div class="sign_up_button"><%= submit_tag "Proceed to Next Step" %></div>

@@ -15,9 +15,9 @@
       <b>By <%= "#{@resource.user.name}" %>, 
       <span><%= @resource.user.work %> at <%= @resource.user.company %></span>
       </b>
-      <b>Price: US$<%= @resource.selling_price %></b>
     </div>
     <div class="resource_buttons">
+      <b>US$<%= @resource.selling_price %></b>
       <%= link_to 'Purchase', :action => 'payment', :id => @resource.id %>
       <a href="#" data-reveal-id="myModal" id="abc">Send Message</a>
     </div>
@@ -82,24 +82,27 @@
   	</div>
     <div class="seller_right">
       <div class="koala_review">
-        <h2>Koala Review</h2>
-        <p></p>
+        <span id="tab2" class="sign_up">Koala Review</span>
+        <div id="tabOne" class="sign_up_box" style="min-height:275px;">
+          <p></p>
+        </div>
       </div>
       <div class="related_posts">
-        <h2>Share It!</h2>
-        <script type="text/javascript">var switchTo5x=true;</script><script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script><script type="text/javascript">stLight.options({publisher:'185014b6-e08a-4137-bb9e-8f5112e53464'});</script>
-        <span class='st_twitter_hcount' displayText='Tweet'></span>
-        <span class='st_facebook_hcount' displayText='Facebook'></span>
-        <div class="related_posts_box">
-          <a href="#"></a>
+        <span id="tab2" class="sign_up">Share It!</span>
+        <div id="tabOne" class="sign_up_box1">
+          <script type="text/javascript">var switchTo5x=true;</script><script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script><script type="text/javascript">stLight.options({publisher:'185014b6-e08a-4137-bb9e-8f5112e53464'});</script>
+          <span class='st_twitter_hcount' displayText='Tweet'></span>
+          <span class='st_facebook_hcount' displayText='Facebook'></span>
+          <div class="related_posts_box">
+            <a href="#"></a>
+          </div>
+          <div class="related_posts_box">
+            <a href="#"></a>
+          </div>
+          <div class="related_posts_box">
+            <a href="#"></a>
+          </div>
         </div>
-        <div class="related_posts_box">
-          <a href="#"></a>
-        </div>
-        <div class="related_posts_box">
-          <a href="#"></a>
-        </div>
-        <a href="#">More</a>
       </div>
     </div>
   </div>
