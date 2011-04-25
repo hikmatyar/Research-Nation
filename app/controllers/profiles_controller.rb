@@ -24,18 +24,27 @@ class ProfilesController < ApplicationController
   def create
     profile = session[:profile].blank? ? Profile.new(params[:profile]) : session[:profile]
     key_individual = session[:key_individual].blank? ? KeyIndividual.new(params[:key_individual]) : session[:key_individual]
+    picture_path = params[:picture_path]
+
     unless logged_in?
       session[:key_individual] = key_individual
       session[:profile] = profile
       return redirect_to :controller => 'users'  , :action => 'register'
     end
+
     if profile.save
+      unless params[:picture].blank?
+        picture = Picture.new
+        picture.profile_id = profile.id
+        picture.add_picture(picture_path, params[:picture])
+      end
       session[:profile] = nil
       key_individual.profile_id = profile.id
       key_individual.save
       session[:key_individual] = nil
       return redirect_to :controller => 'resources', :action => 'view_posts'
     end
+
   end
 
   def types
