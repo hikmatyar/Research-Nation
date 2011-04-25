@@ -4,33 +4,21 @@
 <li>
 <% unless flash[:success].blank? %><p class="flash"><%= flash[:success] %></p><% end %>
 <% flash[:success] = nil %>
-<%= form_tag :controller => 'main', :action => 'send_feedback'%>
-<div class="field">
-<h1>We want to hear from you!</h1>
-<%= text_area_tag 'feedback', "", :style => "width:580px; margin-bottom:10px;" %>
-<div class="sign_up_button" style="margin:0px 0px 30px 0px;">
-  <%= submit_tag 'Submit Feedback'%>
-</div>
-</div>
-</form>
 <div class="field">
 <h1>Our Mission</h1>
-<p>Research Nation was founded in 2010 in London, with the goal of becoming the world's most open and collaborative marketplace for high quality, original market research. We're on a mission to fundamentally change the business intelligence is consumed in the marketplace today, and here's how we're going to do it:
+<span>Research Nation was founded in 2010 in London, with the goal of becoming the world's most open and collaborative marketplace for high quality, original market research. We're on a mission to fundamentally change the business intelligence is consumed in the marketplace today, and here's how we're going to do it:</span>
 
 <h3>Empowering Individuals</h4>
-To publish, share and sell their intelligence in a secure, trusted environment. Knowledge sharing already happens in smaller groups - at places like McKinsey, where there is a McKinsey Research Institute where employees collaborate and publish their insights. We want to recreate this model - but in a forum and manner that benefits far more people.
+<span>To publish, share and sell their intelligence in a secure, trusted environment. Knowledge sharing already happens in smaller groups - at places like McKinsey, where there is a McKinsey Research Institute where employees collaborate and publish their insights. We want to recreate this model - but in a forum and manner that benefits far more people.</span>
 
 <h3>Providing a Platform</h3>
-To hundreds of freelancers and small firms that produce high quality research, but nowhere to sell. This platform can also help bring change to larger firms, by giving them a secure avenue for creating and selling new products such as singles/chapters only and white label offerings
+<span>To hundreds of freelancers and small firms that produce high quality research, but nowhere to sell. This platform can also help bring change to larger firms, by giving them a secure avenue for creating and selling new products such as singles/chapters only and white label offerings</span>
 
 <h3>Focusing on Quality</h3> 
-And giving buyers the tools they need to assess quality before they spend their money. Reviews, sources, samples and easy comparison tools are all things we plan to use
+<span style="margin-bottom:30px;">And giving buyers the tools they need to assess quality before they spend their money. Reviews, sources, samples and easy comparison tools are all things we plan to use
 
-We're on a movement to democratize the market research industry - and we need you to join us!
+We're on a movement to democratize the market research industry - and we need you to join us!</span>
 </p>
-
-<h1>Jobs, job, jobs!</h1>
-<p> We're looking for a few good Koalas to help build out the product. If you're a designer or can code in RoR, please get in touch with us @ admin@researchnation.net. We'll be waiting for you!</p>
 
 </div>
 <h1>Team</h1>

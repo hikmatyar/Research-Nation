@@ -117,7 +117,7 @@ a:focus {
 
 .header{
 	float:left;
-	margin:0px;	
+	margin:10px 0px 0px 0px;
 }
 
 .header img{
@@ -128,12 +128,12 @@ a:focus {
 
 .header a{
 	float:left;
-	width:320px;
+	width:210px;
+	margin-right:335px;
 }
 
 .banner_text {
     float: left;
-    margin-right: 200px;
     width: 365px;
 }
 .banner_text h2 {
@@ -153,8 +153,8 @@ a:focus {
 }
 .main_menu{
 	float:right;
-	margin:20px 0px 0px 0px;
-	width:660px;
+	margin:10px 0px 0px 0px;
+	width:430px;
 }
 
 .main_menu ul{
@@ -182,6 +182,7 @@ a:focus {
 .banner{
 	float:left;
 	width:100%;
+	margin:10px 0px 0px 0px;
 }
 
 .facebook_like{
@@ -224,8 +225,6 @@ a:focus {
 
 .banner img {
     float: left;
-    margin-top: 50px;
-    width: 185px;
 }
 
 .content{
@@ -311,7 +310,7 @@ a:focus {
 }
 .email_box{
 	float:left;
-	margin-top:30px;
+	margin-top:0px;
 }
 
 .email_box b{
@@ -691,6 +690,10 @@ a:focus {
 	margin-top:5px !important;
 }
 
+.field span{
+    font-size:14px;    
+}
+
 .bold_text{
 	width:120px !important;
 	margin-top:2px !important;
@@ -931,7 +934,7 @@ a:focus {
 	text-align:left;
 }
 
-.seller_price_box, .user_box, .koala_review, .related_posts{
+.seller_price_box, .user_box, .koala_review, .related_posts, .guidelines1{
 	float:left;
 	padding:10px;
 	box-shadow:5px -5px 20px #bebebe;
@@ -1067,6 +1070,11 @@ a:focus {
 
 .koala_review{
 	height:330px;
+}
+
+.guidelines1{
+    height:600px;
+    
 }
 
 .koala_review1{
@@ -2220,6 +2228,10 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 .how_it_work_left_side{
 	float:left;
 	width:750px;
+}
+
+.how_it_work_left_side ul{
+    padding:0px;    
 }
 
 .how_it_work_left_side h1{
