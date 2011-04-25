@@ -18,7 +18,7 @@ class ProfilesController < ApplicationController
 
   def profile_page
     @profile = Profile.find params[:id]
-    @interests = @profile.interested_in.split(",")
+    @interests = @profile.interested_in.split(",") unless @profile.interested_in.blank?
   end
 
   def create
