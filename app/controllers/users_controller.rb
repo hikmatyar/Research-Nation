@@ -150,7 +150,7 @@ class UsersController < ApplicationController
       user = User.find params[:id]
       user.update_attributes :password => params[:password]
       session[:user] = user.id
-      flash[:success] = " Password successfullt changed "
+      flash[:success] = " Password successfully changed "
     end
     return redirect_to :controller => 'resources' , :action => 'view_posts'
   end

@@ -14,7 +14,7 @@ class Attachment < ActiveRecord::Base
         attachment.upload_sample( file.path ) if attachment_type == "sample"
         attachment.save
       else
-        error = "File should be within specified limits"
+        error = "Hey, file size should be less than 5MB"
       end
       return attachment.id
   end

@@ -10,8 +10,8 @@ class User < ActiveRecord::Base
   validates_presence_of :last_name
   validates_presence_of :password, :unless => Proc.new { |user| user.facebook_uid }
   validates_presence_of :email
-  validates_uniqueness_of :email, :message =>"has already been registered"
-  validates_format_of :email, :with => /^([^\s]+)((?:[-a-z0-9]\.)[a-z]{2,})$/i, :message => "format is not valid"
+  validates_uniqueness_of :email, :message =>"Hmm, that email's already taken"
+  validates_format_of :email, :with => /^([^\s]+)((?:[-a-z0-9]\.)[a-z]{2,})$/i, :message => "Hi! Please use a valid email"
 
   cattr_reader :per_page
   @@per_page = 1000

@@ -34,7 +34,6 @@ class ProfilesController < ApplicationController
       key_individual.profile_id = profile.id
       key_individual.save
       session[:key_individual] = nil
-      flash[:success] = "Thank you, your profile has been created"
       return redirect_to :controller => 'resources', :action => 'view_posts'
     end
   end

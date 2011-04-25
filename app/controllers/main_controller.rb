@@ -16,7 +16,6 @@ class MainController < ApplicationController
       session[:post] = nil
       resource.user_id = @user.id
       new_resource = Resource.create_resource(resource)
-      flash[:success] = "New resource created successfully" if new_resource
       return redirect_to :action => 'index'
   end
 
@@ -39,7 +38,7 @@ class MainController < ApplicationController
     if PostMailer.deliver_post_email(mail_body["name"], mail_body["email"], mail_body["subject"], mail_body["message"], recipient)
       return render :text => "<p class='flash'>Thank you! Your message has been sent</p>"
     else
-      render :text => "An error occured while sending your query"
+      render :text => "Hmm. Something seems to be wrong...let me look into it"
     end
   end
 

@@ -59,9 +59,9 @@ class ResourcesController < ApplicationController
     if resource.update_attributes(params[:resource])
       user = User.find(params[:user_id])
       user.update_attributes(params[:user])
-      flash[:success] = "The Post was updated successfully."
+      flash[:success] = "Thank you! Your post has been updated"
     else
-      flash[:error] = "Unable to update post."
+      flash[:error] = "Oops! looks like something's wrong"
     end
     return redirect_to :controller => 'admin', :action => 'posts'
 
