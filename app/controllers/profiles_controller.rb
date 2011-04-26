@@ -13,15 +13,12 @@ class ProfilesController < ApplicationController
   end
 
   def view_profile_list
-    @profiles = Array.new
+    @profiles = []
 
     users = User.find_all_by_user_type "Seller"
     users.each do |user|
       @profiles.push(user.profile) unless user.profile.blank?
     end
-
-    @countries = Country.all.collect(&:name)
-    @countries.push "All"
     @industry_focus.push("All")
   end
 
@@ -48,9 +45,10 @@ class ProfilesController < ApplicationController
         picture.add_picture(picture_path, params[:picture])
       end
       session[:profile] = nil
+      session[:key_individual] = nil
+
       key_individual.profile_id = profile.id
       key_individual.save
-      session[:key_individual] = nil
       return redirect_to :controller => 'resources', :action => 'view_posts'
     end
 
