@@ -31,11 +31,15 @@ class MainController < ApplicationController
     render :layout => false
   end
 
-  def send_mail_to_seller
-    recipient = User.find_by_email params[:email]
-    mail_body = params[:contact]
+  def send_message
+    message = Message.new
+    message.subject = params["subject"]
+    message.body = params[:body]
+    message.sender = User.find session[:user]
+    message.recipient = User.find params[:user_id]
+    if message.save
 
-    if PostMailer.deliver_post_email(mail_body["name"], mail_body["email"], mail_body["subject"], mail_body["message"], recipient)
+    #if PostMailer.deliver_post_email(mail_body["name"], mail_body["email"], mail_body["subject"], mail_body["message"], recipient)
       return render :text => "<p class='flash'>Thank you! Your message has been sent</p>"
     else
       render :text => "Hmm. Something seems to be wrong...let me look into it"
