@@ -26,21 +26,21 @@
 		<% unless flash[:success].blank? %><p class="flash"><%= flash[:success] %></p><% end %>
   	<% flash[:success] = "" %>
 		<div class="profile_left">
-    	<%= @user.profile.picture.blank? ? (image_tag "avatar_large.png") : (image_tag @user.profile.picture.picture_path, :width => "220", :height => "200") %>
+      <%= @user.profile.picture.blank? ? (image_tag "avatar.png") : (image_tag @user.profile.picture.picture_path, :width => "220", :height => "200") %>
       <div class="bio_container">
       	<b>Email (this is kept private):</b>
         <span><%= @user.email %></span>
       </div>
       <div class="resource_buttons">
-      	<%= link_to 'Edit Profile', :controller => 'profiles', :action => 'edit_individual_profile', :id => @user.profile.id if @user.user_type == "Seller" and @user.profile.profile_type == "individual" %>
-      	<%= link_to 'Edit Profile', :controller => 'profiles', :action => 'edit_company_profile', :id => @user.profile.id if @user.user_type == "Seller" and @user.profile.profile_type == "company"%>
-      	<%= link_to 'Edit Profile', :controller => 'profiles', :action => 'individual' if @user.profile.profile_type == "Buyer" %>
+        <%= link_to 'Edit Profile', :controller => 'profiles', :action => 'edit_individual_profile', :id => @user.profile.id if @user.user_type == "Seller" and @user.profile.profile_type == "individual" %>
+        <%= link_to 'Edit Profile', :controller => 'profiles', :action => 'edit_company_profile', :id => @user.profile.id if @user.user_type == "Seller" and @user.profile.profile_type == "company"%>
+        <%= link_to 'Edit Profile', :controller => 'profiles', :action => 'edit_individual_profile', :id => @user.profile.id if @user.user_type == "Buyer" %>
       </div>
    	</div>
     <div class="profile_right">
 			<ul class="tabs">
   <li><a href="#listings">My Listings</a></li>
-  <li><a href="#messages">Messages</a></li>
+  <li><a href="#messages">Inbox</a></li>
   <li><a href="#payments">Payments</a></li>
 </ul>
 
@@ -72,7 +72,20 @@
 		</div>
   </div>
   <div id="messages" class="tab_content">
-	  My Messages
+      <table border="0" cellspacing="10" cellpadding="10" id=" posts_table" align="left">
+			<tbody>
+				<% @user.received_messages.each do |msg|%>
+				  <tr>
+				    <td><%= msg.sender.profile.picture.blank? ? (image_tag "avatar.png", :width => "32", :height => "32") : (image_tag msg.sender.profile.picture.picture_path, :width => "32", :height => "32") %></td>
+				    <td ><span ><%= msg.sender.profile.name %></span>
+                 <span>  <%= ((Time.diff Time.now, msg.created_at.to_time)[:day] == 0)? "Today" : "#{(Time.diff Time.now, m.created_at.to_time)[:day]} ago"  %></span>
+				    </td>
+				    <td><%= link_to msg.subject, :controller => 'main', :action => 'view_message', :id => msg.id  %></td>
+				    <td ><%= link_to 'Delete', { :controller => 'messages', :action => 'delete', :id => msg.id }, :confirm => "Are you sure you want to delete this post?"  %></td>
+				  </tr>
+				<% end %>
+			<tbody>
+		</table>
   </div>
   <div id="payments" class="tab_content">
 	  My Payments

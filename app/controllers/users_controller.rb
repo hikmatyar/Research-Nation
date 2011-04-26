@@ -1,3 +1,4 @@
+require 'time_diff'
 class UsersController < ApplicationController
 
   before_filter :check_session, :only => [:update, :edit, :logout ] 
@@ -74,6 +75,12 @@ class UsersController < ApplicationController
       session[:user] = @user.id
       UserMailer.deliver_registration_email(@user.first_name, @user.last_name, @user.email)
       subscribe_to_newsletter @user if params["get_updates"]=="yes"
+      if @user.user_type == "Buyer"
+        profile = Profile.new
+        profile.user_id = @user.id
+        profile.save
+        return redirect_to :controller => 'users', :action => 'profile', :id => @user.id
+      end
       return redirect_to :controller => 'resources', :action => 'upload_docs' if session[:post]
       return redirect_to :controller => 'profiles', :action => 'create' if session[:profile]
       return redirect_to :controller => 'profiles', :action => profile_type.downcase, :profile_type => profile_type.downcase unless profile_type.blank?
@@ -112,6 +119,10 @@ class UsersController < ApplicationController
       flash[:error] = "Oops! Something wrong with your username/password"
       render :action => 'register', :opt => 'login'
     end
+  end
+
+  def profile
+    @user = User.find session[:user] if logged_in?
   end
 
     def logout
