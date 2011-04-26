@@ -4,7 +4,7 @@
        <div class="seller_back">
         <div class="register_form">
           <h2>1. My Details* </h2>
-          <% form_for(@profile , :url => {:controller => "profiles", :action => "create" } ) do |f| %>
+          <% form_for(@profile , :url => {:controller => "profiles", :action => "update", :id => @profile.id } ) do |f| %>
             <div class="field">
               <label>Name</label>
               <%= f.text_field 'name', :class => 'required max_len', :max_length => 70 %>
@@ -23,7 +23,7 @@
             </div>
             <div class="field">
               <label>Country</label>
-              <%= ( f.select "country", @countries,  { :include_blank => true } , {:class => 'required'}) %>
+              <%= country_select("profile", "country", ["United Kingdom", "United States"], { :include_blank => true } , {:class => 'required'}) %>
             </div>
             <div class="field">
               <label>Telephone</label>

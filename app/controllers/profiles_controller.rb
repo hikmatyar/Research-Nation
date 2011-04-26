@@ -55,14 +55,27 @@ class ProfilesController < ApplicationController
 
   end
 
+  def update
+    profile = Profile.find params[:id]
+    key_individual = profile.key_individual
+    profile.update_attributes(params[:profile])
+    key_individual.update_attributes params[:key_individual]
+    flash[:success] = "Your Information was updated successfully" 
+    return redirect_to :controller => 'users', :action => 'profile', :id => profile.user.id
+  end
+
+  def types
+    render :text => "company\nindividual"
+  end
+
   def edit_individual_profile
     @profile = Profile.find params[:id]
-    @key_individual = @profile.key_individual
+    @key_individual = @profile.key_individual unless @profile.key_individual.blank?
   end
 
   def edit_company_profile
     @profile = Profile.find params[:id]
-    @key_individual = @profile.key_individual
+    @key_individual = @profile.key_individual unless @profile.key_individual.blank?
   end
 
   def delete
