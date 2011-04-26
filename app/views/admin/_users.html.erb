@@ -3,7 +3,6 @@
   <tbody>
     <tr>
       <th>No.</th>
-      <th>Name</th>
       <th>Email</th>
       <th>Title</th>
       <th>Company</th>
@@ -13,7 +12,6 @@
     <% @users.each_with_index do |user, index|%>
       <tr>
         <td><%= (@users_count - index ).to_s %></td>
-        <td><%= user.name %></td>
         <td ><%= user.email %></td>
         <td ><%= user.work %></td>
         <td ><%= user.company %></td>
