@@ -1,14 +1,4 @@
-// Copyright (c) 2005-2008 Thomas Fuchs (http://script.aculo.us, http://mir.aculo.us)
-// Contributors:
-//  Justin Palmer (http://encytemedia.com/)
-//  Mark Pilgrim (http://diveintomark.org/)
-//  Martin Bialasinki
-//
-// script.aculo.us is freely distributable under the terms of an MIT-style license.
-// For details, see the script.aculo.us web site: http://script.aculo.us/
 
-// converts rgb() and #xxx to #xxxxxx format,
-// returns self (or first argument) if not convertable
 String.prototype.parseColor = function() {
   var color = '#';
   if (this.slice(0,4) == 'rgb(') {

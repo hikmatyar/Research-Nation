@@ -33,14 +33,14 @@ jQuery('document').ready(function(){
       url = "/resources/filter_results?industry="+ industries.join(",") +"&geography="+ geographies.join(",") +"&price=" + jQuery(":range").val();
 
       new Ajax.Updater('left_content', url, {asynchronous: true,});
-      jQuery(':range').val("$" + jQuery(':range').val() );
+      jQuery(':range').val("$" + jQuery(':range').val());
     });
     jQuery('#industry').result(function(event, data, formatted) {
 
       
       industries.push(formatted);
 
-      url = "/resources/filter_results?industry="+ industries.join(",") +"&geography="+ geographies.join(",") +"&price=" + jQuery(":range").val();
+      url = "/resources/filter_results?industry="+ industries.join(",") +"&geography="+ geographies.join(",") +"&price=" + jQuery(":range").val().replace("$","");
 
       jQuery("#industry_result").append('<p> ' + formatted +'</p> <span id="industry_tag'+count+'"></span>');
       new Ajax.Updater('industry_tag'+count, "/resources/industries_count?industry="+formatted, {asynchronous: true,});

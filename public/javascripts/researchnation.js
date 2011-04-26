@@ -14,7 +14,8 @@ $('document').ready(function(){
 		  }
 		});
 		if(jQuery('.flash')){
-			setTimeout("jQuery('.flash').remove();",3000);
+			setTimeout("jQuery('.flash').fadeOut(10000);",2000);
+			setTimeout("jQuery('.flash').remove();",15000);
 		}
 	}
 	

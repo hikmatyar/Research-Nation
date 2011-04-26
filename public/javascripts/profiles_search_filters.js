@@ -1,63 +1,36 @@
 count = 0;
-  jQuery('document').ready(function(){
-    
-   profile_type = ["individual","company"];
+jQuery('document').ready(function(){
 
-   jQuery('input').click(function() {
-    jQuery(this).trigger("focus");
+// selecting the choices and storing them globally for select field function
+   choices = new Array();
+   jQuery(".field input:checkbox:checked").each(function(){
+			choices.push(jQuery(this).val());
+		});
+
+// Changes to the select field of anytype
+   jQuery('.field select').change(function(){
+      url = callback_url(choices);
+     new Ajax.Updater('left_content', url, {asynchronous: true});
    });
 
-   jQuery('#profile_type').autocomplete(profile_type);
+// Changes to the checkboxes
+   jQuery(".field input:checkbox").change(function(){
 
-   jQuery('#profile_type').result(function(event, data, formatted) {
-     url = "/profiles/filter_by_profile_type?profile_type="+ formatted;
-     new Ajax.Updater('left_content', url, {asynchronous: true,});
-     jQuery("#profile_type_result").append('<p> ' + formatted +'</p> <span id="profile_tag'+count+'"></span>');
-   });
+     choices = new Array();
+     jQuery(".field input:checkbox:checked").each(function(){
+       choices.push(jQuery(this).val());
+     });
 
+      url = callback_url(choices);
+      new Ajax.Updater('left_content', url, {asynchronous: true})
+	});
 
-   jQuery('#location').autocomplete('/profiles/get_locations');
+  var callback_url = function(choices){
+    var call_to_url = "/profiles/search_results?country="+ jQuery("#location_country").val()+"&profile_type= "+jQuery("#profile_type").val()+"&industry="+jQuery("#industry_focus").val();
+		if (choices.length  > 0) {
+      return (call_to_url +"&choices="+choices);
+    }
+    return call_to_url;
+  }
 
-   jQuery('#location').result(function(event, data, formatted) {
-     url = "/profiles/filter_by_location?location="+ formatted;
-     new Ajax.Updater('left_content', url, {asynchronous: true,});
-    jQuery("#location_result").append('<p> ' + formatted +'</p> <span id="location_tag'+count+'"></span>');
-   });
-
-
-   jQuery('#industry_focus').autocomplete('/profiles/get_industry_focus');
-   jQuery('#industry_focus').result(function(event, data, formatted) {
-     url = "/profiles/filter_by_industry_focus?industry="+ formatted;
-     new Ajax.Updater('left_content', url, {asynchronous: true,});
-     jQuery("#industry_focus_result").append('<p> ' + formatted +'</p> <span id="industry_focus_tag'+count+'"></span>');
-   });
-
-   jQuery('#interested_in').autocomplete('/profiles/get_interests');
-   jQuery('#industry_focus').result(function(event, data, formatted) {
-     url = "/profiles/filter_by_interests?interests="+ formatted;
-     new Ajax.Updater('left_content', url, {asynchronous: true,});
-     jQuery("#interested_result").append('<p> ' + formatted +'</p> <span id="interested_in_tag'+count+'"></span>');
-   });
-
-   jQuery(".reset_button").click(function(){
-     window.location.reload();
-   });
-   
-   jQuery("#location").click(function(){
-     jQuery(this).css("color","#000");
-     jQuery(this).val("");
-   });
-   jQuery("#profile_type").click(function(){
-     jQuery(this).css("color","#000");
-     jQuery(this).val("");
-   });
-   jQuery("#interested_in").click(function(){
-     jQuery(this).css("color","#000");
-     jQuery(this).val("");
-   });
-
-   jQuery("#industry_focus").click(function(){
-     jQuery(this).css("color","#000");
-     jQuery(this).val("");
-   });
 });

@@ -8,12 +8,6 @@ $("a").click(function(){
 $("#new_user").submit(function(){
 		$('.error').remove();
 		valid = true;
-		/*if($("#first_name").val()==""){
-			$("#first_name").after("<p class='error'>First Name cannot be blank</p>");
-		}
-		if($("#last_name").val()==""){
-			$("#last_name").after("<p class='error'>Last Name cannot be blank</p>");
-		}*/
 		if($("#email").val()==""){
 			$("#email").after("<p class='error'>Email cannot be blank</p>");
 		}
@@ -21,8 +15,8 @@ $("#new_user").submit(function(){
 		if($("#password").val().length < 6 || $("#password").val() == ""){
 			$("#password").after("<p class='error'>Password must be at least 6 characters long</p>");
 		}
-		if($("#profile_type").val()==""){
-		  $("#profile_type").after("<p class='error'>Please select an option</p>");
+		if($("#user_user_type").val()==""){
+		  $(this).after("<p class='error'>Please select an option</p>");
 		}
 		if($('.error').length>0){
 			return false;
