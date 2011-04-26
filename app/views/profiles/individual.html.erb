@@ -124,7 +124,7 @@
           var interests = new Array();
           $(".interests input:checkbox:checked").each(function(){
             interests.push($(this).val());
-            $("#interested_in").val(interests.join(", "));
+            $("#interested_in").val(interests.join(","));
           });
         });
 

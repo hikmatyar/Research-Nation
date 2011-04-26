@@ -26,7 +26,7 @@
 		      </h2>
 		      <div class="field">
             <select name="profile_type" id="profile_type">
-              <option value="" selected="selected">All</option>
+              <option value="All" selected="selected">All</option>
               <option value="individual">Individual</option>
               <option value="company">Company</option>
             </select>
@@ -45,7 +45,7 @@
 		      <h2>
 		        Industry Focus
 		      </h2>
-		      <%= select_tag "industry_focus", options_for_select( @industry_focus, :default => "All" ) %>
+		      <%= select_tag "industry_focus", options_for_select(@industry_focus , "All" ) %>
 		    </div>
 		    <div class="field result_count" id = "industry_focus_result"></div>
 		    <div class="field price_rang">
@@ -53,23 +53,23 @@
 		        Interested In
 		      </h2>
 					<div class="field Interested_field">
-						<input type="checkbox" value="FT projects" name="checkbox" checked="checked" />
+						<input type="checkbox" value="FT projects" name="ft_projects" checked="checked" />
 						<label>FT projects</label>
 					</div>
 					<div class="field Interested_field">
-						<input type="checkbox" value="PT projects" name="checkbox" checked="checked" />
+						<input type="checkbox" value="PT projects" name="pt_projects" checked="checked" />
 						<label>PT projects</label>
 					</div>
 					<div class="field Interested_field">
-						<input type="checkbox" value="Immediate start" name="checkbox" checked="checked" />
+						<input type="checkbox" value="Immediate start" name="immediate_start" checked="checked" />
 						<label>Immediate start</label>
 					</div>
 					<div class="field Interested_field">
-						<input type="checkbox" value="Local only" name="checkbox" checked="checked" />
+						<input type="checkbox" value="Local only" name="local_only" checked="checked" />
 						<label>Local only</label>
 					</div>
 					<div class="field Interested_field">
-						<input type="checkbox" value="30 mins free phone consultation" name="checkbox" checked="checked" />
+						<input type="checkbox" value="30 mins free phone consultation" name="consultation" checked="checked" />
 						<label style="width:200px;">30 mins free phone consultation</label>
 					</div>
 					<div class="field result_count" id="interested_result"></div>
