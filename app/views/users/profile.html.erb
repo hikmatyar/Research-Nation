@@ -1,0 +1,85 @@
+<script>
+		$(document).ready(function() {
+
+		//When page loads...
+		$(".tab_content").hide(); //Hide all content
+		$("ul.tabs li:first").addClass("active").show(); //Activate first tab
+		$(".tab_content:first").show(); //Show first tab content
+
+		//On Click Event
+		$("ul.tabs li").click(function() {
+
+			$("ul.tabs li").removeClass("active"); //Remove any "active" class
+			$(this).addClass("active"); //Add "active" class to selected tab
+			$(".tab_content").hide(); //Hide all tab content
+
+			var activeTab = $(this).find("a").attr("href"); //Find the href attribute value to identify the active tab + content
+			$(activeTab).fadeIn(); //Fade in the active ID content
+			return false;
+		});
+
+	});
+</script>
+
+<div class="content">
+	<div class="content_back">
+		<% unless flash[:success].blank? %><p class="flash"><%= flash[:success] %></p><% end %>
+  	<% flash[:success] = "" %>
+		<div class="profile_left">
+    	<%= @user.profile.picture.blank? ? (image_tag "avatar_large.png") : (image_tag @user.profile.picture.picture_path, :width => "220", :height => "200") %>
+      <div class="bio_container">
+      	<b>Email (this is kept private):</b>
+        <span><%= @user.email %></span>
+      </div>
+      <div class="resource_buttons">
+      	<%= link_to 'Edit Profile', :controller => 'profiles', :action => 'edit_individual_profile', :id => @user.profile.id if @user.user_type == "Seller" and @user.profile.profile_type == "individual" %>
+      	<%= link_to 'Edit Profile', :controller => 'profiles', :action => 'edit_company_profile', :id => @user.profile.id if @user.user_type == "Seller" and @user.profile.profile_type == "company"%>
+      	<%= link_to 'Edit Profile', :controller => 'profiles', :action => 'individual' if @user.profile.profile_type == "Buyer" %>
+      </div>
+   	</div>
+    <div class="profile_right">
+			<ul class="tabs">
+  <li><a href="#listings">My Listings</a></li>
+  <li><a href="#messages">Messages</a></li>
+  <li><a href="#payments">Payments</a></li>
+</ul>
+
+<div class="tab_container">
+  <div id="listings" class="tab_content">
+		<div class="users_table">
+			<table border="0" cellspacing="10" cellpadding="10" id=" posts_table" align="left">
+			<tbody>
+				<tr>
+				  <th>No.</th>
+				  <th width="200"><b>Title</b></th>
+				  <th>Price</th>
+				  <th>Date</th>
+				  <th></th>
+				</tr>
+				<% @user.resources.each_with_index do |post, index|%>
+				  <tr>
+				    <td ><%= (@user.resources.count - index).to_s %></td>
+				    <td><%= link_to post.title, :controller => 'resources', :action => 'edit', :id => post.id, :user => @user.id  %></td>
+				    <td ><%= post.selling_price %></td>
+				    <td ><%= post.created_at.strftime("%B %d, %Y") %></td>
+				    <td ><%= link_to 'Edit', :controller => 'resources', :action => 'edit', :id => post.id, :user => @user.id  %></td>
+				    <td ><%= link_to 'Delete', { :controller => 'resources', :action => 'delete', :id => post.id, :request => "user" }, :confirm => "Are you sure you want to delete this post?"  %>
+				    </td>
+				  </tr>
+				<% end %>
+			<tbody>
+		</table>
+		</div>
+  </div>
+  <div id="messages" class="tab_content">
+	  My Messages
+  </div>
+  <div id="payments" class="tab_content">
+	  My Payments
+  </div>
+
+</div>
+   	</div>
+	</div>
+</div>
+
