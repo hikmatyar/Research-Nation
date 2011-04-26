@@ -71,10 +71,11 @@ class ResourcesController < ApplicationController
     resource = Resource.find(params[:id])
     sample = resource.attachments.sample
     original_doc = resource.attachments.original
-    sample.remove_doc unless sample.blank?
     resource.destroy
     @resources = Resource.paginate :page => params[:page], :order => 'created_at DESC'
-    return redirect_to :controller => 'admin', :action => 'dashboard'
+    flash[:success] = "Got it. Your post has been deleted"
+    return redirect_to :controller => 'users', :action => 'profile' if params[:request] = "user"
+    return redirect_to :controller => 'admin', :action => 'dashboard' if params[:request] = "admin"
   end
 
   def add_vote
@@ -85,12 +86,6 @@ class ResourcesController < ApplicationController
 
   def payment
     @resource = Resource.find params[:id]
-  end
-
-  def remove_sample
-    sample = Attachment.find params[:id]
-    sample.remove_doc
-    return redirect_to :controller => 'admin', :action => 'dashboard'
   end
 
   def filter_results
