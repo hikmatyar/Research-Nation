@@ -14,7 +14,7 @@
       <tr>
         <td ><%= (@resources_count - index).to_s %></td>
         <td><%= link_to post.title, :controller => 'resources', :action => 'edit', :id => post.id, :user => post.user.id  %></td>
-        <td ><%= post.user.name %></td>
+        <td ><%= post.user.profile.name %></td>
         <td ><%= post.selling_price %></td>
         <td ><%= post.created_at.strftime("%B %d, %Y") %></td>
         <td ><%= link_to 'Delete', { :controller => 'resources', :action => 'delete', :id => post.id, :request => "admin"}, :confirm => "Are you sure you want to delete this post?"  %>

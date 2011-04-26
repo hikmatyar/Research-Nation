@@ -12,7 +12,7 @@
       <%= (image_tag "avatar.png") if @resource.user.profile.blank? or @resource.user.profile.picture.blank?  %>
       </div>
       <h2><%= @resource.title %></h2>
-      <b>By <%= "#{@resource.user.name}" %>, 
+      <b>By <%= "#{@resource.user.profile.name}" %>,
       <span><%= @resource.user.work %> at <%= @resource.user.company %></span>
       </b>
     </div>
