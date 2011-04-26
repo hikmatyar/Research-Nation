@@ -2,14 +2,14 @@ class ProfilesController < ApplicationController
 
   layout 'main'
 
+  before_filter :set_tags, :only => ["company", "individual", "view_profile_list", "edit_individual_profile", "edit_company_profile"]
+
   def company
     @profile = Profile.new
-    set_tags
   end
 
   def individual
     @profile = Profile.new
-    set_tags
   end
 
   def view_profile_list
@@ -20,7 +20,6 @@ class ProfilesController < ApplicationController
       @profiles.push(user.profile) unless user.profile.blank?
     end
 
-    set_tags
     @countries = Country.all.collect(&:name)
     @countries.push "All"
     @industry_focus.push("All")
@@ -64,13 +63,11 @@ class ProfilesController < ApplicationController
   def edit_individual_profile
     @profile = Profile.find params[:id]
     @key_individual = @profile.key_individual
-    set_tags
   end
 
   def edit_company_profile
     @profile = Profile.find params[:id]
     @key_individual = @profile.key_individual
-    set_tags
   end
 
   def delete
@@ -114,8 +111,8 @@ class ProfilesController < ApplicationController
     return redirect_to :action => 'profile_page', :id => profile.id
   end
 
+private
   def set_tags
-    @countries = Country.all.collect(&:name)
     @research_type = ["Advertising Research", "Attitude & Usage Research", "Brand Research", "Business to Business", "Competitive Intelligence", "Concept/Positioning", "Consumer Research", "Corporate Image/Identity", "Customer Satisfaction", "Employee Surveys", "Demographic Research", "International (i.e. non-US)", "Legal Research", "Marketing Research", "Media Research", "Modeling & Predictive Research", "Mystery Shopping", "New Product Research", "Packaging Research", "Price Research", "Problem Detection", "Product Research", "Evaluation Studies", "Psychological Research", "Public Opinion", "Recruiting Research", "Retail Research", "Secondary Research", "Seminars/ Training", "Strategic Research", "Technology Evaluations", "Website Usability"]
     @industry_focus = ["Acquisitions", "Ad Agencies", "Agriculture", "Airlines", "Alcoholic Beverages", "Clothing", "Automotive", "Beverages", "Industrial", "Candy", "Gambling", "Chemicals", "Media & Communications", "Tech", "Construction", "Consumer Durables", "Consumer Services", "Cosmetics", "Demographics", "Education", "Electronics", "Entertainment", "Environment", "Fitness", "Fashion", "Financial Services & Investing", "Foods", "Gay & Lesbian", "Government", "Health Care", "Legal", "Couponing", "Military", "Non-Profits", "Packaged Goods", "Pets", "Oil & Gas", "Public Relations", "Real Estate", "Religion", "Retail", "Small Businesses", "Startups", "Sports", "Tobacco", "Toys", "Transportation", "Travel", "Utilities/Energy"]
   end

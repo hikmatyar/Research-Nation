@@ -37,7 +37,7 @@
 		      <h2>
 		        Location
 		      </h2>
-		      <%= select_tag "location", options_for_select( @countries, :default => "All" ) %>
+		      <%= country_select("location", "country", ["All"], { :include_blank => false }) %>
 		    </div>
 		    <div class="field result_count" id = "location_result" >
 		    </div>

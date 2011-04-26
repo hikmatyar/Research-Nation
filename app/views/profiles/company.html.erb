@@ -15,7 +15,7 @@
             </div>
             <div class="field">
               <label>Country</label>
-              <%= ( f.select "country", @countries,  { :include_blank => true } , {:class => 'required'}) %>
+              <%= country_select("profile", "country", ["United Kingdom", "United States"], { :include_blank => true } , {:class => 'required'}) %>
             </div>
             <div class="field">
               <label>Telephone</label>
