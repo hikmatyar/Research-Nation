@@ -23,7 +23,7 @@ class Attachment < ActiveRecord::Base
 
   def upload_to_s3(doc)
     s3_settings = YAML::load(File.open("#{RAILS_ROOT}/config/s3.yml"))
-    bucket = s3_settings[RAILS_ENV]['bucket'] if file_type == "original"
+    bucket = s3_settings[RAILS_ENV]['bucket'] if self.attachment_type == "original"
 
     AWS::S3::Base.establish_connection!(
       :access_key_id     => s3_settings[RAILS_ENV]['access_key'],
