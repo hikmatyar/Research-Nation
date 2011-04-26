@@ -38,6 +38,7 @@ class ProfilesController < ApplicationController
       return redirect_to :controller => 'users'  , :action => 'register'
     end
 
+    profile.user_id = session[:user]
     if profile.save
       unless params[:picture].blank?
         picture = Picture.new
