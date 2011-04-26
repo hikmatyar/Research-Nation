@@ -13,7 +13,17 @@ class ProfilesController < ApplicationController
   end
 
   def view_profile_list
-    @profiles = Profile.find :all, :order => 'created_at DESC'
+    @profiles = Array.new
+
+    users = User.find_all_by_user_type "Seller"
+    users.each do |user|
+      @profiles.push(user.profile) unless user.profile.blank?
+    end
+
+    set_tags
+    @countries = Country.all.collect(&:name)
+    @countries.push "All"
+    @industry_focus.push("All")
   end
 
   def profile_page
@@ -51,12 +61,6 @@ class ProfilesController < ApplicationController
     render :text => "company\nindividual"
   end
 
-  def edit_company_profile
-    @profile = Profile.find params[:id]
-    @key_individual = @profile.key_individual
-    @countries = Country.all.collect(&:name)
-  end
-
   def edit_individual_profile
     @profile = Profile.find params[:id]
     @key_individual = @profile.key_individual
@@ -75,21 +79,6 @@ class ProfilesController < ApplicationController
     return redirect_to :controller => 'admin', :action => 'dashboard'
   end
 
-  def get_locations
-    locations = Profile.all(:select => 'distinct(country)').collect(&:country)
-    render :text => locations.join("\n")
-  end
-
-  def get_industry_focus
-    industry_focus = Profile.all(:select => 'distinct(industry_focus)').collect(&:industry_focus)
-    render :text => industry_focus.join("\n")
-  end
-
-  def get_interests
-    interests = Profile.all(:select => 'distinct(interested_in)').collect(&:interested_in)
-    render :text => interests.to_s.split(",").join("\n")
-  end
-
   def filter_by_profile_type
    @profiles = Profile.find :all, :conditions => ['profile_type = ?', params[:profile_type]], :order => 'created_at DESC'
    render :partial => 'profiles'
@@ -105,8 +94,15 @@ class ProfilesController < ApplicationController
    render :partial => 'profiles'
   end
 
-  def filter_by_interests
-    @profiles = Profile.find :all, :conditions => ['interests like ?', "%#{params[:interests]}%" ], :order => 'created_at DESC'
+  def search_results
+    choices = params[:choices].split(",") unless params[:choices].blank?
+    @profiles = Array.new
+    unless params[:choices].blank?
+      choices.each do |choice|
+        @profiles.push(Profile.find :all, :conditions => ['interested_in like ? and industry_focus = ? and location = ? and profile_type = ?', "%#{choice}%", params[:industry], params[:location], params[:profile_type]], :order => 'created_at DESC')
+      end
+    end
+    @profiles.push(Profile.find :all, :conditions => ['industry_focus = ? and location = ? and profile_type = ?', params[:industry], params[:location], params[:profile_type]], :order => 'created_at DESC') if params[:choices].blank?
    render :partial => 'profiles'
   end
 

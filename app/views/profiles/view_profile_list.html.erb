@@ -23,38 +23,57 @@
 		    <div class="price_rang field">
 		      <h2>
 		      	Profile Type
-		      	<input type="button" class="reset_button" name="reset" value="Reset" id="reset" />
 		      </h2>
-		      <input type="text" name="suggest" min="0" value="Start typing to begin" class="suggestion" id="profile_type" />
+		      <div class="field">
+            <select name="profile_type" id="profile_type">
+              <option value="" selected="selected">All</option>
+              <option value="individual">Individual</option>
+              <option value="company">Company</option>
+            </select>
+		      </div>
 		    </div>
 		    <div class="field result_count" id="profile_type_result"></div>
 		    <div class="field price_rang">
 		      <h2>
 		        Location
-		        <input type="button" class="reset_button" name="reset" value="Reset" id="reset" />
 		      </h2>
-		      <input type="text" name="suggest" min="0" value="Start typing to begin" class="suggestion" id="location" />
+		      <%= select_tag "location", options_for_select( @countries, :default => "All" ) %>
 		    </div>
 		    <div class="field result_count" id = "location_result" >
 		    </div>
 		    <div class="field price_rang">
 		      <h2>
 		        Industry Focus
-		        <input type="button" class="reset_button" name="reset" value="Reset" />
 		      </h2>
-		      <input type="text" name="suggest" min="0" value="Start typing to begin" class="suggestion" id="industry_focus" style="border: 1px thin #CCC !important;"/>
+		      <%= select_tag "industry_focus", options_for_select( @industry_focus, :default => "All" ) %>
 		    </div>
 		    <div class="field result_count" id = "industry_focus_result"></div>
 		    <div class="field price_rang">
 		      <h2>
 		        Interested In
-		        <input type="button" class="reset_button" name="reset" value="Reset" />
 		      </h2>
-		      <input type="text" name="suggest" min="0" value="Start typing to begin" class="suggestion" id="interested_in" style="border: 1px thin #CCC !important;"/>
-		    </div>
-		    <div class="field result_count" id="interested_result"></div>
+					<div class="field Interested_field">
+						<input type="checkbox" value="FT projects" name="checkbox" checked="checked" />
+						<label>FT projects</label>
+					</div>
+					<div class="field Interested_field">
+						<input type="checkbox" value="PT projects" name="checkbox" checked="checked" />
+						<label>PT projects</label>
+					</div>
+					<div class="field Interested_field">
+						<input type="checkbox" value="Immediate start" name="checkbox" checked="checked" />
+						<label>Immediate start</label>
+					</div>
+					<div class="field Interested_field">
+						<input type="checkbox" value="Local only" name="checkbox" checked="checked" />
+						<label>Local only</label>
+					</div>
+					<div class="field Interested_field">
+						<input type="checkbox" value="30 mins free phone consultation" name="checkbox" checked="checked" />
+						<label style="width:200px;">30 mins free phone consultation</label>
+					</div>
+					<div class="field result_count" id="interested_result"></div>
 			</div>
 		</div>
 	</div>
 </div>
-
