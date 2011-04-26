@@ -16,6 +16,9 @@ class ApplicationController < ActionController::Base
     false
   end
 
+  def current_user
+    return (User.find session[:user]) unless session[:user].blank?
+  end
   def is_admin?
     return true unless session[:admin].blank?
     false
