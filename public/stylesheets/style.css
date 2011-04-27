@@ -129,19 +129,20 @@ a:focus {
 .header a{
 	float:left;
 	width:210px;
-	margin-right:335px;
+	margin-right:400px;
 }
 
 .banner_text {
     float: left;
-    width: 365px;
+    width: 400px;
 }
 .banner_text h2 {
     color: #525252;
     float: left;
     font-size: 30px;
     line-height: 40px;
-    margin-top: 70px;
+    margin-top: 30px;
+    margin-bottom:20px;
     width: 100%;
 }
 .banner_text p {
@@ -154,7 +155,7 @@ a:focus {
 .main_menu{
 	float:right;
 	margin:10px 0px 0px 0px;
-	width:430px;
+	width:370px;
 }
 
 .main_menu ul{
@@ -209,7 +210,7 @@ a:focus {
 	-moz-border-radius: 4px;
 	cursor:pointer;
 	padding:10px;
-	width:240px;
+	width:365px;
 	margin-top:20px;
 	border:medium none;
 }
@@ -224,7 +225,10 @@ a:focus {
 }
 
 .banner img {
-    float: left;
+    float: right;
+    margin-top:20px;
+    width:599px;
+    border:0px !important;
 }
 
 .content{
@@ -1255,6 +1259,7 @@ a:focus {
 	-webkit-border-radius:4px;
 	background-color:#E5E5E5;
 	padding:5px 10px 5px 10px;
+	color:#525252;
 	margin-right:5px;
 }
 
@@ -1301,6 +1306,10 @@ a:focus {
 	float:left;
 	width:550px;
 	margin-top:0px !important;
+}
+
+.author span{
+    color:#525252;
 }
 
 .profile_img{
@@ -2545,5 +2554,44 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 	float: left;
 	width:695px;
 	margin-top:60px;
-	
+}
+.new_field{
+ float:left;
+ width:100%;
+ margin-bottom:10px;
+ margin-top:7px;
+}
+
+.new_field1{
+    float:left;
+    width:100%;
+    margin-bottom:10px;
+}
+.new_field1 select{
+    width:385px;
+}
+
+.new_field label{
+ float:left;
+ width:100px;
+ margin-top:5px;
+ padding-left:8px;
+}
+
+.new_field input{
+ float:left;
+ border:1px solid #CCC;
+ padding:5px;
+ width:375px;
+ color:#999999;
+ -moz-border-radius:5px;
+ -webkit-border-radius:5px;
+}
+
+.required{
+    width:388px;
+}
+
+.new_user{
+    float:left;
 }

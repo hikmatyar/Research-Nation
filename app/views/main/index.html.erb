@@ -2,7 +2,27 @@
 	<div class="banner_text">
 		<h2>Market Research, Simplified</h2>
 		<p>Research Nation is an online marketplace for finding, buying and selling market research</p>
-		<%= (link_to "Free! Get started here", :controller => "users", :action => "register") unless logged_in? %>
+		<form method="post" id="new_user" class="new_user" action="/users/create">
+		<div class="new_field">
+		  <input type="text" size="30" name="user[email]" id="email" value="Please enter your email">
+		</div>
+		<div class="new_field">
+		  <input type="password" size="30" name="user[password]" id="password" value="Select a password">
+		</div>
+		<div class="new_field1 new_field ">
+			<select name="user[user_type]" id="user_user_type" class="required">
+			  <option value="I am a">I am a</option>
+        <option value="Buyer">Buyer</option>
+        <option value="Seller">Seller</option></select>
+		</div>
+		<div id="profile_type" style="display: none;" class="new_field1">
+	    <select name="profile_type">
+			  <option value="Company">Company</option>
+			  <option value="Individual">Individual</option>
+			</select>
+		</div>
+		</form>
+		<%= (link_to "Sign Up! One Click and You're In", :controller => "users", :action => "register") unless logged_in? %>
 		<%= (link_to "Free! Get started here", :controller => "resources", :action => "new") if logged_in? && @user.user_type == "Seller" %>
 		<%= (link_to "Free! Get started here", :controller => "resources", :action => "view_posts") if logged_in? && @user.user_type == "Buyer" %>
 	</div>
@@ -11,7 +31,11 @@
 <div class="facebook_like">
 	<iframe src="http://www.facebook.com/plugins/like.php?href=www.researchnation.net&amp;layout=button_count&amp;show_faces=true&amp;width=100&amp;action=like&amp;font&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe>
 </div>
+
 <div class="content">
+
+</div>
+<!--
 	<div class="box1">
 	<h4>HOW CAN I USE IT?</h4>
 	<ul class="category">
@@ -83,3 +107,4 @@
 		<%= (link_to "Join the movement!", :controller => "resources", :action => "view_posts") if logged_in? && @user.user_type == "Buyer" %>
 </p>
 </h1>
+-->
