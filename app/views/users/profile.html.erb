@@ -37,7 +37,8 @@
       	<b>Email (this is kept private):</b>
         <span><%= @user.email %></span>
       </div>
-      <div class="resource_buttons">
+
+      <div class="profile_button">
         <%= link_to 'Edit Profile', :controller => 'profiles', :action => 'edit_individual_profile', :id => @user.profile.id if @user.user_type == "Seller (Individual)" and @user.profile %>
         <%= link_to 'Edit Profile', :controller => 'profiles', :action => 'edit_company_profile', :id => @user.profile.id if @user.user_type == "Seller (Company)" and @user.profile %>
         <%= link_to 'Edit Profile', :controller => 'profiles', :action => 'edit_individual_profile', :id => @user.profile.id if @user.user_type == "Buyer" and @user.profile %>
@@ -45,10 +46,12 @@
    	</div>
     <div class="profile_right">
 			<ul class="tabs">
-  <li><a href="#listings">My Listings</a></li>
-  <li><a href="#messages">Inbox</a></li>
-  <li><a href="#payments">Payments</a></li>
-</ul>
+        <li><a href="#listings">My Listings</a></li>
+        <li><a href="#messages">Inbox</a></li>
+        <li><a href="#payments">Payments</a></li>
+        <li><a href="#payments">Purchase</a></li>
+      </ul>
+
 
 <div class="tab_container">
   <div id="listings" class="tab_content">
@@ -98,7 +101,7 @@
 	  My Payments
   </div>
 
-</div>
+      </div>
    	</div>
 	</div>
 </div>

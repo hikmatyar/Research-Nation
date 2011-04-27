@@ -87,7 +87,6 @@ a:visited {
   text-decoration: none;
   outline:none;
 }
-a:hover,
 a:active {
   color: #113a5a;
 }
@@ -129,20 +128,28 @@ a:focus {
 .header a{
 	float:left;
 	width:210px;
-	margin-right:400px;
+	margin-right:430px;
 }
 
 .banner_text {
     float: left;
-    width: 260px;
+    width: 360px;
 }
+
+.banner_text span{
+    float:left;
+    width:100%;
+    font-size:11px;
+}
+
 .banner_text h2 {
-    color: #525252;
+    color: #C8955B;
     float: left;
-    font-size: 30px;
-    line-height: 40px;
+    font-weight: normal;
+    font-size: 28px;
+    line-height: 33px;
+    margin-bottom: 20px;
     margin-top: 30px;
-    margin-bottom:20px;
     width: 100%;
 }
 .banner_text p {
@@ -173,7 +180,7 @@ a:focus {
 .main_menu{
 	float:right;
 	margin:10px 0px 0px 0px;
-	width:370px;
+	width:340px;
 }
 
 .main_menu ul{
@@ -207,7 +214,6 @@ a:focus {
 .facebook_like{
 	float:right;
 	width:50px;
-	margin-top:20px;
 }
 
 .connect_widget {
@@ -245,7 +251,6 @@ a:focus {
 .banner img {
     float: right;
     margin-top:20px;
-    width:599px;
     border:0px !important;
 }
 
@@ -257,7 +262,9 @@ a:focus {
 }
 
 .how_it_work_left_side p{
-	font-size:16px !important;
+	font-size:14px !important;
+	margin-left:10px;
+	margin-right:10px;
 }
 
 .box1, .box2, .box3{
@@ -576,6 +583,11 @@ a:focus {
 	border-bottom:1px solid #CCC;	
 }
 
+.sign_up_box img{
+    float:left;
+    padding-left:10px;
+    margin-right:0px !important;
+}
 
 .facebook_box b{
 	float:left;
@@ -676,13 +688,9 @@ a:focus {
 }
 .register_form{
 	float:left;
-	-moz-border-radius:10px;
-	-webkit-border-radius:10px;
 	text-decoration:none;
-	width:93%;
-	margin:10px;
-	background-color:#f6f6f6;
-	border:1px solid #CCC;
+	width:648px;
+	margin:10px 10px 10px 0px;
 	padding:10px;
 }
 
@@ -1183,10 +1191,6 @@ a:focus {
 	height:330px;
 }
 
-.guidelines1{
-    height:600px;
-    
-}
 
 .koala_review1{
 	height:708px;
@@ -1937,48 +1941,45 @@ ul.tabs {
 	padding: 0;
 	float: left;
 	list-style: none;
-	height: 32px; /*--Set height of tabs--*/
-	border-bottom: 1px solid #999;
-	border-left: 1px solid #999;
 	width: 100%;
 }
-ul.tabs li {
-	float: left;
-	margin: 0;
-	padding: 0;
-	height: 31px; /*--Subtract 1px from the height of the unordered list--*/
-	line-height: 31px; /*--Vertically aligns the text within the tab--*/
-	border: 1px solid #999;
-	border-left: none;
-	margin-bottom: -1px; /*--Pull the list item down 1px--*/
-	overflow: hidden;
-	position: relative;
-	background: #e0e0e0;
-}
 ul.tabs li a {
-	text-decoration: none;
-	color: #000;
-	display: block;
-	font-size: 1.2em;
-	padding: 0 20px;
-	border: 1px solid #fff; /*--Gives the bevel look with a 1px white border inside the list item--*/
-	outline: none;
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    float: left;
+    margin:0px 5px 0px 5px;
+    font-size: 18px;
+    font-weight: bold;
+    list-style: none outside none;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
 }
 ul.tabs li a:hover {
-	background: #ccc;
+	background: #E5E5E5;
 }
-html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that the active tab does not listen to the hover properties--*/
-	background: #fff;
-	border-bottom: 1px solid #fff; /*--Makes the active tab look like it's connected with its content--*/
+html ul.tabs li.active, html ul.tabs li.active {
+    -moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	background-color:#CCC;
+	text-decoration:none;
+	outline:none;
+	float:left;
+	list-style:none;
+	font-size:18px;
+	font-weight:bold;
+	text-align:center;
+	list-style-type:none;		
 }
 
 .tab_container {
 	border: 1px solid #999;
-	border-top: none;
 	overflow: hidden;
 	clear: both;
 	float: left; width: 100%;
+	min-height: 228px;
 	text-align:left;
+	margin-top:10px;
 	background: #fff;
 }
 .tab_content {
@@ -2370,6 +2371,21 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 	margin-bottom:40px;
 }
 
+.privacy_box{
+    float:left;
+    height:300px;
+    overflow:auto;    
+}
+
+.privacy_box p{
+    margin-left:10px;
+    margin-right:10px;
+}
+
+.privacy_box b{
+	width:98%;
+}
+
 .how_it_works_field2{
 	float:left;
 	margin-top:5px;
@@ -2391,6 +2407,11 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
     margin: 20px 0 !important;
     text-align: left !important;
     width: 100%;
+}
+
+.how_it_work_left_side b{
+	color:#245A83;
+	margin-bottom:0px;
 }
 
 .image_box{
@@ -2553,6 +2574,11 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 	background-color:#E8E7E3;
 }
 
+html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that the active tab does not listen to the hover properties--*/
+	background: #CCCCCC;
+}
+
+
 .bio_container {
 	background-color: #E8E7E3;
 	border: 2px solid #CCCCCC;
@@ -2569,8 +2595,16 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 }
 
 .profile_right{
-	float: left;
-	width:695px;
+    float:left;
+	box-shadow:5px -5px 20px #bebebe;
+	-webkit-box-shadow:0 0 20px #bebebe;
+	-moz-box-shadow:0 0 20px #bebebe;
+	border-radius:10px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	background-color:#FFFFFF;
+	padding:10px;
+	width:680px;
 	margin-top:60px;
 }
 .new_field{
@@ -2616,4 +2650,134 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
   margin-bottom: 2px;
   margin-left: 111px;
   margin-top: 4px;
+}
+
+.profile_button{
+     float:left;
+     margin-top:20px;
+}
+
+.profile_button a {
+    -moz-border-radius: 4px 4px 4px 4px;
+    -webkit-border-radius: 4px 4px 4px 4px;
+    background: -moz-linear-gradient(center bottom,  #8eaf32 22%, #AAC84A 81%);
+		background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #8eaf32), color-stop(0.81,  #AAC84A));
+		background: -moz-linear-gradient(center bottom,  #8eaf32 22%, #AAC84A 81%);
+    border: medium none;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px!important;
+    text-align: center;
+    float:left !important;
+    position:relative;
+}
+
+
+.profile_button a:hover{
+	text-decoration:none !important;
+	background-color:#8eaf32 !important;
+	-moz-border-radius: 4px 4px 4px 4px;
+	-webkit-border-radius: 4px 4px 4px 4px;
+	background: -moz-linear-gradient(center bottom, #8eaf32 22%, #8eaf32 81%);
+	background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #8eaf32), color-stop(0.81, #8eaf32));
+	background: -moz-linear-gradient(center bottom, #8eaf32 22%, #8eaf32 81%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#8eaf32, endColorStr=#8eaf32);	
+	width:auto !important;
+}
+
+.users{
+	float:left;
+	width:100%;
+}
+
+.receipient, .sender{
+    float:left;
+	box-shadow:5px -5px 20px #bebebe;
+	-webkit-box-shadow:0 0 20px #bebebe;
+	-moz-box-shadow:0 0 20px #bebebe;
+	border-radius:10px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	background-color:#FFFFFF;
+	padding:10px;
+    width: 335px;
+}
+
+.receipient b, .sender b{
+	float:left;
+	width:200px;
+	text-align:center;
+	padding-top:40px;
+	font-size:20px;
+	padding-bottom:20px;
+}
+
+.receipient img, .sender img{
+	float:left;
+}
+
+.sender{
+	margin-left:10px;
+}
+
+.reply_box{
+    float:left;
+	padding:10px;
+	box-shadow:5px -5px 20px #bebebe;
+	-webkit-box-shadow:0 0 20px #bebebe;
+	-moz-box-shadow:0 0 20px #bebebe;
+	border-radius:10px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	width:700px;
+	margin-top:20px;
+	background-color:#FFFFFF;
+}
+
+.replay_field_box{
+    padding: 20px 10px;
+    width: 677px;
+}
+
+.replay_field_box input{
+    width:285px !important;
+}
+
+.message_details{
+    float:left;
+	padding:10px;
+	box-shadow:5px -5px 20px #bebebe;
+	-webkit-box-shadow:0 0 20px #bebebe;
+	-moz-box-shadow:0 0 20px #bebebe;
+	border-radius:10px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	width:700px;
+	margin-top:20px;
+	background-color:#FFFFFF;
+}
+
+.related_posts_box img{
+    width:40px;
+    height:40px;
+    padding:5px;
+    margin-right:10px;
+}
+
+.related_posts_box span{
+    float:left;
+    width:600px !important;
+    border:0px !important;
+    padding:15px; 5px 0px 0px;   
+}
+
+.guidelines_box1{
+    padding:10px;
+    width:220px;
+}
+
+.guidelines_box1 p{
+    font-size:14px;
 }

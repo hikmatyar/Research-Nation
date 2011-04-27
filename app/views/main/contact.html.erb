@@ -1,5 +1,40 @@
 <div class="content">
   <div class="how_it_work_left_side">
+    <div class="content_back" style="width:100%;">
+	    <div class="seller_back">
+        <span class="sign_up" id="tab2">Get in touch!</span>
+        <div style="padding:10px 0px" class="sign_up_box" id="tabOne">
+          <div>
+            <% unless flash[:notice].blank? %>
+              <p class="flash"><%= flash[:notice] %></p>
+            <% end %>
+            <% flash[:notice] = nil %>
+            <%= form_tag :controller => 'main', :action => 'contact_us'%>
+              <div class="field">
+                <label>Name</label>
+                <%= text_field_tag 'name', "" , :size => '30' %>
+              </div>
+              <div class="field">
+                <label>E-mail</label>
+                <%= text_field_tag 'email', "" , :size => '30' %>
+              </div>
+              <div class="field">
+                <label>Subject</label>
+                <%= text_field_tag 'subject', "" , :size => '30' %>
+              </div>
+              <div class="field">
+                <label>Message</label>
+                <%= text_area_tag 'message', "" , :size => '30' %>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="sign_up_button field" style="margin:10px 0px 0px 0px;">
+          <%= submit_tag 'Submit' %>
+        </div>
+      </div>
+    </div>
+    <!--
     <ul>
       <li>
         <div>
@@ -38,6 +73,7 @@
         </div>
       </li>
     </ul>
+    -->
   </div>
   <%= render :partial => 'how_it_works_links' %>
 </div>

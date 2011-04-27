@@ -2,13 +2,8 @@
 	<% unless flash[:notice].blank? %><p class="flash"><%= flash[:notice] %></p><% end %>
 	<% flash[:notice] = "" %>
 	<div class="banner_text">
-		<h2>A Marketplace for Market Research</h2>
-		<ul>
-			<li>User-Generated Posts</li>
-			<li>Sources & Reviews</li>
-			<li>Private Selling Enabled</li>
-			<li>Free, Like, Forever!</li>
-		</ul>
+		<h2>A MARKETPLACE FOR ORIGINAL, HIGH-QUALITY MARKET RESEARCH</h2>
+			<p>Sign up to quickly create a custom web page to sell & share your data & insights. It's exclusive, completely free, and very easy to use</p>
 		<% unless logged_in? %>
 			<%= render :partial => 'users/errors' %>
 			<% form_for(@user , :url => {:controller => "users", :action => "create" } ) do |f| %>
@@ -21,9 +16,11 @@
 				<%= f.password_field 'password', :id => "password", :class => 'required password' %>
 			</div>
 			<div class="new_field1 new_field ">
-				<%= ( f.select "user_type", ["Buyer", "Seller (Individual)", "Seller (Company)" ], { :include_blank => "I am a" }, {:class => 'required' }) %>
+			<label>I am a</label>
+				<%= ( f.select "user_type", ["Buyer", "Seller (Individual)", "Seller (Company)" ], { :include_blank => "Click to choose" }, {:class => 'required' }) %>
 			</div>
-			<div class="sign_up_button"><%= (f.submit "One Click Sign-up", :controller => "users", :action => "register")%></div>
+			<div class="sign_up_button" style="margin-left:0px !important;"><%= (f.submit "One Click Sign-up", :controller => "users", :action => "register")%></div>
+			<span>By signing up you agree to our Terms of Service and Privacy Policy</span>
 			<% end %>
 		<% end %>
 		<%= link_to "Create a post now", :controller => "resources", :action => "upload_docs" if logged_in? %>
