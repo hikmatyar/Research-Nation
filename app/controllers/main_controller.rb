@@ -4,7 +4,6 @@ class MainController < ApplicationController
   def index
     @user = User.find(session[:user]) if logged_in?
     @user = User.new unless logged_in?
-    puts flash[:success]
   end
 
   def post

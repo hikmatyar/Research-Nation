@@ -1,4 +1,6 @@
 <div class="banner">
+	<% unless flash[:notice].blank? %><p class="flash"><%= flash[:notice] %></p><% end %>
+	<% flash[:notice] = "" %>
 	<div class="banner_text">
 		<h2>A Marketplace for Market Research</h2>
 		<ul>
@@ -110,14 +112,6 @@
 </h1>
 -->
 <script type="text/javascript" language="javascript" charset="utf-8">
-	$("#user_user_type").change(function(){
-		if($(this).val()=="Seller"){
-			$("#profile_type").show();
-		}
-		else{
-			$("#profile_type").hide();
-		}
-	});
 	$("#new_user").submit(function(){
 		return validate_form();
 	});
