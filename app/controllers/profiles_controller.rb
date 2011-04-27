@@ -1,7 +1,5 @@
 class ProfilesController < ApplicationController
 
-  layout 'main'
-
   before_filter :set_tags, :only => ["company", "individual", "view_profile_list", "edit_individual_profile", "edit_company_profile"]
 
   def company
