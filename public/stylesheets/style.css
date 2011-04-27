@@ -2158,7 +2158,7 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
     color: #245B83 !important;
     height: 20px;
     margin-left: -5px;
-    margin-left: 6px;
+    margin-bottom: 10px;
     padding: 10px 0 15px 10px;
     padding-top: 14px !important;
     text-align: center;
@@ -2606,10 +2606,6 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
  color:#999999;
  -moz-border-radius:5px;
  -webkit-border-radius:5px;
-}
-
-.required{
-    width:388px;
 }
 
 .new_user{
