@@ -4,6 +4,7 @@ class MainController < ApplicationController
   def index
     @user = User.find(session[:user]) if logged_in?
     @user = User.new unless logged_in?
+    puts flash[:success]
   end
 
   def post
@@ -35,7 +36,7 @@ class MainController < ApplicationController
   def send_message
     message = Message.new
     message.subject = params["subject"]
-    message.body = params[:body]
+    message.body = params[:message]
     message.sender = User.find session[:user]
     message.recipient = User.find params[:user_id]
     if message.save
