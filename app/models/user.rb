@@ -6,9 +6,8 @@ class User < ActiveRecord::Base
   has_many :resources
   has_many :votes
   has_one :profile
+  has_private_messages
 
-  validates_presence_of :first_name
-  validates_presence_of :last_name
   validates_presence_of :password, :unless => Proc.new { |user| user.facebook_uid }
   validates_presence_of :email
   validates_uniqueness_of :email, :message =>"Hmm, that email's already taken"

@@ -23,7 +23,7 @@
             </div>
             <div class="field">
               <label>Country</label>
-              <%= ( f.select "country", @countries,  { :include_blank => true } , {:class => 'required'}) %>
+              <%= country_select("profile", "country", ["United Kingdom", "United States"], { :include_blank => true } , {:class => 'required'}) %>
             </div>
             <div class="field">
               <label>Telephone</label>
@@ -124,7 +124,7 @@
           var interests = new Array();
           $(".interests input:checkbox:checked").each(function(){
             interests.push($(this).val());
-            $("#interested_in").val(interests.join(", "));
+            $("#interested_in").val(interests.join(","));
           });
         });
 

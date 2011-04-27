@@ -2,8 +2,11 @@
 	<div class="post">
 		<% link_to (:action => 'profile_page', :id => profile.id) do %>
 			<div class="post_title">
-				<%= (image_tag profile.picture.picture_path) unless profile.picture.blank? %>
-				<%= (image_tag "avatar.png") if  profile.picture.blank?  %>
+        <% unless profile.picture.blank? %>
+				  <%= (image_tag profile.picture.picture_path) %>
+				<% else %>
+				  <%= (image_tag "avatar.png")%>
+				<% end %>
 				<span clas><%= profile.name %></span>
 				<p><%= profile.profile_type %></p>
 			</div>

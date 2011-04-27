@@ -27,19 +27,19 @@
 		<%= f.text_field 'last_name', :id => "last_name" %>
 		</div>
 		-->
-		<div class="field">
+		<div class="field sigup_field">
 		<label>E-mail</label>
 		<%= f.text_field 'email', :id => "email" %>
 		</div>
-		<div class="field">
+		<div class="field sigup_field">
 		<label>Password</label>
 		<%= f.password_field 'password', :id => "password" %>
 		</div>
-		<div class="field">
+		<div class="field sigup_field">
 			<label>I am a</label>
 			<%= ( f.select "user_type", ["Buyer", "Seller" ], { :include_blank => true }, {:class => 'required' }) %>
 		</div>
-		<div class="field" style="display:none;" id = "profile_type">
+		<div class="field sigup_field" style="display:none;" id = "profile_type">
 		<label>Profile Type</label>
 			<select name="profile_type"  >
 				<option value="Company">Company</option>
@@ -84,6 +84,9 @@
 	$("#user_user_type").change(function(){
 		if($(this).val()=="Seller"){
 			$("#profile_type").show();
+		}
+		else{
+			$("#profile_type").hide();
 		}
 	});
 </script>

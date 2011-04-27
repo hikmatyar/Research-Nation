@@ -645,6 +645,13 @@ a:focus {
   margin-top: 4px;
 }
 
+.sigup_field select{
+	width:227px !important;
+}
+
+.sigup_field input{
+	width:215px;
+}
 .register_form{
 	float:left;
 	-moz-border-radius:10px;
@@ -916,6 +923,10 @@ a:focus {
 .post a{
 	float:left;	
 	padding:10px 0px 10px;
+}
+
+.Interested_field{
+	margin-bottom:0px !important;
 }
 
 .post p{
@@ -2118,9 +2129,13 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 	  -moz-border-radius: 4px 4px 4px 4px;
     background-color: #F5F69B;
     color: #245B83 !important;
-    padding: 14px !important;
-    width: 250px;background-color: #F5F69B;
-    margin:10px 0;
+    height: 20px;
+    margin-left: -5px;
+    margin-left: 6px;
+    padding: 10px 0 15px 10px;
+    padding-top: 14px !important;
+    text-align: center;
+    width: 100%;
 }
 
 
@@ -2180,6 +2195,11 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 	float: left;
 	width:352px;
 	height: 135px;
+}
+
+.price_rang select{
+	width:355px;
+	margin-top:15px;
 }
 
 .field h2{
@@ -2488,3 +2508,42 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
     height: 234px;
     padding: 50px;
     width: 271px;
+}
+
+/*--- profile page css --- */
+
+.profile_left{
+	float:left;
+	width:242px;
+	padding:10px;
+	margin-top:50px;
+}
+
+.profile_left img{
+	border:1px;
+	padding:8px;
+	border:2px solid #CCC;
+	background-color:#E8E7E3;
+}
+
+.bio_container {
+	background-color: #E8E7E3;
+	border: 2px solid #CCCCCC;
+	float: left;
+	margin-top: 10px;
+	padding: 5px;
+	width: 231px;
+}
+
+.bio_container b{
+	margin:0px;
+	width:100%;
+	margin-bottom:5px;
+}
+
+.profile_right{
+	float: left;
+	width:695px;
+	margin-top:60px;
+	
+}

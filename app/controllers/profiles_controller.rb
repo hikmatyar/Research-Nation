@@ -2,18 +2,24 @@ class ProfilesController < ApplicationController
 
   layout 'main'
 
+  before_filter :set_tags, :only => ["company", "individual", "view_profile_list", "edit_individual_profile", "edit_company_profile"]
+
   def company
     @profile = Profile.new
-    set_tags
   end
 
   def individual
     @profile = Profile.new
-    set_tags
   end
 
   def view_profile_list
-    @profiles = Profile.find :all, :order => 'created_at DESC'
+    @profiles = []
+
+    users = User.find_all_by_user_type "Seller"
+    users.each do |user|
+      @profiles.push(user.profile) unless user.profile.blank?
+    end
+    @industry_focus.push("All")
   end
 
   def profile_page
@@ -32,6 +38,7 @@ class ProfilesController < ApplicationController
       return redirect_to :controller => 'users'  , :action => 'register'
     end
 
+    profile.user_id = session[:user]
     if profile.save
       unless params[:picture].blank?
         picture = Picture.new
@@ -39,34 +46,36 @@ class ProfilesController < ApplicationController
         picture.add_picture(picture_path, params[:picture])
       end
       session[:profile] = nil
+      session[:key_individual] = nil
+
       key_individual.profile_id = profile.id
       key_individual.save
-      session[:key_individual] = nil
       return redirect_to :controller => 'resources', :action => 'view_posts'
     end
 
+  end
+
+  def update
+    profile = Profile.find params[:id]
+    key_individual = profile.key_individual
+    profile.update_attributes(params[:profile])
+    key_individual.update_attributes params[:key_individual]
+    flash[:success] = "Your Information was updated successfully" 
+    return redirect_to :controller => 'users', :action => 'profile', :id => profile.user.id
   end
 
   def types
     render :text => "company\nindividual"
   end
 
-  def edit_company_profile
-    @profile = Profile.find params[:id]
-    @key_individual = @profile.key_individual
-    @countries = Country.all.collect(&:name)
-  end
-
   def edit_individual_profile
     @profile = Profile.find params[:id]
-    @key_individual = @profile.key_individual
-    set_tags
+    @key_individual = @profile.key_individual unless @profile.key_individual.blank?
   end
 
   def edit_company_profile
     @profile = Profile.find params[:id]
-    @key_individual = @profile.key_individual
-    set_tags
+    @key_individual = @profile.key_individual unless @profile.key_individual.blank?
   end
 
   def delete
@@ -75,38 +84,42 @@ class ProfilesController < ApplicationController
     return redirect_to :controller => 'admin', :action => 'dashboard'
   end
 
-  def get_locations
-    locations = Profile.all(:select => 'distinct(country)').collect(&:country)
-    render :text => locations.join("\n")
-  end
+  def search_results
+    choices = params[:choices].split(",") unless params[:choices].blank?
+    @profiles = []
 
-  def get_industry_focus
-    industry_focus = Profile.all(:select => 'distinct(industry_focus)').collect(&:industry_focus)
-    render :text => industry_focus.join("\n")
-  end
-
-  def get_interests
-    interests = Profile.all(:select => 'distinct(interested_in)').collect(&:interested_in)
-    render :text => interests.to_s.split(",").join("\n")
-  end
-
-  def filter_by_profile_type
-   @profiles = Profile.find :all, :conditions => ['profile_type = ?', params[:profile_type]], :order => 'created_at DESC'
-   render :partial => 'profiles'
-  end
-
-  def filter_by_location
-    @profiles = Profile.find :all, :conditions => ['country = ?', params[:location]], :order => 'created_at DESC'
-   render :partial => 'profiles'
-  end
-
-  def filter_by_industry
-    @profiles = Profile.find :all, :conditions => ['industry_focus like ?', "%#{params[:industry]}%" ], :order => 'created_at DESC'
-   render :partial => 'profiles'
-  end
-
-  def filter_by_interests
-    @profiles = Profile.find :all, :conditions => ['interests like ?', "%#{params[:interests]}%" ], :order => 'created_at DESC'
+    conditions   = ""
+    conditions  += "industry_focus = '#{params[:industry].strip}'" if params[:industry].downcase != "all"
+    if conditions.length > 0 && params[:country].strip.downcase != "all"
+      conditions  += " and country = '#{params[:country].strip}' "
+    elsif params[:country].downcase != "all"
+      conditions  += "country = '#{params[:country].strip}' "
+    end
+    if conditions.length > 0 && params[:profile_type].strip.downcase != "all"
+      conditions  += " and profile_type = '#{params[:profile_type].strip}' "
+    elsif params[:profile_type].strip.downcase != "all"
+      conditions  += "profile_type = '#{params[:profile_type].strip}' "
+    end
+    @profile_list = Profile.find :all, :conditions => conditions, :order => 'created_at DESC'
+    @profiles = []
+    unless choices.blank?
+      @profile_list.each do |profile|
+        choices.each do |choice|
+          if profile.interested_in.split(",").include?(choice)
+            @profiles << profile
+            break
+          end
+        end
+      end
+    else
+      if conditions.length > 0
+        conditions  +=  "and interested_in IS NULL"
+      else
+        conditions  =  "interested_in IS NULL"
+      end
+      @profiles = (Profile.find :all, :conditions => conditions, :order => 'created_at DESC')
+    end
+    @profiles.flatten!
    render :partial => 'profiles'
   end
 
@@ -118,10 +131,10 @@ class ProfilesController < ApplicationController
     return redirect_to :action => 'profile_page', :id => profile.id
   end
 
+private
   def set_tags
-    @countries = Country.all.collect(&:name)
     @research_type = ["Advertising Research", "Attitude & Usage Research", "Brand Research", "Business to Business", "Competitive Intelligence", "Concept/Positioning", "Consumer Research", "Corporate Image/Identity", "Customer Satisfaction", "Employee Surveys", "Demographic Research", "International (i.e. non-US)", "Legal Research", "Marketing Research", "Media Research", "Modeling & Predictive Research", "Mystery Shopping", "New Product Research", "Packaging Research", "Price Research", "Problem Detection", "Product Research", "Evaluation Studies", "Psychological Research", "Public Opinion", "Recruiting Research", "Retail Research", "Secondary Research", "Seminars/ Training", "Strategic Research", "Technology Evaluations", "Website Usability"]
-    @industry_focus = ["Acquisitions", "Ad Agencies", "Agriculture", "Airlines", "Alcoholic Beverages", "Clothing", "Automotive", "Beverages", "Industrial", "Candy", "Gambling", "Chemicals", "Media & Communications", "Tech", "Construction", "Consumer Durables", "Consumer Services", "Cosmetics", "Demographics", "Education", "Electronics", "Entertainment", "Environment", "Fitness", "Fashion", "Financial Services & Investing", "Foods", "Gay & Lesbian", "Government", "Health Care", "Legal", "Couponing", "Military", "Non-Profits", "Packaged Goods", "Pets", "Oil & Gas", "Public Relations", "Real Estate", "Religion", "Retail", "Small Businesses", "Startups", "Sports", "Tobacco", "Toys", "Transportation", "Travel", "Utilities/Energy"]
+    @industry_focus = ["All", "Acquisitions", "Ad Agencies", "Agriculture", "Airlines", "Alcoholic Beverages", "Clothing", "Automotive", "Beverages", "Industrial", "Candy", "Gambling", "Chemicals", "Media & Communications", "Tech", "Construction", "Consumer Durables", "Consumer Services", "Cosmetics", "Demographics", "Education", "Electronics", "Entertainment", "Environment", "Fitness", "Fashion", "Financial Services & Investing", "Foods", "Gay & Lesbian", "Government", "Health Care", "Legal", "Couponing", "Military", "Non-Profits", "Packaged Goods", "Pets", "Oil & Gas", "Public Relations", "Real Estate", "Religion", "Retail", "Small Businesses", "Startups", "Sports", "Tobacco", "Toys", "Transportation", "Travel", "Utilities/Energy"]
   end
 
 end

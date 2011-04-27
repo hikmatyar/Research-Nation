@@ -15,3 +15,5 @@ gems:
     version: 1.2.0
   - name: prawn
     version: 0.11.1
+  - name: time_diff
+    version: 0.2.1

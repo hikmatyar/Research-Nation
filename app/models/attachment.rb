@@ -1,6 +1,8 @@
 require 'rscribd'
 class Attachment < ActiveRecord::Base
+
   belongs_to :resource
+
   named_scope :sample , Proc.new { {:conditions => {:attachment_type => "sample" }}}
   named_scope :original , Proc.new { {:conditions => {:attachment_type => "original" }}}
   def self.add_file(file, resource_id, attachment_type)
@@ -21,14 +23,14 @@ class Attachment < ActiveRecord::Base
 
   def upload_to_s3(doc)
     s3_settings = YAML::load(File.open("#{RAILS_ROOT}/config/s3.yml"))
-    bucket = s3_settings[RAILS_ENV]['bucket']
+    bucket = s3_settings[RAILS_ENV]['bucket'] if self.attachment_type == "original"
 
     AWS::S3::Base.establish_connection!(
       :access_key_id     => s3_settings[RAILS_ENV]['access_key'],
       :secret_access_key => s3_settings[RAILS_ENV]['secret_key']
     )
 
-    base_name =  "File#{resource_id.to_s}_" + File.basename(doc.path) 
+    base_name =  "#{resource_id}_" + File.basename(doc.path)
 
     obj = AWS::S3::S3Object.store(
       base_name,
