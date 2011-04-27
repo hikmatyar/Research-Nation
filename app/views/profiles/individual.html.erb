@@ -1,5 +1,7 @@
 <div class="content">
   <div class="content_back">
+		<% unless flash[:notice].blank? %><p class="flash"><%= flash[:notice] %></p><% end %>
+		<% flash[:notice] = "" %>
     <div class="seller_left">
        <div class="seller_back">
         <div class="register_form">

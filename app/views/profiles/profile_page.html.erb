@@ -1,8 +1,8 @@
 <div class="content">
-  <% unless flash[:success].blank? %>
-    <p class="flash"><%= flash[:success] %></p>
+  <% unless flash[:notice].blank? %>
+    <p class="flash"><%= flash[:notice] %></p>
   <% end %>
-  <% flash[:success] = "" %>
+  <% flash[:notice] = "" %>
   <div class="content_back">
     <div class="author">
       <div class="profile_img">

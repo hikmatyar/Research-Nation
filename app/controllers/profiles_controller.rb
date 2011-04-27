@@ -15,7 +15,7 @@ class ProfilesController < ApplicationController
   def view_profile_list
     @profiles = []
 
-    users = User.find_all_by_user_type "Seller"
+    users = User.find :all, :conditions => ['user_type like ?', "%Seller%"]
     users.each do |user|
       @profiles.push(user.profile) unless user.profile.blank?
     end
@@ -50,7 +50,8 @@ class ProfilesController < ApplicationController
 
       key_individual.profile_id = profile.id
       key_individual.save
-      return redirect_to :controller => 'resources', :action => 'view_posts'
+      return redirect_to :controller => 'resources', :action => 'upload_docs' if session[:post]
+      return redirect_to :controller => 'users', :action => 'profile'
     end
 
   end
@@ -60,7 +61,7 @@ class ProfilesController < ApplicationController
     key_individual = profile.key_individual
     profile.update_attributes(params[:profile])
     key_individual.update_attributes params[:key_individual]
-    flash[:success] = "Your Information was updated successfully" 
+    flash[:notice] = "Your Information was updated successfully"
     return redirect_to :controller => 'users', :action => 'profile', :id => profile.user.id
   end
 
