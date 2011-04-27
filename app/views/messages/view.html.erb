@@ -1,40 +1,48 @@
-
-<div id="message"></div>
-<div class="users">
-	<div class="receipient">
-		<%= @message.recipient.profile.name %>
-		<%= image_tag @message.recipient.profile.picture.picture_path, :width => 100, :height => 100 unless @message.recipient.profile.picture.blank? %>
-		<%= image_tag "avatar.png", :width => 100, :height => 100 if @message.recipient.profile.picture.blank? %>
-	</div>
-	<div class="sender">
-		<%= @message.sender.profile.name %>
-		<%= image_tag @message.sender.profile.picture.picture_path, :width => 100, :height => 100 unless @message.sender.profile.picture.blank? %>
-		<%= image_tag "avatar.png", :width => 100, :height => 100 if @message.sender.profile.picture.blank? %>
-	</div>
-	<div class="reply_box">
-		<div id="form">
-			Reply:
-			<%= javascript_include_tag :defaults %>
-			<%= form_remote_tag ( :update => 'message',
-          :url => { :controller => 'main', :action => 'send_message', :user_id => @message.sender.id }) %>
-      <div class="field">
-        <label>Subject</label>
-        <%= text_field_tag "subject", "" ,:id => "subject", :class => "required", :size => 34 %>
+<div class="content" style="width:75%;">
+<div class="content_back">
+  <div id="message"></div>
+  <h2>Inbox / Conversation with Akhtar</h2>
+  <div class="users">
+	  <div class="receipient">
+	    <%= image_tag @message.recipient.profile.picture.picture_path, :width => 100, :height => 100 unless @message.recipient.profile.picture.blank? %>
+		  <%= image_tag "avatar.png", :width => 100, :height => 100 if @message.recipient.profile.picture.blank? %>
+		  <b><%= @message.recipient.profile.name %></b>
+	  </div>
+	  <div class="sender">
+	    <%= image_tag @message.sender.profile.picture.picture_path, :width => 100, :height => 100 unless @message.sender.profile.picture.blank? %>
+		  <%= image_tag "avatar.png", :width => 100, :height => 100 if @message.sender.profile.picture.blank? %>
+		  <b><%= @message.sender.profile.name %></b>
+	  </div>
+	  <div class="reply_box">
+		  <div id="form">
+			  <div class="sign_up_box replay_field_box">
+			    <%= javascript_include_tag :defaults %>
+			    <%= form_remote_tag ( :update => 'message',
+              :url => { :controller => 'main', :action => 'send_message', :user_id => @message.sender.id }) %>
+          <div class="field">
+            <label>Message</label>
+            <%= text_area_tag "message", "" ,:id => "message", :class => "required" %>
+          </div>
+        </div>
+        <div class="sign_up_button">
+            <%= submit_tag 'Post Response', :id => 'submit' %>
+            <input type="reset" id="reset" name="reset" value="Reset" id="" style="display:none;" />
+          </div>
       </div>
-      <div class="field">
-        <label>Message</label>
-        <%= text_area_tag "message", "" ,:id => "message", :class => "required" %>
-      </div>
-      <div class="sign_up_button">
-        <%= submit_tag 'Post Response', :id => 'submit' %>
-        <input type="reset" id="reset" name="reset" value="Reset" id="" style="display:none;" />
-      </div>
+	  </div>
   </div>
-	</div>
+  <div class="message_details">
+	  <div class="sign_up_box related_posts_box">
+	    <%= image_tag @message.recipient.profile.picture.picture_path, :width => 100, :height => 100 unless @message.recipient.profile.picture.blank? %>
+		  <%= image_tag "avatar.png", :width => 100, :height => 100 if @message.recipient.profile.picture.blank? %>
+		  <!--
+		  <div class="field">
+            <label>Subject</label>
+            <%= text_field_tag "subject", "" ,:id => "subject", :class => "required", :size => 34 %>
+          </div>
+      -->
+		  <span><%= @message.body %></span>
+	  </div>
+  </div>
 </div>
-<div class="message_details">
-	<h4><%= @message.subject %></h4>
-	<div class="related_posts">
-		<span><%= @message.body %></span>
-	</div>
 </div>
