@@ -2,13 +2,15 @@
   <div class="post">
     <% link_to (:action => 'seller_page', :id => resource.id) do %>
     <div class="post_title">
-      <%= (image_tag resource.user.profile.picture.picture_path) unless resource.user.profile.blank? %>
-      <%= (image_tag "avatar.png") if resource.user.profile.blank? or resource.user.profile.blank?  %>
+      <% unless resource.user.profile.blank? %>
+      <%= (image_tag resource.user.profile.picture.picture_path) unless resource.user.profile.blank? and resource.user.profile.picture.blank? %>
+      <%= (image_tag "avatar.png") if resource.user.profile.blank? or resource.user.profile.picture.blank?  %>
+      <% end %>
       <span clas><%= resource.title %></span>
       <p>$<%= resource.selling_price %></p>
     </div>
     <div class="user_name_box">
-      <span> <%= resource.user.profile.name %> </span>
+      <span> <%= resource.user.profile.name unless resource.user.profile.blank? %> </span>
     </div>
     <div class="tags_box">
       <span> <%= resource.industry %> </span>
