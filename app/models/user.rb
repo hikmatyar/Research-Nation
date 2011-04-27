@@ -10,8 +10,8 @@ class User < ActiveRecord::Base
 
   validates_presence_of :password, :unless => Proc.new { |user| user.facebook_uid }
   validates_presence_of :email
-  validates_uniqueness_of :email, :message =>"Hmm, that email's already taken"
-  validates_format_of :email, :with => /^([^\s]+)((?:[-a-z0-9]\.)[a-z]{2,})$/i, :message => "Hi! Please use a valid email"
+  validates_uniqueness_of :email, :message =>": hmm, looks like it's taken"
+  validates_format_of :email, :with => /^([^\s]+)((?:[-a-z0-9]\.)[a-z]{2,})$/i, :message => ": please use a valid email"
 
   cattr_reader :per_page
   @@per_page = 1000
@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
     if value.length >=6 && value.length <= 20
       write_attribute("password", Digest::SHA1.hexdigest(value))
     else
-      self.errors.add("Password should be between 6 to 20 characters")
+      self.errors.add("Password should be 6 to 20 characters")
     end
   end
 
