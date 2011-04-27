@@ -37,14 +37,7 @@
 		</div>
 		<div class="field sigup_field">
 			<label>I am a</label>
-			<%= ( f.select "user_type", ["Buyer", "Seller" ], { :include_blank => true }, {:class => 'required' }) %>
-		</div>
-		<div class="field sigup_field" style="display:none;" id = "profile_type">
-		<label>Profile Type</label>
-			<select name="profile_type"  >
-				<option value="Company">Company</option>
-				<option value="Individual">Individual</option>
-			</select>
+			<%= ( f.select "user_type", ["Buyer", "Seller (Individual)", "Seller (Company)" ], { :include_blank => true }, {:class => 'required' }) %>
 		</div>
 		</div>
 		<div class="sign_up_button"><%= submit_tag 'Sign up'%></div>
@@ -80,13 +73,3 @@
 		</div>
 	</div>
 </div>
-<script type="text/javascript" language="javascript" charset="utf-8">
-	$("#user_user_type").change(function(){
-		if($(this).val()=="Seller"){
-			$("#profile_type").show();
-		}
-		else{
-			$("#profile_type").hide();
-		}
-	});
-</script>
