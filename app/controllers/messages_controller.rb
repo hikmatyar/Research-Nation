@@ -1,7 +1,9 @@
 class MessagesController < ApplicationController
 
+	layout 'main'
+
 	def view
-		message = Message.find params[:id]
+		@message = Message.find params[:id]
 	end
 
 	def delete
