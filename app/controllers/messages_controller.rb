@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
 
 	def delete
 		message = Message.find params[:id]
-		msg.destroy
+		message.destroy
 		return redirect_to :controller => 'users', :action => 'profile', :id => current_user.id
 	end
 end
