@@ -1,65 +1,67 @@
-  <div class="facebook_back">
-    <span id="tab2" class="sign_up" style="" onclick="showTab('one');" href="#">Individual Details* </span>
-    <div class="sign_up_box">
-      <div class="field field1">
-        <label>Title</label>
-        <span class="field_text"><%= @profile.key_individual.title %></span>
-      </div>
-      <div class="field field1">
-        <label>Company</label>
-        <span class="field_text"><%= @profile.key_individual.name %></span>
-      </div>
-      <div class="field field1">
-        <label>Address</label>
-        <span class="field_text"><%= @profile.address %></span>
-      </div>
-      <div class="field field1">
-        <label>Country</label>
-        <span class="field_text"><%= @profile.country %></span>
-      </div>
-      <div class="field field1">
-        <label>Telephone</label>
-        <span class="field_text"><%= @profile.phone_number %></span>
-      </div>
-      <div class="field field1">
-        <label>Website</label>
-        <div class="field_text"><%= (link_to "#{@profile.website }", @profile.website, :target => "_blank", :class => 'web_link') %></div>
-      </div>
-      <div class="field field1">
-        <label>Skype ID</label>
-        <span class="field_text"><%= @profile.key_individual.skype_id %></span>
-      </div>
-      <div class="field field1">
-        <label>Linkedin</label>
-        <div class="field_text"><%= (link_to "#{@profile.key_individual.linkedin }", @profile.key_individual.linkedin, :target => "_blank", :class => 'web_link') %>
+  <div class="seller_left">
+    <div class="facebook_back">
+      <span id="tab2" class="sign_up" style="" onclick="showTab('one');" href="#">Individual Details</span>
+      <div class="sign_up_box">
+        <div class="field field1">
+          <label>Address</label>
+          <span class="field_text"><%= @profile.address %></span>
+        </div>
+        <div class="field field1">
+          <label>Country</label>
+          <span class="field_text"><%= @profile.country %></span>
+        </div>
+        <div class="field field1">
+          <label>Telephone</label>
+          <span class="field_text"><%= @profile.phone_number %></span>
+        </div>
+        <div class="field field1">
+          <label>Website</label>
+          <div class="field_text"><%= (link_to "#{@profile.website }", @profile.website, :target => "_blank", :class => 'web_link') %></div>
+        </div>
+        <div class="field field1">
+          <label>Skype ID</label>
+          <span class="field_text"><%= @profile.key_individual.skype_id %></span>
+        </div>
+        <div class="field field1">
+          <label>Linkedin</label>
+          <div class="field_text"><%= (link_to "#{@profile.key_individual.linkedin }", @profile.key_individual.linkedin, :target => "_blank", :class => 'web_link') %>
+          </div>
+        </div>
+        <div class="field field1">
+          <label>About Me</label>
+          <span class="field_text"><%= @profile.description %></span>
         </div>
       </div>
-      <div class="field field1">
-        <label>About Me</label>
-        <span class="field_text"><%= @profile.description %></span>
-      </div>
     </div>
-  </div>
-  <% unless @profile.humor_me.blank? %>
-  <div class="facebook_back">
-    <span id="tab2" class="sign_up" style="" onclick="showTab('one');" href="#">Humor Me</span>
-    <div class="sign_up_box">
-      <div class="field field1">
-        <span class="field_text"><%= @profile.humor_me %></span>
-      </div>
-    </div>
-  </div>
-  <% end %>
-  <% unless @profile.interested_in.blank? %>
-    <div class="facebook_back interests">
-      <span id="tab2" class="sign_up" style="" onclick="showTab('one');" href="#">Interested In</span>
+    <% unless @profile.humor_me.blank? %>
+    <div class="facebook_back">
+      <span id="tab2" class="sign_up" style="" onclick="showTab('one');" href="#">Humor Me</span>
       <div class="sign_up_box">
-      <div class="field field1">
-        <% @interests.each do |i|%>
-          <input type="checkbox" name="interests" checked="checked" disabled="disabled" />
-          <label><%= i %></label>
-        <% end %>
+        <div class="field field1">
+          <span class="field_text"><%= @profile.humor_me %></span>
+        </div>
       </div>
+    </div>
+    <% end %>
+    <% unless @profile.interested_in.blank? %>
+      <div class="facebook_back interests">
+        <span id="tab2" class="sign_up" style="" onclick="showTab('one');" href="#">Interested In</span>
+        <div class="sign_up_box">
+          <div class="field field1">
+            <% @interests.each do |i|%>
+              <input type="checkbox" name="interests" checked="checked" disabled="disabled" />
+              <label><%= i %></label>
+            <% end %>
+          </div>
+        </div>
       </div>
-  <% end %>
+    <% end %>
+  </div>
+  <div class="seller_right">
+    <div class="koala_review" style="margin-top:30px;">
+      <span class="sign_up" id="tab2">Koala Review</span>
+      <div style="min-height: 275px;" class="sign_up_box" id="tabOne">
+        <p></p>
+      </div>
+    </div>
   </div>
