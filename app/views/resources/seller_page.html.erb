@@ -1,7 +1,7 @@
 <%= javascript_include_tag "seller" %>
 <div class="content">
-  <% unless flash[:success].blank? %><p class="flash"><%= flash[:success] %></p><% end %>
-  <% flash[:success] = "" %>
+  <% unless flash[:notice].blank? %><p class="flash"><%= flash[:notice] %></p><% end %>
+  <% flash[:notice] = "" %>
   <div class="content_back">
   	<div class="categories_box">
     	<b><span><%= @resource.industry %></span> <span><%= @resource.geography %></span></b>

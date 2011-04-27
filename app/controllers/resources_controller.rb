@@ -6,6 +6,8 @@ class ResourcesController < ApplicationController
   def new
     @user = User.find(session[:user]) if logged_in?
     return redirect_to :action => 'upload_docs' if logged_in?
+    session[:post] = true
+    flash[:notice] = "Please take a minute to sign in before you create a post. Thanks!"
     return redirect_to :controller => 'users', :action => 'register' unless logged_in?
   end
 
@@ -35,7 +37,7 @@ class ResourcesController < ApplicationController
         Attachment.add_file(params[:original], resource.id, "original")  unless params[:original].blank?
         session[:user_details] = nil
         session[:post] = nil
-        flash[:success] = "Thank you! Your post has been created"
+        flash[:notice] = "Thank you! Your post has been created"
         return redirect_to :action => 'seller_page', :id => resource.id
       end
     else
@@ -55,15 +57,16 @@ class ResourcesController < ApplicationController
 
   def update
     resource = Resource.find(params[:id])
-
+    unless params[:sample].blank?
+      resource.attachments.sample.first.destroy unless resource.attachments.sample.blank?
+      Attachment.add_file(params[:sample], resource.id, "sample")
+    end
     if resource.update_attributes(params[:resource])
-      user = User.find(params[:user_id])
-      user.update_attributes(params[:user])
-      flash[:success] = "Thank you! Your post has been updated"
+      flash[:notice] = "Thank you! Your post has been updated"
     else
       flash[:error] = "Oops! looks like something's wrong"
     end
-    return redirect_to :controller => 'admin', :action => 'posts'
+    return redirect_to :controller => 'users', :action => 'profile'
 
   end
 
@@ -73,7 +76,7 @@ class ResourcesController < ApplicationController
     original_doc = resource.attachments.original
     resource.destroy
     @resources = Resource.paginate :page => params[:page], :order => 'created_at DESC'
-    flash[:success] = "Got it. Your post has been deleted"
+    flash[:notice] = "Got it. Your post has been deleted"
     return redirect_to :controller => 'users', :action => 'profile' if params[:request] = "user"
     return redirect_to :controller => 'admin', :action => 'dashboard' if params[:request] = "admin"
   end

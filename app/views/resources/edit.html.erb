@@ -2,19 +2,19 @@
 <div class="content_back" style="width:67%;">
 <div class="seller_back">
 <span class="sign_up">Edit Post</span>
-<%= form_tag :controller => "resources", :action => "update", :id => @resource.id, :user_id => @user.id  %>
+<%= form_tag ( { :controller => "resources", :action => "update", :id => @resource.id, :user_id => @user.id} , { :multipart => true }) %>
   <div class="sign_up_box" style="padding-top:20px;">
     <div class="field">
       <label for = "title">Title</label>
       <%= text_field 'resource', 'title'%>
     </div>
     <div class="field">
-      <label for="selling_price">Selling Price</label>
-      <%= text_field 'resource', 'selling_price'%>
-    </div>
-    <div class="field">
       <label for="summary">Summary</label>
       <%= text_area 'resource', 'description'%>
+    </div>
+    <div class="field">
+      <label for="selling_price">Selling Price</label>
+      <%= text_field 'resource', 'selling_price'%>
     </div>
     <div class="field">
       <label for="industry">Industry</label>
@@ -25,28 +25,16 @@
       <%= text_field 'resource', 'geography'%>
     </div>
     <div class="field">
-      <label for="website">Website</label>
-      <%= text_field 'user', 'website'%>
+      <label for="sources">Sources</label>
+      <%= text_area 'resource', 'sources'%>
     </div>
     <div class="field">
-      <label for="contact">Contact</label>
-      <%= text_field 'user', 'contact'%>
+      <label for="terms">Terms and Conditions</label>
+      <%= text_area 'resource', 'terms_and_conditions'%>
     </div>
     <div class="field">
-      <label for="linkedin">Linkedin </label>
-      <%= text_field 'user', 'linked_in_profile'%>
-    </div>
-    <div class="field">
-      <label for="about_seller">About You</label>
-      <%= text_area 'user', 'about_me'%>
-    </div>
-    <div class="field">
-      <label for="title">Title</label>
-      <%= text_field 'user', 'work'%>
-    </div>
-    <div class="field">
-      <label for="company">Company</label>
-      <%= text_field 'user', 'company'%>
+      <label for="terms">Sample</label>
+      <%= file_field_tag 'sample'%>
     </div>
     <% unless @resource.attachments.sample.blank? %>
     <div class="sample">
