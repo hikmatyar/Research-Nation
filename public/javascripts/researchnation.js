@@ -14,7 +14,12 @@ $('document').ready(function(){
 		  }
 		});
 		if(jQuery('.flash')){
-			setTimeout("jQuery('.flash').fadeOut(10000);",2000);
+			if (location.href.match("profiles")){
+				setTimeout("jQuery('.flash').fadeOut(15000);",1000);
+			}
+			else{
+				setTimeout("jQuery('.flash').fadeOut(7500);",1000);
+			}
 			setTimeout("jQuery('.flash').remove();",15000);
 		}
 	}
@@ -49,4 +54,5 @@ function showTab(value)
 			return true;
 		}
 	}
+
 
