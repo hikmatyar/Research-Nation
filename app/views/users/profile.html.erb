@@ -80,7 +80,7 @@
   <div id="messages" class="tab_content">
     <table border="0" cellspacing="10" cellpadding="10" id=" posts_table" align="left">
 			<tbody>
-				<%= "There is no message in your inbox" if @user.received_messages.blank? %>
+				<%= "<b style='padding:10px;'>There is no message in your inbox</b>" if @user.received_messages.blank? %>
 				<% @user.received_messages.each do |msg|%>
 					<tr>
 					  <td><%= msg.sender.profile.picture.blank? ? (image_tag "avatar.png", :width => "32", :height => "32") : (image_tag msg.sender.profile.picture.picture_path, :width => "32", :height => "32") %></td>
