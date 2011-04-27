@@ -26,15 +26,21 @@
 		<% unless flash[:success].blank? %><p class="flash"><%= flash[:success] %></p><% end %>
   	<% flash[:success] = "" %>
 		<div class="profile_left">
-      <%= @user.profile.picture.blank? ? (image_tag "avatar.png") : (image_tag @user.profile.picture.picture_path, :width => "220", :height => "200") %>
+      <% unless  @user.profile.blank?%>
+      <%= (image_tag @user.profile.picture.picture_path, :width => "220", :height => "200") unless @user.profile.picture.blank? %>
+      <%= (image_tag "avatar.png") if @user.profile.picture.blank?%>
+      <% else %>
+        <%= (image_tag "avatar.png") %>
+      <% end %>
+
       <div class="bio_container">
       	<b>Email (this is kept private):</b>
         <span><%= @user.email %></span>
       </div>
       <div class="resource_buttons">
-        <%= link_to 'Edit Profile', :controller => 'profiles', :action => 'edit_individual_profile', :id => @user.profile.id if @user.user_type == "Seller" and @user.profile.profile_type == "individual" %>
-        <%= link_to 'Edit Profile', :controller => 'profiles', :action => 'edit_company_profile', :id => @user.profile.id if @user.user_type == "Seller" and @user.profile.profile_type == "company"%>
-        <%= link_to 'Edit Profile', :controller => 'profiles', :action => 'edit_individual_profile', :id => @user.profile.id if @user.user_type == "Buyer" %>
+        <%= link_to 'Edit Profile', :controller => 'profiles', :action => 'edit_individual_profile', :id => @user.profile.id if @user.user_type == "Seller (Individual)" and @user.profile %>
+        <%= link_to 'Edit Profile', :controller => 'profiles', :action => 'edit_company_profile', :id => @user.profile.id if @user.user_type == "Seller (Company)" and @user.profile %>
+        <%= link_to 'Edit Profile', :controller => 'profiles', :action => 'edit_individual_profile', :id => @user.profile.id if @user.user_type == "Buyer" and @user.profile %>
       </div>
    	</div>
     <div class="profile_right">
@@ -80,7 +86,7 @@
 				    <td ><span ><%= msg.sender.profile.name %></span>
                  <span>  <%= ((Time.diff Time.now, msg.created_at.to_time)[:day] == 0)? "Today" : "#{(Time.diff Time.now, m.created_at.to_time)[:day]} ago"  %></span>
 				    </td>
-				    <td><%= link_to msg.subject, :controller => 'main', :action => 'view_message', :id => msg.id  %></td>
+				    <td><%= link_to msg.subject, :controller => 'messages', :action => 'view', :id => msg.id  %></td>
 				    <td ><%= link_to 'Delete', { :controller => 'messages', :action => 'delete', :id => msg.id }, :confirm => "Are you sure you want to delete this post?"  %></td>
 				  </tr>
 				<% end %>
