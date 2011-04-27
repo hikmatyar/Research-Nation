@@ -13,8 +13,8 @@
       <tr>
         <td><%= @company_profiles_count - index %></td>
         <td><%= link_to p.name, :controller => 'profiles', :action => 'edit_individual_profile', :id => p.id %></td>
-        <td ><%= p.key_individual.title %></td>
-        <td ><%= p.key_individual.name %></td>
+        <td ><%= p.key_individual.title unless p.key_individual.blank? %></td>
+        <td ><%= p.key_individual.name unless p.key_individual.blank?%></td>
         <td ><%= link_to 'Delete', { :controller => 'profiles', :action => 'delete', :id => p.id }, :confirm => "Are you sure you want to delete this post?"  %>
       </tr>
     <% end %>
