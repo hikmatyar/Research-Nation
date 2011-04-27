@@ -1,5 +1,7 @@
 <%= javascript_include_tag "registration_validations" %>
 <div class="content">
+	<% unless flash[:notice].blank? %><p class="flash"><%= flash[:notice] %></p><% end %>
+	<% flash[:notice] = "" %>
 	<div class="register_back">
 		<div class="login_box">
 		<div class="round_box">

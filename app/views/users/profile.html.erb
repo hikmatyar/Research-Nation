@@ -23,8 +23,8 @@
 
 <div class="content">
 	<div class="content_back">
-		<% unless flash[:success].blank? %><p class="flash"><%= flash[:success] %></p><% end %>
-  	<% flash[:success] = "" %>
+		<% unless flash[:notice].blank? %><p class="flash"><%= flash[:notice] %></p><% end %>
+    <% flash[:notice] = "" %>
 		<div class="profile_left">
       <% unless  @user.profile.blank?%>
       <%= (image_tag @user.profile.picture.picture_path, :width => "220", :height => "200") unless @user.profile.picture.blank? %>
@@ -78,17 +78,18 @@
 		</div>
   </div>
   <div id="messages" class="tab_content">
-      <table border="0" cellspacing="10" cellpadding="10" id=" posts_table" align="left">
+    <table border="0" cellspacing="10" cellpadding="10" id=" posts_table" align="left">
 			<tbody>
+				<%= "There is no message in your inbox" if @user.received_messages.blank? %>
 				<% @user.received_messages.each do |msg|%>
-				  <tr>
-				    <td><%= msg.sender.profile.picture.blank? ? (image_tag "avatar.png", :width => "32", :height => "32") : (image_tag msg.sender.profile.picture.picture_path, :width => "32", :height => "32") %></td>
-				    <td ><span ><%= msg.sender.profile.name %></span>
-                 <span>  <%= ((Time.diff Time.now, msg.created_at.to_time)[:day] == 0)? "Today" : "#{(Time.diff Time.now, m.created_at.to_time)[:day]} ago"  %></span>
-				    </td>
-				    <td><%= link_to msg.subject, :controller => 'messages', :action => 'view', :id => msg.id  %></td>
-				    <td ><%= link_to 'Delete', { :controller => 'messages', :action => 'delete', :id => msg.id }, :confirm => "Are you sure you want to delete this post?"  %></td>
-				  </tr>
+					<tr>
+					  <td><%= msg.sender.profile.picture.blank? ? (image_tag "avatar.png", :width => "32", :height => "32") : (image_tag msg.sender.profile.picture.picture_path, :width => "32", :height => "32") %></td>
+					  <td ><span ><%= msg.sender.profile.name %></span>
+		             <span>  <%= ((Time.diff Time.now, msg.created_at.to_time)[:day] == 0)? "Today" : "#{(Time.diff Time.now, msg.created_at.to_time)[:day]} ago"  %></span>
+					  </td>
+					  <td><%= link_to msg.subject, :controller => 'messages', :action => 'view', :id => msg.id  %></td>
+					  <td ><%= link_to 'Delete', { :controller => 'messages', :action => 'delete', :id => msg.id }, :confirm => "Are you sure you want to delete this post?"  %></td>
+					</tr>
 				<% end %>
 			<tbody>
 		</table>

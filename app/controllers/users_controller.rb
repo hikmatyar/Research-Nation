@@ -79,13 +79,15 @@ class UsersController < ApplicationController
         profile = Profile.new
         profile.user_id = @user.id
         profile.save
+        flash[:notice] = "Welcome!"
         return redirect_to :controller => 'users', :action => 'profile', :id => @user.id
-      end
-
-      return redirect_to :controller => 'resources', :action => 'upload_docs' if session[:post]
-      return redirect_to :controller => 'profiles', :action => 'create' if session[:profile]
+      else
+      flash[:notice] = "Welcome! Please fill out the details below so we can get you started"
       return redirect_to :controller => 'profiles', :action => 'individual', :profile_type => 'individual' if @user.user_type == "Seller (Individual)"
-      return redirect_to :controller => 'profiles', :action => 'company', :profile_type => 'company' if @suser.user_type == "Seller (Company)"
+      return redirect_to :controller => 'profiles', :action => 'company', :profile_type => 'company' if @user.user_type == "Seller (Company)"
+      end
+      return redirect_to :controller => 'resources', :action => 'upload_docs' if session[:post]
+      #return redirect_to :controller => 'profiles', :action => 'create' if session[:profile]
       return redirect_to :controller => "resources", :action => "view_posts"
     end
     return render :action => 'register'
@@ -99,7 +101,7 @@ class UsersController < ApplicationController
 
     @user = User.find_by_id(params[:id])
     if @user.update_attributes params[:user]
-      flash[:success] = "User details Updated"
+      flash[:notice] = "User details Updated"
       redirect_to :controller => 'admin', :action => 'users'
     else
       flash[:error] = "Unable to update User Details"
@@ -114,9 +116,10 @@ class UsersController < ApplicationController
     if valid_user
       session[:user] = valid_user.id
       session[:admin]= valid_user.id if valid_user.is_admin?
+      flash[:notice] = "Welcome!"
       return redirect_to :controller => 'resources', :action => 'upload_docs' if session[:post]
       return redirect_to :controller => 'profiles', :action => 'create' if session[:profile]
-      return redirect_to :controller => 'resources', :action => 'view_posts'
+      return redirect_to :controller => 'users', :action => 'profile'
     else
       flash[:error] = "Oops! Something wrong with your username/password"
       render :action => 'register', :opt => 'login'
@@ -127,9 +130,10 @@ class UsersController < ApplicationController
     @user = User.find session[:user] if logged_in?
   end
 
-    def logout
+  def logout
     if logged_in?
       reset_session
+      flash[:notice] = "See you later!"
       redirect_to :controller => 'main', :action=> 'index'
     end
   end
@@ -151,7 +155,7 @@ class UsersController < ApplicationController
       unless user.blank?
         session[:token]=user.generate_token
         UserMailer.deliver_password_reset_email(user, session[:token])
-        flash[:success] = "An email has been sent to your Mail Address"
+        flash[:notice] = "An email has been sent to your Mail Address"
       end
     end
 
@@ -163,7 +167,7 @@ class UsersController < ApplicationController
       user = User.find params[:id]
       user.update_attributes :password => params[:password]
       session[:user] = user.id
-      flash[:success] = " Password successfully changed "
+      flash[:notice] = " Password successfully changed "
     end
     return redirect_to :controller => 'resources' , :action => 'view_posts'
   end
