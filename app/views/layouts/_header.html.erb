@@ -8,8 +8,7 @@
     <li style="border:none !important;"><%= (link_to 'Login', :controller => 'users', :action => 'register', :opt => 'login') unless logged_in? %></li>
    <!-- <li style="border:none !important;"><%= link_to 'Sign Up', :controller => 'users', :action => 'register' unless logged_in?%></li>-->
 
-    <li><%= (link_to 'Profile', :controller => 'users', :action => 'profile') if logged_in? %></li>
-    <li style="border:none !important;"><%= link_to 'Sign Up', :controller => 'users', :action => 'register' unless logged_in?%></li>
+    <li><%= (link_to 'Profile', :controller => 'users', :action => 'profile' ) if logged_in? %></li>
     <li><li><%= (link_to "Admin Dashboard", :controller => "admin", :action => "dashboard") if is_admin? %></li></li>
     <li style="border:none !important;"><%= (link_to 'Logout', :controller => 'users', :action => 'logout') if logged_in? %></li>
   </ul>
