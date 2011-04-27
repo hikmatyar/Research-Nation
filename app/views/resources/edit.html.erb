@@ -1,62 +1,65 @@
-<div class="sign_up_box">
-<div class="register_form">
-<h3>Edit the post here</h3>
+<div class="content">
+<div class="content_back" style="width:67%;">
+<div class="seller_back">
+<span class="sign_up">Edit Post</span>
 <%= form_tag :controller => "resources", :action => "update", :id => @resource.id, :user_id => @user.id  %>
-  <div class="field">
-    <label for = "title">Title</label>
-    <%= text_field 'resource', 'title'%>
-  </div>
-  <div class="field">
-    <label for="selling_price">Selling Price</label>
-    <%= text_field 'resource', 'selling_price'%>
-  </div>
-  <div class="field">
-    <label for="summary">Summary</label>
-    <%= text_area 'resource', 'description'%>
-  </div>
-  <div class="field">
-    <label for="industry">Industry</label>
-    <%= text_field 'resource', 'industry'%>
-  </div>
-  <div class="field">
-    <label for="geography">Geography</label>
-    <%= text_area 'resource', 'geography'%>
-  </div>
-  <div class="field">
-    <label for="website">Website</label>
-    <%= text_field 'user', 'website'%>
-  </div>
-  <div class="field">
-    <label for="contact">Contact</label>
-    <%= text_field 'user', 'contact'%>
-  </div>
-  <div class="field">
-    <label for="linkedin">Linkedin </label>
-    <%= text_field 'user', 'linked_in_profile'%>
-  </div>
-  <div class="field">
-    <label for="about_seller">About Seller</label>
-    <%= text_area 'user', 'about_me'%>
-  </div>
-  <div class="field">
-    <label for="title">Title</label>
-    <%= text_field 'user', 'work'%>
-  </div>
-  <div class="field">
-    <label for="company">Company</label>
-    <%= text_field 'user', 'company'%>
-  </div>
-  <% unless @resource.attachments.sample.blank? %>
-  <div class="sample">
-    <p>Sample : <%= @resource.attachments.sample.first.file_name %> </p>
-    <%= link_to "Delete", :controller => 'resources', :action => 'remove_sample', :id => @resource.attachments.sample.first.id %>
-  <% end %>
-  </div>
-  <b>Expert : <%= check_box_tag 'expert', "#{@resource.user.is_expert}", @resource.user.is_expert %></b>
+  <div class="sign_up_box" style="padding-top:20px;">
+    <div class="field">
+      <label for = "title">Title</label>
+      <%= text_field 'resource', 'title'%>
+    </div>
+    <div class="field">
+      <label for="selling_price">Selling Price</label>
+      <%= text_field 'resource', 'selling_price'%>
+    </div>
+    <div class="field">
+      <label for="summary">Summary</label>
+      <%= text_area 'resource', 'description'%>
+    </div>
+    <div class="field">
+      <label for="industry">Industry</label>
+      <%= text_field 'resource', 'industry'%>
+    </div>
+    <div class="field">
+      <label for="geography">Geography</label>
+      <%= text_field 'resource', 'geography'%>
+    </div>
+    <div class="field">
+      <label for="website">Website</label>
+      <%= text_field 'user', 'website'%>
+    </div>
+    <div class="field">
+      <label for="contact">Contact</label>
+      <%= text_field 'user', 'contact'%>
+    </div>
+    <div class="field">
+      <label for="linkedin">Linkedin </label>
+      <%= text_field 'user', 'linked_in_profile'%>
+    </div>
+    <div class="field">
+      <label for="about_seller">About You</label>
+      <%= text_area 'user', 'about_me'%>
+    </div>
+    <div class="field">
+      <label for="title">Title</label>
+      <%= text_field 'user', 'work'%>
+    </div>
+    <div class="field">
+      <label for="company">Company</label>
+      <%= text_field 'user', 'company'%>
+    </div>
+    <% unless @resource.attachments.sample.blank? %>
+    <div class="sample">
+      <p>Sample : <%= @resource.attachments.sample.first.file_name %> </p>
+      <%= link_to "Delete", :controller => 'resources', :action => 'remove_sample', :id => @resource.attachments.sample.first.id %>
+    <% end %>
+    </div>
+ </div>
   
-
-</div>
 <div class="sign_up_button">
   <%= submit_tag 'Update' %>
+</div>
+
+</div>
 </div>
 </div>
