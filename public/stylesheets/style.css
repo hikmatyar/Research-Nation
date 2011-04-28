@@ -2782,3 +2782,10 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 .guidelines_box1 p{
     font-size:14px;
 }
+
+.content_center{
+    float:left;
+    width:100%;
+    margin:auto 0px;
+    text-align:center
+}
