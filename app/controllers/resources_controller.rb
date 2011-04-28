@@ -7,15 +7,11 @@ class ResourcesController < ApplicationController
     @user = User.find(session[:user]) if logged_in?
     return redirect_to :action => 'upload_docs' if logged_in?
     session[:post] = true
-    flash[:notice] = "Please take a minute to sign in before you create a post. Thanks!"
-    return redirect_to :controller => 'users', :action => 'register' unless logged_in?
+    return redirect_to :controller => 'resources', :action => 'upload_docs', :opt => 'login' unless logged_in?
   end
 
-  def post
-      user = User.new params[:user]
-      ( session[:user_details] = params[:user] and session[:post] = true ) unless logged_in?
-      return redirect_to (:controller => 'users', :action => 'register' ) unless logged_in?
-      return redirect_to :action => 'upload_docs'
+  def upload_docs
+    @resource = Resource.new
   end
 
   def seller_page
@@ -33,8 +29,8 @@ class ResourcesController < ApplicationController
       user.update_attributes(session[:user_details])
       resource.user_id = session[:user]
       if resource.save
-        Attachment.add_file(params[:sample], resource.id, "sample") unless params[:sample].blank?
-        Attachment.add_file(params[:original], resource.id, "original")  unless params[:original].blank?
+        Attachment.add_file(params[:sample], resource.id, "sample", params[:sample_file_name]) unless params[:sample].blank?
+        Attachment.add_file(params[:original], resource.id, "original", params[:original_file_name])  unless params[:original].blank?
         session[:user_details] = nil
         session[:post] = nil
         flash[:notice] = "Thank you! Your post has been created"
@@ -59,7 +55,7 @@ class ResourcesController < ApplicationController
     resource = Resource.find(params[:id])
     unless params[:sample].blank?
       resource.attachments.sample.first.destroy unless resource.attachments.sample.blank?
-      Attachment.add_file(params[:sample], resource.id, "sample")
+      Attachment.add_file(params[:sample], resource.id, "sample", File.basename(params[:sample].path))
     end
     if resource.update_attributes(params[:resource])
       flash[:notice] = "Thank you! Your post has been updated"
@@ -88,6 +84,7 @@ class ResourcesController < ApplicationController
   end
 
   def payment
+    redirect_to_login unless logged_in?
     @resource = Resource.find params[:id]
   end
 
@@ -102,6 +99,12 @@ class ResourcesController < ApplicationController
     @resources = Resource.find :all, :order => 'created_at DESC'
     render :partial => 'posts'
   end
+
+  def remove_sample
+    attachment = Attachment.find params[:id]
+    attachment.remove_sample
+  end
+=begin
   def filter_by_author_name
 
     name = params[:name].split(" ")
@@ -113,7 +116,7 @@ class ResourcesController < ApplicationController
     @resources = resources.flatten
     render :partial => 'posts'
   end
-
+=end
   def get_industries
     @industries = Resource.all(:select => 'distinct(industry)').collect(&:industry)
     render :text => @industries.join("\n")
