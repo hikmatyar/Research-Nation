@@ -1,7 +1,7 @@
 <div class="banner">
 	<div class="banner_text">
-		<h2>A MARKETPLACE FOR ORIGINAL, HIGH-QUALITY MARKET RESEARCH</h2>
-			<p>Sign up to quickly create a custom web page to sell & share your data & insights. It's exclusive, completely free, and very easy to use</p>
+		<h2><b>Market Research, Simplified</b></h2>
+			<p>Sign up to quickly create a custom web page for yourself & sell your data & insights. It's exclusive, completely free, and very easy to use</p>
 		<% unless logged_in? %>
 			<%= render :partial => 'users/errors' %>
 			<% form_for(@user , :url => {:controller => "users", :action => "create" } ) do |f| %>
