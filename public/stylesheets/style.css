@@ -636,9 +636,10 @@ a:focus {
 }
 
 .forgot{
-	float:right;
+	float:left;
 	width:450px;
-	margin-top:5px;	
+	margin-top:5px;
+	margin-left : 114px;
 }
 
 .register_form a{
