@@ -1,12 +1,11 @@
 <div class="content">
-  <div class="content_back">
+  <div class="how_it_work_left_side">
     <% unless flash[:notice].blank? %><p class="flash"><%= flash[:notice] %></p><% end %>
 	  <% flash[:notice] = "" %>
-    <div class="seller_left">
        <div class="seller_back">
           <span class="sign_up" id="tab2">1. Company Details*</span>
           <% form_for(@profile , :url => {:controller => "profiles", :action => "create" } ) do |f| %>
-          <div class="sign_up_box register_form">
+          <div class="sign_up_box">
             <div class="field">
               <label>Name</label>
               <%= f.text_field 'name', :class => 'required max_len', :max_length => 70 %>
@@ -47,7 +46,7 @@
         </div>
         <div class="facebook_back">
             <span class="sign_up" id="tab2">2. Key Individual*</span>
-            <div class="sign_up_box register_form">
+            <div class="sign_up_box">
               <div class="field">
                 <label>Name</label>
                 <%= text_field 'key_individual', 'name', :class => 'required' %>
@@ -76,7 +75,7 @@
         </div>
         <div class="facebook_back">
             <span class="sign_up" id="tab2">3. Humor Me</span>
-            <div class="sign_up_box register_form">
+            <div class="sign_up_box">
               <div class="field">
                 <label>Optional</label>
                 <%= f.text_area 'humor_me', :class => 'max_len', :max_length => 1000 %>
@@ -85,7 +84,7 @@
         </div>
         <div class="facebook_back">
           <span class="sign_up" id="tab2">4. Upload Image </span>
-          <div class="sign_up_box register_form">
+          <div class="sign_up_box">
             <label>File</label>
             <img src="/images/img2.png" alt="description" title="user avatar" width="64" height="64" />
             <input type="file" name="picture" size="" accept="true" id = "user_image"/>
@@ -97,7 +96,7 @@
         </div>
         <div class="facebook_back">
           <span class="sign_up" id="tab2">5. Interested In</span>
-          <div class="sign_up_box register_form">
+          <div class="sign_up_box">
               <div class="field">
                 <input type="checkbox" value="FT projects" name="checkbox" checked="checked" />
                 <label>FT projects</label>
@@ -120,23 +119,7 @@
           </div>
         </div>
       </div>
-      <div class="seller_right">
-      <div class="koala_review koala_review3 ">
-        <div class="guidelines">
-          <h2>Koala Tips</h2>
-           <h3>Get featured</h3>
-          <p>Build a reputation on our site and establish your credibility by publishing/selling through the 'Create Post' 
-          <h3>Show your lighter side!</h3>
-          <p>Profiles that show their humorous side (see 'humor section) are more likely to be viewed
-          <h3>Don't misrepresent</h3>
-          <p>Please make sure all representations are accurate, and if you're creating a company profile, that you are authorized to do so
-          <h3>Choose your words wisely</h3>
-          <p> Use the 'Description' in your profile to talk about what your company is really, REALLY good at. Don't try to be a jack of all trades - it doesn't sell
-          <h3>Privacy and Confidentiality</h3>
-          <p>Rest assured, we will NEVER compromise your information. Your e-mail address remains hidden at all times, unless you want it to be shown
-         </div>
-       </div>
-     </div>
-   </div>
+      <%= render :partial => 'main/how_it_works_links' %>
     </div>
- </div>
+  </div>
+</div>
