@@ -24,16 +24,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  def name
-    name = first_name + " " + last_name
-    name
-  end
-
-  def name=(user_name)
-    name = user_name.split(" ")
-    self.first_name = name[0]
-    self.last_name = name[1..name.length].join(" ")
-  end
   def change_admin_status
     self.update_attributes :is_admin => !self.is_admin
   end
