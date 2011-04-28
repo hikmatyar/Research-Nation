@@ -1,5 +1,6 @@
 <%= javascript_include_tag "registration_validations" %>
 <div class="content">
+  <div class="how_it_work_left_side">
 	<% unless flash[:notice].blank? %><p class="flash"><%= flash[:notice] %></p><% end %>
 	<% flash[:notice] = "" %>
 	<div class="register_back">
@@ -30,5 +31,6 @@
 		  </div>
 		</div>
 		</div>
+	</div>
 	</div>
 </div>
