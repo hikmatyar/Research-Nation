@@ -20,18 +20,6 @@ class MainController < ApplicationController
       return redirect_to :action => 'index'
   end
 
-
-  def buying_list
-    @requests = Request.find :all, :order => 'created_at DESC'
-    render :layout => false
-  end
-
-  def selling_list
-    @user = User.find(session[:user]) if logged_in?
-    @resources = Resource.paginate :page => params[:page], :order => 'created_at DESC'
-    render :layout => false
-  end
-
   def send_message
     message = Message.new
     message.subject = params["subject"]
