@@ -23,7 +23,7 @@
 		<% end %>
 		<%= link_to "Create a post now", :controller => "resources", :action => "upload_docs" if logged_in? %>
 	</div>
-
+	<%= hidden_field_tag 'create_post', :value => false%>
 	<img src="/images/banner.jpg" />
 </div>
 <div class="facebook_like">
