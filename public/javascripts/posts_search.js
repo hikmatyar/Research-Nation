@@ -75,5 +75,5 @@ jQuery('document').ready(function(){
     jQuery(this).val("");
   });
   jQuery(":range").val("$1000");
-  jQuery('.handle').css("left","331px");
+  jQuery('.handle').css("left","183px");
 });

@@ -128,7 +128,7 @@ a:focus {
 .header a{
 	float:left;
 	width:210px;
-	margin-right:430px;
+	margin-right:533px;
 }
 
 .banner_text {
@@ -180,7 +180,7 @@ a:focus {
 .main_menu{
 	float:right;
 	margin:10px 0px 0px 0px;
-	width:340px;
+	width:240px;
 }
 
 .main_menu ul{
@@ -198,6 +198,7 @@ a:focus {
 	float:left !important;
 	width:auto !important;
 	margin-left:20px;
+	color:#C8955B !important;
 	margin-right:10px;
 }
 
@@ -369,8 +370,8 @@ a:focus {
 /*--- footer_menu ----*/
 
 .footer_menu{
-	float:left;
-	width:800px;
+	float:right;
+	width:370px;
 	margin-top:20px;
 	padding-left:165px;
 }
@@ -385,10 +386,12 @@ a:focus {
 	list-style:none;
 	list-style-type:none;
 	border-right:1px solid #CCC;
+	margin-bottom:30px;
 }
 
 .footer_menu a{
 	float:left;
+	color:#C8955B !important;
 	margin-right:15px;
 	margin-left:15px;
 }
@@ -455,7 +458,8 @@ a:focus {
 	border-radius:10px;
 	-moz-border-radius:10px;
 	-webkit-border-radius:10px;
-	width:600px;
+	width:95%;
+	margin-bottom:20px;
 	background-color:#FFFFFF;
 	padding:10px;
 }
@@ -527,7 +531,7 @@ a:focus {
 .sign_up{
 	-moz-border-radius:10px;
 	-webkit-border-radius:10px;
-	background-color:#CCC;
+	background-color:#8EAF32;
 	text-decoration:none;
 	float:left;
 	list-style:none;
@@ -536,6 +540,7 @@ a:focus {
 	margin-right:10px;
 	text-align:center;
 	padding:10px;
+	color:#FFF;
 	list-style-type:none;		
 }
 
@@ -571,6 +576,7 @@ a:focus {
 	width:100%;
 	border:1px solid #CCC;	
 	margin-top:10px;
+	padding-top:10px;
 }
 
 .sign_up_box1{
@@ -619,6 +625,13 @@ a:focus {
 	text-align:left;
 }
 
+.sign_up_box .field b{
+    width:350px;    
+}
+
+.sign_up_box .field p{
+    width:350px;
+}
 .field1{
     margin-bottom:0px !important;
 }
@@ -644,6 +657,7 @@ a:focus {
 
 .register_form a{
 	float:left;	
+	color:#C8955B !important;
 }
 .register_form h2{
 	background-color:#ebebeb;
@@ -732,9 +746,9 @@ a:focus {
 	position:static !important;
 }
 .field h5{
-	margin-top: 150px;
-	float: none;
-	margin-left: 450px;
+	float:right;
+    margin-right: 93px;
+    margin-top: 10px;
 	font-weight: bold;
 	font-size: 14px;
 	margin-bottom:0px;
@@ -807,14 +821,44 @@ a:focus {
 
 }
 
-.sign_up_button input{
-	-webkit-border-radius: 4px 4px 4px 4px;
-	background: -moz-linear-gradient(center bottom , #8EAF32 22%, #AAC84A 81%) repeat scroll 0 0 transparent;
+.resource_buttons a {
+    -moz-border-radius: 4px 4px 4px 4px;
+    -webkit-border-radius: 4px 4px 4px 4px;
+    background: -moz-linear-gradient(center bottom,  #AFAFAF 22%, #CECECE 81%);
+		background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #AFAFAF), color-stop(0.81,  #CECECE));
+		background: -moz-linear-gradient(center bottom,  #AFAFAF 22%, #CECECE 81%);
+    border: medium none;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 10px 10px 10px !important;
+    text-align: center;
+    float:right !important;
+    position:relative;
+    margin-left:10px;
+}
+
+
+.resource_buttons a:hover{
+	text-decoration:none !important;
+	background-color:#8eaf32 !important;
 	-moz-border-radius: 4px 4px 4px 4px;
-	background: -moz-linear-gradient(center bottom, #8eaf32 22%, #AAC84A 81%);
-	background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #8eaf32), color-stop(0.81, #AAC84A));
-	background: -moz-linear-gradient(center bottom, #8eaf32 22%, #AAC84A 81%);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#8eaf32, endColorStr=#AAC84A);	
+	-webkit-border-radius: 4px 4px 4px 4px;
+	background: -moz-linear-gradient(center bottom, #CECECE 22%, #CECECE 81%);
+	background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #CECECE), color-stop(0.81, #CECECE));
+	background: -moz-linear-gradient(center bottom, #CECECE 22%, #CECECE 81%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#8eaf32, endColorStr=#8eaf32);	
+	width:auto !important;
+}
+
+
+.sign_up_button input{
+    -webkit-border-radius: 4px 4px 4px 4px;
+    -moz-border-radius: 4px 4px 4px 4px;
+    background: -moz-linear-gradient(center bottom,  #8eaf32 22%, #AAC84A 81%);
+		background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #8eaf32), color-stop(0.81,  #AAC84A));
+		background: -moz-linear-gradient(center bottom,  #8eaf32 22%, #AAC84A 81%);
 	border: medium none;
 	color: #FFFFFF;
 	cursor: pointer;
@@ -827,10 +871,9 @@ a:focus {
 
 
 .sign_up_button input:hover{
+    -moz-border-radius: 4px 4px 4px 4px;
+    -webkit-border-radius: 4px 4px 4px 4px;
 	text-decoration:none !important;
-	background-color:#8eaf32 !important;
-	-moz-border-radius: 4px 4px 4px 4px;
-	-webkit-border-radius: 4px 4px 4px 4px;
 	background: -moz-linear-gradient(center bottom, #8eaf32 22%, #8eaf32 81%);
 	background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #8eaf32), color-stop(0.81, #8eaf32));
 	background: -moz-linear-gradient(center bottom, #8eaf32 22%, #8eaf32 81%);
@@ -847,7 +890,7 @@ a:focus {
 	border-radius:10px;
 	-moz-border-radius:10px;
 	-webkit-border-radius:10px;
-	width:670px;
+	width:95%;
 	background-color:#FFFFFF;
 	padding:10px;
 }
@@ -864,26 +907,22 @@ a:focus {
 
 .search_content{
 	float:left;
-	width:100%;
+	width:680px;
 	background-image:url(../images/serach_back.jpg);
 	background-position:right;
 	background-repeat:repeat-y;
 	min-height: 431px;
 	border-radius:10px;
-	-moz-border-radius-topleft: 0px;
-  -moz-border-radius-topright: 10px;
-  -moz-border-radius-bottomright: 10px;
-  -moz-border-radius-bottomleft: 10px;
-	-webkit-border-top-right-radius: 0px;
-	-webkit-border-top-left-radius: 10px;
-	-webkit-border-bottom-left-radius: 10px;
-	-webkit-border-bottom-right-radius: 10px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
 	border:1px solid #999;
 }
 
 
 .ptofile_tabs{
-	float: left;	
+	float: left;
+	width:100%;
+	
 }
 
 .ptofile_tabs ul{
@@ -892,7 +931,6 @@ a:focus {
 }
 
 .ptofile_tabs li{
-	border:1px solid #ccc !important;
 }
 
 .ptofile_tabs a{
@@ -901,7 +939,7 @@ a:focus {
 
 .left_content{
 	float:left;
-	width:615px;
+	width:450px;
 }
 
 .seller_left{
@@ -915,13 +953,13 @@ a:focus {
 }
 .right_content{
 	float:right;
-	width:365px;
-	padding:20px;
+	width:210px;
+	padding:10px;
 }
 
 .fixed_box{
 	float:left;
-	width:365px;
+	width:100%;
 }
 
 .price_box{
@@ -931,7 +969,7 @@ a:focus {
 .post{
 	float:left;
 	border-bottom:1px solid #666;
-	width:613px;
+	width:100%;
 }
 
 .address1{
@@ -954,6 +992,7 @@ a:focus {
 .post a{
 	float:left;	
 	padding:10px 0px 10px;
+	width:100%;
 }
 
 .Interested_field{
@@ -977,7 +1016,7 @@ a:focus {
 	margin-left: 10px;
 	overflow: hidden;
 	padding-top: 5px;
-	width: 550px;
+	width: 350px;
 }
 
 .post_title a:hover{
@@ -1363,9 +1402,9 @@ a:focus {
 .resource_buttons a {
     -moz-border-radius: 4px 4px 4px 4px;
     -webkit-border-radius: 4px 4px 4px 4px;
-    background: -moz-linear-gradient(center bottom,  #8eaf32 22%, #AAC84A 81%);
-		background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #8eaf32), color-stop(0.81,  #AAC84A));
-		background: -moz-linear-gradient(center bottom,  #8eaf32 22%, #AAC84A 81%);
+    background: -moz-linear-gradient(center bottom,  #AFAFAF 22%, #CECECE 81%);
+		background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #AFAFAF), color-stop(0.81,  #CECECE));
+		background: -moz-linear-gradient(center bottom,  #AFAFAF 22%, #CECECE 81%);
     border: medium none;
     color: #FFFFFF;
     cursor: pointer;
@@ -1384,9 +1423,9 @@ a:focus {
 	background-color:#8eaf32 !important;
 	-moz-border-radius: 4px 4px 4px 4px;
 	-webkit-border-radius: 4px 4px 4px 4px;
-	background: -moz-linear-gradient(center bottom, #8eaf32 22%, #8eaf32 81%);
-	background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #8eaf32), color-stop(0.81, #8eaf32));
-	background: -moz-linear-gradient(center bottom, #8eaf32 22%, #8eaf32 81%);
+	background: -moz-linear-gradient(center bottom, #CECECE 22%, #CECECE 81%);
+	background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #CECECE), color-stop(0.81, #CECECE));
+	background: -moz-linear-gradient(center bottom, #CECECE 22%, #CECECE 81%);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#8eaf32, endColorStr=#8eaf32);	
 	width:auto !important;
 }
@@ -1438,7 +1477,7 @@ a:focus {
 
 .right_side{
 	float:right !important;
-	margin-top: 20px !important;
+	margin-top: 10px !important;
 	width:230px !important;
 }
 
@@ -1461,6 +1500,7 @@ a:focus {
 
 .right_side a{
 	padding:5px;
+	color:#C8955B !important;
 }
 
 .right_side a:hover{
@@ -1701,7 +1741,7 @@ background:#FFFFFF; border:1px solid #666666 !important; height:15px; width:15px
 }
 
 .field select{
-	width:298px;
+	width:264px;
 	border:1px solid #CCC;
 }
 
@@ -2222,12 +2262,12 @@ html ul.tabs li.active, html ul.tabs li.active {
 
 .price_rang{
 	float: left;
-	width:352px;
+	width:100%;
 	height: 135px;
 }
 
 .price_rang select{
-	width:355px;
+	width:210px;
 	margin-top:15px;
 }
 
@@ -2238,27 +2278,27 @@ html ul.tabs li.active, html ul.tabs li.active {
 
 .price_rang h2 {
 	float:left;
-	width:340px;
-	background-color:#bebeb4;
+	width:94%;
+	background-color:#8EAF32;
 	border-radius:5px;
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
 	padding:5px 5px 5px 10px;
 	font-size:16px;
 	margin:0px;
-	color:#245A83;
+	color:#FFF;
 }
 
 .suggestion{
-	-moz-border-radius: 5px 5px 5px 5px;
-  color: #BEBEB4;
-  float: left;
-  margin-top: 5px;
-  width: 344px;
-	-webkit-border-top-left-radius:5px;
-	-webkit-border-bottom-left-radius:5px;
-	-webkit-border-top-right-radius:5px;
-	-webkit-border-bottom-right-radius:5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    color: #BEBEB4;
+    float: left;
+    margin-top: 5px;
+    width: 96%;
+    -webkit-border-top-left-radius:5px;
+    -webkit-border-bottom-left-radius:5px;
+    -webkit-border-top-right-radius:5px;
+    -webkit-border-bottom-right-radius:5px;
 }
 
 .add_more{
@@ -2287,7 +2327,7 @@ html ul.tabs li.active, html ul.tabs li.active {
 	font-size: 12px;
 	margin-right: 10px;
 	padding: 5px 5px 5px 10px;
-	width: 275px;
+	width: 130px;
 	margin-top:0px !important;
 	background-color:#FFF;
 	margin-bottom: 5px;
@@ -2315,7 +2355,7 @@ html ul.tabs li.active, html ul.tabs li.active {
 	font-size: 12px;
 	margin-right: 10px;
 	padding: 5px 5px 5px 10px;
-	width: 275px;
+	width: 130px;
 	margin-top:0px !important;
 	background-color:#FFF;
 	margin-bottom: 5px;
@@ -2339,9 +2379,9 @@ html ul.tabs li.active, html ul.tabs li.active {
 .reset_button {
     -moz-border-radius: 4px 4px 4px 4px;
     -webkit-border-radius: 4px 4px 4px 4px;
-    background: -moz-linear-gradient(center bottom,  #8eaf32 22%, #AAC84A 81%);
-		background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #8eaf32), color-stop(0.81,  #AAC84A));
-		background: -moz-linear-gradient(center bottom,  #8eaf32 22%, #AAC84A 81%);
+    background: -moz-linear-gradient(center bottom,  #A0A0A0 22%, #CECECE 81%);
+		background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #CECECE), color-stop(0.81,  #A0A0A0));
+		background: -moz-linear-gradient(center bottom,  #A0A0A0 22%, #A0A0A0 81%);
     border: medium none;
     color: #FFFFFF;
     cursor: pointer;
@@ -2359,9 +2399,9 @@ html ul.tabs li.active, html ul.tabs li.active {
 	background-color:#8eaf32 !important;
 	-moz-border-radius: 4px 4px 4px 4px;
 	-webkit-border-radius: 4px 4px 4px 4px;
-	background: -moz-linear-gradient(center bottom, #8eaf32 22%, #8eaf32 81%);
-	background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #8eaf32), color-stop(0.81, #8eaf32));
-	background: -moz-linear-gradient(center bottom, #8eaf32 22%, #8eaf32 81%);
+	background: -moz-linear-gradient(center bottom, #CECECE 22%, #CECECE 81%);
+	background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #CECECE), color-stop(0.81, #CECECE));
+	background: -moz-linear-gradient(center bottom, #CECECE 22%, #CECECE 81%);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#8eaf32, endColorStr=#8eaf32);	
 	width:auto !important;
 }
@@ -2395,7 +2435,9 @@ html ul.tabs li.active, html ul.tabs li.active {
 
 .how_it_work_left_side{
 	float:left;
-	width:750px;
+	width:500px;
+	margin-top:20px;
+	margin-left:200px;
 }
 
 .how_it_work_left_side ul{
@@ -2411,7 +2453,7 @@ html ul.tabs li.active, html ul.tabs li.active {
 }
 
 .how_it_work_left_side b{
-	color:#245A83;
+	color:#C8955B !important;
 	margin-bottom:0px;
 }
 
@@ -2432,7 +2474,7 @@ html ul.tabs li.active, html ul.tabs li.active {
 }
 .ac_results{
 	margin-top:-1px !important;
-	width : 354px !important;
+	width : 210px !important;
 	background:#FFF;
 	border:1px solid #CCC !important;
 }
