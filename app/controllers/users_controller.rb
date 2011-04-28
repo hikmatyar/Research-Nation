@@ -75,19 +75,14 @@ class UsersController < ApplicationController
       UserMailer.deliver_registration_email(@user.first_name, @user.last_name, @user.email)
       subscribe_to_newsletter @user if params["get_updates"]=="yes"
 
-      if @user.user_type == "Buyer"
-        profile = Profile.new
-        profile.user_id = @user.id
-        profile.save
-        return redirect_to :controller => 'users', :action => 'profile', :id => @user.id
-      else
-      return redirect_to :controller => 'profiles', :action => 'individual', :profile_type => 'individual' if @user.user_type == "Seller (Individual)"
-      return redirect_to :controller => 'profiles', :action => 'company', :profile_type => 'company' if @user.user_type == "Seller (Company)"
-      end
+      profile = Profile.new
+      profile.user_id = @user.id
+      profile.save
+      return redirect_to :controller => 'users', :action => 'profile', :id => @user.id
       return redirect_to :controller => 'resources', :action => 'upload_docs' if session[:post]
-      #return redirect_to :controller => 'profiles', :action => 'create' if session[:profile]
       return redirect_to :controller => "resources", :action => "view_posts"
     end
+    @user[:password] = ""
     return render :action => 'register'
   end
 
@@ -116,7 +111,10 @@ class UsersController < ApplicationController
       session[:admin]= valid_user.id if valid_user.is_admin?
       return redirect_to :controller => 'resources', :action => 'upload_docs' if session[:post]
       return redirect_to :controller => 'profiles', :action => 'create' if session[:profile]
-      return redirect_to :controller => 'resources', :action => 'seller_page', :id => session[:seller_post], :reveal_message => true if session[:message]
+      if session[:message]
+        return redirect_to :controller => 'profiles', :action => 'profile_page', :id => session[:profile_id], :reveal_message => true unless session[:profile_id].blank?
+        return redirect_to :controller => 'resources', :action => 'seller_page', :id => session[:seller_post], :reveal_message => true unless session[:seller_post].blank?
+      end
       return redirect_to :controller => 'users', :action => 'profile'
     else
       flash[:error] = "Oops! Something wrong with your username/password"
@@ -187,3 +185,4 @@ class UsersController < ApplicationController
   end
 
 end
+
