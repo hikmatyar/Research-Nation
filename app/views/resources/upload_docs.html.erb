@@ -1,6 +1,5 @@
 <div class="content">
-	<div class="content_back">
-    <div class="seller_left">
+    <div class="how_it_work_left_side">
       <div class="seller_back">
           <!--
           <div class="looding_text">
@@ -11,7 +10,7 @@
           </div>
           -->
           <span id="tab2" class="sign_up">Create a Post</span>
-          <div class="sign_up_box register_form">
+          <div class="sign_up_box">
               <%= form_tag  ({ :controller => 'resources', :action => 'create_post', :user => params[:user] } , :multipart => true, :id => "upload_form" ) %>
               <div class="field">
                   <label>Title*</label>
@@ -54,23 +53,7 @@
             <div class="sign_up_button"><%= submit_tag "Proceed to Next Step" %></div>
           </div>
       </div>
-    <div class="seller_right">
-      <div class="guidelines1">
-        <div class="guidelines">
-          <span class="sign_up" id="tab2">Guidelines</span>
-          <div class="sign_up_box guidelines_box1">
-            <b>Setting a Price</b>
-            <p>How much would you pay for the research you are publishing? Think about this and set the price accordingly. If you're publishing a company brochure or marketing material, or if you're a first time publisher and want to be widely read, consider selling for free</p>
-            <b>Stating Your Sources</b>
-            <p>Please use this to describe how you obtained the information/data/insights that form the basis of the publication you are selling</p>
-            <b>Examples of Stuff You Can Sell</b>
-            <p>Not sure if you should sell/share stuff? Click here to see examples of things you can and cannot upload</p>
-            <b>Respecting Copyrights</b>
-            <p>Please don't share information that doesn't belong to you! Copyright violations are not cool</p>
-          </div>
-        </div>
-      </div>
-    </div>
+      <%= render :partial => 'main/how_it_works_links' %>
   </div>
 </div>
 
