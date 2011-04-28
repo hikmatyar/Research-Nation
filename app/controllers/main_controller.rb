@@ -2,8 +2,11 @@ class MainController < ApplicationController
   layout 'main'
 
   def index
-    @user = User.find(session[:user]) if logged_in?
-    @user = User.new unless logged_in?
+    if logged_in?
+      @user = User.find(session[:user])
+    else
+      @user = User.new
+    end
   end
 
   def post
@@ -27,20 +30,18 @@ class MainController < ApplicationController
     message.sender = User.find session[:user]
     message.recipient = User.find params[:user_id]
     if message.save
-
-    #if PostMailer.deliver_post_email(mail_body["name"], mail_body["email"], mail_body["subject"], mail_body["message"], recipient)
-      return render :text => "<p class='flash'>Thank you! Your message has been sent</p>"
+      return render :nothing => true
     else
       render :text => "Hmm. Something seems to be wrong...let me look into it"
     end
   end
-
+=begin
   def send_feedback
     message = params[:feedback]
     flash[:success] = "Thank you for your submission" if ContactMailer.deliver_feedback_email message
     return redirect_to :controller => 'main', :action => 'about'
   end
-
+=end
   def contact_us
     flash[:notice] = "Thank you for your submission" if ContactMailer.deliver_contact_us_email params[:name], params[:email], params[:subject], params[:message]
     return redirect_to :controller => 'main', :action => 'contact'
