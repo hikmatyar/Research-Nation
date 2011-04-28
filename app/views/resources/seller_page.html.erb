@@ -1,14 +1,21 @@
 <%= javascript_include_tag "seller" %>
+<script type="text/javascript" language="javascript" charset="utf-8">
+  jQuery("document").ready(function(){
+    if (location.href.match("reveal_message"))
+    {
+      jQuery("#abc").trigger("click");
+    }
+  });
+
+</script>
 <div class="content">
-  <% unless flash[:notice].blank? %><p class="flash"><%= flash[:notice] %></p><% end %>
-  <% flash[:notice] = "" %>
   <div class="content_back">
   	<div class="categories_box">
     	<b><span><%= @resource.industry %></span> <span><%= @resource.geography %></span></b>
     </div>
     <div class="author">
       <div class="profile_img">
-      <%= (image_tag @resource.user.profile.picture.picture_path, :width => 36, :height => 36) unless @resource.user.profile.blank? %>
+      <%= (image_tag @resource.user.profile.picture.picture_path, :width => 36, :height => 36) unless @resource.user.profile.blank? or @resource.user.profile.picture.blank? %>
       <%= (image_tag "avatar.png") if @resource.user.profile.blank? or @resource.user.profile.picture.blank?  %>
       </div>
       <h2><%= @resource.title %></h2>
@@ -109,7 +116,14 @@
 </div>
 
 <div id="myModal" class="reveal-modal contact" >
+  <% unless logged_in? %>
+    <h2>Login</h2>
+    <%= render :partial => 'users/login'%>
+    <% session[:seller_post] = @resource.id %>
+    <% session[:message] = true %>
+  <% else %>
   <div id="form">
+			<% session[:message] = nil %>
 			<%= javascript_include_tag :defaults %>
 			<div id="message"></div>
 			<%= form_remote_tag ( :update => 'message',
@@ -136,8 +150,7 @@
         <input type="reset" id="reset" name="reset" value="Reset" id="" style="display:none;" />
       </div>
   </div>
-
+  <% end %>
   <a class="close-reveal-modal">&#215;</a>
 
 </div>
-

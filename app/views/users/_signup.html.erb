@@ -1,0 +1,29 @@
+  <div class="register_form">
+    <%= render :partial => 'errors' %>
+    <% form_for(@user , :url => {:controller => "users", :action => "create" } ) do |f| %>
+      <!--
+      <div class="field">
+      <label>First Name</label>
+      <%= f.text_field 'first_name', :id => "first_name" %>
+      </div>
+      <div class="field">
+      <label>Last Name</label>
+      <%= f.text_field 'last_name', :id => "last_name" %>
+      </div>
+      -->
+      <div class="field sigup_field">
+      <label>E-mail</label>
+      <%= f.text_field 'email', :id => "email" %>
+      </div>
+      <div class="field sigup_field">
+      <label>Password</label>
+      <%= f.password_field 'password', :id => "password" %>
+      </div>
+      <div class="field sigup_field">
+	      <label>I am a</label>
+	      <%= ( f.select "user_type", ["Buyer", "Seller (Individual)", "Seller (Company)" ], { :include_blank => true }, {:class => 'required' }) %>
+      </div>
+    </div>
+    <div class="sign_up_button"><%= submit_tag 'Sign up'%></div>
+  </div>
+<% end %>

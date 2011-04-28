@@ -79,10 +79,8 @@ class UsersController < ApplicationController
         profile = Profile.new
         profile.user_id = @user.id
         profile.save
-        flash[:notice] = "Welcome!"
         return redirect_to :controller => 'users', :action => 'profile', :id => @user.id
       else
-      flash[:notice] = "Welcome! Please fill out the details below so we can get you started"
       return redirect_to :controller => 'profiles', :action => 'individual', :profile_type => 'individual' if @user.user_type == "Seller (Individual)"
       return redirect_to :controller => 'profiles', :action => 'company', :profile_type => 'company' if @user.user_type == "Seller (Company)"
       end
@@ -116,9 +114,9 @@ class UsersController < ApplicationController
     if valid_user
       session[:user] = valid_user.id
       session[:admin]= valid_user.id if valid_user.is_admin?
-      flash[:notice] = "Welcome!"
       return redirect_to :controller => 'resources', :action => 'upload_docs' if session[:post]
       return redirect_to :controller => 'profiles', :action => 'create' if session[:profile]
+      return redirect_to :controller => 'resources', :action => 'seller_page', :id => session[:seller_post], :reveal_message => true if session[:message]
       return redirect_to :controller => 'users', :action => 'profile'
     else
       flash[:error] = "Oops! Something wrong with your username/password"
@@ -133,7 +131,6 @@ class UsersController < ApplicationController
   def logout
     if logged_in?
       reset_session
-      flash[:notice] = "See you later!"
       redirect_to :controller => 'main', :action=> 'index'
     end
   end

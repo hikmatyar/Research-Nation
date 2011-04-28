@@ -1,0 +1,17 @@
+<div class="register_form">
+  <%= form_tag :controller => "users", :action => "authenticate", :opt => 'login' %>
+    <div class="field">
+      <label>E-mail</label>
+      <%= text_field 'login', 'email' %>
+    </div>
+    <div class="field">
+      <label>Password</label>
+      <%= password_field 'login', 'password' %>
+    </div>
+    <p class="error"><%= flash[:error] %></p>
+    <%= flash[:error] = "" %>
+    <div class="forgot">
+      <%= link_to "Forgot my password", :controller => "users", :action => "forgot_password" %>
+    </div>
+  </div>
+  <div class="sign_up_button"><%= submit_tag 'Log In', :onSubmit => 'return validate();' %></div>
