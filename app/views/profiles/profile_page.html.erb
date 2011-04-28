@@ -1,4 +1,12 @@
-<div class="content">
+<script type="text/javascript" language="javascript" charset="utf-8">
+	jQuery("document").ready(function(){
+    if (location.href.match("reveal_message"))
+    {
+      jQuery("#abc").trigger("click");
+    }
+  });
+</script>
+  <div class="content">
   <% unless flash[:notice].blank? %>
     <p class="flash"><%= flash[:notice] %></p>
   <% end %>
@@ -10,8 +18,10 @@
        <%= (image_tag "avatar.png") if @profile.picture.blank?  %>
      </div>
 		  <h2 style="margin-top:25px;"><%= @profile.name %></h2>
+      <% unless @profile.user.user_type == "Seller (Company)" || @profile.key_individual.blank? %>
       <span class="field_text"><%= @profile.key_individual.title %></span>
       <span class="field_text"><%= @profile.key_individual.name %></span>
+      <% end %>
     </div>
     <!--
   	<div class="categories_box">
@@ -19,7 +29,7 @@
     </div>
     -->
   	<div class="resource_buttons">
-      <a href="#" data-reveal-id="myModal" id="abc">Send Message</a>
+      <a href="#message_form" id="message_link" >Send Message</a>
     </div>
     <% if @profile.profile_type == "company" %>
       <%= render :partial => 'company_details' %>
@@ -37,36 +47,44 @@
 		</div>
 	</div>
 </div>
-
-<div id="myModal" class="reveal-modal contact" >
-  <div id="form">
+<div style="display: none;">
+	<div id="message_form" class="message_form" style="width:550px;overflow:hidden;">
+		<div id="form">
 			<%= javascript_include_tag :defaults %>
+			<% unless logged_in? %>
+			<h2>Login</h2>
+			<%= render :partial => 'users/login'%>
+			<% session[:profile_id] = @profile.id %>
+			<% session[:message] = true %>
+		</div>
+		<% else %>
 			<div id="message"></div>
+			<% session[:message] = nil %>
+			<% session[:profile_id] = nil %>
 			<%= form_remote_tag ( :update => 'message',
-          :url => { :controller => 'profiles', :action => 'send_mail_to_profile', :email => @profile.key_individual.email }, :after => 'jQuery("#reset").trigger("click");' ) %>
-      <h2>Contact <%= @profile.name %></h2>
-      <div class="field">
-        <label>Name</label>
-        <input type="text" name="contact[name]" id="contact_name" class="required" />
-      </div>
-      <div class="field">
-        <label>Email</label>
-        <input type="text" name="contact[email]" id="contact_email" class="required" />
-      </div>
-      <div class="field">
-        <label>Subject</label>
-        <input type="text" name="contact[subject]" id="contact_subject" class="required" />
-      </div>
-      <div class="field">
-        <label>Message</label>
-        <textarea name="contact[message]" rows="8" cols="25" id="contact_message" class="required" /></textarea>
-      </div>
-      <div class="sign_up_button">
-        <%= submit_tag 'Send Message', :id => 'submit' %>
-        <input type="reset" id="reset" name="reset" value="Reset" id="" style="display:none;" />
-      </div>
-  </div>
-
-  <a class="close-reveal-modal">&#215;</a>
-
+		      :url => { :controller => 'profiles', :action => 'send_message_to_profile', :id => @profile.id } , :after => 'jQuery.fancybox.close();' ) %>
+		  <h2>Contact <%= @profile.name %></h2>
+		  <div class="field">
+		    <label>Name</label>
+		    <input type="text" name="name" id="contact_name" class="required" />
+		  </div>
+		  <div class="field">
+		    <label>Email</label>
+		    <input type="text" name="email" id="contact_email" class="required" />
+		  </div>
+		  <div class="field">
+		    <label>Subject</label>
+		    <input type="text" name="subject" id="contact_subject" class="required" />
+		  </div>
+		  <div class="field">
+		    <label>Message</label>
+		    <textarea name="message" rows="8" cols="25" id="contact_message" class="required" /></textarea>
+		  </div>
+		  <div class="sign_up_button">
+		    <%= submit_tag 'Send Message', :id => 'submit' %>
+		    <input type="reset" id="reset" name="reset" value="Reset" id="" style="display:none;" />
+		  </div>
+		</div>
+		<% end %>
+	</div>
 </div>

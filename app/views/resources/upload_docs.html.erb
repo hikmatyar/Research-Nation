@@ -1,5 +1,8 @@
+<%= javascript_include_tag "upload_form" %>
+
 <div class="content">
     <div class="how_it_work_left_side">
+
       <div class="seller_back">
           <!--
           <div class="looding_text">
@@ -9,9 +12,17 @@
             <h6>COMPLETE</h6>
           </div>
           -->
+          <a id="login_link" href="#login_form" ></a>
+          <div style="display: none;">
+	        <div id="login_form" style="width:540px;height:250px;overflow:hidden;">
+              <h2>Login</h2>
+              <%= render :partial => 'users/login'%>
+            </div>
+          </div>
           <span id="tab2" class="sign_up">Create a Post</span>
           <div class="sign_up_box">
-              <%= form_tag  ({ :controller => 'resources', :action => 'create_post', :user => params[:user] } , :multipart => true, :id => "upload_form" ) %>
+              <% form_for(@resource , :url => { :controller => 'resources', :action => 'create_post', :user => params[:user] }, :html => { :multipart => true } ) do |f| %>
+
               <div class="field">
                   <label>Title*</label>
                   <%= text_field 'resource', 'title', :class => 'required max_len', :max_length => 140 %>
@@ -52,42 +63,8 @@
             </div>
             <div class="sign_up_button"><%= submit_tag "Proceed to Next Step" %></div>
           </div>
+          <% end %>
       </div>
       <%= render :partial => 'main/how_it_works_links' %>
   </div>
 </div>
-
-<script type="text/javascript" language="javascript" charset="utf-8">
-    $(document).ready(function(){
-
-        $(".loading").hide();
-        show_text_count();
-        function show_text_count(){
-            var len = 700 - $('#resource_description').val().length
-            $('.field h5').text(len);
-        }
-
-        $('#resource_description').keypress(function(){
-           show_text_count();
-        });
-
-        $('#upload_form').submit(function(){
-            validated = validate_form();
-            if(validated)
-            {
-	          $(".loading").show();
-            }
-            return validated;
-        });
-        $("#original").change(function(){
-            $("#original_file_name").val($(this).val());
-        });
-        $("#sample").change(function(){
-            $("#sample_file_name").val($(this).val());
-        });
-        $('input:checkbox').click(function(){
-            $(this).val($(this).attr("checked"));
-        })
-    });
-
-</script>
