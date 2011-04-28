@@ -1,26 +1,41 @@
-$('document').ready(function(){
+jQuery('document').ready(function(){
 
-  $("#new_profile").submit(function(){
+  jQuery("#new_profile").submit(function(){
     return validate_form();
   });
 
-  $(".interests input:checkbox").change(function(){
+  if (jQuery(".edit_profile")){
+       jQuery(".edit_profile").submit(function(){
+          return validate_form();
+       });
+     }
+  jQuery(".interests input:checkbox").change(function(){
     var interests = new Array();
-    $(".interests input:checkbox:checked").each(function(){
-      interests.push($(this).val());
-      $("#interested_in").val(interests.join(","));
+    jQuery(".interests input:checkbox:checked").each(function(){
+      interests.push(jQuery(this).val());
+      jQuery("#interested_in").val(interests.join(","));
     });
   });
 
-  $("#skype").click(function(){
-      $('#key_individual_skype_availability').val($(this).attr("checked"));
+  jQuery("#skype").click(function(){
+      jQuery('#key_individual_skype_availability').val(jQuery(this).attr("checked"));
   })
 
-  $("#user_image").change(function(){
-    $("#picture_path").val($("#user_image").val());
+  jQuery("#user_image").change(function(){
+    jQuery("#picture_path").val(jQuery("#user_image").val());
   });
 
-  $(".interests input:checkbox").trigger('change');
+  jQuery(".interests input:checkbox").trigger('change');
 
-  $("#user_image").trigger('change');
+  jQuery("#user_image").trigger('change');
+
+  jQuery("#message_link").fancybox({
+      'hideOnOverlayClick' : false
+   });
+
+  if (location.href.match("reveal_message"))
+  {
+    jQuery("#message_link").trigger("click");
+  }
 });
+
