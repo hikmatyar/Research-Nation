@@ -13,9 +13,9 @@ class ProfilesController < ApplicationController
   def view_profile_list
     @profiles = []
 
-    users = User.find :all, :conditions => ['user_type like ?', "%Seller%"]
+    users = User.find :all, :conditions => ['user_type like ? ', "%Seller%"]
     users.each do |user|
-      @profiles.push(user.profile) unless user.profile.blank?
+      @profiles.push(user.profile) unless user.profile.blank? || user.profile.is_edited==false
     end
     @industry_focus.push("All")
   end
@@ -38,17 +38,19 @@ class ProfilesController < ApplicationController
 
     profile.user_id = session[:user]
     if profile.save
+      key_individual = KeyIndividual.new
+      key_individual.profile_id = profile.id
+      key_individual.save
       unless params[:picture].blank?
         picture = Picture.new
         picture.profile_id = profile.id
-        picture.add_picture(picture_path, params[:picture])
+        flash[:notice] = "The image size is too large" unless picture.add_picture(picture_path, params[:picture])
       end
       session[:profile] = nil
       session[:key_individual] = nil
 
       key_individual.profile_id = profile.id
       key_individual.save
-      return redirect_to :controller => 'resources', :action => 'upload_docs' if session[:post]
       return redirect_to :controller => 'users', :action => 'profile'
     end
 
@@ -58,7 +60,17 @@ class ProfilesController < ApplicationController
     profile = Profile.find params[:id]
     key_individual = profile.key_individual
     profile.update_attributes(params[:profile])
-    key_individual.update_attributes params[:key_individual]
+    unless params[:picture].blank?
+      if profile.picture.blank?
+        picture = Picture.new
+        picture.profile_id = profile.id
+      else
+        picture = profile.picture
+      end
+      flash[:notice] = "The image size is too large" unless picture.add_picture(params[:picture_path], params[:picture])
+    end
+    profile.update_attribute( :is_edited, true )
+    key_individual.update_attributes params[:key_individual] unless key_individual.blank?
     flash[:notice] = "Your Information was updated successfully"
     return redirect_to :controller => 'users', :action => 'profile', :id => profile.user.id
   end
@@ -122,12 +134,18 @@ class ProfilesController < ApplicationController
    render :partial => 'profiles'
   end
 
-  def send_mail_to_profile
-    individual = KeyIndividual.find_by_email params[:email]
-    profile = individual.profile
-    body = params[:contact]
-    ContactMailer.deliver_profile_email body["name"], body["email"], body["subject"], body["message"], recipient
-    return redirect_to :action => 'profile_page', :id => profile.id
+  def send_message_to_profile
+    profile = Profile.find params[:id]
+    message = Message.new
+    message.subject = params["subject"]
+    message.body = params[:message]
+    message.sender = User.find session[:user]
+    message.recipient = profile.user
+    if message.save
+      return render :text => "<p class='flash'>Thank you! Your message has been sent</p>"
+    else
+      render :text => "Hmm. Something seems to be wrong...let me look into it"
+    end
   end
 
 private

@@ -4,8 +4,8 @@
 	  <% flash[:notice] = "" %>
        <div class="seller_back">
           <span class="sign_up" id="tab2">1. Company Details*</span>
-          <% form_for(@profile , :url => {:controller => "profiles", :action => "create" } ) do |f| %>
-          <div class="sign_up_box">
+          <% form_for(@profile , :url => {:controller => "profiles", :action => "create" }, :html => { :multipart => true } ) do |f| %>
+          <div class="sign_up_box register_form">
             <div class="field">
               <label>Name</label>
               <%= f.text_field 'name', :class => 'required max_len', :max_length => 70 %>
@@ -69,7 +69,7 @@
               </div>
               <div class="field">
                 <label>Linkedin</label>
-                <%= text_field 'key_individual', 'linkedin', :class => 'required' %>
+                <%= text_field 'key_individual', 'linkedin' %>
                </div>
           </div>
         </div>

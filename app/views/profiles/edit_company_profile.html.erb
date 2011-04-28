@@ -67,8 +67,14 @@
             </div>
             <div class="field">
               <label>Linkedin</label>
-              <%= text_field 'key_individual', 'linkedin', :class => 'required' %>
+              <%= text_field 'key_individual', 'linkedin' %>
              </div>
+        </div>
+        <%= hidden_field_tag 'picture_path',:id => "picture_path" %>
+        <div class="register_form">
+          <h2>Picture</h2>
+          <img src="<%= @profile.picture.blank? ? '/images/avatar.png' : @profile.picture.picture_path %>" alt="description" title="user avatar" width="128 !important" height="64" />
+          <input type="file" name="picture" size="" accept="true" id = "user_image" style="margin-top:20px;"/>
         </div>
         <div class="register_form">
           <h2>3. Humor Me</h2>
@@ -107,25 +113,3 @@
     </div>
    </div>
  </div>
-<script type="text/javascript" language="javascript" charset="utf-8">
-      $('document').ready(function(){
-
-        $("#new_profile").submit(function(){
-          return validate_form();
-        });
-
-        $(".interests input:checkbox").change(function(){
-          var interests = new Array();
-          $(".interests input:checkbox:checked").each(function(){
-            interests.push($(this).val());
-            $("#interested_in").val(interests.join(", "));
-          });
-        });
-
-        $('#key_individual_skype_availability').change(function(){
-            $(this).val($(this).attr("checked"));
-        });
-
-      });
-</script>
-
