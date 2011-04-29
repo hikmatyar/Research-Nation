@@ -1067,6 +1067,8 @@ a:focus {
 
 .description p{
 	float:left;
+	width:435px;
+	margin:0px;
 }
 
 .description a:hover{
