@@ -30,46 +30,6 @@
           <%= submit_tag 'Submit' %>
         </div>
       </div>
-    <!--
-    <ul>
-      <li>
-        <div>
-          <% unless flash[:notice].blank? %>
-            <p class="flash"><%= flash[:notice] %></p>
-          <% end %>
-          <% flash[:notice] = nil %>
-          <%= form_tag :controller => 'main', :action => 'contact_us'%>
-            <h1>Get in touch!</h1>
-            <div class="field">
-              <label>Name</label>
-              <%= text_field_tag 'name', "" , :size => '30' %>
-            </div>
-            <div class="field">
-              <label>E-mail</label>
-              <%= text_field_tag 'email', "" , :size => '30' %>
-            </div>
-            <div class="field">
-              <label>Subject</label>
-              <%= text_field_tag 'subject', "" , :size => '30' %>
-            </div>
-            <div class="field">
-              <label>Message</label>
-              <%= text_area_tag 'message', "" , :size => '30' %>
-            </div>
-            <div class="sign_up_button field" style="margin:0px">
-              <label>&nbsp;</label>
-              <%= submit_tag 'Submit' %>
-            </div>
-            <div class="follow_field">
-              <label>&nbsp;</label>
-              <a href=""><img src="/images/facebook.png" /></a>
-              <a target="_blank" href="http://twitter.com/researchnation"><img src="/images/twitter.png" /></a>
-            </div>
-          </form>
-        </div>
-      </li>
-    </ul>
-    -->
   </div>
 </div>
 <%= render :partial => 'contact_links' %>
