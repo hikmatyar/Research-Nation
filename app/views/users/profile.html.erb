@@ -39,9 +39,9 @@
       </div>
 
       <div class="profile_button">
-        <%= link_to 'Edit Profile', :controller => 'profiles', :action => 'edit_individual_profile', :id => @user.profile.id if @user.user_type == "Seller (Individual)" and @user.profile %>
-        <%= link_to 'Edit Profile', :controller => 'profiles', :action => 'edit_company_profile', :id => @user.profile.id if @user.user_type == "Seller (Company)" and @user.profile %>
-        <%= link_to 'Edit Profile', :controller => 'profiles', :action => 'edit_individual_profile', :id => @user.profile.id if @user.user_type == "Buyer" and @user.profile %>
+        <%= link_to 'Edit Profile', :controller => 'profiles', :action => 'edit_individual_profile', :id => @user.profile.id if @user.user_type == "Seller (Individual)" %>
+        <%= link_to 'Edit Profile', :controller => 'profiles', :action => 'edit_company_profile', :id => @user.profile.id if @user.user_type == "Seller (Company)" %>
+        <%= link_to 'Edit Profile', :controller => 'profiles', :action => 'edit_individual_profile', :id => @user.profile.id if @user.user_type == "Buyer" %>
       </div>
    	</div>
     <div class="profile_right">
