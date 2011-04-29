@@ -22,7 +22,6 @@
 </script>
 
 <div class="content">
-	<div class="content_back">
 		<% unless flash[:notice].blank? %><p class="flash"><%= flash[:notice] %></p><% end %>
     <% flash[:notice] = "" %>
 		<div class="profile_left">
@@ -56,13 +55,13 @@
 <div class="tab_container">
   <div id="listings" class="tab_content">
 		<div class="users_table">
-			<table border="0" cellspacing="0" cellpadding="0" id=" posts_table" align="left">
+			<table border="0" cellspacing="5" cellpadding="5" id=" posts_table" align="left">
 			<tbody>
 				<tr>
 				  <th width="50">No.</th>
-				  <th width="600">Title</th>
-				  <th width="100">Price</th>
-				  <th width="100">Date</th>
+				  <th width="100"><b>Title</b></th>
+				  <th width="85">Price</th>
+				  <th width="85">Date</th>
 				  <th></th>
 				</tr>
 				<% @user.resources.each_with_index do |post, index|%>
@@ -96,6 +95,5 @@
 
       </div>
    	</div>
-	</div>
 </div>
 
