@@ -5,7 +5,7 @@
   	<div class="categories_box">
     	<b><span><%= @resource.industry %></span> <span><%= @resource.geography %></span></b>
     </div>
-    <div class="author">
+    <div class="author" style="width:700px;">
       <div class="profile_img">
       <%= (image_tag @resource.user.profile.photo.url(:browse)) unless (@resource.user.profile.blank? || @resource.user.profile.photo_file_name.blank?) %>
       <%= (image_tag "avatar.png") if @resource.user.profile.blank? || @resource.user.profile.photo_file_name.blank?  %>
