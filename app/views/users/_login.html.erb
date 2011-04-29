@@ -1,5 +1,5 @@
 <div class="register_form">
-  <%= form_tag :controller => "users", :action => "authenticate", :opt => 'login' %>
+  <% form_tag (:controller => "users", :action => "authenticate", :opt => 'login') do%>
     <div class="field">
       <label>E-mail</label>
       <%= text_field 'login', 'email' %>
@@ -15,3 +15,4 @@
     </div>
   </div>
   <div class="sign_up_button"><%= submit_tag 'Log In', :onSubmit => 'return validate();' %></div>
+  <% end %>
