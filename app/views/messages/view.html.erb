@@ -2,7 +2,7 @@
 <div class="how_it_work_left_side">
   <div id="message"></div>
   <div class="seller_back">
-    <span class="sign_up" id="tab2" style="margin-bottom:10px;"> Conversation with Akhtar</span>
+    <span class="sign_up" id="tab2" style="margin-bottom:10px;"> Conversation with <%= @message.sender.profile.name %></span>
 	  <div class="receipient">
       <div class="sender_image">
         <%= image_tag "avatar.png", :width => 100, :height => 100 if @message.recipient.profile.photo_file_name.blank? %>
@@ -17,14 +17,14 @@
          </div>
 	      <div class="register_form">
           <%= javascript_include_tag :defaults %>
-          <%= form_remote_tag ( :update => 'message',
-          :url => { :controller => 'main', :action => 'send_message', :user_id => @message.sender.id }) %>
+          <% form_tag (:controller => 'main', :action => 'send_message', :user_id => @message.sender.id, :referer => 'view_page' ) do%>
           <div class="field">
             <%= text_area_tag "message", "" ,:id => "message", :class => "required send_message" %>
           </div>
         </div>
         <div class="send_message_button">
           <%= submit_tag 'Post Response', :id => 'submit' %>
+          <% end %>
           <input type="reset" id="reset" name="reset" value="Reset" id="" style="display:none;" />
         </div>
       </div>
