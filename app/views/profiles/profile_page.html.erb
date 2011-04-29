@@ -11,16 +11,19 @@
     <p class="flash"><%= flash[:notice] %></p>
   <% end %>
   <% flash[:notice] = "" %>
-  <div class="content_back">
+  <div class="how_it_work_left_side">
     <div class="author">
       <div class="profile_img">
        <%= (image_tag @profile.photo.url(:edit)) unless @profile.photo_file_name.blank? %>
        <%= (image_tag "avatar.png") if @profile.photo_file_name.blank?  %>
      </div>
 		  <h2 style="margin-top:25px;"><%= @profile.name %></h2>
+		  <div class="resource_buttons" style="width:auto !important;">
+        <a href="#" data-reveal-id="myModal" id="abc">Send Message</a>
+      </div>
       <% unless @profile.user.user_type == "Seller (Company)" || @profile.key_individual.blank? %>
-      <span class="field_text"><%= @profile.key_individual.title %></span>
-      <span class="field_text"><%= @profile.key_individual.name %></span>
+        <span class="field_text"><%= @profile.key_individual.title %></span>
+        <span class="field_text"><%= @profile.key_individual.name %></span>
       <% end %>
     </div>
     <!--
@@ -41,7 +44,7 @@
 			<div class="login_tab">
 				<span href="#" onclick="showTab('one');" style="" class="sign_up" id="tab2">Reviews & Comments</span>
 				<div style="display: block;" class="sign_up_box" id="tabOne">
-				  <div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=175351785849270&amp;xfbml=1"></script><fb:comments href="http://<%= request.host %>/profiles/profile_page/<%= @profile.id %>" num_posts="2" width="665"></fb:comments>
+				  <div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=175351785849270&amp;xfbml=1"></script><fb:comments href="http://<%= request.host %>/profiles/profile_page/<%= @profile.id %>" num_posts="2" width="470"></fb:comments>
 				</div>
 			</div>
 		</div>

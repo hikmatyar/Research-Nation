@@ -1,10 +1,9 @@
 <div class="content">
-  <div class="content_back">
-    <div class="seller_left">
+  <div class="how_it_work_left_side">
        <div class="seller_back">
-        <div class="register_form">
-          <%= @profile.photo_file_name.blank? ? (image_tag "avatar.png") : (image_tag @profile.photo.url(:edit), :width => "100", :height => "100") %>
-          <h2>1. My Details* </h2>
+          <span class="sign_up" id="tab2">Edit Your Profile</span>
+          <div class="sign_up_box" id="tabOne">
+            <h4 style="margin-top:5px;">My Details</h4>
           <% form_for(@profile , :url => {:controller => "profiles", :action => "update", :id => @profile.id }, :html => { :multipart => true } ) do |f| %>
             <div class="field">
               <label>Name</label>
@@ -19,8 +18,8 @@
               <%= text_field 'key_individual', 'name', :class => 'required' %>
             </div>
             <div class="field">
-              <label>Address</label>
-              <%= f.text_area 'address', :style => "width:200px; height:60px;", :class => 'required max_len', :max_length => 400 %>
+              <label>City</label>
+              <%= text_field 'city', 'name', :class => 'required', :max_length => 400 %>
             </div>
             <div class="field">
               <label>Country</label>
@@ -51,48 +50,49 @@
               <%= f.text_area 'description', :class => 'required max_len', :max_length => 1000 %>
             </div>
             <div class="field">
+              <label>Picture</label>
+              <input type="file" name="picture" size="" accept="true" id = "user_image"/>
+            </div>
+            <div class="field">
               <label>Industry Focus</label>
               <%= ( f.select "industry_focus", @industry_focus, { :include_blank => true }, {:class => 'required' }) %>
             </div>
-            <%= f.hidden_field 'interested_in', :id => 'interested_in' %>
-            <%= f.hidden_field 'profile_type', :value => params[:profile_type] %>
-            <%= hidden_field 'key_individual', 'skype_availability', :value => "" %>
-            <div class="register_form">
-              <h2>Picture</h2>
-              <img src="<%= @profile.photo.blank? ? '/images/avatar.png' : @profile.photo.url(:edit) %>" alt="description" title="user avatar" width="128 !important" height="64" />
-              <%= f.file_field 'photo'%>
+            <h4>Humor Me</h4>
+            <div class="field">
+              <label>Optional</label>
+              <%= f.text_area 'humor_me', :class => 'max_len', :max_length => 1000 %>
             </div>
-            <div class="register_form">
-              <h2>2. Humor Me</h2>
-                <div class="field">
-                  <label>Optional</label>
-                  <%= f.text_area 'humor_me', :class => 'max_len', :max_length => 1000 %>
-                </div>
+
+        <%= f.hidden_field 'interested_in', :id => 'interested_in' %>
+        <%= f.hidden_field 'profile_type', :value => params[:profile_type] %>
+        <%= hidden_field 'key_individual', 'skype_availability', :value => "" %>
+        <%= hidden_field_tag 'picture_path',:id => "picture_path" %>
+            <h4 style="margin-bottom:0px;">Interested In</h4>
+            <div class="field" style="margin-bottom:0px;">
+              <input type="checkbox" value="FT projects" name="checkbox" checked="checked" />
+              <label>FT projects</label>
             </div>
-            <div class="register_form interests">
-              <h2>3. Interested In</h2>
-              <div class="field">
-                <input type="checkbox" value="FT projects" name="checkbox" checked="checked" />
-                <label>FT projects</label>
-                <input type="checkbox" value="PT projects" name="checkbox" checked="checked" />
-                <label>PT projects</label>
-                <input type="checkbox" value="Immediate start" name="checkbox" checked="checked" />
-                <label>Immediate start</label>
-              </div>
-              <div class="field">
-                <input type="checkbox" value="Local only" name="checkbox" checked="checked" />
-                <label>Local only</label>
-                <input type="checkbox" value="30 mins free phone consultation" name="checkbox" checked="checked" />
-                <label style="width:200px;">30 mins free phone consultation</label>
-              </div>
+            <div class="field" style="margin-bottom:0px;">
+              <input type="checkbox" value="PT projects" name="checkbox" checked="checked" />
+              <label>PT projects</label>
             </div>
-              <div class="sign_up_button">
-                <%= f.submit 'Submit' %>
-              </div>
-            <% end %>
+            <div class="field" style="margin-bottom:0px;">
+              <input type="checkbox" value="Immediate start" name="checkbox" checked="checked" />
+              <label>Immediate start</label>
+            </div>
+            <div class="field" style="margin-bottom:0px;">
+              <input type="checkbox" value="Local only" name="checkbox" checked="checked" />
+              <label>Local only</label>
+            </div>
+            <div class="field" style="margin-bottom:0px;">
+              <input type="checkbox" value="30 mins free phone consultation" name="checkbox" checked="checked" />
+              <label style="width:300px;">30 mins free phone consultation</label>
+            </div>
           </div>
+          <div class="sign_up_button">
+              <%= f.submit 'Submit' %>
+            </div>
+          <% end %>
         </div>
-      </div>
     </div>
-  </div>
 </div>

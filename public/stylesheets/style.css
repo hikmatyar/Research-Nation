@@ -128,7 +128,7 @@ a:focus {
 .header a{
 	float:left;
 	width:210px;
-	margin-right:533px;
+	margin-right:433px;
 }
 
 .banner_text {
@@ -177,10 +177,15 @@ a:focus {
 	width: 100%;
 }
 
+.main_menu_box{
+    float:left;
+    width:351px;    
+}
+
 .main_menu{
 	float:right;
 	margin:10px 0px 0px 0px;
-	width:240px;
+	width:100%;
 }
 
 .main_menu ul{
@@ -574,7 +579,7 @@ a:focus {
 .sign_up_box, .sign_up_box1, .login_tab_box{
 	float:left;
 	width:100%;
-	border:1px solid #CCC;	
+	border:1px solid #CCC;
 	margin-top:10px;
 	padding-top:10px;
 }
@@ -593,7 +598,11 @@ a:focus {
     float:left;
     padding-left:10px;
     margin-right:0px !important;
+    width:80px;
+    height:80px;
+    padding-bottom:10px;
 }
+
 
 .facebook_box b{
 	float:left;
@@ -625,6 +634,19 @@ a:focus {
 	text-align:left;
 }
 
+.sign_up_box h4{
+    color: #C8955B !important;
+    float: left;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+    padding-bottom: 10px;
+    padding-left: 6px;
+    margin-bottom:10px;
+    text-align: left;
+    width: 98%;
+}
+
 .sign_up_box .field b{
     width:350px;    
 }
@@ -634,7 +656,20 @@ a:focus {
 }
 .field1{
     margin-bottom:0px !important;
+    float:left;
+	width:100%;
+	margin-bottom:10px;	
+	height:auto !important;
 }
+
+.field1 label{
+	float:left;
+	width:105px;
+	margin-top:5px;
+	padding-left:8px;
+	text-align:left;
+}
+
 
 .field1 span{
 	border:0px !important;
@@ -662,7 +697,7 @@ a:focus {
 .register_form h2{
 	background-color:#ebebeb;
 	-moz-border-radius-topleft: 10px;
-  -moz-border-radius-topright: 10px;
+    -moz-border-radius-topright: 10px;
 	-webkit-border-top-right-radius: 10px;
 	-webkit-border-top-left-radius: 10px;
 	bottom: 10px;
@@ -704,9 +739,8 @@ a:focus {
 .register_form{
 	float:left;
 	text-decoration:none;
-	width:648px;
-	margin:10px 10px 10px 0px;
-	padding:10px;
+	width:390px;
+	margin-left:10px;
 }
 
 .field{
@@ -719,8 +753,9 @@ a:focus {
 .field label{
 	float:left;
 	width:105px;
-	margin-top:5px;
+	margin-top:3px;
 	padding-left:8px;
+	font-size:14px;
 	text-align:left;
 }
 
@@ -728,6 +763,7 @@ a:focus {
 	float:left;
 	border:1px solid #CCC;
 	padding:5px;
+	font-size:14px;
 }
 
 .field textarea{
@@ -736,11 +772,12 @@ a:focus {
     height: 130px;
     width: 284px;
 	padding:5px;
+	font-size:14px;
 }
 
 .field i{
 	float:right;
-	width:450px;
+	width:367px;
 	margin-top:3px;
 	font-size:11px;
 	position:static !important;
@@ -821,6 +858,11 @@ a:focus {
 
 }
 
+.send_message_button{
+    float:right;
+
+}
+
 .resource_buttons a {
     -moz-border-radius: 4px 4px 4px 4px;
     -webkit-border-radius: 4px 4px 4px 4px;
@@ -853,7 +895,7 @@ a:focus {
 }
 
 
-.sign_up_button input{
+.sign_up_button input, .send_message_button input{
     -webkit-border-radius: 4px 4px 4px 4px;
     -moz-border-radius: 4px 4px 4px 4px;
     background: -moz-linear-gradient(center bottom,  #8eaf32 22%, #AAC84A 81%);
@@ -870,7 +912,7 @@ a:focus {
 }	
 
 
-.sign_up_button input:hover{
+.sign_up_button input:hover, .send_message_button input:hover{
     -moz-border-radius: 4px 4px 4px 4px;
     -webkit-border-radius: 4px 4px 4px 4px;
 	text-decoration:none !important;
@@ -895,6 +937,40 @@ a:focus {
 	padding:10px;
 }
 
+.seller_back h2{
+    background-color:#ebebeb;
+	-moz-border-radius-topleft: 10px;
+    -moz-border-radius-topright: 10px;
+	-webkit-border-top-right-radius: 10px;
+	-webkit-border-top-left-radius: 10px;
+	bottom: 10px;
+	float: left;
+	left: 43;
+	color:#C8955B !important;
+	margin: 0;
+	padding: 10px;
+	position: relative;
+	right: 10px;
+	width: 100%;
+}
+
+.key_individual{
+    background-color:#ebebeb;
+    -moz-border-radius-topleft: 0px !important;
+    -moz-border-radius-topright: 0px !important;
+	-webkit-border-top-right-radius: 0px !important;
+	-webkit-border-top-left-radius: 0px !important;
+	bottom: 10px;
+	float: left;
+	left: 43;
+	padding: 10px;
+	position: relative;
+	right: 10px;
+	width: 455px !important;
+	margin:10px !important;
+    
+}
+
 .seller_back h3{
 	float:left;
 	font-size:24px;
@@ -907,7 +983,7 @@ a:focus {
 
 .search_content{
 	float:left;
-	width:680px;
+	width:730px;
 	background-image:url(../images/serach_back.jpg);
 	background-position:right;
 	background-repeat:repeat-y;
@@ -940,7 +1016,7 @@ a:focus {
 
 .left_content{
 	float:left;
-	width:450px;
+	width:500px;
 }
 
 .seller_left{
@@ -956,6 +1032,7 @@ a:focus {
 	float:right;
 	width:210px;
 	padding:10px;
+	margin-top:50px;
 }
 
 .fixed_box{
@@ -1058,7 +1135,7 @@ a:focus {
 
 .description{
 	float:left;
-	width:590px;
+	width:100%;
 	overflow:hidden;
 	height:55px;
 	margin-bottom:20px;
@@ -1347,9 +1424,6 @@ a:focus {
 	overflow:auto;
 }
 
-.fbFooterBorder{
-	display:none !important;
-}
 
 .author{
   color: #245A83;
@@ -1357,7 +1431,7 @@ a:focus {
   font-size: 14px;
   margin-bottom: 5px;
   margin-top: 10px;
-  width: 680px;
+  width: 100%;
   font-weight:normal !important;
 }
 
@@ -1369,12 +1443,13 @@ a:focus {
 
 .author h2{
 	float:left;
-	width:550px;
+	width:240px;
 	margin-top:0px !important;
 }
 
 .author span{
     color:#525252;
+    width:240px !important;
 }
 
 .profile_img{
@@ -1508,7 +1583,7 @@ a:focus {
 }
 
 .right_side a{
-	padding:5px;
+	padding:0px;
 	color:#C8955B !important;
 }
 
@@ -1516,7 +1591,8 @@ a:focus {
 	text-decoration:underline !important;
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
-  background-color: #E5E5E5;
+    background-color: #E5E5E5;
+    padding:5px;
 }
 .verticalslider_tabs b{
 	width: 100%;
@@ -1527,6 +1603,7 @@ a:focus {
 .verticalslider_tabs a:link, .verticalslider_tabs a:visited{
 	display: block; 
 	width: 200px; 
+	padding:5px;
 	text-decoration: none;
 }
 
@@ -1739,8 +1816,7 @@ background:#FFFFFF; border:1px solid #666666 !important; height:15px; width:15px
 .sign_up_box span{
 	float:left;
 	font-size:12px;
-	width:380px !important;
-	border-bottom:1px solid #CCC;
+	width:270px !important;
 	padding:3px;
 }
 
@@ -1751,7 +1827,7 @@ background:#FFFFFF; border:1px solid #666666 !important; height:15px; width:15px
 }
 
 .field select{
-	width:264px;
+	width:296px;
 	border:1px solid #CCC;
 }
 
@@ -2337,9 +2413,10 @@ html ul.tabs li.active, html ul.tabs li.active {
 	font-size: 12px;
 	margin-right: 10px;
 	padding: 5px 5px 5px 10px;
-	width: 130px;
+	width: 125px;
 	margin-top:0px !important;
 	background-color:#FFF;
+	border:1px solid #ccc;
 	margin-bottom: 5px;
 	border-radius:5px;
 	-moz-border-radius:5px;
@@ -2352,6 +2429,7 @@ html ul.tabs li.active, html ul.tabs li.active {
 	padding: 5px 5px 5px 10px;
 	width: 40px;
 	margin-top:0px !important;
+	border:1px solid #ccc;
 	background-color:#FFF;
 	border-radius:5px;
 	-moz-border-radius:5px;
@@ -2567,19 +2645,16 @@ html ul.tabs li.active, html ul.tabs li.active {
 }
 
 .web_link{
-	font-size: 18px !important;
-  line-height: 24px !important;
-  text-align: left !important;
-	color:#525252 !important;
+	font-size: 14px !important;
+    line-height: 24px !important;
+    text-align: left !important;
+	color:#C8955B !important;
 	background:none !important;
+	
 }
 
 .web_link:hover{
-	font-size: 18px !important;
-  line-height: 24px !important;
-  text-align: left !important;
-	color:#525252 !important;
-	background:none !important;
+    text-decoration:underline;
 }
 
 .inner_profile_box {
@@ -2657,7 +2732,7 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 	-webkit-border-radius:10px;
 	background-color:#FFFFFF;
 	padding:10px;
-	width:680px;
+	width:500px;
 	margin-top:60px;
 }
 .new_field{
@@ -2745,34 +2820,47 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 	width:100%;
 }
 
-.receipient, .sender{
+.sender_image{
     float:left;
-	box-shadow:5px -5px 20px #bebebe;
-	-webkit-box-shadow:0 0 20px #bebebe;
-	-moz-box-shadow:0 0 20px #bebebe;
-	border-radius:10px;
-	-moz-border-radius:10px;
-	-webkit-border-radius:10px;
-	background-color:#FFFFFF;
-	padding:10px;
-    width: 335px;
+    width:50px;
 }
 
-.receipient b, .sender b{
-	float:left;
-	width:200px;
-	text-align:center;
-	padding-top:40px;
-	font-size:20px;
-	padding-bottom:20px;
+.receipient, .sender{
+    float:left;
+    border: 1px solid #CCCCCC;
+	padding:10px;
+    width: 453px;
+}
+
+.sender_image b{
+    float: left;
+    font-size: 16px;
+    text-align: justify;
+    margin-top:5px;
+    width: 100%;
+}
+
+.receipient span{
+    float:left:
+    font-size:16px;
+    margin-left:10px;
+    width:455px;
 }
 
 .receipient img, .sender img{
 	float:left;
+	width:50px;
+	height:50px;
 }
 
 .sender{
 	margin-left:10px;
+	margin:10px 0px 0px 0px;
+	border-top:1px solid color:#ccc !important;
+	border-left:0px !important;
+	border-right:0px !important;
+	border-bottom:0px !important;
+	padding:10px 0px 0px 0px;
 }
 
 .reply_box{
@@ -2821,7 +2909,7 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 
 .related_posts_box span{
     float:left;
-    width:600px !important;
+    width:385px !important;
     border:0px !important;
     padding:15px; 5px 0px 0px;   
 }
@@ -2840,4 +2928,13 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
     width:100%;
     margin:auto 0px;
     text-align:center
+}
+
+.send_message{
+    width:380px !important;
+    height:60px !important;	
+    
+}
+div.fbFooterBorder{
+    display:none !important;
 }
