@@ -29,8 +29,8 @@ class ResourcesController < ApplicationController
       user.update_attributes(session[:user_details])
       resource.user_id = session[:user]
       if resource.save
-        Attachment.add_file(params[:sample], resource.id, "sample", params[:sample_file_name]) unless params[:sample].blank?
-        Attachment.add_file(params[:original], resource.id, "original", params[:original_file_name])  unless params[:original].blank?
+        Attachment.add_file(params[:sample], resource.id, "sample") unless params[:sample].blank?
+        Attachment.add_file(params[:original], resource.id, "original")  unless params[:original].blank?
         session[:user_details] = nil
         session[:post] = nil
         flash[:notice] = "Thank you! Your post has been created"
