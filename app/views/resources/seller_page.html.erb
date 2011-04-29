@@ -11,8 +11,8 @@
       <%= (image_tag "avatar.png") if @resource.user.profile.blank? || @resource.user.profile.photo_file_name.blank?  %>
       </div>
       <h2><%= @resource.title %></h2>
-      <b>By <%= "#{@resource.user.profile.name}" %>,
-      <span><%= @resource.user.work %> at <%= @resource.user.company %></span>
+      <% unless @resource.user.profile.name.blank? %><b>By <%= (link_to @resource.user.profile.name, :controller => 'profiles', :action => 'profile_page', :id => @resource.user.profile) if @resource.user.profile.is_edited %>,<% end %>
+      <span><%= "#{@resource.user.profile.key_individual.title} at #{@resource.user.profile.key_individual.name}" if @resource.user.user_type == "Seller (Individual)" %></span>
       </b>
     </div>
     <div class="resource_buttons">
@@ -25,7 +25,7 @@
         <div class="login_tab">
           <%= link_to 'Summary','#Summary', :class => 'sign_up', :id => 'tab1', :onclick => 'showTab("one");' %>
           <%= (link_to 'Sources','#Sources', :class => 'login', :id => 'tab4', :onclick => 'showTab("four");') unless @resource.terms_and_conditions.blank? %>
-          <%= link_to 'Seller','#Seller', :class => 'login', :id => 'tab2', :onclick => 'showTab("two");' %>
+          <%= (link_to 'Seller','#Seller', :class => 'login', :id => 'tab2', :onclick => 'showTab("two");') unless @resource.user.profile.is_edited %>
           <%= (link_to 'Sample','#Sample', :class => 'login', :id => 'tab3', :onclick => 'showTab("three");') if @sample %>
 
           <div style="display: block;" class="sign_up_box" id="tabOne">
@@ -35,14 +35,7 @@
           </div>  
           <div style="display: none;" class="login_tab_box" id="tabTwo">
             <div class="about_seller">
-              <b>Profile: </b>
               <p><%= @resource.user.about_me %></p>
-              <% unless @resource.user.linked_in_profile.blank? %>
-                <b>LinkedIn:</b><p><%= (link_to "#{@resource.user.linked_in_profile}", @resource.user.linked_in_profile, :target => "_blank", :style => 'color:#525252 !important;') unless @resource.user.linked_in_profile.blank? %></p>
-              <% end %>
-              <% unless @resource.user.website.blank? %>
-                <b>Website:</b><p><%= (link_to "#{@resource.user.website }", @resource.user.website, :target => "_blank", :style => 'color:#525252 !important;') %></p>
-              <% end %>
             </div>
           </div>
           <div style="display: none;" class="sign_up_box" id="tabThree">

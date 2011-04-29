@@ -2938,3 +2938,8 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 div.fbFooterBorder{
     display:none !important;
 }
+
+.pushed_button{
+	background: none repeat scroll 0 0 #BFBFB5;
+  color: #FFFFFF !important;
+}
