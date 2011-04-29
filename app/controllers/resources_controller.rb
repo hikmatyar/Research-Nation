@@ -12,6 +12,7 @@ class ResourcesController < ApplicationController
 
   def upload_docs
     @resource = Resource.new
+    @user = User.find(session[:user])
   end
 
   def seller_page
@@ -25,20 +26,27 @@ class ResourcesController < ApplicationController
     if logged_in?
       resource = Resource.new(params[:resource])
       user = User.find session[:user]
-      user.update_attributes(:is_expert => (params[:checkbox]=="true"? true : false ))
+      user.update_attributes( :about_me => params[:user][:about_me]) unless params[:user].blank?
       user.update_attributes(session[:user_details])
       resource.user_id = session[:user]
+      original_file_attachments = params[:attachments]
+
       if resource.save
         Attachment.add_file(params[:sample], resource.id, "sample") unless params[:sample].blank?
-        Attachment.add_file(params[:original], resource.id, "original")  unless params[:original].blank?
+        #Attachment.add_file(params[:original], resource.id, "original")  unless params[:original].blank?
+        original_file_attachments.each do |key, file|
+          Attachment.add_file(file, resource.id, "original") unless params[:attachments].blank?
+        end
         session[:user_details] = nil
         session[:post] = nil
         flash[:notice] = "Thank you! Your post has been created"
         return redirect_to :action => 'seller_page', :id => resource.id
       end
+
     else
       return redirect_to :controller => 'users', :action => 'register'
     end
+
   end
 
   def edit
@@ -55,7 +63,7 @@ class ResourcesController < ApplicationController
     resource = Resource.find(params[:id])
     unless params[:sample].blank?
       resource.attachments.sample.first.destroy unless resource.attachments.sample.blank?
-      Attachment.add_file(params[:sample], resource.id, "sample", File.basename(params[:sample].path))
+      Attachment.add_file(params[:sample], resource.id, "sample")
     end
     if resource.update_attributes(params[:resource])
       flash[:notice] = "Thank you! Your post has been updated"

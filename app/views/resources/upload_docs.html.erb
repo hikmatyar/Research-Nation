@@ -14,10 +14,12 @@
           -->
           <a id="login_link" href="#login_form" ></a>
           <div style="display: none;">
+	        <% unless logged_in? %>
 	        <div id="login_form" style="width:540px;height:250px;overflow:hidden;">
               <h2>Login</h2>
               <%= render :partial => 'users/login'%>
             </div>
+            <% end %>
           </div>
           <span id="tab2" class="sign_up">Create a Post</span>
           <div class="sign_up_box">
@@ -48,8 +50,9 @@
                   <%= text_field 'resource', 'selling_price', :class => 'required valid_price' %>
               </div>
               <div class="field"><label>Attachment(s): </label></div>
-              <div class="field"><label>Sample Document</label><%= file_field_tag 'sample', :class => 'file' %></div>
-              <div class="field"><label>Original File*</label><%= file_field_tag 'original', :class => 'required file' %></div>
+              <div class="field"><label>Sample Document</label><%= file_field 'attachments','sample', :class => 'file' %></div>
+              <div class="field " id="documents"><label>Original File*</label><%= file_field 'attachments', 'original', :class => 'required file' %></div>
+              <%= link_to "add_another_file", "#add_another_file", :id => "add_another_file" %>
               <div class="field">
                 <label>Sources*</label>
                 <%= text_area 'resource', 'sources', :class => 'required max_len', :max_length => 3000 %>
@@ -58,6 +61,12 @@
                 <label>Terms and Conditions</label>
                 <%= text_area 'resource', 'terms_and_conditions', :class => 'max_len', :max_length => 3000 %>
               </div>
+              <% unless @user.profile.is_edited %>
+              <div class="field">
+                <label>About Me</label>
+                <%= text_area 'user', 'about_me', :class => 'required max_len', :max_length => 3000 %>
+              </div>
+              <% end %>
             </div>
             <div class="sign_up_button"><%= submit_tag "Proceed to Next Step" %></div>
           </div>

@@ -1,5 +1,14 @@
 $(document).ready(function(){
 
+var count = 1;
+
+$("#add_another_file").click(function(){
+  if(count < 3)
+  {
+    $("#documents").append("<label>File </label><input type='file' name='attachments[original"+count+"]'>")
+    count++;
+  }
+});
 $(".loading").hide();
   show_text_count();
   function show_text_count(){
