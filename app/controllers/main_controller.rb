@@ -30,6 +30,7 @@ class MainController < ApplicationController
     message.sender = User.find session[:user]
     message.recipient = User.find params[:user_id]
     if message.save
+      return redirect_to :controller => 'users', :action => 'profile', :id => current_user.id if params[:referer]
       return render :nothing => true
     else
       render :text => "Hmm. Something seems to be wrong...let me look into it"
