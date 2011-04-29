@@ -17,3 +17,8 @@ gems:
     version: 0.11.1
   - name: time_diff
     version: 0.2.1
+  - name: rmagick
+    version: 2.12.2
+  - name: right_aws
+    version: 1.10.0
+

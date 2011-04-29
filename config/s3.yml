@@ -1,8 +1,8 @@
 development:
-  access_key: AKIAII5FB3QB3457XHKQ
-  secret_key: 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
-  bucket: 'Researchnation'
-  images_bucket: 'Researchnation_images'
+  access_key_id: AKIAII5FB3QB3457XHKQ
+  secret_access_key: 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
+  bucket: 'rn-dev-data'
+  images_bucket: 'rn-dev-images'
 
 test:
   access_key: AKIAII5FB3QB3457XHKQ

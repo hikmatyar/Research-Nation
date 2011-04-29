@@ -27,8 +27,8 @@
     <% flash[:notice] = "" %>
 		<div class="profile_left">
       <% unless  @user.profile.blank?%>
-      <%= (image_tag @user.profile.picture.picture_path, :width => "220", :height => "200") unless @user.profile.picture.blank? %>
-      <%= (image_tag "avatar.png") if @user.profile.picture.blank?%>
+      <%= (image_tag @user.profile.photo.url(:main), :width => "220", :height => "200") unless @user.profile.photo.url(:main).blank? %>
+      <%= (image_tag "avatar.png") if @user.profile.photo.url(:main).blank?%>
       <% else %>
         <%= (image_tag "avatar.png") %>
       <% end %>

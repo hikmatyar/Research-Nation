@@ -28,7 +28,6 @@ class ProfilesController < ApplicationController
   def create
     profile = session[:profile].blank? ? Profile.new(params[:profile]) : session[:profile]
     key_individual = session[:key_individual].blank? ? KeyIndividual.new(params[:key_individual]) : session[:key_individual]
-    picture_path = params[:picture_path]
 
     unless logged_in?
       session[:key_individual] = key_individual
@@ -41,11 +40,7 @@ class ProfilesController < ApplicationController
       key_individual = KeyIndividual.new
       key_individual.profile_id = profile.id
       key_individual.save
-      unless params[:picture].blank?
-        picture = Picture.new
-        picture.profile_id = profile.id
-        flash[:notice] = "The image size is too large" unless picture.add_picture(picture_path, params[:picture])
-      end
+
       session[:profile] = nil
       session[:key_individual] = nil
 
@@ -60,15 +55,6 @@ class ProfilesController < ApplicationController
     profile = Profile.find params[:id]
     key_individual = profile.key_individual
     profile.update_attributes(params[:profile])
-    unless params[:picture].blank?
-      if profile.picture.blank?
-        picture = Picture.new
-        picture.profile_id = profile.id
-      else
-        picture = profile.picture
-      end
-      flash[:notice] = "The image size is too large" unless picture.add_picture(params[:picture_path], params[:picture])
-    end
     profile.update_attribute( :is_edited, true )
     key_individual.update_attributes params[:key_individual] unless key_individual.blank?
     flash[:notice] = "Your Information was updated successfully"

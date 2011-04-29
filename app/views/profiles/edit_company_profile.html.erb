@@ -70,11 +70,10 @@
               <%= text_field 'key_individual', 'linkedin' %>
              </div>
         </div>
-        <%= hidden_field_tag 'picture_path',:id => "picture_path" %>
         <div class="register_form">
           <h2>Picture</h2>
-          <img src="<%= @profile.picture.blank? ? '/images/avatar.png' : @profile.picture.picture_path %>" alt="description" title="user avatar" width="128 !important" height="64" />
-          <input type="file" name="picture" size="" accept="true" id = "user_image" style="margin-top:20px;"/>
+          <img src="<%= @profile.photo.blank? ? '/images/avatar.png' : @profile.photo.url(:edit) %>" alt="description" title="user avatar" width="128 !important" height="64" />
+          <%= f.file_field 'photo'%>
         </div>
         <div class="register_form">
           <h2>3. Humor Me</h2>
