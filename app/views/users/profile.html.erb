@@ -1,26 +1,3 @@
-<script>
-		$(document).ready(function() {
-
-		//When page loads...
-		$(".tab_content").hide(); //Hide all content
-		$("ul.tabs li:first").addClass("active").show(); //Activate first tab
-		$(".tab_content:first").show(); //Show first tab content
-
-		//On Click Event
-		$("ul.tabs li").click(function() {
-
-			$("ul.tabs li").removeClass("active"); //Remove any "active" class
-			$(this).addClass("active"); //Add "active" class to selected tab
-			$(".tab_content").hide(); //Hide all tab content
-
-			var activeTab = $(this).find("a").attr("href"); //Find the href attribute value to identify the active tab + content
-			$(activeTab).fadeIn(); //Fade in the active ID content
-			return false;
-		});
-
-	});
-</script>
-
 <div class="content">
 		<% unless flash[:notice].blank? %><p class="flash"><%= flash[:notice] %></p><% end %>
     <% flash[:notice] = "" %>
@@ -69,7 +46,7 @@
 				    <td ><%= (@user.resources.count - index).to_s %></td>
 				    <td><%= link_to post.title, :controller => 'resources', :action => 'edit', :id => post.id, :user => @user.id  %></td>
 				    <td ><%= post.selling_price %></td>
-				    <td ><%= post.created_at.strftime("%B %d, %Y") %></td>
+				    <td ><%= post.created_at.strftime("%B %d") %></td>
 				    <td ><%= link_to 'Edit', :controller => 'resources', :action => 'edit', :id => post.id, :user => @user.id  %></td>
 				    <td ><%= link_to 'Delete', { :controller => 'resources', :action => 'delete', :id => post.id, :request => "user" }, :confirm => "Are you sure you want to delete this post?"  %>
 				    </td>
