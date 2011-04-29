@@ -1,7 +1,7 @@
 <%= "<b style='padding:10px;'>There is no message in your inbox</b>" if @user.received_messages.blank? %>
 <% @user.received_messages.each do |msg|%>
 	<tr>
-	  <td><%= msg.sender.profile.picture.blank? ? (image_tag "avatar.png", :width => "32", :height => "32") : (image_tag msg.sender.profile.picture.picture_path, :width => "32", :height => "32") %></td>
+	  <td><%= msg.sender.profile.photo_file_name.blank? ? (image_tag "avatar.png", :width => "32", :height => "32") : (image_tag msg.sender.profile.photo.url(:browse), :width => "32", :height => "32") %></td>
 	  <td ><span ><%= msg.sender.profile.name %></span>
          <span>  <%= ((Time.diff Time.now, msg.created_at.to_time)[:day] == 0)? "Today" : "#{(Time.diff Time.now, msg.created_at.to_time)[:day]} ago"  %></span>
 	  </td>

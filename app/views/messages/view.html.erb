@@ -4,13 +4,13 @@
   <h2>Inbox / Conversation with Akhtar</h2>
   <div class="users">
 	  <div class="receipient">
-	    <%= image_tag @message.recipient.profile.picture.picture_path, :width => 100, :height => 100 unless @message.recipient.profile.picture.blank? %>
-		  <%= image_tag "avatar.png", :width => 100, :height => 100 if @message.recipient.profile.picture.blank? %>
+	    <%= image_tag @message.recipient.profile.photo.url(:edit), :width => 100, :height => 100 unless @message.recipient.profile.photo_file_name.blank? %>
+		  <%= image_tag "avatar.png", :width => 100, :height => 100 if @message.recipient.profile.photo_file_name.blank? %>
 		  <b><%= @message.recipient.profile.name %></b>
 	  </div>
 	  <div class="sender">
-	    <%= image_tag @message.sender.profile.picture.picture_path, :width => 100, :height => 100 unless @message.sender.profile.picture.blank? %>
-		  <%= image_tag "avatar.png", :width => 100, :height => 100 if @message.sender.profile.picture.blank? %>
+	    <%= image_tag @message.sender.profile.photo.url(:edit), :width => 100, :height => 100 unless @message.sender.profile.photo_file_name.blank? %>
+		  <%= image_tag "avatar.png", :width => 100, :height => 100 if @message.sender.profile.photo_file_name.blank? %>
 		  <b><%= @message.sender.profile.name %></b>
 	  </div>
 	  <div class="reply_box">
@@ -33,8 +33,8 @@
   </div>
   <div class="message_details">
 	  <div class="sign_up_box related_posts_box">
-	    <%= image_tag @message.recipient.profile.picture.picture_path, :width => 100, :height => 100 unless @message.recipient.profile.picture.blank? %>
-		  <%= image_tag "avatar.png", :width => 100, :height => 100 if @message.recipient.profile.picture.blank? %>
+	    <%= image_tag @message.recipient.profile.photo.url(:edit), :width => 100, :height => 100 unless @message.recipient.profile.photo_file_name.blank? %>
+		  <%= image_tag "avatar.png", :width => 100, :height => 100 if @message.recipient.profile.photo_file_name.blank? %>
 		  <!--
 		  <div class="field">
             <label>Subject</label>

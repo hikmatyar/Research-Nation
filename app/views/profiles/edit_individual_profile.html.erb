@@ -3,7 +3,7 @@
     <div class="seller_left">
        <div class="seller_back">
         <div class="register_form">
-          <%= missing_image_on_s3?(@profile.photo.url) ? (image_tag "avatar.png") : (image_tag @profile.photo.url(:edit), :width => "100", :height => "100") %>
+          <%= @profile.photo_file_name.blank? ? (image_tag "avatar.png") : (image_tag @profile.photo.url(:edit), :width => "100", :height => "100") %>
           <h2>1. My Details* </h2>
           <% form_for(@profile , :url => {:controller => "profiles", :action => "update", :id => @profile.id }, :html => { :multipart => true } ) do |f| %>
             <div class="field">

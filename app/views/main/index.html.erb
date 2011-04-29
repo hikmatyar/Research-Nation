@@ -17,7 +17,7 @@
 			<label>I am a</label>
 				<%= ( f.select "user_type", ["Buyer", "Seller (Individual)", "Seller (Company)" ], { :include_blank => "Click to choose" }, {:class => 'required' }) %>
 			</div>
-			<div class="sign_up_button" style="margin-left:0px !important;"><%= (f.submit "One Click Sign-up", :controller => "users", :action => "register")%></div>
+			<div class="sign_up_button" style="margin-left:0px !important;"><%= (f.submit "One Click Sign-up")%></div>
 			<span>By signing up you agree to our Terms of Service and Privacy Policy</span>
 			<% end %>
 		<% end %>

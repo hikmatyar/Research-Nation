@@ -14,8 +14,8 @@
   <div class="content_back">
     <div class="author">
       <div class="profile_img">
-       <%= (image_tag @profile.picture.picture_path, :width => 64, :height => 64) unless @profile.picture.blank? %>
-       <%= (image_tag "avatar.png") if @profile.picture.blank?  %>
+       <%= (image_tag @profile.photo.url(:edit)) unless @profile.photo_file_name.blank? %>
+       <%= (image_tag "avatar.png") if @profile.photo_file_name.blank?  %>
      </div>
 		  <h2 style="margin-top:25px;"><%= @profile.name %></h2>
       <% unless @profile.user.user_type == "Seller (Company)" || @profile.key_individual.blank? %>
