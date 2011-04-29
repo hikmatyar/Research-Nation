@@ -31,9 +31,6 @@
       <b><span><%= @profile.industry_focus %></span> </b>
     </div>
     -->
-  	<div class="resource_buttons">
-      <a href="#message_form" id="message_link" >Send Message</a>
-    </div>
     <% if @profile.profile_type == "company" %>
       <%= render :partial => 'company_details' %>
   	<% end %>

@@ -42,6 +42,18 @@
       </div>
     </div>
     <% end %>
+    <% unless @profile.user.resources.blank? %>
+      <div class="facebook_back">
+        <span id="tab2" class="sign_up" style="" onclick="showTab('one');" href="#">Posts</span>
+        <div class="sign_up_box">
+          <% @profile.user.resources.each do |post| %>
+          <div class="field field1">
+            <span class="field_text"><%= link_to post.title, :controller => 'resources', :action => 'seller_page', :id => post.id %></span>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
     <% unless @profile.interested_in.blank? %>
       <div class="facebook_back interests">
         <span id="tab2" class="sign_up" style="" onclick="showTab('one');" href="#">Interested In</span>
