@@ -77,6 +77,7 @@ class UsersController < ApplicationController
 
       profile = Profile.new
       profile.user_id = @user.id
+      (@user.user_type == "Buyer")? profile.profile_type = "buyer" : profile.profile_type = "seller"
       profile.save
       return redirect_to :controller => 'users', :action => 'profile', :id => @user.id
       return redirect_to :controller => 'resources', :action => 'upload_docs' if session[:post]
