@@ -1,15 +1,37 @@
 <div class="header">
 	<%= link_to image_tag("logo1.png"),:controller => "main", :action => "index" %>
-  <ul class="main_menu">
-    <!--<li><%= link_to "How It Works", :controller => "main", :action => "features" %></li>-->
-    <li><%= link_to "Create", :controller => "resources", :action => "new" %></li>
-    <li><%= (link_to 'Browse', :controller => 'resources', :action => 'view_posts') %></li>
-
-    <li style="border:none !important;"><%= (link_to 'Login', :controller => 'users', :action => 'register', :opt => 'login') unless logged_in? %></li>
-   <!-- <li style="border:none !important;"><%= link_to 'Sign Up', :controller => 'users', :action => 'register' unless logged_in?%></li>-->
-
-    <li><%= (link_to 'Profile', :controller => 'users', :action => 'profile' ) if logged_in? %></li>
-    <li><li><%= (link_to "Admin Dashboard", :controller => "admin", :action => "dashboard") if is_admin? %></li></li>
-    <li style="border:none !important;"><%= (link_to 'Logout', :controller => 'users', :action => 'logout') if logged_in? %></li>
-  </ul>
+	<div class="main_menu_box">
+	  <ul class="main_menu">
+	    <table border="0" cellspacing="5" cellpadding="5" width="100%">
+			  <tbody>
+				  <tr>
+				    <td width="20%">
+				      <%= link_to "Create", :controller => "resources", :action => "new" %>
+				    </td>
+				    <td width="20%">
+				      <%= (link_to 'Browse', :controller => 'resources', :action => 'view_posts') %>
+				    </td>
+				    <% unless logged_in? %>
+				    <td width="20%">
+				      <%= (link_to 'Login', :controller => 'users', :action => 'register', :opt => 'login') %>
+				    </td>
+				    <% end %>
+				    <% if logged_in? %>
+				    <td width="20%">
+				      <%= (link_to 'Profile', :controller => 'users', :action => 'profile' ) %>
+				    </td>
+				    <% end %>
+				    <% if is_admin? %>
+				    <td>
+				      <%= (link_to "Admin Dashboard", :controller => "admin", :action => "dashboard") %>
+				    </td>
+				    <% end %>
+				    <% if logged_in? %>
+				    <td width="20%"><%= (link_to 'Logout', :controller => 'users', :action => 'logout')  %></td>
+				    <% end %>
+				  </tr>
+			  </tbody>
+	    </table>
+    </ul>
+  </div>
 </div>
