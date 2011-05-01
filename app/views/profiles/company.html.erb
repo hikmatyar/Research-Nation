@@ -90,9 +90,6 @@
             <input type="file" name="picture" size="" accept="true" id = "user_image"/>
           </div>
           <%= f.hidden_field 'interested_in', :id => 'interested_in' %>
-          <%= f.hidden_field 'profile_type', :value => params[:profile_type] %>
-          <%= hidden_field 'key_individual', 'skype_availability' %>
-          <%= hidden_field_tag 'picture_path',:id => "picture_path" %>
         </div>
         <div class="facebook_back">
           <span class="sign_up" id="tab2">5. Interested In</span>

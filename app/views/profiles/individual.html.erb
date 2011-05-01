@@ -60,10 +60,6 @@
               <img src="/images/img2.png" alt="description" title="user avatar" width="64" height="64" />
               <input type="file" name="picture" size="" accept="true" id = "user_image"/>
             </div>
-            <%= f.hidden_field 'interested_in', :id => 'interested_in' %>
-            <%= f.hidden_field 'profile_type', :value => params[:profile_type] %>
-            <%= hidden_field_tag 'picture_path',:id => "picture_path" %>
-            <%= hidden_field 'key_individual', 'skype_availability', :value => "" %>
             <div class="register_form">
               <h2>2. Humor Me</h2>
                 <div class="field">
@@ -80,8 +76,6 @@
                 <label>PT projects</label>
                 <input type="checkbox" value="Immediate start" name="checkbox" checked="checked" />
                 <label>Immediate start</label>
-              </div>
-              <div class="field">
                 <input type="checkbox" value="Local only" name="checkbox" checked="checked" />
                 <label>Local only</label>
                 <input type="checkbox" value="30 mins free phone consultation" name="checkbox" checked="checked" />

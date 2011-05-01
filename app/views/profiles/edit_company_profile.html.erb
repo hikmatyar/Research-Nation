@@ -77,27 +77,8 @@
             <%= f.text_area 'humor_me', :class => 'max_len', :max_length => 1000 %>
           </div>
           <%= f.hidden_field 'profile_type', :value => params[:profile_type] %>
-         <h4 style="margin-bottom:0px;">Interested In</h4>
-              <div class="field" style="margin-bottom:0px;">
-                <input type="checkbox" value="FT projects" name="checkbox" checked="checked" class='interests'/>
-                <label>FT projects</label>
-              </div>
-              <div class="field" style="margin-bottom:0px;">
-                <input type="checkbox" value="PT projects" name="checkbox" checked="checked" />
-                <label>PT projects</label>
-              </div>
-              <div class="field" style="margin-bottom:0px;">
-                <input type="checkbox" value="Immediate start" name="checkbox" checked="checked" />
-                <label>Immediate start</label>
-              </div>
-              <div class="field" style="margin-bottom:0px;">
-                <input type="checkbox" value="Local only" name="checkbox" checked="checked" />
-                <label>Local only</label>
-              </div>
-              <div class="field" style="margin-bottom:0px;">
-                <input type="checkbox" value="30 mins free phone consultation" name="checkbox" checked="checked" />
-                <label style="width:300px;">30 mins free phone consultation</label>
-              </div>
+          <%= f.hidden_field 'interested_in', :id => 'interested_in' %>
+          <%= render :partial => "/profiles/interested_in_fields"%>
           </div>
           <div class="sign_up_button">
               <%= f.submit 'Submit' %>

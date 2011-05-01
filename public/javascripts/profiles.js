@@ -9,6 +9,8 @@ jQuery('document').ready(function(){
           return validate_form();
        });
      }
+
+
   jQuery(".interests input:checkbox").change(function(){
     var interests = new Array();
     jQuery(".interests input:checkbox:checked").each(function(){

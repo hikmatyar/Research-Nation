@@ -87,37 +87,26 @@ class ProfilesController < ApplicationController
 
   def search_results
     choices = params[:choices].split(",") unless params[:choices].blank?
-    @profiles = []
 
-    conditions   = ""
-    conditions  += "industry_focus = '#{params[:industry].strip}'" if params[:industry].downcase != "all"
-    if conditions.length > 0 && params[:country].strip.downcase != "all"
-      conditions  += " and country = '#{params[:country].strip}' "
-    elsif params[:country].downcase != "all"
-      conditions  += "country = '#{params[:country].strip}' "
-    end
-    if conditions.length > 0 && params[:profile_type].strip.downcase != "all"
-      conditions  += " and profile_type = '#{params[:profile_type].strip}' "
-    elsif params[:profile_type].strip.downcase != "all"
-      conditions  += "profile_type = '#{params[:profile_type].strip}' "
-    end
-    @profile_list = Profile.find :all, :conditions => conditions, :order => 'created_at DESC'
+    conditions   = "profile_type ='seller'"
+    conditions  += " AND industry_focus = '#{params[:industry].strip}'" if params[:industry].downcase != "all"
+    conditions  += " AND country = '#{params[:country].strip}' " if params[:country].strip.downcase != "all"
+    conditions  += " AND profile_type = '#{params[:profile_type].strip}' " if params[:profile_type].strip.downcase != "all"
+
     @profiles = []
+    profiles_list = Profile.find :all, :conditions => conditions, :order => 'created_at DESC'
+
     unless choices.blank?
-      @profile_list.each do |profile|
+      profiles_list.each do |profile|
         choices.each do |choice|
-          if profile.interested_in.split(",").include?(choice)
+          if !profile.interested_in.blank? && profile.interested_in.split(",").include?(choice)
             @profiles << profile
             break
           end
         end
       end
     else
-      if conditions.length > 0
-        conditions  +=  "and interested_in IS NULL"
-      else
-        conditions  =  "interested_in IS NULL"
-      end
+      conditions  +=  "and interested_in IS NULL"
       @profiles = (Profile.find :all, :conditions => conditions, :order => 'created_at DESC')
     end
     @profiles.flatten!

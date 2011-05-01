@@ -17,7 +17,7 @@
 				<span> <%= profile.industry_focus %> </span>
 			</div>
 			<div class="description">
-				<p><%= truncate(profile.description , 230, "...(more)") %></p>
+				<p><%= truncate(profile.description , :omission => "...(more)", :length => 230) %></p>
 			</div>
 		<% end %>
 	</div>
