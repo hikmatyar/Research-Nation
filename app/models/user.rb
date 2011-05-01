@@ -28,6 +28,18 @@ class User < ActiveRecord::Base
     self.update_attributes :is_admin => !self.is_admin
   end
 
+  def individual_seller?
+    return user_type == "Seller (Individual)"
+  end
+
+  def company_seller?
+    return user_type == "Seller (Company)"
+  end
+
+  def buyer?
+    return user_type == "Buyer"
+  end
+
   def self.create_facebook_user new_user
     user = User.new(new_user)
     return user if user.save

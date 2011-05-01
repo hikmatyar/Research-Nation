@@ -28,6 +28,10 @@ class ApplicationController < ActionController::Base
     return redirect_to(:controller => "users", :action =>"login") unless is_admin?
   end
 
+  def redirect_to_home
+    return redirect_to :controller => 'main'  , :action => 'index'
+  end
+
   def redirect_to_login
     return redirect_to(:controller => "users", :action =>"register") unless logged_in?
   end

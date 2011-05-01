@@ -2,87 +2,14 @@ class ProfilesController < ApplicationController
 
   before_filter :set_tags, :only => ["company", "individual", "view_profile_list", "edit_individual_profile", "edit_company_profile"]
 
-  def company
-    @profile = Profile.new
-  end
-
-  def individual
-    @profile = Profile.new
-  end
+  before_filter :redirect_to_login, :except => ["view_profile_list", "search_results", "profile_page"]
 
   def view_profile_list
     @profiles = []
-
     users = User.find :all, :conditions => ['user_type like ? ', "%Seller%"]
     users.each do |user|
       @profiles.push(user.profile) unless user.profile.blank? || user.profile.is_edited==false
     end
-    @industry_focus.push("All")
-  end
-
-  def profile_page
-    @profile = Profile.find params[:id]
-    @interests = @profile.interested_in.split(",") unless @profile.interested_in.blank?
-  end
-
-  def create
-    profile = session[:profile].blank? ? Profile.new(params[:profile]) : session[:profile]
-    key_individual = session[:key_individual].blank? ? KeyIndividual.new(params[:key_individual]) : session[:key_individual]
-
-    unless logged_in?
-      session[:key_individual] = key_individual
-      session[:profile] = profile
-      return redirect_to :controller => 'users'  , :action => 'register'
-    end
-
-    profile.user_id = session[:user]
-    if profile.save
-      key_individual = KeyIndividual.new
-      key_individual.profile_id = profile.id
-      key_individual.save
-
-      session[:profile] = nil
-      session[:key_individual] = nil
-
-      key_individual.profile_id = profile.id
-      key_individual.save
-      return redirect_to :controller => 'users', :action => 'profile'
-    end
-
-  end
-
-  def update
-    profile = Profile.find params[:id]
-    key_individual = profile.key_individual.blank? ? KeyIndividual.new : profile.key_individual
-    if key_individual.new_record?
-      key_individual.profile_id = profile.id
-      key_individual.save
-    end
-    profile.update_attributes(params[:profile])
-    profile.update_attribute( :is_edited, true )
-    key_individual.update_attributes params[:key_individual]
-    flash[:notice] = "Your Information was updated successfully"
-    return redirect_to :controller => 'users', :action => 'profile', :id => profile.user.id
-  end
-
-  def types
-    render :text => "company\nindividual"
-  end
-
-  def edit_individual_profile
-    @profile = Profile.find params[:id]
-    @key_individual = @profile.key_individual unless @profile.key_individual.blank?
-  end
-
-  def edit_company_profile
-    @profile = Profile.find params[:id]
-    @key_individual = @profile.key_individual unless @profile.key_individual.blank?
-  end
-
-  def delete
-    profile = Profile.find params[:id]
-    profile.destroy
-    return redirect_to :controller => 'admin', :action => 'dashboard'
   end
 
   def search_results
@@ -111,6 +38,82 @@ class ProfilesController < ApplicationController
     end
     @profiles.flatten!
    render :partial => 'profiles'
+  end
+
+  def profile_page
+    @profile = Profile.find params[:id]
+    @interests = @profile.interested_in.split(",") unless @profile.interested_in.blank?
+  end
+
+  def company
+    @profile = Profile.new
+  end
+
+  def individual
+    @profile = Profile.new
+  end
+
+  def create
+    profile = session[:profile].blank? ? Profile.new(params[:profile]) : session[:profile]
+    key_individual = session[:key_individual].blank? ? KeyIndividual.new(params[:key_individual]) : session[:key_individual]
+
+    unless logged_in?
+      session[:key_individual] = key_individual
+      session[:profile] = profile
+      return redirect_to :controller => 'users'  , :action => 'register'
+    end
+
+    profile.user_id = session[:user]
+    if profile.save
+      key_individual = KeyIndividual.new
+      key_individual.profile_id = profile.id
+      key_individual.save
+
+      session[:profile] = nil
+      session[:key_individual] = nil
+
+      key_individual.profile_id = profile.id
+      key_individual.save
+      return redirect_to :controller => 'users', :action => 'profile'
+    end
+  end
+
+  def update
+    profile = Profile.find params[:id]
+    key_individual = profile.key_individual.blank? ? KeyIndividual.new : profile.key_individual
+    if key_individual.new_record?
+      key_individual.profile_id = profile.id
+      key_individual.save
+    end
+    profile.update_attributes(params[:profile])
+    profile.update_attribute( :is_edited, true )
+    key_individual.update_attributes params[:key_individual]
+    flash[:notice] = "Your Information was updated successfully"
+    return redirect_to :controller => 'users', :action => 'profile', :id => profile.user.id
+  end
+
+  def types
+    render :text => "company\nindividual"
+  end
+
+  def edit_individual_profile
+    user = User.find session[:user]
+    redirect_to_home if !user.individual_seller? || user.profile.id == params[:id]
+    @profile = Profile.find params[:id]
+    @key_individual = @profile.key_individual unless @profile.key_individual.blank?
+  end
+
+  def edit_company_profile
+    user = User.find session[:user]
+    redirect_to_home if !user.company_seller? || user.profile.id == params[:id]
+    @profile = Profile.find params[:id]
+    @key_individual = @profile.key_individual unless @profile.key_individual.blank?
+  end
+
+  def delete
+    profile = Profile.find params[:id]
+    profile.destroy
+    return redirect_to :controller => 'admin', :action => 'dashboard'
   end
 
   def send_message_to_profile

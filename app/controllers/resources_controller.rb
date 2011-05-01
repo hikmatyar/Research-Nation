@@ -1,7 +1,8 @@
 class ResourcesController < ApplicationController
 
   require 'aws/s3'
-#  before_filter :redirect_to_login, :only => [:new]
+
+  before_filter :redirect_to_login, :except => ["new", "upload_docs", "seller_page", "view_posts", "filter_results", "get_industries", "get_geography_list", "industries_count", "geography_count"]
 
   def new
     if logged_in?
@@ -23,42 +24,42 @@ class ResourcesController < ApplicationController
     @sample = @resource.attachments.sample.first
   end
 
+  def view_posts
+    @user = User.find(session[:user]) if logged_in?
+    @resources = Resource.find :all, :order => 'created_at DESC'
+  end
+
+  def remove_sample
+    attachment = Attachment.find params[:id]
+    attachment.remove_sample
+  end
+
   def create_post
-    if logged_in?
-      resource = Resource.new(params[:resource])
-      user = User.find session[:user]
-      unless user.blank?
-        user.update_attributes(:about_me => params[:user][:about_me]) if params[:user]
-        user.update_attributes(session[:user_details])
-        resource.user_id = user.id
-      end
-      original_file_attachments = params[:attachment][:original]
+    resource = Resource.new(params[:resource])
+    user = User.find session[:user]
+    unless user.blank?
+      user.update_attributes(:about_me => params[:user][:about_me]) if params[:user]
+      user.update_attributes(session[:user_details])
+      resource.user_id = user.id
+    end
+    original_file_attachments = params[:attachment][:original]
 
-      if resource.save
-        Attachment.add_file(params[:attachment][:sample], resource.id, "sample") unless params[:attachment][:sample].blank?
-        #Attachment.add_file(params[:original], resource.id, "original")  unless params[:original].blank?
-        original_file_attachments.each do |key, file|
-          Attachment.add_file(file, resource.id, "original")
-        end
-        session[:user_details] = nil
-        session[:post] = nil
-        flash[:notice] = "Thank you! Your post has been created"
-        return redirect_to :action => 'seller_page', :id => resource.id
+    if resource.save
+      Attachment.add_file(params[:attachment][:sample], resource.id, "sample") unless params[:attachment][:sample].blank?
+      #Attachment.add_file(params[:original], resource.id, "original")  unless params[:original].blank?
+      original_file_attachments.each do |key, file|
+        Attachment.add_file(file, resource.id, "original")
       end
-
-    else
-      return redirect_to :controller => 'users', :action => 'register'
+      session[:user_details] = nil
+      session[:post] = nil
+      flash[:notice] = "Thank you! Your post has been created"
+      return redirect_to :action => 'seller_page', :id => resource.id
     end
   end
 
   def edit
     @resource = Resource.find(params[:id])
     @user = User.find(params[:user])
-  end
-
-  def view_posts
-    @user = User.find(session[:user]) if logged_in?
-    @resources = Resource.find :all, :order => 'created_at DESC'
   end
 
   def update
@@ -94,7 +95,6 @@ class ResourcesController < ApplicationController
   end
 
   def payment
-    redirect_to_login unless logged_in?
     @resource = Resource.find params[:id]
   end
 
@@ -105,28 +105,6 @@ class ResourcesController < ApplicationController
     render :partial => 'posts'
   end
 
-  def reset
-    @resources = Resource.find :all, :order => 'created_at DESC'
-    render :partial => 'posts'
-  end
-
-  def remove_sample
-    attachment = Attachment.find params[:id]
-    attachment.remove_sample
-  end
-=begin
-  def filter_by_author_name
-
-    name = params[:name].split(" ")
-    resources = Array.new
-    users = User.find :all, :conditions => ['first_name = ? and last_name = ? ', name.first, name[1..name.length].join(" ") ]
-    users.each do |user|
-      resources.push(user.resources)
-    end
-    @resources = resources.flatten
-    render :partial => 'posts'
-  end
-=end
   def get_industries
     @industries = Resource.all(:select => 'distinct(industry)').collect(&:industry)
     render :text => @industries.join("\n")
