@@ -17,10 +17,6 @@ jQuery('document').ready(function(){
     });
   });
 
-  jQuery("#skype").click(function(){
-      jQuery('#key_individual_skype_availability').val(jQuery(this).attr("checked"));
-  })
-
   jQuery("#user_image").change(function(){
     jQuery("#picture_path").val(jQuery("#user_image").val());
   });

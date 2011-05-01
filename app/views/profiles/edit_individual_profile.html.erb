@@ -37,7 +37,7 @@
               <label>Skype ID</label>
               <%= text_field 'key_individual', 'skype_id' , :class => 'required' %>
               <i>
-                <input type="checkbox" value="" name="checkbox" checked="checked" id="skype" />
+                <%= check_box 'key_individual', 'skype_availability'  %>
                 <span>Available to Skype chat any time</span>
               </i>
             </div>
@@ -65,8 +65,6 @@
 
         <%= f.hidden_field 'interested_in', :id => 'interested_in' %>
         <%= f.hidden_field 'profile_type', :value => params[:profile_type] %>
-        <%= hidden_field 'key_individual', 'skype_availability', :value => "" %>
-        <%= hidden_field_tag 'picture_path',:id => "picture_path" %>
             <h4 style="margin-bottom:0px;">Interested In</h4>
             <div class="field" style="margin-bottom:0px;">
               <input type="checkbox" value="FT projects" name="checkbox" checked="checked" />
