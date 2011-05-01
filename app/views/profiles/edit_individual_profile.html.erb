@@ -51,7 +51,7 @@
             </div>
             <div class="field">
               <label>Picture</label>
-              <input type="file" name="picture" size="" accept="true" id = "user_image"/>
+              <%= f.file_field 'photo', :id => "user_image", :size => "23"%>
             </div>
             <div class="field">
               <label>Industry Focus</label>
