@@ -12,7 +12,7 @@
       </div>
       <h2><%= @resource.title %></h2>
       <% unless @resource.user.profile.name.blank? %><b>By <%= (link_to @resource.user.profile.name, :controller => 'profiles', :action => 'profile_page', :id => @resource.user.profile) if @resource.user.profile.is_edited %>,<% end %>
-      <span><%= "#{@resource.user.profile.key_individual.title} at #{@resource.user.profile.key_individual.name}" if @resource.user.user_type == "Seller (Individual)" %></span>
+      <% unless @resource.user.profile.key_individual.blank?%> <span><%= "#{@resource.user.profile.key_individual.title} at #{@resource.user.profile.key_individual.name}" if @resource.user.user_type == "Seller (Individual)" %></span><% end %>
       </b>
     </div>
     <div class="resource_buttons">
