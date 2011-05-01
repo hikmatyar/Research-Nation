@@ -1,10 +1,11 @@
 <ul class="tabs">
-  <li><%= link_to "Users(#{@users_count})", { :controller => 'admin', :action => 'users' }  %></li>
-  <li><%= link_to "Posts(#{@resources_count})", :controller => 'admin', :action => 'posts' %></li>
-  <li><%= link_to "Experts(#{@experts_count})", { :controller => 'admin', :action => 'experts' }  %></li>
-  <li><%= link_to "Admin(#{@admin_count})", { :controller => 'admin', :action => 'admin_rights'} , { :id => 'admin_rights' }%></li>
-  <li><%= link_to "Company Profiles (#{@company_profiles_count})", { :controller => 'admin', :action => 'company_profiles'} , { :id => 'company_profiles' }%></li>
-  <li><%= link_to "Individual Profiles (#{@individual_profiles_count})", { :controller => 'admin', :action => 'individual_profiles'} , { :id => 'individual_profiles' }%></li>
-  <li><%= link_to "Mailchimp (#{@memebers_count})", :controller => 'admin', :action => 'mail_chimp_list' %></li>
-  <li><a href="#">Payments</a></li>
+  <li <%= 'class="active"' if controller.action_name == "users" %> ><%= link_to "Users(#{@users_count})", { :controller => 'admin', :action => 'users' } %></li>
+  <li <%= 'class="active"' if controller.action_name == "posts" %> ><%= link_to "Posts(#{@resources_count})", {:controller => 'admin', :action => 'posts' }%></li>
+
+<!--  <li <%#= 'class="active"' if controller.action_name == "experts" %> ><%#= link_to "Experts(#{@experts_count})", { :controller => 'admin', :action => 'experts' }  %></li> -->
+
+  <li <%= 'class="active"' if controller.action_name == "admin_rights" %> ><%= link_to "Admin(#{@admin_count})", { :controller => 'admin', :action => 'admin_rights'} , { :id => 'admin_rights' }%></li>
+  <li <%= 'class="active"' if controller.action_name == "profiles" %> ><%= link_to "Profiles (#{@profiles_count})", { :controller => 'admin', :action => 'profiles'} , { :id => 'profiles' }%></li>
+  <li <%= 'class="active"' if controller.action_name == "mail_chimp_list" %> ><%= link_to "Mailchimp (#{@members_count})", :controller => 'admin', :action => 'mail_chimp_list' %></li>
+  <li <%= 'class="active"' if controller.action_name == "payments" %> ><a href="#">Payments</a></li>
 </ul>

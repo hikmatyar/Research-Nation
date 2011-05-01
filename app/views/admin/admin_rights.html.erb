@@ -3,14 +3,12 @@
 <table border="0" cellspacing="20px" cellpadding="20px" id="users_table">
   <tbody>
     <tr>
-      <th>Name</th>
       <th>Email</th>
       <th>Is_Admin?</th>
       <th>Change Admin Status</th>
     </tr>
     <% @users.each do |user|%>
       <tr>
-        <td><%= user.first_name + " " + user.last_name %></td>
         <td ><%= user.email%></td>
         <td ><%= user.is_admin?%></td>
         <%= render :partial => "is_admin_field", :locals => {:user => user}%>

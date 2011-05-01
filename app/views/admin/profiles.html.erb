@@ -11,7 +11,7 @@
     </tr>
     <% @profiles.each_with_index do |p, index|%>
       <tr>
-        <td><%= @company_profiles_count - index %></td>
+        <td><%= @profiles_count - index %></td>
         <td><%= link_to p.name, :controller => 'profiles', :action => 'edit_company_profile', :id => p.id %></td>
         <td><%=  %></td>
         <td ><%= p.country %></td>

@@ -80,12 +80,11 @@ class ResourcesController < ApplicationController
   def delete
     resource = Resource.find(params[:id])
     sample = resource.attachments.sample
-    original_doc = resource.attachments.original
+    original_doc = resource.attachments.original_files
     resource.destroy
-    @resources = Resource.paginate :page => params[:page], :order => 'created_at DESC'
     flash[:notice] = "Got it. Your post has been deleted"
-    return redirect_to :controller => 'users', :action => 'profile' if params[:request] = "user"
-    return redirect_to :controller => 'admin', :action => 'dashboard' if params[:request] = "admin"
+    return redirect_to :controller => 'users', :action => 'profile' if params[:request] == "user"
+    return redirect_to :controller => 'admin', :action => 'posts' if params[:request] == "admin"
   end
 
   def add_vote
