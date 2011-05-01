@@ -24,20 +24,21 @@ class ResourcesController < ApplicationController
   end
 
   def create_post
-
     if logged_in?
       resource = Resource.new(params[:resource])
       user = User.find session[:user]
-      user.update_attributes( :about_me => params[:user][:about_me]) unless params[:user].blank?
-      user.update_attributes(session[:user_details])
-      resource.user_id = session[:user]
-      original_file_attachments = params[:attachments]
+      unless user.blank?
+        user.update_attributes(:about_me => params[:user][:about_me]) if params[:user]
+        user.update_attributes(session[:user_details])
+        resource.user_id = user.id
+      end
+      original_file_attachments = params[:attachment][:original]
 
       if resource.save
-        Attachment.add_file(params[:sample], resource.id, "sample") unless params[:sample].blank?
+        Attachment.add_file(params[:attachment][:sample], resource.id, "sample") unless params[:attachment][:sample].blank?
         #Attachment.add_file(params[:original], resource.id, "original")  unless params[:original].blank?
         original_file_attachments.each do |key, file|
-          Attachment.add_file(file, resource.id, "original") unless params[:attachments].blank?
+          Attachment.add_file(file, resource.id, "original")
         end
         session[:user_details] = nil
         session[:post] = nil
@@ -48,7 +49,6 @@ class ResourcesController < ApplicationController
     else
       return redirect_to :controller => 'users', :action => 'register'
     end
-
   end
 
   def edit

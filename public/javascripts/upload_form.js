@@ -3,10 +3,13 @@ $(document).ready(function(){
 var count = 1;
 
 $("#add_another_file").click(function(){
-  if(count < 3)
+  if(count <= 3)
   {
-    $("#documents").append("<label>File </label><input type='file' name='attachments[original"+count+"]'>")
+    $("#documents").append("<label>Another File </label><br><input type='file' name='attachment[original]["+ count + "]' size='30'>")
     count++;
+    if (count == 3) {
+      $("#add_another_file").hide();
+    }
   }
 });
 $(".loading").hide();

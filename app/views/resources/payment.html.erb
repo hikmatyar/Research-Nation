@@ -39,7 +39,9 @@ return true;
 		</div>
 		<h3>2. Your Purchase</h3>
 		<div class="inner_round_box">
-		<b><a href="<%= @resource.attachments.original_file.first.original.url%>"> <%= @resource.title %> </a></b>
+		  <% @resource.attachments.original_files.each_with_index do |attachment,index| %>
+		    <b><a href="<%= attachment.original.url%>"> <%= attachment.original_file_name %> </a></b> <br >
+		  <% end %>
 		<span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span>
 		<h4>Real post</h4>
 		<h5>Here is tag</h5>

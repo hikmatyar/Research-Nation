@@ -3,7 +3,7 @@ class Attachment < ActiveRecord::Base
 
   belongs_to :resource
 
-  named_scope :original_file , Proc.new { { :conditions => {:attachment_type => "original" }}}
+  named_scope :original_files , Proc.new { { :conditions => {:attachment_type => "original" }}}
   named_scope :sample , Proc.new { {:conditions => {:attachment_type => "sample" }}}
 
   S3_SETTINGS = YAML::load(File.open("#{RAILS_ROOT}/config/s3.yml"))

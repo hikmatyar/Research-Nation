@@ -50,9 +50,9 @@
                   <%= text_field 'resource', 'selling_price', :class => 'required valid_price' %>
               </div>
               <div class="field"><label>Attachment(s): </label></div>
-              <div class="field"><label>Sample Document</label><%= file_field 'attachments','sample', :class => 'file' %></div>
-              <div class="field " id="documents"><label>Original File*</label><%= file_field 'attachments', 'original', :class => 'required file' %></div>
-              <%= link_to "add_another_file", "#add_another_file", :id => "add_another_file" %>
+              <div class="field"><label>Sample Document</label><%= file_field  "attachment", 'sample', :class => 'file' %></div>
+              <div class="field " id="documents"><label>Original File*</label><%= file_field "attachment", 'original[0]', :class => 'required file' %></div>
+              <%= link_to "(Add another file)", "#documents", :id => "add_another_file" %>
               <div class="field">
                 <label>Sources*</label>
                 <%= text_area 'resource', 'sources', :class => 'required max_len', :max_length => 3000 %>
