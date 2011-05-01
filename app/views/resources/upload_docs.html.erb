@@ -61,7 +61,7 @@
                 <label>Terms and Conditions</label>
                 <%= text_area 'resource', 'terms_and_conditions', :class => 'max_len', :max_length => 3000 %>
               </div>
-              <% unless @user.profile.is_edited %>
+              <% unless (@user.blank? || @user.profile.is_edited) %>
               <div class="field">
                 <label>About Me</label>
                 <%= text_area 'user', 'about_me', :class => 'required max_len', :max_length => 3000 %>

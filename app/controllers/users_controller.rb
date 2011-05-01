@@ -128,10 +128,8 @@ class UsersController < ApplicationController
   end
 
   def logout
-    if logged_in?
-      reset_session
-      redirect_to :controller => 'main', :action=> 'index'
-    end
+    reset_session
+    redirect_to :controller => 'main', :action=> 'index'
   end
 
   def resources_list

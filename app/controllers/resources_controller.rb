@@ -1,18 +1,20 @@
 class ResourcesController < ApplicationController
 
   require 'aws/s3'
-  #before_filter :redirect_to_login, :only => [:delete, edit]
+#  before_filter :redirect_to_login, :only => [:new]
 
   def new
-    @user = User.find(session[:user]) if logged_in?
-    return redirect_to :action => 'upload_docs' if logged_in?
+    if logged_in?
+      @user = User.find(session[:user])
+      return redirect_to :action => 'upload_docs'
+    end
     session[:post] = true
-    return redirect_to :controller => 'resources', :action => 'upload_docs', :opt => 'login' unless logged_in?
+    return redirect_to :controller => 'resources', :action => 'upload_docs', :opt => 'login'
   end
 
   def upload_docs
     @resource = Resource.new
-    @user = User.find(session[:user])
+    @user =  User.find(session[:user]) if (params[:opt] != "login")
   end
 
   def seller_page

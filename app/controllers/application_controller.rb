@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_to_login
-    return redirect_to(:controller => "users", :action =>"facebook_connect") unless logged_in?
+    return redirect_to(:controller => "users", :action =>"register") unless logged_in?
   end
 
   def production_env?
