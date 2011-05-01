@@ -53,10 +53,14 @@ class ProfilesController < ApplicationController
 
   def update
     profile = Profile.find params[:id]
-    key_individual = profile.key_individual
+    key_individual = profile.key_individual.blank? ? KeyIndividual.new : profile.key_individual
+    if key_individual.new_record?
+      key_individual.profile_id = profile.id
+      key_individual.save
+    end
     profile.update_attributes(params[:profile])
     profile.update_attribute( :is_edited, true )
-    key_individual.update_attributes params[:key_individual] unless key_individual.blank?
+    key_individual.update_attributes params[:key_individual]
     flash[:notice] = "Your Information was updated successfully"
     return redirect_to :controller => 'users', :action => 'profile', :id => profile.user.id
   end
