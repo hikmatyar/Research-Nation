@@ -7,5 +7,6 @@
   <li <%= 'class="active"' if controller.action_name == "admin_rights" %> ><%= link_to "Admin(#{@admin_count})", { :controller => 'admin', :action => 'admin_rights'} , { :id => 'admin_rights' }%></li>
   <li <%= 'class="active"' if controller.action_name == "profiles" %> ><%= link_to "Profiles (#{@profiles_count})", { :controller => 'admin', :action => 'profiles'} , { :id => 'profiles' }%></li>
   <li <%= 'class="active"' if controller.action_name == "mail_chimp_list" %> ><%= link_to "Mailchimp (#{@members_count})", :controller => 'admin', :action => 'mail_chimp_list' %></li>
+  <li <%= 'class="active"' if controller.action_name == "messages" %> ><%= link_to "Message (#{@messages_count})", :controller => 'admin', :action => 'messages' %></li>
   <li <%= 'class="active"' if controller.action_name == "payments" %> ><a href="#">Payments</a></li>
 </ul>

@@ -45,6 +45,10 @@ class AdminController < ApplicationController
     @profiles = Profile.find_all_by_profile_type "seller", :order => 'created_at DESC'
   end
 
+  def messages
+    @messages = (Message.find_all_by_recipient_id current_user.id)
+  end
+
 private
   def get_counts
     session[:members_count] = get_mailchimp_list_members.count if session[:members_count].blank?
@@ -54,6 +58,7 @@ private
     @members_count = session[:members_count]
     @experts_count = (User.find_all_by_is_expert(true)).count
     @profiles_count = (Profile.find_all_by_profile_type "seller").count
+    @messages_count = (Message.find_all_by_recipient_id current_user.id).count
   end
 
 end

@@ -30,6 +30,15 @@ class MainController < ApplicationController
     message.sender = User.find session[:user]
     message.recipient = User.find params[:user_id]
     if message.save
+      admin = User.find :first, :conditions => ['is_admin = ?', true]
+      admin_message = Message.new
+      admin_message.subject = "Forwarded Message: "+ message.subject
+      admin_message.body = message.body + "<p style='margin:10px 57px 10px !important;'> Recipient : #{message.recipient.profile.name}<p>"
+      admin_message.sender = message.sender
+      admin_message.recipient = admin
+      admin_message.save
+      session[:message] = nil
+			session[:seller_post] = nil
       return redirect_to :controller => 'users', :action => 'profile', :id => current_user.id if params[:referer]
       return render :nothing => true
     else
