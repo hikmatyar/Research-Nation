@@ -10,7 +10,6 @@ jQuery('document').ready(function(){
        });
      }
 
-
   jQuery(".interests input:checkbox").change(function(){
     var interests = new Array();
     jQuery(".interests input:checkbox:checked").each(function(){
@@ -30,6 +29,12 @@ jQuery('document').ready(function(){
   jQuery("#message_link").fancybox({
       'hideOnOverlayClick' : false
    });
+
+  jQuery("#message_link").click(function(){
+    jQuery("#register_form").addClass("seller_popup_message");
+    jQuery("#register_form").removeClass("how_it_work_left_side");
+    jQuery("#register_form").removeClass("margin_bottom");
+  });
 
   if (location.href.match("reveal_message"))
   {
