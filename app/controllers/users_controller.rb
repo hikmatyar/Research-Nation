@@ -77,10 +77,18 @@ class UsersController < ApplicationController
 
       profile = Profile.new
       profile.user_id = @user.id
-      (@user.user_type == "Buyer")? profile.profile_type = "buyer" : profile.profile_type = "seller"
+      (@user.user_type == "Seller (Company)")? profile.profile_type = "company" : profile.profile_type = "individual"
       profile.save
+
+      if @user.user_type == "Seller (Company)"
+        link = "<u><a href='/profiles/edit_company_profile/#{profile.id}'>here</a></u>"
+      else
+        link = "<u><a href='/profiles/edit_individual_profile/#{profile.id}'>here</a></u>"
+      end
+
+      flash[:notice] = "Please complete your profile by clicking #{link} and get added to our expert database"
       return redirect_to :controller => 'users', :action => 'profile', :id => @user.id
-      return redirect_to :controller => 'resources', :action => 'upload_docs' if session[:post]
+      #return redirect_to :controller => 'resources', :action => 'upload_docs' if session[:post]
       return redirect_to :controller => "resources", :action => "view_posts"
     end
     @user[:password] = ""
@@ -180,7 +188,7 @@ class UsersController < ApplicationController
   private
 
   def check_session
-    return redirect_to :action => 'login' unless session[:user]
+    return redirect_to :action => 'register', :opt => 'login' unless session[:user]
   end
 
 end
