@@ -42,7 +42,7 @@ class ProfilesController < ApplicationController
   end
 
   def profile_page
-    @profile = Profile.find params[:id]
+    @profile = Profile.find_by_url_slug params[:url_slug]
     @interests = @profile.interested_in.split(",") unless @profile.interested_in.blank?
     @user = User.new unless logged_in?
   end
@@ -88,6 +88,7 @@ class ProfilesController < ApplicationController
       key_individual.save
     end
     profile.update_attributes(params[:profile])
+    profile.update_attribute( :url_slug, profile.name.split(" ").join("-") )
     profile.update_attribute( :is_edited, true )
     key_individual.update_attributes params[:key_individual]
     flash[:notice] = "Your Information was updated successfully"

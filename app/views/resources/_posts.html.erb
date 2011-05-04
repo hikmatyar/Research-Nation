@@ -1,6 +1,6 @@
 <% @resources.each do |resource| %>
   <div class="post">
-    <% link_to (:action => 'seller_page', :id => resource.id) do %>
+    <% link_to (:action => 'seller_page', :url_slug => resource.url_slug) do %>
     <div class="post_title">
       <% unless (resource.user.profile.blank? || resource.user.profile.photo_file_name.blank?)%>
         <%= (image_tag resource.user.profile.photo.url(:browse)) %>

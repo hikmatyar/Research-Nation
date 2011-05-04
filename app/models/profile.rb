@@ -3,6 +3,7 @@ class Profile < ActiveRecord::Base
   has_one :key_individual
   belongs_to :user
 
+  acts_as_slugable :source_column => :name, :target_column => :url_slug
 
   S3_SETTINGS = YAML::load(File.open("#{RAILS_ROOT}/config/s3.yml"))
   IMAGE_BUCKET = S3_SETTINGS[RAILS_ENV]['images_bucket']

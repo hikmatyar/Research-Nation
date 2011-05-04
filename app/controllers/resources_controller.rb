@@ -28,7 +28,7 @@ class ResourcesController < ApplicationController
     else
       @user = User.new
     end
-    @resource = Resource.find(params[:id])
+    @resource = Resource.find_by_url_slug params[:url_slug]
     @sample = @resource.attachments.sample.first
   end
 

@@ -5,6 +5,7 @@ class Resource < ActiveRecord::Base
   has_one :votes
 
   acts_as_paranoid
+  acts_as_slugable :source_column => :title, :target_column => :url_slug
 
   cattr_reader :per_page
   @@per_page = 1000
