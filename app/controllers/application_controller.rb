@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
   helper_method :logged_in?, :is_admin?, :current_user
+  before_filter :authenticate
 
   def logged_in?
     return true unless session[:user].blank?
@@ -60,5 +61,11 @@ class ApplicationController < ActionController::Base
       data = response.body
       flash.now[:notice] = "You are now subscribed to Research Nation Newsletters" if data == "true"
       flash.now[:error] = "An error occured" unless data == "true"
+  end
+
+  def authenticate
+    authenticate_or_request_with_http_basic do |username, password|
+      username = "researchnation_admin" && password = "researchnation"
+    end
   end
 end
