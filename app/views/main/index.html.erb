@@ -10,18 +10,19 @@
 				<%= f.text_field 'email', :id => "email", :class => 'required email' %>
 			</div>
 			<div class="new_field">
-			<label>Enter you password</label>
+			<label>Enter your password</label>
 				<%= f.password_field 'password', :id => "password", :class => 'required password' %>
 			</div>
 			<div class="new_field1 new_field ">
 			<label>I am a</label>
 				<%= ( f.select "user_type", ["Buyer", "Seller (Individual)", "Seller (Company)" ], { :include_blank => "Click to choose" }, {:class => 'required' }) %>
 			</div>
-			<div class="sign_up_button" style="margin-left:0px !important;"><%= (f.submit "One Click Sign-up")%></div>
-			<span>By signing up you agree to our Terms of Service and Privacy Policy</span>
+			<div class="banner_sign_up_button" style="margin-left:0px !important;"><%= (f.submit "One Click Sign-up", :class => "green_button")%></div>
+			<div class="terms_and_conditions1">
+				<p>By signing up you agree to our </p><%= link_to "Terms of Service ", :controller => "main", :action => "privacy" %><p> and</p> <%= link_to "Privacy Policy", :controller => "main", :action => "privacy" %></div>
 			<% end %>
 		<% end %>
-		<%= link_to "Create a post now", :controller => "resources", :action => "upload_docs" if logged_in? %>
+		<%= link_to ( "Create a post now", { :controller => "resources", :action => "upload_docs"}, { :class => 'green_button'} ) if logged_in? %>
 	</div>
 	<%= hidden_field_tag 'create_post', :value => false%>
 	<img src="/images/banner.jpg" />
