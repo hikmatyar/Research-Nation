@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
-  helper_method :logged_in?, :is_admin?
+  helper_method :logged_in?, :is_admin?, :current_user
 
   def logged_in?
     return true unless session[:user].blank?
@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_to_admin_login
-    return redirect_to(:controller => "users", :action =>"login") unless is_admin?
+    return redirect_to(:controller => "users", :action =>"register", :opt => 'login') unless is_admin?
   end
 
   def redirect_to_home
