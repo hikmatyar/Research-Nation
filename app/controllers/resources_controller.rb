@@ -15,11 +15,19 @@ class ResourcesController < ApplicationController
 
   def upload_docs
     @resource = Resource.new
-    @user =  User.find(session[:user]) if (params[:opt] != "login")
+    if (params[:opt] != "login")
+      @user =  User.find(session[:user])
+    else
+      @user = User.new
+    end
   end
 
   def seller_page
-    @user = User.find(session[:user]) if logged_in?
+    if logged_in?
+      @user = User.find(session[:user])
+    else
+      @user = User.new
+    end
     @resource = Resource.find(params[:id])
     @sample = @resource.attachments.sample.first
   end
@@ -95,6 +103,8 @@ class ResourcesController < ApplicationController
 
   def payment
     @resource = Resource.find params[:id]
+    @attachments = @resource.attachments.original_files
+    @card_types = ["Visa","Mastercard"]
   end
 
   def filter_results
@@ -120,5 +130,10 @@ class ResourcesController < ApplicationController
 
   def geography_count
     render :text => (Resource.find_all_by_geography params[:geography]).count
+  end
+
+  def download
+    resource = Resource.find params[:id]
+    @attachments = resource.attachments.original_files
   end
 end
