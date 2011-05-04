@@ -1,37 +1,37 @@
 <div class="header">
-	<%= link_to image_tag("logo1.png"),:controller => "main", :action => "index" %>
+	<%= link_to image_tag("logo.png"),:controller => "main", :action => "index" %>
 	<div class="main_menu_box">
 	  <ul class="main_menu">
 	    <table border="0" cellspacing="5" cellpadding="5" width="100%">
 			  <tbody>
-				  <tr>
-				    <td width="20%">
-				      <%= link_to "Create", :controller => "resources", :action => "new" %>
-				    </td>
-				    <td width="20%">
-				      <%= (link_to 'Browse', :controller => 'resources', :action => 'view_posts') %>
-				    </td>
-				    <% unless logged_in? %>
-				    <td width="20%">
-				      <%= (link_to 'Login', :controller => 'users', :action => 'register', :opt => 'login') %>
-				    </td>
-				    <% end %>
-				    <% if logged_in? %>
-				    <td width="20%">
-				      <%= (link_to 'Profile', :controller => 'users', :action => 'profile' ) %>
-				    </td>
-				    <% end %>
-				    <% if is_admin? %>
-				    <td>
-				      <%= (link_to "Admin Dashboard", :controller => "admin", :action => "dashboard") %>
-				    </td>
-				    <% end %>
-				    <% if logged_in? %>
-				    <td width="20%"><%= (link_to 'Logout', :controller => 'users', :action => 'logout')  %></td>
-				    <% end %>
-				  </tr>
-			  </tbody>
-	    </table>
+          <tr class="seperator">
+            <% if logged_in? %>
+              <td width="20%"><%= (link_to 'Logout', :controller => 'users', :action => 'logout')  %></td>
+            <% end %>
+            <% if is_admin? %>
+              <td>
+                <%= (link_to "Admin Dashboard", :controller => "admin", :action => "dashboard") %>
+              </td>
+            <% end %>
+            <% if logged_in? %>
+              <td width="20%">
+                <%= (link_to 'Profile', :controller => 'users', :action => 'profile' ) %>
+              </td>
+            <% end %>
+            <% unless logged_in? %>
+              <td width="20%">
+                <%= (link_to 'Login', :controller => 'users', :action => 'register', :opt => 'login') %>
+              </td>
+            <% end %>
+            <td width="20%">
+              <%= (link_to 'Browse', :controller => 'resources', :action => 'view_posts') %>
+            </td>
+            <td width="20%" style="border-left:0px;">
+              <%= link_to "Create", :controller => "resources", :action => "new" %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </ul>
   </div>
 </div>
