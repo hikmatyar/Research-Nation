@@ -19,6 +19,7 @@ class ProfilesController < ApplicationController
     conditions  += " AND industry_focus = '#{params[:industry].strip}'" if params[:industry].downcase != "all"
     conditions  += " AND country = '#{params[:country].strip}' " if params[:country].strip.downcase != "all"
     conditions  += " AND profile_type = '#{params[:profile_type].strip}' " if params[:profile_type].strip.downcase != "all"
+    conditions  += "AND is_edited = 1 "
 
     @profiles = []
     profiles_list = Profile.find :all, :conditions => conditions, :order => 'created_at DESC'
@@ -43,6 +44,7 @@ class ProfilesController < ApplicationController
   def profile_page
     @profile = Profile.find params[:id]
     @interests = @profile.interested_in.split(",") unless @profile.interested_in.blank?
+    @user = User.new unless logged_in?
   end
 
   def company
