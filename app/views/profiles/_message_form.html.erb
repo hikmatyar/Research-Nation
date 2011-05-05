@@ -1,0 +1,42 @@
+<%= javascript_include_tag :defaults %>
+<div style="display: none;">
+  <div id="message_form" class="message_form" style="width:550px;overflow:hidden;">
+    <div id="form">
+      <% unless logged_in? %>
+        <%= render :partial => 'users/register'%>
+        <% session[:profile_id] = @profile.id %>
+        <% session[:message] = true %>
+    </div>
+       <% else %>
+    <div id="message"></div>
+    <% session[:message] = nil %>
+    <% session[:profile_id] = nil %>
+    <%= form_remote_tag ( :update => 'message',
+	      :url => { :controller => 'profiles', :action => 'send_message_to_profile', :id => @profile.id } , :after => 'jQuery.fancybox.close();' ) %>
+      <div class="popup_message_box">
+        <h2>Contact <%= @profile.name %></h2>
+        <div class="field">
+          <label>Name</label>
+          <input type="text" name="name" id="contact_name" class="required" />
+        </div>
+        <div class="field">
+          <label>Email</label>
+          <input type="text" name="email" id="contact_email" class="required" />
+        </div>
+        <div class="field">
+          <label>Subject</label>
+          <input type="text" name="subject" id="contact_subject" class="required" />
+        </div>
+        <div class="field">
+          <label>Message</label>
+          <textarea name="message" rows="8" cols="25" id="contact_message" class="required" /></textarea>
+        </div>
+        <div class="sign_up_button">
+          <%= submit_tag 'Send Message', :id => 'submit' %>
+          <input type="reset" id="reset" name="reset" value="Reset" id="" style="display:none;" />
+        </div>
+      </div>
+    </div>
+	  <% end %>
+  </div>
+</div>
