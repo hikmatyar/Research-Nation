@@ -1,45 +1,36 @@
 <div class="content">
-	<div class="content_back">
-		<div class="round_box">
-		<h3>1. How it works</h3>
-		<div class="inner_round_box">
-		<p>Please fill out your payment details below to complete your purchase. Once you click on 'Submit', we'll verify your payment information, and you'll then be able to download the file you purchased. Any questions? check out the FAQs section or shoot us an e-mail at admin@researchnation.net</p>
-		</div>
-		<h3>2. Your Purchase</h3>
-		<div class="inner_round_box">
-		  <% @resource.attachments.original_files.each_with_index do |attachment,index| %>
-		    <b><a href="/purchases/download_file/<%= attachment.id%>?order_id=<%=params[:id]%>"> <%= attachment.original_file_name %> </a></b> <br >
-		  <% end %>
-		<span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span>
-		<h4>Real post</h4>
-		<h5>Here is tag</h5>
-		</div>
-		<h3>3. Payment Details</h3>
-		<div class="login_tab">
-		<a class="login" id="tab1">PayPal</a>
-		</div>
-		<h3>4. Agreement</h3>
-		<div class="policies">
-		<div class="policies_filed">
-		<b>Name</b>
-		<span>Description</span>
-		</div>
-		<div class="policies_filed">
-		<b>Name</b>
-		<span>Description</span>
-		</div>
-		</div>
-		<div class="policies_filed">
-		<input type="checkbox" name="accept" value="" /> I agree to the Privacy Statement and Terms and Conditions.
-		</div>
-		<div class="policies_filed">
-		<a href="#">Submit</a>
-		</div>
-		<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-			<input type="hidden" name="cmd" value="_s-xclick">
-			<input type="hidden" name="hosted_button_id" value="G2Q4RDXZNTP6N">
-			<input type="image" src="https://www.paypalobjects.com/WEBSCR-640-20110401-1/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-			<img alt="" border="0" src="https://www.paypalobjects.com/WEBSCR-640-20110401-1/en_US/i/scr/pixel.gif" width="1" height="1">
-		</form>
-	</div>
+  <div class="how_it_work_left_side">
+    <div class="seller_back">
+      <div class="heading">
+        <b>Download Now</b>
+      </div>
+      <p>Thank you for purchasing from Research Nation! You can now download the report you purchase by clicking on the icon below.</p>
+      <% @resource.attachments.original_files.each_with_index do |attachment,index| %>
+      <div class="sign_up_box">
+        <div class="download_image">
+          <%= (image_tag "pdf.png") if attachment.original_content_type.match("pdf")%>
+       <%= (image_tag "Word_Doc_Icon.png") if attachment.original_content_type.match("doc") %>
+       <%= (image_tag "excel-2010-icon.1.png") if attachment.original_content_type.match("xls") || attachment.original_content_type.match("excel") %>
+       <%= (image_tag "file-extension-pps-powerpoint_icon.png") if attachment.original_content_type.match("ppt") %>
+        </div>
+        <div class="download_text">
+          <h3><%= attachment.original_file_name %></h3>
+          <span><%= (attachment.original_file_size/1024).to_s + "KB"  %></span>
+          <% link_to "Click icon to begin download", attachment.original.url%>
+          <span><a href="/purchases/download_file/<%= attachment.id%>?order_id=<%=params[:id]%>"> <%= "Click here to begin download" %> </a></span>
+        </div>
+      </div>
+      <% end %>
+      <div class="heading">
+        <b>Stay Informed</b>
+        <div class="sign_up_box">
+          <div class="email_box">
+            <% form_tag (:controller => 'users', :action => 'subscribe_newsletter') do %>
+              <%= text_field 'user', 'email', :value => "Enter Your Email Address" %>
+           <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
