@@ -65,7 +65,7 @@ class ResourcesController < ApplicationController
       session[:user_details] = nil
       session[:post] = nil
       flash[:notice] = "Thank you! Your post has been created"
-      return redirect_to :action => 'seller_page', :id => resource.id
+      return redirect_to :action => 'seller_page', :url_slug => resource.url_slug
     end
   end
 

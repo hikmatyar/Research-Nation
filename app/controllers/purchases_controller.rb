@@ -5,7 +5,7 @@ class PurchasesController < ApplicationController
   before_filter :redirect_to_login
 
   def resource
-    @resource = Resource.find params[:id]
+    @resource = Resource.find_by_url_slug params[:url_slug]
     @order = Order.new(params[:order])
     if request.post?
       @order.ip_address = request.remote_ip
@@ -14,7 +14,7 @@ class PurchasesController < ApplicationController
       if @order.save
         if @order.purchase
           UserMailer.deliver_successful_purchase_email(current_user, @resource)
-          return redirect_to :action => "download", :id => @resource.id
+          return redirect_to :action => "download", :url_slug => @resource.url_slug
         else
           render :text => "failure :("
         end
@@ -24,9 +24,8 @@ class PurchasesController < ApplicationController
 
   def download
     return head(:not_found) unless Order.authorized_access?(current_user.id, params[:id])
-    @resource = Resource.find params[:id]
+    @resource = Resource.find_by_url_slug params[:url_slug]
   end
-
 
  def download_file
    return head(:not_found) if ((attachment = Attachment.find_by_id(params[:id])).nil? || !Order.authorized_access?(current_user.id, params[:order_id]))
