@@ -1,5 +1,7 @@
 class PurchasesController < ApplicationController
 
+  include SslRequirement
+  ssl_required :resource, :download, :download_file unless Rails.env.development?
   before_filter :redirect_to_login
 
   def resource
