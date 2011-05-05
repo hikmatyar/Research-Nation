@@ -7,15 +7,15 @@
       <% else%>
         <%= (image_tag "avatar.png")%>
       <% end %>
-      <span clas><%= resource.title %></span>
-      <p>$<%= resource.selling_price %></p>
-    </div>
-    <div class="user_name_box">
-      <span> <%= resource.user.profile.name unless resource.user.profile.blank? %> </span>
-    </div>
-    <div class="tags_box">
-      <span> <%= resource.industry %> </span>
-      <span> <%= resource.geography %> </span>
+      <div class="user_name">
+        <span><%= resource.title %></span>
+        <p> <%= resource.user.profile.name unless resource.user.profile.blank? %> </p>
+      </div>
+      <div class="tags_box">
+        <p>$<%= resource.selling_price %></p>
+        <span> <%= resource.industry %> </span>
+        <span> <%= resource.geography %> </span>
+      </div>
     </div>
     <div class="description">
       <p><%= truncate(resource.description , 230, "...(more)") %></p>
