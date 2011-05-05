@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
 
   helper_method :logged_in?, :is_admin?, :current_user
-  before_filter :authenticate, :shorten_url
+  before_filter :authenticate, :shorten_url unless Rails.env.development?
   filter_parameter_logging :card_number, :card_verification
 
 
@@ -72,9 +72,10 @@ class ApplicationController < ActionController::Base
     authenticate_or_request_with_http_basic do |username, password|
       username = "researchnation_admin" && password = "researchnation"
     end
+  end
 
   def shorten_url
-	bitly = Bitly.new('researchnation', 'R_db4a059b58a829a3b8c64169268e3563')
-	url = bitly.shorten(request.request_uri)
+	  bitly = Bitly.new('researchnation', 'R_db4a059b58a829a3b8c64169268e3563')
+	  url = bitly.shorten(request.request_uri)
   end
 end
