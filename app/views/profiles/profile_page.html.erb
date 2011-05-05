@@ -1,90 +1,65 @@
 <script type="text/javascript" language="javascript" charset="utf-8">
-	jQuery("document").ready(function(){
-    if (location.href.match("reveal_message"))
-    {
-      jQuery("#abc").trigger("click");
-    }
-  });
+jQuery("document").ready(function(){
+  if (location.href.match("reveal_message"))
+  {
+    jQuery("#abc").trigger("click");
+  }
+});
 </script>
-  <div class="content">
-  <% unless flash[:notice].blank? %>
-    <p class="flash"><%= flash[:notice] %></p>
-  <% end %>
-  <% flash[:notice] = "" %>
+<div class="content">
+<% unless flash[:notice].blank? %>
+  <p class="flash"><%= flash[:notice] %></p>
+<% end %>
+<% flash[:notice] = "" %>
   <div class="how_it_work_left_side">
-    <div class="author">
-      <div class="profile_img">
-       <%= (image_tag @profile.photo.url(:edit)) unless @profile.photo_file_name.blank? %>
-       <%= (image_tag "avatar.png") if @profile.photo_file_name.blank?  %>
-     </div>
-		  <h2 style="margin-top:25px;"><%= @profile.name %></h2>
-		  <div class="resource_buttons" style="width:auto !important;">
-        <a href="#" data-reveal-id="myModal" id="abc">Send Message</a>
+    <div class="content_back">
+      <div class="categories_box">
+        <b>
+		      <% unless @profile.industry_focus.blank? %>
+		        <span><%= link_to ( @profile.industry_focus, :controller => "profiles", :action => "view_profile_list", :filter => @profile.industry_focus )  %></span>
+		      <% end %>
+		      <% unless @profile.research_type.blank? %>
+		        <span><%= link_to ( @profile.research_type, :controller => "profiles", :action => "view_profile_list", :filter => @profile.research_type) %></span>
+		      <% end %>
+        </b>
       </div>
-      <% unless @profile.user.user_type == "Seller (Company)" || @profile.key_individual.blank? %>
-        <span class="field_text"><%= @profile.key_individual.title %></span>
-        <span class="field_text"><%= @profile.key_individual.name %></span>
+      <div class="author">
+        <div class="profile_img">
+          <%= (image_tag @profile.photo.url(:edit)) unless @profile.photo_file_name.blank? %>
+          <%= (image_tag "avatar.png") if @profile.photo_file_name.blank?  %>
+        </div>
+        <div class="author_details">
+          <h2 style="margin-top:25px;"><%= @profile.name %></h2>
+          <span><%= @profile.city %>, <%= @profile.country %></span>
+          <% unless @profile.user.user_type == "Seller (Company)" || @profile.key_individual.blank? %>
+            <span class="field_text"><%= @profile.key_individual.title %>, <%= @profile.key_individual.name %></span>
+          <% end %>
+        </div>
+        <div class="web_links">
+          <%= link_to ((image_tag "Website.png"), @profile.website, :target => "_blank" ) unless @profile.website.blank? %>
+          <%= link_to ((image_tag "linkedin.png"), @profile.key_individual.linkedin, :target => "_blank" ) unless (@profile.key_individual.blank? || @profile.key_individual.linkedin.blank?) || (@profile.profile_type == "company")%>
+        </div>
+      </div>
+      <% if @profile.profile_type == "company" %>
+        <%= render :partial => 'company_details' %>
       <% end %>
+      <% if @profile.profile_type == "individual" %>
+        <%= render :partial => 'user_details' %>
+      <% end %>
+      <div class="facebook_back">
+        <div class="login_tab">
+          <span href="#" onclick="showTab('one');" style="" class="sign_up" id="tab2">Reviews & Comments</span>
+          <div style="display: block;" class="sign_up_box" id="tabOne">
+            <div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=175351785849270&amp;xfbml=1"></script><fb:comments href="http://<%= request.host %>/profiles/profile_page/<%= @profile.id %>" num_posts="2" width="440"></fb:comments>
+          </div>
+        </div>
+      </div>
     </div>
-    <!--
-  	<div class="categories_box">
-      <b><span><%= @profile.industry_focus %></span> </b>
+  </div>
+  <div class="right_content buttons">
+    <div class="message_purchase">
+      <a class="grey_button" href="#message_form" id="message_link" >Send Message</a>
     </div>
-    -->
-    <% if @profile.profile_type == "company" %>
-      <%= render :partial => 'company_details' %>
-  	<% end %>
-  	<% if @profile.profile_type == "individual" %>
-  	  <%= render :partial => 'user_details' %>
-  	<% end %>
-		<div class="facebook_back">
-			<div class="login_tab">
-				<span href="#" onclick="showTab('one');" style="" class="sign_up" id="tab2">Reviews & Comments</span>
-				<div style="display: block;" class="sign_up_box" id="tabOne">
-				  <div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=175351785849270&amp;xfbml=1"></script><fb:comments href="http://<%= request.host %>/profiles/profile_page/<%= @profile.id %>" num_posts="2" width="470"></fb:comments>
-				</div>
-			</div>
-		</div>
-	</div>
+  </div>
 </div>
-<div style="display: none;">
-	<div id="message_form" class="message_form" style="width:550px;overflow:hidden;">
-		<div id="form">
-			<%= javascript_include_tag :defaults %>
-			<% unless logged_in? %>
-			<h2>Login</h2>
-			<%= render :partial => 'users/login'%>
-			<% session[:profile_id] = @profile.id %>
-			<% session[:message] = true %>
-		</div>
-		<% else %>
-			<div id="message"></div>
-			<% session[:message] = nil %>
-			<% session[:profile_id] = nil %>
-			<%= form_remote_tag ( :update => 'message',
-		      :url => { :controller => 'profiles', :action => 'send_message_to_profile', :id => @profile.id } , :after => 'jQuery.fancybox.close();' ) %>
-		  <h2>Contact <%= @profile.name %></h2>
-		  <div class="field">
-		    <label>Name</label>
-		    <input type="text" name="name" id="contact_name" class="required" />
-		  </div>
-		  <div class="field">
-		    <label>Email</label>
-		    <input type="text" name="email" id="contact_email" class="required" />
-		  </div>
-		  <div class="field">
-		    <label>Subject</label>
-		    <input type="text" name="subject" id="contact_subject" class="required" />
-		  </div>
-		  <div class="field">
-		    <label>Message</label>
-		    <textarea name="message" rows="8" cols="25" id="contact_message" class="required" /></textarea>
-		  </div>
-		  <div class="sign_up_button">
-		    <%= submit_tag 'Send Message', :id => 'submit' %>
-		    <input type="reset" id="reset" name="reset" value="Reset" id="" style="display:none;" />
-		  </div>
-		</div>
-		<% end %>
-	</div>
-</div>
+<%= render :partial => 'message_form'%>

@@ -1,72 +1,65 @@
-<div class="seller_left">
-  <div class="register_form">
-    <h2>Company Details</h2>
-      <div class="field">
-        <b class="bold_text">Address</b>
-        <span class="field_text"><%= @profile.address %></span>
+<div class="seller_back">
+  <span class="sign_up">Company Details</span>
+  <div class="sign_up_box">
+      <h4 style="margin-top:0px;">About Us</h4>
+      <div class="field1">
+        <p style="margin-left:7px;"><%= @profile.description %></p>
       </div>
-      <div class="field">
-        <b class="bold_text">Country</b>
-        <span class="field_text"><%= @profile.country %></span>
-      </div>
-      <div class="field">
-        <b class="bold_text">Telephone</b>
-        <span class="field_text"><%= @profile.phone_number %></span>
-      </div>
-      <div class="field">
-        <b class="bold_text">Website</b>
-        <span class="field_text"><%= (link_to "#{@profile.website }", @profile.website, :target => "_blank", :class => 'web_link') %></span>
-      </div>
-      <div class="field">
-        <b class="bold_text">Description</b>
-        <span class="field_text"><%= @profile.description %></span>
-      </div>
-      <div class="field">
-        <b class="bold_text">Competitors</b>
-        <span class="field_text"><%= @profile.competitors %></span>
-      </div>
-      <div class="field">
-        <b class="bold_text">Research Type</b>
-        <span class="field_text"><%= @profile.research_type %></span>
-      </div>
-      <div class="field">
-        <b class="bold_text">Industry Focus</b>
-        <span class="field_text"><%= @profile.industry_focus %></span>
-      </div>
-  </div>
-  <div class="register_form">
-    <h2>Key Individual*</h2>
-      <div class="field">
+    <h4>Key Individual</h4>
+      <div class="field1">
         <label>Name</label>
         <span class="field_text"><%= @profile.key_individual.name %></span>
       </div>
-      <div class="field">
+      <div class="field1">
         <label>Title</label>
-        <div class="field_text"><%= @profile.key_individual.title %></div>
+        <span class="field_text"><%= @profile.key_individual.title %></span>
       </div>
-      <div class="field">
-        <label>Email</label>
-        <span class="field_text"><%= @profile.key_individual.email %></span>
-      </div>
-      <div class="field">
+      <div class="field1">
         <label>Linkedin</label>
-        <div class="field_text"><%= (link_to "#{@profile.key_individual.linkedin }", @profile.key_individual.linkedin, :target => "_blank", :class => 'web_link') %></div>
+        <%= (link_to "#{@profile.key_individual.linkedin }", @profile.key_individual.linkedin, :target => "_blank", :class => 'web_link') %>
       </div>
-  </div>
-  <% unless @profile.humor_me.blank? %>
-  <div class="register_form">
-    <h2>Humor Me</h2>
-      <div class="field">
-        <span class="field_text"><%= @profile.humor_me %></span>
+  <% unless @profile.user.resources.blank? %>
+      <div class="facebook_back">
+        <span class="sign_up">Posts</span>
+        <div class="sign_up_box">
+          <% @profile.user.resources.each do |post| %>
+          <div class="field1">
+            <span><%= link_to (  post.title, { :controller => 'resources', :action => 'seller_page', :id => post.id },  { :class => "web_link" }) %></span>
+          </div>
+          <% end %>
+        </div>
       </div>
-  </div>
-  <% end %>
-  <% unless @profile.interested_in.blank? %>
-  <div class="register_form">
-    <h2>Interested In</h2>
-    <div class="field">
-      <span class="field_text"><%= @profile.interested_in %></span>
-    </div>
-  </div>
+    <% end %>
+    <% unless @profile.humor_me.blank? %>
+    <h4>Humor Me</h4>
+      <div class="field1">
+        <p><%= @profile.humor_me %></p>
+      </div>
   <% end %>
 </div>
+</div>
+<% unless @profile.user.resources.blank? %>
+  <div class="facebook_back">
+    <span id="tab2" class="sign_up" style="" onclick="showTab('one');" href="#">Posts</span>
+    <div class="sign_up_box">
+      <% @profile.user.resources.each do |post| %>
+      <div class="field1">
+        <span><%= link_to (  post.title, { :controller => 'resources', :action => 'seller_page', :id => post.id },  { :class => "web_link" }) %></span>
+      </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+<% unless @profile.interested_in.blank? %>
+  <div class="facebook_back interests">
+    <span id="tab2" class="sign_up" style="" onclick="showTab('one');" href="#">Interested In</span>
+    <div class="sign_up_box">
+        <% @interests.each do |i|%>
+        <div class="field field1">
+          <input type="checkbox" name="interests" checked="checked" disabled="disabled" />
+          <label class="check_box_text"><%= i %></label>
+        </div>
+        <% end %>
+    </div>
+  </div>
+<% end %>

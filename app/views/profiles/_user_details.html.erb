@@ -1,69 +1,45 @@
-
-    <div class="facebook_back">
-      <span id="tab2" class="sign_up" style="" onclick="showTab('one');" href="#">Individual Details</span>
-      <div class="sign_up_box">
-        <div class="field field1">
-          <label>Address</label>
-          <span class="field_text"><%= @profile.address %></span>
-        </div>
-        <div class="field field1">
-          <label>Country</label>
-          <span class="field_text"><%= @profile.country %></span>
-        </div>
-        <div class="field field1">
-          <label>Telephone</label>
-          <span class="field_text"><%= @profile.phone_number %></span>
-        </div>
-        <div class="field1">
-          <label>Website</label>
-            <%= (link_to "#{@profile.website }", @profile.website, :target => "_blank", :class => 'web_link') %>
-        </div>
-        <div class="field field1">
-          <label>Skype ID</label>
-          <span class="field_text"><%= @profile.key_individual.skype_id %></span>
-        </div>
-        <div class="field1">
-          <label>Linkedin</label>
-          <%= (link_to "#{@profile.key_individual.linkedin }", @profile.key_individual.linkedin, :target => "_blank", :class => 'web_link') %>
-        </div>
-        <div class="field field1">
-          <label>About Me</label>
-          <span class="field_text"><%= @profile.description %></span>
-        </div>
-      </div>
+<% unless @profile.user.about_me.blank? %>
+<div class="facebook_back">
+  <span id="tab2" class="sign_up" style="" onclick="showTab('one');" href="#">About Me</span>
+  <div class="sign_up_box">
+    <div class="field field1">
+      <span class="field_text"><%= @profile.user.about_me %></span>
     </div>
-    <% unless @profile.humor_me.blank? %>
-    <div class="facebook_back">
-      <span id="tab2" class="sign_up" style="" onclick="showTab('one');" href="#">Humor Me</span>
-      <div class="sign_up_box">
-        <div class="field field1">
-          <span class="field_text"><%= @profile.humor_me %></span>
-        </div>
-      </div>
+  </div>
+</div>
+<% end %>
+<% unless @profile.humor_me.blank? %>
+<div class="facebook_back">
+  <span id="tab2" class="sign_up" style="" onclick="showTab('one');" href="#">Humor Me</span>
+  <div class="sign_up_box">
+    <div class="field field1">
+      <span class="field_text"><%= @profile.humor_me %></span>
     </div>
-    <% end %>
-    <% unless @profile.user.resources.blank? %>
-      <div class="facebook_back">
-        <span id="tab2" class="sign_up" style="" onclick="showTab('one');" href="#">Posts</span>
-        <div class="sign_up_box">
-          <% @profile.user.resources.each do |post| %>
-          <div class="field field1">
-            <span class="field_text"><%= link_to post.title, :controller => 'resources', :action => 'seller_page', :id => post.id %></span>
-          </div>
-          <% end %>
-        </div>
+  </div>
+</div>
+<% end %>
+<% unless @profile.user.resources.blank? %>
+  <div class="facebook_back">
+    <span id="tab2" class="sign_up" style="" onclick="showTab('one');" href="#">Posts</span>
+    <div class="sign_up_box">
+      <% @profile.user.resources.each do |post| %>
+      <div class="field1">
+        <span><%= link_to (  post.title, { :controller => 'resources', :action => 'seller_page', :id => post.id },  { :class => "web_link" }) %></span>
       </div>
-    <% end %>
-    <% unless @profile.interested_in.blank? %>
-      <div class="facebook_back interests">
-        <span id="tab2" class="sign_up" style="" onclick="showTab('one');" href="#">Interested In</span>
-        <div class="sign_up_box">
-          <div class="field field1">
-            <% @interests.each do |i|%>
-              <input type="checkbox" name="interests" checked="checked" disabled="disabled" />
-              <label><%= i %></label>
-            <% end %>
-          </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+<% unless @profile.interested_in.blank? %>
+  <div class="facebook_back interests">
+    <span id="tab2" class="sign_up" style="" onclick="showTab('one');" href="#">Interested In</span>
+    <div class="sign_up_box">
+        <% @interests.each do |i|%>
+        <div class="field field1">
+          <input type="checkbox" name="interests" checked="checked" disabled="disabled" />
+          <label class="check_box_text"><%= i %></label>
         </div>
-      </div>
-    <% end %>
+        <% end %>
+    </div>
+  </div>
+<% end %>
