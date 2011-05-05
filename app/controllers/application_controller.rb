@@ -2,6 +2,7 @@
 # Filters added to this controller apply to all controllers in the application.
 # Likewise, all the methods added will be available for all controllers.
 require 'monkeywrench'
+require 'bitly'
 class ApplicationController < ActionController::Base
 
   helper :all # include all helpers, all the time
@@ -9,8 +10,9 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
+
   helper_method :logged_in?, :is_admin?, :current_user
-  before_filter :authenticate
+  before_filter :authenticate, :shorten_url
 
   def logged_in?
     return true unless session[:user].blank?
@@ -67,5 +69,9 @@ class ApplicationController < ActionController::Base
     authenticate_or_request_with_http_basic do |username, password|
       username = "researchnation_admin" && password = "researchnation"
     end
+
+  def shorten_url
+	bitly = Bitly.new('researchnation', 'R_db4a059b58a829a3b8c64169268e3563')
+	url = bitly.shorten(request.request_uri)
   end
 end
