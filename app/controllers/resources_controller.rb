@@ -34,7 +34,11 @@ class ResourcesController < ApplicationController
 
   def view_posts
     @user = User.find(session[:user]) if logged_in?
-    @resources = Resource.find :all, :order => 'created_at DESC'
+    if params[:filter].blank?
+      @resources = Resource.find :all, :order => 'created_at DESC'
+    else
+      @resources = Resource.find :all, :conditions => ['industry =? OR geography = ?', params[:filter], params[:filter]]
+    end
   end
 
   def remove_sample
