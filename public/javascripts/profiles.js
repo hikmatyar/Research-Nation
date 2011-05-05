@@ -6,7 +6,11 @@ jQuery('document').ready(function(){
 
   if (jQuery(".edit_profile")){
        jQuery(".edit_profile").submit(function(){
-          return validate_form();
+           validated = validate_form();
+           if(!validated){
+            jQuery("#profile_submit").after("<p class='profile_error' >Oops! Error time - scroll above for details</p>");
+           }
+           return validated;
        });
      }
 
