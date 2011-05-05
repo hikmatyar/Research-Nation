@@ -1,11 +1,16 @@
+
 jQuery('document').ready(function(){
+
+	jQuery("#login-tab").addClass("active");
 	if (location.href.match("login")){
 		if(jQuery(".sign_up_terms")){
-			jQuery("#tab2").addClass("active");
+			jQuery("#login-tab").addClass("active");
+			jQuery("#signup-tab").removeClass("active");
 		}
 		else
 		{
-			jQuery("#tab1").addClass("active");
+			jQuery("#login-tab").removeClass("active");
+			jQuery("#signup-tab").addClass("active");
 		}
 	}
 
@@ -36,6 +41,7 @@ jQuery('document').ready(function(){
 
 			jQuery("ul.tabs li").removeClass("active"); //Remove any "active" class
 			jQuery(this).addClass("active"); //Add "active" class to selected tab
+			jQuery(".active a").addClass("active");
 			jQuery(".tab_content").hide(); //Hide all tab content
 
 			var activeTab = jQuery(this).find("a").attr("href"); //Find the href attribute value to identify the active tab + content
@@ -64,36 +70,23 @@ jQuery('document').ready(function(){
 
 });
 
-function showTab(value) 
+function showTab(value)
 	{
 		if(value == "signup")
 		{
-			document.getElementById('tabOne').style.display = "block"
-			document.getElementById('tabTwo').style.display = "none"
+			jQuery("#signup-tab").addClass("active");
+			document.getElementById('signup-body').style.display = "block"
 
-			jQuery("#tab1").removeClass("active");
-			jQuery("#tab2").addClass("active");
-			//document.getElementById('tab1').style.background = "#FFFFFF"
-			//document.getElementById('tab1').style.color = "#245a83"
-
-			//document.getElementById('tab2').style.background = "#bfbfb5"
-			//document.getElementById('tab2').style.color = "#FFFFFF"
-
+			jQuery("#login-tab").removeClass("active");
+			document.getElementById('login-body').style.display = "none"
 			return true;
 		}
-		if(value == "login")
+		else if(value == "login")
 		{
-			document.getElementById('tabOne').style.display = "none"
-			document.getElementById('tabTwo').style.display = "block"
+			document.getElementById('signup-body').style.display = "none"
+			document.getElementById('login-body').style	.display = "block"
 
-			jQuery("#tab1").addClass("active");
-			jQuery("#tab2").removeClass("active");
-			/*document.getElementById('tab2').style.background = "#FFFFFF"
-			document.getElementById('tab2').style.color = "#245a83"
-
-			document.getElementById('tab1').style.background = "#bfbfb5"
-			document.getElementById('tab1').style.color = "#FFFFFF"*/
-
-			return true;
+			jQuery("#login-tab").addClass("active");
+			jQuery("#signup-tab").removeClass("active");
 		}
 	}
