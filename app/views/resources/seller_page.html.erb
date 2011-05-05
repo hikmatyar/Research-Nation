@@ -1,140 +1,131 @@
 <%= javascript_include_tag "seller" %>
 
 <div class="content">
-  <div class="content_back">
-  	<div class="categories_box">
-    	<b><span><%= @resource.industry %></span> <span><%= @resource.geography %></span></b>
-    </div>
-    <div class="author" style="width:700px;">
-      <div class="profile_img">
-      <%= (image_tag @resource.user.profile.photo.url(:browse)) unless (@resource.user.profile.blank? || @resource.user.profile.photo_file_name.blank?) %>
-      <%= (image_tag "avatar.png") if @resource.user.profile.blank? || @resource.user.profile.photo_file_name.blank?  %>
+  <div class="how_it_work_left_side">
+    <div class="content_back">
+      <div class="categories_box">
+        <b><span><%= link_to @resource.industry, :controller => 'resources', :action => 'view_posts', :filter => @resource.industry %></span> <span><%= link_to @resource.geography, :controller => 'resources', :action => 'view_posts', :filter => @resource.geography %></span></b>
       </div>
-      <h2><%= @resource.title %></h2>
-      <% unless @resource.user.profile.name.blank? %><b>By <%= (link_to @resource.user.profile.name, :controller => 'profiles', :action => 'profile_page', :id => @resource.user.profile) if @resource.user.profile.is_edited %>,<% end %>
-      <% unless @resource.user.profile.key_individual.blank?%> <span><%= "#{@resource.user.profile.key_individual.title} at #{@resource.user.profile.key_individual.name}" if @resource.user.user_type == "Seller (Individual)" %></span><% end %>
-      </b>
-    </div>
-    <div class="resource_buttons">
-      <b>US$<%= @resource.selling_price %></b>
-      <%= link_to 'Purchase', :controller => "purchases", :action => 'resource', :id => @resource.id %>
-      <a href="#message_form" id="message_link" >Send Message</a>
-    </div>
-    <div class="seller_left">
+      <div class="author">
+        <div class="profile_img">
+          <%= (image_tag @resource.user.profile.photo.url(:browse)) unless (@resource.user.profile.blank? || @resource.user.profile.photo_file_name.blank?) %>
+          <%= (image_tag "avatar.png") if @resource.user.profile.blank? || @resource.user.profile.photo_file_name.blank?  %>
+        </div>
+        <div class="author_details">
+          <h2><%= @resource.title %></h2>
+          <% unless @resource.user.profile.name.blank? %><b>By <%= (link_to @resource.user.profile.name, :controller => 'profiles', :action => 'profile_page', :id => @resource.user.profile) if @resource.user.profile.is_edited %><% end %></b>
+          <span><% unless @resource.user.profile.key_individual.blank?%> <%= "#{@resource.user.profile.key_individual.title} at #{@resource.user.profile.key_individual.name}" if @resource.user.user_type == "Seller (Individual)" %></span>
+          <% end %>
+        </div>
+        <div class="message_purchase">
+           <b>US$<%= @resource.selling_price %></b>
+        </div>
+      </div>
       <div class="seller_back">
         <div class="login_tab">
-          <%= link_to 'Summary','#Summary', :class => 'sign_up', :id => 'tab1', :onclick => 'showTab("one");' %>
-          <%= (link_to 'Sources','#Sources', :class => 'login', :id => 'tab4', :onclick => 'showTab("four");') unless @resource.terms_and_conditions.blank? %>
-          <%= (link_to 'Seller','#Seller', :class => 'login', :id => 'tab2', :onclick => 'showTab("two");') unless @resource.user.profile.is_edited %>
-          <%= (link_to 'Sample','#Sample', :class => 'login', :id => 'tab3', :onclick => 'showTab("three");') if @sample %>
+          <%= link_to 'Summary','#Summary', :class => 'sign_up seller_links', :id => 'summary_link', :onclick => 'showTab("one");' %>
+          <%= (link_to 'Sources','#Sources', :class => 'login seller_links', :id => 'sources_link', :onclick => 'showTab("four");') unless @resource.terms_and_conditions.blank? %>
+          <%= (link_to 'Seller','#Seller', :class => 'login seller_links', :id => 'seller_link', :onclick => 'showTab("two");') unless @resource.user.profile.is_edited %>
+          <%= (link_to 'Sample','#Sample', :class => 'login seller_links', :id => 'sample_link', :onclick => 'showTab("three");') if @sample %>
 
-          <div style="display: block;" class="sign_up_box" id="tabOne">
+          <div style="display: block;" class="sign_up_box seller_blocks" id="summary_details">
             <div class="summary">
               <p><%= @resource.description %></p>
             </div>
           </div>  
-          <div style="display: none;" class="login_tab_box" id="tabTwo">
+          <div style="display: none;" class="sign_up_box seller_blocks" id="about_seller">
             <div class="about_seller">
               <p><%= @resource.user.about_me %></p>
             </div>
           </div>
-          <div style="display: none;" class="sign_up_box" id="tabThree">
+          <div style="display: none;" class="sign_up_box seller_blocks" id="view_sample">
             <div class="view_sample">
               <script type='text/javascript' src='http://www.scribd.com/javascripts/view.js'></script>
-							<div id='embedded_flash'><a href="http://www.scribd.com">Scribd</a></div>
-							<% unless @sample.blank? %>
-							<script type="text/javascript">
-								var scribd_doc = scribd.Document.getDoc( <%= @sample.document_id.to_i %>, '<%= @sample.access_key %>' );
-
-								var oniPaperReady = function(e){
-								// scribd_doc.api.setPage(3);
-								}
-								scribd_doc.addParam( 'jsapi_version', 1 );
-								scribd_doc.addEventListener( 'iPaperReady', oniPaperReady );
-								scribd_doc.write( 'embedded_flash' );
-								</script>
-								<% end %>
-            	</div>
-          	</div>
-        	</div>
-        	<div style="display: none;" class="sign_up_box" id="tabFour">
+              <div id='embedded_flash'><a href="http://www.scribd.com">Scribd</a></div>
+              <% unless @sample.blank? %>
+                <script type="text/javascript">
+                  var scribd_doc = scribd.Document.getDoc( <%= @sample.document_id.to_i %>, '<%= @sample.access_key %>' );
+                  var oniPaperReady = function(e){
+                  // scribd_doc.api.setPage(3);
+                  }
+                  scribd_doc.addParam( 'jsapi_version', 1 );
+                  scribd_doc.addEventListener( 'iPaperReady', oniPaperReady );
+                  scribd_doc.write( 'embedded_flash' );
+                </script>
+              <% end %>
+              </div>
+            </div>
+          </div>
+          <div style="display: none;" class="sign_up_box seller_blocks" id="sources">
             <div class="summary">
-              <%= @resource.sources %>
+              <p><%= @resource.sources %></p>
           	</div>
         	</div>
       	</div>
-      <div class="facebook_back">
-        <div class="login_tab">
-          <span href="" onclick="showTab('one');" style="" class="sign_up" id="tab2">Reviews & Comments</span>
-          <div style="display: block;" class="sign_up_box" id="tabOne">
-            <div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=175351785849270&amp;xfbml=1"></script><fb:comments href="http://<%= request.host %>/resources/seller_page/<%= @resource.id %>" num_posts="2" width="665"></fb:comments>
-          </div>  
-        </div>
-      </div>
-  	</div>
-    <div class="seller_right">
-      <div class="koala_review">
-        <span id="tab2" class="sign_up">Koala Review</span>
-        <div id="tabOne" class="sign_up_box" style="min-height:275px;">
-          <p></p>
-        </div>
-      </div>
-      <div class="related_posts">
-        <span id="tab2" class="sign_up">Share It!</span>
-        <div id="tabOne" class="sign_up_box1">
-          <script type="text/javascript">var switchTo5x=true;</script><script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script><script type="text/javascript">stLight.options({publisher:'185014b6-e08a-4137-bb9e-8f5112e53464'});</script>
-          <span class='st_twitter_hcount' displayText='Tweet'></span>
-          <span class='st_facebook_hcount' displayText='Facebook'></span>
-          <div class="related_posts_box">
-            <a href="#"></a>
-          </div>
-          <div class="related_posts_box">
-            <a href="#"></a>
-          </div>
-          <div class="related_posts_box">
-            <a href="#"></a>
+        <div class="facebook_back">
+          <div class="login_tab">
+            <span class="sign_up">Reviews & Comments</span>
+            <div style="display: block;" class="sign_up_box">
+              <div id="fb-root"></div>
+              <script src="http://connect.facebook.net/en_US/all.js#appId=175351785849270&amp;xfbml=1"></script><fb:comments href="http://<%= request.host %>/resources/seller_page/<%= @resource.id %>" num_posts="2" height="150" width="430"></fb:comments>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <div class="right_content buttons">
+      <div class="message_purchase">
+        <%= link_to 'Purchase', { :action => 'payment', :id => @resource.id }, { :class => "green_button" } %>
+        <a class="grey_button" href="#message_form" id="message_link" >Send Message</a>
+            <div class="addthis_toolbox">
+              <div class="custom_images">
+                <a class="addthis_button_facebook"><img src="/images/facebook.png" width="32" height="32" alt="Share to Facebook" /></a>
+                <a class="addthis_button_twitter"><img src="/images/twitter.png" width="32" height="32" alt="Share to Twitter" /></a>
+              </div>
+            </div>
+      </div>
+    </div>
   </div>
-</div>
 <div style="display: none;">
   <div id="message_form" class="message_form" style="width:550px;overflow:hidden;">
     <% unless logged_in? %>
-      <h2>Login</h2>
       <% session[:seller_post] = @resource.id %>
       <% session[:message] = true %>
-      <%= render :partial => 'users/login'%>
+      <%= render :partial => 'users/register' %>
     <% else %>
     <div id="form">
-			<% session[:message] = nil %>
-			<% session[:seller_post] = nil %>
 			<%= javascript_include_tag :defaults %>
 			<div id="message"></div>
 			  <%= form_remote_tag ( :update => 'message',
           :url => { :controller => 'main', :action => 'send_message', :user_id => @resource.user.id }, :after => 'jQuery.fancybox.close();' ) %>
-        <h2>Contact <%= @resource.user.profile.name %></h2>
-        <div class="field">
-          <label>Name</label>
-          <input type="text" name="name" id="contact_name" class="required" />
-        </div>
-        <div class="field">
-          <label>Email</label>
-          <input type="text" name="email" id="contact_email" class="required" />
-        </div>
-        <div class="field">
-          <label>Subject</label>
-          <input type="text" name="subject" id="contact_subject" class="required" />
-        </div>
-        <div class="field">
-          <label>Message</label>
-          <textarea name="message" rows="8" cols="25" id="contact_message" class="required" /></textarea>
-        </div>
-        <div class="sign_up_button">
-          <%= submit_tag 'Send Message', :id => 'submit' %>
-          <input type="reset" id="reset" name="reset" value="Reset" id="" style="display:none;" />
-        </div>
-    </div>
+          <div class="popup_message_box">
+            <h2>Contact <%= @resource.user.profile.name %></h2>
+            <div class="field">
+              <label>Name</label>
+              <input type="text" name="name" id="contact_name" class="required" />
+            </div>
+            <div class="field">
+              <label>Email</label>
+              <input type="text" name="email" id="contact_email" class="required" />
+            </div>
+            <div class="field">
+              <label>Subject</label>
+              <input type="text" name="subject" id="contact_subject" class="required" />
+            </div>
+            <div class="field">
+              <label>Message</label>
+              <textarea name="message" rows="8" cols="25" id="contact_message" class="required" /></textarea>
+            </div>
+            <div class="sign_up_button">
+              <%= submit_tag 'Send Message', :id => 'submit' %>
+              <input type="reset" id="reset" name="reset" value="Reset" id="" style="display:none;" />
+            </div>
+          </div>
+      </div>
     <% end %>
   </div>
+</div>
+
+<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=YOUR-PROFILE-ID"></script>
+<script type="text/javascript" src="js/fisheye-iutil.min.js"></script>
+<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=YOUR-PROFILE-ID"></script>
