@@ -13,7 +13,8 @@ class PurchasesController < ApplicationController
       @order.resource_id = @resource.user_id
       if @order.save
         if @order.purchase
-          return redirect_to :action => "payment", :id => @resource.id
+          UserMailer.deliver_successful_purchase_email(current_user, @resource)
+          return redirect_to :action => "download", :id => @resource.id
         else
           render :text => "failure :("
         end
