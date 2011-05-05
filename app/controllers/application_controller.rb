@@ -15,7 +15,6 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate, :shorten_url unless Rails.env.development?
   filter_parameter_logging :card_number, :card_verification
 
-
   def logged_in?
     return true unless session[:user].blank?
     false

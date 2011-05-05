@@ -6,9 +6,9 @@ class ProfilesController < ApplicationController
 
   def view_profile_list
     @profiles = []
-    users = User.find :all, :conditions => ['user_type like ? ', "%Seller%"]
-    users.each do |user|
-      @profiles.push(user.profile) unless user.profile.blank? || user.profile.is_edited==false
+    profiles = params[:filter].blank? ? ( Profile.all ) : ( Profile.find :all, :conditions => [ "research_type = ? OR industry_focus = ?", params[:filter], params[:filter] ])
+    profiles.each do |profile|
+      @profiles.push(profile) unless profile.is_edited==false || profile.user.user_type == "Buyer"
     end
   end
 
@@ -87,10 +87,23 @@ class ProfilesController < ApplicationController
       key_individual.profile_id = profile.id
       key_individual.save
     end
+
+    profile_details = params[:profile]
+    key_individual_details = params[key_individual] unless key_individual.blank?
+
+    linkedin = key_individual["linkedin"].match("http")? key_individual["linkedin"] : "http://"+ key_individual["linkedin"] unless key_individual["linkedin"].blank?
+    website = profile_details["website"].match("http")? profile_details["website"] : "http://"+ profile_details["website"] unless profile["website"].blank?
+
+    profile.update_attributes(profile_details)
+    profile.update_attribute( :website , website )
+
     profile.update_attributes(params[:profile])
     profile.update_attribute( :url_slug, profile.name.split(" ").join("-") )
+
     profile.update_attribute( :is_edited, true )
     key_individual.update_attributes params[:key_individual]
+    key_individual.update_attribute( :linkedin , linkedin )
+
     flash[:notice] = "Your Information was updated successfully"
     return redirect_to :controller => 'users', :action => 'profile', :id => profile.user.id
   end
