@@ -6,47 +6,35 @@
             <h4 style="margin-top:5px;">My Details</h4>
           <% form_for(@profile , :url => {:controller => "profiles", :action => "update", :id => @profile.id }, :html => { :multipart => true } ) do |f| %>
             <div class="field">
-              <label>Name</label>
+              <label>Name*</label>
               <%= f.text_field 'name', :class => 'required max_len', :max_length => 70 %>
             </div>
             <div class="field">
-              <label>Title</label>
+              <label>Title*</label>
               <%= text_field 'key_individual', 'title', :class => 'required' %>
             </div>
             <div class="field">
-              <label>Company</label>
+              <label>Company*</label>
               <%= text_field 'key_individual', 'name', :class => 'required' %>
             </div>
             <div class="field">
-              <label>City</label>
+              <label>City*</label>
               <%= text_field 'profile', 'city', :class => 'required', :max_length => 400 %>
             </div>
             <div class="field">
-              <label>Country</label>
-              <%= country_select("profile", "country", ["United Kingdom", "United States"], { :include_blank => true } , {:class => 'required'}) %>
-            </div>
-            <div class="field">
-              <label>Telephone</label>
-              <%= f.text_field 'phone_number', :class => 'required' %>
+              <label>Country*</label>
+              <%= country_select("profile", "country", ["United Kingdom", "United States"], { :include_blank => true } , {:class => 'required select_list'}) %>
             </div>
             <div class="field">
               <label>Website</label>
-              <%= f.text_field 'website', :class => 'required' %>
+              <%= f.text_field 'website' %>
             </div>
             <div class="field">
-              <label>Skype ID</label>
-              <%= text_field 'key_individual', 'skype_id' , :class => 'required' %>
-              <i>
-                <%= check_box 'key_individual', 'skype_availability'  %>
-                <span>Available to Skype chat any time</span>
-              </i>
-            </div>
-            <div class="field">
-              <label>Linkedin</label>
+              <label>LinkedIn</label>
               <%= text_field 'key_individual', 'linkedin' %>
            </div>
             <div class="field">
-              <label>About Me</label>
+              <label>About Me*</label>
               <%= f.text_area 'description', :class => 'required max_len', :max_length => 1000 %>
             </div>
             <div class="field">
@@ -54,8 +42,8 @@
               <%= f.file_field 'photo', :id => "user_image", :size => "23"%>
             </div>
             <div class="field">
-              <label>Industry Focus</label>
-              <%= ( f.select "industry_focus", @industry_focus, { :include_blank => true }, {:class => 'required' }) %>
+              <label>Industry Focus*</label>
+              <%= ( f.select "industry_focus", @industry_focus, { :include_blank => true }, {:class => 'required select_list' }) %>
             </div>
             <h4>Humor Me</h4>
             <div class="field">
@@ -67,7 +55,7 @@
             <%= render :partial => "/profiles/interested_in_fields"%>
           </div>
           <div class="sign_up_button">
-              <%= f.submit 'Submit' %>
+              <%= f.submit 'Submit', :class => "green_button" %>
             </div>
           <% end %>
         </div>
