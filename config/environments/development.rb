@@ -16,3 +16,12 @@ config.action_controller.perform_caching             = false
 # Don't care if the mailer can't send
 config.action_mailer.raise_delivery_errors = false
 Paperclip.options[:command_path] = "/opt/local/bin/"
+
+config.after_initialize do
+  ActiveMerchant::Billing::Base.mode = :test
+  ::GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(
+    :login => "bus_1304358683_biz_api1.d3velopers.com",
+    :password => "1304358709",
+    :signature => "A4op4KaUu.JEJqAThlPb0WKKoU9gASfn83TFzN4mQMLCUg.8lIA5rjNy "
+  )
+end

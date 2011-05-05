@@ -17,7 +17,7 @@
     </div>
     <div class="resource_buttons">
       <b>US$<%= @resource.selling_price %></b>
-      <%= link_to 'Purchase', :action => 'payment', :id => @resource.id %>
+      <%= link_to 'Purchase', :controller => "purchases", :action => 'resource', :id => @resource.id %>
       <a href="#message_form" id="message_link" >Send Message</a>
     </div>
     <div class="seller_left">

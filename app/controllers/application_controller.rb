@@ -13,6 +13,8 @@ class ApplicationController < ActionController::Base
 
   helper_method :logged_in?, :is_admin?, :current_user
   before_filter :authenticate, :shorten_url
+  filter_parameter_logging :card_number, :card_verification
+
 
   def logged_in?
     return true unless session[:user].blank?
@@ -22,6 +24,7 @@ class ApplicationController < ActionController::Base
   def current_user
     return (User.find session[:user]) unless session[:user].blank?
   end
+
   def is_admin?
     return true unless session[:admin].blank?
     false

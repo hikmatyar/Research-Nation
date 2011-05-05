@@ -4,6 +4,8 @@ class Resource < ActiveRecord::Base
   has_many :attachments
   has_one :votes
 
+  has_one :order
+
   acts_as_paranoid
   acts_as_slugable :source_column => :title, :target_column => :url_slug
 

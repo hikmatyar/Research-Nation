@@ -21,4 +21,6 @@ gems:
     version: 2.12.2
   - name: right_aws
     version: 1.10.0
+  - name: activemerchant
+    version: 1.14.0
 

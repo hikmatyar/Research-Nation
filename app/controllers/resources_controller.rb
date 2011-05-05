@@ -101,12 +101,6 @@ class ResourcesController < ApplicationController
     vote.user_id = session[:user]
   end
 
-  def payment
-    @resource = Resource.find params[:id]
-    @attachments = @resource.attachments.original_files
-    @card_types = ["Visa","Mastercard"]
-  end
-
   def filter_results
     geography = params[:geography].blank? ? Resource.all(:select => 'distinct(geography)').collect(&:geography) : params[:geography].split(",");
     industries = params[:industry].blank? ? Resource.all(:select => 'distinct(industry)').collect(&:industry) : params[:industry].split(",");
