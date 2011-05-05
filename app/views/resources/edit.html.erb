@@ -6,46 +6,45 @@
   <div class="sign_up_box" style="padding-top:20px;">
     <div class="field">
       <label for = "title">Title</label>
-      <%= text_field 'resource', 'title'%>
+      <%= text_field 'resource', 'title', :class => 'text_field' %>
     </div>
     <div class="field">
       <label for="summary">Summary</label>
-      <%= text_area 'resource', 'description'%>
+      <%= text_area 'resource', 'description', :class => 'text_field'%>
     </div>
     <div class="field">
       <label for="selling_price">Selling Price</label>
-      <%= text_field 'resource', 'selling_price'%>
+      <%= text_field 'resource', 'selling_price', :disabled => true, :class => 'text_field' %>
     </div>
     <div class="field">
       <label for="industry">Industry</label>
-      <%= text_field 'resource', 'industry'%>
+      <%= text_field 'resource', 'industry', :class => 'text_field'%>
     </div>
     <div class="field">
       <label for="geography">Geography</label>
-      <%= text_field 'resource', 'geography'%>
+      <%= text_field 'resource', 'geography', :class => 'text_field'%>
     </div>
     <div class="field">
       <label for="sources">Sources</label>
-      <%= text_area 'resource', 'sources'%>
+      <%= text_area 'resource', 'sources', :class => 'text_field'%>
     </div>
     <div class="field">
       <label for="terms">Terms and Conditions</label>
-      <%= text_area 'resource', 'terms_and_conditions'%>
+      <%= text_area 'resource', 'terms_and_conditions', :class => 'text_field'%>
     </div>
     <div class="field">
       <label for="terms">Sample</label>
-      <%= file_field_tag 'sample'%>
+      <%= file_field_tag 'sample', :class => 'text_field'%>
     </div>
     <% unless @resource.attachments.sample.blank? %>
-    <div class="sample">
-      <p>Sample : <%= @resource.attachments.sample.first.file_name %> </p>
-      <%= link_to "Delete", :controller => 'resources', :action => 'remove_sample', :id => @resource.attachments.sample.first.id %>
+    <div class="sample"> 
+      <%= link_to "Delete Sample", :controller => 'resources', :action => 'remove_sample', :id => @resource.attachments.sample.first.id unless @resource.attachments.sample.blank? %>
     <% end %>
     </div>
  </div>
   
 <div class="sign_up_button">
-  <%= submit_tag 'Update' %>
+  <%= submit_tag 'Update', :class => "green_button" %>
 </div>
 
 </div>
