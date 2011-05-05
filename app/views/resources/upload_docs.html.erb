@@ -4,20 +4,11 @@
     <div class="how_it_work_left_side">
 
       <div class="seller_back">
-          <!--
-          <div class="looding_text">
-            <img src="/images/looding_image2.jpg" />
-            <%= link_to "YOUR DETAILS", :action => 'new', :user => params[:user] %>
-            <b>UPLOAD & SELL DOCS</b>
-            <h6>COMPLETE</h6>
-          </div>
-          -->
           <a id="login_link" href="#login_form" ></a>
           <div style="display: none;">
 	        <% unless logged_in? %>
-	        <div id="login_form" style="width:540px;height:250px;overflow:hidden;">
-              <h2>Login</h2>
-              <%= render :partial => 'users/login'%>
+	            <div id="login_form" style="width:700px;height:250px;overflow:hidden;left:-192px;bottom:20px;">
+                <%= render :partial => 'users/register'%>
             </div>
             <% end %>
           </div>
@@ -31,8 +22,8 @@
               </div>
               <div class="field">
                   <label>Exec Summary</label>
-                  <%= text_area 'resource', 'description', :class => 'max_len', :max_length => 1000 %>
-                  <h5>1000</h5>
+                  <%= text_area 'resource', 'description', :class => 'max_len', :max_length => 2500 %>
+                  <h5>2500</h5>
               </div>
               <div class="field">
                   <label>Industry*</label>
@@ -50,9 +41,9 @@
                   <%= text_field 'resource', 'selling_price', :class => 'required valid_price' %>
               </div>
               <div class="field"><label>Attachment(s): </label></div>
-              <div class="field"><label>Sample Document</label><%= file_field  "attachment", 'sample', :class => 'file' %></div>
-              <div class="field " id="documents"><label>Original File*</label><%= file_field "attachment", 'original[0]', :class => 'required file' %></div>
-              <%= link_to "(Add another file)", "#documents", :id => "add_another_file" %>
+              <div class="field"><label>Sample Document</label><%= file_field  "attachment", 'sample', :class => 'file', :size => "22" %></div>
+              <div class="field " id="documents"><label>Original File*</label><%= file_field "attachment", 'original[0]', :class => 'required file', :size => "22" %></div>
+              <%= link_to "(Add another file)", "#documents", :id => "add_another_file", :class => 'add_attachment_link', :size => "22" %>
               <div class="field">
                 <label>Sources*</label>
                 <%= text_area 'resource', 'sources', :class => 'required max_len', :max_length => 3000 %>
@@ -61,17 +52,16 @@
                 <label>Terms and Conditions</label>
                 <%= text_area 'resource', 'terms_and_conditions', :class => 'max_len', :max_length => 3000 %>
               </div>
-              <% unless (@user.blank? || @user.profile.is_edited) %>
+              <% unless (@user.blank? || @user.email.blank? || @user.profile.is_edited)  %>
               <div class="field">
                 <label>About Me</label>
                 <%= text_area 'user', 'about_me', :class => 'required max_len', :max_length => 3000 %>
               </div>
               <% end %>
             </div>
-            <div class="sign_up_button"><%= submit_tag "Proceed to Next Step" %></div>
+            <div class="sign_up_button"><%= submit_tag "Proceed to Next Step", :class => "green_button" %></div>
           </div>
           <% end %>
       </div>
       <%= render :partial => 'main/how_it_works_links' %>
   </div>
-</div>
