@@ -1,19 +1,19 @@
-<% unless @profile.user.about_me.blank? %>
+<% unless @profile.description.blank? %>
 <div class="facebook_back">
-  <span id="tab2" class="sign_up" style="" onclick="showTab('one');" href="#">About Me</span>
+  <span class="sign_up">About Me</span>
   <div class="sign_up_box">
     <div class="field field1">
-      <span class="field_text"><%= @profile.user.about_me %></span>
+      <p class="about_field_text"><%= @profile.description %></span>
     </div>
   </div>
 </div>
 <% end %>
 <% unless @profile.humor_me.blank? %>
 <div class="facebook_back">
-  <span id="tab2" class="sign_up" style="" onclick="showTab('one');" href="#">Humor Me</span>
+  <span id="tab2" class="sign_up" style="" onclick="showTab('one');" href="#">Your Work Style</span>
   <div class="sign_up_box">
     <div class="field field1">
-      <span class="field_text"><%= @profile.humor_me %></span>
+      <p class="about_field_text"><%= @profile.humor_me %></span>
     </div>
   </div>
 </div>
@@ -24,7 +24,7 @@
     <div class="sign_up_box">
       <% @profile.user.resources.each do |post| %>
       <div class="field1">
-        <span><%= link_to (  post.title, { :controller => 'resources', :action => 'seller_page', :id => post.id },  { :class => "web_link" }) %></span>
+        <span><%= link_to (  post.title, { :controller => 'resources', :action => 'seller_page', :url_slug => post.url_slug },  { :class => "web_link" }) %></span>
       </div>
       <% end %>
     </div>

@@ -3,7 +3,7 @@
   <div class="sign_up_box">
       <h4 style="margin-top:0px;">About Us</h4>
       <div class="field1">
-        <p style="margin-left:7px;"><%= @profile.description %></p>
+        <p class="about_field_text"><%= @profile.description %></p>
       </div>
     <h4>Key Individual</h4>
       <div class="field1">
@@ -15,25 +15,13 @@
         <span class="field_text"><%= @profile.key_individual.title %></span>
       </div>
       <div class="field1">
-        <label>Linkedin</label>
+        <label>LinkedIn</label>
         <%= (link_to "#{@profile.key_individual.linkedin }", @profile.key_individual.linkedin, :target => "_blank", :class => 'web_link') %>
       </div>
-  <% unless @profile.user.resources.blank? %>
-      <div class="facebook_back">
-        <span class="sign_up">Posts</span>
-        <div class="sign_up_box">
-          <% @profile.user.resources.each do |post| %>
-          <div class="field1">
-            <span><%= link_to (  post.title, { :controller => 'resources', :action => 'seller_page', :id => post.id },  { :class => "web_link" }) %></span>
-          </div>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
     <% unless @profile.humor_me.blank? %>
-    <h4>Humor Me</h4>
+    <h4>Your Work Style</h4>
       <div class="field1">
-        <p><%= @profile.humor_me %></p>
+        <p class="about_field_text"><%= @profile.humor_me %></p>
       </div>
   <% end %>
 </div>
@@ -44,7 +32,7 @@
     <div class="sign_up_box">
       <% @profile.user.resources.each do |post| %>
       <div class="field1">
-        <span><%= link_to (  post.title, { :controller => 'resources', :action => 'seller_page', :id => post.id },  { :class => "web_link" }) %></span>
+        <span><%= link_to (  post.title, { :controller => 'resources', :action => 'seller_page', :url_slug => post.url_slug },  { :class => "web_link" }) %></span>
       </div>
       <% end %>
     </div>
