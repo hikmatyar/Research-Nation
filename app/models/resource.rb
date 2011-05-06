@@ -2,12 +2,11 @@ class Resource < ActiveRecord::Base
 
   belongs_to :user
   has_many :attachments
-  has_one :votes
+  has_many :votes
 
   has_one :order
 
   acts_as_paranoid
-  acts_as_slugable :source_column => :title, :target_column => :url_slug
 
   cattr_reader :per_page
   @@per_page = 1000
@@ -19,6 +18,14 @@ class Resource < ActiveRecord::Base
   def self.create_resource resource_data
     resource = resource_data
     resource.save
+  end
+
+  def update_url_slug
+    self.update_attribute( :url_slug, self.to_params )
+  end
+
+  def to_params
+    "#{id}-#{title.parameterize}"
   end
 
 end
