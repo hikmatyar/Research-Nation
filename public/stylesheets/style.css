@@ -139,7 +139,7 @@ a:focus {
 }
 
 .banner_text h2 {
-    color: #C8955B;
+    color: #AC7333;
     float: left;
     font-weight: normal;
     font-size: 28px;
@@ -195,7 +195,7 @@ a:focus {
 }
 
 .main_menu a {
-    color: #C8955B !important;
+    color: #AC7333 !important;
     float: left !important;
     margin-left: 0;
     margin-right: 0;
@@ -227,12 +227,12 @@ a:focus {
 
 .banner_text a{
 	padding:10px;
-	width:238px;
+	width:314px;
 }
 
 .banner_text a:hover{
 	padding:10px;
-	width:238px !important;
+	width:314px !important;
 }
 
 .content{
@@ -379,7 +379,7 @@ a:focus {
 
 
 .sign_up_box h4{
-    color: #C8955B !important;
+    color: #AC7333 !important;
     float: left;
     font-size: 18px;
     font-weight: bold;
@@ -421,17 +421,31 @@ a:focus {
 	font-size:14px !important;
 }
 
+.field1 span a{
+	margin-left:5px;
+}
+
 
 .forgot{
 	float:left;
-	width:450px;
+	width:350px;
 	margin-top:5px;
 	margin-left : 114px;
 }
 
+.forgot a{
+	color:#AC7333 !important;
+}
+
+.forgot a:hover{
+	background:none !important;
+	text-decoration: underline;
+	
+}
+
 .register_form a{
 	float:left;	
-	color:#C8955B !important;
+	color:#AC7333 !important;
 }
 
 .register_form a:hover{
@@ -463,7 +477,7 @@ a:focus {
 .register_form{
 	float:left;
 	text-decoration:none;
-	width:390px;
+	width:373px;
 	margin-left:10px;
 }
 
@@ -506,13 +520,6 @@ a:focus {
 	margin-top:3px;
 	font-size:11px;
 	position:static !important;
-}
-.field h5{
-    float: left;
-    font-size: 14px;
-    font-weight: bold;
-    margin-left: 5px;
-    margin-top: 126px;
 }
 
 .field_text{
@@ -582,7 +589,7 @@ a:focus {
 }
 
 .send_message_button{
-    float:right;
+    float:left;
 }
 
 .resource_buttons a {
@@ -654,10 +661,15 @@ a:focus {
 	border-radius:10px;
 	-moz-border-radius:10px;
 	-webkit-border-radius:10px;
+	zoom:1; /* This enables hasLayout, which is required for older IE browsers */
+	filter: progid:DXImageTransform.Microsoft.Shadow(color='#bebebe', Direction=135, Strength=3);
 	width:95%;
 	background-color:#FFFFFF;
 	padding:10px;
+	
+	behavior: url(/css/ie-css3.htc); /* This lets IE know to call the script on all elements which get the ' class */
 }
+
 
 .seller_back h2{
   background-color:#ebebeb;
@@ -668,7 +680,7 @@ a:focus {
 	bottom: 10px;
 	float: left;
 	left: 43;
-	color:#C8955B !important;
+	color:#AC7333 !important;
 	margin: 0;
 	padding: 10px;
 	position: relative;
@@ -875,7 +887,7 @@ a:focus {
 .description p{
 	float:left;
 	width:435px;
-	margin:0px;
+	margin:0 0 0 31px;
 }
 
 .description a:hover{
@@ -885,7 +897,7 @@ a:focus {
 .summary, .view_sample, .about_seller{
 	float:left;
 	width:100%;
-	min-height:445px;
+	min-height:200px;
 	border:1px solid #CCC;
 	overflow:hidden;
 	font-size:18px;
@@ -901,7 +913,7 @@ a:focus {
 	text-align:left;
 }
 
-.seller_price_box, .user_box, .koala_review, .related_posts, .guidelines1{
+.seller_price_box, .user_box, .koala_review, .guidelines1{
 	float:left;
 	padding:10px;
 	box-shadow:5px -5px 20px #bebebe;
@@ -1080,46 +1092,7 @@ a:focus {
 	font-size:14px;
 	text-align:left;
 }
-.related_posts a{
-	background-image: url("../images/tip.jpg");
-	background-position: right center;
-	background-repeat: no-repeat;
-	float: right;
-	font-weight: bold;
-	margin-right: 5px;
-	margin-top: 10px;
-	padding-right: 11px;
-	text-align: right;
-}
 
-.related_posts a:hover{
-	text-decoration:underline;
-}
-
-.related_posts img{
-	float:left;
-	margin-right:10px;
-	margin-bottom:20px;
-}
-
-.related_posts_box{
-	float:left;
-	width:100%;
-}
-
-.related_posts_box a{
-	float:left !important;
-	font-size:14px !important;
-	font-weight:bold;
-	margin-bottom:2px;
-	width:100%;
-	background:none !important;
-	text-align:left !important;
-}
-
-.related_posts_box a:hover{
-	text-decoration:underline;
-}
 .categories_box a{
 	-moz-border-radius:4px;
 	-webkit-border-radius:4px;
@@ -1236,7 +1209,7 @@ a:focus {
     font-size:24px;
     width:100%;
     text-align:right;
-    color:#C8955B;
+    color:#AC7333;
 }
 
 .message_purchase a {
@@ -1324,7 +1297,7 @@ a:focus {
 
 .right_side a{
 	padding:0px;
-	color:#C8955B !important;
+	color:#AC7333 !important;
 }
 
 .right_side a:hover{
@@ -2294,7 +2267,7 @@ html ul.tabs li.active, html ul.tabs li.active {
 }
 
 .how_it_work_left_side b{
-	color:#C8955B !important;
+	color:#AC7333 !important;
 	margin-bottom:0px;
 }
 
@@ -2401,7 +2374,7 @@ html ul.tabs li.active, html ul.tabs li.active {
 	font-size: 14px !important;
     line-height: 24px !important;
     text-align: left !important;
-	color:#C8955B !important;
+	color:#AC7333 !important;
 	background:none !important;
 	
 }
@@ -2513,7 +2486,6 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
  border:1px solid #CCC;
  padding:5px;
  width:303px !important;
- color:#999999;
  -moz-border-radius:5px;
  -webkit-border-radius:5px;
 }
@@ -2545,7 +2517,8 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 
 .sender_image{
     float:left;
-    width:50px;
+    width:63px;
+    overflow:hidden;
 }
 
 .receipient, .sender{
@@ -2557,17 +2530,19 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 
 .sender_image b{
     float: left;
-    font-size: 16px;
+    font-size: 12px;
     text-align: justify;
+    font-weight:normal;
     margin-top:5px;
     width: 100%;
 }
 
 .receipient span{
-    float:left:
-    font-size:16px;
-    margin-left:10px;
-    width:455px;
+    float: left;
+    font-size: 16px;
+    margin-left: 10px;
+    text-align: justify;
+    width: 380px;
 }
 
 .receipient img, .sender img{
@@ -2623,20 +2598,6 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 	background-color:#FFFFFF;
 }
 
-.related_posts_box img{
-    width:40px;
-    height:40px;
-    padding:5px;
-    margin-right:10px;
-}
-
-.related_posts_box span{
-    float:left;
-    width:385px !important;
-    border:0px !important;
-    padding:15px; 5px 0px 0px;   
-}
-
 .guidelines_box1{
     padding:10px;
     width:220px;
@@ -2654,8 +2615,8 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 }
 
 .send_message{
-    width:380px !important;
-    height:60px !important;	
+    width:370px !important;
+    height:80px !important;	
     
 }
 div.fbFooterBorder{
@@ -2707,7 +2668,7 @@ div.fbFooterBorder{
 .terms_and_conditions1 a{
 	float:left;
 	background:none !important;
-	color:#C8955B !important;
+	color:#AC7333 !important;
 	font-size:12px !important;
 	font-weight:normal;
 	margin: 0 4px 0 0 !important;
@@ -2717,7 +2678,7 @@ div.fbFooterBorder{
 
 .terms_and_conditions1 a:hover{
 	background:none !important;
-	color:#C8955B !important;
+	color:#AC7333 !important;
 	text-decoration:underline !important;
 	width:auto !important;
 }
@@ -2756,7 +2717,7 @@ div.fbFooterBorder{
 
 .footer_menu a{
 	float:left;
-	color:#C8955B !important;
+	color:#AC7333 !important;
 	margin-right:15px;
 	margin-left:15px;
 }
@@ -2920,7 +2881,7 @@ div.fbFooterBorder{
 
 .user_name{
 	float:left;
-	width:260px;
+	width:250px;
 }
 
 .user_name span{
@@ -2983,9 +2944,6 @@ div.fbFooterBorder{
 .popup_message_box textarea{
 	color:#000;
 }
-.card_type, #order_card_type{
-	width:303px !important;
-}
 
 .birthyear{
 	width:68px !important;
@@ -3008,7 +2966,7 @@ div.fbFooterBorder{
 .terms_and_conditions a{
 	float:left;
 	background:none !important;
-	color:#C8955B !important;
+	color:#AC7333 !important;
 	font-size:14px !important;
 	font-weight:normal;
 	margin: 0 4px 0 0 !important;
@@ -3018,7 +2976,7 @@ div.fbFooterBorder{
 
 .terms_and_conditions a:hover{
 	background:none !important;
-	color:#C8955B !important;
+	color:#AC7333 !important;
 	text-decoration:underline !important;
 }
 
@@ -3043,7 +3001,11 @@ div.fbFooterBorder{
 }
 
 .new_field1 select{
-    width:314px !important;
+    width:315px !important;
+    padding:5px;
+    border:1px sold #ccc;
+		-moz-border-radius:5px;
+		-webkit-border-radius:5px;
 }
 
 
@@ -3051,6 +3013,15 @@ div.fbFooterBorder{
 	float:left;
 	margin:10px 10px 10px 0;
 
+}
+
+.banner_sign_up_button input{
+	width:314px;
+	text-align:center;
+}
+
+.banner_sign_up_button input:hover{
+	width:314px !important;
 }
 
 
@@ -3130,7 +3101,7 @@ div.fbFooterBorder{
 
 #order_card_expires_on_1i, #order_card_expires_on_2i{
 	float:left;
-	width:149px;
+	width:156px;
 	margin-right:5px;
 }
 
@@ -3146,21 +3117,34 @@ div.fbFooterBorder{
 }
 
 .custom_images{
-	float:left;
-	margin-top:25px;
+	width:130px;
+	float:right;
+	margin-top:10px;
 }
 
 .addthis_toolbox .custom_images a {
-    width: 32px;
-    height: 32px;
-    margin: 0px 0px 0px 20px;
+    margin: 0px 0px 0px 2px;
     padding: 0;
+    color:#AC7333;
 }
-.addthis_toolbox .custom_images a img {
-    opacity: 1.0;
+
+.addthis_toolbox .custom_images a:hover {
+	text-decoration:underline;
 }
+
 .addthis_toolbox .custom_images a:hover img {
-    opacity: 0.75;
+		text-decoration:underline;
+		float:left;
+}
+
+.addthis_toolbox span{
+	float:left;
+} 
+
+.addthis_toolbox img{
+	float:left;
+	margin-right:5px;
+	margin-left:5px;
 }
 
 .file{
@@ -3189,14 +3173,14 @@ div.fbFooterBorder{
 
 .forgit_password{
 	margin-bottom: 15px;
-	margin-left: 16px !important;
+	margin-left: 10px !important;
 	margin-top: 8px;
-	color:#C8955B !important;
+	color:#AC7333 !important;
 	font-weight: bold;
 }
 
 #order_first_name, #order_last_name{
-	width:135px;
+	width:142px !important;
 }
 
 .login_field{
@@ -3263,4 +3247,90 @@ div.fbFooterBorder{
 	height:17px !important;
 	overflow:hidden !important;
 	font-size:12px !important;
+}
+
+#order_country{
+	width:315px !important;
+}
+
+#order_card_type{
+	width:315px !important;
+}
+
+.forgit_email{
+	width:322px;
+}
+
+.validation-advice{
+	float:left;
+	color: red;
+  margin-bottom: 2px;
+  margin-left: 111px;
+  margin-top: 4px;
+}
+
+.about_field_text{
+	float: left;
+	margin: 0px 0px 0px 5px !important;
+	padding: 3px;
+	text-align: justify;
+	width: 420px !important;
+}
+
+.addthis_button_email{
+	margin-left:0px !important;
+}
+
+.addthis_button_email img{
+	float:left;
+	height: 25px !important;
+	margin-top: -5px;
+	width: 25px !important;
+}
+
+.addthis_button_email a{
+	float:left;
+}
+
+.addthis_button_email span{
+	float:left;
+}
+
+.related_posts{
+	float:right;
+	margin-top:10px;
+	width:130px;
+}
+
+.related_posts h2{
+	float:left;
+	font-size:16px;
+}
+
+.related_posts a{
+	float:left;
+	width:100%;
+	mix-height:20px;
+	margin-bottom:5px;
+	color:#AC7333 !important;
+}
+
+.related_posts a:hover{
+	text-decoration:underline;
+}
+
+.custom_images h2{
+	float:left;
+	width:100%;
+	font-size:16px;
+}
+
+.status{
+	float: right !important;
+	font-size: 14px !important;
+	margin-bottom: -8px !important;
+	margin-right: 48px;
+	margin-top: 2px !important;
+	text-align: right !important;
+	width: 83px !important;
 }
