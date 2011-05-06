@@ -31,7 +31,7 @@
          <%= hidden_field 'order', 'buyer_id', :value => current_user.id %>
          <div class="field">
            <label>Name</label>
-           <%= text_field 'order', 'first_name', :size => "10", :style => "margin-right:6px;", :value => "First", :class => "required validate-alpha"%>
+           <%= text_field 'order', 'first_name', :size => "10", :style => "margin-right:6px;", :value => "First", :class => "required validate-alpha first_name"%>
            <%= text_field 'order', 'last_name', :size => "10", :style => "margin-right:6px;", :value => "Last", :class => "required validate-alpha"%>
          </div>
          <div class="field">
@@ -48,7 +48,7 @@
          </div>
          <div class="field">
            <label>ZIP Code</label>
-           <%= text_field 'order', 'zip', :class => "validate-alphanum"%>
+           <%= text_field 'order', 'zip', :class => "validate-alphanum required"%>
          </div>
          <div class="field">
            <label>Country </label>
@@ -56,14 +56,15 @@
          </div>
          <div class="field">
            <label>Card Type </label>
-           <%= select "order", "card_type", [["Visa", "visa"], ["MasterCard", "master"], ["Discover", "discover"], ["American Express", "american_express"]] %>
+           <%= select "order", "card_type" , [["Visa", "visa"], ["MasterCard", "master"], ["Discover", "discover"], ["American Express", "american_express"]] , { :class => "card_field" } %>
          </div>
          <div class="field">
            <label>Card Number </label>
             <%= text_field 'order', 'card_number', :class => "required validate-digits"%>
          </div>
          <div class="field">
-            <%= label :card_verification, "Card Verification Value (CVV)" %><br />
+            <label for="card_verification_CVV Code">CVV Code</label>
+            <% label :card_verification, "CVV Code" %>
             <%= text_field 'order', 'card_verification', :class => "required validate-digits"%>
          </div>
          <div class="field">
@@ -76,25 +77,25 @@
          <div style="display: none;">
            <div id="terms_and_conditions" style="width:700px;height:250px;overflow:hidden;left:-192px;bottom:20px;">
            <div class="policies_filed">
-             <b>License and Any Other Terms from Seller</b>
+             <b>Seller Terms</b>
              <span><%= @resource.terms_and_conditions %></span>
            </div>
          </div>
        <% end %>
-    </div>
-
+      <div class="policies_filed">
+        <input id="agree" type="checkbox" name="accept" value="" class="conditions validate-one-required" />
+         <div class="terms_and_conditions conditions">
+       <p>By signing up you agree to our </p><%= link_to "Terms of Service,", :controller => "main", :action => "privacy" %><p class="comma"></p><%= link_to "Privacy Policy ", :controller => "main", :action => "privacy" %><% unless @resource.terms_and_conditions.blank? %><p>and</p><a id="terms_link" href="#terms_and_conditions" >any additional terms</a><p> imposed by the seller</p><% end %></div>
+         </div>
+      </div>
     <div class="policies_filed">
-     <input class="conditions" type="checkbox" name="accept" value="" class="required" />
-     <div class="terms_and_conditions conditions">
-       <p>By signing up you agree to our </p><%= link_to "Terms of Service ", :controller => "main", :action => "privacy" %><p class="comma">,</p><%= link_to "Privacy Policy", :controller => "main", :action => "privacy" %> <% unless @resource.terms_and_conditions.blank? %><p>and</p><a id="terms_link" href="#terms_and_conditions" >any additional terms</a><p> imposed by the seller</p><% end %></div>
-     </div>
+      <%= submit_tag "Submit", :class => "green_button"%>
     </div>
-    <div class="policies_filed">
-      <%= submit_tag "Submit"%>
     </div>
+    
   <% end %>
 </div>
 <script type="text/javascript">
-  new Validation('purchase-resource',{stopOnFirst:true});
+  new Validation('purchase-resource');
 </script>
 
