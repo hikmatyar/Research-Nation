@@ -227,7 +227,7 @@ Validation.add('IsEmpty', '', function(v) {
 			});
 
 Validation.addAllThese([
-	['required', 'This is a required field.', function(v) {
+	['required', 'This is a required field', function(v) {
 				return !Validation.get('IsEmpty').test(v);
 			}],
 	['validate-number', 'Please enter a valid number in this field.', function(v) {
@@ -278,7 +278,7 @@ Validation.addAllThese([
 	['validate-selection', 'Please make a selection', function(v,elm){
 				return elm.options ? elm.selectedIndex > 0 : !Validation.get('IsEmpty').test(v);
 			}],
-	['validate-one-required', 'Please select one of the above options.', function (v,elm) {
+	['validate-one-required', 'You must agree to the terms and conditions', function (v,elm) {
 				var p = elm.parentNode;
 				var options = p.getElementsByTagName('INPUT');
 				return $A(options).any(function(elm) {
