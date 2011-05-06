@@ -2,7 +2,8 @@ require 'time_diff'
 class UsersController < ApplicationController
 
   before_filter :check_session, :only => [:update, :edit, :logout ] 
-  #[:register, :login, :create, :authenticate, :facebook_connect, :facebook_oauth_callback, :forgot_password, :reset_password, :new_password]
+  before_filter :redirect_to_login, :only => [:purchases]
+
 
   def facebook_connect
     facebook_settings = YAML::load(File.open("#{RAILS_ROOT}/config/facebooker.yml"))
@@ -100,7 +101,6 @@ class UsersController < ApplicationController
   end
 
   def update
-
     @user = User.find_by_id(params[:id])
     if @user.update_attributes params[:user]
       flash[:notice] = "User details Updated"
@@ -144,12 +144,12 @@ class UsersController < ApplicationController
     user = User.find params[:id]
     @resources = user.resources
   end
+
   def facebook_user
     @user = User.find_by_facebook_uid params[:id]
   end
 
   def forgot_password
-
     if request.post?
       flash[:error] = ""
       user = User.find_by_email params[:email_address]
@@ -183,6 +183,11 @@ class UsersController < ApplicationController
   def unique_users
     @users = User.all.collect(&:name).uniq
     render :text => @users.join("\n")
+  end
+
+  def purchases
+    purchases = Order.user_purchases(current_user.id)
+    render :partial => "/users/purchases", :locals => {:purchases => purchases }, :layout => false
   end
 
   private

@@ -1,3 +1,5 @@
+<%= javascript_include_tag :defaults %>
+
 <div class="content">
 		<% unless flash[:notice].blank? %><p class="flash"><%= flash[:notice] %></p><% end %>
     <% flash[:notice] = "" %>
@@ -23,38 +25,22 @@
         <li><a href="#messages">Inbox</a></li>
         <li><a href="#listings">My Listings</a></li>
         <li><a href="#payments">Payments</a></li>
-        <li><a href="#payments">Purchase</a></li>
+        <li><a href="#payments" id="purchase-link">Purchases</a></li>
       </ul>
-      <div class="profile_right">
+    <div class="profile_right">
       <div class="tab_container profile_fixed_box">
-        <div id="messages" class="tab_content">
-          <table border="0" cellspacing="5" cellpadding="5" id=" posts_table" align="left">
-            <tbody id="received_messages">
-              <%= render :partial => 'profiles/received_messages' %>
-            </tbody>
-            <tbody id="sent_messages" style="display:none">
-              <%= render :partial => 'profiles/sent_messages' %>
-            </tbody>
-          </table>
-        </div>
         <div id="listings" class="tab_content">
-          <div class="users_table">
-            <table border="0" cellspacing="5" cellpadding="5" id=" posts_table" align="left">
-              <tbody>
-                <% @user.resources.each_with_index do |post, index|%>
-                  <tr>
-                    <td width="150"><%= link_to ( truncate(post.title, :omission => "...", :length => 25), { :controller => 'resources', :action => 'edit', :id => post.id, :user => @user.id }, { :class => 'fixed' } )  %></td>
-                    <td width="85"><span class="fixed">$<%= post.selling_price %></span></td>
-                    <td width="85"><span class="fixed"><%= post.created_at.strftime("%B %d") %></span></td>
-                    <td width="85" class="user_profile_buttons"><%= link_to (( image_tag "delete.jpg"), { :controller => 'resources', :action => 'delete', :id => post.id, :request => "user" }, :confirm => "Are you sure you want to delete this post?" )  %>
-                    </td>
-                  </tr>
-                <% end %>
-              </tbody>
-            </table>
-          </div>
+          <%= render :partial => "listings", :locals => {:resources => @user.resources}%>
         </div>
-        <div id="payments" class="tab_content"></div>
+        <div id="messages" class="tab_content">
+          <%= render :partial => 'profiles/received_messages' %>
+        </div>
+        <div id="payments" class="tab_content">
+        </div>
+        <div id="purchases" class="tab_content">
+        </div>
+      </div>
+
       </div>
     </div>
   </div>

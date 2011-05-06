@@ -35,20 +35,29 @@ jQuery('document').ready(function(){
 		jQuery(".tab_content").hide(); //Hide all content
 		jQuery("ul.tabs li:first").addClass("active").show(); //Activate first tab
 		jQuery(".tab_content:first").show(); //Show first tab content
-
-		//On Click Event
-		jQuery("ul.tabs li").click(function() {
-
-			jQuery("ul.tabs li").removeClass("active"); //Remove any "active" class
-			jQuery(this).addClass("active"); //Add "active" class to selected tab
-			jQuery(".active a").addClass("active");
-			jQuery(".tab_content").hide(); //Hide all tab content
-
-			var activeTab = jQuery(this).find("a").attr("href"); //Find the href attribute value to identify the active tab + content
-			jQuery(activeTab).fadeIn(); //Fade in the active ID content
-			return false;
-		});
 	}
+
+	//On Click Event
+	jQuery("ul.tabs li").click(function() {
+		jQuery("ul.tabs li").removeClass("active"); //Remove any "active" class
+		jQuery(this).addClass("active"); //Add "active" class to selected tab
+		jQuery(".active a").addClass("active");
+		jQuery(".tab_content").hide(); //Hide all tab content
+
+		var activeTab = jQuery(this).find("a").attr("href"); //Find the href attribute value to identify the active tab + content
+		jQuery(activeTab).fadeIn(); //Fade in the active ID content
+		return false;
+	});
+
+  jQuery('#purchase-link').click(function() { 
+    jQuery.ajax({
+      url: "/users/purchases",
+      success: function(data){
+        jQuery("#purchases").show();
+        jQuery("#purchases").html(data);
+      }
+    })
+  });
 
   if(jQuery('.email_address')){
     jQuery('.email_address').blur(function(){

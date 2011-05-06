@@ -1,10 +1,16 @@
 class Order < ActiveRecord::Base
-  belongs_to :resource
-  has_many :transactions, :class_name => "OrderTransaction"
+
+    belongs_to :resource
+    has_many :transactions, :class_name => "OrderTransaction"
 
     attr_accessor :card_number, :card_verification
 
     validate_on_create :validate_card
+
+
+    named_scope :user_purchases, (lambda do |user_id|
+      {:conditions => ["success=? and buyer_id =?",true, user_id], :order => "created_at DESC"}
+    end)
 
     def purchase
       response = GATEWAY.purchase(price_in_cents, credit_card, purchase_options)
@@ -17,10 +23,9 @@ class Order < ActiveRecord::Base
       (resource.selling_price*100).round
     end
 
-
     def self.authorized_access?(user_id, resource_id)
       order = self.find(:first, :conditions => ["success=? and buyer_id =? and resource_id =?",true, user_id, resource_id])
-      order.blank?
+      order.success?
     end
 
     private
