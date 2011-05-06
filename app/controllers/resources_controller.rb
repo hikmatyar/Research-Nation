@@ -29,7 +29,8 @@ class ResourcesController < ApplicationController
       @user = User.new
     end
     @resource = Resource.find_by_url_slug params[:url_slug]
-    @sample = @resource.attachments.sample.first
+    @sample = @resource.attachments.sample.first unless @resource.attachments.sample.blank?
+    @related_posts = Resource.find :all, :conditions => ['(industry =? or geography = ?) and (id != ?)', @resource.industry, @resource.geography, @resource.id ], :limit => 10, :order => "industry, geography and created_at"
   end
 
   def view_posts
@@ -57,6 +58,7 @@ class ResourcesController < ApplicationController
     original_file_attachments = params[:attachment][:original]
 
     if resource.save
+      resource.update_url_slug
       Attachment.add_file(params[:attachment][:sample], resource.id, "sample") unless params[:attachment][:sample].blank?
       #Attachment.add_file(params[:original], resource.id, "original")  unless params[:original].blank?
       original_file_attachments.each do |key, file|
@@ -103,6 +105,8 @@ class ResourcesController < ApplicationController
     vote = Vote.new
     vote.resource_id = params[:resource]
     vote.user_id = session[:user]
+    vote.save
+    render :text => vote.resource.votes.count
   end
 
   def filter_results
