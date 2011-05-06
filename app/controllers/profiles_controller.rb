@@ -6,7 +6,7 @@ class ProfilesController < ApplicationController
 
   def view_profile_list
     @profiles = []
-    profiles = params[:filter].blank? ? ( Profile.all ) : ( Profile.find :all, :conditions => [ "research_type = ? OR industry_focus = ?", params[:filter], params[:filter] ])
+    profiles = params[:filter].blank? ? ( Profile.find :all, :order => 'created_at DESC' ) : ( Profile.find :all, :conditions => [ "research_type = ? OR industry_focus = ?", params[:filter], params[:filter] ], :order => 'created_at DESC')
     profiles.each do |profile|
       @profiles.push(profile) unless profile.is_edited==false || profile.user.user_type == "Buyer"
     end
@@ -81,31 +81,20 @@ class ProfilesController < ApplicationController
   end
 
   def update
+
     profile = Profile.find params[:id]
     key_individual = profile.key_individual.blank? ? KeyIndividual.new : profile.key_individual
+
     if key_individual.new_record?
       key_individual.profile_id = profile.id
       key_individual.save
     end
 
-    profile_details = params[:profile]
-    key_individual_details = params[key_individual] unless key_individual.blank?
-
-    linkedin = key_individual["linkedin"].match("http")? key_individual["linkedin"] : "http://"+ key_individual["linkedin"] unless key_individual["linkedin"].blank?
-    website = profile_details["website"].match("http")? profile_details["website"] : "http://"+ profile_details["website"] unless profile["website"].blank?
-
-    profile.update_attributes(profile_details)
-    profile.update_attribute( :website , website )
-
-    profile.update_attributes(params[:profile])
-    profile.update_attribute( :url_slug, profile.name.split(" ").join("-") )
-
-    profile.update_attribute( :is_edited, true )
-    key_individual.update_attributes params[:key_individual]
-    key_individual.update_attribute( :linkedin , linkedin )
+    profile.update_profile_information(params[:profile], params[:key_individual])
 
     flash[:notice] = "Your Information was updated successfully"
-    return redirect_to :controller => 'users', :action => 'profile', :id => profile.user.id
+    return redirect_to :controller => 'users', :action => 'profile'
+
   end
 
   def types
@@ -114,7 +103,7 @@ class ProfilesController < ApplicationController
 
   def edit_individual_profile
     user = User.find session[:user]
-    redirect_to_home if !user.individual_seller? || user.profile.id == params[:id]
+    redirect_to_home if user.company_seller?  || user.profile.id == params[:id]
     @profile = Profile.find params[:id]
     @key_individual = @profile.key_individual unless @profile.key_individual.blank?
   end
