@@ -1,5 +1,10 @@
 jQuery('document').ready(function(){
 
+  
+  $("#profile_description").show_char_limit(2500);
+  $("#profile_humor_me").show_char_limit(2500);
+  
+  
   jQuery("#new_profile").submit(function(){
     return validate_form();
   });

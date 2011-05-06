@@ -23,7 +23,7 @@
             </div>
             <div class="field">
               <label>Description*</label>
-              <%= f.text_area 'description', :class => 'required max_len', :max_length => 1000 %>
+              <%= f.text_area 'description', :class => 'required max_len', :max_length => 2500 %>
             </div>
             <div class="field">
               <label>Logo</label>
@@ -54,10 +54,10 @@
               <label>LinkedIn</label>
               <%= text_field 'key_individual', 'linkedin' %>
              </div>
-        <h4>Humor Me</h4>
+        <h4>Setting Expectations</h4>
           <div class="field">
             <label>Optional</label>
-            <%= f.text_area 'humor_me', :class => 'max_len', :max_length => 1000 %>
+            <%= f.text_area 'humor_me', :class => 'max_len', :max_length => 2500 %>
           </div>
           <%= f.hidden_field 'profile_type', :value => params[:profile_type] %>
           <%= f.hidden_field 'interested_in', :id => 'interested_in' %>

@@ -22,18 +22,17 @@
               </div>
               <div class="field">
                   <label>Exec Summary</label>
-                  <%= text_area 'resource', 'description', :class => 'max_len', :max_length => 2500 %>
-                  <h5>2500</h5>
+                  <%= text_area 'resource', 'description', :class => 'max_len', :max_length => 3000 %>
               </div>
               <div class="field">
                   <label>Industry*</label>
-                  <%= text_field 'resource', 'industry', :class => 'required max_len', :max_length => 70 %>
+                  <%= text_field 'resource', 'industry', :class => 'required max_len', :max_length => 25 %>
               </div>
               <div class="field">
                   <label>Geography*</label>
-                  <%= text_field 'resource', 'geography', :class => 'required max_len', :max_length => 70 %>
+                  <%= text_field 'resource', 'geography', :class => 'required max_len', :max_length => 25 %>
                   <div class="loading">
-                    <img src="/images/loading_big.gif" alt="uploading files..." title="uploading files..." />
+                    <!-- <img src="/images/loading_big.gif" alt="uploading files..." title="uploading files..." /> -->
                   </div>
               </div>
               <div class="field">
@@ -45,11 +44,11 @@
               <div class="field " id="documents"><label>Original File*</label><%= file_field "attachment", 'original[0]', :class => 'required file', :size => "22" %></div>
               <%= link_to "(Add another file)", "#documents", :id => "add_another_file", :class => 'add_attachment_link', :size => "22" %>
               <div class="field">
-                <label>Sources*</label>
+                <label>Sources and Methodology*</label>
                 <%= text_area 'resource', 'sources', :class => 'required max_len', :max_length => 3000 %>
               </div>
               <div class="field">
-                <label>Terms and Conditions</label>
+                <label>Seller Terms</label>
                 <%= text_area 'resource', 'terms_and_conditions', :class => 'max_len', :max_length => 3000 %>
               </div>
               <% unless (@user.blank? || @user.email.blank? || @user.profile.is_edited)  %>

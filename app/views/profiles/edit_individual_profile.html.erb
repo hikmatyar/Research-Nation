@@ -35,7 +35,7 @@
            </div>
             <div class="field">
               <label>About Me*</label>
-              <%= f.text_area 'description', :class => 'required max_len', :max_length => 1000 %>
+              <%= f.text_area 'description', :class => 'required max_len', :max_length => 2500 %>
             </div>
             <div class="field">
               <label>Picture</label>
@@ -45,10 +45,10 @@
               <label>Industry Focus*</label>
               <%= ( f.select "industry_focus", @industry_focus, { :include_blank => true }, {:class => 'required select_list' }) %>
             </div>
-            <h4>Humor Me</h4>
+            <h4>Your Work Style</h4>
             <div class="field">
               <label>Optional</label>
-              <%= f.text_area 'humor_me', :class => 'max_len', :max_length => 1000 %>
+              <%= f.text_area 'humor_me', :class => 'max_len', :max_length => 2500 %>
             </div>
             <%= f.hidden_field 'profile_type', :value => params[:profile_type] %>
             <%= f.hidden_field 'interested_in', :id => 'interested_in' %>
