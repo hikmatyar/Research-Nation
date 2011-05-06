@@ -2,6 +2,15 @@ $(document).ready(function(){
 
 var count = 1;
 
+$("#resource_title").show_char_limit(140);
+$("#resource_description").show_char_limit(3000);
+$("#resource_industry").show_char_limit(25);
+$("#resource_geography").show_char_limit(25);
+$("#resource_terms_and_conditions").show_char_limit(3000);
+$("#resource_sources").show_char_limit(3000);
+$("#user_about_me").show_char_limit(3000);
+
+
 $("#add_another_file").click(function(){
   if(count <= 3)
   {
@@ -21,19 +30,18 @@ jQuery(document).keydown(function(e) {
 	});
 
 $(".loading").hide();
-  show_text_count(Event);
-  function show_text_count(e){
-      var len = 2500 - $('#resource_description').val().length
-      $('.field h5').text(len);
+  function show_text_count(e, elem, field){
+      var len = 2500 - $('').val(field).length
+      $(elem).text(len);
       if(len <= 0 ){
         if( e.which != 8){
-          $("#resource_description").trigger("blur");
+          $(field).trigger("blur");
         }
       }
   }
 
-  $('#resource_description').keydown(function(e){
-     show_text_count(e);
+  $('input').keypress(function(e){
+     show_text_count(e, $(this), $(this));
   });
 
   $('#new_resource').submit(function(){
