@@ -21,12 +21,12 @@ class Profile < ActiveRecord::Base
     "#{id}-#{name.parameterize}"
   end
   
-  def update_profile_information profile_details, key_individual_detilas
+  def update_profile_information profile_details, key_individual_details
     self.update_attributes(profile_details)
     self.update_is_edited
     self.update_url_slug
     self.update_website self.website
-    self.key_individual.update_key_individual key_individual_detilas
+    self.key_individual.update_key_individual key_individual_details
   end
 
   def update_url_slug
