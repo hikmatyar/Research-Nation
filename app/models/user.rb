@@ -28,6 +28,10 @@ class User < ActiveRecord::Base
     self.update_attributes :is_admin => !self.is_admin
   end
 
+  def own_resource?(resource)
+    return self.id  == resource.user_id
+  end
+
   def individual_seller?
     return user_type == "Seller (Individual)"
   end

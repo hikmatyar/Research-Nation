@@ -23,8 +23,9 @@ class Order < ActiveRecord::Base
       (resource.selling_price*100).round
     end
 
-    def self.authorized_access?(user_id, resource_id)
-      order = self.find(:first, :conditions => ["success=? and buyer_id =? and resource_id =?",true, user_id, resource_id])
+    def self.authorized_access?(user_id, resource_slug)
+      resource = Resource.find_by_url_slug resource_slug
+      order = self.find(:first, :conditions => ["success=? and buyer_id =? and resource_id =?",true, user_id, resource.id])
       order.success?
     end
 

@@ -75,7 +75,7 @@
     </div>
     <div class="right_content buttons">
       <div class="message_purchase">
-        <%= link_to 'Purchase', { :controller => "purchases", :action => 'resource', :url_slug => @resource.url_slug }, { :class => "green_button"} %>
+        <%= (link_to 'Purchase', { :controller => "purchases", :action => 'resource', :url_slug => @resource.url_slug }, { :class => "green_button"}) unless current_user.own_resource?(@resource) %>
         <a class="grey_button" href="#message_form" id="message_link" >Send Message</a>
             <div class="addthis_toolbox">
               <div class="custom_images">

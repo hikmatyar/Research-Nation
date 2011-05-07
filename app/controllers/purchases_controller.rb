@@ -5,7 +5,7 @@ class PurchasesController < ApplicationController
   before_filter :redirect_to_login
 
   def resource
-    @resource = Resource.find_by_url_slug params[:url_slug]
+    @resource = Resource.find_by_url_slug params[:id]
     @order = Order.new(params[:order])
     if request.post?
       @order.ip_address = request.remote_ip
@@ -14,7 +14,7 @@ class PurchasesController < ApplicationController
       if @order.save
         if @order.purchase
           UserMailer.deliver_successful_purchase_email(current_user, @resource)
-          return redirect_to :action => "download", :url_slug => @resource.url_slug
+          return redirect_to :action => "download", :id => @resource.url_slug
         else
           render :text => "failure :("
         end
@@ -24,11 +24,11 @@ class PurchasesController < ApplicationController
 
   def download
     return head(:not_found) unless Order.authorized_access?(current_user.id, params[:id])
-    @resource = Resource.find_by_url_slug params[:url_slug]
+    @resource = Resource.find_by_url_slug params[:id]
   end
 
  def download_file
-   return head(:not_found) if ((attachment = Attachment.find_by_id(params[:id])).nil? || !Order.authorized_access?(current_user.id, params[:order_id]))
+   return head(:not_found) if ((attachment = Attachment.find_by_id(params[:attachment])).nil? || !Order.authorized_access?(current_user.id, params[:id]))
    path = attachment.original.path
    redirect_to(AWS::S3::S3Object.url_for(path, attachment.original.bucket_name, :expires_in => 10.seconds))
  end
