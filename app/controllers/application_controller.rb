@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
 
   helper_method :logged_in?, :is_admin?, :current_user
-  before_filter :authenticate unless Rails.env.development?
+  before_filter :authenticate_production unless Rails.env.development?
   filter_parameter_logging :card_number, :card_verification
 
   def logged_in?
@@ -67,7 +67,7 @@ class ApplicationController < ActionController::Base
       flash.now[:error] = "An error occured" unless data == "true"
   end
 
-  def authenticate
+  def authenticate_production
     authenticate_or_request_with_http_basic do |username, password|
       username = "researchnation_admin" && password = "researchnation"
     end
