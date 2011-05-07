@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
 
   helper_method :logged_in?, :is_admin?, :current_user
-  before_filter :authenticate, :shorten_url unless Rails.env.development?
+  before_filter :authenticate unless Rails.env.development?
   filter_parameter_logging :card_number, :card_verification
 
   def logged_in?
