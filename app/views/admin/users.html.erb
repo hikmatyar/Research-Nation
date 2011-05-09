@@ -1,1 +1,25 @@
-<%= render :partial => 'users' %>
+<div class="tab_container">
+  <table border="0" cellspacing="5px" cellpadding="5px" id="users_table" >
+  <tbody>
+    <tr>
+      <th>No.</th>
+      <th>Email</th>
+      <th>Title</th>
+      <th>Company</th>
+      <th>Type</th>
+      <th>Sign-up Date</th>
+    </tr>
+    <% @users.each_with_index do |user, index|%>
+      <tr>
+        <td><%= (@users_count - index ).to_s %></td>
+        <td ><%= user.email %></td>
+        <td ><%= user.work %></td>
+        <td ><%= user.company %></td>
+        <td ><%= user.facebook_uid.blank? ? "Email User" : "Facebook User" %></td>
+        <td ><%= user.created_at.strftime("%B %d, %Y") %></td>
+      </tr>
+    <% end %>
+  <tbody>
+  </table>
+  <%= will_paginate @users %>
+</div>
