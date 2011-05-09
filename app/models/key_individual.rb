@@ -4,7 +4,7 @@ class KeyIndividual < ActiveRecord::Base
 
   def update_key_individual details
     self.update_attributes details
-    self.update_linkedin self.linkedin
+    self.update_linkedin self.linkedin unless self.linkedin.blank?
   end
 
   def update_linkedin linkedin_profile
