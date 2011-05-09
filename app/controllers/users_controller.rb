@@ -122,6 +122,7 @@ class UsersController < ApplicationController
 
   def profile
     @user = User.find session[:user] if logged_in?
+    @user = User.new unless logged_in?
   end
 
   def logout
@@ -146,7 +147,8 @@ class UsersController < ApplicationController
       unless user.blank?
         session[:token]=user.generate_token
         UserMailer.deliver_password_reset_email(user, session[:token])
-        flash[:notice] = "An email has been sent to your Mail Address"
+        flash[:notice] = "Please check your email for your new password"
+        redirect_to :controller => 'main', :action => 'index'
       end
     end
 
@@ -154,13 +156,13 @@ class UsersController < ApplicationController
 
   def reset_password
     if params[:token] == session[:token] && params[:password] == params[:confirm_password]
-      session[:token]=nil
+      session[:toekn]=nil
       user = User.find params[:id]
       user.update_attributes :password => params[:password]
       session[:user] = user.id
       flash[:notice] = " Password successfully changed "
     end
-    return redirect_to :controller => 'resources' , :action => 'view_posts'
+    return redirect_to :controller => 'users' , :action => 'register'
   end
 
   def subscribe_newsletter
