@@ -45,7 +45,7 @@ jQuery(".file").each(function(){
 
 	jQuery(".valid_price").each(function(){
 		price = Number(jQuery(this).val());
-		if(price < 0 || price > 1000){
+		if(!price || price < 0 || price > 1000){
 			jQuery(this).after("<span class='error'>Price should be between US$0 and US$1000</span>");
 			jQuery(this).addClass("error_field");
 		}
