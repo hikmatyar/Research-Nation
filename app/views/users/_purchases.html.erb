@@ -13,7 +13,7 @@
   		    <td><%= order.resource.title%></td>
   		    <td >$ <%= order.resource.selling_price %></td>
   		    <td ><%= order.created_at.strftime("%B %d") %></td>
-          <td><%= link_to "Download", :controller => 'purchases', :action => 'download', :id => order.resource.id%></td>
+          <td><%= link_to "Download", :controller => 'purchases', :action => 'download', :id => order.resource.url_slug%></td>
   		  </tr>
   		<% end %>
   	<tbody>
