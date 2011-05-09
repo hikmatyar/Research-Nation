@@ -29,19 +29,19 @@ class User < ActiveRecord::Base
   end
 
   def own_resource?(resource)
-    return self.id  == resource.user_id
+    self.id  == resource.user_id
   end
 
   def individual_seller?
-    return user_type == "Seller (Individual)"
+    user_type == "Seller (Individual)"
   end
 
   def company_seller?
-    return user_type == "Seller (Company)"
+    user_type == "Seller (Company)"
   end
 
   def buyer?
-    return user_type == "Buyer"
+    user_type == "Buyer"
   end
 
   def self.create_facebook_user new_user
@@ -59,7 +59,21 @@ class User < ActiveRecord::Base
   def pending_orders
     orders = []
     resources.each {|resource| orders << resource.pending_orders.flatten unless resource.pending_orders.blank?}
-    return orders.flatten
+    orders.flatten
+  end
+
+
+  def monthly_earnings
+    orders = []
+    resources.each {|resource| orders << resource.paid_orders.flatten unless resource.paid_orders.blank?}
+    paid_months = orders.flatten.group_by {|order| order.created_at.at_end_of_month}
+    monthly_earnings = []
+    paid_months.each do |month, orders|
+      earnings = 0
+      orders.each {|order| earnings += order.resource.selling_price}
+      monthly_earnings << {:month => month, :total_earnings => earnings, :orders => orders }
+    end
+    monthly_earnings
   end
 
 end
