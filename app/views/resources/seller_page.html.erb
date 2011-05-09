@@ -9,9 +9,14 @@
       <div class="post_details">
         <h2><%= @resource.title %></h2>
         <div class="Post_author_details">
-          <% unless @resource.user.profile.name.blank? %><b>By <%= (link_to @resource.user.profile.name, :controller => 'profiles', :action => 'profile_page', :url_slug => @resource.user.profile.url_slug) %></b>
+          <% unless @resource.user.profile.name.blank? %>
+          <b>By <%= (link_to @resource.user.profile.name, :controller => 'profiles', :action => 'profile_page', :url_slug => @resource.user.profile.url_slug) %>,
           <% end %>
-            <span><% unless @resource.user.profile.key_individual.blank? %> <%= "#{@resource.user.profile.key_individual.title} at #{@resource.user.profile.key_individual.name}" %> </span>
+            <span><% if @resource.user.company_seller? %>
+              <% unless @resource.user.profile.city.blank? %> <%= "#{@resource.user.profile.city}, #{@resource.user.profile.country}" %> <% end %>
+            <% else%>
+            <% unless @resource.user.profile.key_individual.blank? %> <%= "#{@resource.user.profile.key_individual.title} at #{@resource.user.profile.key_individual.name}" %> <% end %>
+            <% end %></span>
             <div class="custom_images">
               <!--
               <a class="addthis_button_facebook">
@@ -26,7 +31,7 @@
                 <img src="/images/email.png" width="16" height="16" border="0" alt="Email" />
               </a>
             </div>
-          <% end %>
+          </b>
         </div>
       </div>
     </div>
@@ -77,7 +82,7 @@
             <span class="sign_up">Reviews & Comments</span>
             <div style="display: block;" class="sign_up_box">
               <div id="fb-root"></div>
-              <script src="http://connect.facebook.net/en_US/all.js#appId=175351785849270&amp;xfbml=1"></script><fb:comments href="http://<%= request.host %>/resources/seller_page/<%= @resource.id %>" num_posts="2" height="150" width="430"></fb:comments>
+              <script src="http://connect.facebook.net/en_US/all.js#appId=175351785849270&amp;xfbml=1"></script><fb:comments href="http://<%= request.host %>/resources/seller_page/<%= @resource.id %>" num_posts="2" height="150" width="516"></fb:comments>
             </div>
           </div>
         </div>
@@ -86,7 +91,7 @@
       <div class="purchase_box">
         <div class="purchase_price">
           <b>US$<%= @resource.selling_price %></b>
-          <%= (link_to 'Purchase', { :controller => "purchases", :action => 'resource', :url_slug => @resource.url_slug }, { :class => "green_button"}) unless current_user && current_user.own_resource?(@resource) %>
+          <%= (link_to 'Purchase', { :controller => "purchases", :action => 'resource', :url_slug => @resource.url_slug }, { :class => "green_button"})  %>
             <div class="addthis_toolbox">
             </div>
         </div>

@@ -2847,9 +2847,9 @@ div.fbFooterBorder{
 }
 
 .Post_author_details span{
-	float:left;
-	color:#525252;
-	width:480px;
+	color: #525252;
+  font-weight: normal;
+  width: auto;
 }
 
 .Post_author_details h2{
