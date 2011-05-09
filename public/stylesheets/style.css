@@ -286,6 +286,11 @@ a:focus {
 	padding:15px;
 }
 
+.post_back{
+	margin-left: 65px;
+	width: 825px !important;
+}
+
 .content_back b{
   color: #245A83;
   float: left;
@@ -300,6 +305,11 @@ a:focus {
 .login_tab{
 	float:left;
 	width:100%;
+}
+
+.login_tab a{
+	margin-right:5px;
+
 }
 
 
@@ -344,7 +354,7 @@ a:focus {
 	background-color:#E5E5E5 !important;
 }
 .login_tab a.active{
-	background-color:#CCC !important;
+	background-color:#8EAF32 !important;
 	color:#FFF;
 }
 
@@ -653,7 +663,7 @@ a:focus {
 }
 
 
-.seller_back, .facebook_back{
+.seller_back, .facebook_back, .purchase_box{
 	float:left;
 	box-shadow:5px -5px 20px #bebebe;
 	-webkit-box-shadow:0 0 20px #bebebe;
@@ -662,12 +672,12 @@ a:focus {
 	-moz-border-radius:10px;
 	-webkit-border-radius:10px;
 	zoom:1; /* This enables hasLayout, which is required for older IE browsers */
-	filter: progid:DXImageTransform.Microsoft.Shadow(color='#bebebe', Direction=135, Strength=3);
+	filter: progid:DXImageTransform.Microsoft.Shadow(color='#bebebe', Direction=0, Strength=5);
 	width:95%;
 	background-color:#FFFFFF;
 	padding:10px;
 	
-	behavior: url(/css/ie-css3.htc); /* This lets IE know to call the script on all elements which get the ' class */
+	behavior: url(/stylesheets/ie-css3.htc); /* This lets IE know to call the script on all elements which get the ' class */
 }
 
 
@@ -750,7 +760,7 @@ a:focus {
 
 .left_content{
 	float:left;
-	width:500px;
+	width:550px;
 }
 
 .seller_left{
@@ -911,6 +921,8 @@ a:focus {
 	font-size:18px;
 	line-height:24px;
 	text-align:left;
+	margin-left: 10px;
+	margin-right: 10px;
 }
 
 .seller_price_box, .user_box, .koala_review, .guidelines1{
@@ -1132,7 +1144,7 @@ a:focus {
   float: left;
   font-size: 14px;
   margin-bottom: 5px;
-  margin-top: 10px;
+  margin-top: 5px;
   width: 100%;
   font-weight:normal !important;
 }
@@ -1842,6 +1854,15 @@ html ul.tabs li.active, html ul.tabs li.active {
 	list-style-type:none
 }
 
+.users_table a{
+	float:left;
+	color:#245A83 !important;
+}
+
+.users_table a:hover{
+	text-decoration:underline;
+	color:#245A83 !important;
+}
 .name{
 	width:250px;
 }
@@ -2790,6 +2811,34 @@ div.fbFooterBorder{
 	width: 70%;
 }
 
+.Post_author_details{
+	float:left;
+	width:100%;
+}
+
+.Post_author_details b{
+	float:left;
+	width:100%;
+	margin-bottom:0px;
+  color: #333333 !important;
+}
+
+.Post_author_details a:hover{
+	text-decoration:underline;
+}
+
+.Post_author_details span{
+	float:left;
+	color:#525252;
+	width:480px;
+}
+
+.Post_author_details h2{
+	float:left;
+	width:240100%;
+	margin-top:0px !important;
+}
+
 
 .author_details{
 	float:left;
@@ -2800,6 +2849,10 @@ div.fbFooterBorder{
 	float:left;
 	width:340px;
   color: #333333 !important;
+}
+
+.author_details a:hover{
+	text-decoration:underline;
 }
 
 .author_details span{
@@ -3117,15 +3170,20 @@ div.fbFooterBorder{
 }
 
 .custom_images{
-	width:130px;
+	width:330px;
 	float:right;
-	margin-top:10px;
 }
 
 .addthis_toolbox .custom_images a {
+		float:left;
     margin: 0px 0px 0px 2px;
     padding: 0;
     color:#AC7333;
+}
+
+.custom_images a{
+	float:left;
+	margin-right:5px;
 }
 
 .addthis_toolbox .custom_images a:hover {
@@ -3203,7 +3261,11 @@ div.fbFooterBorder{
 
 .web_links a{
 	float:left;
-	margin-left:10px;
+	border:2px solid #F0F0E9;
+}
+
+.web_links a:hover{
+	border:2px solid #DDDDD9;
 }
 
 .web_links a img{
@@ -3297,9 +3359,8 @@ div.fbFooterBorder{
 }
 
 .related_posts{
-	float:right;
-	margin-top:10px;
-	width:130px;
+	float:left;
+	width:220px;
 }
 
 .related_posts h2{
@@ -3333,4 +3394,89 @@ div.fbFooterBorder{
 	margin-top: 2px !important;
 	text-align: right !important;
 	width: 83px !important;
+}
+
+.purchase_box{
+	float: left;
+	margin-left: 25px;
+	width: 220px;
+	margin-bottom:20px;
+}
+
+.purchase_price{
+	float:left;
+	width:220px;
+}
+
+.purchase_price b{
+	float:left;
+	font-size:24px;
+	width:100%;
+	text-align:center;
+	color:#AC7333;
+}
+
+.purchase_price a{
+	float: left !important;
+	margin-bottom: 10px;
+	margin-left: 8px;
+	padding-left: 64px;
+	padding-right: 64px;
+}
+
+.author_image_box{
+	float:left;
+	width:70px;
+}
+
+.author_image_box img{
+	float:left;
+	height: 70px;
+	width: 70px;
+}
+
+.author_name{
+	float:left;
+	width:150px !important;
+}
+
+.author_name b{
+	float:left;
+	width:100%;
+	font-size:14px;
+	margin-left:5px;
+}
+
+.contact_button{
+	float:left;
+}
+
+.contact_button a{
+	margin-left:5px !important;
+}
+
+.post_details{
+	float:left;
+	width:820px;
+}
+
+.post_details h2{
+	float:left;
+	margin:4px 0px 10px 0;
+	width:100%;
+	color:#333333 !important;
+	font-size:22px;
+}
+
+.author_name{
+	float:left;
+	width:150px;
+}
+
+.author_name b{
+	margin-left:5px;
+}
+
+.author_name a:hover{
+	text-decoration:underline;
 }

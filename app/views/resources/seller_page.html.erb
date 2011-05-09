@@ -1,26 +1,36 @@
 <%= javascript_include_tag "seller" %>
 
 <div class="content">
-  <div class="how_it_work_left_side">
-    <div class="content_back">
-      <div class="categories_box">
-        <b><span><%= link_to @resource.industry, :controller => 'resources', :action => 'view_posts', :filter => @resource.industry %></span> <span><%= link_to @resource.geography, :controller => 'resources', :action => 'view_posts', :filter => @resource.geography %></span></b>
-      </div>
-      <div class="author">
-        <div class="profile_img">
-          <%= (image_tag @resource.user.profile.photo.url(:browse)) unless (@resource.user.profile.blank? || @resource.user.profile.photo_file_name.blank?) %>
-          <%= (image_tag "avatar.png") if @resource.user.profile.blank? || @resource.user.profile.photo_file_name.blank?  %>
-        </div>
-        <div class="author_details">
-          <h2><%= @resource.title %></h2>
-          <% unless @resource.user.profile.name.blank? %><b>By <%= (link_to @resource.user.profile.name, :controller => 'profiles', :action => 'profile_page', :url_slug => @resource.user.profile.url_slug) if @resource.user.profile.is_edited %><% end %></b>
-          <span><% unless @resource.user.profile.key_individual.blank?%> <%= "#{@resource.user.profile.key_individual.title} at #{@resource.user.profile.key_individual.name}" if @resource.user.user_type == "Seller (Individual)" %></span>
+  <div class="content_back post_back">
+    <div class="categories_box">
+      <b><span><%= link_to @resource.industry, :controller => 'resources', :action => 'view_posts', :filter => @resource.industry %></span> <span><%= link_to @resource.geography, :controller => 'resources', :action => 'view_posts', :filter => @resource.geography %></span></b>
+    </div>
+    <div class="author">
+      <div class="post_details">
+        <h2><%= @resource.title %></h2>
+        <div class="Post_author_details">
+          <% unless @resource.user.profile.name.blank? %><b>By <%= (link_to @resource.user.profile.name, :controller => 'profiles', :action => 'profile_page', :url_slug => @resource.user.profile.url_slug) %></b>
+          <% end %>
+            <span><% unless @resource.user.profile.key_individual.blank? %> <%= "#{@resource.user.profile.key_individual.title} at #{@resource.user.profile.key_individual.name}" %> </span>
+            <div class="custom_images">
+              <!--
+              <a class="addthis_button_facebook">
+                <img src="/images/facebook.png" width="16" height="16" alt="Share to Facebook"  border="0" />
+                Facebook
+              </a>
+              -->
+              <a href="" class="addthis_button_twitter">
+                <img src="/images/twitter.png" width="16" height="16" alt="Share to Twitter" border="0" />
+              </a>
+              <a href="http://www.addthis.com/bookmark.php" class="addthis_button_email">
+                <img src="/images/email.png" width="16" height="16" border="0" alt="Email" />
+              </a>
+            </div>
           <% end %>
         </div>
-        <div class="message_purchase">
-           <b>US$<%= @resource.selling_price %></b>
-        </div>
       </div>
+    </div>
+    <div class="left_content">
       <div class="seller_back">
         <div class="login_tab">
           <%= link_to 'Summary','#Summary', :class => 'sign_up seller_links', :id => 'summary_link', :onclick => 'showTab("one");' %>
@@ -72,35 +82,37 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="right_content buttons">
-      <div class="message_purchase">
-        <%= (link_to 'Purchase', { :controller => "purchases", :action => 'resource', :id => @resource.url_slug }, { :class => "green_button"}) unless current_user && current_user.own_resource?(@resource) %>
-        <a class="grey_button" href="#message_form" id="message_link" >Send Message</a>
+
+      <div class="purchase_box">
+        <div class="purchase_price">
+          <b>US$<%= @resource.selling_price %></b>
+          <%= (link_to 'Purchase', { :controller => "purchases", :action => 'resource', :url_slug => @resource.url_slug }, { :class => "green_button"}) unless current_user && current_user.own_resource?(@resource) %>
             <div class="addthis_toolbox">
-              <div class="custom_images">
-                <h2>Share This</h2>
-              <!--
-                <a class="addthis_button_facebook">
-                  <img src="/images/facebook.png" width="16" height="16" alt="Share to Facebook"  border="0" />
-                  Facebook
-                </a>
-              -->
-                <a href="" class="addthis_button_twitter">
-                  <img src="/images/twitter.png" width="16" height="16" alt="Share to Twitter" border="0" />
-                  <span>Twitter</span>
-                </a>
-                <a href="http://www.addthis.com/bookmark.php" class="addthis_button_email">
-                  <img src="/images/email.png" width="16" height="16" border="0" alt="Email" /><span>Email</span></a>
-              </div>
             </div>
+        </div>
       </div>
-      <div class="related_posts">
-        <h2>Related Posts</h2>
-        <% @related_posts.each do |post| %>
+      <div class="purchase_box">
+        <div class="author_image_box">
+          <%= (image_tag @resource.user.profile.photo.url(:browse)) unless (@resource.user.profile.blank? || @resource.user.profile.photo_file_name.blank?) %>
+        <%= (image_tag "avatar.png") if @resource.user.profile.blank? || @resource.user.profile.photo_file_name.blank?  %>
+        </div>
+        <div class="author_name">
+          <% unless @resource.user.profile.name.blank? %><b><%= (link_to @resource.user.profile.name, :controller => 'profiles', :action => 'profile_page', :url_slug => @resource.user.profile.url_slug) if @resource.user.profile.is_edited %><% end %></b>
+        </div>
+        <div class="contact_button">
+          <a class="grey_button" href="#message_form" id="message_link" >Send Message</a>
+        </div>
+      </div>
+      <% unless @related_posts.blank? %>
+      <div class="purchase_box">
+        <div class="related_posts">
+          <h2>Related Posts</h2>
+          <% @related_posts.each do |post| %>
           <%= link_to post.title, :action => 'resources', :action => 'seller_page', :url_slug => post.url_slug %>
-        <% end %>
+          <% end %>
+        </div>
       </div>
+      <% end %>
     </div>
   </div>
 <div style="display: none;">
