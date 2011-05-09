@@ -1,3 +1,31 @@
+<script type="text/javascript" language="javascript" charset="utf-8">
+  $('document').ready(function(){
+    $("#login_link").fancybox({ 
+      'hideOnOverlayClick' : false,
+      'transitionIn'		: 'none',
+      'transitionOut'		: 'none'
+   });
+     $("#fancybox-close").click(function(){
+      window.location.replace("/users/register?opt=login");
+  });
+  $(document).keydown(function(e) {
+    if (e.which == 0 || e.which == 27){
+      location.replace("/users/register");
+    }
+	});
+   <% unless logged_in? %>
+    $("#login_link").trigger('click');
+   <% end %>
+  });
+</script>
+<a id="login_link" href="#login_form" ></a>
+<div style="display: none;">
+  <% unless logged_in? %>
+  <div id="login_form" style="width:700px;height:250px;overflow:hidden;left:-192px;bottom:20px;">
+      <%= render :partial => 'users/register'%>
+  </div>
+  <% end %>
+</div>
 <div class="content">
 		<% unless flash[:notice].blank? %><p class="flash"><%= flash[:notice] %></p><% end %>
     <% flash[:notice] = "" %>
@@ -28,10 +56,10 @@
       </ul>
     <div class="profile_right">
       <div class="tab_container profile_fixed_box">
-        <div id="listings" class="tab_content">
-        </div>
         <div id="messages" class="tab_content">
           <%= render :partial => 'profiles/received_messages' %>
+        </div>
+        <div id="listings" class="tab_content">
         </div>
         <div id="pending-earnings" class="tab_content">
         </div>
@@ -40,9 +68,7 @@
         <div id="paid-earnings" class="tab_content">
         </div>
       </div>
-
       </div>
     </div>
   </div>
 </div>
-
