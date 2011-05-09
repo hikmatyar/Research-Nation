@@ -7,9 +7,9 @@
         <td width="85"><span class="fixed">$<%= resource.selling_price %></span></td>
         <td width="85"><span class="fixed"><%= resource.created_at.strftime("%B %d") %></span></td>
         <td width="85" class="user_profile_buttons"><%= link_to (( image_tag "delete.jpg"), { :controller => 'resources', :action => 'delete', :id => resource.url_slug, :request => "user" }, :confirm => "Are you sure you want to delete this post?" )  %>
-        <td width="85"><span class="fixed"><%= resource.total_orders %></span></td>
-        <td width="85"><span class="fixed"><%= resource.pending_orders %></span></td>
-        <td width="85"><span class="fixed"><%= resource.paid_orders %></span></td>
+        <td width="85"><span class="fixed"><%= resource.total_orders.count %></span></td>
+        <td width="85"><span class="fixed"><%= resource.pending_orders.count %></span></td>
+        <td width="85"><span class="fixed"><%= resource.paid_orders.count %></span></td>
 		    </td>
 		  </tr>
 		<% end %>

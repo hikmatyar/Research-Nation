@@ -1,5 +1,6 @@
 jQuery('document').ready(function(){
-jQuery('#purchase-link').click(function() {
+
+  jQuery('#purchase-link').click(function() {
     jQuery.ajax({
       url: "/users/purchases",
       success: function(data){
@@ -18,6 +19,36 @@ jQuery('#purchase-link').click(function() {
       }
     })
   });
+
+  jQuery('#pending-earnings-link').click(function() {
+    jQuery.ajax({
+      url: "/users/pending_earnings",
+      success: function(data){
+        jQuery("#pending-earnings").show();
+        jQuery("#pending-earnings").html(data);
+      }
+    })
+  });
+
+  jQuery('#paid-earnings-link').click(function() {
+    jQuery.ajax({
+      url: "/users/monthly_earnings",
+      success: function(data){
+        jQuery("#paid-earnings").show();
+        jQuery("#paid-earnings").html(data);
+
+        jQuery('a[id^="earnings-link-"]').bind('click', function() {
+          jQuery(jQuery(this).attr('href')).show();
+        });
+
+        jQuery('a[id^="hide-earnings-"]').bind('click', function() {
+          jQuery(jQuery(this).attr('href')).hide();
+        });
+
+      }
+    })
+  });
+
 });
 
 function showTab(value)

@@ -184,6 +184,11 @@ class UsersController < ApplicationController
     render :partial => "/users/listings", :locals => {:resources => user.resources}, :layout => false
   end
 
+  def pending_earnings
+    user = User.find session[:user]
+    render :partial => "/users/pending_earnings", :locals => {:orders => user.pending_orders}, :layout => false
+  end
+
   private
 
   def check_session

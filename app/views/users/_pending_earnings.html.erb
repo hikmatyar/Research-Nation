@@ -1,0 +1,28 @@
+<div class="users_table">
+	<table border="0" cellspacing="5" cellpadding="5" id=" resources_table" align="left">
+	<tbody>
+	  <%  fees = 0.0;
+        your_earnings = 0.0;%>
+		<% orders.each do |order|%>
+		  <tr>
+        <td width="85"><span class="fixed"><%= order.created_at.strftime("%B %d") %></span></td>
+        <td width="150"><%= link_to ( truncate(order.resource.title, :omission => "...", :length => 25), { :controller => 'resources', :action => 'seller_page', :url_slug => order.resource.url_slug}, { :class => 'fixed' } )  %></td>
+        <td width="85"><span class="fixed"><%= number_to_currency order.resource.selling_price %></span></td>
+        <td width="85"><span class="fixed"><%= number_to_currency(order.resource.selling_price * 0.7) %></span></td>
+        <td width="85"><span class="fixed"><%=  number_to_currency(order.resource.selling_price * 0.3)  %></span></td>
+		    </td>
+		  </tr>
+		  <% fees += (order.resource.selling_price * 0.3) %>
+		  <% your_earnings += (order.resource.selling_price * 0.7) %>
+		<% end %>
+    <tr>
+      <td>Total </td>
+      <td>&nbsp;</td>
+      <td ><%= number_to_currency fees%></td>
+      <td colspan="2"><%= number_to_currency your_earnings%></td>
+    </tr>
+	<tbody>
+</table>
+</div>
+
+

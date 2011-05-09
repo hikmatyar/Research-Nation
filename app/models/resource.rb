@@ -29,15 +29,15 @@ class Resource < ActiveRecord::Base
   end
 
   def total_orders
-    return Order.successful_resource_orders(self.id).count
+    return Order.successful_resource_orders(self.id)
   end
 
   def pending_orders
-    return Order.successful_resource_orders(self.id).payment_pending.count
+    return Order.successful_resource_orders(self.id).payment_pending
   end
 
   def paid_orders
-    return Order.successful_resource_orders(self.id).payment_paid.count
+    return Order.successful_resource_orders(self.id).payment_paid
   end
 
 end

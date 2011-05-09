@@ -55,4 +55,11 @@ class User < ActiveRecord::Base
     length.times { |i| token << chars[rand(chars.length)] }
     token
   end
+
+  def pending_orders
+    orders = []
+    resources.each {|resource| orders << resource.pending_orders.flatten unless resource.pending_orders.blank?}
+    return orders.flatten
+  end
+
 end
