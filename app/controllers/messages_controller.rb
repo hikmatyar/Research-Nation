@@ -6,6 +6,7 @@ class MessagesController < ApplicationController
 
 	def view
 		@message = Message.find params[:id]
+		return redirect_to :controller => 'users', :action => 'profile' unless ( logged_in? || @message.recipient_id == current_user.id )
 	end
 
 	def delete
