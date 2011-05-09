@@ -59,6 +59,8 @@ class ResourcesController < ApplicationController
 
     if resource.save
       resource.update_url_slug
+      profile = resource.user.profile
+      profile.update_profile_information params[:profile], params[:key_individual]
       Attachment.add_file(params[:attachment][:sample], resource.id, "sample") unless params[:attachment][:sample].blank?
       original_file_attachments.each do |key, file|
         Attachment.add_file(file, resource.id, "original")
@@ -138,5 +140,10 @@ class ResourcesController < ApplicationController
   def download
     resource = Resource.find_by_url_slug params[:url_slug]
     @attachments = resource.attachments.original_files
+  end
+
+  def user_terms_and_conditions
+    @resource = Resource.find_by_id params[:id]
+    render :layout => false
   end
 end
