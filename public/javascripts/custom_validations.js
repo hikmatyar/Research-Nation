@@ -5,7 +5,7 @@ function validate_form(){
 	jQuery(".required").each(function(){
 		if(jQuery(this).val()=="")
 		{
-			jQuery(this).after("<span class='error'>Hey, please fill out this field</span>");
+			jQuery(this).after("<span class='error'>Please fill out this field</span>");
 			jQuery(this).addClass("error_field");
 		}
 	});
