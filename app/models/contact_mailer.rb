@@ -16,16 +16,14 @@ class ContactMailer < ActionMailer::Base
     body         :name => name, :email => email, :mail_subject => mail_subject, :message => message
   end
 
-  def profile_email (sender_name, sender_email_address, email_subject, message, recipient)
-      recipients   [ recipient ]
-      subject      "You have a message from #{sender_name}"
-      from         "admin@researchnation.net"
-      bcc          ["admin@researchnation.net"]
-      reply_to      sender_email_address
-      content_type "text/html"
-      body         :sender_name => sender_name,
-                   :subject => email_subject,
-                   :message => message, :sender_email => sender_email_address
+  def message_email (sender_name, email_subject, recipient, id, host)
+    recipients   [ recipient ]
+    subject      "You have a message from #{sender_name}"
+    from         "admin@researchnation.net"
+    bcc          ["admin@researchnation.net"]
+    content_type "text/html"
+    body         :sender_name => sender_name,
+                 :subject => email_subject, :message_id => id, :host => host
     sent_on Time.now
   end
 
