@@ -31,6 +31,9 @@
       var status = charsLeft >= 0 ? '' : '';
       var unit = (Math.abs(charsLeft) != 1 ? "" : "");
       msg = "" + Math.abs(charsLeft) + " " + unit + " " + status;
+      if(charsLeft < 1){
+        msg = "0";
+      }
     }
     return msg;
   }
@@ -61,6 +64,10 @@
       var currLen = $this.val().length;
 
       var maxLen = calcMaxLength($this, o['maxlength']);
+      if(currLen > maxLen){
+        value = $(this).val().slice(0,maxLen-1);
+        $(this).val(value);
+      }
       var charsLeft = maxLen - currLen;
 
       var statusElem = o.status_element ? o.status_element : ("#" + $this.attr('id') + o.status_element_suffix);
