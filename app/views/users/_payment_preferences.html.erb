@@ -1,0 +1,19 @@
+<%= javascript_include_tag 'prototype'%>
+<% form_remote_tag(:url => { :action => "update_payment_preferences"}, :update => "preference_details" ) do %>
+
+       <%= radio_button("payment_preference", "option", "Paypal", :onclick => "jQuery('#paypal-field').show();jQuery('#add-field').hide();") %> Paypal
+       <%= radio_button("payment_preference", "option", "Cheque", :onclick => "jQuery('#paypal-field').hide();jQuery('#add-field').show()") %> Address
+
+       <br><br>
+      <!-- Add a text field to this form -->
+      <div id="paypal-field" style="display:none"> Paypal: <%= text_field "payment_preference", "paypal"%> </div>
+      <div id="add-field" style="display:none"> Address: <%= text_area "payment_preference", "address"%> </div>
+
+      <!-- Add a submit button -->
+      <%= submit_tag "Submit"%>
+
+<% end %>
+
+<div id="preference_details">
+  <%= render :partial => "/users/preference_details", :layout => false %>
+</div>

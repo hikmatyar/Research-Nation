@@ -49,6 +49,16 @@ jQuery('document').ready(function(){
     })
   });
 
+  jQuery('#preferences-link').click(function() {
+    jQuery.ajax({
+      url: "/users/payment_preferences",
+      success: function(data){
+        jQuery("#preferences").show();
+        jQuery("#preferences").html(data);
+      }
+    })
+  });
+
 });
 
 function showTab(value)

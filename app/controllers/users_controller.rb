@@ -196,6 +196,19 @@ class UsersController < ApplicationController
     render :partial => "/users/monthly_earnings", :locals => {:earnings => user.monthly_earnings}, :layout => false
   end
 
+  def payment_preferences
+    @user = User.find session[:user]
+    @payment_preference = @user.payment_preference.blank? ? PaymentPreference.create(:user_id => @user.id) : @user.payment_preference
+    render :partial => "/users/payment_preferences", :layout => false
+  end
+
+  def update_payment_preferences
+    @user = User.find session[:user]
+    @user.payment_preference.update_preferences(params[:payment_preference])
+    flash[:notice] = "Payment preferences updated!"
+    render :partial => "/users/preference_details", :layout => false
+  end
+
   private
 
   def check_session
