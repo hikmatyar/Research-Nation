@@ -18,7 +18,7 @@ class UserMailer < ActionMailer::Base
       from         "no-reply@researchnation.net"
       content_type "text/html"
       body         :email => user.email,
-                   :url => "http://researchnation.net/users/new_password/#{user.id}?email=#{user.email}&token=#{token}"
+                   :url => "http://researchnation.net/users/new_password/#{user.id}?token=#{token}&email=#{user.email}"
     sent_on Time.now
   end
 
