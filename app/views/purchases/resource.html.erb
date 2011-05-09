@@ -73,19 +73,10 @@
          </div>
        </div>
        <h4>Agreement</h4>
-       <% unless @resource.terms_and_conditions.blank? %>
-         <div style="display: none;">
-           <div id="terms_and_conditions" style="width:700px;height:250px;overflow:hidden;left:-192px;bottom:20px;">
-           <div class="policies_filed">
-             <b>Seller Terms</b>
-             <span><%= @resource.terms_and_conditions %></span>
-           </div>
-         </div>
-       <% end %>
       <div class="policies_filed">
         <input id="agree" type="checkbox" name="accept" value="" class="conditions validate-one-required" />
          <div class="terms_and_conditions conditions">
-       <p>By signing up you agree to our </p><%= link_to "Terms of Service,", :controller => "main", :action => "privacy" %><p class="comma"></p><%= link_to "Privacy Policy ", :controller => "main", :action => "privacy" %><% unless @resource.terms_and_conditions.blank? %><p>and</p><a id="terms_link" href="#terms_and_conditions" >any additional terms</a><p> imposed by the seller</p><% end %></div>
+       <p>By signing up you agree to our </p><%= link_to "Terms of Service,", :controller => "main", :action => "privacy" %><p class="comma"></p><%= link_to "Privacy Policy ", :controller => "main", :action => "privacy" %><% unless @resource.terms_and_conditions.blank? %><p>and</p><a id="terms_link" >any additional terms</a><p> imposed by the seller</p><% end %></div>
          </div>
       </div>
     <div class="policies_filed">
@@ -97,5 +88,9 @@
 </div>
 <script type="text/javascript">
   new Validation('purchase-resource');
+  document.getElementById("terms_link").onclick = show_terms;
+    function show_terms(){
+      window.open("/resources/user_terms_and_conditions/<%= @resource.id %>","terms_and_conditions","location=1,status=1,scrollbars=1, width=250,height=250, screenX=900, screenY=250")
+    };
 </script>
 
