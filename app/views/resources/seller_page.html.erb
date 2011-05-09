@@ -131,7 +131,7 @@
             </div>
             <div class="field">
               <label>Message</label>
-              <textarea name="message" rows="8" cols="25" id="contact_message" class="required" /></textarea>
+              <textarea name="message" rows="8" cols="25" id="contact_message" class="required max_len", max_length=1000 /></textarea>
             </div>
             <div class="sign_up_button">
               <%= submit_tag 'Send Message', :id => 'submit' %>
