@@ -24,7 +24,7 @@ class PurchasesController < ApplicationController
 
   def download
     return head(:not_found) unless Order.authorized_access?(current_user.id, params[:id])
-    @resource = Resource.find_by_url_slug params[:id]
+    @resource = Resource.find_by_url_slug params[:url_slug]
   end
 
  def download_file

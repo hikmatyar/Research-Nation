@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_filter :check_session, :only => [:update, :edit, :logout ] 
   before_filter :redirect_to_login, :only => [:purchases]
 
-
+=begin
   def facebook_connect
     facebook_settings = YAML::load(File.open("#{RAILS_ROOT}/config/facebooker.yml"))
     return redirect_to "https://graph.facebook.com/oauth/authorize?client_id=#{facebook_settings[RAILS_ENV]['application_id']}&redirect_uri=http://#{request.host}/users/facebook_oauth_callback&scope=offline_access,publish_stream,user_birthday,user_location, user_education_history,user_location,email,user_work_history" if production_env?
@@ -63,7 +63,7 @@ class UsersController < ApplicationController
       end
     end
   end
-
+=end
   def register
     @user = User.new(params[:user])
     @user_type = params[:user_type]? params[:user_type] : "normal"
@@ -92,27 +92,12 @@ class UsersController < ApplicationController
       end
 
       flash[:notice] = "Please complete your profile by clicking #{link}"
-      return redirect_to :controller => 'users', :action => 'profile', :id => @user.id
-      #return redirect_to :controller => 'resources', :action => 'upload_docs' if session[:post]
+      return redirect_to :controller => 'users', :action => 'profile'
+
       return redirect_to :controller => "resources", :action => "view_posts"
     end
     @user[:password] = ""
     return render :action => 'register'
-  end
-
-  def edit
-    @user = User.find_by_id(params[:id])
-  end
-
-  def update
-    @user = User.find_by_id(params[:id])
-    if @user.update_attributes params[:user]
-      flash[:notice] = "User details Updated"
-      redirect_to :controller => 'admin', :action => 'users'
-    else
-      flash[:error] = "Unable to update User Details"
-      render :action => 'edit', :id => params[:id]
-    end
   end
 
   def authenticate
@@ -125,7 +110,7 @@ class UsersController < ApplicationController
       return redirect_to :controller => 'resources', :action => 'upload_docs' if session[:post]
       return redirect_to :controller => 'profiles', :action => 'create' if session[:profile]
       if session[:message]
-        return redirect_to :controller => 'profiles', :action => 'profile_page', :id => session[:profile_id], :reveal_message => true unless session[:profile_id].blank?
+        #return redirect_to :controller => 'profiles', :action => 'profile_page', :url_slug => session[:profile_id], :reveal_message => true unless session[:profile_id].blank?
         return redirect_to :controller => 'resources', :action => 'seller_page', :id => session[:seller_post], :reveal_message => true unless session[:seller_post].blank?
       end
       return redirect_to :controller => 'users', :action => 'profile'
