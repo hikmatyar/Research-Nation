@@ -1,5 +1,5 @@
 <% @profiles.each do |profile| %>
-	<div class="post posts_tab">
+	<div class="post">
 		<% link_to (:action => 'profile_page', :url_slug => profile.url_slug) do %>
 			<div class="post_title">
         <% unless profile.photo_file_name.blank? %>
@@ -11,13 +11,17 @@
 					<span clas><%= profile.name %></span>
 					<p> <%= profile.country %> </p>
 				</div>
+				<!--
 				<div class="tags_box">
 					<span> <%= profile.industry_focus %> </span>
 				</div>
+				-->
 			</div>
+			<!--
 			<div class="description">
 				<p><%= truncate(profile.description , :omission => "...(more)", :length => 62) %></p>
 			</div>
+			-->
 		<% end %>
 	</div>
 <% end %>
