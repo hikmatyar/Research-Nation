@@ -35,7 +35,7 @@
               <% form_tag (:controller => 'users', :action => 'subscribe_newsletter') do %>
               <div class="send_mail">
                 <label>Sign Up for our monthly newsletter</label>
-                <%= text_field 'user', 'email', :value => "Your email address" %>
+                <%= text_field 'user', 'email', :value => "Your email address", :class => "email_addres" %>
               </div>
              <% end %>
             </div>
@@ -46,7 +46,22 @@
     <%= render :partial => 'contact_links' %>
   </div>
   <script type="text/javascript" language="javascript" charset="utf-8">
-    $("#user_email").click(function(){
-      $(this).val("");
-    });
+
+      if($('#email_address')){
+        $('#email_address').blur(function(){
+          $(this).removeClass("error_field");
+        });
+      }
+
+      $('#user_email').click(function(){
+        $(this).val("");
+        $(this).css("color","#000");
+      });
+
+      $("form").submit(function(){
+        if ($("#user_email").val()==""){
+          $('#user_email').addClass("error_field");
+          return false;
+        }
+      });
   </script>
