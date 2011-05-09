@@ -72,12 +72,12 @@ class ResourcesController < ApplicationController
   end
 
   def edit
-    @resource = Resource.find(params[:id])
+    @resource = Resource.find_by_url_slug(params[:id])
     @user = User.find(params[:user])
   end
 
   def update
-    resource = Resource.find(params[:id])
+    resource = Resource.find_by_url_slug(params[:id])
     unless params[:sample].blank?
       resource.attachments.sample.first.destroy unless resource.attachments.sample.blank?
       Attachment.add_file(params[:sample], resource.id, "sample")
@@ -92,7 +92,7 @@ class ResourcesController < ApplicationController
   end
 
   def delete
-    resource = Resource.find(params[:id])
+    resource = Resource.find_by_url_slug(params[:id])
     sample = resource.attachments.sample
     original_doc = resource.attachments.original_files
     resource.destroy

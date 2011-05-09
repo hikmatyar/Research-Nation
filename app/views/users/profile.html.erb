@@ -21,14 +21,13 @@
     <div class="profile_listing">
       <ul class="tabs browse_tabs">
         <li><a href="#messages">Inbox</a></li>
-        <li><a href="#listings">My Listings</a></li>
+        <li><a href="#listings"  id="listings-link">My Listings</a></li>
         <li><a href="#payments">Payments</a></li>
         <li><a href="#payments" id="purchase-link">Purchases</a></li>
       </ul>
     <div class="profile_right">
       <div class="tab_container profile_fixed_box">
         <div id="listings" class="tab_content">
-          <%= render :partial => "listings", :locals => {:resources => @user.resources}%>
         </div>
         <div id="messages" class="tab_content">
           <%= render :partial => 'profiles/received_messages' %>

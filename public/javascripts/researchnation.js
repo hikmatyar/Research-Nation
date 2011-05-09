@@ -59,6 +59,16 @@ jQuery('document').ready(function(){
     })
   });
 
+  jQuery('#listings-link').click(function() {
+    jQuery.ajax({
+      url: "/users/listings",
+      success: function(data){
+        jQuery("#listings").show();
+        jQuery("#listings").html(data);
+      }
+    })
+  });
+
   if(jQuery('.email_address')){
     jQuery('.email_address').blur(function(){
     jQuery(this).removeClass("error_field");

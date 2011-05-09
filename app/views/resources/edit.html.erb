@@ -2,7 +2,7 @@
 <div class="how_it_work_left_side">
 <div class="seller_back">
 <span class="sign_up">Edit Post</span>
-<%= form_tag ( { :controller => "resources", :action => "update", :id => @resource.id, :user_id => @user.id} , { :multipart => true }) %>
+<%= form_tag ( { :controller => "resources", :action => "update", :id => @resource.url_slug} , { :multipart => true }) %>
   <div class="sign_up_box" style="padding-top:20px;">
     <div class="field">
       <label for = "title">Title</label>
