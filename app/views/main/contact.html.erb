@@ -23,7 +23,7 @@
               </div>
               <div class="field">
                 <label>Message</label>
-                <%= text_area_tag 'message', "" , :size => '30' %>
+                <%= text_area_tag 'message', "" , :size => '30', :class => 'max_len', :max_length => 1000 %>
               </div>
           </div>
         <div class="sign_up_button field" style="margin:10px 0px 0px 0px;">
