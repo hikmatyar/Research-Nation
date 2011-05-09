@@ -8,7 +8,7 @@ jQuery('document').ready(function(){
        jQuery(".edit_profile").submit(function(){
            validated = validate_form();
            if(!validated){
-            jQuery("#profile_submit").after("<p class='profile_error' >Oops! Error time - scroll above for details</p>");
+            jQuery("#profile_submit").after("<p class='profile_error' >Please fill in all required information</p>");
            }
            return validated;
        });
