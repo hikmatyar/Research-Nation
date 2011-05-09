@@ -32,7 +32,7 @@ jQuery('document').ready(function(){
 
   jQuery('#paid-earnings-link').click(function() {
     jQuery.ajax({
-      url: "/users/monthly_earnings",
+      url: "/users/monthly_paid_earnings",
       success: function(data){
         jQuery("#paid-earnings").show();
         jQuery("#paid-earnings").html(data);

@@ -17,6 +17,7 @@
         <td ><%= user.company %></td>
         <td ><%= user.facebook_uid.blank? ? "Email User" : "Facebook User" %></td>
         <td ><%= user.created_at.strftime("%B %d, %Y") %></td>
+        <td ><%= link_to "Payments", {:controller => "admin", :action => "user_payments" , :user_id => user.id} %></td>
       </tr>
     <% end %>
   <tbody>

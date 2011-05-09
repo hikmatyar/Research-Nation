@@ -63,13 +63,25 @@ class User < ActiveRecord::Base
     orders.flatten
   end
 
-
-  def monthly_earnings
+  def monthly_paid_earnings
     orders = []
     resources.each {|resource| orders << resource.paid_orders.flatten unless resource.paid_orders.blank?}
     paid_months = orders.flatten.group_by {|order| order.created_at.at_end_of_month}
     monthly_earnings = []
     paid_months.each do |month, orders|
+      earnings = 0
+      orders.each {|order| earnings += order.resource.selling_price}
+      monthly_earnings << {:month => month, :total_earnings => earnings, :orders => orders }
+    end
+    monthly_earnings
+  end
+
+  def monthly_pending_earnings
+    orders = []
+    resources.each {|resource| orders << resource.pending_orders.flatten unless resource.pending_orders.blank?}
+    pending_months = orders.flatten.group_by {|order| order.created_at.at_end_of_month}
+    monthly_earnings = []
+    pending_months.each do |month, orders|
       earnings = 0
       orders.each {|order| earnings += order.resource.selling_price}
       monthly_earnings << {:month => month, :total_earnings => earnings, :orders => orders }

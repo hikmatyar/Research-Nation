@@ -15,6 +15,7 @@ class AdminController < ApplicationController
     @experts= User.paginate :page => params[:page], :order => 'created_at DESC', :conditions => ['is_expert = ?', true]
   end
 =end
+
   def posts
     @posts = Resource.paginate :page => params[:page], :order => 'created_at DESC'
   end
@@ -46,6 +47,10 @@ class AdminController < ApplicationController
 
   def messages
     @messages = (Message.find_all_by_recipient_id current_user.id)
+  end
+
+  def user_payments
+    @user = User.find params[:user_id]
   end
 
 private
