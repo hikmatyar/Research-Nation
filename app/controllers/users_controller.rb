@@ -194,6 +194,11 @@ class UsersController < ApplicationController
     render :partial => "/users/purchases", :locals => {:purchases => purchases }, :layout => false
   end
 
+  def listings
+    user = User.find session[:user] if logged_in?
+    render :partial => "/users/listings", :locals => {:resources => user.resources, :user => user }, :layout => false
+  end
+
   private
 
   def check_session
