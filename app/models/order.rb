@@ -12,6 +12,19 @@ class Order < ActiveRecord::Base
       {:conditions => ["success=? and buyer_id =?",true, user_id], :order => "created_at DESC"}
     end)
 
+
+    named_scope :successful_resource_orders, (lambda do |resource_id| {:conditions => ["resource_id =? AND success=?", resource_id, true]}
+    end)
+
+    named_scope :payment_pending, :conditions => "status = 'pending'"
+    named_scope :payment_paid, :conditions => "status = 'paid'"
+
+    def self.authorized_access?(user_id, resource_slug)
+      resource = Resource.find_by_url_slug resource_slug
+      order = self.find(:first, :conditions => ["success=? and buyer_id =? and resource_id =?",true, user_id, resource.id])
+      order.success?
+    end
+
     def purchase
       response = GATEWAY.purchase(price_in_cents, credit_card, purchase_options)
       transactions.create!(:action => "purchase", :amount => price_in_cents, :response => response)
@@ -21,12 +34,6 @@ class Order < ActiveRecord::Base
 
     def price_in_cents
       (resource.selling_price*100).round
-    end
-
-    def self.authorized_access?(user_id, resource_slug)
-      resource = Resource.find_by_url_slug resource_slug
-      order = self.find(:first, :conditions => ["success=? and buyer_id =? and resource_id =?",true, user_id, resource.id])
-      order.success?
     end
 
     private

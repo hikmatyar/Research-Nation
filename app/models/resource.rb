@@ -4,7 +4,7 @@ class Resource < ActiveRecord::Base
   has_many :attachments
   has_many :votes
 
-  has_one :order
+  has_many :orders
 
   acts_as_paranoid
 
@@ -26,6 +26,18 @@ class Resource < ActiveRecord::Base
 
   def to_params
     "#{id}-#{title.parameterize}"
+  end
+
+  def total_orders
+    return Order.successful_resource_orders(self.id).count
+  end
+
+  def pending_orders
+    return Order.successful_resource_orders(self.id).payment_pending.count
+  end
+
+  def paid_orders
+    return Order.successful_resource_orders(self.id).payment_paid.count
   end
 
 end

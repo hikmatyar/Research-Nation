@@ -180,8 +180,8 @@ class UsersController < ApplicationController
   end
 
   def listings
-    user = User.find session[:user] if logged_in?
-    render :partial => "/users/listings", :locals => {:resources => user.resources, :user => user }, :layout => false
+    user = User.find session[:user]
+    render :partial => "/users/listings", :locals => {:resources => user.resources}, :layout => false
   end
 
   private
