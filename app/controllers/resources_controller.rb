@@ -60,24 +60,25 @@ class ResourcesController < ApplicationController
     if resource.save
       resource.update_url_slug
       Attachment.add_file(params[:attachment][:sample], resource.id, "sample") unless params[:attachment][:sample].blank?
-      #Attachment.add_file(params[:original], resource.id, "original")  unless params[:original].blank?
       original_file_attachments.each do |key, file|
         Attachment.add_file(file, resource.id, "original")
       end
       session[:user_details] = nil
       session[:post] = nil
-      flash[:notice] = "Thank you! Your post has been created"
       return redirect_to :action => 'seller_page', :url_slug => resource.url_slug
     end
   end
 
   def edit
-    @resource = Resource.find_by_url_slug(params[:id])
-    @user = User.find(params[:user])
+    if logged_in? && ( session[:user] == current_user.id || current_user.is_admin? )
+      @resource = Resource.find_by_url_slug(params[:url_slug])
+    else
+      return redirect_to_login
+    end
   end
 
   def update
-    resource = Resource.find_by_url_slug(params[:id])
+    resource = Resource.find_by_url_slug(params[:url_slug])
     unless params[:sample].blank?
       resource.attachments.sample.first.destroy unless resource.attachments.sample.blank?
       Attachment.add_file(params[:sample], resource.id, "sample")
@@ -92,7 +93,7 @@ class ResourcesController < ApplicationController
   end
 
   def delete
-    resource = Resource.find_by_url_slug(params[:id])
+    resource = Resource.find_by_url_slug(params[:url_slug])
     sample = resource.attachments.sample
     original_doc = resource.attachments.original_files
     resource.destroy
@@ -135,7 +136,7 @@ class ResourcesController < ApplicationController
   end
 
   def download
-    resource = Resource.find params[:id]
+    resource = Resource.find_by_url_slug params[:url_slug]
     @attachments = resource.attachments.original_files
   end
 end
