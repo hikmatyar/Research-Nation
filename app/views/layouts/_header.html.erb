@@ -15,7 +15,7 @@
             <% end %>
             <% if logged_in? %>
               <td width="20%">
-                <%= (link_to 'Profile', :controller => 'users', :action => 'profile' ) %>
+                <%= (link_to 'Dashboard', :controller => 'users', :action => 'profile' ) %>
               </td>
             <% end %>
             <% unless logged_in? %>
