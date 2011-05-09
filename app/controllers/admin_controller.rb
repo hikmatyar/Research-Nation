@@ -3,8 +3,7 @@ class AdminController < ApplicationController
   before_filter :redirect_to_admin_login, :get_counts
 
   def dashboard
-    @users = User.paginate :page => params[:page]
-    @resources = Resource.all
+    redirect_to :action => "users"
   end
 
   def users
