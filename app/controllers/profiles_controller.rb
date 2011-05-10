@@ -14,12 +14,18 @@ class ProfilesController < ApplicationController
 
   def search_results
     choices = params[:choices].split(",") unless params[:choices].blank?
-
-    conditions   = "profile_type ='seller'"
-    conditions  += " AND industry_focus = '#{params[:industry].strip}'" if params[:industry].downcase != "all"
-    conditions  += " AND country = '#{params[:country].strip}' " if params[:country].strip.downcase != "all"
-    conditions  += " AND profile_type = '#{params[:profile_type].strip}' " if params[:profile_type].strip.downcase != "all"
-    conditions  += "AND is_edited = 1 "
+    conditions = ''
+    conditions  = "country = '#{params[:country].strip}' " if params[:country].strip.downcase != "all"
+    if params[:profile_type].strip.downcase != "all" and conditions.size > 0
+      conditions  += " AND profile_type = '#{params[:profile_type].strip.downcase}' "
+    elsif params[:profile_type].strip.downcase != "all"
+      conditions  = "profile_type = '#{params[:profile_type].strip.downcase}' "
+    end
+    if conditions.size > 0
+      conditions  += " AND is_edited = 1 "
+    else
+      conditions = "is_edited = 1"
+    end
 
     @profiles = []
     profiles_list = Profile.find :all, :conditions => conditions, :order => 'created_at DESC'

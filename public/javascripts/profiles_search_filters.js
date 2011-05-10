@@ -26,7 +26,7 @@ jQuery('document').ready(function(){
 	});
 
   var callback_url = function(choices){
-    var call_to_url = "/profiles/search_results?country="+ jQuery("#location_country").val()+"&profile_type= "+jQuery("#profile_type").val()+"&industry="+jQuery("#industry_focus").val();
+    var call_to_url = "/profiles/search_results?country="+ jQuery("#location_country").val()+"&profile_type= "+jQuery("#profile_type").val();
 		if (choices.length  > 0) {
       return (call_to_url +"&choices="+choices);
     }
