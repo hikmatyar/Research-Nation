@@ -723,6 +723,10 @@ a:focus {
 	margin-left:15px;
 }
 
+.message_heading_box h1{
+    font-size:18px !important;
+}
+
 .create_heading_box{
 	float;left;
 	width:100%;
@@ -735,8 +739,14 @@ a:focus {
 }
 
 .create_heading_box b{
-	font-size:18px;
-	font-weight: normal;
+    color: #648310 !important;
+    float: left;
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 18px;
+    margin-top: -10px;
+    text-align: justify;
+    width: 425px;
 }
 
 .facebook_back{
@@ -2294,6 +2304,7 @@ html ul.tabs li.active, html ul.tabs li.active {
 .privacy_box p{
     margin-left:10px;
     margin-right:10px;
+    text-align: justify;
 }
 
 .privacy_box b{
@@ -2326,7 +2337,7 @@ html ul.tabs li.active, html ul.tabs li.active {
 }
 
 .how_it_work_left_side b{
-	color:#AC7333 !important;
+	color:#AC7333;
 	margin-bottom:0px;
 }
 
@@ -2575,9 +2586,10 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 }
 
 .sender_image{
-    float:left;
-    width:63px;
-    overflow:hidden;
+    float: left;
+    margin-right: 10px;
+    overflow: hidden;
+    width: 50px;
 }
 
 .receipient, .sender{
@@ -2590,7 +2602,7 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 .sender_image b{
     float: left;
     font-size: 12px;
-    text-align: justify;
+    text-align: center;
     font-weight:normal;
     margin-top:5px;
     width: 100%;
@@ -3455,6 +3467,7 @@ div.fbFooterBorder{
 	margin-top: 2px !important;
 	text-align: right !important;
 	width: 83px !important;
+	color:#525252 !important;
 }
 
 .purchase_box{

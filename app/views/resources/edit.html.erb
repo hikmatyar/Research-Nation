@@ -1,52 +1,53 @@
 <div class="content">
-<div class="how_it_work_left_side">
-<div class="seller_back">
-<span class="sign_up">Edit Post</span>
-<%= form_tag ( { :controller => "resources", :action => "update", :id => @resource.url_slug} , { :multipart => true }) %>
-  <div class="sign_up_box" style="padding-top:20px;">
-    <div class="field">
-      <label for = "title">Title</label>
-      <%= text_field 'resource', 'title', :class => 'text_field' %>
-    </div>
-    <div class="field">
-      <label for="summary">Summary</label>
-      <%= text_area 'resource', 'description', :class => 'text_field'%>
-    </div>
-    <div class="field">
-      <label for="selling_price">Selling Price</label>
-      <%= text_field 'resource', 'selling_price', :disabled => true, :class => 'text_field' %>
-    </div>
-    <div class="field">
-      <label for="industry">Industry</label>
-      <%= text_field 'resource', 'industry', :class => 'text_field'%>
-    </div>
-    <div class="field">
-      <label for="geography">Geography</label>
-      <%= text_field 'resource', 'geography', :class => 'text_field'%>
-    </div>
-    <div class="field">
-      <label for="sources">Sources</label>
-      <%= text_area 'resource', 'sources', :class => 'text_field'%>
-    </div>
-    <div class="field">
-      <label for="terms">Terms and Conditions</label>
-      <%= text_area 'resource', 'terms_and_conditions', :class => 'text_field'%>
-    </div>
-    <div class="field">
-      <label for="terms">Sample</label>
-      <%= file_field_tag 'sample', :class => 'text_field'%>
-    </div>
-    <% unless @resource.attachments.sample.blank? %>
-    <div class="sample"> 
-      <%= link_to "Delete Sample", :controller => 'resources', :action => 'remove_sample', :id => @resource.attachments.sample.first.id unless @resource.attachments.sample.blank? %>
-    <% end %>
-    </div>
- </div>
-  
-<div class="sign_up_button">
-  <%= submit_tag 'Update', :class => "green_button" %>
-</div>
-
-</div>
-</div>
+  <div class="how_it_work_left_side">
+    <div class="seller_back">
+      <div class="create_heading_box">
+        <h1>Edit Your Post.</h1>
+        <b>Please feel free to many changes to your post by typing below. Price can not be edited, all other fields can.
+        </b>
+      </div>
+      <%= form_tag ( { :controller => "resources", :action => "update", :id =>  @resource.url_slug} , { :multipart => true }) %>
+        <div class="sign_up_box" style="padding-top:20px;">
+          <div class="field">
+            <label for = "title">Title</label>
+            <%= text_field 'resource', 'title', :class => 'text_field' %>
+          </div>
+          <div class="field">
+            <label for="summary">Summary</label>
+            <%= text_area 'resource', 'description', :class => 'text_field'%>
+          </div>
+          <div class="field">
+            <label for="selling_price">Selling Price</label>
+            <%= text_field 'resource', 'selling_price', :disabled => true, :class => 'text_field' %>
+          </div>
+          <div class="field">
+            <label for="industry">Industry</label>
+            <%= text_field 'resource', 'industry', :class => 'text_field'%>
+          </div>
+          <div class="field">
+            <label for="geography">Geography</label>
+            <%= text_field 'resource', 'geography', :class => 'text_field'%>
+          </div>
+          <div class="field">
+            <label for="sources">Sources</label>
+            <%= text_area 'resource', 'sources', :class => 'text_field'%>
+          </div>
+          <div class="field">
+            <label for="terms">Terms and Conditions</label>
+            <%= text_area 'resource', 'terms_and_conditions', :class => 'text_field'%>
+          </div>
+          <div class="field">
+            <label for="terms">Sample</label>
+            <%= file_field_tag 'sample', :class => 'text_field'%>
+          </div>
+        <% unless @resource.attachments.sample.blank? %>
+            <div class="sample">
+              <%= link_to "Delete Sample", :controller => 'resources', :action =>       'remove_sample', :id => @resource.attachments.sample.first.id unless      @resource.attachments.sample.blank? %>
+          <% end %>
+        </div>
+        <div class="submit_button">
+          <%= submit_tag 'Update', :class => "green_button" %>
+        </div>
+     </div>
+  </div>
 </div>
