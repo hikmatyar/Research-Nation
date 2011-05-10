@@ -1,6 +1,6 @@
 <% @profiles.each do |profile| %>
 	<div class="post">
-		<% link_to (:action => 'profile_page', :url_slug => profile.url_slug) do %>
+		<div>
 			<div class="post_title">
         <% unless profile.photo_file_name.blank? %>
 				  <%= (image_tag profile.photo.url(:browse)) %>
@@ -8,7 +8,7 @@
 				  <%= (image_tag "avatar.png")%>
 				<% end %>
 				<div class="user_name">
-					<span clas><%= profile.name %></span>
+					<span clas><%= link_to profile.name, :action => 'profile_page', :url_slug => profile.url_slug %></span>
 					<p> <%= profile.country %> </p>
 				</div>
 				<!--
@@ -22,6 +22,6 @@
 				<p><%= truncate(profile.description , :omission => "...(more)", :length => 62) %></p>
 			</div>
 			-->
-		<% end %>
+		</div>
 	</div>
 <% end %>

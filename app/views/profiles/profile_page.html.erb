@@ -8,10 +8,10 @@
       <div class="categories_box">
         <b>
 		      <% unless @profile.industry_focus.blank? %>
-		        <span><%= link_to ( @profile.company_type, :controller => "profiles", :action => "view_profile_list", :filter => @profile.company_type )  %></span>
+		        <span><%= link_to ( @profile.company_type, :controller => "profiles", :action => "view_profile_list", :filter => @profile.company_type ) unless @profile.company_type.blank? %></span>
 		      <% end %>
 		      <% unless @profile.research_type.blank? %>
-		        <span><%= link_to ( @profile.services, :controller => "profiles", :action => "view_profile_list", :filter => @profile.services) %></span>
+		        <span><%= link_to ( @profile.services, :controller => "profiles", :action => "view_profile_list", :filter => @profile.services) unless @profile.services.blank? %></span>
 		      <% end %>
         </b>
       </div>
@@ -23,7 +23,7 @@
         <div class="author_details">
           <h2 style="margin-top:25px;"><%= @profile.name %></h2>
           <span><%= @profile.city %>, <%= @profile.country %></span>
-          <% unless @profile.user.user_type == "Seller (Company)" || @profile.key_individual.blank? %>
+          <% unless @profile.user.user_type == "company" || @profile.key_individual.blank? %>
             <span class="field_text"><%= @profile.key_individual.title %>, <%= @profile.key_individual.name %></span>
           <% end %>
         </div>

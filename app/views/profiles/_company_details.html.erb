@@ -31,8 +31,8 @@
     <span id="tab2" class="sign_up" style="" onclick="showTab('one');" href="#">Posts</span>
     <div class="sign_up_box">
       <% @profile.user.resources.each do |post| %>
-      <div class="field1">
-        <span><%= link_to (  post.title, { :controller => 'resources', :action => 'seller_page', :url_slug => post.url_slug },  { :class => "web_link" }) %></span>
+      <div class="field1 user_links">
+        <%= link_to (  post.title, { :controller => 'resources', :action => 'seller_page', :url_slug => post.url_slug },  { :class => "web_link" }) %>
       </div>
       <% end %>
     </div>
