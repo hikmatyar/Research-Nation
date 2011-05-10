@@ -39,7 +39,7 @@
       <div class="seller_back">
         <div class="login_tab">
           <%= link_to 'Summary','#Summary', :class => 'sign_up seller_links', :id => 'summary_link', :onclick => 'showTab("one");' %>
-          <%= (link_to 'Sources','#Sources', :class => 'login seller_links', :id => 'sources_link', :onclick => 'showTab("four");') unless @resource.terms_and_conditions.blank? %>
+          <%= (link_to 'Sources','#Sources', :class => 'login seller_links', :id => 'sources_link', :onclick => 'showTab("four");') unless @resource.sources.blank? %>
           <%= (link_to 'Seller','#Seller', :class => 'login seller_links', :id => 'seller_link', :onclick => 'showTab("two");') unless @resource.user.profile.is_edited %>
           <%= (link_to 'Sample','#Sample', :class => 'login seller_links', :id => 'sample_link', :onclick => 'showTab("three");') if @sample %>
 
@@ -82,7 +82,7 @@
             <span class="sign_up">Reviews & Comments</span>
             <div style="display: block;" class="sign_up_box">
               <div id="fb-root"></div>
-              <script src="http://connect.facebook.net/en_US/all.js#appId=175351785849270&amp;xfbml=1"></script><fb:comments href="http://<%= request.host %>/resources/seller_page/<%= @resource.id %>" num_posts="2" height="150" width="516"></fb:comments>
+              <script src="http://connect.facebook.net/en_US/all.js#appId=175351785849270&amp;xfbml=1"></script><fb:comments href="http://<%= request.host %>/post/<%= @resource.url_slug %>" num_posts="2" height="150" width="516"></fb:comments>
             </div>
           </div>
         </div>
