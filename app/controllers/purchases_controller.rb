@@ -5,7 +5,7 @@ class PurchasesController < ApplicationController
   before_filter :redirect_to_login
 
   def resource
-    @resource = Resource.find_by_url_slug params[:id]
+    @resource = Resource.find_by_url_slug params[:url_slug]
     @order = Order.new(params[:order])
     if request.post?
       @order.ip_address = request.remote_ip
