@@ -12,7 +12,7 @@
     <% @posts.each_with_index do |post, index|%>
       <tr>
         <td ><%= (@resources_count - index).to_s %></td>
-        <td><%= link_to post.title, :controller => 'resources', :action => 'edit', :id => post.id, :user => post.user.id  %></td>
+        <td><%= link_to post.title, :controller => 'resources', :action => 'edit', :id => post.id  %></td>
         <td ><%= post.user.profile.name %></td>
         <td ><%= post.selling_price %></td>
         <td ><%= post.created_at.strftime("%B %d, %Y") %></td>
