@@ -10,20 +10,18 @@ class PurchasesController < ApplicationController
     if request.post?
       @order.ip_address = request.remote_ip
       @order.buyer_id = current_user.id
-      @order.resource_id = @resource.user_id
+      @order.resource_id = @resource.id
       if @order.save
         if @order.purchase
           UserMailer.deliver_successful_purchase_email(current_user, @resource)
-          return redirect_to :action => "download", :id => @resource.url_slug
-        else
-          render :text => "failure :("
+          return redirect_to :action => "download", :url_slug => @resource.url_slug
         end
       end
     end
   end
 
   def download
-    return head(:not_found) unless Order.authorized_access?(current_user.id, params[:id])
+    return head(:not_found) unless Order.authorized_access?(current_user.id, params[:url_slug])
     @resource = Resource.find_by_url_slug params[:url_slug]
   end
 

@@ -31,7 +31,11 @@ class Order < ActiveRecord::Base
     def purchase
       response = GATEWAY.purchase(price_in_cents, credit_card, purchase_options)
       transactions.create!(:action => "purchase", :amount => price_in_cents, :response => response)
-      self.update_attribute(:success, true) if response.success?
+      if response.success?
+        self.update_attribute(:success, true)
+      else
+          errors.add self.transactions.last.message
+      end
       response.success?
     end
 

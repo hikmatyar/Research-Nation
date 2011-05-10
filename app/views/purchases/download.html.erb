@@ -8,7 +8,7 @@
       <% @resource.attachments.original_files.each_with_index do |attachment,index| %>
       <div class="sign_up_box">
         <div class="download_image">
-          <a href="/purchases/download_file/<%=params[:id]%>?attachment=<%= attachment.id%>"><%= (image_tag "pdf.png") if attachment.original_content_type.match("pdf")%>
+          <a href="/purchases/download_file/<%=params[:url_slug]%>?attachment=<%= attachment.id%>"><%= (image_tag "pdf.png") if attachment.original_content_type.match("pdf")%>
        <%= (image_tag "Word_Doc_Icon.png") if attachment.original_content_type.match("doc") %>
        <%= (image_tag "excel-2010-icon.1.png") if attachment.original_content_type.match("xls") || attachment.original_content_type.match("excel") %>
        <%= (image_tag "file-extension-pps-powerpoint_icon.png") if attachment.original_content_type.match("ppt") %>
@@ -26,7 +26,7 @@
         <b>Stay Informed</b>
         <div class="sign_up_box">
           <div class="email_box">
-            <% form_tag (:controller => 'users', :action => 'subscribe_newsletter') do %>
+            <% form_tag(:controller => 'users', :action => 'subscribe_newsletter') do %>
               <%= text_field 'user', 'email', :value => "Enter Your Email Address" %>
            <% end %>
           </div>

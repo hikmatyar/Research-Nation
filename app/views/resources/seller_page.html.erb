@@ -17,7 +17,7 @@
               <%= @resource.user.profile.name %>,
             <% end%>
           <% end %>
-            <span><% if @resource.user.company_seller? %>
+            <span><% if @resource.user.company? %>
               <% unless @resource.user.profile.city.blank? %> <%= "#{@resource.user.profile.city}, #{@resource.user.profile.country}" %> <% end %>
             <% else%>
             <% unless @resource.user.profile.key_individual.blank? %> <%= "#{@resource.user.profile.key_individual.title} at #{@resource.user.profile.key_individual.name}" %> <% end %>

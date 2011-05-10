@@ -74,7 +74,7 @@
        </div>
        <h4>Agreement</h4>
       <div class="policies_filed">
-        <input id="agree" type="checkbox" name="accept" value="" class="conditions validate-one-required" />
+        <input id="agree" type="checkbox" name="accept" value="1" class="conditions validate-one-required" />
          <div class="terms_and_conditions conditions">
        <p>By signing up you agree to our </p><%= link_to "Terms of Service,", :controller => "main", :action => "privacy" %><p class="comma"></p><%= link_to "Privacy Policy ", :controller => "main", :action => "privacy" %><% unless @resource.terms_and_conditions.blank? %><p>and</p><a id="terms_link" >any additional terms</a><p> imposed by the seller</p><% end %></div>
          </div>
