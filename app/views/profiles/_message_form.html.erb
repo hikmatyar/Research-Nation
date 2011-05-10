@@ -8,7 +8,6 @@
         <% session[:message] = true %>
     </div>
        <% else %>
-    <div id="message"></div>
     <% session[:message] = nil %>
     <% session[:profile_id] = nil %>
     <%= form_remote_tag ( :update => 'message',
