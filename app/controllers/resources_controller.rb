@@ -99,7 +99,7 @@ class ResourcesController < ApplicationController
     sample = resource.attachments.sample
     original_doc = resource.attachments.original_files
     resource.destroy
-    flash[:notice] = "Got it. Your post has been deleted"
+    #flash[:notice] = "Got it. Your post has been deleted"
     return redirect_to :controller => 'users', :action => 'profile' if params[:request] == "user"
     return redirect_to :controller => 'admin', :action => 'posts' if params[:request] == "admin"
   end
@@ -113,9 +113,10 @@ class ResourcesController < ApplicationController
   end
 
   def filter_results
+    price = params[:price].gsub("$","")
     geography = params[:geography].blank? ? Resource.all(:select => 'distinct(geography)').collect(&:geography) : params[:geography].split(",");
     industries = params[:industry].blank? ? Resource.all(:select => 'distinct(industry)').collect(&:industry) : params[:industry].split(",");
-    @resources = Resource.find :all, :conditions => [ 'selling_price <= ? and geography IN(?) and industry IN(?)',  params[:price], geography , industries ], :order => 'selling_price ASC'
+    @resources = Resource.find :all, :conditions => [ 'selling_price <= ? and geography IN(?) and industry IN(?)',  price, geography , industries ], :order => 'selling_price ASC'
     render :partial => 'posts'
   end
 
