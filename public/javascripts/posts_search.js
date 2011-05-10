@@ -42,10 +42,19 @@ jQuery('document').ready(function(){
 
       url = "/resources/filter_results?industry="+ industries.join(",") +"&geography="+ geographies.join(",") +"&price=" + jQuery(":range").val().replace("$","");
 
-      jQuery("#industry_result").append('<p> ' + formatted +'</p> <span id="industry_tag'+count+'"></span>');
+      jQuery("#industry_result").append('<div><p> ' + formatted +'</p> <span id="industry_tag'+count+'"></span><img src="/images/fancy_close.png" /></div>');
       new Ajax.Updater('industry_tag'+count, "/resources/industries_count?industry="+formatted, {asynchronous: true,});
       count++;
       new Ajax.Updater('left_content', url, {asynchronous: true,});
+
+      jQuery("#industry_result img").click(function(){
+        jQuery(this).parent().remove();
+        industries = [];
+        populate_array_text();
+        url = "/resources/filter_results?industry="+ industries.join(",") +"&geography="+ geographies.join(",") +"&price=" + jQuery(":range").val();
+        new Ajax.Updater('left_content', url, {asynchronous: true,});
+      });
+
       jQuery('#industry').val("");
   });
 
@@ -56,10 +65,19 @@ jQuery('document').ready(function(){
 
       url = "/resources/filter_results?industry="+ industries.join(",") +"&geography="+ geographies.join(",") +"&price=" + jQuery(":range").val();
 
-      jQuery("#geography_result").append('<p> ' + formatted +'</p> <span id="geography_tag'+count+'"></span>');
+      jQuery("#geography_result").append('<div><p> ' + formatted +'</p> <span id="geography_tag'+count+'"></span><img src="/images/fancy_close.png" /></div>');
       new Ajax.Updater('geography_tag'+count, "/resources/geography_count?geography="+formatted, {asynchronous: true,});
       count++;
       new Ajax.Updater('left_content', url, {asynchronous: true,});
+
+      jQuery("#geography_result img").click(function(){
+        jQuery(this).parent().remove();
+        geographies = [];
+        populate_array_text();
+        url = "/resources/filter_results?industry="+ industries.join(",") +"&geography="+ geographies.join(",") +"&price=" + jQuery(":range").val();
+        new Ajax.Updater('left_content', url, {asynchronous: true,});
+      });
+
       jQuery('#geography').val("");
   });
 
