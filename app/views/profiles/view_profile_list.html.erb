@@ -6,10 +6,10 @@
   <div class="profile_tabs">
     <ul class="tabs">
       <li style="-moz-border-radius-topleft: 10px !important; -webkit-border-top-left-radius: 10px !important;">
-        <%= link_to 'Posts', { :controller => 'resources', :action => 'view_posts' }, { :class => 'view_posts' } %>
+        <%= link_to 'Posts', { :controller => 'resources', :action => 'view_posts' }, { :class => 'posts' } %>
       </li>
       <li style="-moz-border-radius-topright: 10px !important; -webkit-border-top-right-radius: 10px !important;">
-        <%= link_to 'Profiles', { :controller => 'profiles', :action => 'view_profile_list'}, { :class => 'view_profile_list' }%>
+        <%= link_to 'Profiles', { :controller => 'profiles', :action => 'view_profile_list'}, { :class => 'profiles' }%>
       </li>
     </ul>
   </div>
@@ -35,11 +35,6 @@
           <%= country_select("location", "country", ["All"], { :include_blank => false }) %>
         </div>
         <div class="field result_count" id = "location_result" ></div>
-        <div class="field price_rang">
-          <h2>Industry Focus</h2>
-          <%= select_tag "industry_focus", options_for_select(@industry_focus , "All" ) %>
-        </div>
-        <div class="field result_count" id = "industry_focus_result"></div>
           <div class="field price_rang">
           <h2>Interested In</h2>
           <div class="field Interested_field">
