@@ -8,7 +8,8 @@ $("#resource_industry").show_char_limit(25);
 $("#resource_geography").show_char_limit(25);
 $("#resource_terms_and_conditions").show_char_limit(3000);
 $("#resource_sources").show_char_limit(3000);
-$("#user_about_me").show_char_limit(3000);
+$("#profile_description").show_char_limit(3000);
+
 
 
 $("#add_another_file").click(function(){
