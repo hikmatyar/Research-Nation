@@ -1,14 +1,14 @@
 <div class="users_table">
 	<table border="0" cellspacing="5" cellpadding="5" id=" posts_table" align="left">
   	<tbody>
-  		<% purchases.each.each do |order, index|%>
-  		  <tr>
-  		    <td><%= order.resource.title%></td>
-  		    <td >$ <%= order.resource.selling_price %></td>
-  		    <td ><%= order.created_at.strftime("%B %d") %></td>
-          <td><%= link_to "Download", :controller => 'purchases', :action => 'download', :url_slug => order.resource.url_slug%></td>
-  		  </tr>
-  		<% end %>
+        <% purchases.each.each do |order, index|%>
+          <tr>
+            <td width="200"><%= order.resource.title%></td>
+            <td width="200">$ <%= order.resource.selling_price %></td>
+            <td width="200"><%= order.created_at.strftime("%B %d") %></td>
+            <td width="200"><%= link_to (image_tag "download.jpg"), :controller => 'purchases', :action => 'download', :url_slug => order.resource.url_slug%></td>
+          </tr>
+        <% end %>
   	<tbody>
 </table>
 </div>
