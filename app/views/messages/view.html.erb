@@ -8,14 +8,15 @@
 	  <div class="receipient">
       <div class="sender_image">
         <%= image_tag "avatar.png", :width => 100, :height => 100 if @message.recipient.profile.photo_file_name.blank? %>
-        <b><%= @message.recipient.profile.name %></b>
+        <%= image_tag @message.recipient.profile.photo.url, :width => 100, :height => 100 unless @message.recipient.profile.photo_file_name.blank? %>
+        <b><%= truncate(@message.recipient.profile.name, :omission => "...", :length => 10) %></b>
       </div>
       <span><%= @message.body %></span>
       <div class="sender">
         <div class="sender_image">
           <%= image_tag @message.recipient.profile.photo.url(:edit), :width => 100, :height => 100 unless @message.recipient.profile.photo_file_name.blank? %>
           <%= image_tag "avatar.png", :width => 100, :height => 100 if @message.sender.profile.photo_file_name.blank? %>
-           <b><%= @message.sender.profile.name %></b>
+           <b><%= truncate ( @message.sender.profile.name, :omission => "...", :length => 10) %></b>
          </div>
 	      <div class="register_form">
           <%= javascript_include_tag :defaults %>

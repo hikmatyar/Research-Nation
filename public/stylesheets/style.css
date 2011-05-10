@@ -2589,7 +2589,7 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
     float: left;
     margin-right: 10px;
     overflow: hidden;
-    width: 50px;
+    width: 60px;
 }
 
 .receipient, .sender{
@@ -2613,7 +2613,7 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
     font-size: 16px;
     margin-left: 10px;
     text-align: justify;
-    width: 380px;
+    width: 365px;
 }
 
 .receipient img, .sender img{
