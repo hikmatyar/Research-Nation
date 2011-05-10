@@ -17,7 +17,7 @@ jQuery('document').ready(function(){
 	if(jQuery('.flash')){
 
 		if (location.href.match("profile")){
-			setTimeout("jQuery('.flash').fadeOut(120000);",1000);
+			setTimeout("jQuery('.flash').fadeOut(60000);",1000);
 		}
 		else{
 			setTimeout("jQuery('.flash').fadeOut(7500);",1000);
