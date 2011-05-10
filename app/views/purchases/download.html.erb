@@ -21,14 +21,22 @@
           <span>Click on the icon to begin download</a></span>
         </div>
       </div>
+    <div>
+  </div>
+</div>
       <% end %>
-      <div class="heading">
-        <b>Stay Informed</b>
-        <div class="sign_up_box">
-          <div class="email_box">
-            <% form_tag(:controller => 'users', :action => 'subscribe_newsletter') do %>
-              <%= text_field 'user', 'email', :value => "Enter Your Email Address" %>
-           <% end %>
+      <div class="facebook_back">
+        <div class="heading">
+          <b>Stay Informed</b>
+          <div class="sign_up_box">
+            <div class="email_box">
+              <% form_tag (:controller => 'users', :action => 'subscribe_newsletter') do %>
+              <div class="send_mail">
+                <label>Sign Up for our monthly newsletter</label>
+                <%= text_field 'user', 'email', :value => "Your email address", :class => "email_addres" %>
+              </div>
+             <% end %>
+            </div>
           </div>
         </div>
       </div>
