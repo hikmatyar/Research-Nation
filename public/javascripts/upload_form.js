@@ -12,6 +12,22 @@ $("#profile_description").show_char_limit(3000);
 
 
 
+$("#new_resource :input").tooltip({
+
+	// place tooltip on the right edge
+	position: "center right",
+
+	// a little tweaking of the position
+	offset: [-2, 10],
+
+	// use the built-in fadeIn/fadeOut effect
+	effect: "fade",
+
+	// custom opacity setting
+	opacity: 0.7
+
+	});
+
 $("#add_another_file").click(function(){
   if(count <= 3)
   {

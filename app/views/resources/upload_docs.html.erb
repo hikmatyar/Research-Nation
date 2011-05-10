@@ -13,10 +13,10 @@
             <% end %>
           </div>
           <div class="create_heading_box">
-            <h1>Create a Post.</h1>
+            <h1 style="margin-top:5px !important; margin-bottom:5px !important;">Create a Post.</h1>
             <b>Share your data and insights with the world. Make money and build a reputation. Get started below (or, fill out a profile first by clicking
-             <%= (link_to "here", :controller => 'profiles', :action => 'edit_individual_profile', :id => current_user.id) if current_user.individual? %>
-            <%= (link_to "here", :controller => 'profiles', :action => 'edit_company_profile', :id => current_user.id) if current_user.company? %>).
+             <%= (link_to "here", :controller => 'profiles', :action => 'edit_individual_profile', :id => current_user.id) if current_user && current_user.individual? %>
+            <%= (link_to "here", :controller => 'profiles', :action => 'edit_company_profile', :id => current_user.id) if current_user && current_user.company? %>).
             </b>
           </div>
           <div class="sign_up_box">
@@ -24,11 +24,11 @@
 
               <div class="field">
                   <label>Title*</label>
-                  <%= text_field 'resource', 'title', :class => 'field_width required max_len', :max_length => 140 %>
+                  <%= text_field 'resource', 'title', :class => 'field_width required max_len', :max_length => 140, :title => "This respresents the post title" %>
               </div>
               <div class="field">
                   <label>Exec Summary</label>
-                  <%= text_area 'resource', 'description', :class => 'max_len', :max_length => 3000 %>
+                  <%= text_area 'resource', 'description', :class => 'max_len', :max_length => 3000, :title => 'Type a brief summary of your research' %>
               </div>
               <div class="field">
                   <label>Industry*</label>
