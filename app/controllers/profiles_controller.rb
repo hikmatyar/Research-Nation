@@ -6,9 +6,9 @@ class ProfilesController < ApplicationController
 
   def view_profile_list
     @profiles = []
-    profiles = params[:filter].blank? ? ( Profile.find :all, :order => 'created_at DESC' ) : ( Profile.find :all, :conditions => [ "research_type = ? OR industry_focus = ?", params[:filter], params[:filter] ], :order => 'created_at DESC')
+    profiles = params[:filter].blank? ? ( Profile.find :all, :order => 'created_at DESC' ) : ( Profile.find :all, :conditions => [ "company_type = ? OR services = ?", params[:filter], params[:filter] ], :order => 'created_at DESC')
     profiles.each do |profile|
-      @profiles.push(profile) unless profile.is_edited==false || profile.user.user_type == "Buyer"
+      @profiles.push(profile) unless profile.is_edited==false || profile.user.buyer?
     end
   end
 
@@ -110,7 +110,9 @@ class ProfilesController < ApplicationController
 
   def edit_company_profile
     user = User.find session[:user]
-    redirect_to_home if !user.company_seller? || user.profile.id == params[:id]
+    unless current_user.is_admin?
+      redirect_to_home if !user.company_seller? || user.profile.id == params[:id]
+    end
     @profile = Profile.find params[:id]
     @key_individual = @profile.key_individual unless @profile.key_individual.blank?
   end
@@ -139,6 +141,8 @@ private
   def set_tags
     @research_type = ["Advertising Research", "Attitude & Usage Research", "Brand Research", "Business to Business", "Competitive Intelligence", "Concept/Positioning", "Consumer Research", "Corporate Image/Identity", "Customer Satisfaction", "Employee Surveys", "Demographic Research", "International (i.e. non-US)", "Legal Research", "Marketing Research", "Media Research", "Modeling & Predictive Research", "Mystery Shopping", "New Product Research", "Packaging Research", "Price Research", "Problem Detection", "Product Research", "Evaluation Studies", "Psychological Research", "Public Opinion", "Recruiting Research", "Retail Research", "Secondary Research", "Seminars/ Training", "Strategic Research", "Technology Evaluations", "Website Usability"]
     @industry_focus = ["All", "Acquisitions", "Ad Agencies", "Agriculture", "Airlines", "Alcoholic Beverages", "Clothing", "Automotive", "Beverages", "Industrial", "Candy", "Gambling", "Chemicals", "Media & Communications", "Tech", "Construction", "Consumer Durables", "Consumer Services", "Cosmetics", "Demographics", "Education", "Electronics", "Entertainment", "Environment", "Fitness", "Fashion", "Financial Services & Investing", "Foods", "Gay & Lesbian", "Government", "Health Care", "Legal", "Couponing", "Military", "Non-Profits", "Packaged Goods", "Pets", "Oil & Gas", "Public Relations", "Real Estate", "Religion", "Retail", "Small Businesses", "Startups", "Sports", "Tobacco", "Toys", "Transportation", "Travel", "Utilities/Energy"]
+    @company_type = ["All", "Large", "Medium-sized", "Small (<100)", "Internet Startup"]
+    @services = ["Surveys", "Focus", "Groups", "Custom Research", "Full service"]
   end
 
 end

@@ -44,10 +44,6 @@
           <label>Picture</label>
           <%= f.file_field 'photo', :id => "user_image", :size => "23"%>
         </div>
-        <div class="field">
-          <label>Industry Focus*</label>
-          <%= ( f.select "industry_focus", @industry_focus, { :include_blank => true }, {:class => 'required select_list' }) %>
-        </div>
         <h4>My Work Style</h4>
         <div class="field">
           <label>Optional</label>

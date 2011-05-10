@@ -38,12 +38,12 @@
             <%= f.text_field 'competitors', :class => 'required max_len', :max_length => 500 %>
           </div>
           <div class="field">
-            <label>Research Type*</label>
-            <%= ( f.select "research_type", @research_type, { :include_blank => true }, {:class => 'required select_list' }) %>
+            <label>Company Type*</label>
+            <%= ( f.select "company_type", @company_type, { :include_blank => true }, {:class => 'required select_list' }) %>
           </div>
           <div class="field">
-            <label>Industry Focus*</label>
-            <%= ( f.select "industry_focus", @industry_focus, { :include_blank => true }, {:class => 'required select_list' }) %>
+            <label>Services*</label>
+            <%= ( f.select "services", @services, { :include_blank => true }, {:class => 'required select_list' }) %>
           </div>
           <h4>Key Individual</h4>
           <div class="field">
