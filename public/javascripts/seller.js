@@ -11,10 +11,6 @@ jQuery(document).ready(function(){
      jQuery("#register_form").removeClass("margin_bottom");
    });
 
-  if (location.href.match("reveal_message"))
-  {
-    jQuery("#message_link").trigger("click");
-  }
 
 	jQuery("#summary_link").click(function(){
 		jQuery(".seller_blocks").hide();

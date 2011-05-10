@@ -109,11 +109,13 @@ class UsersController < ApplicationController
       session[:admin]= valid_user.id if valid_user.is_admin?
       return redirect_to :controller => 'resources', :action => 'upload_docs' if session[:post]
       return redirect_to :controller => 'profiles', :action => 'create' if session[:profile]
-      if session[:message]
-        #return redirect_to :controller => 'profiles', :action => 'profile_page', :url_slug => session[:profile_id], :reveal_message => true unless session[:profile_id].blank?
-        return redirect_to :controller => 'resources', :action => 'seller_page', :id => session[:seller_post], :reveal_message => true unless session[:seller_post].blank?
+      if !session[:seller_post].blank?
+        return redirect_to :controller => 'resources', :action => 'seller_page', :url_slug => session[:seller_post]
+      elsif !session[:profile_id].blank?
+        return redirect_to :controller => 'profiles', :action => 'profile_page', :url_slug => session[:profile_id]
+      else
+        return redirect_to :controller => 'users', :action => 'profile'
       end
-      return redirect_to :controller => 'users', :action => 'profile'
     else
       flash[:error] = "Oops! Something wrong with your username/password"
       render :action => 'register', :opt => 'login'

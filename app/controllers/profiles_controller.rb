@@ -130,7 +130,7 @@ class ProfilesController < ApplicationController
   end
 
   def send_message_to_profile
-    profile = Profile.find params[:id]
+    profile = Profile.find_by_url_slug params[:id]
     message = Message.new
     message.subject = params["subject"]
     message.body = params[:message]

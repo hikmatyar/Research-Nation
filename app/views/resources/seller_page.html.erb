@@ -128,8 +128,7 @@
 <div style="display: none;">
   <div id="message_form" class="message_form" style="width:550px;overflow:hidden;">
     <% unless logged_in? %>
-      <% session[:seller_post] = @resource.id %>
-      <% session[:message] = true %>
+      <% session[:seller_post] = @resource.url_slug %>
       <%= render :partial => 'users/register' %>
     <% else %>
     <div id="form">
