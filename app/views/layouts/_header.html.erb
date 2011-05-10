@@ -10,7 +10,7 @@
             <% end %>
             <% if is_admin? %>
               <td>
-                <%= (link_to "Admin Dashboard", :controller => "admin", :action => "dashboard") %>
+                <%= (link_to "Admin", :controller => "admin", :action => "dashboard") %>
               </td>
             <% end %>
             <% if logged_in? %>
