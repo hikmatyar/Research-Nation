@@ -6,7 +6,7 @@ class PurchasesController < ApplicationController
 
   def resource
     @resource = Resource.find_by_url_slug params[:url_slug]
-    return redirect_to :action => "download", :id => @resource.url_slug if current_user.is_admin?
+    return redirect_to :controller => 'purchases', :action => "download", :url_slug => @resource.url_slug if current_user.is_admin? || @resource.selling_price == 0 || current_user.id == @resource.user_id
     @order = Order.new(params[:order])
     if request.post?
       @order.ip_address = request.remote_ip
@@ -22,7 +22,8 @@ class PurchasesController < ApplicationController
   end
 
   def download
-    return head(:not_found) unless Order.authorized_access?(current_user.id, params[:id]) unless current_user.is_admin?
+    resource = (Resource.find :first, :select => 'selling_price, user_id', :conditions => ['url_slug = ?', params[:url_slug]])
+    return head(:not_found) unless Order.authorized_access?(current_user.id, params[:id]) unless current_user.is_admin? || current_user.id == resource.user_id || resource.selling_price == 0
     @resource = Resource.find_by_url_slug params[:url_slug]
   end
 
