@@ -92,7 +92,7 @@ class ProfilesController < ApplicationController
 
     profile.update_profile_information(params[:profile], params[:key_individual])
 
-    flash[:notice] = "Your Information was updated successfully"
+    flash[:notice] = "Your information was updated successfully"
     return redirect_to :controller => 'users', :action => 'profile'
 
   end
