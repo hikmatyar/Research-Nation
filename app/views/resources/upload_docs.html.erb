@@ -16,38 +16,9 @@
           <div class="sign_up_box">
               <% form_for(@resource , :url => { :controller => 'resources', :action => 'create_post', :user => params[:user] }, :html => { :multipart => true } ) do |f| %>
 
-                <% if logged_in? && !current_user.profile.is_edited %>
-                  <% if current_user.company_seller? %>
-                  <div class="field">
-                    <label>Name*</label>
-                    <%= text_field 'profile', 'name', :class => 'required' %>
-                  </div>
-                  <div class="field">
-                    <label>City*</label>
-                    <%= text_field 'profile', 'city', :class => 'required' %>
-                  </div>
-                  <div class="field">
-                    <label>Country*</label>
-                    <%= country_select("profile", "country", ["United Kingdom", "United States"], { :include_blank => true } , {:class => 'required select_list'}) %>
-                  </div>
-                <% else %>
-                  <div class="field">
-                    <label>Name*</label>
-                    <%= text_field 'profile', 'name', :class => 'required' %>
-                  </div>
-                  <div class="field">
-                    <label>Title</label>
-                    <%= text_field 'key_individual', 'title' %>
-                  </div>
-                  <div class="field">
-                    <label>Company</label>
-                    <%= text_field 'key_individual', 'name' %>
-                  </div>
-                <% end %>
-              <% end %>
               <div class="field">
                   <label>Title*</label>
-                  <%= text_field 'resource', 'title', :class => 'required max_len', :max_length => 140 %>
+                  <%= text_field 'resource', 'title', :class => 'field_width required max_len', :max_length => 140 %>
               </div>
               <div class="field">
                   <label>Exec Summary</label>
@@ -86,8 +57,30 @@
                 <%= text_area 'profile', 'description', :class => 'required max_len', :max_length => 3000 %>
               </div>
               <% end %>
+              <% if logged_in? && !current_user.profile.is_edited %>
+                  <div class="field">
+                    <label>Name*</label>
+                    <%= text_field 'profile', 'name', :class => 'required' %>
+                  </div>
+                  <div class="field">
+                    <label>Title</label>
+                    <%= text_field 'key_individual', 'title', :class => 'text_width' %>
+                  </div>
+                  <div class="field">
+                    <label>Company</label>
+                    <%= text_field 'key_individual', 'name', :class => 'text_width' %>
+                  </div>
+                  <div class="field">
+                    <label>City*</label>
+                    <%= text_field 'profile', 'city', :class => 'required' %>
+                  </div>
+                  <div class="field">
+                    <label>Country*</label>
+                    <%= country_select("profile", "country", ["United Kingdom", "United States"], { :include_blank => true } , {:class => 'required select_list'}) %>
+                  </div>
+                <% end %>
             </div>
-            <div class="sign_up_button"><%= submit_tag "Proceed to Next Step", :class => "green_button" %></div>
+            <div class="submit_button"><%= submit_tag "Proceed to Next Step", :class => "green_button" %></div>
           </div>
           <% end %>
       </div>
