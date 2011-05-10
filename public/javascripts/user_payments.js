@@ -31,6 +31,17 @@ jQuery('document').ready(function(){
         jQuery('a[id^="pending-hide-earnings-"]').bind('click', function() {
           jQuery(jQuery(this).attr('href')).hide();
         });
+
+        jQuery('a[id^="pending-pay-button-"]').bind('click', function() {
+          jQuery.ajax({
+            url: "/admin/pay_pending_payments",
+            data: "user_id=" + getParameterByName("user_id") + "&date=" + jQuery(this).attr('value'),
+            success: function(data){
+              $('#paid-earnings-link').trigger('click');
+            }
+          });
+        });
+
       }
     })
   });
@@ -52,7 +63,7 @@ jQuery('document').ready(function(){
         });
 
       }
-    })
+    });
   });
 
 

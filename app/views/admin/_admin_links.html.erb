@@ -9,4 +9,5 @@
   <li <%= 'class="active"' if controller.action_name == "mail_chimp_list" %> ><%= link_to "Mailchimp (#{@members_count})", :controller => 'admin', :action => 'mail_chimp_list' %></li>
   <li <%= 'class="active"' if controller.action_name == "messages" %> ><%= link_to "Message (#{@messages_count})", :controller => 'admin', :action => 'messages' %></li>
   <li <%= 'class="active"' if controller.action_name == "seller_payments" %> ><%= link_to "Sellers", :controller => 'admin', :action => 'seller_payments' %></li>
+  <li <%= 'class="active"' if controller.action_name == "payment_items" %> ><%= link_to "Payment Items", :controller => 'admin', :action => 'payment_items' %></li>
 </ul>

@@ -1,0 +1,1 @@
+<td><%= check_box_tag "payment_item_#{item.id}", '1', item.paid?, :onclick =>remote_function(:url => {:controller => "admin", :action => "change_payment_state", :item_id => item.id}, :update => "payment_state_#{item.id}") %></td>

@@ -38,6 +38,8 @@ class AdminController < ApplicationController
 
   def change_admin_status
     user = User.find(:first, :conditions => ["id = ?", params[:user_id]])
+    user.change_admin_status
+    user.reload
     return render :partial => "is_admin_field", :locals => {:user => user}
   end
 
@@ -59,15 +61,31 @@ class AdminController < ApplicationController
   end
 
   def pay_pending_payments
-    user = User.find params[:user_id]
+    @user = User.find params[:user_id]
     date= params[:date].delete("#").split("-")
     year, month, day = date[0], date[1], date[2]
 
-    time = Date.new(Integer(year), Integer(month)).to_time
-    earnings = user.pay_for_pending_orders_within_date(time, time.end_of_month)
-    UserMailer.deliver_payment_sent_email(user, time, time.end_of_month, earnings)
+    @time = Date.new(Integer(year), Integer(month)).to_time
+    @earnings = @user.pay_for_pending_orders_within_date(@time, @time.end_of_month)
+    UserMailer.deliver_payment_sent_email(@user, @time, @time.end_of_month, @earnings)
+
+    create_payment_item
 
     return render :text => "success"
+  end
+
+  def payment_items
+    @items = PaymentItem.pending
+  end
+
+  def change_payment_state
+    item = PaymentItem.find(:first, :conditions => ["id = ?", params[:item_id]])
+    if item.pending?
+      item.pay
+    else
+      item.pending
+    end
+    return render :text => item.status
   end
 
 private
@@ -82,4 +100,9 @@ private
     @messages_count = (Message.find_all_by_recipient_id current_user.id).count
   end
 
+
+  def create_payment_item
+    details = (@user.payment_preference.option == "Paypal") ? @user.payment_preference.paypal : @user.payment_preference.address
+    PaymentItem.create(:email => @user.email, :status => "pending", :option => @user.payment_preference.option, :details => details, :start_time => @time, :end_time => @time.end_of_month, :amount => @earnings)
+  end
 end
