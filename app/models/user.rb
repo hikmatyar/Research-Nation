@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   cattr_reader :per_page
   @@per_page = 1000
 
+
   def password=(value ="")
     if value.length >=6 && value.length <= 20
       write_attribute("password", Digest::SHA1.hexdigest(value))
@@ -33,16 +34,12 @@ class User < ActiveRecord::Base
     self.id  == resource.user_id
   end
 
-  def individual_seller?
-    user_type == "Seller (Individual)"
+  def individual?
+    user_type == "individual"
   end
 
-  def company_seller?
-    user_type == "Seller (Company)"
-  end
-
-  def buyer?
-    user_type == "Buyer"
+  def company?
+    user_type == "company"
   end
 
   def self.create_facebook_user new_user
@@ -55,6 +52,11 @@ class User < ActiveRecord::Base
     token = ''
     length.times { |i| token << chars[rand(chars.length)] }
     token
+  end
+
+
+  def has_pending_payment?
+    pending_orders.size > 0
   end
 
   def pending_orders
@@ -87,6 +89,18 @@ class User < ActiveRecord::Base
       monthly_earnings << {:month => month, :total_earnings => earnings, :orders => orders }
     end
     monthly_earnings
+  end
+
+
+  def pay_for_pending_orders_within_date(start_time, end_time)
+    orders = []
+    earnings = 0.0
+    resources.each {|resource| orders << resource.pending_orders_within_date(start_time, end_time).flatten unless resource.pending_orders.blank?}
+    orders.flatten.each do |order|
+      order.pay
+      earnings += order.resource.selling_price
+    end
+    earnings
   end
 
 end

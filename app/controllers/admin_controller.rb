@@ -49,8 +49,25 @@ class AdminController < ApplicationController
     @messages = (Message.find_all_by_recipient_id current_user.id)
   end
 
-  def user_payments
+  def seller_payments
+    @users = User.paginate  (:conditions => ["id in (?)", Resource.sellers_with_paid_resources.collect(&:user_id)],
+                            :page => params[:page])
+  end
+
+  def detailed_user_payments
     @user = User.find params[:user_id]
+  end
+
+  def pay_pending_payments
+    user = User.find params[:user_id]
+    date= params[:date].delete("#").split("-")
+    year, month, day = date[0], date[1], date[2]
+
+    time = Date.new(Integer(year), Integer(month)).to_time
+    earnings = user.pay_for_pending_orders_within_date(time, time.end_of_month)
+    UserMailer.deliver_payment_sent_email(user, time, time.end_of_month, earnings)
+
+    return render :text => "success"
   end
 
 private

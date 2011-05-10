@@ -15,6 +15,8 @@ class Resource < ActiveRecord::Base
   validates_presence_of :title
   validates_numericality_of :selling_price
 
+  named_scope :sellers_with_paid_resources, :select => "DISTINCT user_id", :conditions => "selling_price > 0"
+
   def self.create_resource resource_data
     resource = resource_data
     resource.save
@@ -38,6 +40,10 @@ class Resource < ActiveRecord::Base
 
   def paid_orders
     return Order.successful_resource_orders(self.id).payment_paid
+  end
+
+  def pending_orders_within_date(start_time, end_time)
+    return Order.successful_resource_orders_within_month(self.id, start_time, end_time).payment_pending
   end
 
 end

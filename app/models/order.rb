@@ -16,6 +16,9 @@ class Order < ActiveRecord::Base
     named_scope :successful_resource_orders, (lambda do |resource_id| {:conditions => ["resource_id =? AND success=?", resource_id, true]}
     end)
 
+    named_scope :successful_resource_orders_within_month, (lambda do |resource_id, start_time, end_time| {:conditions => {:resource_id => resource_id, :success=> true, :created_at => start_time..end_time}}
+    end)
+
     named_scope :payment_pending, :conditions => "status = 'pending'"
     named_scope :payment_paid, :conditions => "status = 'paid'"
 
@@ -34,6 +37,11 @@ class Order < ActiveRecord::Base
 
     def price_in_cents
       (resource.selling_price*100).round
+    end
+
+
+    def pay
+      self.update_attributes :status => "paid"
     end
 
     private

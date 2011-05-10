@@ -32,4 +32,18 @@ class UserMailer < ActionMailer::Base
       sent_on Time.now
   end
 
+
+  def payment_sent_email(user, start_time, end_time, earnings)
+      recipients   user.email
+      subject      "ResearchNation: Payment sent of $ #{earnings}"
+      from         "no-reply@researchnation.net"
+      bcc           "postkhalid@yahoo.com"
+      content_type "text/plain"
+      body         :user => user,
+                   :start_time => start_time,
+                   :end_time => end_time,
+                   :earnings => earnings
+      sent_on Time.now
+  end
+
 end

@@ -6,7 +6,9 @@
         <div><span class="fixed"><%=  number_to_currency(earning[:total_earnings])  %></span></div>
 
         <div id="<%= type%>-earnings-<%= earning[:month].month%>-<%= earning[:month].year%>" style="display:none">
-          <a id="<%= type%>-hide-earnings-<%= earning[:month].month%>-<%= earning[:month].year%>" href="#<%= type%>-earnings-<%= earning[:month].month%>-<%= earning[:month].year%>"> Hide</a>
+          <a id="<%= type%>-hide-earnings-<%= earning[:month].month%>-<%= earning[:month].year%>" href="#<%= type%>-earnings-<%= earning[:month].month%>-<%= earning[:month].year%>">Hide</a>
+            <% if session[:admin] && type == "pending" %> <a id="<%= type%>-pay-button-<%= earning[:month].strftime('%Y-%m-%d')%>" href="#" value="<%= earning[:month].strftime('%Y-%m-%d')%>">Pay</a> <% end %>
+
           <%= render :partial => "/users/earnings", :locals => {:orders => earning[:orders]}, :layout => false %>
 		    </div>
 		    <div class="clear"></div>

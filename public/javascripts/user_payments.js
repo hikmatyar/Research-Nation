@@ -56,6 +56,16 @@ jQuery('document').ready(function(){
   });
 
 
+  jQuery('a[id^="pending-pay-button-"]').click(function() {
+    jQuery.ajax({
+      url: "/admin/pay_pending_payments",
+      data: "user_id=" + getParameterByName("user_id") + "&date=" + jQuery(this).attr('value'),
+      success: function(data){
+        $('#paid-earnings-link').trigger('click');
+      }
+    });
+  })
+
 });
 
 function getParameterByName( name )
