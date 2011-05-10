@@ -15,8 +15,8 @@
           <div class="create_heading_box">
             <h1>Create a Post.</h1>
             <b>Share your data and insights with the world. Make money and build a reputation. Get started below (or, fill out a profile first by clicking
-             <%= (link_to "here", :controller => 'profiles', :action => 'edit_individual_profile', :id => current_user.id) if current_user.individual_seller? %>
-            <%= (link_to "here", :controller => 'profiles', :action => 'edit_company_profile', :id => current_user.id) if current_user.company_seller? %>).
+             <%= (link_to "here", :controller => 'profiles', :action => 'edit_individual_profile', :id => current_user.id) if current_user.individual? %>
+            <%= (link_to "here", :controller => 'profiles', :action => 'edit_company_profile', :id => current_user.id) if current_user.company? %>).
             </b>
           </div>
           <div class="sign_up_box">

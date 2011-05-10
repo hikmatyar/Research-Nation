@@ -8,7 +8,7 @@ class ProfilesController < ApplicationController
     @profiles = []
     profiles = params[:filter].blank? ? ( Profile.find :all, :order => 'created_at DESC' ) : ( Profile.find :all, :conditions => [ "company_type = ? OR services = ?", params[:filter], params[:filter] ], :order => 'created_at DESC')
     profiles.each do |profile|
-      @profiles.push(profile) unless profile.is_edited==false || profile.user.buyer?
+      @profiles.push(profile) unless profile.is_edited == false
     end
   end
 
@@ -103,7 +103,7 @@ class ProfilesController < ApplicationController
 
   def edit_individual_profile
     user = User.find session[:user]
-    redirect_to_home if user.company_seller?  || user.profile.id == params[:id]
+    redirect_to_home if user.company?  || user.profile.id == params[:id]
     @profile = Profile.find params[:id]
     @key_individual = @profile.key_individual unless @profile.key_individual.blank?
   end
@@ -111,7 +111,7 @@ class ProfilesController < ApplicationController
   def edit_company_profile
     user = User.find session[:user]
     unless current_user.is_admin?
-      redirect_to_home if !user.company_seller? || user.profile.id == params[:id]
+      redirect_to_home if !user.company? || user.profile.id == params[:id]
     end
     @profile = Profile.find params[:id]
     @key_individual = @profile.key_individual unless @profile.key_individual.blank?
