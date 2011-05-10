@@ -53,14 +53,6 @@ class ProfilesController < ApplicationController
     @user = User.new unless logged_in?
   end
 
-  def company
-    @profile = Profile.new
-  end
-
-  def individual
-    @profile = Profile.new
-  end
-
   def create
     profile = session[:profile].blank? ? Profile.new(params[:profile]) : session[:profile]
     key_individual = session[:key_individual].blank? ? KeyIndividual.new(params[:key_individual]) : session[:key_individual]
