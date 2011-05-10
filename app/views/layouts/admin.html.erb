@@ -3,26 +3,24 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="google-site-verification" content="MTZt0VbfL7xfTkGNUSAGeOKwyRXCryjJphlT_k4v2fk" />
-    <title>Research Nation</title>
+    <title>Find, buy and sell market research</title>
 
     <%= stylesheet_link_tag "style" %>
 
     <%= javascript_include_tag "jquery" %>
-    <%= javascript_include_tag "researchnation" %>
     <%= javascript_include_tag "verticaltabs.pack" %>
     <%= javascript_include_tag "verticaltabs" %>
+    <%= javascript_include_tag "researchnation" %>
 
   </head>
   <body>
 	  <div class="wrapper">
 	    <%= render :partial => '/layouts/header'%>
 			<div class="content">
-				<div style="margin-top: 20px; clear:both;" class="resource_buttons">
-					<a target="_blank" href="http://google.com/analytics" style="font-size:1.2em; padding:2px !important; margin-left:10px;" >Google Analytics</a>
-				</div>
-				<div style="margin-top: 20px;" class="resource_buttons">
-					<a target="_blank" href="http://google.com/a/researchnation.net" style="font-size:1.2em; padding:2px !important;" >Admin E-mail</a>
-						<a target="_blank" href="http://mailchimp.com" style="font-size:1.2em; padding:2px !important;" >MailChimp</a>
+				<div style="margin-top: 20px; clear:both;" class="admin_button">
+					<a target="_blank" class="green_button" href="http://google.com/analytics" style="font-size:1.2em; padding:2px !important; margin-left:10px;" >Google Analytics</a>
+					<a target="_blank" class="green_button" href="http://google.com/a/researchnation.net" style="font-size:1.2em; padding:2px !important;" >Admin E-mail</a>
+						<a target="_blank" class="green_button" href="http://mailchimp.com" style="font-size:1.2em; padding:2px !important;" >MailChimp</a>
 				</div>
         <%= render :partial => 'admin_links' %>
       	<%= yield %>
