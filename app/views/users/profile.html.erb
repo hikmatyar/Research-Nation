@@ -21,9 +21,9 @@
 <a id="login_link" href="#login_form" ></a>
 <div style="display: none;">
   <% unless logged_in? %>
-  <div id="login_form" style="width:700px;height:250px;overflow:hidden;left:-192px;bottom:20px;">
+    <div id="login_form" style="width:700px;height:250px;overflow:hidden;left:-192px;bottom:20px;">
       <%= render :partial => 'users/register'%>
-  </div>
+    </div>
   <% end %>
 </div>
 <div class="content">
@@ -41,9 +41,8 @@
         <span><%= @user.email %></span>
       </div>
       <div class="profile_button">
-        <%= link_to ('Edit Profile', { :controller => 'profiles', :action => 'edit_individual_profile', :id => @user.profile.id }, { :class => 'green_button' }) if @user.user_type == "Seller (Individual)" %>
-        <%= link_to ( 'Edit Profile', { :controller => 'profiles', :action => 'edit_company_profile', :id => @user.profile.id }, { :class => 'green_button' }) if @user.user_type == "Seller (Company)" %>
-        <%= link_to ( 'Edit Profile', { :controller => 'profiles', :action => 'edit_individual_profile', :id => @user.profile.id }, { :class => 'green_button' }) if @user.user_type == "Buyer" %>
+        <%= link_to ('Edit Profile', { :controller => 'profiles', :action => 'edit_individual_profile', :id => @user.profile.id }, { :class => 'green_button' }) if @user.user_type == "individual" %>
+        <%= link_to ( 'Edit Profile', { :controller => 'profiles', :action => 'edit_company_profile', :id => @user.profile.id }, { :class => 'green_button' }) if @user.user_type == "company" %>
       </div>
    	</div>
     <div class="profile_listing">
@@ -57,10 +56,10 @@
       </ul>
       <div class="profile_right">
         <div class="tab_container profile_fixed_box">
-          <div id="listings" class="tab_content">
-          </div>
           <div id="messages" class="tab_content">
             <%= render :partial => 'profiles/received_messages' %>
+          </div>
+          <div id="listings" class="tab_content">
           </div>
           <div id="pending-earnings" class="tab_content">
           </div>

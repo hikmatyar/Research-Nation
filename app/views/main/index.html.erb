@@ -7,19 +7,19 @@
 			<%= render :partial => 'users/errors' %>
 			<% form_for(@user , :url => {:controller => "users", :action => "create" } ) do |f| %>
 			<div class="new_field">
-				<label>Enter your email</label>
+				<label style="padding:0px;">Enter your email</label>
 				<%= f.text_field 'email', :id => "email", :class => 'required email' %>
 			</div>
 			<div class="new_field">
-			<label>Enter your password</label>
+			<label style="padding:0px;">Enter your password</label>
 				<%= f.password_field 'password', :id => "password", :class => 'required password' %>
 			</div>
 			<div class="new_field1 new_field ">
-			<label>I am a</label>
-				<%= ( f.select "user_type", ["Buyer", "Seller (Individual)", "Seller (Company)" ], { :include_blank => "Click to choose" }, {:class => 'required' }) %>
+			<label style="padding:0px;">I am a</label>
+				<%= ( f.select "user_type", ["individual", "company" ], { :include_blank => "Click to choose" }, {:class => 'required' }) %>
 			</div>
 			<div class="banner_sign_up_button" style="margin-left:0px !important;"><%= (f.submit "One Click Sign-up", :class => "green_button")%></div>
-			<div class="terms_and_conditions1">
+			<div class="main_terms_and_conditions">
 				<p>By signing up you agree to our </p><%= link_to "Terms of Service ", :controller => "main", :action => "privacy" %><p> and</p> <%= link_to "Privacy Policy", :controller => "main", :action => "privacy" %></div>
 			<% end %>
 		<% end %>
@@ -103,8 +103,8 @@
 	</div>
 </div>
 <h1><p>Market Research will never be the same again. <%= (link_to "Join the movement!", :controller => "users", :action => "register") unless logged_in? %>
-		<%= (link_to "Join the movement!", :controller => "resources", :action => "new") if logged_in? && @user.user_type == "Seller" %>
-		<%= (link_to "Join the movement!", :controller => "resources", :action => "view_posts") if logged_in? && @user.user_type == "Buyer" %>
+		<% (link_to "Join the movement!", :controller => "resources", :action => "new") if logged_in? && @user.user_type == "Seller" %>
+		<% (link_to "Join the movement!", :controller => "resources", :action => "view_posts")  %>
 </p>
 </h1>
 -->
