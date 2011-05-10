@@ -5,7 +5,9 @@
       <% end %>
       <% flash[:notice] = nil %>
 	    <div class="seller_back">
-        <span class="sign_up" id="tab2">Get in touch!</span>
+	      <div class="create_heading_box message_heading_box">
+          <h1 style="margin-top:5px !important; margin-bottom:5px !important;">Get in touch!</h1>
+        </div>
         <div style="padding:10px 0px" class="sign_up_box" id="tabOne">
           <div>
             <%= form_tag :controller => 'main', :action => 'contact_us'%>
@@ -32,4 +34,4 @@
       </div>
   </div>
 </div>
-<%= render :partial => 'contact_links' %>
+<%= render :partial => 'how_it_works_links' %>
