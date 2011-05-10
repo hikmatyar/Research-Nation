@@ -42,7 +42,7 @@ class AdminController < ApplicationController
   end
 
   def profiles
-    @profiles = Profile.find_all_by_profile_type "seller", :order => 'created_at DESC'
+    @profiles = Profile.find :all, :order => 'created_at DESC'
   end
 
   def messages
@@ -61,7 +61,7 @@ private
     @admin_count = (User.find_all_by_is_admin true).count
     @members_count = session[:members_count]
     @experts_count = (User.find_all_by_is_expert(true)).count
-    @profiles_count = (Profile.find_all_by_profile_type "seller").count
+    @profiles_count = Profile.count
     @messages_count = (Message.find_all_by_recipient_id current_user.id).count
   end
 
