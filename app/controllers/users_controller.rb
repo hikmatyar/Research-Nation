@@ -194,13 +194,13 @@ class UsersController < ApplicationController
   def monthly_paid_earnings
     user_id = (session[:admin] && !params[:user_id].blank?)?  params[:user_id] : session[:user]
     user = User.find user_id
-    render :partial => "/users/monthly_earnings", :locals => {:earnings => user.monthly_paid_earnings}, :layout => false
+    render :partial => "/users/monthly_earnings", :locals => {:earnings => user.monthly_paid_earnings, :type => "paid"}, :layout => false
   end
 
   def monthly_pending_earnings
     user_id = (session[:admin] && !params[:user_id].blank?)?  params[:user_id] : session[:user]
     user = User.find user_id
-    render :partial => "/users/monthly_earnings", :locals => {:earnings => user.monthly_pending_earnings}, :layout => false
+    render :partial => "/users/monthly_earnings", :locals => {:earnings => user.monthly_pending_earnings, :type => "pending"}, :layout => false
   end
 
   def payment_preferences

@@ -7,7 +7,7 @@
 <div class="profile_right">
   <div class="tab_container profile_fixed_box">
     <div id="pending-earnings" class="tab_content">
-      <%= render :partial => "/users/monthly_earnings", :locals => {:earnings => @user.monthly_pending_earnings}, :layout => false %>
+      <%= render :partial => "/users/monthly_earnings", :locals => {:earnings => @user.monthly_pending_earnings, :type => "pending"}, :layout => false %>
     </div>
     <div id="paid-earnings" class="tab_content">
     </div>

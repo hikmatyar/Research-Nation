@@ -1,6 +1,21 @@
 jQuery('document').ready(function(){
 
 
+
+  if (jQuery('a[id^="pending-earnings-link-"]')){
+    jQuery('a[id^="pending-earnings-link-"]').bind('click', function() {
+      jQuery(jQuery(this).attr('href')).show();
+    });
+  }
+
+
+  if (jQuery('a[id^="pending-hide-earnings-"]')){
+    jQuery('a[id^="pending-hide-earnings-"]').bind('click', function() {
+      jQuery(jQuery(this).attr('href')).hide();
+    });
+  }
+
+
   jQuery('#pending-earnings-link').click(function() {
     jQuery.ajax({
       url: "/users/monthly_pending_earnings",
@@ -9,14 +24,13 @@ jQuery('document').ready(function(){
         jQuery("#pending-earnings").show();
         jQuery("#pending-earnings").html(data);
 
-        jQuery('a[id^="earnings-link-"]').bind('click', function() {
+        jQuery('a[id^="pending-earnings-link-"]').bind('click', function() {
           jQuery(jQuery(this).attr('href')).show();
         });
 
-        jQuery('a[id^="hide-earnings-"]').bind('click', function() {
+        jQuery('a[id^="pending-hide-earnings-"]').bind('click', function() {
           jQuery(jQuery(this).attr('href')).hide();
         });
-
       }
     })
   });
@@ -29,11 +43,11 @@ jQuery('document').ready(function(){
         jQuery("#paid-earnings").show();
         jQuery("#paid-earnings").html(data);
 
-        jQuery('a[id^="earnings-link-"]').bind('click', function() {
+        jQuery('a[id^="paid-earnings-link-"]').bind('click', function() {
           jQuery(jQuery(this).attr('href')).show();
         });
 
-        jQuery('a[id^="hide-earnings-"]').bind('click', function() {
+        jQuery('a[id^="paid-hide-earnings-"]').bind('click', function() {
           jQuery(jQuery(this).attr('href')).hide();
         });
 

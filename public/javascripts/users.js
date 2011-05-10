@@ -37,11 +37,11 @@ jQuery('document').ready(function(){
         jQuery("#paid-earnings").show();
         jQuery("#paid-earnings").html(data);
 
-        jQuery('a[id^="earnings-link-"]').bind('click', function() {
+        jQuery('a[id*="earnings-link-"]').bind('click', function() {
           jQuery(jQuery(this).attr('href')).show();
         });
 
-        jQuery('a[id^="hide-earnings-"]').bind('click', function() {
+        jQuery('a[id*="hide-earnings-"]').bind('click', function() {
           jQuery(jQuery(this).attr('href')).hide();
         });
 
