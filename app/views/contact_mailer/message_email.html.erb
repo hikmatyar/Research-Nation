@@ -1,13 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <title>You have got a message</title>
+    <title>ResearchNation: You have received a new message</title>
   </head>
 
   <body>
-    <b>From : <%= @sender_name %></b>
-    <h4><%= @subject %></h4>
-    <p>To view full message follow this <a href="http://<%= @host %>/messages/view/<%= @message_id %>">link</a> ) %></p>
+    <p>To view your message please click <a href="http://<%= @host %>/messages/view/<%= @message_id %>">here.</a></p>
     <p></p>
   </body>
 </html>

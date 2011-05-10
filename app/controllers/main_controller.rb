@@ -30,7 +30,7 @@ class MainController < ApplicationController
     message.sender = User.find session[:user]
     message.recipient = User.find params[:user_id]
     if message.save
-      ContactMailer.deliver_message_email message.sender.profile.name, message.subject, message.recipient.email, message.id, request.host
+      ContactMailer.deliver_message_email message.recipient.email, message.id, request.host
       admin = User.find :first, :conditions => ['is_admin = ?', true]
       admin_message = Message.new
       admin_message.subject = "Forwarded Message: "+ message.subject
