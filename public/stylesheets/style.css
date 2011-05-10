@@ -174,7 +174,7 @@ a:focus {
 
 .main_menu_box{
     float:left;
-    width:351px;    
+    width:365px;
 }
 
 .main_menu{
@@ -389,7 +389,7 @@ a:focus {
 
 
 .sign_up_box h4{
-    color: #AC7333 !important;
+    color:#525252 !important;
     float: left;
     font-size: 18px;
     font-weight: bold;
@@ -398,7 +398,9 @@ a:focus {
     padding-left: 6px;
     margin-bottom:10px;
     text-align: left;
-    width: 98%;
+    border-top:1px dotted #CCC;
+    border-bottom:1px dotted #CCC;
+    width: 99%;
 }
 
 .sign_up_box .field b{
@@ -720,6 +722,23 @@ a:focus {
 	font-weight: bold;
 	margin-left:15px;
 }
+
+.create_heading_box{
+	float;left;
+	width:100%;
+}
+
+.create_heading_box h1{
+	color:#525252 !important;
+	width:100%;
+	margin:5px 0px 10px 0px !important;
+}
+
+.create_heading_box b{
+	font-size:18px;
+	font-weight: normal;
+}
+
 .facebook_back{
 	margin-top:30px;
 }
@@ -1898,6 +1917,10 @@ html ul.tabs li.active, html ul.tabs li.active {
 	border:0px !important;
 }
 
+.paragraph p{
+	text-align:justify;
+}
+
 /*-- download page css --- */
 
 .download_box{
@@ -2734,9 +2757,8 @@ div.fbFooterBorder{
 
 .footer_menu{
 	float:right;
-	width:370px;
+	width:450px;
 	margin-top:20px;
-	padding-left:165px;
 }
 
 .footer_menu ul{
@@ -2995,7 +3017,7 @@ div.fbFooterBorder{
 .add_attachment_link{
 	float: right;
 	margin-bottom: 10px;
-	margin-right: 74px;
+	margin-right: 47px;
 	text-align: right
 }
 
@@ -3078,7 +3100,7 @@ div.fbFooterBorder{
 	margin-left:10px;
 }
 
-.required{
+.required, .text_width{
 	width:303px !important;
 }
 
@@ -3570,4 +3592,21 @@ div.fbFooterBorder{
 	margin-right: 10px;
 	margin-top: 10px;
 	width: 208px;
+}
+
+.submit_button{
+	float:left;
+	margin-top:20px;
+}
+
+.submit_button input{
+	width:476px;
+}
+
+.submit_button input:hover{
+	width:476px !important;
+}
+
+.new_resource h4{
+	margin-top:0px;
 }
