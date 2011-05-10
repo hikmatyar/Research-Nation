@@ -351,7 +351,7 @@ a:focus {
 }
 
 .login_tab a:hover{
-	background-color:#AFCD5D !important;
+	background-color:#E5E5E5 !important;
 }
 .login_tab a.active{
 	background-color:#8EAF32 !important;
@@ -382,7 +382,6 @@ a:focus {
     margin-right:0px !important;
     width:80px;
     height:80px;
-    padding-bottom:10px;
 }
 
 
@@ -724,7 +723,7 @@ a:focus {
 }
 
 .message_heading_box h1{
-    font-size:18px !important;
+    font-size:28px !important;
 }
 
 .create_heading_box{
@@ -740,14 +739,23 @@ a:focus {
 
 .create_heading_box b{
     color: #648310 !important;
-    float: left;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: normal;
     line-height: 18px;
     margin-top: -10px;
     text-align: justify;
     width: 425px;
 }
+
+.create_heading_box b a{
+	color:#AC7333;
+}
+
+.create_heading_box b a:hover{
+	color:#AC7333;
+	text-decoration:underline;
+}
+
 
 .facebook_back{
 	margin-top:30px;
@@ -951,8 +959,8 @@ a:focus {
 }
 
 .summary p{
-	font-size:18px;
-	line-height:24px;
+	font-size:14px;
+	line-height:18px;
 	text-align:left;
 	margin-left: 10px;
 	margin-right: 10px;
@@ -1835,7 +1843,7 @@ ul.tabs li a {
 		-webkit-border-bottom-right-radius: 0px !important;
     float: left;
     margin:0 5px 0 0 !important;
-    font-size: 14px;
+    font-size: 16px;
     background:#E5E5E5;
     list-style: none outside none;
     padding: 3px 10px;
@@ -1860,23 +1868,40 @@ html ul.tabs li.active, html ul.tabs li.active {
 .tab_container {
 	border: 1px solid #999;
 	overflow: hidden;
-	clear: both;
-	float: left; width: 100%;
+	clear:both;
+	float: left; 
+	width: 97%;
+	font-size:14px !important;
 	min-height: 228px;
 	text-align:left;
 	margin-top:10px;
 	background: #fff;
 }
+
+.tab_container a{
+	font-size:14px;
+}
+
+.tab_container span{
+	font-size:14px !important;
+}
+
+.tab_container a:hover{
+	text-decoration:underline;
+}
 .tab_content {
-	font-size: 1.2em;
+	font-size:12px;
 	float:left;
 	text-align:left;
+}
+
+.tab_content a:hover{
+	text-decoration:underline;
 }
 
 .users_table, .user_detail{
 	float:left;
 	width:96%;
-	padding:10px;
 }
 
 .users_table ul{
@@ -1890,15 +1915,17 @@ html ul.tabs li.active, html ul.tabs li.active {
 	list-style-type:none
 }
 
-.users_table a{
+.users_table a img{
 	float:left;
 	color:#245A83 !important;
+	border:1px solid #FFF;
 }
 
-.users_table a:hover{
-	text-decoration:underline;
-	color:#245A83 !important;
+
+.users_table a img:hover{
+	border:1px solid #CCC;
 }
+
 .name{
 	width:250px;
 }
@@ -1953,6 +1980,7 @@ html ul.tabs li.active, html ul.tabs li.active {
 	float: left;
 	font-size: 24px;
 	margin-left: 0px;
+	color:#525252 !important;
 	margin-top: 10px;
 }
 
@@ -2204,6 +2232,7 @@ html ul.tabs li.active, html ul.tabs li.active {
 	margin-right: 10px;
 	padding: 5px 5px 5px 10px;
 	width: 124px;
+	overflow:hidden;
 	height:16px;
 	margin-top:0px !important;
 	background-color:#FFF;
@@ -2236,6 +2265,7 @@ html ul.tabs li.active, html ul.tabs li.active {
 	margin-right: 10px;
 	padding: 5px 5px 5px 10px;
 	width: 124px;
+	overflow:hidden;
 	height:16px;
 	margin-top:0px !important;
 	background-color:#FFF;
@@ -2308,7 +2338,7 @@ html ul.tabs li.active, html ul.tabs li.active {
 }
 
 .privacy_box b{
-	width:98%;
+	width:95% !important;
 }
 
 .how_it_works_field2{
@@ -2533,7 +2563,8 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 	-webkit-border-bottom-right-radius: 10px !important;
 	background-color:#FFFFFF;
 	padding:10px;
-	width:517px;
+	width:554px;
+	margin-bottom:100px;
 }
 
 .new_field1{
@@ -2576,8 +2607,7 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 }
 
 .profile_button a {
-    font-size: 12px;
-    padding: 5px!important;
+    
 }
 
 .users{
@@ -2720,6 +2750,40 @@ div.fbFooterBorder{
 	width: auto !important;
 	text-align:justify;
 }
+
+.main_terms_and_conditions{
+	width:320px;
+	margin-top:-10px;
+	float:left;
+}
+
+.main_terms_and_conditions p{
+	float: left;
+	font-size: 10px !important;
+	line-height: 15px !important;
+	margin: 0 4px 0 0 !important;
+	width: auto !important;
+	text-align:justify;
+}
+
+.main_terms_and_conditions a{
+	float:left;
+	background:none !important;
+	color:#AC7333 !important;
+	font-size:10px !important;
+	font-weight:normal;
+	margin: 0 4px 0 0 !important;
+	width:auto !important;
+	padding:0 !important;
+}
+
+.main_terms_and_conditions a:hover{
+	background:none !important;
+	color:#AC7333 !important;
+	text-decoration:underline !important;
+	width:auto !important;
+}
+
 
 .terms_and_conditions1{
 	width:400px;
@@ -3117,13 +3181,11 @@ div.fbFooterBorder{
 }
 
 .new_field1 select{
+		float:left;
     width:315px !important;
-    padding:5px;
-    border:1px sold #ccc;
-		-moz-border-radius:5px;
-		-webkit-border-radius:5px;
+    height:35px !important;
+    padding:5px !important;
 }
-
 
 .banner_sign_up_button{
 	float:left;
@@ -3293,7 +3355,7 @@ div.fbFooterBorder{
 .profile_fixed_box{
 	max-height:250px;
 	overflow:auto;
-	width:500px;
+	width:554px;
 }
 
 .forgit_password{
@@ -3622,4 +3684,43 @@ div.fbFooterBorder{
 
 .new_resource h4{
 	margin-top:0px;
+}
+
+.tooltip {
+	background-color:#000;
+	border:1px solid #fff;
+	padding:10px 15px;
+	width:200px;
+	display:none;
+	color:#fff;
+	text-align:left;
+	font-size:12px;
+
+	/* outline radius for mozilla/firefox only */
+	-moz-box-shadow:0 0 10px #000;
+	-webkit-box-shadow:0 0 10px #000;
+}
+
+.admin_button{
+	float:right;
+	width:355px;
+	margin-bottom:20px;
+}
+
+.admin_button a{
+	margin-right:10px;
+}
+
+.user_links{
+	float:left;
+	margin-bottom:5px !important;
+}
+
+.user_links a{
+	float:left;
+	width:98%;
+	height:20px;
+	overflow:hidden !important;
+	margin-left:5px;
+	margin-right:5px;
 }

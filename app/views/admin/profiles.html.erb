@@ -1,12 +1,11 @@
 <div class="tab_container">
-<table border="0" cellspacing="20px" cellpadding="20px" id="users_table">
+<table border="0" cellspacing="5" cellpadding="5" id="users_table">
   <tbody>
     <tr>
-      <th>No.</th>
-      <th>Name</th>
-      <th>Country</th>
-      <th>Website</th>
-      <th></th>
+      <th width="20">No.</th>
+      <th width="150">Name</th>
+      <th width="100">Country</th>
+      <th width="300">Website</th>
     </tr>
     <% @profiles.each_with_index do |p, index|%>
       <tr>
@@ -14,7 +13,6 @@
         <td><%= (link_to p.name, :controller => 'profiles', :action => 'edit_company_profile', :id => p.id) if p.user.company? %>
         <%= (link_to p.name, :controller => 'profiles', :action => 'edit_individual_profile', :id => p.id) unless p.user.company? %>
         </td>
-        <td><%=  %></td>
         <td ><%= p.country %></td>
         <td ><%= p.website %></td>
         <td ><%= link_to 'Delete', { :controller => 'profiles', :action => 'delete', :id => p.id }, :confirm => "Are you sure you want to delete this post?"  %></td>
