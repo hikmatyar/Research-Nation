@@ -10,7 +10,12 @@
         <h2><%= @resource.title %></h2>
         <div class="Post_author_details">
           <% unless @resource.user.profile.name.blank? %>
-          <b>By <%= (link_to @resource.user.profile.name, :controller => 'profiles', :action => 'profile_page', :url_slug => @resource.user.profile.url_slug) %>,
+          <b>By 
+            <% unless  @resource.user.profile.is_edited %>
+            <%= (link_to @resource.user.profile.name, :controller => 'profiles', :action => 'profile_page', :url_slug => @resource.user.profile.url_slug ) %>,
+            <% else %>
+              <%= @resource.user.profile.name %>,
+            <% end%>
           <% end %>
             <span><% if @resource.user.company_seller? %>
               <% unless @resource.user.profile.city.blank? %> <%= "#{@resource.user.profile.city}, #{@resource.user.profile.country}" %> <% end %>
