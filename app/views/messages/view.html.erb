@@ -2,7 +2,9 @@
 <div class="how_it_work_left_side">
   <div id="message"></div>
   <div class="seller_back">
-    <span class="sign_up" id="tab2" style="margin-bottom:10px;"> Conversation with <%= @message.sender.profile.name %></span>
+    <div class="create_heading_box message_heading_box">
+      <h1 style="margin-top:2px !important; margin-bottom:4px !important;">Conversation with <%= @message.sender.profile.name %></h1>
+    </div>
 	  <div class="receipient">
       <div class="sender_image">
         <%= image_tag "avatar.png", :width => 100, :height => 100 if @message.recipient.profile.photo_file_name.blank? %>
