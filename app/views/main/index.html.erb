@@ -1,3 +1,4 @@
+<% content_for :html_title, 'Find, buy and sell market research' %>
 <div class="banner">
 	<% unless flash[:notice].blank? %><p class="flash"><%= flash[:notice] %></p><% end %>
 	<div class="banner_text">
@@ -16,7 +17,7 @@
 			</div>
 			<div class="new_field1 new_field ">
 			<label style="padding:0px;">I am a</label>
-				<%= ( f.select "user_type", ["individual", "company" ], { :include_blank => "Click to choose" }, {:class => 'required' }) %>
+				<%= ( f.select "user_type", ["Individual", "Company" ], { :include_blank => "Click to choose" }, {:class => 'required' }) %>
 			</div>
 			<div class="banner_sign_up_button" style="margin-left:0px !important;"><%= (f.submit "One Click Sign-up", :class => "green_button")%></div>
 			<div class="main_terms_and_conditions">

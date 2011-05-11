@@ -1,3 +1,4 @@
+<% content_for :html_title, "Edit #{@resource.title}" %>
 <div class="content">
   <div class="how_it_work_left_side">
     <div class="seller_back">
@@ -6,7 +7,7 @@
         <b>Please feel free to many changes to your post by typing below. Price can not be edited, all other fields can.
         </b>
       </div>
-      <%= form_tag ( { :controller => "resources", :action => "update", :id =>  @resource.url_slug} , { :multipart => true }) %>
+      <%= form_tag ( { :controller => "resources", :action => "update", :url_slug =>  @resource.url_slug} , { :multipart => true }) %>
         <div class="sign_up_box" style="padding-top:20px;">
           <div class="field">
             <label for = "title">Title</label>
