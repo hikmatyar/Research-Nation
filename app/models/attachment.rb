@@ -12,6 +12,7 @@ class Attachment < ActiveRecord::Base
   has_attached_file :original,
                     :storage => :s3,
                     :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
+                    :s3_permissions => :private,
                     :path => "originals/:id/:basename.:extension",
                     :bucket => DATA_BUCKET
 
