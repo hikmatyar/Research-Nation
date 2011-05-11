@@ -52,7 +52,7 @@
         </div>
         <%= f.hidden_field 'profile_type', :value => params[:profile_type] %>
         <%= f.hidden_field 'interested_in', :id => 'interested_in' %>
-        <%= render :partial => "/profiles/interested_in_fields"%>
+        <%= render :partial => "/profiles/interested_in_fields", :locals => {:fields => @profile.interested_in}%>
       </div>
       <div class="hidden">
         <%= hidden_field_tag 'user_id', params[:user_id]  if session[:admin] && !params[:user_id].blank?%>
