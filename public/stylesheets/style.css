@@ -1958,6 +1958,10 @@ html ul.tabs li.active, html ul.tabs li.active {
 	text-align:justify;
 }
 
+.paragraph b{
+	color:#648310 !important;
+}
+
 /*-- download page css --- */
 
 .download_box{
@@ -2043,39 +2047,42 @@ html ul.tabs li.active, html ul.tabs li.active {
 .error_text{
 	float:left;
 	width:500px;
+	margin-top:20px;
 }
 
 .error_text h1{
-	float:left;
-	text-align:left !important;
-	font-size:150px;
+	float: left;
+	font-size: 150px;
+	margin-bottom: 14px;
+	text-align: left !important;
 }
 
 .error_text h2{
-	float:left;
-	width:100%;
-	text-align:left !important;
-	font-size:72px;
+	float: left;
+	font-size: 72px;
+	text-align: left !important;
+	width: 100%;
 }
 
 .error_text h3 {
-    float: left;
-    font-size: 36px;
-    font-weight: bold;
-    text-align: left !important;
-    width: 100%;
+  float: left;
+  font-size: 36px;
+  font-weight: bold;
+  text-align: left !important;
+  width: 100%;
 	line-height:0px !important;
 	margin-bottom:0px;
 }
 
 .error_text h4 {
-    float: left;
-    font-size: 18px;
-    font-weight: bold;
-    text-align: left !important;
-    width: 100%;
-	line-height:0px !important;
-	margin-bottom:0px;
+	float: left;
+	font-size: 45px;
+	font-weight: bold;
+	line-height: 0px !important;
+	margin-bottom: 0px;
+	margin-top: 35px;
+	text-align: left !important;
+	width: 100%;
 }
 
 .flash{
