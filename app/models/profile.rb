@@ -28,11 +28,13 @@ class Profile < ActiveRecord::Base
   end
   
   def update_profile_information profile_details, key_individual_details
-    profile_details[:interested_in] = nil if profile_details[:interested_in] == ""
-    self.update_attributes(profile_details)
-    self.update_is_edited
-    self.update_url_slug
-    self.update_website self.website unless self.website.blank?
+    unless profile_details.blank?
+      profile_details[:interested_in] = nil if !profile_details[:interested_in].nil? && profile_details[:interested_in] == ""
+      self.update_attributes(profile_details)
+      self.update_is_edited
+      self.update_url_slug
+      self.update_website self.website unless self.website.blank?
+    end
     self.key_individual.update_key_individual key_individual_details unless key_individual_details.blank?
   end
 

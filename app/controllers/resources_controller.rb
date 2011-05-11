@@ -55,7 +55,7 @@ class ResourcesController < ApplicationController
     if resource.save
       resource.update_url_slug
       profile = resource.user.profile
-      profile.update_profile_information params[:profile], params[:key_individual]
+      profile.update_profile_information(params[:profile], params[:key_individual]) unless params[:profile].blank?
       Attachment.add_file(params[:attachment][:sample], resource.id, "sample") unless params[:attachment][:sample].blank?
       original_file_attachments.each do |key, file|
         Attachment.add_file(file, resource.id, "original")
