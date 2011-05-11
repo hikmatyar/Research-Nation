@@ -12,19 +12,12 @@ $("#profile_description").show_char_limit(3000);
 
 
 
-$("#new_resource :input").tooltip({
+$("#new_resource :input.tip").tooltip({
 
-	// place tooltip on the right edge
-	position: "center right",
-
-	// a little tweaking of the position
-	offset: [-2, 10],
-
-	// use the built-in fadeIn/fadeOut effect
-	effect: "fade",
-
-	// custom opacity setting
-	opacity: 0.7
+	position: "center right", // place tooltip on the right edge
+	offset: [-2, 10], // a little tweaking of the position
+	effect: "fade", //use the built-in fadeIn/fadeOut effect
+	opacity: 1  // custom opacity setting
 
 	});
 

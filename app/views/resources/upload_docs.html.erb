@@ -25,11 +25,11 @@
               <h4 style="border-top:0px;">Your Post</h4>
               <div class="field">
                   <label>Title*</label>
-                  <%= text_field 'resource', 'title', :class => 'field_width required max_len', :max_length => 140, :title => "This respresents the post title" %>
+                  <%= text_field 'resource', 'title', :class => 'field_width required max_len tip', :max_length => 140, :title => "Tell us what this post is about. Mention any geographic or industry focus, as well as the type of research (e.g. call transcripts, reports, surveys, projections, dataset)." %>
               </div>
               <div class="field">
-                  <label>Exec Summary</label>
-                  <%= text_area 'resource', 'description', :class => 'max_len', :max_length => 3000, :title => 'Type a brief summary of your research' %>
+                  <label>Exec Summary*</label>
+                  <%= text_area 'resource', 'description', :class => 'max_len required tip', :max_length => 3000, :title => "Please be as detailed as possible, and structure your answers properly, in paragraphs and with proper grammar. Do not try to skip this or write a short post - minimum recommended length is 750-1000 characters. For each file, you should (1) describe what's in it, (2) mention your sources/ establish your credibility, and (3) provide one or two key takeaways." %>
               </div>
               <div class="field">
                   <label>Industry*</label>
@@ -44,7 +44,7 @@
               </div>
               <div class="field">
                   <label>Price(US$)*</label>
-                  <%= text_field 'resource', 'selling_price', :class => 'required valid_price' %>
+                  <%= text_field 'resource', 'selling_price', :class => 'required valid_price tip', :title => "Price can be between US$0 to US$1000. Be practical when you set a price - and ask yourself how much you yourself would pay for it. Most documents shared by individuals will sell for US$0-US$500. If you're a first time publisher, consider selling for free to build a following first. Also keep in mind that this is more than just about selling your research - you can publish for free, and make money as a featured expert, billing by the hour (feature coming soon). So it makes sense to set price at a reasonable level, where people will buy. Also note that you can't change your price later. " %>
               </div>
               <div class="field"><label>Attachment(s): </label></div>
               <div class="field"><label>Sample Document</label><%= file_field  "attachment", 'sample', :class => 'file', :size => "22" %></div>
@@ -52,20 +52,20 @@
               <%= link_to "(Add another file)", "#documents", :id => "add_another_file", :class => 'add_attachment_link', :size => "22" %>
               <div class="field">
                 <label>Sources and Methodology*</label>
-                <%= text_area 'resource', 'sources', :class => 'required max_len', :max_length => 3000 %>
+                <%= text_area 'resource', 'sources', :class => 'required max_len tip', :max_length => 3000, :title => "Describe how you collected information, including the sources used (e.g. in person interviews, data sets, websites etc) and the methodology for gathering this information (e.g. if it's a survey, how did you select the target pool etc)." %>
               </div>
               <div class="field">
                 <label>Seller Terms</label>
-                <%= text_area 'resource', 'terms_and_conditions', :class => 'max_len', :max_length => 3000 %>
+                <%= text_area 'resource', 'terms_and_conditions', :class => 'max_len tip', :max_length => 3000, :title => "Use this field only if you want to add any special terms and conditions, or a license, to your post. Individuals need not worry about this - it's mostly useful for companies only. Your post will always be protected by our site's Terms and Conditions and Privacy Policy." %>
               </div>
-              <h4>Your Details</h4>
-              <% unless (@user.blank? || @user.email.blank? || @user.profile.is_edited)  %>
-              <div class="field">
-                <label>About Me*</label>
-                <%= text_area 'profile', 'description', :class => 'required max_len', :max_length => 3000 %>
-              </div>
-              <% end %>
               <% if logged_in? && !current_user.profile.is_edited %>
+                <h4>Your Details</h4>
+                <% unless (@user.blank? || @user.email.blank? || @user.profile.is_edited)  %>
+                  <div class="field">
+                    <label>About Me*</label>
+                    <%= text_area 'profile', 'description', :class => 'required max_len', :max_length => 3000 %>
+                  </div>
+                <% end %>
                   <div class="field">
                     <label>Name*</label>
                     <%= text_field 'profile', 'name', :class => 'required' %>
