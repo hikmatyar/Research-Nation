@@ -9,7 +9,7 @@
       <% @resource.attachments.original_files.each_with_index do |attachment,index| %>
         <div class="sign_up_box">
           <div class="download_image">
-            <a href="/purchases/download_file/<%=params[:url_slug]%>?attachment=<%= attachment.id%>">
+            <a href="/download_file/<%=params[:url_slug]%>?attachment=<%= attachment.id%>">
               <%= (image_tag "pdf.png") if attachment.original_content_type.match("pdf")%>
               <%= (image_tag "Word_Doc_Icon.png") if attachment.original_content_type.match("doc") %>
               <%= (image_tag "excel-2010-icon.1.png") if attachment.original_content_type.match("xls") || attachment.original_content_type.match("excel") %>
