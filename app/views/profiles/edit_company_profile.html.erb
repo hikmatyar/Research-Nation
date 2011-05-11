@@ -1,3 +1,4 @@
+<% content_for :html_title, 'Edit Profile' %>
 <div class="content">
   <div class="how_it_work_left_side">
     <div class="seller_back">
@@ -11,11 +12,11 @@
         <% form_for(@profile , :url => {:controller => "profiles", :action => "update", :id => @profile.id }, :html => { :multipart => true } ) do |f| %>
           <div class="field">
             <label>Name*</label>
-            <%= f.text_field 'name', :class => 'required max_len', :max_length => 70 %>
+            <%= f.text_field 'name', :class => 'required max_len', :max_length => 50 %>
           </div>
           <div class="field">
             <label>City*</label>
-            <%= text_field 'profile', 'city', :class => 'required', :max_length => 400 %>
+            <%= text_field 'profile', 'city', :class => 'required', :max_length => 50 %>
           </div>
           <div class="field">
             <label>Country*</label>
@@ -23,19 +24,19 @@
           </div>
           <div class="field">
             <label>Website</label>
-            <%= f.text_field 'website', :class => 'required max_len' %>
+            <%= f.text_field 'website', :class => 'text_width' %>
           </div>
           <div class="field">
             <label>Description*</label>
             <%= f.text_area 'description', :class => 'required max_len', :max_length => 2500 %>
           </div>
           <div class="field">
-            <label>Logo</label>
+            <label>Logo*</label>
             <%= f.file_field 'photo', :id => "user_image", :size => "23"%>
           </div>
           <div class="field">
             <label>Competitors</label>
-            <%= f.text_field 'competitors', :class => 'required max_len', :max_length => 500 %>
+            <%= f.text_field 'competitors', :class => 'text_width max_len', :max_length => 500 %>
           </div>
           <div class="field">
             <label>Company Type*</label>
@@ -51,12 +52,12 @@
             <%= text_field 'key_individual', 'name', :class => 'required' %>
           </div>
           <div class="field">
-            <label>Title*</label>
-            <%= text_field 'key_individual', 'title', :class => 'required' %>
+            <label>Title</label>
+            <%= text_field 'key_individual', 'title', :class => 'text_width' %>
           </div>
           <div class="field">
             <label>LinkedIn</label>
-            <%= text_field 'key_individual', 'linkedin', :class => 'required' %>
+            <%= text_field 'key_individual', 'linkedin', :class => 'text_width' %>
           </div>
           <h4>Setting Expectations</h4>
           <div class="field">
