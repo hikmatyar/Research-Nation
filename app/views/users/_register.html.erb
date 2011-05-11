@@ -10,6 +10,7 @@
 						<a href="#" onclick="showTab('signup');" style="" class="sign_up" id="signup-tab">Sign Up</a>
 						<a href="#" onclick="showTab('login');" class="login" id="login-tab">Log In</a>
 						<div  style="display: none;" class="sign_up_box" id="signup-body">
+              <%= render :partial => 'users/errors' unless @user.blank? %>
 							<%= render :partial => 'users/signup'%>
 							<div style="display: block;" class="sign_up_box" id="login-body">
 						  <%= render :partial => 'users/login'%>
@@ -20,3 +21,4 @@
 			</div>
 		</div>	
 	</div>
+</div>

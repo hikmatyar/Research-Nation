@@ -97,7 +97,7 @@ class UsersController < ApplicationController
       return redirect_to :controller => "resources", :action => "view_posts"
     end
     @user[:password] = ""
-    return render :action => 'register'
+    return render :action => 'register', :opt => "signup"
   end
 
   def authenticate

@@ -1,23 +1,22 @@
-  <div>
-    <%= render :partial => 'users/errors' unless @user.blank? %>
-    <% form_for(@user , :url => {:controller => "users", :action => "create" } ) do |f| %>
-      <div class="field">
-        <label>E-mail</label>
-        <%= f.text_field 'email', :id => "email", :class => "login_field" %>
-      </div>
-      <div class="field">
-        <label>Password</label>
-        <%= f.password_field 'password', :id => "password", :class => "login_field" %>
-      </div>
-      <div class="field">
-	      <label>I am a</label>
-			  <%= render :partial => "/layouts/select_user_type", :locals => {:f => f} %>
-      </div>
+<div>
+  <% form_for(@user , :url => {:controller => "users", :action => "create", :opt => "signup" } ) do |f| %>
+    <div class="field">
+      <label>E-mail</label>
+      <%= f.text_field 'email', :id => "email", :class => "login_field" %>
     </div>
-    <div class="terms_and_conditions1 sign_up_terms">
-				<p>By signing up you agree to our </p><%= link_to "Terms of Service ", :controller => "main", :action => "privacy" %><p> and</p> <%= link_to "Privacy Policy", :controller => "main", :action => "privacy" %>
-		</div>
-    <div class="sign_up_button"><%= submit_tag 'Sign Up', :class => "green_button" %></div>
-		<% end %>
+    <div class="field">
+      <label>Password</label>
+      <%= f.password_field 'password', :id => "password", :class => "login_field" %>
+    </div>
+    <div class="field">
+      <label>I am a</label>
+		  <%= render :partial => "/layouts/select_user_type", :locals => {:f => f} %>
+    </div>
   </div>
+  <div class="terms_and_conditions1 sign_up_terms">
+			<p>By signing up you agree to our </p><%= link_to "Terms of Service ", :controller => "main", :action => "privacy" %><p> and</p> <%= link_to "Privacy Policy", :controller => "main", :action => "privacy" %>
+	</div>
+  <div class="sign_up_button"><%= submit_tag 'Sign Up', :class => "green_button" %></div>
+	<% end %>
+</div>
 
