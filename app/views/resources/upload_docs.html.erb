@@ -22,7 +22,7 @@
           </div>
           <div class="sign_up_box">
               <% form_for(@resource , :url => { :controller => 'resources', :action => 'create_post', :user => params[:user] }, :html => { :multipart => true } ) do |f| %>
-
+              <h4 style="border-top:0px;">Your Post</h4>
               <div class="field">
                   <label>Title*</label>
                   <%= text_field 'resource', 'title', :class => 'field_width required max_len', :max_length => 140, :title => "This respresents the post title" %>
@@ -58,6 +58,7 @@
                 <label>Seller Terms</label>
                 <%= text_area 'resource', 'terms_and_conditions', :class => 'max_len', :max_length => 3000 %>
               </div>
+              <h4>Your Details</h4>
               <% unless (@user.blank? || @user.email.blank? || @user.profile.is_edited)  %>
               <div class="field">
                 <label>About Me*</label>
@@ -87,7 +88,7 @@
                   </div>
                 <% end %>
             </div>
-            <div class="submit_button"><%= submit_tag "Proceed to Next Step", :class => "green_button" %></div>
+            <div class="submit_button"><%= submit_tag "Submit", :class => "green_button" %></div>
           </div>
           <% end %>
       </div>
