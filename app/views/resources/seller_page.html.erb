@@ -2,6 +2,7 @@
 <%= javascript_include_tag "seller" %>
 
 <div class="content">
+  <% unless flash[:notice].blank? %><p class="flash"><%= flash[:notice] %></p><% end %>
   <div class="content_back post_back">
     <div class="categories_box">
       <b><span><%= link_to @resource.industry, :controller => 'resources', :action => 'view_posts', :filter => @resource.industry %></span> <span><%= link_to @resource.geography, :controller => 'resources', :action => 'view_posts', :filter => @resource.geography %></span></b>
@@ -107,7 +108,7 @@
         <%= (image_tag "avatar.png") if @resource.user.profile.blank? || @resource.user.profile.photo_file_name.blank?  %>
         </div>
         <div class="author_name">
-          <% unless @resource.user.profile.name.blank? %><b><%= (link_to @resource.user.profile.name, :controller => 'profiles', :action => 'profile_page', :url_slug => @resource.user.profile.url_slug) if @resource.user.profile.is_edited %><% end %></b>
+          <% unless @resource.user.profile.name.blank? %><b><%= (link_to ( truncate @resource.user.profile.name, :omission => "...", :length => 19), :controller => 'profiles', :action => 'profile_page', :url_slug => @resource.user.profile.url_slug) if @resource.user.profile.is_edited %><% end %></b>
         </div>
         <div class="contact_button" style="padding-top:8px;">
           <a class="grey_button" href="#message_form" id="message_link" >Send Message</a>
