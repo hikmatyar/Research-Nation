@@ -1,11 +1,13 @@
 <% content_for :html_title, "Purchase #{@resource.title}" %>
 <div class="content">
-	<div class="how_it_work_left_side">
-		<div class="seller_back">
-		<span class="sign_up">Payment Details</span>
-		<div class="sign_up_box">
-			<h4 style="margin-top:0px;">Your Purchase</h4>
-      <p><%= @resource.title %></p>
+  <div class="how_it_work_left_side">
+    <div class="seller_back">
+      <div class="create_heading_box message_heading_box">
+        <h1 style="margin-top: 0px !important; margin-bottom: 5px !important;">Payment Details</h1>
+      </div>
+      <div class="sign_up_box">
+       <h4 style="margin-top:0px !important; border-top:0px;">Your Purchase</h4>
+       <p><%= @resource.title %></p>
        <% @resource.attachments.original_files.each_with_index do |attachment,index| %>
        <div class="download_image">
          <%= (image_tag "pdf.png") if attachment.original_content_type.match("pdf")%>
