@@ -2,8 +2,11 @@
 <div class="content">
   <div class="how_it_work_left_side">
 	    <div class="seller_back">
-        <span class="sign_up" id="tab2">Our Mission</span>
+	    <div class="create_heading_box message_heading_box">
+	      <h1 style="margin-top: 5px ! important; margin-bottom: 5px ! important;">About Us</h1>
+      </div>
         <div style="padding:10px 0px" class="sign_up_box paragraph" id="tabOne">
+          <h4 style="margin-top:0px; border-top:0px;">Our Mission</h4>
           <p>Research Nation was founded in 2010 in London, with the goal of becoming the world's most open and collaborative marketplace for high quality, original market research. We're on a mission to fundamentally change the way market research is consumed and created in the marketplace today, and here's how we're going to do it:</p>
           <b>Empowering Individuals</b>
           <p>Our vision is to unlock the world’s human capital, by providing individuals with a forum for monetizing their intelligence. By empowering individuals to share their insights and intelligence, we aim to fundamentally change the way market research is created and consumed in today’s world, by allowing individuals to be a part of an industry (market research) that has traditionally been the realm of large companies only.</p>
@@ -11,11 +14,7 @@
           <p>Every seller on our site has three unique tools. First is a profile dashboard, which he/she can use to track sales. Second is a seller page for every post, which is custom page that can be easily shared on social networks. Third is a profile page, which allows sellers to share biographical details about themselves, and also indicate their availability for a work engagement.</p>
           <b>Focusing on Quality</b>
           <p>We’re not going to be just another site where you can trade intelligence and data. Every post on ResearchNation is backed by a user profile, an executive summary, sources and methodology, and, in some cases, a sample as well. We have a zero tolerance policy towards illegal or plagiarized content, and as such, will remove any such content immediately.</p>
-        </div>
-      </div>
-      <div class="facebook_back">
-        <span class="sign_up" id="tab2">Team</span>
-        <div style="padding:10px 0px" class="sign_up_box" id="tabOne">
+          <h4>Team</h4>
           <div class="field">
             <img src="/images/user_pic.jpg" />
             <b style="margin-top:0px;">Faisal Khalid, Founder & CEO</b>
@@ -26,20 +25,14 @@
             <b style="margin-top:0px;">Ali Ibrahim</b>
             <p style="margin-bottom:0px;">Ali is the technical lead at Research Nation. He used to run his own software development firm until recently, and is a 2007 Computer Science undergrad</p>
           </div>
-        </div>
-      </div>
-      <div class="facebook_back">
-        <div class="heading">
-          <span class="sign_up" id="tab2">Stay Informed</span>
-          <div class="sign_up_box">
-            <div class="email_box">
-              <% form_tag (:controller => 'users', :action => 'subscribe_newsletter') do %>
-              <div class="send_mail">
-                <label>Sign Up for our monthly newsletter</label>
-                <%= text_field 'user', 'email', :value => "Your email address", :class => "email_addres" %>
-              </div>
-             <% end %>
+          <h4>Stay Informed</h4>
+          <div class="email_box">
+            <% form_tag (:controller => 'users', :action => 'subscribe_newsletter') do %>
+            <div class="send_mail">
+              <label>Sign Up for our monthly newsletter</label>
+              <%= text_field 'user', 'email', :value => "Your email address", :class => "email_addres" %>
             </div>
+           <% end %>
           </div>
         </div>
       </div>
