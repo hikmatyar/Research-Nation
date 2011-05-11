@@ -15,7 +15,7 @@
         <td ><%= post.user.profile.name %></td>
         <td ><%= post.selling_price %></td>
         <td ><%= post.created_at.strftime("%B %d, %Y") %></td>
-        <td ><%= link_to 'Delete', { :controller => 'resources', :action => 'delete', :url_slug => post.url_slug, :request => "admin"}, :confirm => "Are you sure you want to delete this post?"  %>
+        <td ><%= link_to 'Delete', { :controller => 'resources', :action => 'delete', :url_slug => post.url_slug}, :confirm => "Are you sure you want to delete this post?"  %>
         </td> 
       </tr>
     <% end %>

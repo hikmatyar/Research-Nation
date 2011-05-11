@@ -42,11 +42,6 @@ class ResourcesController < ApplicationController
     end
   end
 
-  def remove_sample
-    attachment = Attachment.find params[:id]
-    attachment.remove_sample
-  end
-
   def create_post
     resource = Resource.new(params[:resource])
     user = User.find session[:user]
@@ -71,45 +66,39 @@ class ResourcesController < ApplicationController
     end
   end
 
+
+  before_filter :edit_authorization, :only => [:remove_sample, :edit, :update, :delete]
+
+  def remove_sample
+    @resource.attachments.sample.first.remove_sample unless (@resource.attachments.blank? || @resource.attachments.sample.blank?)
+    return redirect_to :controller => 'resources', :action => 'edit', :url_slug => params[:url_slug]
+  end
+
+
   def edit
-    if logged_in? && ( session[:user] == current_user.id || current_user.is_admin? )
-      @resource = Resource.find_by_url_slug(params[:url_slug])
-    else
-      return redirect_to_login
-    end
   end
 
   def update
-    resource = Resource.find_by_url_slug(params[:url_slug])
     unless params[:sample].blank?
-      resource.attachments.sample.first.destroy unless resource.attachments.sample.blank?
-      Attachment.add_file(params[:sample], resource.id, "sample")
+      @resource.attachments.sample.first.destroy unless @resource.attachments.sample.blank?
+      Attachment.add_file(params[:sample], @resource.id, "sample")
     end
-    if resource.update_attributes(params[:resource])
+    if @resource.update_attributes(params[:resource])
       flash[:notice] = "Thank you! Your post has been updated"
     else
       flash[:error] = "Oops! looks like something's wrong"
     end
-    return redirect_to :controller => 'users', :action => 'profile'
+    return redirect_to :action => 'seller_page', :url_slug => params[:url_slug]
 
   end
 
   def delete
-    resource = Resource.find_by_url_slug(params[:url_slug])
-    sample = resource.attachments.sample
-    original_doc = resource.attachments.original_files
-    resource.destroy
+    sample = @resource.attachments.sample
+    original_doc = @resource.attachments.original_files
+    @resource.destroy
     #flash[:notice] = "Got it. Your post has been deleted"
-    return redirect_to :controller => 'users', :action => 'profile' if params[:request] == "user"
-    return redirect_to :controller => 'admin', :action => 'posts' if params[:request] == "admin"
-  end
-
-  def add_vote
-    vote = Vote.new
-    vote.resource_id = params[:resource]
-    vote.user_id = session[:user]
-    vote.save
-    render :text => vote.resource.votes.count
+    return redirect_to :controller => 'users', :action => 'profile' if session[:admin].blank?
+    return redirect_to :controller => 'admin', :action => 'posts'
   end
 
   def filter_results
@@ -138,13 +127,15 @@ class ResourcesController < ApplicationController
     render :text => (Resource.find_all_by_geography params[:geography]).count
   end
 
-  def download
-    resource = Resource.find_by_url_slug params[:url_slug]
-    @attachments = resource.attachments.original_files
-  end
 
   def user_terms_and_conditions
     @resource = Resource.find_by_id params[:id]
     render :layout => false
+  end
+
+private
+  def edit_authorization
+    @resource = Resource.find_by_url_slug(params[:url_slug])
+    return render_404 unless (current_user.is_admin || current_user.own_resource?(@resource))
   end
 end

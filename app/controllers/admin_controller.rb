@@ -52,7 +52,7 @@ class AdminController < ApplicationController
   end
 
   def seller_payments
-    @users = User.paginate  (:conditions => ["id in (?)", Resource.sellers_with_paid_resources.collect(&:user_id)],
+    @users = User.paginate(:conditions => ["id in (?)", Resource.sellers_with_paid_resources.collect(&:user_id)],
                             :page => params[:page])
   end
 

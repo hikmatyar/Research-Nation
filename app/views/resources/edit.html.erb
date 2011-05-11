@@ -43,7 +43,7 @@
           </div>
         <% unless @resource.attachments.sample.blank? %>
             <div class="sample">
-              <%= link_to "Delete Sample", :controller => 'resources', :action =>       'remove_sample', :id => @resource.attachments.sample.first.id unless      @resource.attachments.sample.blank? %>
+              <%= link_to "Delete Sample", :controller => 'resources', :action => 'remove_sample', :url_slug => @resource.url_slug unless @resource.attachments.sample.blank? %>
           <% end %>
         </div>
         <div class="submit_button">
