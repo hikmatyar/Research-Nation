@@ -42,7 +42,7 @@ jQuery('document').ready(function(){
 
       url = "/resources/filter_results?industry="+ industries.join(",") +"&geography="+ geographies.join(",") +"&price=" + jQuery(":range").val().replace("$","");
 
-      jQuery("#industry_result").append('<div><p> ' + formatted +'</p> <span id="industry_tag'+count+'"></span><img src="/images/fancy_close.png" /></div>');
+      jQuery("#industry_result").append('<div class="cross_tip"><p> ' + formatted +'</p> <span id="industry_tag'+count+'"></span><img src="/images/cross_tip.png" /></div>');
       new Ajax.Updater('industry_tag'+count, "/resources/industries_count?industry="+formatted, {asynchronous: true,});
       count++;
       new Ajax.Updater('left_content', url, {asynchronous: true,});
@@ -65,7 +65,7 @@ jQuery('document').ready(function(){
 
       url = "/resources/filter_results?industry="+ industries.join(",") +"&geography="+ geographies.join(",") +"&price=" + jQuery(":range").val();
 
-      jQuery("#geography_result").append('<div><p> ' + formatted +'</p> <span id="geography_tag'+count+'"></span><img src="/images/fancy_close.png" /></div>');
+      jQuery("#geography_result").append('<div class="cross_tip"><p> ' + formatted +'</p> <span id="geography_tag'+count+'"></span><img src="/images/cross_tip.png" /></div>');
       new Ajax.Updater('geography_tag'+count, "/resources/geography_count?geography="+formatted, {asynchronous: true,});
       count++;
       new Ajax.Updater('left_content', url, {asynchronous: true,});
