@@ -1,3 +1,4 @@
+<%= javascript_include_tag 'purchases' %>
 <% content_for :html_title, "Purchase #{@resource.title}" %>
 <div class="content">
   <div class="how_it_work_left_side">
@@ -68,7 +69,7 @@
          <div class="field">
             <label for="card_verification_CVV Code">CVV Code</label>
             <% label :card_verification, "CVV Code" %>
-            <%= text_field 'order', 'card_verification', :class => "required validate-digits"%>
+            <%= text_field 'order', 'card_verification', :class => "required validate-digits tip", :title => "Card Verification Value (CVV) is a 3 digit number on the back side of your card. These 3 digits appears beneath the signature panel." %>
          </div>
          <div class="field">
            <label>Expires On</label>
@@ -89,11 +90,4 @@
     
   <% end %>
 </div>
-<script type="text/javascript">
-  new Validation('purchase-resource');
-  document.getElementById("terms_link").onclick = show_terms;
-    function show_terms(){
-      window.open("/resources/user_terms_and_conditions/<%= @resource.id %>","terms_and_conditions","location=1,status=1,scrollbars=1, width=250,height=250, screenX=900, screenY=250");
-    };
-</script>
 
