@@ -40,11 +40,14 @@ ActionController::Routing::Routes.draw do |map|
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing or commenting them out if you're using named routes and resources.
   map.connect "/post/:url_slug", :controller => "resources", :action => "seller_page"
+  map.connect "/edit_post/:url_slug", :controller => "resources", :action => "edit"
   map.connect "/profile/:url_slug", :controller => "profiles", :action => "profile_page"
   map.connect "/purchases/:url_slug", :controller => "purchases", :action => "resource"
   map.connect "/download/:url_slug", :controller => "purchases", :action => "download"
   map.connect "/browse/posts", :controller => "resources", :action => "view_posts"
   map.connect "/browse/profiles", :controller => "profiles", :action => "view_profile_list"
+  map.connect "/create_a_post", :controller => "resources", :action => "upload_docs"
+
 
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
