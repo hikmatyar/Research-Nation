@@ -54,7 +54,7 @@ class ApplicationController < ActionController::Base
 
   def subscribe_to_newsletter user
     settings = YAML::load(File.open("#{RAILS_ROOT}/config/monkeywrench.yml"))
-    url = URI.parse "http://us2.api.mailchimp.com/1.3/?method=listSubscribe&apikey=#{settings[RAILS_ENV]['api_key']}&id=#{settings[RAILS_ENV]['list_id']}&email_address=#{user.email}&merge_vars[FNAME]=#{user.first_name}&merge_vars[LNAME]=#{user.last_name}&double_optin=false&send_welcome=true&output=json"
+    url = URI.parse "http://us2.api.mailchimp.com/1.3/?method=listSubscribe&apikey=#{settings[RAILS_ENV]['api_key']}&id=#{settings[RAILS_ENV]['list_id']}&email_address=#{user.email}&double_optin=false&send_welcome=true&output=json"
 
       http = Net::HTTP.new(url.host, url.port)
       http.use_ssl = (url.scheme == 'https')
