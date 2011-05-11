@@ -11,19 +11,19 @@
         <div class="sign_up_box" style="padding-top:20px;">
           <div class="field">
             <label for = "title">Title*</label>
-            <%= text_field 'resource', 'title', :class => 'required text_field' %>
+            <%= text_field 'resource', 'title', :class => 'required text_field max_len', :max_length => 140 %>
           </div>
           <div class="field">
             <label for="summary">Exec Summary*</label>
-            <%= text_area 'resource', 'description', :class => 'required text_field'%>
+            <%= text_area 'resource', 'description', :class => 'required text_field max_len', :max_length => 3000 %>
           </div>
           <div class="field">
             <label for="selling_price">Price*</label>
-            <%= text_field 'resource', 'selling_price', :disabled => true, :class => 'text_field' %>
+            <%= text_field 'resource', 'selling_price', :disabled => true, :class => 'text_field max_len', :max_length => 25 %>
           </div>
           <div class="field">
             <label for="industry">Industry*</label>
-            <%= text_field 'resource', 'industry', :class => 'required text_field'%>
+            <%= text_field 'resource', 'industry', :class => 'required text_field max_len', :max_length => 25 %>
           </div>
           <div class="field">
             <label for="geography">Geography*</label>
@@ -31,11 +31,11 @@
           </div>
           <div class="field">
             <label for="sources">Sources & Methodology*</label>
-            <%= text_area 'resource', 'sources', :class => 'required text_field'%>
+            <%= text_area 'resource', 'sources', :class => 'required text_field max_len', :max_length => 3000%>
           </div>
           <div class="field">
             <label for="terms">Seller Terms</label>
-            <%= text_area 'resource', 'terms_and_conditions', :class => 'text_field'%>
+            <%= text_area 'resource', 'terms_and_conditions', :class => 'text_field max_len', :max_length => 3000%>
           </div>
           <div class="field">
             <label for="terms">Sample</label>
