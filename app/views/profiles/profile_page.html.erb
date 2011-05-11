@@ -8,11 +8,11 @@
     <div class="content_back">
       <div class="categories_box">
         <b>
-		      <% unless @profile.industry_focus.blank? %>
-		        <span><%= link_to ( @profile.company_type, :controller => "profiles", :action => "view_profile_list", :filter => @profile.company_type ) unless @profile.company_type.blank? %></span>
+		      <% unless @profile.company_type.blank? %>
+		        <span><%= link_to ( @profile.company_type, :controller => "profiles", :action => "view_profile_list", :company_type => @profile.company_type ) unless @profile.company_type.blank? %></span>
 		      <% end %>
-		      <% unless @profile.research_type.blank? %>
-		        <span><%= link_to ( @profile.services, :controller => "profiles", :action => "view_profile_list", :filter => @profile.services) unless @profile.services.blank? %></span>
+		      <% unless @profile.services.blank? %>
+		        <span><%= link_to ( @profile.services, :controller => "profiles", :action => "view_profile_list", :services => @profile.services) unless @profile.services.blank? %></span>
 		      <% end %>
         </b>
       </div>

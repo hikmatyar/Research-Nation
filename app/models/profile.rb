@@ -18,11 +18,17 @@ class Profile < ActiveRecord::Base
 
   named_scope :edited, :conditions => {:is_edited => true}, :order => "created_at DESC"
 
+  named_scope :interested, :conditions => ["interested_in IS NOT NULL"], :order => "created_at DESC"
+
+  named_scope :through_company_type, (lambda do |company_type| {:conditions => {:is_edited => true, :company_type => company_type}, :order => "created_at DESC"} end)
+  named_scope :through_services, (lambda do |services| {:conditions => {:is_edited => true, :services => services}, :order => "created_at DESC"} end)
+
   def to_params
     "#{id}-#{name.parameterize}"
   end
   
   def update_profile_information profile_details, key_individual_details
+    profile_details[:interested_in] = nil if profile_details[:interested_in] == ""
     self.update_attributes(profile_details)
     self.update_is_edited
     self.update_url_slug
@@ -31,11 +37,11 @@ class Profile < ActiveRecord::Base
   end
 
   def update_url_slug
-    self.update_attribute( :url_slug, self.to_params )
+    self.update_attribute(:url_slug, self.to_params)
   end
   
   def update_is_edited
-    self.update_attribute( :is_edited, true )
+    self.update_attribute(:is_edited, true)
   end
   
   def update_website website_link

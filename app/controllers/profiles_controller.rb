@@ -8,9 +8,12 @@ class ProfilesController < ApplicationController
 
   def view_profile_list
     @profiles = []
-    profiles = params[:filter].blank? ? ( Profile.find :all, :order => 'created_at DESC' ) : ( Profile.find :all, :conditions => [ "company_type = ? OR services = ?", params[:filter], params[:filter] ], :order => 'created_at DESC')
-    profiles.each do |profile|
-      @profiles.push(profile) unless profile.is_edited == false
+    if !params[:company_type].blank?
+    @profiles = Profile.through_company_type(params[:company_type])
+    elsif !params[:services].blank?
+      @profiles = Profile.through_services(params[:services])
+    else
+      @profiles = Profile.edited.interested
     end
   end
 
@@ -42,7 +45,7 @@ class ProfilesController < ApplicationController
         end
       end
     else
-      conditions  +=  "and interested_in IS NULL"
+      conditions  +=  " and interested_in IS NULL"
       @profiles = (Profile.find :all, :conditions => conditions, :order => 'created_at DESC')
     end
     @profiles.flatten!
