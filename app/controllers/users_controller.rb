@@ -158,7 +158,7 @@ class UsersController < ApplicationController
 
   def reset_password
     if params[:token] == session[:token] && params[:password] == params[:confirm_password]
-      session[:toekn]=nil
+      session[:token] = nil
       user = User.find params[:id]
       user.update_attributes :password => params[:password]
       session[:user] = user.id

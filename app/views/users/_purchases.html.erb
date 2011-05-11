@@ -1,7 +1,7 @@
 <div class="users_table">
 	<table border="0" cellspacing="5" cellpadding="5" id=" posts_table" align="left">
   	<tbody>
-        <% purchases.each.each do |order, index|%>
+        <% purchases.each do |order|%>
           <tr>
             <td width="200"><%= order.resource.title%></td>
             <td width="200">$ <%= order.resource.selling_price %></td>
