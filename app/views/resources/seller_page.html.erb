@@ -12,8 +12,8 @@
         <div class="Post_author_details">
           <% unless @resource.user.profile.name.blank? %>
           <b>By 
-            <% unless  @resource.user.profile.is_edited %>
-            <%= (link_to @resource.user.profile.name, :controller => 'profiles', :action => 'profile_page', :url_slug => @resource.user.profile.url_slug ) %>,
+            <% if @resource.user.profile && @resource.user.profile.is_edited %>
+              <%= (link_to @resource.user.profile.name, :controller => 'profiles', :action => 'profile_page', :url_slug => @resource.user.profile.url_slug ) %>,
             <% else %>
               <%= @resource.user.profile.name %>,
             <% end%>
