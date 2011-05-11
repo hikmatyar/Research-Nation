@@ -1,5 +1,5 @@
 <% unless @user.profile.blank? %>
-  <% content_for :html_title, "#{@user.profile.name}\' Dashboard" %>
+  <% content_for :html_title, "#{@user.profile.name} Dashboard" %>
 <% else %>
   <% content_for :html_title, "Dashboard" %>
 <% end %>
