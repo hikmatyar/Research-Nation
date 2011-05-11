@@ -44,7 +44,7 @@ class AdminController < ApplicationController
   end
 
   def profiles
-    @profiles = Profile.find :all, :order => 'created_at DESC'
+    @profiles = Profile.edited
   end
 
   def messages
@@ -95,8 +95,7 @@ private
     @users_count = User.count
     @admin_count = (User.find_all_by_is_admin true).count
     @members_count = session[:members_count]
-    @experts_count = (User.find_all_by_is_expert(true)).count
-    @profiles_count = Profile.count
+    @profiles_count = Profile.edited.count
     @messages_count = (Message.find_all_by_recipient_id current_user.id).count
   end
 

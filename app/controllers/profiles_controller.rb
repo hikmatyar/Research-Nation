@@ -4,6 +4,8 @@ class ProfilesController < ApplicationController
 
   before_filter :redirect_to_login, :except => ["view_profile_list", "search_results", "profile_page"]
 
+  before_filter :redirect_to_admin_login, :only => ["delete"]
+
   def view_profile_list
     @profiles = []
     profiles = params[:filter].blank? ? ( Profile.find :all, :order => 'created_at DESC' ) : ( Profile.find :all, :conditions => [ "company_type = ? OR services = ?", params[:filter], params[:filter] ], :order => 'created_at DESC')
@@ -53,45 +55,19 @@ class ProfilesController < ApplicationController
     @user = User.new unless logged_in?
   end
 
-  def create
-    profile = session[:profile].blank? ? Profile.new(params[:profile]) : session[:profile]
-    key_individual = session[:key_individual].blank? ? KeyIndividual.new(params[:key_individual]) : session[:key_individual]
-
-    unless logged_in?
-      session[:key_individual] = key_individual
-      session[:profile] = profile
-      return redirect_to :controller => 'users'  , :action => 'register'
-    end
-
-    profile.user_id = session[:user]
-    if profile.save
-      key_individual = KeyIndividual.new
-      key_individual.profile_id = profile.id
-      key_individual.save
-
-      session[:profile] = nil
-      session[:key_individual] = nil
-
-      key_individual.profile_id = profile.id
-      key_individual.save
-      return redirect_to :controller => 'users', :action => 'profile'
-    end
-  end
 
   def update
+    set_profile_data
 
-    profile = Profile.find params[:id]
-    key_individual = profile.key_individual.blank? ? KeyIndividual.new : profile.key_individual
+    @profile.update_profile_information(params[:profile], params[:key_individual])
 
-    if key_individual.new_record?
-      key_individual.profile_id = profile.id
-      key_individual.save
+    if (session[:admin] && !params[:user_id].blank?)
+      flash[:notice] = "Profile information updated successfully"
+      return redirect_to :controller => 'admin', :action => 'profiles'
+    else
+      flash[:notice] = "Your information was updated successfully"
+      return redirect_to :controller => 'users', :action => 'profile'
     end
-
-    profile.update_profile_information(params[:profile], params[:key_individual])
-
-    flash[:notice] = "Your information was updated successfully"
-    return redirect_to :controller => 'users', :action => 'profile'
 
   end
 
@@ -100,25 +76,19 @@ class ProfilesController < ApplicationController
   end
 
   def edit_individual_profile
-    user = User.find session[:user]
-    redirect_to_home if user.company?  || user.profile.id == params[:id]
-    @profile = Profile.find params[:id]
-    @key_individual = @profile.key_individual unless @profile.key_individual.blank?
+    set_profile_data
   end
 
   def edit_company_profile
-    user = User.find session[:user]
-    unless current_user.is_admin?
-      redirect_to_home if !user.company? || user.profile.id == params[:id]
-    end
-    @profile = Profile.find params[:id]
-    @key_individual = @profile.key_individual unless @profile.key_individual.blank?
+    set_profile_data
   end
 
   def delete
-    profile = Profile.find params[:id]
-    profile.destroy
-    return redirect_to :controller => 'admin', :action => 'dashboard'
+    user = User.find params[:user_id]
+    if !user.profile.blank? && user.profile.destroy
+      flash[:notice] = "Profile deleted."
+    end
+    return redirect_to :controller => 'admin', :action => 'profiles'
   end
 
   def send_message_to_profile
@@ -136,11 +106,31 @@ class ProfilesController < ApplicationController
   end
 
 private
+
   def set_tags
     @research_type = ["Advertising Research", "Attitude & Usage Research", "Brand Research", "Business to Business", "Competitive Intelligence", "Concept/Positioning", "Consumer Research", "Corporate Image/Identity", "Customer Satisfaction", "Employee Surveys", "Demographic Research", "International (i.e. non-US)", "Legal Research", "Marketing Research", "Media Research", "Modeling & Predictive Research", "Mystery Shopping", "New Product Research", "Packaging Research", "Price Research", "Problem Detection", "Product Research", "Evaluation Studies", "Psychological Research", "Public Opinion", "Recruiting Research", "Retail Research", "Secondary Research", "Seminars/ Training", "Strategic Research", "Technology Evaluations", "Website Usability"]
     @industry_focus = ["All", "Acquisitions", "Ad Agencies", "Agriculture", "Airlines", "Alcoholic Beverages", "Clothing", "Automotive", "Beverages", "Industrial", "Candy", "Gambling", "Chemicals", "Media & Communications", "Tech", "Construction", "Consumer Durables", "Consumer Services", "Cosmetics", "Demographics", "Education", "Electronics", "Entertainment", "Environment", "Fitness", "Fashion", "Financial Services & Investing", "Foods", "Gay & Lesbian", "Government", "Health Care", "Legal", "Couponing", "Military", "Non-Profits", "Packaged Goods", "Pets", "Oil & Gas", "Public Relations", "Real Estate", "Religion", "Retail", "Small Businesses", "Startups", "Sports", "Tobacco", "Toys", "Transportation", "Travel", "Utilities/Energy"]
     @company_type = ["Large", "Medium-sized", "Small", "Internet Startup"]
     @services = ["Surveys", "Focus Groups", "Custom Research", "Full Service"]
+  end
+
+  def set_profile_data
+    user_id = (session[:admin] && !params[:user_id].blank?) ? params[:user_id] : session[:user]
+    user = User.find user_id
+
+    @profile = user.profile.blank? ? Profile.new : user.profile
+    if @profile.new_record?
+      @profile.user_id = user_id
+      user.company? ? @profile.profile_type = "company" : @profile.profile_type = "individual"
+      @profile.save
+    end
+
+    @key_individual = @profile.key_individual.blank? ? KeyIndividual.new : @profile.key_individual
+    if @key_individual.new_record?
+      @key_individual.profile_id = @profile.id
+      @key_individual.save
+    end
+
   end
 
 end

@@ -9,7 +9,7 @@
       </div>
       <div style="min-height: 275px;" class="sign_up_box" id="tabOne">
         <h4 style="margin-top:5px; border-top:0px;">Company Details</h4>
-        <% form_for(@profile , :url => {:controller => "profiles", :action => "update", :id => @profile.id }, :html => { :multipart => true } ) do |f| %>
+        <% form_for(@profile , :url => {:controller => "profiles", :action => "update" }, :html => { :multipart => true } ) do |f| %>
           <div class="field">
             <label>Name*</label>
             <%= f.text_field 'name', :class => 'required max_len', :max_length => 50 %>
@@ -68,6 +68,10 @@
           <%= f.hidden_field 'interested_in', :id => 'interested_in' %>
           <%= render :partial => "/profiles/interested_in_fields"%>
           </div>
+          <div class="hidden">
+            <%= hidden_field_tag 'user_id', params[:user_id]  if session[:admin] && !params[:user_id].blank?%>
+          </div>
+
           <div class="submit_button">
             <%= f.submit 'Submit', :class => "green_button" %>
           </div>

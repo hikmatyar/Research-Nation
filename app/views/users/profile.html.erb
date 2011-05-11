@@ -1,4 +1,8 @@
-<% content_for :html_title, "#{@user.profile.name}\' Dashboard" %>
+<% unless @user.profile.blank? %>
+  <% content_for :html_title, "#{@user.profile.name}\' Dashboard" %>
+<% else %>
+  <% content_for :html_title, "Dashboard" %>
+<% end %>
 <script type="text/javascript" language="javascript" charset="utf-8">
   $('document').ready(function(){
     $("#login_link").fancybox({ 
@@ -42,8 +46,8 @@
         <span><%= @user.email %></span>
       </div>
       <div class="profile_button">
-        <%= link_to ('Update Your Profile', { :controller => 'profiles', :action => 'edit_individual_profile', :id => @user.profile.id }, { :class => 'green_button' }) if @user.individual? %>
-        <%= link_to ( 'Update Your Profile', { :controller => 'profiles', :action => 'edit_company_profile', :id => @user.profile.id }, { :class => 'green_button' }) if @user.company? %>
+        <%= link_to ('Update Your Profile', { :controller => 'profiles', :action => 'edit_individual_profile'}, { :class => 'green_button' }) if @user.individual? %>
+        <%= link_to ( 'Update Your Profile', { :controller => 'profiles', :action => 'edit_company_profile'}, { :class => 'green_button' }) if @user.company? %>
       </div>
    	</div>
     <div class="profile_listing">
