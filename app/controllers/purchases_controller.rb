@@ -27,7 +27,7 @@ class PurchasesController < ApplicationController
   end
 
  def download_file
-   return head(:not_found) if (attachment = Attachment.find_by_id(params[:attachment])).nil?
+   return render_404 if (attachment = Attachment.find_by_id(params[:attachment])).nil?
    path = attachment.original.path
    redirect_to(AWS::S3::S3Object.url_for(path, attachment.original.bucket_name, :expires_in => 10.seconds))
  end
@@ -35,6 +35,6 @@ class PurchasesController < ApplicationController
 private
   def download_verify
     @resource = Resource.find_by_url_slug params[:url_slug]
-    return head(:not_found) unless (current_user.is_admin? || current_user.own_resource?(@resource) || @resource.free? || Order.authorized_access?(current_user.id, params[:id]))
+    return render_404 unless (current_user.is_admin? || current_user.own_resource?(@resource) || @resource.free? || Order.authorized_access?(current_user.id, params[:url_slug]))
   end
 end

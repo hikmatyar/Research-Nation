@@ -67,6 +67,26 @@ class ApplicationController < ActionController::Base
       flash.now[:error] = "An error occured" unless data == "true"
   end
 
+
+  def method_missing(methodname, *args)
+    @methodname = methodname
+    @args = args
+    render "#{RAILS_ROOT}/public/404.html", :status => 404
+  end
+
+  def render_404(exception = nil)
+    if exception
+      logger.info "Rendering 404 with exception: #{exception.message}"
+    end
+
+    respond_to do |format|
+      format.html { render :file => "#{Rails.root}/public/404.html", :status => :not_found }
+      format.xml  { head :not_found }
+      format.any  { head :not_found }
+    end
+  end
+
+
   def authenticate_production
     authenticate_or_request_with_http_basic do |username, password|
       username = "researchnation_admin" && password = "researchnation"

@@ -31,7 +31,7 @@
       </div>
       <div class="sign_up_box">
         <div class="email_box">
-          <% form_tag (:controller => 'users', :action => 'subscribe_newsletter') do %>
+          <% form_tag(:controller => 'users', :action => 'subscribe_newsletter') do %>
             <div class="send_mail">
               <label>Sign Up for our monthly newsletter</label>
               <%= text_field 'user', 'email', :value => "Your email address", :class => "email_addres" %>
