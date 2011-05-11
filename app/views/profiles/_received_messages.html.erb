@@ -7,7 +7,7 @@
   	  <td width="70" ><span class="fixed">  <%= ((Time.diff Time.now, msg.created_at.to_time)[:day] == 0)? "Today" : "#{(Time.diff Time.now, msg.created_at.to_time)[:day]} days ago"  %></span>
   	  </td>
   	  <td width="250"><%= link_to (truncate(msg.subject, :omission => "...", :length => 41), { :controller => 'messages', :action => 'view', :id => msg.id } , { :class => 'fixed' } ) %></td>
-  	  <td width="100" class="user_profile_buttons"><%= link_to image_tag("delete.jpg"), { :controller => 'messages', :action => 'delete', :id => msg.id }, :confirm => "Are you sure you want to delete this post?"  %></td>
+          <td width="100" class="user_profile_buttons"><%= link_to image_tag("delete.jpg"), { :controller => 'messages', :action => 'delete', :id => msg.id }, :confirm => "Are you sure you want to delete this message?"  %></td>
   	</tr>
     <% end %>
 	<tbody>
