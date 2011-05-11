@@ -2,7 +2,7 @@
 /* CSS Document */
 
 body {
-  	font-size: 12px;
+  font-size: 12px;
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica", "Arial", "FreeSans", sans-serif;
 	background-color:#FFF;
 	color: #525252;
@@ -226,8 +226,8 @@ a:focus {
 
 
 .banner_text a{
-	padding:10px;
 	width:314px;
+	font-style:italic;
 }
 
 .banner_text a:hover{
@@ -1359,6 +1359,9 @@ a:focus {
 
 .right_side a:hover{
 	text-decoration:underline !important;
+	background:#CCC;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
 }
 .verticalslider_tabs b{
 	width: 100%;
@@ -1882,9 +1885,6 @@ html ul.tabs li.active, html ul.tabs li.active {
 	font-size:14px;
 }
 
-.tab_container span{
-	font-size:14px !important;
-}
 
 .tab_container a:hover{
 	text-decoration:underline;
@@ -2606,8 +2606,12 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
      margin-top:20px;
 }
 
-.profile_button a {
-    
+.profile_button a{
+    width:200px;
+}
+
+.profile_button a:hover{
+    width:200px !important;
 }
 
 .users{
@@ -2753,13 +2757,14 @@ div.fbFooterBorder{
 
 .main_terms_and_conditions{
 	width:320px;
-	margin-top:-10px;
+	margin-top:-5px;
 	float:left;
 }
 
 .main_terms_and_conditions p{
 	float: left;
 	font-size: 10px !important;
+	font-style:italic;
 	line-height: 15px !important;
 	margin: 0 4px 0 0 !important;
 	width: auto !important;
@@ -2774,7 +2779,7 @@ div.fbFooterBorder{
 	font-weight:normal;
 	margin: 0 4px 0 0 !important;
 	width:auto !important;
-	padding:0 !important;
+	padding:1.2px 0 0 !important
 }
 
 .main_terms_and_conditions a:hover{
@@ -3360,10 +3365,13 @@ div.fbFooterBorder{
 
 .forgit_password{
 	margin-bottom: 15px;
-	margin-left: 10px !important;
-	margin-top: 8px;
+	padding-left:11px !important;
+	padding-bottom:5px !important;
+	margin-left:0px !important;
 	color:#AC7333 !important;
 	font-weight: bold;
+	width:465px;
+	border-bottom:1px dotted #CCC;
 }
 
 #order_first_name, #order_last_name{
@@ -3505,9 +3513,11 @@ div.fbFooterBorder{
 .related_posts a{
 	float:left;
 	width:100%;
-	mix-height:20px;
+	height:12px !important;
+	overflow:hidden;
 	margin-bottom:5px;
 	font-size:14px;
+	padding:5px;
 	color:#AC7333 !important;
 }
 
