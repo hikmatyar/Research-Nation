@@ -22,6 +22,10 @@ class Resource < ActiveRecord::Base
     resource.save
   end
 
+  def free?
+    self.selling_price == 0
+  end
+
   def update_url_slug
     self.update_attribute( :url_slug, self.to_params )
   end

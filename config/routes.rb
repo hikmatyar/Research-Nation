@@ -44,6 +44,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect "/profile/:url_slug", :controller => "profiles", :action => "profile_page"
   map.connect "/purchases/:url_slug", :controller => "purchases", :action => "resource"
   map.connect "/download/:url_slug", :controller => "purchases", :action => "download"
+  map.connect "/download_file/:url_slug", :controller => "purchases", :action => "download_file"
   map.connect "/browse/posts", :controller => "resources", :action => "view_posts"
   map.connect "/browse/profiles", :controller => "profiles", :action => "view_profile_list"
   map.connect "/create_a_post", :controller => "resources", :action => "upload_docs"

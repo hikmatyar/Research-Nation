@@ -4,6 +4,8 @@ class PurchasesController < ApplicationController
   ssl_required :resource, :download, :download_file unless Rails.env.development?
   before_filter :redirect_to_login
 
+  before_filter :download_verify, :only => [:download, :download_file]
+
   def resource
     @resource = Resource.find_by_url_slug params[:url_slug]
     return redirect_to :controller => 'purchases', :action => "download", :url_slug => @resource.url_slug if current_user.is_admin? || @resource.selling_price == 0 || current_user.id == @resource.user_id
@@ -22,14 +24,17 @@ class PurchasesController < ApplicationController
   end
 
   def download
-    resource = (Resource.find :first, :select => 'selling_price, user_id', :conditions => ['url_slug = ?', params[:url_slug]])
-    return head(:not_found) unless Order.authorized_access?(current_user.id, params[:id]) unless current_user.is_admin? || current_user.id == resource.user_id || resource.selling_price == 0
-    @resource = Resource.find_by_url_slug params[:url_slug]
   end
 
  def download_file
-   return head(:not_found) if ((attachment = Attachment.find_by_id(params[:attachment])).nil? || !Order.authorized_access?(current_user.id, params[:id]))
+   return head(:not_found) if (attachment = Attachment.find_by_id(params[:attachment])).nil?
    path = attachment.original.path
    redirect_to(AWS::S3::S3Object.url_for(path, attachment.original.bucket_name, :expires_in => 10.seconds))
  end
+
+private
+  def download_verify
+    @resource = Resource.find_by_url_slug params[:url_slug]
+    return head(:not_found) unless (current_user.is_admin? || current_user.own_resource?(@resource) || @resource.free? || Order.authorized_access?(current_user.id, params[:id]))
+  end
 end

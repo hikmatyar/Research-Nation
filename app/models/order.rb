@@ -25,7 +25,7 @@ class Order < ActiveRecord::Base
     def self.authorized_access?(user_id, resource_slug)
       resource = Resource.find_by_url_slug resource_slug
       order = self.find(:first, :conditions => ["success=? and buyer_id =? and resource_id =?",true, user_id, resource.id])
-      order.success?
+      order && order.success?
     end
 
     def purchase
