@@ -78,14 +78,14 @@ class UsersController < ApplicationController
 
       profile = Profile.new
       profile.user_id = @user.id
-      (@user.user_type == "company")? profile.profile_type = "company" : profile.profile_type = "individual"
+      @user.company? ? profile.profile_type = "company" : profile.profile_type = "individual"
       profile.save
 
       key_individual = KeyIndividual.new
       key_individual.profile_id = profile.id
       key_individual.save
 
-      if @user.user_type == "company"
+      if @user.company?
         link = "<u><a href='/profiles/edit_company_profile/#{profile.id}'>here</a></u>"
       else
         link = "<u><a href='/profiles/edit_individual_profile/#{profile.id}'>here</a></u>"

@@ -11,7 +11,7 @@
       </div>
       <div class="field">
 	      <label>I am a</label>
-	      <%= ( f.select "user_type", ["Individual", "Company" ], { :include_blank => true }, {:class => 'required' }) %>
+			  <%= render :partial => "/layouts/select_user_type", :locals => {:f => f} %>
       </div>
     </div>
     <div class="terms_and_conditions1 sign_up_terms">

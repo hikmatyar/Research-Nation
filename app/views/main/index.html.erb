@@ -17,7 +17,7 @@
 			</div>
 			<div class="new_field1 new_field ">
 			<label style="padding:0px;">I am a</label>
-				<%= ( f.select "user_type", ["Individual", "Company" ], { :include_blank => "Click to choose" }, {:class => 'required' }) %>
+			<%= render :partial => "/layouts/select_user_type", :locals => {:f => f} %>
 			</div>
 			<div class="banner_sign_up_button" style="margin-left:0px !important;"><%= (f.submit "One Click Sign-up", :class => "green_button")%></div>
 			<div class="main_terms_and_conditions">
@@ -36,79 +36,7 @@
 <div class="content">
 
 </div>
-<!--
-	<div class="box1">
-	<h4>HOW CAN I USE IT?</h4>
-	<ul class="category">
-		<li>
-			<a href="/main/buyers">
-				<img src="/images/plant.png" />
-				<b>Buy Intelligence</b>
-				<p>All research is user-generated, original and to the point. Some of it is free, the rest is under US$1,000</p>
-			</a>
-		</li>
-		<li>
-			<a href="/main/entrepreneurs">
-				<img src="/images/img3.png" />
-				<b>Sell Intelligence</b>
-				<p>Share your insights with the world - make money and build a reputation for functional expertise</p>
-			</a>
-		</li>
-		<li>
-			<a href="/main/entrepreneurs">
-				<img src="/images/img4.png" />
-				<b>Add Reviews & Find People</b>
-				<p>Add and read reviews, and connect with industry professionals through the profiles section</p>
-			</a>
-		</li>
-	</ul>
-</div>
-<div class="box2">
-	<h4>WHAT CAN I SELL?</h4>
-	<ul class="category">
-		<li>
-			<a href="/main/features">
-				<img src="/images/img5.png" />
-				<b>Crispy, Original Insights</b>
-				<p>It can be anything from an industry, sector or company report to poll results and call transcripts</p>
-			</a>
-		</li>
-		<li>
-			<a href="/main/features">
-				<img src="/images/bulb.png" />
-				<b>Data & Analytics</b>
-				<p>You can buy and sell original datasets with Koala-assured quality and authenticity</p>
-			</a>
-		</li>
-		<li>
-			<a href="/main/features">
-				<img src="/images/img1.png" />
-				<b>Custom Services </b>
-				<p>By creating a profile, you can make yourself or your company available to provide custom services</p>
-			</a>
-		</li>
-	</ul>
-</div>
-<div class="box3">
-	<h4>SPREAD THE LOVE</h4>
-	<div class="email_box" style="margin-top:30px; float:left; width:100%;">
-		<b>Join the movement</b>
-		<form name="subscribe" id="subscribe" method="post" action="/users/subscribe" >
-			<input type="text" name="email" value="Enter Your Email Address" size="35" class="email_address" />
-		</form>
-		<b>Koala Video of the Day</b>
-		<div class="video">
-			<iframe title="YouTube video player" width="245" height="200" src="http://www.youtube.com/embed/8KW3E9uikgI" 		frameborder="0" allowfullscreen></iframe>
-			</div>
-		</div>
-	</div>
-</div>
-<h1><p>Market Research will never be the same again. <%= (link_to "Join the movement!", :controller => "users", :action => "register") unless logged_in? %>
-		<% (link_to "Join the movement!", :controller => "resources", :action => "new") if logged_in? && @user.user_type == "Seller" %>
-		<% (link_to "Join the movement!", :controller => "resources", :action => "view_posts")  %>
-</p>
-</h1>
--->
+
 <script type="text/javascript" language="javascript" charset="utf-8">
 	$("#new_user").submit(function(){
 		return validate_form();

@@ -24,7 +24,7 @@
         <div class="author_details">
           <h2 style="margin-top:25px;"><%= @profile.name %></h2>
           <span><%= @profile.city %>, <%= @profile.country %></span>
-          <% unless @profile.user.user_type == "company" || @profile.key_individual.blank? %>
+          <% unless @profile.user.company? || @profile.key_individual.blank? %>
             <span class="field_text"><%= @profile.key_individual.title %>, <%= @profile.key_individual.name %></span>
           <% end %>
         </div>
