@@ -24,12 +24,7 @@
             <% unless @resource.user.profile.key_individual.blank? %> <%= "#{@resource.user.profile.key_individual.title} at #{@resource.user.profile.key_individual.name}" %> <% end %>
             <% end %></span>
             <div class="custom_images">
-              <!--
-              <a class="addthis_button_facebook">
-                <img src="/images/facebook.png" width="16" height="16" alt="Share to Facebook"  border="0" />
-                Facebook
-              </a>
-              -->
+              <iframe src="http://www.facebook.com/plugins/like.php?href=/post/<%= @resource.url_slug%>&amp;send=false&amp;layout=button_count&amp;width=55&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=arial&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:55px; height:21px;margin-top:3px" allowTransparency="true"></iframe>
               <a href="" class="addthis_button_twitter">
                 <img src="/images/twitter.png" width="16" height="16" alt="Share to Twitter" border="0" />
               </a>

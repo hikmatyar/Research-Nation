@@ -3312,7 +3312,7 @@ div.fbFooterBorder{
 }
 
 .custom_images{
-	width:330px;
+	width:385px;
 	float:right;
 }
 
@@ -3708,11 +3708,11 @@ div.fbFooterBorder{
 	background-color:#000;
 	border:1px solid #fff;
 	padding:10px 15px;
-	width:200px;
+	width:250px;
 	display:none;
 	color:#fff;
 	text-align:left;
-	font-size:12px;
+	font-size:14px;
 
 	/* outline radius for mozilla/firefox only */
 	-moz-box-shadow:0 0 10px #000;
