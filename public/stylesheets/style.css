@@ -146,7 +146,7 @@ a:focus {
     line-height: 33px;
     margin-bottom: 20px;
     margin-top: 30px;
-    width: 100%;
+    width: 95%;
 }
 
 .banner_text ul{
@@ -174,7 +174,7 @@ a:focus {
 
 .main_menu_box{
     float:left;
-    width:435px;
+    width:468px;
 }
 
 .main_menu{
@@ -200,7 +200,7 @@ a:focus {
     margin-left: 0;
     margin-right: 0;
     text-align: center;
-    width: 70px !important;
+    width: 100% !important;
 }
 
 .main_menu td{
@@ -658,7 +658,6 @@ a:focus {
 	background: -moz-linear-gradient(center bottom, #8eaf32 22%, #8eaf32 81%);
 	background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #8eaf32), color-stop(0.81, #8eaf32));
 	background: -moz-linear-gradient(center bottom, #8eaf32 22%, #8eaf32 81%);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#8eaf32, endColorStr=#8eaf32);	
 	width:auto !important;
 }
 
@@ -671,13 +670,10 @@ a:focus {
 	border-radius:10px;
 	-moz-border-radius:10px;
 	-webkit-border-radius:10px;
-	zoom:1; /* This enables hasLayout, which is required for older IE browsers */
-	filter: progid:DXImageTransform.Microsoft.Shadow(color='#bebebe', Direction=0, Strength=5);
 	width:95%;
+	border:1px solid #CCC;
 	background-color:#FFFFFF;
 	padding:10px;
-	
-	behavior: url(/stylesheets/ie-css3.htc); /* This lets IE know to call the script on all elements which get the ' class */
 }
 
 
@@ -848,9 +844,9 @@ a:focus {
 .post_title img{
 	border: 0px !important;
 	float: left;
-	height: 50px !important;
+	height: 30px !important;
 	margin-left: 10px;
-	width: 50px !important;
+	width: 30px !important;
 }
 
 .post a{
@@ -961,7 +957,7 @@ a:focus {
 .summary p{
 	font-size:14px;
 	line-height:18px;
-	text-align:left;
+	text-align:justify;
 	margin-left: 10px;
 	margin-right: 10px;
 }
@@ -1162,7 +1158,7 @@ a:focus {
 
 .categories_box{
 	float:left;
-	width:100%;
+	width:600px;
 }
 
 #embedded_flash{
@@ -1199,8 +1195,8 @@ a:focus {
 .profile_img img{
 	border: 0 none;
 	float: left;
-	height: 80px;
-	width:80px;
+	height: 70px;
+	width:70px;
 	margin-right: 10px;
 }
 
@@ -1270,6 +1266,11 @@ a:focus {
 	margin-bottom:10px;
 	padding-left: 29px;
 	padding-right: 30px;
+	width:115px;
+}
+
+.message_purchase a {
+	width:115px;
 }
 
 
@@ -1349,7 +1350,7 @@ a:focus {
 }
 
 .verticalslider_tabs a.active{
-	background-color:#CCC !important;
+	text-decoration:underline !important;
 }
 
 .right_side a{
@@ -1359,7 +1360,6 @@ a:focus {
 
 .right_side a:hover{
 	text-decoration:underline !important;
-	background:#CCC;
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
 }
@@ -1673,36 +1673,6 @@ background:#FFFFFF; border:1px solid #666666 !important; height:15px; width:15px
 }
 
 
-.policies_filed a{
-	-webkit-border-radius: 4px 4px 4px 4px;
-	background: -moz-linear-gradient(center bottom , #8EAF32 22%, #AAC84A 81%) repeat scroll 0 0 transparent;
-	-moz-border-radius: 4px 4px 4px 4px;
-	background: -moz-linear-gradient(center bottom, #8eaf32 22%, #AAC84A 81%);
-	background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #8eaf32), color-stop(0.81, #AAC84A));
-	background: -moz-linear-gradient(center bottom, #8eaf32 22%, #AAC84A 81%);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#8eaf32, endColorStr=#AAC84A);	
-	border: medium none;
-	color: #FFFFFF;
-	cursor: pointer;
-	float: left;
-	font-size: 16px;
-	font-weight: bold;
-	padding: 10px 20px 10px 20px;
-	text-align: center;
-}	
-
-
-.policies_filed a:hover{
-	text-decoration:none !important;
-	background-color:#8eaf32 !important;
-	-moz-border-radius: 4px 4px 4px 4px;
-	-webkit-border-radius: 4px 4px 4px 4px;
-	background: -moz-linear-gradient(center bottom, #8eaf32 22%, #8eaf32 81%);
-	background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #8eaf32), color-stop(0.81, #8eaf32));
-	background: -moz-linear-gradient(center bottom, #8eaf32 22%, #8eaf32 81%);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#8eaf32, endColorStr=#8eaf32);	
-	width:auto !important;
-}
 
 .field, .follow_field{
 	float:left;
@@ -1762,44 +1732,7 @@ background:#FFFFFF; border:1px solid #666666 !important; height:15px; width:15px
     float: left;
     font-size: 14px;
 }
-.facebook_like1 a, .facebook_like2 a, .facebook_like3 a {
-    -moz-border-radius: 4px 4px 4px 4px;
-    background: -moz-linear-gradient(center bottom , #8EAF32 22%, #AAC84A 81%) repeat scroll 0 0 transparent;
-    border: medium none;
-    color: #FFFFFF;
-    cursor: pointer;
-    float: left;
-    font-size: 12px !important;
-    font-weight: normal !important;
-    margin-left: 20px !important;
-    padding: 3px !important;
-    text-align: center;
-}
 
-.field input#submit {
-    -moz-border-radius: 4px 4px 4px 4px;
-    background: -moz-linear-gradient(center bottom , #8EAF32 22%, #AAC84A 81%) repeat scroll 0 0 transparent;
-    border: medium none;
-    color: #FFFFFF;
-    cursor: pointer;
-    float: left;
-    font-size: 16px;
-    font-weight: bold;
-    margin-left: 10px !important;
-    margin-right: 0 !important;
-    margin-top: 0 !important;
-    padding: 5px 10px !important;
-    text-align: center;
-}
-
-.facebook_like1 a:hover, .facebook_like2 a:hover, .facebook_like3 a:hover{
- text-decoration:none !important;
- background-color:#8eaf32 !important;
- background: -moz-linear-gradient(center bottom, #8eaf32 22%, #8eaf32 81%);
- background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #8eaf32), color-stop(0.81, #8eaf32));
- background: -moz-linear-gradient(center bottom, #8eaf32 22%, #8eaf32 81%);
- filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#8eaf32, endColorStr=#8eaf32); 
-}
 
 .field b {
   color: #525252;
@@ -1875,14 +1808,13 @@ html ul.tabs li.active, html ul.tabs li.active {
 	float: left; 
 	width: 814px;
 	font-size:14px !important;
-	min-height: 235px;
+	min-height: 343px;
 	text-align:left;
-	margin-top:10px;
 	background: #fff;
 }
 
 .tab_container a{
-	font-size:14px;
+	font-size:14px !important;
 }
 
 
@@ -1890,13 +1822,22 @@ html ul.tabs li.active, html ul.tabs li.active {
 	text-decoration:underline;
 }
 .tab_content {
-	font-size:12px;
+	font-size:14px;
 	float:left;
 	text-align:left;
 }
 
+.tab_content span{
+	font-size:14px !important;
+}
 .tab_content a:hover{
 	text-decoration:underline;
+}
+
+.tab_content img{
+	float:left;
+	width:30px;
+	height:30px;
 }
 
 .users_table, .user_detail{
@@ -2525,7 +2466,14 @@ html ul.tabs li.active, html ul.tabs li.active {
 	float:left;
 	width:242px;
 	padding:10px;
-	margin-top:50px;
+	margin-top:20px;
+	background:#FFF;
+	box-shadow:5px -5px 20px #bebebe;
+	-webkit-box-shadow:0 0 20px #bebebe;
+	-moz-box-shadow:0 0 20px #bebebe;
+	border-radius:10px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
 }
 
 .profile_left img{
@@ -2540,8 +2488,6 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 
 
 .bio_container {
-	background-color: #E8E7E3;
-	border: 2px solid #CCCCCC;
 	float: left;
 	margin-top: 10px;
 	padding: 5px;
@@ -2560,18 +2506,11 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 	-webkit-box-shadow:0 0 20px #bebebe;
 	-moz-box-shadow:0 0 20px #bebebe;
 	border-radius:10px;
-	-moz-border-radius-topleft: 0px !important;
-  -moz-border-radius-topright: 0px !important;
-	-webkit-border-top-right-radius: 0px !important;
-	-webkit-border-top-left-radius: 0px !important;
-	-moz-border-radius-bottomleft: 10px !important;
-  -moz-border-radius-bottomright: 10px !important;
-	-webkit-border-bottom-left-radius: 10px !important;
-	-webkit-border-bottom-right-radius: 10px !important;
+	-moz-border-radius: 10px !important;
+	-webkit-border-radius: 10px !important;
 	background-color:#FFFFFF;
 	padding:10px;
-	width:554px;
-	margin-bottom:100px;
+	width:660px;
 }
 
 .new_field1{
@@ -2659,8 +2598,8 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 
 .receipient img, .sender img{
 	float:left;
-	width:50px;
-	height:50px;
+	width:30px;
+	height:30px;
 }
 
 .sender{
@@ -2763,7 +2702,7 @@ div.fbFooterBorder{
 }
 
 .main_terms_and_conditions{
-	width:320px;
+	width:330px;
 	margin-top:-5px;
 	float:left;
 }
@@ -2999,21 +2938,22 @@ div.fbFooterBorder{
 
 
 .grey_button{
-	-moz-border-radius: 4px 4px 4px 4px;
-	-webkit-border-radius: 4px 4px 4px 4px;
-	background: -moz-linear-gradient(center bottom,  #AFAFAF 22%, #CECECE 81%);
-	background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #AFAFAF), color-stop(0.81,  #CECECE));
-	background: -moz-linear-gradient(center bottom,  #AFAFAF 22%, #CECECE 81%);
-	border: medium none;
-	color: #FFFFFF !important;
-	cursor: pointer;
-	font-size: 16px;
-	font-weight: bold;
-	padding: 10px 10px 10px 10px !important;
-	text-align: center;
-	float:right !important;
-	position:relative;
-	margin-left:10px;
+	text-align:center;
+	background: -moz-linear-gradient(center bottom, #AFAFAF 22%, #CECECE 81%);
+	background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #AFAFAF), color-stop(0.81, #CECECE));
+	background: -moz-linear-gradient(center bottom, #AFAFAF 22%, #CECECE 81%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#CECECE, endColorStr=#AFAFAF);
+	float:left;
+	color: #FFF !important;
+	font-size:16px;
+	font-weight:bold;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	cursor:pointer;
+	padding:10px;
+	margin-top:0px;
+	*margin-top:10px;
+	border:medium none;
 }
 
 
@@ -3025,25 +2965,26 @@ div.fbFooterBorder{
 	background: -moz-linear-gradient(center bottom, #CECECE 22%, #CECECE 81%);
 	background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #CECECE), color-stop(0.81, #CECECE));
 	background: -moz-linear-gradient(center bottom, #CECECE 22%, #CECECE 81%);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#8eaf32, endColorStr=#8eaf32);
-	width:auto !important;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#CECECE, endColorStr=#CECECE);
 }
 
 
 .green_button{
-	-webkit-border-radius: 4px 4px 4px 4px;
-	-moz-border-radius: 4px 4px 4px 4px;
-	background: -moz-linear-gradient(center bottom,  #8eaf32 22%, #AAC84A 81%);
-	background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #8eaf32), color-stop(0.81,  #AAC84A));
-	background: -moz-linear-gradient(center bottom,  #8eaf32 22%, #AAC84A 81%);
-	border: medium none;
-	color: #FFFFFF !important;
-	cursor: pointer;
-	float: left;
-	font-size: 16px;
-	font-weight: bold;
-	padding: 10px 20px 10px 20px;
-	text-align: center;
+	text-align:center;
+	background: -moz-linear-gradient(center bottom, #8eaf32 22%, #aac84a 81%);
+	background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #8eaf32), color-stop(0.81, #aac84a));
+	background: -moz-linear-gradient(center bottom, #8eaf32 22%, #aac84a 81%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#aac84a, endColorStr=#8eaf32);
+	float:left;
+	color: #FFF !important;
+	font-size:16px;
+	font-weight:bold;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	cursor:pointer;
+	padding:10px;
+	margin-top:20px;
+	border:medium none;
 }
 
 .green_button:hover{
@@ -3054,7 +2995,6 @@ div.fbFooterBorder{
 	background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #8eaf32), color-stop(0.81, #8eaf32));
 	background: -moz-linear-gradient(center bottom, #8eaf32 22%, #8eaf32 81%);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#8eaf32, endColorStr=#8eaf32);
-	width:auto !important;
 }
 
 
@@ -3203,12 +3143,14 @@ div.fbFooterBorder{
 .banner_sign_up_button{
 	float:left;
 	margin:10px 10px 10px 0;
+	-margin:10px 10px 10px 0;
 
 }
 
 .banner_sign_up_button input{
 	width:314px;
 	text-align:center;
+	margin-top:0px;
 }
 
 .banner_sign_up_button input:hover{
@@ -3273,8 +3215,8 @@ div.fbFooterBorder{
 
 .profile_listing{
 	float:left;
-	width:600px;
-	margin-top:60px;
+	width:680px;
+	margin-top:20px;
 	margin-left:20px;
 }
 
@@ -3312,7 +3254,8 @@ div.fbFooterBorder{
 }
 
 .custom_images{
-	width:385px;
+	min-width:113px;
+	max-width:130px;
 	float:right;
 }
 
@@ -3324,7 +3267,7 @@ div.fbFooterBorder{
 }
 
 .custom_images a{
-	float:left;
+	float:right;
 	margin-right:5px;
 }
 
@@ -3366,9 +3309,9 @@ div.fbFooterBorder{
 }
 
 .profile_fixed_box{
-	max-height:250px;
+	max-height:312px;
 	overflow:auto;
-	width:554px;
+	width:658px;
 }
 
 .forgit_password{
@@ -3398,6 +3341,8 @@ div.fbFooterBorder{
 
 .user_profile_buttons a img{
 	border:0px;
+	width:auto !important;
+	height:auto !important;
 	border:1px solid #FFF;
 }
 
@@ -3429,12 +3374,11 @@ div.fbFooterBorder{
 }
 
 .send_mail label{
-		float: left;
+	float: left;
 	font-size: 14px;
 	margin-left: 10px;
 	margin-top: 10px;
 	width: 249px;
-	font-weight: bold;
 }
 
 .send_mail input{
@@ -3760,6 +3704,82 @@ div.fbFooterBorder{
 	padding:2px;
 }
 
+
 .download_image span{
     width:58px !important;
+}
+.fb_iframe_widget iframe {
+	height:160px !important;
+}
+
+.banner_text .error{
+  margin-left:3px !important;
+}
+
+.user_profile_tabs{
+	float:left;
+	background: none repeat scroll 0 0 #FFFFFF;
+	height: 35px;
+	list-style-type: none;
+	margin: 0;
+	padding: 5px 0 0;
+	width: 964px;
+}
+.user_profile_tabs li{
+	display: inline !important;
+	font-size: 18px !important;
+	height: 30px !important;
+	margin: 0 5px 0 0 !important;
+	background:none !important;
+}
+
+.user_profile_tabs a{
+	display: inline !important;
+	font-size: 18px !important;
+	height: 30px !important;
+	margin: 0 5px 0 0 !important;
+	background:none !important;
+	border:0px !important;
+	font-weight:bold;
+}
+
+
+.user_profile_tabs a:hover{
+	color:#8EAF32;
+}
+
+.user_profile_tabs li.active a{
+	color:#8EAF32 !important;
+}
+
+.back_button{
+	float:left;
+	margin-bottom:10px;
+	color:#AC7333 !important;
+	font-size:14px;
+}
+
+
+.back_button:hover{
+	text-decoration:underline !important;
+}
+
+.create_link a{
+	color: #000000;
+	font-size: 12px;
+	background-color: #FED221;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	color:#000 !important;
+	margin-left:10px;
+}
+
+.create_link a:hover{
+	text-decoration:none !important;
+	background-color:#FFE984;
+}
+
+.my_account{
+	float:left;
+	width:100px !important;
 }
