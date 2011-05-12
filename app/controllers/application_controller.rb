@@ -14,7 +14,8 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in?, :is_admin?, :current_user
 #  before_filter :authenticate_production unless Rails.env.development?
   filter_parameter_logging :card_number, :card_verification
-  before_filter :default_url_options
+
+  helper_method :url_for
 
   def logged_in?
     return true unless session[:user].blank?
@@ -91,12 +92,15 @@ class ApplicationController < ActionController::Base
 	  url = bitly.shorten(request.request_uri)
   end
 
-  def default_url_options(options = {})
+  def default_url_options(options)
     defaults = {}
     if request.ssl?
-      options[:only_path] = false
+      defaults[:only_path] = false
       defaults[:protocol] =  'https://'
-      return defaults
+    else
+      defaults[:only_path] = true
+      defaults[:protocol] =  'http://'
     end
+    return defaults
   end
 end
