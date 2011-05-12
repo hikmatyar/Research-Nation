@@ -91,9 +91,12 @@ class ApplicationController < ActionController::Base
 	  url = bitly.shorten(request.request_uri)
   end
 
-  def default_url_options(options)
+  def default_url_options(options = {})
     defaults = {}
-    defaults[:protocol] = request.ssl? ? 'https://' : 'http://'
-    return defaults
+    if request.ssl?
+      options[:only_path] = false
+      defaults[:protocol] =  'https://'
+      return defaults
+    end
   end
 end
