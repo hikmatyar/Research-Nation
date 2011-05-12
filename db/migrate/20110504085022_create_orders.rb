@@ -2,7 +2,7 @@ class CreateOrders < ActiveRecord::Migration
   def self.up
     create_table :orders do |t|
       t.integer :resource_id
-      t.string :status
+      t.string :status, :default => "pending"
       t.boolean :success
       t.string :ip_address
       t.string :first_name

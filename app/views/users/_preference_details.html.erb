@@ -1,6 +1,6 @@
 <%= flash[:notice] unless flash[:notice].blank?%>
 <br/>
-<% unless @user.payment_preference.option.blank? %>
+<% unless @user.payment_preference.blank? && @user.payment_preference.option.blank? %>
 <h2>Payment option:</h2><%= @user.payment_preference.option%>
 <%end%>
 
