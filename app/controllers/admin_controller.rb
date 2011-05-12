@@ -8,6 +8,8 @@ class AdminController < ApplicationController
 
   def users
     @users = User.paginate :page => params[:page], :order => 'created_at DESC'
+    @individual_users_count = User.individual_users.count
+    @company_users_count = User.company_users.count
   end
 
 =begin
@@ -44,11 +46,11 @@ class AdminController < ApplicationController
   end
 
   def profiles
-    @profiles = Profile.edited
+    @profiles = Profile.paginate :page => params[:page], :conditions => ["is_edited = true"], :order => 'created_at DESC'
   end
 
   def messages
-    @messages = (Message.find_all_by_recipient_id current_user.id)
+    @messages = Message.paginate :page => params[:page], :conditions => ["recipient_id = ?", current_user.id ], :order => 'created_at DESC'
   end
 
   def seller_payments

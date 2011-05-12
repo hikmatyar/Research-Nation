@@ -9,7 +9,7 @@ class Resource < ActiveRecord::Base
   acts_as_paranoid
 
   cattr_reader :per_page
-  @@per_page = 1000
+  @@per_page = 25
 
   validates_presence_of :selling_price
   validates_presence_of :title

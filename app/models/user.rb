@@ -14,8 +14,11 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email, :message =>": has already been registered."
   validates_format_of :email, :with => /^([^\s]+)((?:[-a-z0-9]\.)[a-z]{2,})$/i, :message => ": please use a valid email"
 
+  named_scope :individual_users, :conditions => 'user_type = "individual"'
+  named_scope :company_users, :conditions => 'user_type = "company"'
+
   cattr_reader :per_page
-  @@per_page = 1000
+  @@per_page = 25
 
 
   def password=(value ="")
