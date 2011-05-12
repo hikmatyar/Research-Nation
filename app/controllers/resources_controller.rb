@@ -103,10 +103,20 @@ class ResourcesController < ApplicationController
   end
 
   def filter_results
-    price = params[:price].gsub("$","")
-    geography = params[:geography].blank? ? Resource.all(:select => 'distinct(geography)').collect(&:geography) : params[:geography].split(",");
-    industries = params[:industry].blank? ? Resource.all(:select => 'distinct(industry)').collect(&:industry) : params[:industry].split(",");
-    @resources = Resource.find :all, :conditions => [ 'selling_price <= ? and geography IN(?) and industry IN(?)',  price, geography , industries ], :order => 'selling_price ASC'
+    conditions = "is_deleted = 0"
+    unless params[:price].blank?
+      price = params[:price].gsub("$","")
+      conditions += " and selling_price <= #{price}"
+    end
+    unless params[:geography].blank?
+      geography = convert_params_to_in_array(params[:geography])
+      conditions += " and geography IN (#{geography})"
+    end
+    unless params[:industry].blank?
+      industry = convert_params_to_in_array(params[:industry])
+      conditions += " and industry IN (#{industry})"
+    end
+    @resources = Resource.find :all, :conditions => conditions, :order => 'selling_price ASC'
     render :partial => 'posts'
   end
 
@@ -121,11 +131,11 @@ class ResourcesController < ApplicationController
   end
 
   def industries_count
-    render :text => (Resource.find_all_by_industry params[:industry]).count
+    render :text => (Resource.all :conditions => {:industry => params[:industry], :is_deleted => false}).count
   end
 
   def geography_count
-    render :text => (Resource.find_all_by_geography params[:geography]).count
+    render :text => (Resource.all :conditions => {:geography => params[:geography], :is_deleted => false}).count
   end
 
 
@@ -142,5 +152,13 @@ private
     else
       return render_404
     end
+  end
+
+  def convert_params_to_in_array(input)
+    result = ''
+    input.split(",").uniq.each {|a| result += "'#{a.strip}',"}
+    result = result[0..-2]
+    result = result.split(",").uniq.join(",")
+    result
   end
 end
