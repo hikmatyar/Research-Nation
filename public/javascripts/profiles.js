@@ -50,5 +50,14 @@ jQuery('document').ready(function(){
     $("#profile_humor_me").show_char_limit(2500);
   }
 
+	if(".edit_profile :input.tip"){
+		$(".edit_profile :input.tip").tooltip({
+			position: "center right",
+			offset: [-2, 10],
+			effect: "fade",
+			opacity: 1
+	});
+	}
+
 });
 

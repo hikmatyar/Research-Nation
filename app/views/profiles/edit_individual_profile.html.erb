@@ -11,15 +11,15 @@
       <% form_for(@profile , :url => {:controller => "profiles", :action => "update"}, :html => { :multipart => true } ) do |f| %>
         <div class="field">
           <label>My Name*</label>
-          <%= f.text_field 'name', :class => 'required max_len', :max_length => 30 %>
+          <%= f.text_field 'name', :class => 'required max_len', :max_length => 30%>
         </div>
         <div class="field">
-          <label>My Title*</label>
-          <%= text_field 'key_individual', 'title', :class => 'required' %>
+          <label>My Title</label>
+          <%= text_field 'key_individual', 'title', :class => 'text_width' %>
         </div>
         <div class="field">
-          <label>My Company*</label>
-          <%= text_field 'key_individual', 'name', :class => 'required' %>
+          <label>My Company</label>
+          <%= text_field 'key_individual', 'name', :class => 'text_width' %>
         </div>
         <div class="field">
           <label>City*</label>
@@ -35,11 +35,11 @@
         </div>
         <div class="field">
           <label>LinkedIn</label>
-          <%= text_field 'key_individual', 'linkedin', :class => 'text_width' %>
+          <%= text_field 'key_individual', 'linkedin', :class => 'text_width tip', :title => "Your LinkedIn profile is a great way to showcase your professional accomplishments - please do share it with us! Not sure what your LinkedIn website is? If you logon to LinkedIn and go to your profile page, it should be listed in the first paragraph." %>
        </div>
         <div class="field">
           <label>About Me*</label>
-          <%= f.text_area 'description', :class => 'required max_len', :max_length => 2500 %>
+          <%= f.text_area 'description', :class => 'required max_len tip', :max_length => 2500, :title => "Take a minute to think about this before you start typing. Do:  (1) provide a summary of your experience (10 years of management consulting with McKinsey and BCG), and (2) highlight any industry or functional expertise (worked in 5 countries in Africa, and am an expert on biotech industry). If you are creating a post, then customize your 'About Me' for this (e.g. I created a post on key contacts in the location space in London, and I know this because I'm currently doing a PhD in location at Cambridge, and working on an internet starutp in the location space)." %>
         </div>
         <div class="field">
           <label>Picture*</label>
@@ -48,7 +48,7 @@
         <h4>My Work Style</h4>
         <div class="field">
           <label>Optional</label>
-          <%= f.text_area 'humor_me', :class => 'max_len', :max_length => 2500 %>
+          <%= f.text_area 'humor_me', :class => 'max_len tip', :max_length => 2500, :title => "Fill this out if you're interested in work. What is your leadership style? What kinds of team settings do you do well in? Do you prefer in person meetings or on the phone? Are you very detail oriented? Please feel free to back up any statements you make with examples (e.g. if you say that you prefer small teams and communicate very well, then provide an example of a setting in which you succeeded)" %>
         </div>
         <%= f.hidden_field 'profile_type', :value => params[:profile_type] %>
         <%= f.hidden_field 'interested_in', :id => 'interested_in' %>
