@@ -5,11 +5,9 @@
       <h2> Payment option:</h2><%= @user.payment_preference.option%>
   <%end%>
 
-  <% unless @user.payment_preference.address.blank?%>
+  <% if !@user.payment_preference.address.blank? && @user.payment_preference.address?%>
       <br> <h2>Address Details:</h2> <%= @user.payment_preference.address%>
-  <% end %>
-
-  <% unless @user.payment_preference.paypal.blank?%>
+  <% elsif !@user.payment_preference.paypal.blank? %>
       <br> <h2>Paypal:</h2> <%= @user.payment_preference.paypal%>
   <% end %>
 <% end %>
