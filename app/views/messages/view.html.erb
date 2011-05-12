@@ -9,7 +9,7 @@
     </div>
 	  <div class="receipient">
       <div class="sender_image">
-        <%= image_tag "avatar.png" if @message.recipient.profile.photo_file_name.blank? %>
+        <%= image_tag "avatar_30.png" if @message.recipient.profile.photo_file_name.blank? %>
         <%= image_tag @message.recipient.profile.photo.url(:small) unless @message.recipient.profile.photo_file_name.blank? %>
         <b><%= truncate(@message.recipient.profile.name, :omission => "...", :length => 10) %></b>
       </div>
@@ -19,7 +19,7 @@
       <div class="sender">
         <div class="sender_image">
           <%= image_tag @message.recipient.profile.photo.url(:small) unless @message.recipient.profile.photo_file_name.blank? %>
-          <%= image_tag "avatar.png" if @message.sender.profile.photo_file_name.blank? %>
+          <%= image_tag "avatar_30.png" if @message.sender.profile.photo_file_name.blank? %>
            <b><%= truncate ( @message.sender.profile.name, :omission => "...", :length => 10) %></b>
          </div>
 	      <div class="register_form">

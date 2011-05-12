@@ -5,7 +5,7 @@
         <% unless profile.photo_file_name.blank? %>
 				  <%= (image_tag profile.photo.url(:small)) %>
 				<% else %>
-				  <%= (image_tag "avatar.png")%>
+				  <%= (image_tag "avatar_30.png")%>
 				<% end %>
 				<div class="user_name">
 					<span clas><%= link_to profile.name, :action => 'profile_page', :url_slug => profile.url_slug %></span>

@@ -5,7 +5,7 @@
         <% unless (resource.user.profile.blank? || resource.user.profile.photo_file_name.blank?)%>
           <%= (image_tag resource.user.profile.photo.url(:small)) %>
         <% else%>
-          <%= (image_tag "avatar.png")%>
+          <%= (image_tag "avatar_30.png")%>
         <% end %>
         <div class="user_name">
           <span><%= link_to ( resource.title, :action => 'seller_page', :url_slug => resource.url_slug ) %></span>
