@@ -2,7 +2,7 @@ class UserMailer < ActionMailer::Base
 
   def registration_email(first_name, last_name, email)
       recipients   email
-      subject      "ResearchNation User"
+      subject      "Welcome to Research Nation!"
       from         "no-reply@researchnation.net"
       content_type "text/html"
       body         :first_name => first_name,
@@ -14,7 +14,7 @@ class UserMailer < ActionMailer::Base
   def password_reset_email(user, token)
 
       recipients   user.email
-      subject      "ResearchNation Password Reset"
+      subject      "ResearchNation - Password Reset"
       from         "no-reply@researchnation.net"
       content_type "text/html"
       body         :email => user.email,
@@ -24,7 +24,7 @@ class UserMailer < ActionMailer::Base
 
   def successful_purchase_email(current_user, resource)
       recipients   current_user.email
-      subject      "ResearchNation:You have successfully purchased #{resource.title}"
+      subject      "ResearchNation - You have successfully purchased #{resource.title}"
       from         "no-reply@researchnation.net"
       content_type "text/plain"
       body         :user => current_user,
@@ -35,9 +35,9 @@ class UserMailer < ActionMailer::Base
 
   def payment_sent_email(user, start_time, end_time, earnings)
       recipients   user.email
-      subject      "ResearchNation: Payment sent of $ #{earnings}"
+      subject      "ResearchNation - Payment sent of US$ #{earnings}"
       from         "no-reply@researchnation.net"
-      bcc           "postkhalid@yahoo.com"
+      bcc           "admin@researchnation.net"
       content_type "text/plain"
       body         :user => user,
                    :start_time => start_time,
