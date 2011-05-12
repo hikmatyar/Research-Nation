@@ -104,7 +104,7 @@
       </div>
       <div class="purchase_box">
         <div class="author_image_box">
-          <%= (image_tag @resource.user.profile.photo.url(:browse)) unless (@resource.user.profile.blank? || @resource.user.profile.photo_file_name.blank?) %>
+          <%= (image_tag @resource.user.profile.photo.url(:seller)) unless (@resource.user.profile.blank? || @resource.user.profile.photo_file_name.blank?) %>
         <%= (image_tag "avatar.png") if @resource.user.profile.blank? || @resource.user.profile.photo_file_name.blank?  %>
         </div>
         <div class="author_name">

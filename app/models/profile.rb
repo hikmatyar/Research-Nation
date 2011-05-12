@@ -9,7 +9,7 @@ class Profile < ActiveRecord::Base
   S3_SETTINGS = YAML::load(File.open("#{RAILS_ROOT}/config/s3.yml"))
   IMAGE_BUCKET = S3_SETTINGS[RAILS_ENV]['images_bucket']
 
-  has_attached_file :photo, :styles => { :browse => "30x30>", :main => "220x200>", :edit => "100x100>"},
+  has_attached_file :photo, :styles => { :dashboard => "200x200>", :small => "30x30>", :seller => "70x70>"},
                     :storage => :s3,
                     :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
                     :path => "photos/:id/:style/:basename.:extension",

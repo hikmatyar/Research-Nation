@@ -35,9 +35,9 @@
 		<% unless flash[:notice].blank? %><p class="flash"><%= flash[:notice] %></p><% end %>
     <% flash[:notice] = "" %>
 		<div class="profile_left">
-      <% unless  @user.profile.blank?%>
-      <%= (image_tag @user.profile.photo.url(:main), :width => "220", :height => "200") unless @user.profile.photo_file_name.blank? %>
-      <%= (image_tag "avatar.png") if @user.profile.photo_file_name.blank? %>
+      <% unless @user.profile.blank? %>
+        <%= (image_tag @user.profile.photo.url(:dashboard)) unless @user.profile.photo_file_name.blank? %>
+        <%= (image_tag "avatar.png") if @user.profile.photo_file_name.blank? %>
       <% else %>
         <%= (image_tag "avatar.png") %>
       <% end %>

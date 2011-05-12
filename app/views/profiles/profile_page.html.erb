@@ -18,7 +18,7 @@
       </div>
       <div class="author">
         <div class="profile_img">
-          <%= (image_tag @profile.photo.url(:edit)) unless @profile.photo_file_name.blank? %>
+          <%= (image_tag @profile.photo.url(:seller)) unless @profile.photo_file_name.blank? %>
           <%= (image_tag "avatar.png") if @profile.photo_file_name.blank?  %>
         </div>
         <div class="author_details">

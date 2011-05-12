@@ -3,7 +3,7 @@
 		<div>
 			<div class="post_title">
         <% unless profile.photo_file_name.blank? %>
-				  <%= (image_tag profile.photo.url(:browse)) %>
+				  <%= (image_tag profile.photo.url(:small)) %>
 				<% else %>
 				  <%= (image_tag "avatar.png")%>
 				<% end %>
