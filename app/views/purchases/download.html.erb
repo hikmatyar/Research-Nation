@@ -7,11 +7,11 @@
         <b>Thank you for purchasing from Research Nation! You can now download the report you purchase by clicking on the icon below.</b>
       </div>
       <div class="sign_up_box">
+        <h4 style="margin-top:0px; border-top:0px;">Your Purchase</h4>
         <% @resource.attachments.original_files.each_with_index do |attachment,index| %>
-          <h4 style="margin-top:0px; border-top:0px;">Your Purchase</h4>
           <div>
             <div class="download_image">
-              <a href="/download_file/<%=params[:url_slug]%>?attachment=<%= attachment.id%>">
+              <a href="/download_file/<%=params[:url_slug]%>?attachment=<%= attachment.id%>" target="_blank">
               <% if attachment.original_content_type.match("doc") || attachment.original_content_type.match("word") %>
                 <%= (image_tag "Word_Doc_Icon.png")  %>
               <% elsif attachment.original_content_type.match("pdf") %>
