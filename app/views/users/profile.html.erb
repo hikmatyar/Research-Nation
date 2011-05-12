@@ -32,6 +32,17 @@
   <% end %>
 </div>
 <div class="content">
+  <div class="content_back">
+    <div class="user_profile_tabs">
+      <ul class="tabs browse_tabs">
+        <li><a href="#messages">Inbox</a></li>
+        <li><a href="#listings"  id="listings-link">My Listings</a></li>
+        <li><a href="#pending-earnings" id="pending-earnings-link">Earnings</a></li>
+        <li><a href="#purchases" id="purchase-link">Purchases</a></li>
+        <li><a href="#paid-earnings" id="paid-earnings-link">My Account</a></li>
+        <li><a href="#preferences" id="preferences-link">Preferences</a></li>
+      </ul>
+    </div>
 		<% unless flash[:notice].blank? %><p class="flash"><%= flash[:notice] %></p><% end %>
     <% flash[:notice] = "" %>
 		<div class="profile_left">
@@ -51,14 +62,6 @@
       </div>
    	</div>
     <div class="profile_listing">
-      <ul class="tabs browse_tabs">
-        <li><a href="#messages">Inbox</a></li>
-        <li><a href="#listings"  id="listings-link">My Listings</a></li>
-        <li><a href="#pending-earnings" id="pending-earnings-link">Earnings</a></li>
-        <li><a href="#purchases" id="purchase-link">Purchases</a></li>
-        <li><a href="#paid-earnings" id="paid-earnings-link">My Account</a></li>
-        <li><a href="#preferences" id="preferences-link">Preferences</a></li>
-      </ul>
       <div class="profile_right">
         <div class="tab_container profile_fixed_box">
           <div id="messages" class="tab_content">
@@ -77,4 +80,5 @@
         </div>
       </div>
     </div>
+  </div>
 </div>
