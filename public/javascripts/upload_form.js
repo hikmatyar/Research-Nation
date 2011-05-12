@@ -2,7 +2,7 @@ $(document).ready(function(){
 
 var count = 1;
 
-$("#resource_title").show_char_limit(140);
+$("#resource_title").show_char_limit(100);
 $("#resource_description").show_char_limit(3000);
 $("#resource_industry").show_char_limit(25);
 $("#resource_geography").show_char_limit(25);
