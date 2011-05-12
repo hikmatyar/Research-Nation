@@ -2,40 +2,37 @@
 <div class="content">
   <div class="how_it_work_left_side">
     <div class="seller_back">
-      <div class="heading">
-        <span class="sign_up">Download Now</span>
-      </div>
-      <p>Thank you for purchasing from Research Nation! You can now download the report you purchase by clicking on the icon below.</p>
-      <% @resource.attachments.original_files.each_with_index do |attachment,index| %>
-        <div class="sign_up_box">
-          <div class="download_image">
-            <a href="/download_file/<%=params[:url_slug]%>?attachment=<%= attachment.id%>">
-              <% if attachment.original_content_type.match("doc") || attachment.original_content_type.match("word") %>
-               <%= (image_tag "Word_Doc_Icon.png")  %>
-             <% elsif attachment.original_content_type.match("pdf") %>
-               <%= (image_tag "pdf.png")%>
-             <% elsif attachment.original_content_type.match("xls") || attachment.original_content_type.match("excel") %>
-               <%= (image_tag "excel-2010-icon.1.png") %>
-             <% elsif attachment.original_content_type.match("ppt")%>
-               <%= (image_tag "file-extension-pps-powerpoint_icon.png") %>
-             <% end %>
-            </a>
-            <span><%= (attachment.original_file_size/1024).to_s + "KB"  %></span>
-          </div>
-          <div class="download_text">
-            <h3><%= attachment.original_file_name %></h3>
-            <% link_to "Click icon to begin download", attachment.original.url%>
-            <span>Click on the icon to begin download</a></span>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <div class="facebook_back">
-      <div class="heading">
-        <span class="sign_up">Stay Informed</span>
+      <div class="create_heading_box">
+        <h1 style="margin-top: 5px ! important; margin-bottom: 5px ! important;">Download Now.</h1>
+        <b>Thank you for purchasing from Research Nation! You can now download the report you purchase by clicking on the icon below.</b>
       </div>
       <div class="sign_up_box">
-        <div class="email_box">
+        <% @resource.attachments.original_files.each_with_index do |attachment,index| %>
+          <div>
+            <div class="download_image">
+              <a href="/download_file/<%=params[:url_slug]%>?attachment=<%= attachment.id%>">
+              <% if attachment.original_content_type.match("doc") || attachment.original_content_type.match("word") %>
+                <%= (image_tag "Word_Doc_Icon.png")  %>
+              <% elsif attachment.original_content_type.match("pdf") %>
+                <%= (image_tag "pdf.png")%>
+              <% elsif attachment.original_content_type.match("xls") || attachment.original_content_type.match("excel") %>
+                <%= (image_tag "excel-2010-icon.1.png") %>
+              <% elsif attachment.original_content_type.match("ppt")%>
+                <%= (image_tag "file-extension-pps-powerpoint_icon.png") %>
+              <% end %>
+            </a>
+            <span><%= (attachment.original_file_size/1024).to_s + "KB"  %></span>
+            </div>
+            <div class="download_text">
+              <h3><%= attachment.original_file_name %></h3>
+              <span><%= (attachment.original_file_size/1024).to_s + "KB"  %></span>
+              <% link_to "Click icon to begin download", attachment.original.url%>
+              <span>Click on the icon to begin download</a></span>
+            </div>
+          </div>
+          <% end %>
+          <h4>Stay Informed</h4>
+          <div class="email_box">
           <% form_tag(:controller => 'users', :action => 'subscribe_newsletter') do %>
             <div class="send_mail">
               <label>Sign Up for our monthly newsletter</label>
