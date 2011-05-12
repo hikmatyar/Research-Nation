@@ -47,12 +47,12 @@
 
           <div style="display: block;" class="sign_up_box seller_blocks" id="summary_details">
             <div class="summary">
-              <p><%= simple_format @resource.description %></p>
+              <p><%=  @resource.description.gsub("\n", "<br />")  %></p>
             </div>
           </div>
           <div style="display: none;" class="sign_up_box seller_blocks" id="about_seller">
             <div class="about_seller">
-              <p><%= simple_format @resource.user.about_me %></p>
+              <p><%=  @resource.user.about_me.gsub("\n", "<br />")  unless (@resource.user.blank? || @resource.user.about_me.blank?) %></p>
             </div>
           </div>
           <div style="display: none;" class="sign_up_box seller_blocks" id="view_sample">
@@ -75,7 +75,7 @@
           </div>
           <div style="display: none;" class="sign_up_box seller_blocks" id="sources">
             <div class="summary">
-              <p><%= simple_format @resource.sources %></p>
+              <p><%= @resource.sources.gsub("\n", "<br />") unless @resource.sources.blank?%></p>
           	</div>
         	</div>
       	</div>

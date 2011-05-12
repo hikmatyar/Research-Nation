@@ -21,7 +21,7 @@
     <% unless @profile.humor_me.blank? %>
     <h4>Your Work Style</h4>
       <div class="field1">
-        <p class="about_field_text"><%= @profile.humor_me %></p>
+        <p class="about_field_text"><%= @profile.humor_me.gsub("\n", "<br />") %></p>
       </div>
   <% end %>
 </div>

@@ -1,7 +1,7 @@
-
 <div class="seller_back">
 	<span class="sign_up_box"><b style="color:#AC7333; font-family:arial;">Seller Terms</b></span>
-	<div class=sign_up">
-		<p style="text-align:justify; font-size:14px; font-family:arial; margin-top:2px !important"><%= @resource.terms_and_conditions %></p>
+	<div class="sign_up">
+		<p style="text-align:justify; font-size:14px; font-family:arial; margin-top:2px !important">
+		  <%= @resource.terms_and_conditions.gsub("\n", "<br />") unless @resource.terms_and_conditions.blank? %></p>
 	</div>
 </div>

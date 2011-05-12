@@ -3,20 +3,20 @@
   <span class="sign_up">About Me</span>
   <div class="sign_up_box">
     <div class="field field1">
-      <p class="about_field_text"><%=  simple_format @profile.description %></span>
+      <p class="about_field_text"><%= @profile.description.gsub("\n", "<br />") unless @profile.description.blank? %></span>
     </div>
   </div>
 </div>
 <% end %>
 <% unless @profile.humor_me.blank? %>
-<div class="facebook_back">
-  <span id="tab2" class="sign_up" style="" onclick="showTab('one');" href="#">Your Work Style</span>
-  <div class="sign_up_box">
-    <div class="field field1">
-      <p class="about_field_text"><%= @profile.humor_me %></span>
+  <div class="facebook_back">
+    <span id="tab2" class="sign_up" style="" onclick="showTab('one');" href="#">Your Work Style</span>
+    <div class="sign_up_box">
+      <div class="field field1">
+        <p class="about_field_text"><%= @profile.humor_me.gsub("\n", "<br />") %></span>
+      </div>
     </div>
   </div>
-</div>
 <% end %>
 <% unless @profile.user.resources.blank? %>
   <div class="facebook_back">
