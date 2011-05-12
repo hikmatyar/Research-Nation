@@ -1873,7 +1873,7 @@ html ul.tabs li.active, html ul.tabs li.active {
 	overflow: hidden;
 	clear:both;
 	float: left; 
-	width: 97%;
+	width: 814px;
 	font-size:14px !important;
 	min-height: 235px;
 	text-align:left;
@@ -1940,9 +1940,9 @@ html ul.tabs li.active, html ul.tabs li.active {
 }
 
 .pagination{
-	width:57%;
-	text-align:center;
-	margin:10px 0px 10px;
+	width:100%;
+	text-align:right;
+	margin:10px 0px 10px -10px;
 }
 
 #toggle_views{
@@ -3760,3 +3760,6 @@ div.fbFooterBorder{
 	padding:2px;
 }
 
+.download_image span{
+    width:58px !important;
+}
