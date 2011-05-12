@@ -7,6 +7,15 @@
     <div class="categories_box">
       <b><span><%= link_to @resource.industry, :controller => 'resources', :action => 'view_posts', :filter => @resource.industry %></span> <span><%= link_to @resource.geography, :controller => 'resources', :action => 'view_posts', :filter => @resource.geography %></span></b>
     </div>
+    <div class="custom_images">
+      <a href="" class="addthis_button_twitter">
+        <img src="/images/twitter.png" width="16" height="16" alt="Share to Twitter" border="0" />
+      </a>
+      <a href="http://www.addthis.com/bookmark.php" class="addthis_button_email">
+        <img src="/images/email.png" width="16" height="16" border="0" alt="Email" />
+      </a>
+      <iframe src="http://www.facebook.com/plugins/like.php?href=/post/<%= @resource.url_slug%>&amp;send=false&amp;layout=button_count&amp;width=55&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=arial&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:55px; height:21px;margin-top:3px" allowTransparency="true"></iframe>  
+    </div>
     <div class="author">
       <div class="post_details">
         <h2><%= @resource.title %></h2>
@@ -24,15 +33,6 @@
             <% else%>
             <% unless @resource.user.profile.key_individual.blank? %> <%= "#{@resource.user.profile.key_individual.title} at #{@resource.user.profile.key_individual.name}" %> <% end %>
             <% end %></span>
-            <div class="custom_images">
-              <iframe src="http://www.facebook.com/plugins/like.php?href=/post/<%= @resource.url_slug%>&amp;send=false&amp;layout=button_count&amp;width=55&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=arial&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:55px; height:21px;margin-top:3px" allowTransparency="true"></iframe>
-              <a href="" class="addthis_button_twitter">
-                <img src="/images/twitter.png" width="16" height="16" alt="Share to Twitter" border="0" />
-              </a>
-              <a href="http://www.addthis.com/bookmark.php" class="addthis_button_email">
-                <img src="/images/email.png" width="16" height="16" border="0" alt="Email" />
-              </a>
-            </div>
           </b>
         </div>
       </div>
@@ -141,6 +141,7 @@
           :url => { :controller => 'main', :action => 'send_message', :user_id => @resource.user.id }, :after => 'jQuery.fancybox.close();' ) %>
           <div class="popup_message_box">
             <h2>Contact <%= @resource.user.profile.name %></h2>
+
             <div class="field">
               <label>Name</label>
               <input type="text" name="name" id="contact_name" class="required" />
