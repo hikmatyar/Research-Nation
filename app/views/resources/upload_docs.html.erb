@@ -25,7 +25,7 @@
               <h4 style="border-top:0px;">Your Post</h4>
               <div class="field">
                   <label>Title*</label>
-                  <%= text_field 'resource', 'title', :class => 'field_width required max_len tip', :max_length => 140, :title => "Tell us what this post is about. Mention any geographic or industry focus, as well as the type of research (e.g. call transcripts, reports, surveys, projections, dataset)." %>
+                  <%= text_field 'resource', 'title', :class => 'field_width required max_len tip', :max_length => 100, :title => "Tell us what this post is about. Mention any geographic or industry focus, as well as the type of research (e.g. call transcripts, reports, surveys, projections, dataset)." %>
               </div>
               <div class="field">
                   <label>Exec Summary*</label>
@@ -92,5 +92,4 @@
           </div>
           <% end %>
       </div>
-      <%= render :partial => 'main/how_it_works_links' %>
   </div>
