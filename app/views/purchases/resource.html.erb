@@ -11,10 +11,15 @@
        <p><%= @resource.title %></p>
        <% @resource.attachments.original_files.each_with_index do |attachment,index| %>
        <div class="download_image">
-         <%= (image_tag "pdf.png") if attachment.original_content_type.match("pdf")%>
-         <%= (image_tag "Word_Doc_Icon.png") if attachment.original_content_type.match("doc") %>
-         <%= (image_tag "excel-2010-icon.1.png") if attachment.original_content_type.match("xls") || attachment.original_content_type.match("excel") %>
-         <%= (image_tag "file-extension-pps-powerpoint_icon.png") if attachment.original_content_type.match("ppt") %>
+         <% if attachment.original_content_type.match("doc") || attachment.original_content_type.match("word") %>
+           <%= (image_tag "Word_Doc_Icon.png")  %>
+         <% elsif attachment.original_content_type.match("pdf") %>
+           <%= (image_tag "pdf.png")%>
+         <% elsif attachment.original_content_type.match("xls") || attachment.original_content_type.match("excel") %>
+           <%= (image_tag "excel-2010-icon.1.png") %>
+         <% elsif attachment.original_content_type.match("ppt")%>
+           <%= (image_tag "file-extension-pps-powerpoint_icon.png") %>
+         <% end %>
          <i><%= (attachment.original_file_size/1024).to_s + "KB"  %></i>
        </div>
        <% end %>
@@ -35,8 +40,8 @@
          <%= hidden_field 'order', 'buyer_id', :value => current_user.id %>
          <div class="field">
            <label>Name</label>
-           <%= text_field 'order', 'first_name', :size => "10", :style => "margin-right:6px;", :value => "First", :class => "required validate-alpha first_name"%>
-           <%= text_field 'order', 'last_name', :size => "10", :style => "margin-right:6px;", :value => "Last", :class => "required validate-alpha"%>
+           <%= text_field 'order', 'first_name', :size => "10", :style => "margin-right:6px;color:grey;", :value => "First", :class => "required validate-alpha first_name"%>
+           <%= text_field 'order', 'last_name', :size => "10", :style => "margin-right:6px;color:grey;", :value => "Last", :class => "required validate-alpha"%>
          </div>
          <div class="field">
            <label>Address</label>
@@ -73,7 +78,7 @@
          </div>
          <div class="field">
            <label>Expires On</label>
-           <%= date_select 'order', 'card_expires_on', :discard_day => true %>
+           <%= date_select 'order', 'card_expires_on', :discard_day => true, :order => [:month, :year] %>
          </div>
        </div>
        <h4>Agreement</h4>
@@ -90,4 +95,14 @@
     
   <% end %>
 </div>
+<script>
+    if (document.getElementById("terms_link"))
+   {
+     document.getElementById("terms_link").onclick = show_terms;
+   }
 
+   function show_terms()
+   {
+     window.open("/resources/user_terms_and_conditions/<%= @resource.id %>","terms_and_conditions","location=1,status=1,scrollbars=1, width=250,height=250, screenX=900, screenY=250");
+   }
+</script>
