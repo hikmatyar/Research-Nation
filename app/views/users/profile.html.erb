@@ -32,6 +32,8 @@
   <% end %>
 </div>
 <div class="content">
+  <% unless flash[:notice].blank? %><p class="flash"><%= flash[:notice] %></p><% end %>
+  <% flash[:notice] = "" %>
   <div class="content_back">
     <div class="user_profile_tabs">
       <ul class="tabs browse_tabs">
@@ -43,8 +45,6 @@
         <li><a href="#preferences" id="preferences-link">Preferences</a></li>
       </ul>
     </div>
-		<% unless flash[:notice].blank? %><p class="flash"><%= flash[:notice] %></p><% end %>
-    <% flash[:notice] = "" %>
 		<div class="profile_left">
       <% unless @user.profile.blank? %>
         <%= (image_tag @user.profile.photo.url(:dashboard)) unless @user.profile.photo_file_name.blank? %>
