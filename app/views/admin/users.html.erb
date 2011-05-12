@@ -1,19 +1,18 @@
 <div class="tab_container">
+  <p><b>Individual Profiles: </b><%= @individual_users_count %>   <b>Company Profiles: </b><%= @company_users_count %></p>
   <table border="0" cellspacing="5px" cellpadding="5px" id="users_table" >
   <tbody>
     <tr>
       <th width="20">No.</th>
       <th width="200">Email</th>
-      <th width="400">Title</th>
-      <th width="150">Company</th>
+      <th>User Type</th>
       <th width="150">Sign-up Date</th>
     </tr>
     <% @users.each_with_index do |user, index|%>
       <tr>
         <td><%= (@users_count - index ).to_s %></td>
         <td ><%= user.email %></td>
-        <td ><%= user.work %></td>
-        <td ><%= user.company %></td>
+        <td><%= user.user_type.capitalize %></td>
         <td ><%= user.created_at.strftime("%B %d, %Y") %></td>
       </tr>
     <% end %>
