@@ -2,6 +2,7 @@
 <div class="content">
 <div class="how_it_work_left_side">
   <div id="message"></div>
+  <%= link_to "Back to Inbox", { :controller => "users", :action => "profile" }, { :class => "back_button" }%>
   <div class="seller_back">
     <div class="create_heading_box message_heading_box">
       <h1 style="margin-top:2px !important; margin-bottom:4px !important; font-size:22px !important;">Conversation with <%= @message.sender.profile.name %></h1>
@@ -12,7 +13,9 @@
         <%= image_tag @message.recipient.profile.photo.url(:small) unless @message.recipient.profile.photo_file_name.blank? %>
         <b><%= truncate(@message.recipient.profile.name, :omission => "...", :length => 10) %></b>
       </div>
-      <span><%= @message.body %></span>
+      <div>
+        <p><%= @message.body %></p>
+      </div>
       <div class="sender">
         <div class="sender_image">
           <%= image_tag @message.recipient.profile.photo.url(:small) unless @message.recipient.profile.photo_file_name.blank? %>
@@ -34,4 +37,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>
