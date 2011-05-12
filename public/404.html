@@ -3,11 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Research Nation</title>
-<link href="stylesheets/style.css" rel="stylesheet" type="text/css" />
+<link href="/stylesheets/style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
   <div class="wrapper">
+    <%= render :partial => "/layouts/header"%>
 	  <div class="content">
   		<div class="error_image">
         <img src="/images/kbear.jpg" />
@@ -19,6 +20,7 @@
         <h4>Move along...</h4>
       </div>
 	  </div>
+	  <%= render :partial => "/layouts/footer"%>
   </div>
 </body>
 </html>
