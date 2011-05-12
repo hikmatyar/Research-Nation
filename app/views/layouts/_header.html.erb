@@ -5,6 +5,9 @@
 	    <table border="0" cellspacing="5" cellpadding="5" width="100%">
 			  <tbody>
           <tr class="seperator">
+            <td width="20" class="create_link">
+              <%= link_to "Create", :controller => "resources", :action => "new" %>
+            </td>
             <% if logged_in? %>
               <td width="20"><%= (link_to 'Logout', :controller => 'users', :action => 'logout')  %></td>
             <% end %>
@@ -14,11 +17,8 @@
               </td>
             <% end %>
             <% if logged_in? %>
-              <td width="120">
-                <%= (link_to 'Home', :controller => 'users', :action => 'profile' ) %>
-              </td>
-              <td width=""><%= (link_to 'My Profile', :controller => 'profiles', :action => 'edit_individual_profile') if current_user.individual? %>
-              <%= (link_to 'My Profile', :controller => 'profiles', :action => 'edit_company_profile', :id => current_user.id ) if current_user.company? %>
+              <td width="120" class="my_account">
+                <%= (link_to 'My Account', :controller => 'users', :action => 'profile' ) %>
               </td>
             <% end %>
             <% unless logged_in? %>
@@ -26,11 +26,8 @@
                 <%= (link_to 'Login', :controller => 'users', :action => 'register', :opt => 'login') %>
               </td>
             <% end %>
-            <td width="20">
+            <td width="20" style="border-left:0px;" >
               <%= (link_to 'Browse', :controller => 'resources', :action => 'view_posts') %>
-            </td>
-            <td width="20" style="border-left:0px;">
-              <%= link_to "Create", :controller => "resources", :action => "new" %>
             </td>
           </tr>
         </tbody>
