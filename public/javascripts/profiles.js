@@ -55,7 +55,7 @@ jQuery('document').ready(function(){
 			position: "center right",
 			offset: [-2, 10],
 			effect: "fade",
-			opacity: 1
+			opacity: 0.6
 	});
 
 	}

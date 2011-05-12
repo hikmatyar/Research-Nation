@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in?, :is_admin?, :current_user
 #  before_filter :authenticate_production unless Rails.env.development?
   filter_parameter_logging :card_number, :card_verification
+  before_filter :default_url_options
 
   def logged_in?
     return true unless session[:user].blank?
@@ -67,8 +68,6 @@ class ApplicationController < ActionController::Base
       flash.now[:error] = "An error occured" unless data == "true"
   end
 
-
-
   def render_404(exception = nil)
     if exception
       logger.info "Rendering 404 with exception: #{exception.message}"
@@ -81,7 +80,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-
   def authenticate_production
     authenticate_or_request_with_http_basic do |username, password|
       username = "researchnation_admin" && password = "researchnation"
@@ -91,5 +89,14 @@ class ApplicationController < ActionController::Base
   def shorten_url
 	  bitly = Bitly.new('researchnation', 'R_db4a059b58a829a3b8c64169268e3563')
 	  url = bitly.shorten(request.request_uri)
+  end
+
+  def default_url_options(options = {})
+    defaults = {}
+    if request.ssl?
+      options[:only_path] = false
+      defaults[:protocol] =  'https://'
+      return defaults
+    end
   end
 end

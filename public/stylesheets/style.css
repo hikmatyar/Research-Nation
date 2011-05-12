@@ -2538,10 +2538,15 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
     float:left;
 }
 .error{
-	color: red;
+  color: red;
   margin-bottom: 2px;
   margin-left: 111px;
   margin-top: 4px;
+}
+
+p.error{
+  margin-bottom:2px !important;
+  margin-left:113px !important;
 }
 
 .profile_button{
