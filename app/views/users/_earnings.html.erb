@@ -1,6 +1,15 @@
+<% unless orders.blank? %>
 <div class="users_table">
 	<table border="0" cellspacing="5" cellpadding="5" id=" resources_table" align="left">
 	<tbody>
+		<tr>
+			<th>Date</th>
+			<th>Title</th>
+			<th>Price</th>
+			<th></th>
+			<th></th>
+			<th>Status</th>
+		</tr>
 		<% orders.each do |order|%>
 		  <tr>
         <td width="85"><span class="fixed"><%= order.created_at.strftime("%B %d") %></span></td>
@@ -17,5 +26,4 @@
 	<tbody>
 </table>
 </div>
-
-
+<% end %>
