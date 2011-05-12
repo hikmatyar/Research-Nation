@@ -8,6 +8,7 @@
       </div>
       <div class="sign_up_box">
         <% @resource.attachments.original_files.each_with_index do |attachment,index| %>
+          <h4 style="margin-top:0px; border-top:0px;">Your Purchase</h4>
           <div>
             <div class="download_image">
               <a href="/download_file/<%=params[:url_slug]%>?attachment=<%= attachment.id%>">

@@ -231,7 +231,7 @@ a:focus {
 
 .banner_text a:hover{
 	padding:10px;
-	width:334px !important;
+	width:314px !important;
 }
 
 .content{
@@ -844,9 +844,7 @@ a:focus {
 .post_title img{
 	border: 0px !important;
 	float: left;
-	height: 30px !important;
 	margin-left: 10px;
-	width: 30px !important;
 }
 
 .post a{
@@ -1195,8 +1193,6 @@ a:focus {
 .profile_img img{
 	border: 0 none;
 	float: left;
-	height: 70px;
-	width:70px;
 	margin-right: 10px;
 }
 
@@ -1827,6 +1823,9 @@ html ul.tabs li.active, html ul.tabs li.active {
 	text-align:left;
 }
 
+.tab_content h2{
+	font-size:16px;
+}
 .tab_content span{
 	font-size:14px !important;
 }
@@ -1836,8 +1835,6 @@ html ul.tabs li.active, html ul.tabs li.active {
 
 .tab_content img{
 	float:left;
-	width:30px;
-	height:30px;
 }
 
 .users_table, .user_detail{
@@ -2598,8 +2595,6 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 
 .receipient img, .sender img{
 	float:left;
-	width:30px;
-	height:30px;
 }
 
 .sender{
@@ -3529,8 +3524,6 @@ div.fbFooterBorder{
 
 .author_image_box img{
 	float:left;
-	height: 70px;
-	width: 70px;
 }
 
 .author_name{
@@ -3718,8 +3711,9 @@ div.fbFooterBorder{
 
 .user_profile_tabs{
 	float:left;
-	background: none repeat scroll 0 0 #FFFFFF;
-	height: 35px;
+	border-top:1px solid #CCC;
+	border-bottom:1px solid #CCC;
+	height:35px;
 	list-style-type: none;
 	margin: 0;
 	padding: 5px 0 0;
@@ -3734,6 +3728,7 @@ div.fbFooterBorder{
 }
 
 .user_profile_tabs a{
+	color:#8DAF2B !important;
 	display: inline !important;
 	font-size: 18px !important;
 	height: 30px !important;
@@ -3745,11 +3740,13 @@ div.fbFooterBorder{
 
 
 .user_profile_tabs a:hover{
-	color:#8EAF32;
+	color:#8DAF2B !important;
+	text-decoration:underline;
 }
 
 .user_profile_tabs li.active a{
-	color:#8EAF32 !important;
+	color:#8DAF2B !important;
+	text-decoration:underline;
 }
 
 .back_button{
@@ -3772,6 +3769,8 @@ div.fbFooterBorder{
 	-webkit-border-radius:10px;
 	color:#000 !important;
 	margin-left:10px;
+	padding:5px;
+	margin-top:-5px;
 }
 
 .create_link a:hover{
