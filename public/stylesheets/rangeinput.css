@@ -1,7 +1,7 @@
 
 /* slider root element */
 .slider { 
-	background: url(/images/price_back.jpg) repeat-x 0 0; 
+	background: url('/images/price_back.jpg') repeat-x 0 0;
 	height:9px; 
 	position:relative; 
 	cursor:pointer;
@@ -23,7 +23,7 @@
 
 /* drag handle */
 .handle { 
-	background:#245A83 url(../../../img/gradient/h30.png) repeat-x 0 0; 
+	background:#245A83 url('/images/h30.png') repeat-x 0 0;
 	height:14px;
 	width:14px;
 	top:-5px;
