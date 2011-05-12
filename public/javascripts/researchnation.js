@@ -60,12 +60,25 @@ jQuery('document').ready(function(){
 	});
 
 	jQuery("form").submit(function(){
-    if (jQuery(".email_address").val()==""){
-      jQuery('.email_address').addClass("error_field");
-      return false;
-	  }
-	});
+      if (jQuery(".email_address").val()==""){
+        jQuery('.email_address').addClass("error_field");
+        return false;
+	    }
+	  });
 	}
+
+    if(jQuery("#edit_resource").length){
+        $("#resource_title").show_char_limit(140);
+        $("#resource_description").show_char_limit(3000);
+        $("#resource_industry").show_char_limit(25);
+        $("#resource_geography").show_char_limit(25);
+        $("#resource_terms_and_conditions").show_char_limit(3000);
+        $("#resource_sources").show_char_limit(3000);
+
+        $('#edit_resource').submit(function(){
+            return validate_form();
+        });
+    }
 
 });
 
