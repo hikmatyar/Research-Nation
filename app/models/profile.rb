@@ -25,6 +25,8 @@ class Profile < ActiveRecord::Base
   named_scope :through_company_type, (lambda do |company_type| {:conditions => {:is_edited => true, :company_type => company_type}, :order => "created_at DESC"} end)
   named_scope :through_services, (lambda do |services| {:conditions => {:is_edited => true, :services => services}, :order => "created_at DESC"} end)
 
+  after_create :set_interested_in
+
   def to_params
     "#{id}-#{name.parameterize}"
   end
@@ -47,10 +49,14 @@ class Profile < ActiveRecord::Base
   def update_is_edited
     self.update_attribute(:is_edited, true)
   end
-  
+
   def update_website website_link
     website = website_link.match("http") ? website_link : "http://"+ website_link
     self.update_attribute( :website , website )  
   end
 
+private
+  def set_interested_in
+    self.update_attributes :interested_in => "FT projects,PT projects,Immediate start,Local only,30 mins phone consultation"
+  end
 end
