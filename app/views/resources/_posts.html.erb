@@ -13,6 +13,7 @@
         </div>
         <div class="tags_box">
           <p>$<%= resource.selling_price %></p>
+          <%= "<p>Deleted Post</p>" if resource.is_deleted? %>
         </div>
       </div>
     </div>

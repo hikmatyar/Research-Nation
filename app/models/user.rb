@@ -20,7 +20,6 @@ class User < ActiveRecord::Base
   cattr_reader :per_page
   @@per_page = 25
 
-
   def password=(value ="")
     if value.length >=6 && value.length <= 20
       write_attribute("password", Digest::SHA1.hexdigest(value))
@@ -105,5 +104,4 @@ class User < ActiveRecord::Base
     end
     earnings
   end
-
 end

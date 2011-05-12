@@ -7,7 +7,8 @@ class PurchasesController < ApplicationController
   before_filter :download_verify, :only => [:download, :download_file]
 
   def resource
-    @resource = Resource.find_by_url_slug params[:url_slug]
+    @resource = Resource.find_by_url_slug params[:url_slug], :conditions => {:is_deleted => false}
+    return render_404 if @resource.blank?
     return redirect_to :controller => 'purchases', :action => "download", :url_slug => @resource.url_slug if current_user.is_admin? || @resource.selling_price == 0 || current_user.id == @resource.user_id
     @order = Order.new(params[:order])
     if request.post?
@@ -34,7 +35,12 @@ class PurchasesController < ApplicationController
 
 private
   def download_verify
-    @resource = Resource.find_by_url_slug params[:url_slug]
-    return render_404 unless (current_user.is_admin? || current_user.own_resource?(@resource) || @resource.free? || Order.authorized_access?(current_user.id, params[:url_slug]))
+    @resource = Resource.find_by_url_slug params[:url_slug], :conditions => {:is_deleted => false}
+    if !@resource.blank? && (current_user.is_admin? || (!@resource.is_deleted? && (current_user.own_resource?(@resource) || @resource.free? || Order.authorized_access?(current_user.id, params[:url_slug]))))
+      return true
+    else
+      return render_404
+    end
   end
+
 end

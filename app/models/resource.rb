@@ -6,7 +6,6 @@ class Resource < ActiveRecord::Base
 
   has_many :orders
 
-  acts_as_paranoid
 
   cattr_reader :per_page
   @@per_page = 25
@@ -27,7 +26,7 @@ class Resource < ActiveRecord::Base
   end
 
   def update_url_slug
-    self.update_attribute( :url_slug, self.to_params )
+    self.update_attribute(:url_slug, self.to_params)
   end
 
   def to_params
@@ -50,4 +49,7 @@ class Resource < ActiveRecord::Base
     return Order.successful_resource_orders_within_month(self.id, start_time, end_time).payment_pending
   end
 
+  def set_deleted
+    self.update_attributes :is_deleted => true
+  end
 end

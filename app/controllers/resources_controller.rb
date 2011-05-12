@@ -28,7 +28,8 @@ class ResourcesController < ApplicationController
     else
       @user = User.new
     end
-    @resource = Resource.find_by_url_slug params[:url_slug]
+    @resource = session[:admin].blank? ? (Resource.find_by_url_slug params[:url_slug], :conditions => {:is_deleted => false}) : (Resource.find_by_url_slug params[:url_slug])
+    return render_404  if @resource.blank?
     @sample = @resource.attachments.sample.first unless @resource.attachments.sample.blank?
     @related_posts = Resource.find :all, :conditions => ['(industry =? or geography = ?) and (id != ?)', @resource.industry, @resource.geography, @resource.id ], :limit => 10, :order => "industry, geography and created_at"
   end
@@ -36,9 +37,9 @@ class ResourcesController < ApplicationController
   def view_posts
     @user = User.find(session[:user]) if logged_in?
     if params[:filter].blank?
-      @resources = Resource.find :all, :order => 'created_at DESC'
+      @resources = Resource.find :all, :order => 'created_at DESC', :conditions => {:is_deleted => false}
     else
-      @resources = Resource.find :all, :conditions => ['industry =? OR geography = ?', params[:filter], params[:filter]]
+      @resources = Resource.find :all, :conditions => ['industry =? OR geography = ? AND is_deleted = ?', params[:filter], params[:filter], false]
     end
   end
 
@@ -95,7 +96,7 @@ class ResourcesController < ApplicationController
   def delete
     sample = @resource.attachments.sample
     original_doc = @resource.attachments.original_files
-    @resource.destroy
+    @resource.set_deleted
     #flash[:notice] = "Got it. Your post has been deleted"
     return redirect_to :controller => 'users', :action => 'profile' if session[:admin].blank?
     return redirect_to :controller => 'admin', :action => 'posts'
@@ -136,6 +137,10 @@ class ResourcesController < ApplicationController
 private
   def edit_authorization
     @resource = Resource.find_by_url_slug(params[:url_slug])
-    return render_404 unless (current_user.is_admin || current_user.own_resource?(@resource))
+    if !@resource.blank? && (current_user.is_admin? || (current_user.own_resource?(@resource) && !@resource.is_deleted?))
+      return true
+    else
+      return render_404
+    end
   end
 end
