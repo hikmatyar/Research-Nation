@@ -161,9 +161,8 @@
               <label>Message</label>
               <textarea name="message" rows="8" cols="25" id="contact_message" class="required max_len", max_length=1000 /></textarea>
             </div>
-            <div class="sign_up_button">
-              <%= submit_tag 'Send Message', :id => 'submit' %>
-              <input type="reset" id="reset" name="reset" value="Reset" id="" style="display:none;" />
+            <div class="send_button">
+              <%= submit_tag 'Send Message', :id => 'submit', :class => "green_button" %>
             </div>
           </div>
       </div>

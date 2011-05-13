@@ -2997,6 +2997,14 @@ div.fbFooterBorder{
 	margin-bottom:100px;
 }
 
+.popup_message input.green_button{
+	width:437px !important;
+}
+
+.seller_popup_message input.green_button{
+	width:437px !important;
+}
+
 .add_attachment_link{
 	float: right;
 	margin-bottom: 10px;
@@ -3071,7 +3079,7 @@ div.fbFooterBorder{
 .new_field{
  float:left;
  width:100%;
- height:44px;
+ height:50px;
 }
 
 .sign_up_terms{
@@ -3109,7 +3117,7 @@ div.fbFooterBorder{
 
 .banner_sign_up_button{
 	float:left;
-	margin:15px 10px 10px 0;
+	margin:20px 10px 10px 0;
 	-margin:10px 10px 10px 0;
 
 }
