@@ -93,14 +93,6 @@ class ApplicationController < ActionController::Base
   end
 
   def default_url_options(options)
-    defaults = {}
-    if request.ssl?
-      defaults[:only_path] = false
-      defaults[:protocol] =  'https://'
-    else
-      defaults[:only_path] = true
-      defaults[:protocol] =  'http://'
-    end
-    return defaults
+    { :protocol => 'http://' }
   end
 end
