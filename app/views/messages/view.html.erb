@@ -13,7 +13,7 @@
         <%= image_tag @message.recipient.profile.photo.url(:small) unless @message.recipient.profile.photo_file_name.blank? %>
         <b><%= truncate(@message.recipient.profile.name, :omission => "...", :length => 10) %></b>
       </div>
-      <div>
+      <div class="message">
         <p><%= @message.body %></p>
       </div>
       <div class="sender">

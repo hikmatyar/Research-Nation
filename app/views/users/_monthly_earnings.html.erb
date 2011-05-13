@@ -3,7 +3,7 @@
         <div style="margin-right:10px;float:left">
           <a href="#<%= type%>-earnings-<%= earning[:month].month%>-<%= earning[:month].year%>" id ="<%= type%>-earnings-link-<%= earning[:month].month%>-<%= earning[:month].year%>"><%= earning[:month].strftime("%B %Y")%></a>
         </div>
-        <div><span class="fixed"><%=  number_to_currency(earning[:total_earnings])  %></span></div>
+        <div class="total_price"><span class="fixed"><%=  number_to_currency(earning[:total_earnings])  %></span></div>
 
         <div id="<%= type%>-earnings-<%= earning[:month].month%>-<%= earning[:month].year%>" style="display:none">
           <a id="<%= type%>-hide-earnings-<%= earning[:month].month%>-<%= earning[:month].year%>" href="#<%= type%>-earnings-<%= earning[:month].month%>-<%= earning[:month].year%>">Hide</a>

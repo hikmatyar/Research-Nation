@@ -173,7 +173,7 @@ a:focus {
 
 
 .main_menu_box{
-    float:left;
+    float:right;
     width:468px;
 }
 
@@ -196,7 +196,7 @@ a:focus {
 
 .main_menu a {
     color: #AC7333 !important;
-    float: left !important;
+    float: right !important;
     margin-left: 0;
     margin-right: 0;
     text-align: center;
@@ -205,7 +205,7 @@ a:focus {
 
 .main_menu td{
 	border-left:1px solid #ccc;
-	float: right;
+	float: right !important;
 	width:70px;
 	padding:0px;
 }
@@ -602,64 +602,6 @@ a:focus {
     float:left;
 }
 
-.resource_buttons a {
-    -moz-border-radius: 4px 4px 4px 4px;
-    -webkit-border-radius: 4px 4px 4px 4px;
-    background: -moz-linear-gradient(center bottom,  #AFAFAF 22%, #CECECE 81%);
-		background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #AFAFAF), color-stop(0.81,  #CECECE));
-		background: -moz-linear-gradient(center bottom,  #AFAFAF 22%, #CECECE 81%);
-    border: medium none;
-    color: #FFFFFF;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 10px 10px 10px 10px !important;
-    text-align: center;
-    float:right !important;
-    position:relative;
-    margin-left:10px;
-}
-
-
-.resource_buttons a:hover{
-	text-decoration:none !important;
-	background-color:#8eaf32 !important;
-	-moz-border-radius: 4px 4px 4px 4px;
-	-webkit-border-radius: 4px 4px 4px 4px;
-	background: -moz-linear-gradient(center bottom, #CECECE 22%, #CECECE 81%);
-	background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #CECECE), color-stop(0.81, #CECECE));
-	background: -moz-linear-gradient(center bottom, #CECECE 22%, #CECECE 81%);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#8eaf32, endColorStr=#8eaf32);	
-	width:auto !important;
-}
-
-
-.sign_up_button input, .send_message_button input{
-	-webkit-border-radius: 4px 4px 4px 4px;
-	-moz-border-radius: 4px 4px 4px 4px;
-	background: -moz-linear-gradient(center bottom,  #8eaf32 22%, #AAC84A 81%);
-	background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #8eaf32), color-stop(0.81,  #AAC84A));
-	background: -moz-linear-gradient(center bottom,  #8eaf32 22%, #AAC84A 81%);
-	border: medium none;
-	color: #FFFFFF;
-	cursor: pointer;
-	float: left;
-	font-size: 16px;
-	font-weight: bold;
-	padding: 10px 20px 10px 20px;
-	text-align: center;
-}	
-
-
-.input:hover, .send_message_button input:hover{
-  -moz-border-radius: 4px 4px 4px 4px;
-  -webkit-border-radius: 4px 4px 4px 4px;
-	text-decoration:none !important;
-	background: -moz-linear-gradient(center bottom, #8eaf32 22%, #8eaf32 81%);
-	background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #8eaf32), color-stop(0.81, #8eaf32));
-	background: -moz-linear-gradient(center bottom, #8eaf32 22%, #8eaf32 81%);
-	width:auto !important;
-}
 
 
 .seller_back, .facebook_back, .purchase_box{
@@ -798,6 +740,12 @@ a:focus {
 	width:550px;
 }
 
+.left_content i{
+	float:left;
+	margin-left: 13px;
+	margin-top: 24px;
+	font-size:18px;
+}
 .seller_left{
 	float:left;
 	width:704px;
@@ -1319,7 +1267,7 @@ a:focus {
 .right_side{
 	float:right !important;
 	margin-top: 10px !important;
-	width:230px !important;
+	width:206px !important;
 }
 
 .right_side li a.active {
@@ -2522,13 +2470,15 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
  margin-top:5px;
  padding-left:8px;
  text-align:left;
+ font-size:13px;
  font-weight:bold;
 }
 
 .new_field input{
  float:left;
  border:1px solid #CCC;
- padding:5px;
+ padding:3px;
+ font-size:13px;
  width:303px !important;
  -moz-border-radius:5px;
  -webkit-border-radius:5px;
@@ -2600,6 +2550,7 @@ p.error{
 
 .receipient img, .sender img{
 	float:left;
+	margin-left:15px;
 }
 
 .sender{
@@ -3125,6 +3076,16 @@ div.fbFooterBorder{
 	margin-top: 10px;
 }
 
+.field_container select{
+	background: none repeat scroll 0 0 #FFFFFF;
+	border: 1px solid #BECFD6;
+	font: 14px Arial,Helvetica,sans-serif;
+	height: 20px;
+	width: 181px;
+	-moz-border-radius:5px;
+ -webkit-border-radius:5px;
+}
+
 .sign_up_button input{
 	margin-left:10px;
 }
@@ -3135,8 +3096,8 @@ div.fbFooterBorder{
 
 .new_field1 select{
 		float:left;
-    width:315px !important;
-    height:35px !important;
+    width:310px !important;
+    height:28px !important;
     padding:5px !important;
 }
 
@@ -3766,6 +3727,12 @@ div.fbFooterBorder{
 	text-decoration:underline !important;
 }
 
+.create_link{
+	float: right;
+	margin-left: 2px;
+	width: 100px !important;
+}
+
 .create_link a{
 	color: #000000;
 	font-size: 12px;
@@ -3775,6 +3742,7 @@ div.fbFooterBorder{
 	color:#000 !important;
 	margin-left:10px;
 	padding:5px;
+	width:80% !important;
 	margin-top:-5px;
 }
 
@@ -3787,3 +3755,18 @@ div.fbFooterBorder{
 	float:left;
 	width:100px !important;
 }
+
+.message{
+	float:left;
+	width:380px;
+}
+.message p{
+	float:left;
+}
+
+.field_container{
+	display:inline-block;
+	position:relative;
+	width:auto
+}
+
