@@ -20,22 +20,30 @@ jQuery('document').ready(function(){
     })
   });
 
-  jQuery('#pending-earnings-link').click(function() {
+  jQuery('#earnings-link').click(function() {
     jQuery.ajax({
       url: "/users/pending_earnings",
       success: function(data){
-        jQuery("#pending-earnings").show();
-        jQuery("#pending-earnings").html(data);
+        jQuery("#current-earnings").show();
+        jQuery("#current-earnings").html(data);
+
+        jQuery("#previous-earnings").hide();
+        jQuery("#preferences").hide();
+
+        bind_functions();
       }
     })
   });
 
-  jQuery('#paid-earnings-link').click(function() {
+  jQuery('#previous-earnings-link').click(function() {
     jQuery.ajax({
       url: "/users/monthly_paid_earnings",
       success: function(data){
-        jQuery("#paid-earnings").show();
-        jQuery("#paid-earnings").html(data);
+        jQuery("#previous-earnings").show();
+        jQuery("#previous-earnings").html(data);
+
+        jQuery("#current-earnings").hide();
+        jQuery("#preferences").hide();
 
         jQuery('a[id*="earnings-link-"]').bind('click', function() {
           jQuery(jQuery(this).attr('href')).show();
@@ -45,6 +53,7 @@ jQuery('document').ready(function(){
           jQuery(jQuery(this).attr('href')).hide();
         });
 
+        bind_functions();
       }
     })
   });
@@ -55,6 +64,11 @@ jQuery('document').ready(function(){
       success: function(data){
         jQuery("#preferences").show();
         jQuery("#preferences").html(data);
+
+        jQuery("#current-earnings").hide();
+        jQuery("#previous-earnings").hide();
+
+        bind_functions();
       }
     })
   });
@@ -80,4 +94,19 @@ function showTab(value)
 		jQuery("#login-tab").addClass("active");
 		jQuery("#signup-tab").removeClass("active");
 	}
+}
+
+
+function bind_functions() {
+  jQuery('#previous-earnings-link').bind('click', function() {
+    jQuery(jQuery(this).attr('href')).show();
+  });
+
+  jQuery('#preferences-link').bind('click', function() {
+    jQuery(jQuery(this).attr('href')).show();
+  });
+
+  jQuery('#current-earnings-link').bind('click', function() {
+    jQuery(jQuery(this).attr('href')).show();
+  });
 }
