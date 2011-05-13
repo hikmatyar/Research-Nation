@@ -103,7 +103,12 @@ private
 
 
   def create_payment_item
-    details = (@user.payment_preference.option == "Paypal") ? @user.payment_preference.paypal : @user.payment_preference.address
-    PaymentItem.create(:email => @user.email, :status => "pending", :option => @user.payment_preference.option, :details => details, :start_time => @time, :end_time => @time.end_of_month, :amount => @earnings)
+    details = ""
+    option = ""
+    unless !@user.payment_preference.blank?
+      details = (@user.payment_preference.option == "Paypal") ? @user.payment_preference.paypal : @user.payment_preference.address
+      option  = @user.payment_preference.option
+    end
+    PaymentItem.create(:email => @user.email, :status => "pending", :option => option, :details => details, :start_time => @time, :end_time => @time.end_of_month, :amount => @earnings)
   end
 end
