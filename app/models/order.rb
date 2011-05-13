@@ -67,7 +67,7 @@ class Order < ActiveRecord::Base
     def validate_card
       unless credit_card.valid?
         credit_card.errors.full_messages.each do |message|
-          errors.add_to_base message
+          errors.add message
         end
       end
     end
@@ -83,4 +83,24 @@ class Order < ActiveRecord::Base
         :last_name          => last_name
       )
     end
+end
+
+
+module ActiveMerchant
+  module Billing
+    class CreditCard
+
+      private
+      def validate_card_number #:nodoc:
+        errors.add_to_base "\n" +
+        "Your credit card number" unless
+          CreditCard.valid_number?(number)
+      end
+
+      def validate_card_verification_value #:nodoc:
+        errors.add_to_base "CVV value is invalid." unless
+          CreditCard.valid_verification_value?(verification_value)
+      end
+    end
+  end
 end

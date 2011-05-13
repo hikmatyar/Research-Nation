@@ -3770,3 +3770,8 @@ div.fbFooterBorder{
 	width:auto
 }
 
+.purchase_error{
+   margin-bottom:2px !important;
+   margin-top:2px !important;
+   color:red;
+}

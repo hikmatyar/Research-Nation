@@ -2,6 +2,11 @@
 <% content_for :html_title, "Purchase #{@resource.title}" %>
 <div class="content">
   <div class="how_it_work_left_side">
+    <div class="purchase_error">
+        <% @order.errors.each do |err| %>
+          <p><%= err.join(" ") %><p>
+        <% end %>
+    </div>
     <div class="seller_back">
       <div class="create_heading_box message_heading_box">
         <h1 style="margin-top: 0px !important; margin-bottom: 5px !important;">Payment Details</h1>
@@ -28,11 +33,6 @@
 		    <h4>How It Works</h4>
 				<p>Please fill out your payment details below to complete your purchase. Once you click on 'Submit', we'll verify your payment information, and you'll then be able to download the file you purchased</p>
 			</div>
-    <div class="error">
-      <% @order.errors.each do |err| %>
-        <p><%= err.join(" ").capitalize %><p>
-      <% end %>
-    </div>
 
     <% form_for(@order , :url => {:action => "resource"}, :html => {:id => "purchase-resource" } ) do |f| %>
 		<div class="login_tab">
@@ -40,25 +40,28 @@
          <%= hidden_field 'order', 'resource_id', :value => @resource.id %>
          <%= hidden_field 'order', 'buyer_id', :value => current_user.id %>
          <div class="field">
-           <label>Name</label>
-           <%= text_field 'order', 'first_name', :size => "10", :style => "margin-right:6px;color:grey;", :value => "First", :class => "required validate-alpha first_name"%>
-           <%= text_field 'order', 'last_name', :size => "10", :style => "margin-right:6px;color:grey;", :value => "Last", :class => "required validate-alpha"%>
+           <label>First Name</label>
+           <%= text_field 'order', 'first_name', :size => "10", :class => "required validate-alpha first_name"%>
+         </div>
+         <div class="field">
+           <label>Last Name</label>
+           <%= text_field 'order', 'last_name', :size => "10", :class => "required validate-alpha"%>
          </div>
          <div class="field">
            <label>Address</label>
-           <%= text_area 'order', 'address', :class => "required"%>
+           <%= text_area 'order', 'address', :class => "required tip", :title => "Your billing address - this is the address to which your credit card bill is sent" %>
          </div>
          <div class="field">
            <label>City</label>
-           <%= text_field 'order', 'city', :class => "required"%>
+           <%= text_field 'order', 'city', :class => "required tip"%>
          </div>
          <div class="field">
            <label>State</label>
-           <%= text_field 'order', 'state', :class => "required validate-alpha"%>
+           <%= text_field 'order', 'state', :class => "required tip", :title => "Enter your state - for example, New York or California. You can ignore this field if you are an international customer" %>
          </div>
          <div class="field">
            <label>ZIP Code</label>
-           <%= text_field 'order', 'zip', :class => "validate-alphanum required"%>
+           <%= text_field 'order', 'zip', :class => "validate-alphanum required tip"%>
          </div>
          <div class="field">
            <label>Country </label>
@@ -70,7 +73,7 @@
          </div>
          <div class="field">
            <label>Card Number </label>
-            <%= text_field 'order', 'card_number', :class => "required validate-digits"%>
+            <%= text_field 'order', 'card_number', :class => "required validate-digits tip", :title => "Enter your 16 digit credit card number"%>
          </div>
          <div class="field">
             <label for="card_verification_CVV Code">CVV Code</label>

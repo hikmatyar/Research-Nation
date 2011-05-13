@@ -10,13 +10,4 @@ jQuery(document).ready(function(){
 
     });
 
-    jQuery("#order_first_name").click(function(){
-        jQuery(this).val("");
-        jQuery(this).unbind("click");
-    });
-    jQuery("#order_last_name").click(function(){
-        jQuery(this).val("");
-        jQuery(this).unbind("click");
-    });
-
 });
