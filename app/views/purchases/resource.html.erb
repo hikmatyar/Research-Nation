@@ -12,7 +12,7 @@
         <h1 style="margin-top: 0px !important; margin-bottom: 5px !important;">Payment Details</h1>
       </div>
       <div class="sign_up_box">
-       <h4 style="margin-top:0px !important; border-top:0px;">Your Purchase</h4>
+       <h4 class="heading_color" style="margin-top:0px !important; border-top:0px;">Your Purchase</h4>
        <p><%= @resource.title %></p>
        <% @resource.attachments.original_files.each_with_index do |attachment,index| %>
        <div class="download_image">
@@ -30,13 +30,13 @@
        </div>
        <% end %>
        <div class="how_it_work">
-		    <h4>How It Works</h4>
+		    <h4 class="heading_color">How It Works</h4>
 				<p>Please fill out your payment details below to complete your purchase. Once you click on 'Submit', we'll verify your payment information, and you'll then be able to download the file you purchased</p>
 			</div>
 
     <% form_for(@order , :url => {:action => "resource"}, :html => {:id => "purchase-resource" } ) do |f| %>
 		<div class="login_tab">
-        <h4>Payment Details</h4>
+        <h4 class="heading_color">Payment Details</h4>
          <%= hidden_field 'order', 'resource_id', :value => @resource.id %>
          <%= hidden_field 'order', 'buyer_id', :value => current_user.id %>
          <div class="field">
@@ -85,7 +85,7 @@
            <%= date_select 'order', 'card_expires_on', :discard_day => true, :order => [:month, :year] %>
          </div>
        </div>
-       <h4>Agreement</h4>
+       <h4 class="heading_color">Agreement</h4>
       <div class="policies_filed">
         <input id="agree" type="checkbox" name="accept" value="1" class="conditions validate-one-required" />
          <div class="terms_and_conditions conditions">
