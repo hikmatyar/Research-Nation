@@ -3550,7 +3550,9 @@ div.fbFooterBorder{
 }
 
 .author_name b{
-	margin-left:5px;
+  margin-bottom: 0;
+  margin-left: 5px;
+  margin-top: 9px;
 }
 
 .author_name a:hover{

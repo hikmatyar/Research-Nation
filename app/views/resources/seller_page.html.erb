@@ -113,7 +113,7 @@
         <div class="author_name">
           <% unless @resource.user.profile.name.blank? %><b><%= (link_to ( truncate @resource.user.profile.name, :omission => "...", :length => 19), :controller => 'profiles', :action => 'profile_page', :url_slug => @resource.user.profile.url_slug) if @resource.user.profile.is_edited %><% end %></b>
         </div>
-        <div class="contact_button" style="padding-top:8px;">
+        <div class="contact_button" style="padding-top:2px;">
           <a class="grey_button" href="#message_form" id="message_link" >Send Message</a>
         </div>
       </div>
@@ -143,6 +143,7 @@
 			  <%= form_remote_tag( :update => 'message',
           :url => {:controller => 'main', :action => 'send_message', :user_id => @resource.user.id }, :after => 'jQuery.fancybox.close();') %>
           <div class="popup_message_box">
+
             <h2>Contact <%= @resource.user.profile.name %></h2>
 
             <div class="field">
