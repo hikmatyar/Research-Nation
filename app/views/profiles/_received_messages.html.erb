@@ -1,22 +1,30 @@
 <% unless @user.received_messages.blank? %>
-<table border="0" cellspacing="5" cellpadding="5" id=" posts_table" align="left">
-	<tbody id="received_messages">
-		<tr>
-			<th>Sent By</th>
-			<th>Date</th>
-			<th>Subject</th>
-		</tr>
-    <% @user.received_messages.each do |msg|%>
-  	<tr>
-	    <td width="50"><%= msg.sender.profile.photo_file_name.blank? ? (image_tag "avatar_30.png") : (image_tag msg.sender.profile.photo.url(:small)) %></td>
-	    <td width="70" ><span class="fixed">  <%= ((Time.diff Time.now, msg.created_at.to_time)[:day] == 0)? "Today" : "#{(Time.diff Time.now, msg.created_at.to_time)[:day]} days ago"  %></span>
-  	  </td>
-      <td width="350"><%= link_to (truncate(msg.subject, :omission => "...", :length => 41), { :controller => 'messages', :action => 'view', :id => msg.id } , { :class => 'fixed' } ) %></td>
-      <td width="40" class="user_profile_buttons"><%= link_to image_tag("delete.jpg"), { :controller => 'messages', :action => 'delete', :id => msg.id }, :confirm => "Are you sure you want to delete this message?"  %></td>
-  	</tr>
-    <% end %>
-	<tbody>
-</table>
+<div class="earnings_title">
+  <table border="0" cellspacing="5" cellpadding="5" id=" posts_table" align="left">
+	  <tbody id="received_messages">
+		  <tr>
+			  <th width="50">From</th>
+			  <th width="70">Date</th>
+			  <th width="350">Subject</th>
+		  </tr>
+    <tbody>
+  </table>
+</div>
+<div class="profile_fixed_box" style="max-height:300px;">
+  <table border="0" cellspacing="5" cellpadding="5" id=" posts_table" align="left">
+	  <tbody id="received_messages">
+      <% @user.received_messages.each do |msg|%>
+    	<tr>
+	      <td width="50"><%= msg.sender.profile.photo_file_name.blank? ? (image_tag "avatar_30.png") : (image_tag msg.sender.profile.photo.url(:small)) %></td>
+	      <td width="70" ><span class="fixed">  <%= ((Time.diff Time.now, msg.created_at.to_time)[:day] == 0)? "Today" : "#{(Time.diff Time.now, msg.created_at.to_time)[:day]} days ago"  %></span>
+    	  </td>
+        <td width="350"><%= link_to (truncate(msg.subject, :omission => "...", :length => 41), { :controller => 'messages', :action => 'view', :id => msg.id } , { :class => 'fixed' } ) %></td>
+        <td width="40" class="user_profile_buttons"><%= link_to image_tag("delete.jpg"), { :controller => 'messages', :action => 'delete', :id => msg.id }, :confirm => "Are you sure you want to delete this message?"  %></td>
+     	</tr>
+      <% end %>
+	  <tbody>
+  </table>
+</div>
 <% else %>
 	<i>You don't have any messages. </i>
 <% end %>

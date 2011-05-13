@@ -1,13 +1,1 @@
-<%
-  @fees = 0.0;
-  @your_earnings = 0.0;
-%>
-
-<%= render :partial => "/users/earnings", :locals => {:orders => @user.pending_orders}, :layout => false %>
-<% if @fees > 0 && @your_earnings > 0 %>
-  <div>
-    <div>Total </div>
-    <div ><%= number_to_currency @fees%></div>
-    <div><%= number_to_currency @your_earnings%></div>
-  </div>
-<% end %>
+<%= render :partial => "/users/earnings", :locals => {:orders => @user.pending_orders}, :layout => false %> 

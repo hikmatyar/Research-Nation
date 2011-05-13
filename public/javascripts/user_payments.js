@@ -1,8 +1,6 @@
 jQuery('document').ready(function(){
 
-
-
-  if (jQuery('a[id^="pending-earnings-link-"]')){
+  if (jQuery('a[id^="previous-earnings-link-"]')){
     jQuery('a[id^="pending-earnings-link-"]').bind('click', function() {
       jQuery(jQuery(this).attr('href')).show();
     });
@@ -24,6 +22,8 @@ jQuery('document').ready(function(){
         jQuery("#pending-earnings").show();
         jQuery("#pending-earnings").html(data);
 
+
+ 
         jQuery('a[id^="pending-earnings-link-"]').bind('click', function() {
           jQuery(jQuery(this).attr('href')).show();
         });
@@ -55,11 +55,13 @@ jQuery('document').ready(function(){
         jQuery("#paid-earnings").html(data);
 
         jQuery('a[id^="paid-earnings-link-"]').bind('click', function() {
-          jQuery(jQuery(this).attr('href')).show();
+          jQuery(jQuery(this).attr('value')).show();
         });
 
         jQuery('a[id^="paid-hide-earnings-"]').bind('click', function() {
-          jQuery(jQuery(this).attr('href')).hide();
+
+          jQuery(jQuery(this).attr('value')).hide();
+          jQuery('div[id*="-earnings-container"]').show();
         });
 
       }

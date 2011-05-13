@@ -171,8 +171,8 @@ a:focus {
 
 
 .main_menu_box{
-    float:right;
-    width:468px;
+    float:left;
+    width:440px;
 }
 
 .main_menu{
@@ -1760,6 +1760,8 @@ html ul.tabs li.active, html ul.tabs li.active {
 
 .tab_container a{
 	font-size:14px !important;
+	color:#AC7333 !important;
+	cursor:pointer;
 }
 
 
@@ -1777,6 +1779,7 @@ html ul.tabs li.active, html ul.tabs li.active {
 }
 .tab_content span{
 	font-size:14px !important;
+	width:auto !important;
 }
 .tab_content a:hover{
 	text-decoration:underline;
@@ -1788,7 +1791,19 @@ html ul.tabs li.active, html ul.tabs li.active {
 
 .users_table, .user_detail{
 	float:left;
-	width:96%;
+	width:100%;
+}
+
+.users_table{
+    float: left;
+    height: 310px !important;
+    width: 658px !important;
+}
+
+.users_table p{
+    float:left;
+    width:200px;
+    margin-left:8px;
 }
 
 .users_table ul{
@@ -2504,17 +2519,21 @@ p.error{
 
 .profile_button{
 	 float:left;
-	 margin-top:10px;
 }
 
 .profile_button a{
-    width:auto;
-    font-size:small;
-    margin-left:5px;
+    width:200px;
+    margin-top:0px;
+}
+
+.profile_button span{
+    float: left;
+    margin-top: 10px;
+    width: 24px;
 }
 
 .profile_button a:hover{
-    width:auto !important;
+    width:200px !important;
 }
 
 .users{
@@ -2543,6 +2562,7 @@ p.error{
     font-weight:normal;
     margin-top:5px;
     width: 100%;
+    color:#525252;
 }
 
 .receipient span{
@@ -3283,9 +3303,13 @@ div.fbFooterBorder{
 	font-size:12px;
 	color:red;
 }
+.earnings_fixed_box{
+    max-height:312px;
+	width:658px;
+}
 
 .profile_fixed_box{
-	max-height:312px;
+	max-height:257px;
 	overflow:auto;
 	width:658px;
 }
@@ -3821,3 +3845,114 @@ div.fbFooterBorder{
    color:red;
 }
 
+.view_profile{
+    float:left;
+	margin-top:10px !important;
+	font-size:12px;
+	color:#AC7333 !important;
+	position:relative;
+}
+
+.view_profile:hover{
+    text-decoration:underline;
+}
+
+#earnings{
+    float:left;
+    width:100%;
+}
+
+#preferences{
+    float:left;
+    margin-top:35px;
+}
+
+.earnings_inner_link{
+    float:right;
+    width:619px;
+    margin-top:10px;
+    border-bottom:1px solid #CCC;
+    padding-bottom:5px;
+}
+
+.earnings_inner_link li{
+    float:right;
+    width:100px;
+    text-align:center;
+    list-style: none outside none;
+}
+
+.earnings_inner_link a{
+    font-weight:bold;
+}
+.total_price{
+    float:left;
+    width:100%;
+    padding-top:10px;
+    padding-bottom:10px;
+    border-top:1px dotted #CCC;
+    list-style:none;
+}
+
+.total_price li{
+    float:left;
+    margin-left:10px;
+}
+
+.total{
+    width: 255px;
+    font-weight:bold;
+}
+
+.currency{
+    width: 90px;
+}
+
+.earnings{
+    width:102px;
+}
+
+.results{
+    float:left;
+    width:100%;
+}
+
+.total_earnings{
+    float:left;
+    width:300px;
+}
+
+.month{
+    float:left;
+    width:100px;
+}
+.paid-earnings-1-2011{
+    float:left;
+    width:20px;
+}
+
+.price_tab{
+    float:left;
+    width:90px;
+}
+
+.fee{
+    float:left;
+    width:90px;
+}
+
+.earning{
+    float:left;
+    width:90px;
+}
+
+.earnings_title{
+    float:left;
+    width:100%;
+    border-bottom:1px solid #CCC;   
+}
+
+.received_messages{
+    float:left;
+    margin-top:30px;
+}

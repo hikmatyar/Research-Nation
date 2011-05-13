@@ -57,28 +57,34 @@
       <div class="profile_button">
         <%= link_to ('Update Your Profile', { :controller => 'profiles', :action => 'edit_individual_profile'}, { :class => 'green_button' }) if @user.individual? %>
         <%= link_to ( 'Update Your Profile', { :controller => 'profiles', :action => 'edit_company_profile'}, { :class => 'green_button' }) if @user.company? %>
-        <%= (link_to "My profile", { :controller => 'profiles', :action => 'profile_page', :url_slug => current_user.profile.url_slug }, { :class => "green_button" } ) if current_user.profile.is_edited %>
+         <%= (link_to "View Your Profile", { :controller => 'profiles', :action => 'profile_page', :url_slug => @user.profile.url_slug } , { :class => 'view_profile' }) unless !@user.profile.blank?%>
       </div>
    	</div>
     <div class="profile_listing">
       <div class="profile_right">
-        <div class="tab_container profile_fixed_box">
+        <div class="tab_container earnings_fixed_box">
           <div id="messages" class="tab_content">
             <%= render :partial => 'profiles/received_messages' %>
           </div>
           <div id="listings" class="tab_content">
           </div>
           <div id="earnings" class="tab_content">
-            <li><a href="#current-earnings" id="current-earnings-link">Current</a></li>
-            <li><a href="#previous-earnings" id="previous-earnings-link">Payments</a></li>
-            <li><a href="#preferences" id="preferences-link">Preferences</a></li>
+            <% if @user.pending_orders.size > 0%>
+              <ul class="earnings_inner_link">
+                <li><a href="#preferences-link" id="preferences-link">Preferences</a></li>
+                <li><a href="#previous-earnings-link" id="previous-earnings-link">Previous</a></li>
+                <li><a href="#current-earnings-link" id="current-earnings-link">Current</a></li>
+              </ul>
 
-            <div id="current-earnings" class="tab_content">
-            </div>
-            <div id="previous-earnings" class="tab_content">
-            </div>
-            <div id="preferences" class="tab_content">
-            </div>
+              <div id="current-earnings" class="tab_content current">
+              </div>
+              <div id="previous-earnings" class="tab_content previous">
+              </div>
+              <div id="preferences" class="tab_content preferences">
+              </div>
+            <% else %>
+<i class="italicized_text"> You don't have any earnings yet. Start selling now by clicking <%= link_to "here", "/create_a_post" %>.</i>
+            <% end %>
 
           </div>
           <div id="purchases" class="tab_content">

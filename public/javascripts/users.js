@@ -20,15 +20,16 @@ jQuery('document').ready(function(){
     })
   });
 
-  jQuery('#earnings-link').click(function() {
+  jQuery('#current-earnings-link, #earnings-link').click(function() {
+    jQuery('#current-earnings-link').css("text-decoration","underline");
     jQuery.ajax({
       url: "/users/pending_earnings",
       success: function(data){
-        jQuery("#current-earnings").show();
-        jQuery("#current-earnings").html(data);
-
         jQuery("#previous-earnings").hide();
         jQuery("#preferences").hide();
+
+        jQuery("#current-earnings").show();
+        jQuery("#current-earnings").html(data);
 
         bind_functions();
       }
@@ -39,18 +40,22 @@ jQuery('document').ready(function(){
     jQuery.ajax({
       url: "/users/monthly_paid_earnings",
       success: function(data){
-        jQuery("#previous-earnings").show();
-        jQuery("#previous-earnings").html(data);
 
         jQuery("#current-earnings").hide();
         jQuery("#preferences").hide();
 
+        jQuery("#previous-earnings").show();
+        jQuery("#previous-earnings").html(data);
+
+
         jQuery('a[id*="earnings-link-"]').bind('click', function() {
-          jQuery(jQuery(this).attr('href')).show();
+          jQuery('div[id*="earnings-container"]').hide();
+          jQuery(jQuery(this).attr('value')).show();
         });
 
         jQuery('a[id*="hide-earnings-"]').bind('click', function() {
-          jQuery(jQuery(this).attr('href')).hide();
+          jQuery('div[id*="earnings-container"]').show();
+          jQuery(jQuery(this).attr('value')).hide();
         });
 
         bind_functions();
@@ -62,11 +67,11 @@ jQuery('document').ready(function(){
     jQuery.ajax({
       url: "/users/payment_preferences",
       success: function(data){
-        jQuery("#preferences").show();
-        jQuery("#preferences").html(data);
-
         jQuery("#current-earnings").hide();
         jQuery("#previous-earnings").hide();
+
+        jQuery("#preferences").show();
+        jQuery("#preferences").html(data);
 
         bind_functions();
       }
@@ -99,14 +104,25 @@ function showTab(value)
 
 function bind_functions() {
   jQuery('#previous-earnings-link').bind('click', function() {
+    jQuery('#preferences-link').css("text-decoration","none");
+    jQuery('a[id*=earnings-link]').css("text-decoration","none");
+    jQuery(this).css("text-decoration","underline");
     jQuery(jQuery(this).attr('href')).show();
   });
 
   jQuery('#preferences-link').bind('click', function() {
+    jQuery('#preferences-link').css("text-decoration","none");
+    jQuery('a[id*=earnings-link]').css("text-decoration","none");
+    jQuery(this).css("text-decoration","underline");
+
     jQuery(jQuery(this).attr('href')).show();
   });
 
   jQuery('#current-earnings-link').bind('click', function() {
+    jQuery('a[id*=earnings-link]').css("text-decoration","none");
+    jQuery('#preferences-link').css("text-decoration","none");
+    jQuery(this).css("text-decoration","underline");
+
     jQuery(jQuery(this).attr('href')).show();
   });
 }

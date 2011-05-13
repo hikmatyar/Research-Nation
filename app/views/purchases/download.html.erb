@@ -46,3 +46,12 @@
     </div>
   </div>
 </div>
+<script type="text/javascript" language="javascript" charset="utf-8">
+  jQuery("document").ready(function(){
+    jQuery("#user_email").click(function(){
+      jQuery(this).val("");
+      jQuery(this).css("color","#000");
+      jQuery(this).unbind("click");
+    });
+  });
+</script>
