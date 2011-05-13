@@ -17,12 +17,12 @@
 	  <div class="wrapper">
 	    <%= render :partial => '/layouts/header'%>
 			<div class="content">
+			  <% unless flash[:notice].blank? %><p class="flash"><%= flash[:notice] %></p><% end %>
 				<div style="margin-top: 20px; clear:both;" class="admin_button">
 					<a target="_blank" class="green_button" href="http://google.com/analytics" style="font-size:1.2em; padding:2px !important; margin-left:10px;" >Google Analytics</a>
 					<a target="_blank" class="green_button" href="http://google.com/a/researchnation.net" style="font-size:1.2em; padding:2px !important;" >Admin E-mail</a>
 						<a target="_blank" class="green_button" href="http://mailchimp.com" style="font-size:1.2em; padding:2px !important;" >MailChimp</a>
 				</div>
-		    <% unless flash[:notice].blank? %><p class="flash"><%= flash[:notice] %></p><% end %>
         <%= render :partial => 'admin_links' %>
       	<%= yield %>
     	</div>
