@@ -11,13 +11,14 @@
        <p><%= @resource.title %></p>
        <% @resource.attachments.original_files.each_with_index do |attachment,index| %>
        <div class="download_image">
-         <% if attachment.original_content_type.match("doc") || attachment.original_content_type.match("word") %>
+         <% extension = File.extname(attachment.original_file_name).downcase %>
+         <% if [".doc", ".docx"].include?(extension) %>
            <%= (image_tag "Word_Doc_Icon.png")  %>
-         <% elsif attachment.original_content_type.match("pdf") %>
+         <% elsif [".pdf"].include?(extension) %>
            <%= (image_tag "pdf.png")%>
-         <% elsif attachment.original_content_type.match("xls") || attachment.original_content_type.match("excel") %>
+         <% elsif [".xls", ".xlsx"].include?(extension) %>
            <%= (image_tag "excel-2010-icon.1.png") %>
-         <% elsif attachment.original_content_type.match("ppt")%>
+         <% elsif [".ppt", ".pptx"].include?(extension) %>
            <%= (image_tag "file-extension-pps-powerpoint_icon.png") %>
          <% end %>
          <i><%= (attachment.original_file_size/1024).to_s + "KB"  %></i>

@@ -11,14 +11,15 @@
         <% @resource.attachments.original_files.each_with_index do |attachment,index| %>
           <div>
             <div class="download_image">
+              <% extension = File.extname(attachment.original_file_name).downcase %>
               <a href="/download_file/<%=params[:url_slug]%>?attachment=<%= attachment.id%>" target="_blank">
-              <% if attachment.original_content_type.match("doc") || attachment.original_content_type.match("word") %>
+              <% if [".doc", ".docx"].include?(extension) %>
                 <%= (image_tag "Word_Doc_Icon.png")  %>
-              <% elsif attachment.original_content_type.match("pdf") %>
+              <% elsif [".pdf"].include?(extension) %>
                 <%= (image_tag "pdf.png")%>
-              <% elsif attachment.original_content_type.match("xls") || attachment.original_content_type.match("excel") %>
+              <% elsif [".xls", ".xlsx"].include?(extension) %>
                 <%= (image_tag "excel-2010-icon.1.png") %>
-              <% elsif attachment.original_content_type.match("ppt")%>
+              <% elsif [".ppt", ".pptx"].include?(extension) %>
                 <%= (image_tag "file-extension-pps-powerpoint_icon.png") %>
               <% end %>
             </a>
@@ -37,7 +38,7 @@
           <% form_tag(:controller => 'users', :action => 'subscribe_newsletter') do %>
             <div class="send_mail">
               <label>Sign Up for our monthly newsletter</label>
-              <%= text_field 'user', 'email', :value => "Your email address", :class => "email_addres" %>
+              <%= text_field 'user', 'email', :value => "Your email address", :class => "email_address" %>
             </div>
           <% end %>
         </div>
