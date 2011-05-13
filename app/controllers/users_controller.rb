@@ -162,7 +162,7 @@ class UsersController < ApplicationController
       user = User.find params[:id]
       user.update_attributes :password => params[:password]
       session[:user] = user.id
-      flash[:notice] = " Password successfully changed "
+      flash[:notice] = " Thank you, your password has been updated "
     end
     return redirect_to :controller => 'users' , :action => 'register'
   end
