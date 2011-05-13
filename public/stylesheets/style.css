@@ -139,13 +139,11 @@ a:focus {
 }
 
 .banner_text h2 {
-    color: #AC7333;
+    color: #525252;
     float: left;
-    font-weight: normal;
+    font-weight:bold;
     font-size: 28px;
-    line-height: 33px;
-    margin-bottom: 20px;
-    margin-top: 30px;
+    margin-bottom:20px;
     width: 95%;
 }
 
@@ -194,7 +192,7 @@ a:focus {
 	border-right:1px solid #bebebe;
 }
 
-.main_menu a {
+.main_menu a{
     color: #AC7333 !important;
     float: right !important;
     margin-left: 0;
@@ -383,12 +381,12 @@ a:focus {
     width:80px;
     height:80px;
 }
-
-
-
+.heading_color{
+	color:#648310 !important;
+}
 
 .sign_up_box h4{
-    color:#525252 !important;
+    color:#525252;
     float: left;
     font-size: 18px;
     font-weight: bold;
@@ -676,7 +674,7 @@ a:focus {
 }
 
 .create_heading_box b{
-    color: #648310 !important;
+    color: #525252 !important;
     font-size: 14px;
     font-weight: normal;
     line-height: 18px;
@@ -740,7 +738,7 @@ a:focus {
 	width:550px;
 }
 
-.left_content i{
+.left_content i,#messages i, .italicized_text{
 	float:left;
 	margin-left: 13px;
 	margin-top: 24px;
@@ -1616,7 +1614,10 @@ background:#FFFFFF; border:1px solid #666666 !important; height:15px; width:15px
 	width:390px;
 }
 
-
+.policies_filed .green_button{
+	margin-left: -12px;
+  width: 480px;
+}
 
 .field, .follow_field{
 	float:left;
@@ -2466,12 +2467,14 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 
 .new_field label{
  float:left;
- width:150px;
+ width:90px;
  margin-top:5px;
  padding-left:8px;
  text-align:left;
  font-size:13px;
- font-weight:bold;
+ position:relative;
+ top:21px;
+ left:7px;
 }
 
 .new_field input{
@@ -3068,6 +3071,7 @@ div.fbFooterBorder{
 .new_field{
  float:left;
  width:100%;
+ height:44px;
 }
 
 .sign_up_terms{
@@ -3082,12 +3086,14 @@ div.fbFooterBorder{
 	font: 14px Arial,Helvetica,sans-serif;
 	height: 20px;
 	width: 181px;
+	margin-top:5px !important;
 	-moz-border-radius:5px;
  -webkit-border-radius:5px;
 }
 
 .sign_up_button input{
 	margin-left:10px;
+	width:455px;
 }
 
 .required, .text_width{
@@ -3103,7 +3109,7 @@ div.fbFooterBorder{
 
 .banner_sign_up_button{
 	float:left;
-	margin:10px 10px 10px 0;
+	margin:15px 10px 10px 0;
 	-margin:10px 10px 10px 0;
 
 }
@@ -3111,13 +3117,12 @@ div.fbFooterBorder{
 .banner_sign_up_button input{
 	width:314px;
 	text-align:center;
-	margin-top:0px;
+	margin-top:-5px;
 }
 
 .banner_sign_up_button input:hover{
 	width:314px !important;
 }
-
 
 .banner_text {
     float: left;
@@ -3765,9 +3770,36 @@ div.fbFooterBorder{
 }
 
 .field_container{
-	display:inline-block;
-	position:relative;
-	width:auto
+	float:left;
+	margin-top:12px;
+}
+.altering_text{
+	float:left;
+	width:100%;
+}
+.altering_text span{
+	float:none !important;
+	width:auto;
+	margin-right:5px;
+	font-size:18px;
+}
+
+.italicized_text a{
+	color:#AC7333 !important;
+	font-size:18px !important;
+}
+
+.Contact_us_button{
+	float:left;
+	margin-left:10px !important;
+}
+
+.Contact_us_button input{
+	padding:10px;
+}
+.main_page_content_container{
+	float:left;
+	margin-top:36px;
 }
 
 .purchase_error{
@@ -3775,3 +3807,4 @@ div.fbFooterBorder{
    margin-top:2px !important;
    color:red;
 }
+

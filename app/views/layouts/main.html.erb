@@ -6,13 +6,11 @@
     <title>Research Nation: <%= (html_title = yield :html_title) ? html_title : '' %> </title>
 
     <%= stylesheet_link_tag "style" %>
-    <%= stylesheet_link_tag "reveal" %>
 
 
     <%= javascript_include_tag "jquery" %>
+    <%= javascript_include_tag "main_page" %>
     <%= javascript_include_tag "researchnation" %>
-    <%= javascript_include_tag "verticaltabs.pack" %>
-    <%= javascript_include_tag "verticaltabs" %>
     <%= javascript_include_tag "custom_validations" %>
 
   </head>
