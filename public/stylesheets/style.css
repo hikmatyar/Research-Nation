@@ -2508,11 +2508,13 @@ p.error{
 }
 
 .profile_button a{
-    width:200px;
+    width:auto;
+    font-size:small;
+    margin-left:5px;
 }
 
 .profile_button a:hover{
-    width:200px !important;
+    width:auto !important;
 }
 
 .users{

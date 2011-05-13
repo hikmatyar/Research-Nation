@@ -11,7 +11,7 @@
       'transitionOut'		: 'none'
    });
      $("#fancybox-close").click(function(){
-      window.location.replace("/users/register?opt=login");
+      window.location.replace("/users/register");
   });
   $(document).keydown(function(e) {
     if (e.which == 0 || e.which == 27){
@@ -57,6 +57,7 @@
       <div class="profile_button">
         <%= link_to ('Update Your Profile', { :controller => 'profiles', :action => 'edit_individual_profile'}, { :class => 'green_button' }) if @user.individual? %>
         <%= link_to ( 'Update Your Profile', { :controller => 'profiles', :action => 'edit_company_profile'}, { :class => 'green_button' }) if @user.company? %>
+        <%= (link_to "My profile", { :controller => 'profiles', :action => 'profile_page', :url_slug => current_user.profile.url_slug }, { :class => "green_button" } ) if current_user.profile.is_edited %>
       </div>
    	</div>
     <div class="profile_listing">
