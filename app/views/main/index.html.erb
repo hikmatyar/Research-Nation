@@ -3,7 +3,8 @@
 	<% unless flash[:notice].blank? %><p class="flash"><%= flash[:notice] %></p><% end %>
 	<div class="banner_text">
 		<h2><b>Market Research, Simplified</b></h2>
-			<p>Sign up to quickly create a custom web page for yourself & sell your data & insights. It's exclusive, free, and very easy to use</p>
+      <p>Sign up to quickly create a custom web page for yourself & sell your data & insights. It's exclusive, free, and very easy to use</p>
+
 		<% unless logged_in? %>
 			<%= render :partial => 'users/errors' %>
 			<% form_for(@user , :url => {:controller => "users", :action => "create" } ) do |f| %>
@@ -17,14 +18,16 @@
 			</div>
 			<div class="new_field1 new_field ">
 			<label style="padding:0px;">I am a</label>
-			<%= render :partial => "/layouts/select_user_type", :locals => {:f => f} %>
+      <div class="field_container">
+        <%= render :partial => "/layouts/select_user_type", :locals => {:f => f} %>
+      </div>
 			</div>
 			<div class="banner_sign_up_button" style="margin-left:0px !important;"><%= (f.submit "One Click Sign-up", :class => "green_button")%></div>
 			<div class="main_terms_and_conditions">
 				<p>By signing up you agree to our </p><%= link_to "Terms of Service ", :controller => "main", :action => "privacy" %><p> and</p> <%= link_to "Privacy Policy", :controller => "main", :action => "privacy" %></div>
 			<% end %>
 		<% end %>
-		<%= link_to ( "Create a post now", { :controller => "resources", :action => "upload_docs"}, { :class => 'green_button'} ) if logged_in? %>
+		<%= link_to ( "Get Started! Create a Post Now", { :controller => "resources", :action => "upload_docs"}, { :class => 'green_button'} ) if logged_in? %>
 	</div>
 	<%= hidden_field_tag 'create_post', :value => false%>
 	<img src="/images/banner.jpg" />
