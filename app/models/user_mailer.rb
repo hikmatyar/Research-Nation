@@ -26,7 +26,7 @@ class UserMailer < ActionMailer::Base
       recipients   current_user.email
       subject      "Research Nation - You have successfully purchased #{resource.title}"
       from         "no-reply@researchnation.net"
-      content_type "text/plain"
+      content_type "text/html"
       body         :user => current_user,
                    :resource => resource
       sent_on Time.now
@@ -38,7 +38,7 @@ class UserMailer < ActionMailer::Base
       subject      "Research Nation - Payment sent of US$ #{earnings}"
       from         "no-reply@researchnation.net"
       bcc           "admin@researchnation.net"
-      content_type "text/plain"
+      content_type "text/html"
       body         :user => user,
                    :start_time => start_time,
                    :end_time => end_time,
