@@ -10,7 +10,7 @@
 		</tr>
 		<% resources.each do |resource|%>
 		  <tr>
-        <td width="150"><%= resource.is_deleted? ? resource.title : (link_to ( truncate(resource.title, :omission => "...", :length => 25), { :controller => 'resources', :action => 'edit', :url_slug => resource.url_slug}, { :class => 'fixed' } ))  %></td>
+        <td width="150"><%= resource.is_deleted? ? truncate(resource.title, :omission => "...", :length => 30) : (link_to ( truncate(resource.title, :omission => "...", :length => 30), { :controller => 'resources', :action => 'edit', :url_slug => resource.url_slug}, { :class => 'fixed' } ))  %></td>
         <td width="85"><span class="fixed">$<%= resource.selling_price %></span></td>
         <td width="85"><span class="fixed"><%= resource.created_at.strftime("%B %d") %></span></td>
         <td width="85"><span class="fixed"><%= resource.total_orders.count %></span></td>

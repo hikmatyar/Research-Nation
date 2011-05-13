@@ -14,17 +14,7 @@
 						<span clas><%= link_to profile.name, :action => 'profile_page', :url_slug => profile.url_slug %></span>
 						<p> <%= profile.country %> </p>
 					</div>
-					<!--
-					<div class="tags_box">
-						<span> <%= profile.industry_focus %> </span>
-					</div>
-					-->
 				</div>
-				<!--
-				<div class="description">
-					<p><%= truncate(profile.description , :omission => "...(more)", :length => 62) %></p>
-				</div>
-				-->
 			</div>
 		</div>
 	<% end %>

@@ -9,9 +9,9 @@
       </tr>
       <% purchases.each do |order|%>
         <tr>
-          <td width="400"><%= order.resource.title%></td>
+          <td width="400"><%= truncate(order.resource.title, :length => 30, :omission => "...")%></td>
           <td width="100">$ <%= order.resource.selling_price %></td>
-          <td width="200"><%= order.created_at.strftime("%B %d") %></td>
+          <td width="200"><%= order.created_at.strftime("%B %d, %Y") %></td>
           <td width="50" class="user_profile_buttons"><%= link_to (image_tag "download.jpg"), :controller => 'purchases', :action => 'download', :url_slug => order.resource.url_slug%></td>
         </tr>
       <% end %>
