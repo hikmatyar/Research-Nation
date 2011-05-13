@@ -8,7 +8,7 @@
         </b>
       </div>
       <div style="min-height: 275px;" class="sign_up_box" id="tabOne">
-        <h4 style="margin-top:5px; border-top:0px;">Company Details</h4>
+        <h4 class="heading_color" style="margin-top:5px; border-top:0px;">Company Details</h4>
         <% form_for(@profile , :url => {:controller => "profiles", :action => "update" }, :html => { :multipart => true } ) do |f| %>
           <div class="field">
             <label>Name*</label>
@@ -46,7 +46,7 @@
             <label>Services*</label>
             <%= ( f.select "services", @services, { :include_blank => true }, {:class => 'required select_list' }) %>
           </div>
-          <h4>Key Individual</h4>
+          <h4 class="heading_color">Key Individual</h4>
           <div class="field">
             <label>Name*</label>
             <%= text_field 'key_individual', 'name', :class => 'required' %>
@@ -59,7 +59,7 @@
             <label>LinkedIn</label>
             <%= text_field 'key_individual', 'linkedin', :class => 'text_width tip', :title => "Not sure what your LinkedIn website is? If you logon to LinkedIn and go to your profile page, it should be listed in the first paragraph." %>
           </div>
-          <h4>Setting Expectations</h4>
+          <h4 class="heading_color">Setting Expectations</h4>
           <div class="field">
             <label>Optional</label>
             <%= f.text_area 'humor_me', :class => 'max_len', :max_length => 2500 %>

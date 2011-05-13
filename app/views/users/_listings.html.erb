@@ -25,4 +25,6 @@
 	<tbody>
 </table>
 </div>
+<% else %>
+<i class="italicized_text">You haven't created any posts yet. Get started now by clicking <%= link_to "here", :controller => 'resources', :action => 'upload_docs' %>.</i>
 <% end %>

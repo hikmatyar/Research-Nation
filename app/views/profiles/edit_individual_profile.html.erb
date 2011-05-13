@@ -7,7 +7,7 @@
         <b>Get added to our database of experts, it takes only 3 minutes! If you've already created your profile, you can edit it using this form too.</b>
       </div>
       <div class="sign_up_box" id="tabOne">
-        <h4 style="margin-top:5px; border-top:0px;">My Details</h4>
+        <h4 class="heading_color" style="margin-top:5px; border-top:0px;">My Details</h4>
       <% form_for(@profile , :url => {:controller => "profiles", :action => "update"}, :html => { :multipart => true } ) do |f| %>
         <div class="field">
           <label>My Name*</label>
@@ -45,7 +45,7 @@
           <label>Picture*</label>
           <%= f.file_field 'photo', :id => "user_image", :size => "23" %>
         </div>
-        <h4>My Work Style</h4>
+        <h4 class="heading_color">My Work Style</h4>
         <div class="field">
           <label>Optional</label>
           <%= f.text_area 'humor_me', :class => 'max_len tip', :max_length => 2500, :title => "Fill this out if you're interested in work. What is your leadership style? What kinds of team settings do you do well in? Do you prefer in person meetings or on the phone? Are you very detail oriented? Please feel free to back up any statements you make with examples (e.g. if you say that you prefer small teams and communicate very well, then provide an example of a setting in which you succeeded)" %>

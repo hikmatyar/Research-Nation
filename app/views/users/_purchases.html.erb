@@ -18,4 +18,6 @@
   	<tbody>
 </table>
 </div>
+<% else %>
+<i class="italicized_text">You haven't made any purchases yet. Get started by clicking <%= link_to "here", :controller => "resources", :action => "view_posts" %>.</i>
 <% end %>
