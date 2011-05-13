@@ -5,8 +5,18 @@ jQuery('document').ready(function(){
   });
 
   if (jQuery(".edit_profile")){
+
        jQuery(".edit_profile").submit(function(){
-           validated = validate_form();
+           $("input:submit").val("Processing...");
+				   $("input:submit").css("background","#e5a110");
+
+				   validated =  validate_form();
+
+				   if(!validated){
+				    $("input:submit").val("Submit");
+            $("input:submit").css("background","#8EAF32");
+				   }
+
            if(!validated){
             jQuery("#profile_submit").after("<p class='profile_error error' >Please fill in all required information</p>");
            }

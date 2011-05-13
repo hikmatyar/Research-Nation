@@ -55,10 +55,12 @@ $(".loading").hide();
   });
 
   $('#new_resource').submit(function(){
-      validated = validate_form();
-      if(validated)
-      {
-        $(".loading").show();
+      $("input:submit").val("Processing...");
+      $("input:submit").css("background","#e5a110");
+      validated =  validate_form();
+      if(!validated){
+        $("input:submit").val("Submit");
+      $("input:submit").css("background","#8EAF32");
       }
       return validated;
   });

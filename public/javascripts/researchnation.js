@@ -1,6 +1,10 @@
-
+var new_text = ["industry reports","survey results","poll results","growth projections","call transcripts","secondary research","data" ];
+var counter = 0;
 jQuery('document').ready(function(){
 
+	if(location.pathname == "/"){
+		change_text();
+	}
 	jQuery("#login-tab").addClass("active");
 	if (location.href.match("login")){
 		if(jQuery(".sign_up_terms")){
@@ -17,7 +21,7 @@ jQuery('document').ready(function(){
 	if(jQuery('.flash')){
 
 		if (location.href.match("profile")){
-			setTimeout("jQuery('.flash').fadeOut(60000);",1000);
+			setTimeout("jQuery('.flash').fadeOut(20000);",1000);
 		}
 		else{
 			setTimeout("jQuery('.flash').fadeOut(7500);",1000);
@@ -76,7 +80,14 @@ jQuery('document').ready(function(){
         $("#resource_sources").show_char_limit(3000);
 
         $('#edit_resource').submit(function(){
-            return validate_form();
+            $("input:submit").val("Updating...");
+						$("input:submit").css("background","#e5a110");
+						validated =  validate_form();
+						if(!validated){
+						  $("input:submit").val("Submit");
+						$("input:submit").css("background","#8EAF32");
+						}
+						return validated;
         });
     }
 
@@ -100,5 +111,17 @@ function showTab(value)
 
 			jQuery("#login-tab").addClass("active");
 			jQuery("#signup-tab").removeClass("active");
+		}
+	}
+
+	function change_text(){
+		$("#text_to_change").text(new_text[counter])
+		setTimeout('change_text()',2000);
+		if (counter >= new_text.length){
+			counter = 0;
+		}
+		else
+		{
+			counter++;
 		}
 	}
