@@ -1,15 +1,23 @@
-Dear <%= @user.first_name%>,
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Purchase Email</title>
+  </head>
 
-This is to confirm your purchase of "<%= @resource.title%>."
+  <body>
+<p>Hi,</p>
 
-Thank you so much for your patronage, and do visit us again! We'd love to hear from you any time, please email us at <a href="mailto:admin@researchnation.net">admin@researchnation.net</a>.
+<p>This is to confirm your purchase of "<%= @resource.title%>." </p>
 
-If you have any questions about your purchase, please check out the <a href="http://researchnation.net/main/faqs">FAQs section</a> on the site, or drop us a note and we'll get back to you pronto.
+<p>Thank you so much for your patronage, and do visit us again! We'd love to hear from you any time, please email us at <a href="mailto:admin@researchnation.net">admin@researchnation.net</a>.</p>
 
-Finally, we would appreciate if you could <a href="http://researchnation.net/post/<%=  @resource.url_slug %>">add a review</a> for your purchase. Your comments would be tremendously helpful to other buyers, and will help ensure that only the highest quality material stays on our site.
+<p>If you have any questions about your purchase, please check out the <a href="http://researchnation.net/main/faqs">FAQs section</a> on the site, or drop us a note and we'll get back to you pronto.</p>
 
-Yours,
+<p>Finally, we would appreciate if you could 
+<a href="http://researchnation.net/post/<%=  @resource.url_slug %>">add a review</a> for your purchase. Your comments would be tremendously helpful to other buyers, and will help ensure that only the highest quality material stays on our site.</p>
 
-
-Faisal & the team @ ResearchNation.net
-
+<p>Yours,</p>
+<br/>
+<p>Faisal & the team @ ResearchNation.net</p>
+</body>
+</html>
