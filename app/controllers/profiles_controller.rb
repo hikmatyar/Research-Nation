@@ -63,15 +63,17 @@ class ProfilesController < ApplicationController
     set_profile_data
 
     @profile.update_profile_information(params[:profile], params[:key_individual])
-
-    if (session[:admin] && !params[:user_id].blank?)
-      flash[:notice] = "Profile information updated successfully"
-      return redirect_to :controller => 'admin', :action => 'profiles'
-    else
-      flash[:notice] = "Your information was updated successfully"
-      return redirect_to :controller => 'users', :action => 'profile'
+    if @profile.errors.empty?
+      if (session[:admin] && !params[:user_id].blank?)
+        flash[:notice] = "Profile information updated successfully"
+        return redirect_to :controller => 'admin', :action => 'profiles'
+      else
+        flash[:notice] = "Your information was updated successfully"
+        return redirect_to :controller => 'users', :action => 'profile'
+      end
     end
-
+    return render :action => :edit_individual_profile if @profile.individual?
+    return render :action => :edit_company_profile
   end
 
   def types

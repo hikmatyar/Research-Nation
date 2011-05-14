@@ -1,6 +1,10 @@
 <% content_for :html_title, 'Edit Profile' %>
 <div class="content">
   <div class="how_it_work_left_side">
+    <div class="purchase_error">
+      <% @profile.errors.each do |err| %>
+        <p><%= err.join(" ") %><p>
+      <% end %>
     <div class="seller_back">
       <div class="create_heading_box">
         <h1 style="margin-top:5px !important; margin-bottom:5px !important;">Edit Your Profile.</h1>

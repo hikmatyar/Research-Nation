@@ -15,7 +15,8 @@ class Profile < ActiveRecord::Base
                     :path => "photos/:id/:style/:basename.:extension",
                     :bucket => IMAGE_BUCKET
 
-  validates_attachment_size :photo, :less_than => 5.megabytes
+#  validates_attachment_size :photo, :less_than => 1.megabytes, :message => "Picture size should be less than 5 MB", :allow_nil => true
+
   validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png', 'image/gif']
 
   named_scope :edited, :conditions => {:is_edited => true}, :order => "created_at DESC"
@@ -31,6 +32,14 @@ class Profile < ActiveRecord::Base
     "#{id}-#{name.parameterize}"
   end
   
+  def individual?
+    self.profile_type == "individual"
+  end
+
+  def company?
+    self.profile_type == "company"
+  end
+
   def update_profile_information profile_details, key_individual_details
     unless profile_details.blank?
       profile_details[:interested_in] = nil if !profile_details[:interested_in].nil? && profile_details[:interested_in] == ""
