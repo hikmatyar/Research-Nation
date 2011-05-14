@@ -57,9 +57,7 @@
       <div class="profile_button">
         <%= link_to ('Update Your Profile', { :controller => 'profiles', :action => 'edit_individual_profile'}, { :class => 'green_button' }) if @user.individual? %>
         <%= link_to ( 'Update Your Profile', { :controller => 'profiles', :action => 'edit_company_profile'}, { :class => 'green_button' }) if @user.company? %>
-        <% if !@user.profile.blank? && @user.profile.is_edited? %>
-          <%= (link_to "View Your Profile", { :controller => 'profiles', :action => 'profile_page', :url_slug => @user.profile.url_slug } , { :class => 'view_profile' })
-        <% end %>
+        <%= (link_to "View Your Profile", { :controller => 'profiles', :action => 'profile_page', :url_slug => @user.profile.url_slug } , { :class => 'view_profile' }) if !@user.profile.blank? && @user.profile.is_edited? %>
       </div>
    	</div>
     <div class="profile_listing">
