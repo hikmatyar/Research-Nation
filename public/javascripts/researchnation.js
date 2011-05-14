@@ -50,7 +50,7 @@ jQuery('document').ready(function(){
 
 		var activeTab = jQuery(this).find("a").attr("href"); //Find the href attribute value to identify the active tab + content
 		jQuery(activeTab).fadeIn(); //Fade in the active ID content
-		return false;
+		return true;
 	});
 
   if(jQuery('.email_address')){
@@ -114,8 +114,9 @@ function showTab(value)
 		}
 	}
 
-	function change_text(){
-		$("#text_to_change").text(new_text[counter])
+function change_text(){
+  if (jQuery("#text_to_change")) {
+		jQuery("#text_to_change").text(new_text[counter])
 		setTimeout('change_text()',2000);
 		if (counter >= new_text.length){
 			counter = 0;
@@ -124,4 +125,5 @@ function showTab(value)
 		{
 			counter++;
 		}
-	}
+  }
+}
