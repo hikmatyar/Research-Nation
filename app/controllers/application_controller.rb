@@ -5,6 +5,9 @@ require 'monkeywrench'
 require 'bitly'
 class ApplicationController < ActionController::Base
 
+
+  include ExceptionNotification::Notifiable
+
   protect_from_forgery# See ActionController::RequestForgeryProtection for details
 
   # Scrub sensitive parameters from your log

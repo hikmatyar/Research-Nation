@@ -36,3 +36,5 @@ config.after_initialize do
     :signature => "A4op4KaUu.JEJqAThlPb0WKKoU9gASfn83TFzN4mQMLCUg.8lIA5rjNy "
   )
 end
+
+ExceptionNotification::Notifier.exception_recipients = %w(ali.ibrahim@d3velopers.com)
