@@ -15,7 +15,7 @@
 	  <tbody id="received_messages">
       <% @user.received_messages.each do |msg|%>
     	<tr>
-	      <td width="50"><%= msg.sender.profile.photo_file_name.blank? ? (image_tag "avatar_30.png") : (image_tag msg.sender.profile.photo.url(:small)) %></td>
+	      <td width="50"><%= (msg.sender.profile.blank? || msg.sender.profile.photo_file_name.blank?) ? (image_tag "avatar_30.png") : (image_tag msg.sender.profile.photo.url(:small)) %></td>
 	      <td width="70" ><span class="fixed">  <%= ((Time.diff Time.now, msg.created_at.to_time)[:day] == 0)? "Today" : "#{(Time.diff Time.now, msg.created_at.to_time)[:day]} days ago"  %></span>
     	  </td>
         <td width="350"><%= link_to (truncate(msg.subject, :omission => "...", :length => 41), { :controller => 'messages', :action => 'view', :id => msg.id } , { :class => 'fixed' } ) %></td>
