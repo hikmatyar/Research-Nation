@@ -12,7 +12,7 @@
       <tr>
         <td><%= (@resources_count - index).to_s %></td>
         <td><%= link_to post.title, :controller => 'resources', :action => 'edit', :url_slug => post.url_slug  %></td>
-        <td><%= post.user.profile.name %></td>
+        <td><%= post.user.profile.name unless post.user.profile.blank? %></td>
         <td><%= post.selling_price %></td>
         <td><%= post.created_at.strftime("%B %d, %Y") %></td>
         <% unless post.is_deleted? %>
