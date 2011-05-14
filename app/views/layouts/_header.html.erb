@@ -21,12 +21,12 @@
                 <%= (link_to 'Login', :controller => 'users', :action => 'register', :opt => 'login') %>
               </td>
             <% end %>
-            <td width="20" >
+            <td width="20" <%= "class='borderless'" unless logged_in?%> >
               <%= (link_to 'Browse', :controller => 'resources', :action => 'view_posts') %>
             </td>
             <% if logged_in? %>
-              <td width="120"style="border-left:0px;">
-                <%= (link_to 'Home', :controller => 'users', :action => 'profile' ) %>
+              <td width="120"style="border-left:0px;" class="user_dasboard">
+                <%= (link_to 'My Dashboard', :controller => 'users', :action => 'profile' ) %>
               </td>
             <% end %>
           </tr>
