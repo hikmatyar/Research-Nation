@@ -7,7 +7,7 @@
         <b>Thank you for purchasing from Research Nation! You can now download the report you purchase by clicking on the icon below.</b>
       </div>
       <div class="sign_up_box">
-        <h4 style="margin-top:0px; border-top:0px;">Your Purchase</h4>
+        <h4 class="heading_color" style="margin-top:0px; border-top:0px;">Your Purchase</h4>
         <% @resource.attachments.original_files.each_with_index do |attachment,index| %>
           <div>
             <div class="download_image">
@@ -33,7 +33,7 @@
             </div>
           </div>
           <% end %>
-          <h4>Stay Informed</h4>
+          <h4 class="heading_color">Stay Informed</h4>
           <div class="email_box">
           <% form_tag(:controller => 'users', :action => 'subscribe_newsletter') do %>
             <div class="send_mail">

@@ -385,7 +385,6 @@ a:focus {
 .sign_up_box img{
     float:left;
     padding-left:10px;
-    margin-right:0px !important;
     width:80px;
     height:80px;
 }
@@ -409,7 +408,7 @@ a:focus {
 }
 
 .sign_up_box .field b{
-    width:350px;    
+    width:360px;
 }
 
 .sign_up_box .field p{
@@ -1696,7 +1695,7 @@ background:#FFFFFF; border:1px solid #666666 !important; height:15px; width:15px
 
 .field p {
   float: left;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   margin-top: 5px;
   width: 540px;
 }
