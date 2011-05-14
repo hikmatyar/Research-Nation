@@ -18,7 +18,7 @@ class ContactMailer < ActionMailer::Base
 
   def message_email (recipient, id, host)
     recipients   [ recipient ]
-    subject      "ResearchNation: You have received a new message"
+    subject      "Research Nation: You have received a new message"
     from         "admin@researchnation.net"
     bcc          ["admin@researchnation.net"]
     content_type "text/html"
