@@ -36,7 +36,7 @@
           </div>
           <div class="field">
             <label>Competitors</label>
-            <%= f.text_field 'competitors', :class => 'text_width max_len', :max_length => 500 %>
+            <%= f.text_field 'competitors', :class => 'text_width max_len tip', :max_length => 500, :title => "Add your competitors here" %>
           </div>
           <div class="field">
             <label>Company Type*</label>
@@ -62,7 +62,7 @@
           <h4 class="heading_color">Setting Expectations</h4>
           <div class="field">
             <label>Optional</label>
-            <%= f.text_area 'humor_me', :class => 'max_len', :max_length => 2500 %>
+            <%= f.text_area 'humor_me', :class => 'max_len tip', :max_length => 2500, :title => "Enter your setting expectations here" %>
           </div>
           <%= f.hidden_field 'profile_type', :value => params[:profile_type] %>
           <%= f.hidden_field 'interested_in', :id => 'interested_in' %>
