@@ -29,10 +29,10 @@
             <% end%>
           <% end %>
             <span><% if @resource.user.company? %>
-              <% unless @resource.user.profile.city.blank? %> <%= ", #{@resource.user.profile.city} #{@resource.user.profile.country}" %> <% end %>
+              <% unless @resource.user.profile.city.blank? %> <%= ",  #{@resource.user.profile.city} #{@resource.user.profile.country}" %> <% end %>
             <% else%>
             <% unless @resource.user.profile.key_individual.blank? %>
-              <%= ", #{@resource.user.profile.key_individual.title}" unless  @resource.user.profile.key_individual.title.blank? %>
+              <%= ",  #{@resource.user.profile.key_individual.title}" unless  @resource.user.profile.key_individual.title.blank? %>
               <%= " at #{@resource.user.profile.key_individual.name}" unless @resource.user.profile.key_individual.name.blank? %>
             <% end %>
             <% end %></span>
