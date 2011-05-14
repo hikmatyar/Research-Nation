@@ -109,6 +109,7 @@ private
       details = (@user.payment_preference.option == "Paypal") ? @user.payment_preference.paypal : @user.payment_preference.address
       option  = @user.payment_preference.option
     end
-    PaymentItem.create(:email => @user.email, :status => "pending", :option => option, :details => details, :start_time => @time, :end_time => @time.end_of_month, :amount => @earnings)
+    name = @user.profile.blank? ? @user.email : @user.profile.name
+    PaymentItem.create(:email => name, :status => "pending", :option => option, :details => details, :start_time => @time, :end_time => @time.end_of_month, :amount => @earnings)
   end
 end

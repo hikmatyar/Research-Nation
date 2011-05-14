@@ -3,23 +3,23 @@
   <table border="0" cellspacing="5px" cellpadding="5px" id="users_table" >
   <tbody>
     <tr>
-      <th>Email</th>
-      <th>Option</th>
+      <th>Name</th>
+      <th>Payment Choice</th>
       <th>Details</th>
       <th>Start Date</th>
       <th>End Date</th>
       <th>Amount</th>
       <th>Status</th>
-      <th>Action</th>
+      <th>Pay</th>
     </tr>
     <% @items.each do |item|%>
       <tr>
         <td ><%= item.email %></td>
         <td ><%= item.option %></td>
         <td ><%= item.details %></td>
-        <td ><%= item.start_time.strftime("%Y-%m-%d") %></td>
-        <td ><%= item.end_time.strftime("%Y-%m-%d") %></td>
-        <td ><%= item.amount %></td>
+        <td ><%= item.start_time.strftime("%B %d") %></td>
+        <td ><%= item.end_time.strftime("%B %d") %></td>
+        <td >$<%= item.amount %></td>
         <td id='<%= "payment_state_#{item.id}" %>'><%= item.status %></td>
         <%= render :partial => "payment_item_done", :locals => {:item => item}%>
       </tr>

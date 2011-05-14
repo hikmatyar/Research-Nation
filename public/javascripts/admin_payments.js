@@ -28,7 +28,7 @@ jQuery('document').ready(function(){
 
         jQuery('a[id^="paid-hide-earnings-"]').bind('click', function() {
           jQuery(jQuery(this).attr('value')).hide();
-          jQuery('div[id*="earnings-container"]').hide();
+          jQuery('div[id*="earnings-container"]').show();
         });
 
       }

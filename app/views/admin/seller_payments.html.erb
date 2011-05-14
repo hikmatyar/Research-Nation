@@ -2,21 +2,15 @@
   <table border="0" cellspacing="5px" cellpadding="5px" id="users_table" >
   <tbody>
     <tr>
-      <th>Email</th>
-      <th>Title</th>
-      <th>Company</th>
-      <th>Type</th>
-      <th>Sign-up Date</th>
+      <th>Name</th>
       <th>Pending payment?</th>
+      <th>Details</th>
     </tr>
     <% @users.each do |user|%>
       <tr>
-        <td ><%= user.email %></td>
-        <td ><%= user.work %></td>
-        <td ><%= user.company %></td>
-        <td ><%= user.facebook_uid.blank? ? "Email User" : "Facebook User" %></td>
-        <td ><%= user.created_at.strftime("%B %d, %Y") %></td>
+        <td ><%= user.profile.name unless user.profile.blank? %></td>
         <td ><%= user.has_pending_payment? ? (link_to "Yes", {:controller => "admin", :action => "detailed_user_payments" , :user_id => user.id}) : "No" %></td>
+        <td ><%= link_to "Details", {:controller => "admin", :action => "detailed_user_payments" , :user_id => user.id}%></td>
       </tr>
     <% end %>
   <tbody>
