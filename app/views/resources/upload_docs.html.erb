@@ -58,9 +58,9 @@
                 <label>Seller Terms</label>
                 <%= text_area 'resource', 'terms_and_conditions', :class => 'max_len tip', :max_length => 3000, :title => "Use this field only if you want to add any special terms and conditions, or a license, to your post. Individuals need not worry about this - it's mostly useful for companies only. Your post will always be protected by our site's Terms and Conditions and Privacy Policy." %>
               </div>
-              <% if logged_in? && !current_user.profile.is_edited %>
+              <% if logged_in? && (current_user.profile.blank? || !current_user.profile.is_edited) %>
                 <h4>Your Details</h4>
-                <% unless (@user.blank? || @user.email.blank? || @user.profile.is_edited)  %>
+                <% unless (@user.blank? || @user.email.blank? || (@user.profile.blank? || @user.profile.is_edited))  %>
                   <div class="field">
                     <label>About Me*</label>
                     <%= text_area 'profile', 'description', :class => 'required max_len', :max_length => 3000 %>
