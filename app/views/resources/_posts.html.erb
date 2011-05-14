@@ -5,11 +5,13 @@
     <div class="post">
       <div>
         <div class="post_title">
-          <% unless (resource.user.profile.blank? || resource.user.profile.photo_file_name.blank?)%>
-            <%= (image_tag resource.user.profile.photo.url(:small)) %>
-          <% else%>
-            <%= (image_tag "avatar_30.png")%>
-          <% end %>
+          <div class="user_image">
+            <% unless (resource.user.profile.blank? || resource.user.profile.photo_file_name.blank?)%>
+              <%= (image_tag resource.user.profile.photo.url(:small)) %>
+            <% else%>
+              <%= (image_tag "avatar_30.png")%>
+            <% end %>
+          </div>
           <div class="user_name">
             <span><%= link_to ( truncate(resource.title, 30, "..."), :action => 'seller_page', :url_slug => resource.url_slug ) %></span>
             <p> <%= resource.user.profile.name unless resource.user.profile.blank? %> </p>

@@ -49,12 +49,14 @@ jQuery('document').ready(function(){
 
 
         jQuery('a[id*="earnings-link-"]').bind('click', function() {
+          jQuery('div[id="monthly-payments-header"]').hide();
           jQuery('div[id*="earnings-container"]').hide();
           jQuery(jQuery(this).attr('value')).show();
         });
 
         jQuery('a[id*="hide-earnings-"]').bind('click', function() {
           jQuery('div[id*="earnings-container"]').show();
+          jQuery('div[id="monthly-payments-header"]').show();
           jQuery(jQuery(this).attr('value')).hide();
         });
 

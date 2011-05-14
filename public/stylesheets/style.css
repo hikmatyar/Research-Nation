@@ -207,6 +207,14 @@ a:focus {
 	width:70px;
 	padding:0px;
 }
+
+.main_menu td.borderless{
+	border-left:none !important;
+	float: right !important;
+	width:70px;
+	padding:0px;
+}
+
 .main_menu a:hover {
 	text-decoration:underline;
 }
@@ -694,7 +702,7 @@ a:focus {
 
 
 .facebook_back{
-	margin-top:30px;
+	margin-top:10px;
 }
 
 .search_content{
@@ -3314,12 +3322,25 @@ div.fbFooterBorder{
 	width:658px;
 }
 
+.profile_fixed_box td{
+    padding:0px;
+}
+
+.profile_fixed_box tr{
+    float:left;
+    border-bottom:1px dotted #CCC;
+}
+
+.profile_fixed_box tr:hover{
+    background:#F0F0F0;
+}
+
 .forgit_password{
 	margin-bottom: 15px;
 	padding-left:11px !important;
 	padding-bottom:5px !important;
 	margin-left:0px !important;
-	color:#AC7333 !important;
+	color:#000 !important;
 	font-weight: bold;
 	width:465px;
 	border-bottom:1px dotted #CCC;
@@ -3771,8 +3792,9 @@ div.fbFooterBorder{
 
 .create_link{
 	float: right;
-	margin-left: 2px;
+	margin-left:45px;
 	width: 100px !important;
+	border:0px !important;
 }
 
 .create_link a{
@@ -3862,15 +3884,11 @@ div.fbFooterBorder{
     width:100%;
 }
 
-#preferences{
-    float:left;
-    margin-top:35px;
-}
-
 .earnings_inner_link{
     float:right;
-    width:619px;
+    width:660px;
     margin-top:10px;
+    padding-left:0px;
     border-bottom:1px solid #CCC;
     padding-bottom:5px;
 }
@@ -3884,13 +3902,11 @@ div.fbFooterBorder{
 
 .earnings_inner_link a{
     font-weight:bold;
+    color:#8DAF2B !important;
 }
 .total_price{
     float:left;
     width:100%;
-    padding-top:10px;
-    padding-bottom:10px;
-    border-top:1px dotted #CCC;
     list-style:none;
 }
 
@@ -3900,7 +3916,7 @@ div.fbFooterBorder{
 }
 
 .total{
-    width: 255px;
+    width:334px;
     font-weight:bold;
 }
 
@@ -3917,9 +3933,18 @@ div.fbFooterBorder{
     width:100%;
 }
 
+.results tr{
+    float:left;
+    border-bottom:1px dotted #CCC;
+}
+
 .total_earnings{
     float:left;
     width:300px;
+}
+
+.total_earnings P{
+    font-size:14px !important;
 }
 
 .month{
@@ -3933,23 +3958,27 @@ div.fbFooterBorder{
 
 .price_tab{
     float:left;
-    width:90px;
+    width:80px;
+    font-weight:bold;
 }
 
 .fee{
     float:left;
-    width:90px;
+    width:80px;
+    font-weight:bold;
 }
 
 .earning{
     float:left;
     width:90px;
+    font-weight:bold;
 }
 
 .earnings_title{
     float:left;
     width:100%;
-    border-bottom:1px solid #CCC;   
+    border-bottom:1px dotted #CCC;
+    height:35px;
 }
 
 .received_messages{
@@ -3961,4 +3990,107 @@ div.fbFooterBorder{
   float: left;
   margin: 5px 8px 5px 5px;
   width: 450px;
+}
+
+.user_image{
+    float:left;
+    width:50px;
+    height:50px;    
+}
+
+.preferences_text{
+    float:left;
+    width:630px;
+    margin-left:10px;
+}
+
+.preferences_text p{
+    float:left;
+    width:100%;
+    text-align:justify;
+}
+
+.payment_preference{
+    float:left;
+    width:630px;
+    margin-left:10px;
+}
+
+.preference_details{
+    float:left;
+    border-top:1px dotted #CCC;
+    width:100%;
+    margin-top:10px;
+}
+
+.previous_back{
+    float: left;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    width: 100%;
+}
+
+.user_dasboard{
+    float:left;
+}
+
+.user_dasboard a{
+    float:left;
+    width:100px !important;
+}
+
+.monthly-payments-header{
+    border-bottom: 1px dotted #CCCCCC;
+    float: left;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.payments-header_month{
+    float: left;
+    font-weight: bold;
+    margin-left: 8px;
+    padding-bottom: 10px;
+    width: 200px;
+}
+
+.admin_pay_button{
+    float:right;
+    margin-right:20px;
+}
+
+.paid-earnings-container{
+    border-bottom: 1px dotted #CCCCCC;
+    float: left;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    width: 100%;
+}
+
+.paid-earnings-container:hover{
+	background:#F0F0F0;
+}
+
+.box_heading{
+    float:left;
+    margin-top: 0px; 
+    border-top: 0px none;
+    color:#648310 !important;
+    margin-bottom:0px !important;
+    font-weight:bold;
+}
+
+.seller_tab a{
+    color:#648310 !important;
+}
+
+.seller_tab a:hover{
+    background:none !important;
+    text-decoration:underline;
+}
+
+.seller_tab a.active{
+    background:none !important;
+    color:#648310 !important;
+    text-decoration:underline;
 }

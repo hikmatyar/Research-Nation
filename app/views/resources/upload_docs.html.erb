@@ -22,7 +22,7 @@
           </div>
           <div class="sign_up_box">
               <% form_for(@resource , :url => { :controller => 'resources', :action => 'create_post', :user => params[:user] }, :html => { :multipart => true } ) do |f| %>
-              <h4 style="border-top:0px;">Your Post</h4>
+              <h4 class="heading_color" style="border-top:0px;">Your Post</h4>
               <div class="field">
                   <label>Title*</label>
                   <%= text_field 'resource', 'title', :class => 'field_width required max_len tip', :max_length => 100, :title => "Tell us what this post is about. Mention any geographic or industry focus, as well as the type of research (e.g. call transcripts, reports, surveys, projections, dataset)." %>
@@ -59,8 +59,8 @@
                 <%= text_area 'resource', 'terms_and_conditions', :class => 'max_len tip', :max_length => 3000, :title => "Use this field only if you want to add any special terms and conditions, or a license, to your post. Individuals need not worry about this - it's mostly useful for companies only. Your post will always be protected by our site's Terms and Conditions and Privacy Policy." %>
               </div>
               <% if logged_in? && (current_user.profile.blank? || !current_user.profile.is_edited) %>
-                <h4>Your Details</h4>
-                <% unless (@user.blank? || @user.email.blank? || (@user.profile.blank? || @user.profile.is_edited))  %>
+                <h4 class="heading_color">Your Details</h4>
+                <% unless (@user.blank? || @user.email.blank? || @user.profile.is_edited)  %>
                   <div class="field">
                     <label>About Me*</label>
                     <%= text_area 'profile', 'description', :class => 'required max_len', :max_length => 3000 %>

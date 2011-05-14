@@ -4,15 +4,15 @@
   fees = 0;
   your_earnings = 0;
 %>
-  <div class="users_table">
+  <div class="users_table" style="position:relative; top:-12px; border-top:1px dotted #CCC;">
     <div class="earnings_title">
       <table border="0" cellspacing="5" cellpadding="5" id=" resources_table" align="left">
 	      <tbody>
 	      	<tr>
-          	<th width="85">Date</th>
-          	<th width="150">Title</th>
-          	<th width="85">Price</th>
-          	<th width="85">Less Fees</th>
+          	<th width="75">Date</th>
+          	<th width="240">Title</th>
+          	<th width="75">Price</th>
+          	<th width="75">Less Fees</th>
           	<th width="100">Your Earnings</th>
 	      	</tr>
         </tbody>
@@ -24,7 +24,7 @@
 		      <% orders.each do |order|%>
 		        <tr>
               <td width="85"><span class="fixed"><%= order.created_at.strftime("%B %d") %></span></td>
-              <td width="150"><%= link_to ( truncate(order.resource.title, :omission => "...", :length => 30), { :controller => 'resources', :action => 'seller_page', :url_slug => order.resource.url_slug}, { :class => 'fixed' } )  %></td>
+              <td width="250"><%= link_to ( truncate(order.resource.title, :omission => "...", :length => 30), { :controller => 'resources', :action => 'seller_page', :url_slug => order.resource.url_slug}, { :class => 'fixed' } )  %></td>
               <td width="85"><span class="fixed"><%= number_to_currency(order.resource.selling_price, :precision => 0) %></span></td>
               <td width="85"><span class="fixed"><%= number_to_currency((order.resource.selling_price * 0.3), :precision => 0) %></span></td>
               <td width="85"><span class="fixed"><%=  number_to_currency((order.resource.selling_price * 0.7), :precision => 0)  %></span></td>

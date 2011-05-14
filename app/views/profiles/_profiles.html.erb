@@ -1,15 +1,17 @@
 <% if @profiles.blank? %>
-	<i>Sorry, no profile found that match your criteria.</i>
+	<i>Sorry, no profiles found that match your criteria.</i>
 <% else %>
 	<% @profiles.each do |profile| %>
 		<div class="post">
 			<div>
 				<div class="post_title">
-		      <% unless profile.photo_file_name.blank? %>
-						<%= (image_tag profile.photo.url(:small)) %>
-					<% else %>
-						<%= (image_tag "avatar_30.png")%>
-					<% end %>
+				  <div class="user_image">
+		        <% unless profile.photo_file_name.blank? %>
+						  <%= (image_tag profile.photo.url(:small)) %>
+					  <% else %>
+						  <%= (image_tag "avatar_30.png")%>
+					  <% end %>
+					</div>
 					<div class="user_name">
 						<span clas><%= link_to profile.name, :action => 'profile_page', :url_slug => profile.url_slug %></span>
 						<p> <%= profile.country %> </p>

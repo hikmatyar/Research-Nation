@@ -1,5 +1,4 @@
 <% unless flash[:notice].blank? %><p class="flash"><%= flash[:notice] %></p><% end %>
-<br/>
 <% unless @user.payment_preference.blank? %>
   <% unless @user.payment_preference.option.blank? %>
       <h2> Payment option:</h2><%= @user.payment_preference.option%>

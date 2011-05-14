@@ -1,6 +1,10 @@
 <div class="users_table">
+    <div id="monthly-payments-header" class="monthly-payments-header">
+      <div class="payments-header_month">Month</div>
+      <div class="payments-header_month">Earnings</div>
+    </div>
 		<% earnings.each do |earning|%>
-       <div id="<%= type%>-earnings-container-<%= earning[:month].month%>-<%= earning[:month].year%>">
+       <div class="paid-earnings-container" id="<%= type%>-earnings-container-<%= earning[:month].month%>-<%= earning[:month].year%>">
          <p> <%= earning[:month].strftime("%B %Y")%></p>
         <div class="total_earnings"><p class="fixed"><%=  number_to_currency(earning[:total_earnings], :precision => 0)  %></p></div>
         <div class="month">
@@ -8,9 +12,9 @@
         </div>
        </div>
 
-        <div id="<%= type%>-earnings-<%= earning[:month].month%>-<%= earning[:month].year%>" style="display:none">
-          <a id="<%= type%>-hide-earnings-<%= earning[:month].month%>-<%= earning[:month].year%>" value="#<%= type%>-earnings-<%= earning[:month].month%>-<%= earning[:month].year%>">&lt;Back</a>
-            <% if session[:admin] && type == "pending" %> <a id="<%= type%>-pay-button-<%= earning[:month].strftime('%Y-%m-%d')%>" href="#" value="<%= earning[:month].strftime('%Y-%m-%d')%>">Pay</a> <% end %>
+       <div id="<%= type%>-earnings-<%= earning[:month].month%>-<%= earning[:month].year%>" style="display:none">
+          <span class="previous_back"><a id="<%= type%>-hide-earnings-<%= earning[:month].month%>-<%= earning[:month].year%>" value="#<%= type%>-earnings-<%= earning[:month].month%>-<%= earning[:month].year%>">&lt;----Back</a></span>
+            <% if session[:admin] && type == "pending" %> <a class="admin_pay_button" id="<%= type%>-pay-button-<%= earning[:month].strftime('%Y-%m-%d')%>" href="#" value="<%= earning[:month].strftime('%Y-%m-%d')%>">Pay</a> <% end %>
 
           <%= render :partial => "/users/earnings", :locals => {:orders => earning[:orders]}, :layout => false %>
 		    </div>

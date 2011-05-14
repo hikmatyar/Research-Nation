@@ -16,7 +16,7 @@
         <h4 class="heading_color" style="margin-top:5px; border-top:0px;">Company Details</h4>
         <% form_for(@profile , :url => {:controller => "profiles", :action => "update" }, :html => { :multipart => true } ) do |f| %>
           <div class="field">
-            <label>Name*</label>
+            <label>Company*</label>
             <%= f.text_field 'name', :class => 'required max_len', :max_length => 30 %>
           </div>
           <div class="field">
@@ -32,8 +32,8 @@
             <%= f.text_field 'website', :class => 'text_width' %>
           </div>
           <div class="field">
-            <label>Description*</label>
-            <%= f.text_area 'description', :class => 'required max_len tip', :max_length => 2500, :title => "Take a minute to think about this before you start typing. Do:  (1) provide a summary of your experience (10 years of management consulting with McKinsey and BCG), and (2) highlight any industry or functional expertise (worked in 5 countries in Africa, and am an expert on biotech industry). If you are creating a post, then customize your 'About Me' for this (e.g. I created a post on key contacts in the location space in London, and I know this because I'm currently doing a PhD in location at Cambridge, and working on an internet starutp in the location space)." %>
+            <label>About Us*</label>
+            <%= f.text_area 'description', :class => 'required max_len tip', :max_length => 2500, :title => "Please use this section to highlight your capabilities and to 'sell' yourself. Try to personalize it and be genuine, don't just provide a checklist of services you can provide." %>
           </div>
           <div class="field">
             <label>Logo*</label>
@@ -67,7 +67,7 @@
           <h4 class="heading_color">Setting Expectations</h4>
           <div class="field">
             <label>Optional</label>
-            <%= f.text_area 'humor_me', :class => 'max_len tip', :max_length => 2500, :title => "Please describe how a typical client engagement would proceed. We ask for this information to help give your prospective clients a feel for what it's like to work with you and your team. Please try to structure your answer as best you can, and feel free to use examples from prior client engagements to communicate your message." %>
+            <%= f.text_area 'humor_me', :class => 'max_len tip', :max_length => 2500, :title => "Please describe how a typical client engagement would proceed. Give your prospective clients a feel for what it's like to work with you and your team. Try to structure your answer as best you can, and feel free to cite prior client experience to bring credibility to your words." %>
           </div>
           <%= f.hidden_field 'profile_type', :value => params[:profile_type] %>
           <%= f.hidden_field 'interested_in', :id => 'interested_in' %>

@@ -1,22 +1,24 @@
 <%= javascript_include_tag 'prototype'%>
-Please indicate how you would like to get paid. If you are based in the United States, you can choose either option, if you are elsewhere you will have to select the Cheque option. You can update your preferences at any time by toggling the buttons below.
-<% form_remote_tag(:url => { :action => "update_payment_preferences"}, :update => "preference_details" ) do %>
-   
-          <div class="field" style="margin-top:15px;">
-            <%= radio_button("payment_preference", "option", "Paypal", :onclick => "jQuery('#paypal-field').show();jQuery('#add-field').hide();") %>
-            <label> Paypal</label>
-            <div id="paypal-field"  style="display:none; font-size:14px;"> <%= text_field "payment_preference", "paypal"%> </div>
-          </div>
-          <div class="field">
-            <%= radio_button("payment_preference", "option", "Cheque", :onclick => "jQuery('#paypal-field').hide();jQuery('#add-field').show()") %>
-            <label>Address</label>
-            <div id="add-field" style="display:none; font-size:14px;"> <%= text_area "payment_preference", "address"%> </div>
-          </div>
-         <br><br>
+  <div class="profile_fixed_box" style="max-height:300px;">
+    <div class="preferences_text">
+      <p>Please indicate how you would like to get paid. If you are based in the United States, you can     choose either option, if you are elsewhere you will have to select the Cheque option. You can update your preferences at any time by toggling the buttons below.</p>
+    </div>
+    <div class="payment_preference">
+      <% form_remote_tag(:url => { :action => "update_payment_preferences"}, :update => "preference_details" ) do %>   
+        <div class="field" style="margin-top:15px;">
+          <%= radio_button("payment_preference", "option", "Paypal", :onclick => "jQuery('#paypal-field').show();jQuery('#add-field').hide();") %>
+          <label> Paypal</label>
+          <div id="paypal-field"  style="display:none; font-size:14px;"> <%= text_field "payment_preference", "paypal"%> </div>
+        </div>
+        <div class="field">
+          <%= radio_button("payment_preference", "option", "Cheque", :onclick => "jQuery('#paypal-field').hide();jQuery('#add-field').show()") %>
+          <label>Address</label>
+          <div id="add-field" style="display:none; font-size:14px;"> <%= text_area "payment_preference", "address"%> </div>
+        </div>
         <%= submit_tag "Submit" %>
-
-  <% end %>
-
-  <div id="preference_details">
-    <%= render :partial => "/users/preference_details", :layout => false %>
+      <% end %>
+      <div id="preference_details" class="preference_details">
+        <%= render :partial => "/users/preference_details", :layout => false %>
+      </div>
+    </div>
   </div>

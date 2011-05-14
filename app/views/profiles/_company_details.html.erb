@@ -1,53 +1,44 @@
 <div class="seller_back">
-  <span class="sign_up">Company Details</span>
   <div class="sign_up_box">
-      <h4 style="margin-top:0px;">About Us</h4>
-      <div class="field1">
-        <p class="about_field_text"><%= simple_format @profile.description %></p>
-      </div>
-    <h4>Key Individual</h4>
-      <div class="field1">
-        <label>Name</label>
-        <span class="field_text"><%= @profile.key_individual.name %></span>
-      </div>
-      <div class="field1">
-        <label>Title</label>
-        <span class="field_text"><%= @profile.key_individual.title %></span>
-      </div>
-      <div class="field1">
-        <label>LinkedIn</label>
-        <%= (link_to "#{@profile.key_individual.linkedin }", @profile.key_individual.linkedin, :target => "_blank", :class => 'web_link') %>
-      </div>
+    <h4 class="heading_color" style="margin-top:0px; border-top:0px;">About Us</h4>
+    <div class="field1">
+      <p class="about_field_text"><%= simple_format @profile.description %></p>
+    </div>
+    <h4 class="heading_color">Key Individual</h4>
+    <div class="field1">
+      <label>Name</label>
+      <span class="field_text"><%= @profile.key_individual.name %></span>
+    </div>
+    <div class="field1">
+      <label>Title</label>
+      <span class="field_text"><%= @profile.key_individual.title %></span>
+    </div>
+    <div class="field1">
+      <label>LinkedIn</label>
+      <%= (link_to "#{@profile.key_individual.linkedin }", @profile.key_individual.linkedin, :target => "_blank", :class => 'web_link') %>
+    </div>
     <% unless @profile.humor_me.blank? %>
-    <h4>Your Work Style</h4>
+      <h4 class="heading_color">Setting Expectations</h4>
       <div class="field1">
         <p class="about_field_text"><%= @profile.humor_me.gsub("\n", "<br />") %></p>
       </div>
-  <% end %>
-</div>
-</div>
-<% unless @profile.user.resources.blank? %>
-  <div class="facebook_back">
-    <span id="tab2" class="sign_up" style="" onclick="showTab('one');" href="#">Posts</span>
-    <div class="sign_up_box">
+    <% end %>
+    <h4 class="heading_color">Posts Created</h4>
+    <% unless @profile.user.resources.blank? %>
       <% @profile.user.resources.each do |post| %>
-      <div class="field1 user_links">
-        <%= link_to (  post.title, { :controller => 'resources', :action => 'seller_page', :url_slug => post.url_slug },  { :class => "web_link" }) %>
-      </div>
+        <div class="field1 user_links">
+          <%= link_to (  post.title, { :controller => 'resources', :action => 'seller_page', :url_slug => post.url_slug },  { :class => "web_link" }) %>
+        </div>
       <% end %>
-    </div>
-  </div>
-<% end %>
-<% unless @profile.interested_in.blank? %>
-  <div class="facebook_back interests">
-    <span id="tab2" class="sign_up" style="" onclick="showTab('one');" href="#">Interested In</span>
-    <div class="sign_up_box">
-        <% @interests.each do |i|%>
+    <% end %>
+    <% unless @profile.interested_in.blank? %>
+      <h4 class="heading_color">Interested In</h4>
+      <% @interests.each do |i|%>
         <div class="field field1">
           <input type="checkbox" name="interests" checked="checked" disabled="disabled" />
           <label class="check_box_text"><%= i %></label>
         </div>
-        <% end %>
+      <% end %>
     </div>
   </div>
 <% end %>

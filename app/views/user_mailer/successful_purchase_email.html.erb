@@ -5,19 +5,32 @@
   </head>
 
   <body>
-<p>Hi,</p>
+    <p>Hi,</p>
 
-<p>This is to confirm your purchase of "<%= @resource.title%>." </p>
+    <p>This is to confirm your purchase of:</p>
 
-<p>Thank you so much for your patronage, and do visit us again! We'd love to hear from you any time, please email us at <a href="mailto:admin@researchnation.net">admin@researchnation.net</a>.</p>
+    <p><b>"<%= @resource.title%>."</b></p>
+    
+    <p>
+      Thank you so much for your patronage, and do visit us again!<br />
+      We'd love to hear from you any time, please email us at <a href="mailto:admin@researchnation.net">admin@researchnation.net</a>.
+    </p>
 
-<p>If you have any questions about your purchase, please check out the <a href="http://researchnation.net/main/faqs">FAQs section</a> on the site, or drop us a note and we'll get back to you pronto.</p>
+    <p>
+      If you have any questions about your purchase, <br />
+      please check out the <a href="http://researchnation.net/main/faqs">FAQs section</a><br />
+      on the site, or drop us a note and we'll get back to you pronto.
+    </p>
 
-<p>Finally, we would appreciate if you could 
-<a href="http://researchnation.net/post/<%=  @resource.url_slug %>">add a review</a> for your purchase. Your comments would be tremendously helpful to other buyers, and will help ensure that only the highest quality material stays on our site.</p>
+    <p>
+      Finally, we would appreciate if you could <br /> 
+      <a href="http://researchnation.net/post/<%=  @resource.url_slug %>">add a review</a> for your purchase.<br />
+      Your comments would be tremendously helpful to other buyers, <br />
+      and will help ensure that only the highest quality material stays on our site.
+    </p>
+    
+    <p>Yours,</p>
 
-<p>Yours,</p>
-<br/>
-<p>Faisal & the team @ ResearchNation.net</p>
+    <p>Faisal & the team @ ResearchNation.net</p>
 </body>
 </html>

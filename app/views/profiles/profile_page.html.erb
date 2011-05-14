@@ -41,8 +41,8 @@
       <% end %>
       <div class="facebook_back">
         <div class="login_tab">
-          <span href="#" onclick="showTab('one');" style="" class="sign_up" id="tab2">Reviews & Comments</span>
           <div style="display: block; min-height:165px !important;" class="sign_up_box" id="tabOne">
+            <h4 class="heading_color" style="margin-top:0px; border-top:0px;">Reviews & Comments</h4>
             <div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=175351785849270&amp;xfbml=1"></script><fb:comments href="http://<%= request.host %>/profile/<%= @profile.url_slug %>" num_posts="2" height="165" width="440"></fb:comments>
           </div>
         </div>
