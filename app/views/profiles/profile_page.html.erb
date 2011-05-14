@@ -50,9 +50,11 @@
     </div>
   </div>
   <div class="right_content buttons">
-    <div class="message_purchase">
-      <a class="grey_button" href="#message_form" id="message_link" >Send Message</a>
-    </div>
+    <% unless current_user.id == @profile.user_id %>
+      <div class="message_purchase">
+        <a class="grey_button" href="#message_form" id="message_link" >Send Message</a>
+      </div>
+    <% end %>
   </div>
 </div>
 <%= render :partial => 'message_form'%>
