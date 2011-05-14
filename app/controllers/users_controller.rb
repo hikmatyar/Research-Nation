@@ -158,13 +158,19 @@ class UsersController < ApplicationController
   end
 
   def reset_password
-    if params[:token] == session[:token] && params[:password] == params[:confirm_password]
+    if params[:token] == session[:token] && params[:password] == params[:confirm_password] && params[:password].size >= 6
       session[:token] = nil
       user = User.find params[:id]
       user.update_attributes :password => params[:password]
       session[:user] = user.id
       flash[:notice] = " Thank you, your password has been updated "
       return redirect_to_home
+    elsif params[:password] != params[:confirm_password]
+      flash[:notice] = "Passwords do not match. Please try again."
+      return render "/users/new_password", :layout => "users"
+    elsif params[:password].size <= 6
+      flash[:notice] = "Password should be atleast 6 characters long."
+      return render "/users/new_password", :layout => "users"
     else
       return redirect_to :controller => 'users' , :action => 'register'
     end
