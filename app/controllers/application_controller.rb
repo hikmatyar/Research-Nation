@@ -5,7 +5,7 @@ require 'monkeywrench'
 require 'bitly'
 class ApplicationController < ActionController::Base
 
-  #protect_from_forgery# See ActionController::RequestForgeryProtection for details
+  protect_from_forgery# See ActionController::RequestForgeryProtection for details
 
   # Scrub sensitive parameters from your log
   filter_parameter_logging :password, :card_number, :card_verification
