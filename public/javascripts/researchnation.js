@@ -5,6 +5,7 @@ jQuery('document').ready(function(){
 	if(location.pathname == "/"){
 		change_text();
 	}
+
 	jQuery("#login-tab").addClass("active");
 	if (location.href.match("login")){
 		if(jQuery(".sign_up_terms")){
@@ -26,7 +27,6 @@ jQuery('document').ready(function(){
 		else{
 			setTimeout("jQuery('.flash').fadeOut(7500);",1000);
 		}
-		setTimeout("jQuery('.flash').remove();",150000);
 	}
 
 		s = location.pathname.split("/");

@@ -65,6 +65,7 @@ class UsersController < ApplicationController
   end
 =end
   def register
+    return redirect_to_home if logged_in?
     @user = User.new(params[:user])
     @user_type = params[:user_type]? params[:user_type] : "normal"
   end
@@ -149,7 +150,7 @@ class UsersController < ApplicationController
       unless user.blank?
         session[:token]=user.generate_token
         UserMailer.deliver_password_reset_email(user, session[:token])
-        flash[:notice] = "Please check your email for your new password"
+        flash[:notice] = "Please check your email for password reset instructions"
         redirect_to :controller => 'main', :action => 'index'
       end
     end
@@ -163,8 +164,10 @@ class UsersController < ApplicationController
       user.update_attributes :password => params[:password]
       session[:user] = user.id
       flash[:notice] = " Thank you, your password has been updated "
+      return redirect_to_home
+    else
+      return redirect_to :controller => 'users' , :action => 'register'
     end
-    return redirect_to :controller => 'users' , :action => 'register'
   end
 
   def subscribe_newsletter
