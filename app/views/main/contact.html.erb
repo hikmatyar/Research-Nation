@@ -1,8 +1,6 @@
 <% content_for :html_title, 'Contact Us' %>
 <div class="content">
-  <% unless flash[:notice].blank? %>
-        <p class="flash"><%= flash[:notice] %></p>
-      <% end %>
+  <% unless flash[:notice].blank? %><p class="flash"><%= flash[:notice] %></p><% end %>
   <div class="how_it_work_left_side">
       <% flash[:notice] = nil %>
 	    <div class="seller_back">

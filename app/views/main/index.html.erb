@@ -9,11 +9,11 @@
 				<%= render :partial => 'users/errors' %>
 				<% form_for(@user , :url => {:controller => "users", :action => "create" } ) do |f| %>
 				<div class="new_field">
-					<label style="padding:0px;">Your Email</label>
-					<%= f.text_field 'email', :id => "email", :class => 'required email' %>
+					<label style="padding:0px;" for="email">Your Email</label>
+					<%= f.text_field 'email', :id => "email", :class => 'required email', :title => "Your Email"%>
 				</div>
 				<div class="new_field">
-				<label style="padding:0px;">Your Password</label>
+				<label style="padding:0px;" for="password">Your Password</label>
 					<%= f.password_field 'password', :id => "password", :class => 'required password' %>
 				</div>
 				<div class="new_field1 new_field ">
