@@ -56,6 +56,13 @@ class User < ActiveRecord::Base
     token
   end
 
+  def delete_resources
+    unless self.resources.blank?
+      self.resources.each do |resource|
+        resource.set_deleted
+      end
+    end
+  end
 
   def has_pending_payment?
     pending_orders.size > 0

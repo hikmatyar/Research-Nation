@@ -91,7 +91,8 @@ class ProfilesController < ApplicationController
   def delete
     user = User.find params[:user_id]
     if !user.profile.blank? && user.profile.destroy
-      flash[:notice] = "Profile deleted."
+      user.delete_resources
+      flash[:notice] = "Profile & posts deleted."
     end
     return redirect_to :controller => 'admin', :action => 'profiles'
   end
