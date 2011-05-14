@@ -40,9 +40,9 @@ class UserMailer < ActionMailer::Base
       bcc           "admin@researchnation.net"
       content_type "text/html"
       body         :user => user,
-                   :start_time => start_time,
-                   :end_time => end_time,
-                   :earnings => earnings
+                   :start_time => start_time.strftime("%B %d, %Y"),
+                   :end_time => end_time.strftime("%B %d, %Y"),
+                   :earnings => earnings.to_i
       sent_on Time.now
   end
 
