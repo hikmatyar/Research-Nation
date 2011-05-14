@@ -166,10 +166,10 @@ class UsersController < ApplicationController
       flash[:notice] = " Thank you, your password has been updated "
       return redirect_to_home
     elsif params[:password] != params[:confirm_password]
-      flash[:notice] = "Passwords do not match. Please try again."
+      flash[:notice] = "Passwords do not match, please try again"
       return render "/users/new_password", :layout => "users"
-    elsif params[:password].size <= 6
-      flash[:notice] = "Password should be atleast 6 characters long."
+    elsif params[:password].size < 6
+      flash[:notice] = "Password should be at least 6 characters long"
       return render "/users/new_password", :layout => "users"
     else
       return redirect_to :controller => 'users' , :action => 'register'
