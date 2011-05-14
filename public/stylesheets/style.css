@@ -3956,3 +3956,9 @@ div.fbFooterBorder{
     float:left;
     margin-top:30px;
 }
+
+.interests_tip {
+  float: left;
+  margin: 5px 8px 5px 5px;
+  width: 450px;
+}

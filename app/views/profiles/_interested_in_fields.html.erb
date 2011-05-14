@@ -1,5 +1,8 @@
 <h4 class="heading_color" style="margin-bottom:0px;">Interested In</h4>
 <div class="interests">
+  <div class="interests_tip">
+    <i>Please indicate your availability for new projects by checking of the boxes below. You can check as many boxes as you want.</i>
+  </div>
   <div class="field" style="margin-bottom:0px;">
     <input type="checkbox" value="FT projects" name="interested_in" <%= "checked='checked'" if !fields.blank? && fields.split(",").include?("FT projects")  %> />
     <label>FT projects</label>
