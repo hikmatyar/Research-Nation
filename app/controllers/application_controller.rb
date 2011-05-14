@@ -5,17 +5,19 @@ require 'monkeywrench'
 require 'bitly'
 class ApplicationController < ActionController::Base
 
-  helper :all # include all helpers, all the time
   #protect_from_forgery# See ActionController::RequestForgeryProtection for details
 
   # Scrub sensitive parameters from your log
-  # filter_parameter_logging :password
+  filter_parameter_logging :password, :card_number, :card_verification
 
+  helper :all # include all helpers, all the time
   helper_method :logged_in?, :is_admin?, :current_user
-#  before_filter :authenticate_production unless Rails.env.development?
-  filter_parameter_logging :card_number, :card_verification
-
   helper_method :url_for
+
+#  before_filter :authenticate_production unless Rails.env.development?
+
+
+
 
   def logged_in?
     return true unless session[:user].blank?
