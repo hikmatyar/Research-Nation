@@ -111,9 +111,11 @@
         <div class="author_name">
           <% unless @resource.user.profile.name.blank? %><b><%= (link_to ( truncate @resource.user.profile.name, :omission => "...", :length => 19), :controller => 'profiles', :action => 'profile_page', :url_slug => @resource.user.profile.url_slug) if @resource.user.profile.is_edited %><% end %></b>
         </div>
-        <div class="contact_button" style="padding-top:2px;">
-          <a class="grey_button" href="#message_form" id="message_link" >Send Message</a>
-        </div>
+        <% unless current_user.id == @resource.user_id %>
+          <div class="contact_button" style="padding-top:2px;">
+            <a class="grey_button" href="#message_form" id="message_link" >Send Message</a>
+          </div>
+        <% end %>
       </div>
       <% unless @related_posts.blank? %>
       <div class="purchase_box">
