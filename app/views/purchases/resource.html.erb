@@ -29,7 +29,7 @@
          <i><%= (attachment.original_file_size/1024).to_s + "KB"  %></i>
        </div>
        <% end %>
-    <% form_for(@order , :url => {:action => "resource"}, :html => {:id => "purchase-resource" } ) do |f| %>
+    <% form_for(@order , :url => {:action => "resource", :protocol => "https"}, :html => {:id => "purchase-resource" } ) do |f| %>
 		<div class="login_tab">
         <h4 class="heading_color">Payment Details</h4>
          <%= hidden_field 'order', 'resource_id', :value => @resource.id %>

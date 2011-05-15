@@ -19,9 +19,6 @@ class ApplicationController < ActionController::Base
 
 #  before_filter :authenticate_production unless Rails.env.development?
 
-
-
-
   def logged_in?
     return true unless session[:user].blank?
     false
@@ -98,6 +95,6 @@ class ApplicationController < ActionController::Base
   end
 
   def default_url_options(options)
-    { :protocol => 'http://' }
+    { :protocol => 'http://' } unless request.ssl?
   end
 end
