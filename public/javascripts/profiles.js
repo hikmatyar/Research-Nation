@@ -56,17 +56,18 @@ $('document').ready(function(){
   {
     $("#message_link").trigger("click");
   }
+
   if(location.href.match("edit"))
   {
     $("#profile_description").show_char_limit(2500);
     $("#profile_humor_me").show_char_limit(2500);
   }
 
+
 	if($(".edit_profile :input.tip").length > 0){
 		$(".edit_profile :input.tip").tooltip({
 			position: "center right",
 			offset: [-2, 10],
-			effect: "fade",
 			opacity: 0.6
 	  });
 	}
