@@ -1,29 +1,29 @@
 <% unless purchases.blank? %>
-<div class="earnings_title">
-  <table border="0" cellspacing="5" cellpadding="5" id=" posts_table" align="left">
-  	<tbody>
-      <tr>
-        <th>Title</th>
-        <th>Price</th>
-        <th>Date</th>
-      </tr>
-    </tbody>
-  </table>
-</div>
-<div class="profile_fixed_box" style="max-height:300px;">
-	<table border="0" cellspacing="5" cellpadding="5" id=" posts_table" align="left">
-  	<tbody>
-      <% purchases.each do |order|%>
+  <div class="earnings_title">
+    <table border="0" cellspacing="5" cellpadding="5" id=" posts_table" align="left">
+    	<tbody>
         <tr>
-          <td width="400"><%= truncate(order.resource.title, :length => 30, :omission => "...")%></td>
-          <td width="100">$ <%= order.resource.selling_price %></td>
-          <td width="200"><%= order.created_at.strftime("%B %d, %Y") %></td>
-          <td width="50" class="user_profile_buttons"><%= link_to (image_tag "download.jpg"), :controller => 'purchases', :action => 'download', :url_slug => order.resource.url_slug%></td>
+          <th width="300">Title</th>
+          <th width="100">Price</th>
+          <th width="120">Date</th>
         </tr>
-      <% end %>
-  	<tbody>
-  </table>
-</div>
+      </tbody>
+    </table>
+  </div>
+  <div class="profile_fixed_box" style="max-height:300px;">
+  	<table border="0" cellspacing="5" cellpadding="5" id=" posts_table" align="left">
+    	<tbody>
+        <% purchases.each do |order|%>
+          <tr>
+            <td width="300"><%= truncate(order.resource.title, :length => 30, :omission => "...")%></td>
+            <td width="100">$ <%= order.resource.selling_price %></td>
+            <td width="120"><%= order.created_at.strftime("%B %d, %Y") %></td>
+            <td width="60" class="user_profile_buttons"><%= link_to (image_tag "download.jpg"), :controller => 'purchases', :action => 'download', :url_slug => order.resource.url_slug%></td>
+          </tr>
+        <% end %>
+    	<tbody>
+    </table>
+  </div>
 <% else %>
 <i class="italicized_text">You haven't made any purchases yet. Get started by clicking <%= link_to "here", :controller => "resources", :action => "view_posts" %>.</i>
 <% end %>

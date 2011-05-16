@@ -223,7 +223,6 @@ class UsersController < ApplicationController
   def update_payment_preferences
     @user = User.find session[:user]
     @user.payment_preference.update_preferences(params[:payment_preference])
-    #flash[:notice] = "Payment preferences updated!"
     render :partial => "/users/preference_details", :layout => false
   end
 

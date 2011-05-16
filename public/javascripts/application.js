@@ -1,12 +1,6 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
 
-$.preloadImages = function() {
-  for(var i = 0; i < arguments.length; i++) {
-    $("<img>").attr("src", arguments[i]);
-  }
-}
-
 $(function(){
   /* preload some images */
   $.preloadImages(
