@@ -1554,7 +1554,7 @@ background:#FFFFFF; border:1px solid #666666 !important; height:15px; width:15px
 
 .question{
 	padding-top:10px;
-	border-top:1px solid #CCC;		
+	border-top:1px solid #CCC;
 }
 
 .question P{
@@ -2127,7 +2127,7 @@ html ul.tabs li.active, html ul.tabs li.active {
   cursor: pointer;
   position: relative;
   width: 66px;
-  background:url(/images/add_button.jpg) repeat-x 0 0; 	
+  background:url(/images/add_button.jpg) repeat-x 0 0;
 }
 
 .price_line{
@@ -2236,10 +2236,10 @@ html ul.tabs li.active, html ul.tabs li.active {
 }
 
 .privacy_box{
-    float:left;
-    height:300px;
-    overflow:auto;
-	*width:475px;    
+  float:left;
+  height:300px;
+  overflow:auto;
+  *width:475px;
 }
 
 .privacy_box p{
@@ -2525,8 +2525,8 @@ p.error{
 }
 
 .profile_button a{
-    width:200px;
-    margin-top:0px;
+  width:200px;
+  margin-top:0px;
 }
 
 .profile_button span{
@@ -2645,8 +2645,8 @@ p.error{
 }
 
 .send_message{
-    width:370px !important;
-    height:80px !important;	    
+  width:370px !important;
+  height:80px !important;
 }
 
 div.fbFooterBorder{

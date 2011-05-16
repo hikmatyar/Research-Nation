@@ -20,39 +20,6 @@
             <%= (link_to 'My Dashboard', :controller => 'users', :action => 'profile' ) %>
           </li>
 		<% end %>
-	    
-	   <!-- 
-	    <table border="0" cellspacing="5" cellpadding="5" width="100%">
-			  <tbody>
-          <tr class="seperator">
-            <td width="20" class="create_link">
-              <%= link_to "Create", :controller => "resources", :action => "new" %>
-            </td>
-            <% if logged_in? %>
-              <td width="20"><%= (link_to 'Logout', :controller => 'users', :action => 'logout')  %></td>
-            <% end %>
-            <% if is_admin? %>
-              <td width="30">
-                <%= (link_to "Admin", :controller => "admin", :action => "dashboard") %>
-              </td>
-            <% end %>
-            <% unless logged_in? %>
-              <td width="20">
-                <%= (link_to 'Login', :controller => 'users', :action => 'register', :opt => 'login') %>
-              </td>
-            <% end %>
-            <td width="20" <%= "class='borderless'" unless logged_in?%> >
-              <%= (link_to 'Browse', :controller => 'resources', :action => 'view_posts') %>
-            </td>
-            <% if logged_in? %>
-              <td width="120"style="border-left:0px;" class="user_dasboard">
-                <%= (link_to 'My Dashboard', :controller => 'users', :action => 'profile' ) %>
-              </td>
-            <% end %>
-          </tr>
-        </tbody>
-      </table>
-      -->
     </ul>
   </div>
 </div>
