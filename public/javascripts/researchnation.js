@@ -78,25 +78,25 @@ jQuery(document).ready(function(){
 	  });
 	}
 
-    if(jQuery("#edit_resource").length > 0){
-        $("#resource_title").show_char_limit(140);
-        $("#resource_description").show_char_limit(3000);
-        $("#resource_industry").show_char_limit(25);
-        $("#resource_geography").show_char_limit(25);
-        $("#resource_terms_and_conditions").show_char_limit(3000);
-        $("#resource_sources").show_char_limit(3000);
+  if(jQuery("#edit_resource").length > 0){
+    $("#resource_title").show_char_limit(140);
+    $("#resource_description").show_char_limit(3000);
+    $("#resource_industry").show_char_limit(25);
+    $("#resource_geography").show_char_limit(25);
+    $("#resource_terms_and_conditions").show_char_limit(3000);
+    $("#resource_sources").show_char_limit(3000);
 
-        $('#edit_resource').submit(function(){
-            $("input:submit").val("Updating...");
-						$("input:submit").css("background","#e5a110");
-						validated =  validate_form();
-						if(!validated){
-						  $("input:submit").val("Submit");
-						$("input:submit").css("background","#8EAF32");
-						}
-						return validated;
-        });
-    }
+    $('#edit_resource').submit(function(){
+        $("input:submit").val("Updating...");
+				$("input:submit").css("background","#e5a110");
+				validated =  validate_form();
+				if(!validated){
+				  $("input:submit").val("Submit");
+				$("input:submit").css("background","#8EAF32");
+				}
+				return validated;
+    });
+   }
 
 });
 

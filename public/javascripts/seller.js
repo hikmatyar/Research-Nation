@@ -2,11 +2,12 @@ $(document).ready(function(){
 
  $("#summary_link").addClass("active");
 
- $("#message_link").fancybox({
+
+  $("#message_link").fancybox({
     'hideOnOverlayClick' : false
   });
 
-  $("#message_link").click(function(){
+  $("#message_link").bind('click', function(){
      $("#register_form").addClass("seller_popup_message");
      $("#register_form").removeClass("how_it_work_left_side");
      $("#register_form").removeClass("margin_bottom");

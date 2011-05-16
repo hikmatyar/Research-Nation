@@ -138,7 +138,6 @@
       <%= render :partial => 'users/register' %>
     <% else %>
     <div id="form">
-			<%= javascript_include_tag :defaults %>
 			<div id="message"></div>
 			  <%= form_remote_tag( :update => 'message',
           :url => {:controller => 'main', :action => 'send_message', :user_id => @resource.user.id }, :after => 'jQuery.fancybox.close();') %>
