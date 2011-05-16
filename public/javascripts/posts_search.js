@@ -3,95 +3,141 @@ var geographies = new Array();
 var count = 0;
 
 function populate_array_text(){
-  jQuery('#industry_result p').each(function(){
-        industries.push(jQuery(this).text());
+  $('#industry_result p').each(function(){
+        industries.push($(this).text());
     });
 
-    jQuery('#geography_result p').each(function(){
-        geographies.push(jQuery(this).text());
+    $('#geography_result p').each(function(){
+        geographies.push($(this).text());
     });
 }
 
-jQuery('document').ready(function(){
+$('document').ready(function(){
 
-  jQuery('input').click(function() {
-    jQuery(this).trigger("focus");  
+  $('input').click(function() {
+    $(this).trigger("focus");  
    });
 
-  jQuery('#author_name').autocomplete('/users/unique_users');
-  jQuery('#industry').autocomplete('/resources/get_industries', { autoFill : true});
-  jQuery('#geography').autocomplete('/resources/get_geography_list');
+  $('#author_name').autocomplete('/users/unique_users');
+  $('#industry').autocomplete('/resources/get_industries', { autoFill : true});
+  $('#geography').autocomplete('/resources/get_geography_list');
 
-  jQuery('#author_name').result(function(event, data, formatted) {
-    url = "/resources/filter_by_author_name?name="+ formatted +"&price=" + jQuery(":range").val();
-    new Ajax.Updater('left_content', url, {asynchronous: true,});
+  $('#author_name').result(function(event, data, formatted) {
+    url = "/resources/filter_by_author_name?name="+ formatted +"&price=" + $(":range").val();
+    $.ajax({
+      url: url,
+      success: function(data){
+        $("#left_content").html(data);
+      }
+    });
   });
 
-  jQuery(":range").rangeinput().change(function(){
+  $(":range").rangeinput().change(function(){
       populate_array_text();
 
-      url = "/resources/filter_results?industry="+ industries.join(",") +"&geography="+ geographies.join(",") +"&price=" + jQuery(":range").val();
+      url = "/resources/filter_results?industry="+ industries.join(",") +"&geography="+ geographies.join(",") +"&price=" + $(":range").val();
 
-      new Ajax.Updater('left_content', url, {asynchronous: true,});
-      jQuery(':range').val("$" + jQuery(':range').val());
-    });
-    jQuery('#industry').result(function(event, data, formatted) {
+      $.ajax({
+        url: url,
+        success: function(data){
+          $("#left_content").html(data);
+        }
+      });
 
+      $(':range').val("$" + $(':range').val());
+  });
+
+  $('#industry').result(function(event, data, formatted) {
       
       industries.push(formatted);
 
-      url = "/resources/filter_results?industry="+ industries.join(",") +"&geography="+ geographies.join(",") +"&price=" + jQuery(":range").val().replace("$","");
+      url = "/resources/filter_results?industry="+ industries.join(",") +"&geography="+ geographies.join(",") +"&price=" + $(":range").val().replace("$","");
+      $("#industry_result").append('<div class="cross_tip"><p> ' + formatted +'</p> <span id="industry_tag'+count+'"></span><img src="/images/cross_tip.png" /></div>');
 
-      jQuery("#industry_result").append('<div class="cross_tip"><p> ' + formatted +'</p> <span id="industry_tag'+count+'"></span><img src="/images/cross_tip.png" /></div>');
-      new Ajax.Updater('industry_tag'+count, "/resources/industries_count?industry="+formatted, {asynchronous: true,});
-      count++;
-      new Ajax.Updater('left_content', url, {asynchronous: true,});
-
-      jQuery("#industry_result img").click(function(){
-        jQuery(this).parent().remove();
-        industries = [];
-        populate_array_text();
-        url = "/resources/filter_results?industry="+ industries.join(",") +"&geography="+ geographies.join(",") +"&price=" + jQuery(":range").val();
-        new Ajax.Updater('left_content', url, {asynchronous: true,});
+      $.ajax({
+        url: "/resources/industries_count?industry="+formatted,
+        success: function(data){
+          update_item = '#industry_tag'+count;
+          $(update_item).html(data);
+          count++;
+        }
       });
 
-      jQuery('#industry').val("");
+     $.ajax({
+       url: url,
+       success: function(data){
+        $("#left_content").html(data);
+       }
+     });
+
+    $("#industry_result img").click(function(){
+      $(this).parent().remove();
+      industries = [];
+      populate_array_text();
+      url = "/resources/filter_results?industry="+ industries.join(",") +"&geography="+ geographies.join(",") +"&price=" + $(":range").val();
+      $.ajax({
+        url: url,
+        success: function(data){
+          $("#left_content").html(data);
+        }
+      });
+    });
+    $('#industry').val("");
   });
 
-  jQuery('#geography').result(function(event, data, formatted) {
+  $('#geography').result(function(event, data, formatted) {
 
       populate_array_text();
       geographies.push(formatted);
+      url = "/resources/filter_results?industry="+ industries.join(",") +"&geography="+ geographies.join(",") +"&price=" + $(":range").val();
+      $("#geography_result").append('<div class="cross_tip"><p> ' + formatted +'</p> <span id="geography_tag'+count+'"></span><img src="/images/cross_tip.png" /></div>');
 
-      url = "/resources/filter_results?industry="+ industries.join(",") +"&geography="+ geographies.join(",") +"&price=" + jQuery(":range").val();
-
-      jQuery("#geography_result").append('<div class="cross_tip"><p> ' + formatted +'</p> <span id="geography_tag'+count+'"></span><img src="/images/cross_tip.png" /></div>');
-      new Ajax.Updater('geography_tag'+count, "/resources/geography_count?geography="+formatted, {asynchronous: true,});
-      count++;
-      new Ajax.Updater('left_content', url, {asynchronous: true,});
-
-      jQuery("#geography_result img").click(function(){
-        jQuery(this).parent().remove();
-        geographies = [];
-        populate_array_text();
-        url = "/resources/filter_results?industry="+ industries.join(",") +"&geography="+ geographies.join(",") +"&price=" + jQuery(":range").val();
-        new Ajax.Updater('left_content', url, {asynchronous: true,});
+      $.ajax({
+        url: "/resources/geography_count?geography="+formatted,
+        success: function(data){
+          update_item = '#geography_tag'+count;
+          $(update_item).html(data);
+          count++;
+        }
       });
 
-      jQuery('#geography').val("");
+      $.ajax({
+        url: url,
+        success: function(data){
+          $("#left_content").html(data);
+        }
+      });
+
+      $("#geography_result img").click(function(){
+        $(this).parent().remove();
+        geographies = [];
+        populate_array_text();
+        url = "/resources/filter_results?industry="+ industries.join(",") +"&geography="+ geographies.join(",") +"&price=" + $(":range").val();
+        $.ajax({
+          url: url,
+          success: function(data){
+            $("#left_content").html(data);
+          }
+        });
+      });
+
+      $('#geography').val("");
   });
 
-  jQuery(".reset_button").click(function(){
+  $(".reset_button").click(function(){
     window.location.reload();
   });
-  jQuery("#geography").click(function(){
-    jQuery(this).css("color","#000");
-    jQuery(this).val("");
+
+  $("#geography").click(function(){
+    $(this).css("color","#000");
+    $(this).val("");
   });
-  jQuery("#industry").click(function(){
-    jQuery(this).css("color","#000");
-    jQuery(this).val("");
+
+  $("#industry").click(function(){
+    $(this).css("color","#000");
+    $(this).val("");
   });
-  jQuery(":range").val("$1000");
-  jQuery('.handle').css("left","183px");
+
+  $(":range").val("$1000");
+  $('.handle').css("left","183px");
 });

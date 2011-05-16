@@ -10,7 +10,12 @@ jQuery('document').ready(function(){
 // Changes to the select field of anytype
    jQuery('.field select').change(function(){
       url = callback_url(choices);
-     new Ajax.Updater('left_content', url, {asynchronous: true});
+      jQuery.ajax({
+        url: url,
+        success: function(data){
+          jQuery("#left_content").html(data);
+        }
+      });
    });
 
 // Changes to the checkboxes
@@ -22,7 +27,12 @@ jQuery('document').ready(function(){
      });
 
       url = callback_url(choices);
-      new Ajax.Updater('left_content', url, {asynchronous: true})
+      jQuery.ajax({
+        url: url,
+        success: function(data){
+          jQuery("#left_content").html(data);
+        }
+      });
 	});
 
   var callback_url = function(choices){
