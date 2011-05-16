@@ -11,7 +11,7 @@ $("#new_user").submit(function(){
 		if($("#email").val()==""){
 			$("#email").after("<p class='error'>Email cannot be blank</p>");
 		}
-		validate_email( jQuery("#email").val())
+		validate_email( $("#email").val())
 		if($("#password").val().length < 6 || $("#password").val() == ""){
 			$("#password").after("<p class='error'>Password must be at least 6 characters long</p>");
 		}

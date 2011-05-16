@@ -1,63 +1,63 @@
-jQuery('document').ready(function(){
+$('document').ready(function(){
 
-  jQuery('#purchase-link').click(function() {
-    jQuery.ajax({
+  $('#purchase-link').click(function() {
+    $.ajax({
       url: "/users/purchases",
       success: function(data){
-        jQuery("#purchases").show();
-        jQuery("#purchases").html(data);
+        $("#purchases").show();
+        $("#purchases").html(data);
       }
     })
   });
 
-  jQuery('#listings-link').click(function() {
-    jQuery.ajax({
+  $('#listings-link').click(function() {
+    $.ajax({
       url: "/users/listings",
       success: function(data){
-        jQuery("#listings").html(data);
-        jQuery("#listings").show();
+        $("#listings").html(data);
+        $("#listings").show();
       }
     })
   });
 
-  jQuery('#current-earnings-link, #earnings-link').click(function() {
-    jQuery('#current-earnings-link').css("text-decoration","underline");
+  $('#current-earnings-link, #earnings-link').click(function() {
+    $('#current-earnings-link').css("text-decoration","underline");
 
-    jQuery.ajax({
+    $.ajax({
       url: "/users/pending_earnings",
       success: function(data){
-        jQuery("#previous-earnings").hide();
-        jQuery("#preferences").hide();
+        $("#previous-earnings").hide();
+        $("#preferences").hide();
 
-        jQuery("#current-earnings").show();
-        jQuery("#current-earnings").html(data);
+        $("#current-earnings").show();
+        $("#current-earnings").html(data);
 
         bind_functions();
       }
     })
   });
 
-  jQuery('#previous-earnings-link').click(function() {
-    jQuery.ajax({
+  $('#previous-earnings-link').click(function() {
+    $.ajax({
       url: "/users/monthly_paid_earnings",
       success: function(data){
-        jQuery("#current-earnings").hide();
-        jQuery("#preferences").hide();
+        $("#current-earnings").hide();
+        $("#preferences").hide();
 
-        jQuery("#previous-earnings").show();
-        jQuery("#previous-earnings").html(data);
+        $("#previous-earnings").show();
+        $("#previous-earnings").html(data);
 
 
-        jQuery('a[id*="earnings-link-"]').bind('click', function() {
-          jQuery('div[id="monthly-payments-header"]').hide();
-          jQuery('div[id*="earnings-container"]').hide();
-          jQuery(jQuery(this).attr('value')).show();
+        $('a[id*="earnings-link-"]').bind('click', function() {
+          $('div[id="monthly-payments-header"]').hide();
+          $('div[id*="earnings-container"]').hide();
+          $($(this).attr('value')).show();
         });
 
-        jQuery('a[id*="hide-earnings-"]').bind('click', function() {
-          jQuery('div[id*="earnings-container"]').show();
-          jQuery('div[id="monthly-payments-header"]').show();
-          jQuery(jQuery(this).attr('value')).hide();
+        $('a[id*="hide-earnings-"]').bind('click', function() {
+          $('div[id*="earnings-container"]').show();
+          $('div[id="monthly-payments-header"]').show();
+          $($(this).attr('value')).hide();
         });
 
         bind_functions();
@@ -65,15 +65,15 @@ jQuery('document').ready(function(){
     })
   });
 
-  jQuery('#preferences-link').click(function() {
-    jQuery.ajax({
+  $('#preferences-link').click(function() {
+    $.ajax({
       url: "/users/payment_preferences",
       success: function(data){
-        jQuery("#current-earnings").hide();
-        jQuery("#previous-earnings").hide();
+        $("#current-earnings").hide();
+        $("#previous-earnings").hide();
 
-        jQuery("#preferences").show();
-        jQuery("#preferences").html(data);
+        $("#preferences").show();
+        $("#preferences").html(data);
 
         bind_functions();
       }
@@ -86,10 +86,10 @@ function showTab(value)
 {
 	if(value == "signup")
 	{
-		jQuery("#signup-tab").addClass("active");
+		$("#signup-tab").addClass("active");
 		document.getElementById('signup-body').style.display = "block"
 
-		jQuery("#login-tab").removeClass("active");
+		$("#login-tab").removeClass("active");
 		document.getElementById('login-body').style.display = "none"
 		return true;
 	}
@@ -98,38 +98,38 @@ function showTab(value)
 		document.getElementById('signup-body').style.display = "none"
 		document.getElementById('login-body').style	.display = "block"
 
-		jQuery("#login-tab").addClass("active");
-		jQuery("#signup-tab").removeClass("active");
+		$("#login-tab").addClass("active");
+		$("#signup-tab").removeClass("active");
 	}
 }
 
 
 function bind_functions() {
 
-  jQuery('#previous-earnings-link').bind('click', function() {
-    jQuery('#preferences-link').css("text-decoration","none");
-    jQuery('a[id*=earnings-link]').css("text-decoration","none");
-    jQuery(this).css("text-decoration","underline");
-    jQuery(jQuery(this).attr('href')).show();
+  $('#previous-earnings-link').bind('click', function() {
+    $('#preferences-link').css("text-decoration","none");
+    $('a[id*=earnings-link]').css("text-decoration","none");
+    $(this).css("text-decoration","underline");
+    $($(this).attr('href')).show();
 
-    jQuery('#earnings-link').css("text-decoration","underline");
+    $('#earnings-link').css("text-decoration","underline");
   });
 
-  jQuery('#preferences-link').bind('click', function() {
-    jQuery('#preferences-link').css("text-decoration","none");
-    jQuery('a[id*=earnings-link]').css("text-decoration","none");
-    jQuery(this).css("text-decoration","underline");
-    jQuery(jQuery(this).attr('href')).show();
+  $('#preferences-link').bind('click', function() {
+    $('#preferences-link').css("text-decoration","none");
+    $('a[id*=earnings-link]').css("text-decoration","none");
+    $(this).css("text-decoration","underline");
+    $($(this).attr('href')).show();
 
-    jQuery('#earnings-link').css("text-decoration","underline");
+    $('#earnings-link').css("text-decoration","underline");
   });
 
-  jQuery('#current-earnings-link').bind('click', function() {
-    jQuery('a[id*=earnings-link]').css("text-decoration","none");
-    jQuery('#preferences-link').css("text-decoration","none");
-    jQuery(this).css("text-decoration","underline");
-    jQuery(jQuery(this).attr('href')).show();
+  $('#current-earnings-link').bind('click', function() {
+    $('a[id*=earnings-link]').css("text-decoration","none");
+    $('#preferences-link').css("text-decoration","none");
+    $(this).css("text-decoration","underline");
+    $($(this).attr('href')).show();
 
-    jQuery('#earnings-link').css("text-decoration","underline");
+    $('#earnings-link').css("text-decoration","underline");
   });
 }

@@ -31,7 +31,7 @@ $("#add_another_file").click(function(){
   }
 });
 
-jQuery(document).keydown(function(e) {
+$(document).keydown(function(e) {
 
     if (e.which == 0 || e.which == 27){
       location.replace("/users/register");
