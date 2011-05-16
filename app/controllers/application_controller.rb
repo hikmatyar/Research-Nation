@@ -95,6 +95,6 @@ class ApplicationController < ActionController::Base
   end
 
   def default_url_options(options)
-    { :protocol => 'http://' } unless request.ssl?
+    (controller_name == "purchases")? { :protocol => 'https://' } : { :protocol => 'http://' }
   end
 end
