@@ -1,12 +1,16 @@
 var new_text = ["industry reports","survey results","poll results","growth projections","call transcripts","secondary research","data" ];
 var counter = 0;
-jQuery('document').ready(function(){
+jQuery(document).ready(function(){
+
 
 	if(location.pathname == "/"){
 		change_text();
 	}
 
-	jQuery("#login-tab").addClass("active");
+	if(jQuery("#login-tab")){
+	  jQuery("#login-tab").addClass("active");
+  }
+
 	if (location.href.match("login")){
 		if(jQuery(".sign_up_terms")){
 			jQuery("#login-tab").addClass("active");
@@ -29,9 +33,12 @@ jQuery('document').ready(function(){
 		}
 	}
 
-		s = location.pathname.split("/");
-    jQuery("."+s[s.length-1]).addClass("active");
-    jQuery("."+s[s.length-1]).addClass("pushed_button");
+		s = location.pathname.split("/").pop();
+    if (s == "posts" || s == "profiles") {
+      location_class = "."+s;
+      jQuery(location_class).addClass("active");
+      jQuery(location_class).addClass("pushed_button");
+    }
 
 	//When page loads...
 
@@ -71,7 +78,7 @@ jQuery('document').ready(function(){
 	  });
 	}
 
-    if(jQuery("#edit_resource").length){
+    if(jQuery("#edit_resource").length > 0){
         $("#resource_title").show_char_limit(140);
         $("#resource_description").show_char_limit(3000);
         $("#resource_industry").show_char_limit(25);

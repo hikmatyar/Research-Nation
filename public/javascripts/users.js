@@ -14,8 +14,8 @@ jQuery('document').ready(function(){
     jQuery.ajax({
       url: "/users/listings",
       success: function(data){
-        jQuery("#listings").show();
         jQuery("#listings").html(data);
+        jQuery("#listings").show();
       }
     })
   });
