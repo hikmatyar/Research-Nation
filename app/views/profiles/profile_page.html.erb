@@ -50,7 +50,7 @@
     </div>
   </div>
   <div class="right_content buttons">
-    <% unless current_user.id == @profile.user_id %>
+    <% unless (!current_user.blank? && current_user.id == @profile.user_id) %>
       <div class="message_purchase">
         <a class="grey_button" href="#message_form" id="message_link" >Send Message</a>
       </div>
