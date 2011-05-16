@@ -121,12 +121,12 @@ class ResourcesController < ApplicationController
   end
 
   def get_industries
-    @industries = Resource.all(:select => 'distinct(industry)').collect(&:industry)
+    @industries = Resource.all(:select => 'distinct(industry)', :conditions => {:is_deleted => false}).collect(&:industry)
     render :text => @industries.join("\n")
   end
 
   def get_geography_list
-    @geography = Resource.all(:select => 'distinct(geography)').collect(&:geography)
+    @geography = Resource.all(:select => 'distinct(geography)', :conditions => {:is_deleted => false}).collect(&:geography)
     render :text => @geography.join("\n")
   end
 
