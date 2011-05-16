@@ -54,7 +54,7 @@
         <h4 class="heading_color">My Areas of Expertise</h4>
         <div class="field">
           <label>Optional</label>
-          <%= f.text_area 'humor_me', :class => 'max_len tip', :max_length => 2500, :title => "Fill this out if you're interested in work. What is your leadership style? What kinds of team settings do you do well in? Do you prefer in person meetings or on the phone? Are you very detail oriented? Please feel free to back up any statements you make with examples (e.g. if you say that you prefer small teams and communicate very well, then provide an example of a setting in which you succeeded)" %>
+          <%= f.text_area 'humor_me', :class => 'max_len tip', :max_length => 2500, :title => "Please identify your areas of expertise. Use complete sentences, and back up your claims (e.g. I am an expert on Telecom) with examples (I spent over 10 years working at a Telecom company, and built 20 telecom company financial models)." %>
         </div>
         <%= f.hidden_field 'profile_type', :value => params[:profile_type] %>
         <%= f.hidden_field 'interested_in', :id => 'interested_in' %>
