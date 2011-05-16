@@ -2,100 +2,100 @@
 /* CSS Document */
 
 body {
-  font-size: 12px;
-	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica", "Arial", "FreeSans", sans-serif;
-	background-color:#FFF;
-	color: #525252;
-	margin:0px;
+  	font-size: 12px;
+  	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica", "Arial", "FreeSans", sans-serif;
+  	background-color:#FFF;
+  	color: #525252;
+  	margin:0px;
 }
 
 /* text, headers & paragraphs */
 h1, h2, h3, h4, h5, h6 {
-  color: #4c4c4c;
-  font-weight: bold;
+  	color: #4c4c4c;
+  	font-weight: bold;
 }
 
 ol, ul {
-    list-style: none outside none;
+  	list-style: none outside none;
 }
 
 /* page title text */
 h1 {
-  font-size: 28px;
-  letter-spacing: -0.5px;
-  line-height: 28px;
-  margin: 6px 0 6px 0;
+  	font-size: 28px;
+  	letter-spacing: -0.5px;
+  	line-height: 28px;
+  	margin: 6px 0 6px 0;
 }
 
 /* detailed page title */
 h2 {
-  font-size: 24px;
-  letter-spacing: -0.5px;
-  color: #333;
-  line-height: 28px;
-  margin: 12px 0 6px 0;
-  font-weight: bold;
+  	font-size: 24px;
+  	letter-spacing: -0.5px;
+  	color: #333;
+  	line-height: 28px;
+  	margin: 12px 0 6px 0;
+  	font-weight: bold;
 }
 
 /* sidebar header / sub header */
 h3 {
-  font-size: 20px;
-  letter-spacing: -0.5px;
-  color: #333;
-  font-weight: normal;
-  line-height: 26px;
-  margin-bottom: 12px;
+  	font-size: 20px;
+  	letter-spacing: -0.5px;
+  	color: #333;
+  	font-weight: normal;
+  	line-height: 26px;
+  	margin-bottom: 12px;
 }
 
 
 /* miscellaneous paragraph titles, listed resource titles */
 h4 {
-  font-weight: normal;
-  font-size: 18px;
-  letter-spacing: -0.5px;
-  color: #333;
-  margin-bottom: 18px;
+  	font-weight: normal;
+  	font-size: 18px;
+  	letter-spacing: -0.5px;
+  	color: #333;
+  	margin-bottom: 18px;
 }
 
 /* descriptive attributes, usually formatted in a padded box */
 h5 {
-  font-size: 11px;
-  color: #666;
-  font-weight: normal;
-  line-height: 14px;
+  	font-size: 11px;
+  	color: #666;
+  	font-weight: normal;
+  	line-height: 14px;
 }
 
 
 /* footnotes */
 h6 {
-  font-size: 11px;
-  color: #666;
-  font-weight: normal;
-  line-height: 14px;
+  	font-size: 11px;
+  	color: #666;
+  	font-weight: normal;
+  	line-height: 14px;
 }
 
 p {
-  line-height: 18px;
-  margin:0px;
+  	line-height: 18px;
+  	margin:0px;
 }
 
 /* links */
 a {}
 a:link,
 a:visited {
-  color: #245a83;
-  text-decoration: none;
-  outline:none;
+  	color: #245a83;
+  	text-decoration: none;
+  	outline:none;
 }
 a:active {
-  color: #113a5a;
+  	color: #113a5a;
 }
 
 a{
-	outline:none;	
+  	outline:none;	
 }
 a:focus {
-  outline: #303d49 dotted thin;
+  	outline: #303d49 dotted thin;
 }
 
 .wrapper {
@@ -128,7 +128,7 @@ a:focus {
 .header a{
 	float:left;
 	width:210px;
-	margin-right:340px;
+	margin-right:170px;
 }
 
 
@@ -172,7 +172,7 @@ a:focus {
 
 .main_menu_box{
     float:left;
-    width:440px;
+    width:640px;
 }
 
 .main_menu{
@@ -186,8 +186,10 @@ a:focus {
 }
 
 .main_menu li{
-	float:left;
+	float:right;
 	list-style:none;
+	width:100px;
+	text-align:left;
 	list-style-type:none;
 	border-right:1px solid #bebebe;
 }
@@ -204,7 +206,9 @@ a:focus {
 .main_menu td{
 	border-left:1px solid #ccc;
 	float: right !important;
+	*float: left !important;
 	width:70px;
+	text-align: center;
 	padding:0px;
 }
 
@@ -261,8 +265,6 @@ a:focus {
 	padding:10px;
 }
 
-
-
 .email_box b{
 	float:left;
 	width:100%;
@@ -297,15 +299,13 @@ a:focus {
 }
 
 .content_back b{
-  color: #245A83;
-  float: left;
-  font-size: 14px;
-  margin-bottom: 9px;
+  	color: #245A83;
+  	float: left;
+  	font-size: 14px;
+  	margin-bottom: 9px;
 	margin-top: -3px;
-  width: 100%
+  	width: 100%
 }
-
-
 
 .login_tab{
 	float:left;
@@ -316,7 +316,6 @@ a:focus {
 	margin-right:5px;
 
 }
-
 
 .sign_up{
 	-moz-border-radius:10px;
@@ -364,7 +363,6 @@ a:focus {
 	color:#FFF;
 }
 
-
 .login_tab a:hover{
 	-mologin_tab_boxz-border-radius:10px;
 	-webkit-border-radius:10px;
@@ -372,7 +370,6 @@ a:focus {
 	text-decoration:none;
 	list-style:none;	
 }
-
 
 .sign_up_box{
 	float:left;
@@ -394,7 +391,7 @@ a:focus {
 
 .sign_up_box h4{
     color:#525252;
-    float: left;
+    float: left !important;
     font-size: 18px;
     font-weight: bold;
     margin-top: 20px;
@@ -416,7 +413,7 @@ a:focus {
 }
 .field1{
 	margin-bottom:0px !important;
-  float:left;
+ 	float:left;
 	width:100%;
 	margin-bottom:10px;	
 	font-size:14px;
@@ -431,7 +428,6 @@ a:focus {
 	text-align:left;
 }
 
-
 .field1 span{
 	border:0px !important;
 	font-size:14px !important;
@@ -440,7 +436,6 @@ a:focus {
 .field1 span a{
 	margin-left:5px;
 }
-
 
 .forgot{
 	float:left;
@@ -568,6 +563,7 @@ a:focus {
 	background-repeat:none;
 	text-decoration: none !important;
 }
+
 .field span{
     text-align:left;
     font-size:14px;    
@@ -577,6 +573,7 @@ a:focus {
 	width:120px !important;
 	margin-top:2px !important;
 }
+
 .check_box{
 	float:left;
 	width:550px;
@@ -594,20 +591,16 @@ a:focus {
     padding-top: 3px;
     position: relative;
     width: 515px !important;
-
 }
 
 .sign_up_button{
 	float:left;
 	margin:10px 10px 10px 0;
-
 }
 
 .send_message_button{
     float:left;
 }
-
-
 
 .seller_back, .facebook_back, .purchase_box{
 	float:left;
@@ -623,11 +616,10 @@ a:focus {
 	padding:10px;
 }
 
-
 .seller_back h2{
-  background-color:#ebebeb;
+ 	 background-color:#ebebeb;
 	-moz-border-radius-topleft: 10px;
-  -moz-border-radius-topright: 10px;
+  	-moz-border-radius-topright: 10px;
 	-webkit-border-top-right-radius: 10px;
 	-webkit-border-top-left-radius: 10px;
 	bottom: 10px;
@@ -699,7 +691,6 @@ a:focus {
 	text-decoration:underline;
 }
 
-
 .facebook_back{
 	margin-top:10px;
 }
@@ -718,7 +709,6 @@ a:focus {
 	-webkit-border-radius:10px;
 	border:1px solid #999;
 }
-
 
 .profile_tabs{
 	float: left;
@@ -751,6 +741,7 @@ a:focus {
 	margin-top: 24px;
 	font-size:18px;
 }
+
 .seller_left{
 	float:left;
 	width:704px;
@@ -760,6 +751,7 @@ a:focus {
 	float:left;
 	width:258px;
 }
+
 .right_content{
 	float:right;
 	width:210px;
@@ -833,11 +825,11 @@ a:focus {
 	padding-right:8px;
 	
 }
+
 .post:hover{
 	background-color:#f0f0f0;
 	width:614px;
 }
-
 
 .post_title a:hover{
 	text-decoration:underline;
@@ -857,13 +849,11 @@ a:focus {
 	width:440px;
 }
 
-
 .reviews_link a{
 	float:left;
 	color:#333;
 	margin-right:5px;
 }
-
 
 .reviews_link a:hover{
 	text-decoration:underline;
@@ -955,7 +945,6 @@ a:focus {
     text-align: center;
 }
 
-
 .price a:hover{
 	text-decoration:none !important;
 	background-color:#8eaf32 !important;
@@ -1001,9 +990,10 @@ a:focus {
 
 .user_detail b a{
  	bottom: 4px;
-  left: 17px;
-  position: relative;
+ 	left: 17px;
+  	position: relative;
 }
+
 .user_detail span{
 	float:left;
 	margin-bottom: 0 !important;
@@ -1020,7 +1010,6 @@ a:focus {
 	margin-top:24px;
 }
 
-
 .contact_us a {
     -moz-border-radius: 4px 4px 4px 4px;
     background: -moz-linear-gradient(center bottom , #8EAF32 22%, #AAC84A 81%) repeat scroll 0 0 transparent;
@@ -1032,7 +1021,6 @@ a:focus {
     padding: 10px 10px 10px 10px !important;
     text-align: center;
 }
-
 
 .contact_us a:hover{
 	text-decoration:none !important;
@@ -1046,11 +1034,9 @@ a:focus {
 	width:auto !important;
 }
 
-
 .koala_review{
 	height:330px;
 }
-
 
 .koala_review1{
 	height:708px;
@@ -1118,6 +1104,7 @@ a:focus {
 	height:445px;
 	overflow:hidden;
 }
+
 #embedded_flash embed{
 	float:left;
 	width:100%;
@@ -1125,7 +1112,6 @@ a:focus {
 	border:1px solid #CCC;
 	overflow:auto;
 }
-
 
 .author{
   color: #245A83;
@@ -1143,12 +1129,12 @@ a:focus {
 	height:80px;
 	margin-right:10px;
 }
+
 .profile_img img{
 	border: 0 none;
 	float: left;
 	margin-right: 10px;
 }
-
 
 .resource_buttons{
 	float: right;
@@ -1165,8 +1151,8 @@ a:focus {
     -moz-border-radius: 4px 4px 4px 4px;
     -webkit-border-radius: 4px 4px 4px 4px;
     background: -moz-linear-gradient(center bottom,  #AFAFAF 22%, #CECECE 81%);
-		background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #AFAFAF), color-stop(0.81,  #CECECE));
-		background: -moz-linear-gradient(center bottom,  #AFAFAF 22%, #CECECE 81%);
+	background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #AFAFAF), color-stop(0.81,  #CECECE));
+	background: -moz-linear-gradient(center bottom,  #AFAFAF 22%, #CECECE 81%);
     border: medium none;
     color: #FFFFFF;
     cursor: pointer;
@@ -1179,7 +1165,6 @@ a:focus {
     margin-left:10px;
 }
 
-
 .resource_buttons a:hover{
 	text-decoration:none !important;
 	background-color:#8eaf32 !important;
@@ -1191,10 +1176,11 @@ a:focus {
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#8eaf32, endColorStr=#8eaf32);	
 	width:auto !important;
 }
+
 .left_side{
-		float:left !important;
-		width:570px !important;
-		padding:20px 22px !important
+	float:left !important;
+	width:570px !important;
+	padding:20px 22px !important
 }
 
 .message_purchase{
@@ -1203,7 +1189,7 @@ a:focus {
 }
 
 .message_purchase b{
-		float:right;
+	float:right;
     font-size:24px;
     width:100%;
     text-align:right;
@@ -1222,11 +1208,10 @@ a:focus {
 	width:115px;
 }
 
-
 .left_side{
-		float:left !important;
-		width:570px !important;
-		padding:20px 22px !important
+	float:left !important;
+	width:570px !important;
+	padding:20px 22px !important
 }
 
 .left_side a{
@@ -1260,7 +1245,6 @@ a:focus {
 	font-size:14px;
 }
 
-
 .left_side h1{
 	margin:20px 0 20px !important;
 	float:left;
@@ -1286,14 +1270,17 @@ a:focus {
 
 
 /* Tabs */
+
 .verticalslider_tabs {
 	float: right;
 	width: 250px;
 }
+
 .verticalslider_tabs, .verticalslider_tabs li{
 	margin:0 0 0px 12px; 
 	padding: 0px;
 }
+
 .verticalslider_tabs li{
 	list-style-type: none;
 }
@@ -1312,12 +1299,14 @@ a:focus {
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
 }
+
 .verticalslider_tabs b{
 	width: 100%;
 	float:left;
 	margin-bottom:5px;
 	padding-left:5px;
 }
+
 .verticalslider_tabs a:link, .verticalslider_tabs a:visited{
 	display: block; 
 	width: 200px; 
@@ -1328,17 +1317,21 @@ a:focus {
 .verticalslider_tabs a:hover, .verticalslider_tabs a:active{ 
 
 }
+
 .verticalslider_tabs li:first-child a:link, .verticalslider_tabs li:first-child a:visited{
 	border-top: none;
 }
+
 .verticalslider_tabs .activeTab a:link, .verticalslider_tabs .activeTab a:visited{
 	background: #ffffff; 
 	border-right: 1px solid #ffffff;
 }
+
 .verticalslider_tabs .activeTab a:hover, .verticalslider_tabs .activeTab a:active{
 	background: #ffffff; 
 	border-right: 1px solid #ffffff;
 }
+
 .verticalslider .arrow { 
 	width: 27px; height: 60px; 
 	position: absolute; z-index: 1000; 
@@ -1352,6 +1345,7 @@ a:focus {
 	display: inline; 
 	padding: 0px;
 }
+
 .verticalslider_contents li{
 	margin: 0px; 
 	padding: 0px;
@@ -1361,11 +1355,13 @@ a:focus {
 	display: none;
 	list-style-type: none; 
 }
+
 .verticalslider_contents li p{
 	padding: 0px;
 	color: #333333;
 	font-family: Tahoma, Geneva, sans-serif; 
 }
+
 .verticalslider_contents .activeContent{
 	display: inline;
 }
@@ -1502,7 +1498,6 @@ background:#FFFFFF; border:1px solid #666666 !important; height:15px; width:15px
 	margin-top:10px;
 	background-color:#F0F0E9;
 	padding:10px;
-
 }
 
 .inner_round_box b{
@@ -1553,29 +1548,24 @@ background:#FFFFFF; border:1px solid #666666 !important; height:15px; width:15px
 	border:1px solid #CCC;
 }
 
-
 .day{
 	width:50px !important;
 }
 
-
 .question{
 	padding-top:10px;
-	border-top:1px solid #CCC;
-		
+	border-top:1px solid #CCC;		
 }
 
 .question P{
 	float:left;
 	margin-bottom:10px !important;
 	width:100% !important;
-
 }
 
 .question input{
 	margin-left:10px;
 }
-
 
 .question1{
 	padding-top:10px;
@@ -1586,13 +1576,11 @@ background:#FFFFFF; border:1px solid #666666 !important; height:15px; width:15px
 	float:left;
 	margin-bottom:10px !important;
 	width:100% !important;
-
 }
 
 .question1 input{
 	margin-left:10px;
 }
-
 
 .policies{
 	float:left;
@@ -1654,10 +1642,10 @@ background:#FFFFFF; border:1px solid #666666 !important; height:15px; width:15px
 	margin-top:5px;
 	padding-left:8px;
 }
+
 .follow_field img{
 	border:0px;
 }
-
 
 .form{
 	float:left;
@@ -1680,29 +1668,32 @@ background:#FFFFFF; border:1px solid #666666 !important; height:15px; width:15px
     margin-bottom: 10px;
     width: 100%;
 }
+
 .facebook_like1 span, .facebook_like2 span, .facebook_like3 span {
     float: left;
     font-size: 14px;
 }
-
 
 .field b {
   color: #525252;
   float: left;
   font-size: 16px;
   width: 540px;
+  *margin-left:10px !important;
 }
 
 .field p {
-  float: left;
+  *float: left !important;
   margin-bottom: 10px;
   margin-top: 5px;
   width: 540px;
+  *width: 355px !important;
 }
 
 .field img {
     float: left;
     margin-right: 10px;
+	*margin-right:0px;
 }
 
 .footer_menu li input{
@@ -1720,15 +1711,16 @@ ul.tabs {
 	list-style: none;
 	width: 100%;
 }
+
 ul.tabs li a {
-		-moz-border-radius-topleft: 3px !important;
-		-moz-border-radius-topright: 3px !important;
-		-webkit-border-top-right-radius: 3px !important;
-		-webkit-border-top-left-radius: 3px !important;
-		-moz-border-radius-bottomleft: 0px !important;
-		-moz-border-radius-bottomright: 0px !important;
-		-webkit-border-bottom-left-radius: 0px !important;
-		-webkit-border-bottom-right-radius: 0px !important;
+	-moz-border-radius-topleft: 3px !important;
+	-moz-border-radius-topright: 3px !important;
+	-webkit-border-top-right-radius: 3px !important;
+	-webkit-border-top-left-radius: 3px !important;
+	-moz-border-radius-bottomleft: 0px !important;
+	-moz-border-radius-bottomright: 0px !important;
+	-webkit-border-bottom-left-radius: 0px !important;
+	-webkit-border-bottom-right-radius: 0px !important;
     float: left;
     margin:0 5px 0 0 !important;
     font-size: 16px;
@@ -1738,9 +1730,11 @@ ul.tabs li a {
     text-align: center;
     text-decoration: none;
 }
+
 ul.tabs li a:hover {
 	background:none repeat scroll 0 0 #CCC;
 }
+
 html ul.tabs li.active, html ul.tabs li.active {
 	-moz-border-radius:10px;
 	-webkit-border-radius:10px;
@@ -1771,10 +1765,10 @@ html ul.tabs li.active, html ul.tabs li.active {
 	cursor:pointer;
 }
 
-
 .tab_container a:hover{
 	text-decoration:underline;
 }
+
 .tab_content {
 	font-size:14px;
 	float:left;
@@ -1784,10 +1778,12 @@ html ul.tabs li.active, html ul.tabs li.active {
 .tab_content h2{
 	font-size:16px;
 }
+
 .tab_content span{
 	font-size:14px !important;
 	width:auto !important;
 }
+
 .tab_content a:hover{
 	text-decoration:underline;
 }
@@ -1838,12 +1834,15 @@ html ul.tabs li.active, html ul.tabs li.active {
 .name{
 	width:250px;
 }
+
 .title_company{
 	width:470px;
 }
+
 .edit_post{
 	width:150px;
 }
+
 .delete_post{
 	width:100px;
 }
@@ -1857,7 +1856,6 @@ html ul.tabs li.active, html ul.tabs li.active {
 #toggle_views{
 	float: right;
 }
-
 
 .faq{
 	border:0px !important;
@@ -1933,6 +1931,7 @@ html ul.tabs li.active, html ul.tabs li.active {
 	font-size:14px;
 	margin-left:10px;
 }
+
 .spread{
 	float:left;
 	width:100%;
@@ -1948,11 +1947,11 @@ html ul.tabs li.active, html ul.tabs li.active {
 	margin-right:8px;
 }
 
-
 .error_image{
 	float:left;
 	width:450px;
 }
+
 .error_text{
 	float:left;
 	width:500px;
@@ -1974,11 +1973,11 @@ html ul.tabs li.active, html ul.tabs li.active {
 }
 
 .error_text h3 {
-  float: left;
-  font-size: 36px;
-  font-weight: bold;
-  text-align: left !important;
-  width: 100%;
+  	float: left;
+  	font-size: 36px;
+  	font-weight: bold;
+  	text-align: left !important;
+  	width: 100%;
 	line-height:0px !important;
 	margin-bottom:0px;
 }
@@ -1995,8 +1994,8 @@ html ul.tabs li.active, html ul.tabs li.active {
 }
 
 .flash{
-		-webkit-border-radius:4px;
-	  -moz-border-radius: 4px 4px 4px 4px;
+	-webkit-border-radius:4px;
+	-moz-border-radius: 4px 4px 4px 4px;
     background-color: #F5F69B;
     color: #245B83 !important;
     height: 20px;
@@ -2008,10 +2007,9 @@ html ul.tabs li.active, html ul.tabs li.active {
     width: 96%;
 }
 
-
 .inner_link{
-		float:left;
-		width:240px;
+	float:left;
+	width:240px;
     margin:0px;
     padding:0px;
 }
@@ -2024,8 +2022,8 @@ html ul.tabs li.active, html ul.tabs li.active {
 .inner_link a{
     float:left;
     padding:5px;
-		margin-left:8px;
-		font-weight:normal !important;
+	margin-left:8px;
+	font-weight:normal !important;
     color:#245A83;
 }
 
@@ -2039,18 +2037,18 @@ html ul.tabs li.active, html ul.tabs li.active {
 }
 
 .user_name_box{
-	float: left;
-  height: 20px;
-  margin-left: 10px;
-  overflow: hidden;
-  padding-top: 5px;
-  width: 35%;
+  	float: left;
+  	height: 20px;
+  	margin-left: 10px;
+  	overflow: hidden;
+  	padding-top: 5px;
+  	width: 35%;
 }
 
 
 .tags_box span{
-		-webkit-border-radius:4px;
-	  -moz-border-radius: 4px 4px 4px 4px;
+	-webkit-border-radius:4px;
+	-moz-border-radius: 4px 4px 4px 4px;
     background-color: #E5E5E5;
     float: left;
     font-weight: normal;
@@ -2091,7 +2089,7 @@ html ul.tabs li.active, html ul.tabs li.active {
 }
 
 .price_rang h2 {
-	 background: url("/images/filter_header_bg.png") repeat scroll 0 0 #EAEAE6;
+	background: url("/images/filter_header_bg.png") repeat scroll 0 0 #EAEAE6;
     border-color: #C2C2BE;
     border-style: solid;
     border-width: 1px 0;
@@ -2122,15 +2120,14 @@ html ul.tabs li.active, html ul.tabs li.active {
 }
 
 .add_more{
-	float:left;
-	height: 29px;
+  float:left;
+  height: 29px;
   left: -5px;
   margin-top: 5px;
   cursor: pointer;
   position: relative;
   width: 66px;
-	background:url(/images/add_button.jpg) repeat-x 0 0; 
-	
+  background:url(/images/add_button.jpg) repeat-x 0 0; 	
 }
 
 .price_line{
@@ -2172,8 +2169,6 @@ html ul.tabs li.active, html ul.tabs li.active {
 	-webkit-border-radius:5px;
 }
 
-
-
 #geography_result p{
 	float: left;
 	font-size: 12px;
@@ -2208,8 +2203,8 @@ html ul.tabs li.active, html ul.tabs li.active {
     -moz-border-radius: 4px 4px 4px 4px;
     -webkit-border-radius: 4px 4px 4px 4px;
     background: -moz-linear-gradient(center bottom,  #A0A0A0 22%, #CECECE 81%);
-		background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #CECECE), color-stop(0.81,  #A0A0A0));
-		background: -moz-linear-gradient(center bottom,  #A0A0A0 22%, #A0A0A0 81%);
+	background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #CECECE), color-stop(0.81,  #A0A0A0));
+	background: -moz-linear-gradient(center bottom,  #A0A0A0 22%, #A0A0A0 81%);
     border: medium none;
     color: #FFFFFF;
     cursor: pointer;
@@ -2221,7 +2216,6 @@ html ul.tabs li.active, html ul.tabs li.active {
     margin-top:1px;
     position:relative;
 }
-
 
 .reset_button:hover{
 	text-decoration:none !important;
@@ -2244,7 +2238,8 @@ html ul.tabs li.active, html ul.tabs li.active {
 .privacy_box{
     float:left;
     height:300px;
-    overflow:auto;    
+    overflow:auto;
+	*width:475px;    
 }
 
 .privacy_box p{
@@ -2255,6 +2250,7 @@ html ul.tabs li.active, html ul.tabs li.active {
 
 .privacy_box b{
 	width:95% !important;
+	*width:92% !important;
 }
 
 .how_it_works_field2{
@@ -2302,23 +2298,23 @@ html ul.tabs li.active, html ul.tabs li.active {
     float:right;
     text-align:center;
 }
+
 .ac_results{
 	margin-top:-1px !important;
-	width : 210px !important;
+	width:210px !important;
 	background:#FFF;
 	border:1px solid #CCC !important;
 }
 
 .profile_heading{
-		float: left;
+	float:left;
     font-size: 28px;
     font-weight: bold;
     margin: 10px 5px;	
 }
 
-
 .profile_boxs{
-	float:	left;
+	float:left;
 	text-align:center;
 	width:100%;
 	margin:0px auto;
@@ -2454,7 +2450,6 @@ html ul.tabs li.active, html ul.tabs li.active {
 html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that the active tab does not listen to the hover properties--*/
 }
 
-
 .bio_container {
 	float: left;
 	margin-top: 10px;
@@ -2469,7 +2464,7 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 }
 
 .profile_right{
-  float:left;
+  	float:left;
 	box-shadow:5px -5px 20px #bebebe;
 	-webkit-box-shadow:0 0 20px #bebebe;
 	-moz-box-shadow:0 0 20px #bebebe;
@@ -2488,44 +2483,45 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 }
 
 .new_field label{
- float:left;
- width:90px;
- margin-top:5px;
- padding-left:8px;
- text-align:left;
- font-size:13px;
- position:relative;
- top:21px;
- left:7px;
+ 	float:left;
+ 	width:90px;
+ 	margin-top:5px;
+	padding-left:8px;
+	text-align:left;
+	font-size:13px;
+	position:relative;
+	top:21px;
+	left:7px;
 }
 
 .new_field input{
- float:left;
- border:1px solid #CCC;
- padding:3px;
- font-size:13px;
- width:303px !important;
- -moz-border-radius:5px;
- -webkit-border-radius:5px;
+	 float:left;
+	 border:1px solid #CCC;
+	 padding:3px;
+	 font-size:13px;
+	 width:303px !important;
+	 -moz-border-radius:5px;
+	 -webkit-border-radius:5px;
 }
 
 .new_user{
     float:left;
 }
+
 .error{
-  color: red;
-  margin-bottom: 2px;
-  margin-left: 111px;
-  margin-top: 4px;
+	color: red;
+	margin-bottom: 2px;
+	margin-left: 111px;
+	margin-top: 4px;
 }
 
 p.error{
-  margin-bottom:2px !important;
-  margin-left:113px !important;
+  	margin-bottom:2px !important;
+  	margin-left:113px !important;
 }
 
 .profile_button{
-	 float:left;
+	float:left;
 }
 
 .profile_button a{
@@ -2650,18 +2646,18 @@ p.error{
 
 .send_message{
     width:370px !important;
-    height:80px !important;	
-    
+    height:80px !important;	    
 }
+
 div.fbFooterBorder{
     display:none !important;
 }
 
 .pushed_button{
 	background:none repeat scroll 0 0 #FFF !important;
-  color: #000000 !important;
-  border-bottom:1px solid #FFF;
-  position:relative;
+  	color: #000000 !important;
+  	border-bottom:1px solid #FFF;
+  	position:relative;
 }
 
 .pushed_button:hover{
@@ -2674,7 +2670,6 @@ div.fbFooterBorder{
 	margin-top:3px;
 }
 
-
 .terms_and_conditions p{
 	float: left;
 	font-size: 14px !important;
@@ -2686,8 +2681,13 @@ div.fbFooterBorder{
 
 .main_terms_and_conditions{
 	width:330px;
+	*width:340px;
 	margin-top:-5px;
 	float:left;
+}
+
+.fbFeedbackContent .composer{
+	background:none !important;
 }
 
 .main_terms_and_conditions p{
@@ -2726,7 +2726,6 @@ div.fbFooterBorder{
 	margin-top:3px;
 }
 
-
 .terms_and_conditions1 p{
 	float: left;
 	font-size: 12px !important;
@@ -2754,15 +2753,9 @@ div.fbFooterBorder{
 	width:auto !important;
 }
 
-
 .conditions{
 	margin-top:-10px;
 }
-
-
-
-
-
 
 /*--- footer_menu ----*/
 
@@ -2811,8 +2804,8 @@ div.fbFooterBorder{
 	width:195px !important;
 	margin-bottom:40px;
 	border-right:0px !important;
-
 }
+
 .footer_box a{
 	margin-left: 0px !important;
     margin-right: 0 !important;
@@ -2850,6 +2843,7 @@ div.fbFooterBorder{
 	float: left;
 	font-size: 18px;
 	margin-left: 10px;
+	*margin-top:10px;
 	width: 70%;
 }
 
@@ -2869,7 +2863,7 @@ div.fbFooterBorder{
 	float:left;
 	width:100%;
 	margin-bottom:0px;
-  color: #333333 !important;
+  	color: #333333 !important;
 }
 
 .Post_author_details a{
@@ -2881,8 +2875,8 @@ div.fbFooterBorder{
 
 .Post_author_details span{
 	color: #525252;
-  font-weight: normal;
-  width: auto;
+  	font-weight: normal;
+  	width: auto;
 }
 
 .Post_author_details h2{
@@ -2890,7 +2884,6 @@ div.fbFooterBorder{
 	width:240100%;
 	margin-top:0px !important;
 }
-
 
 .author_details{
 	float:left;
@@ -2900,7 +2893,7 @@ div.fbFooterBorder{
 .author_details b{
 	float:left;
 	width:340px;
-  color: #333333 !important;
+  	color: #333333 !important;
 }
 
 .author_details a:hover{
@@ -2918,7 +2911,6 @@ div.fbFooterBorder{
 	width:240px;
 	margin-top:0px !important;
 }
-
 
 .grey_button{
 	text-align:center;
@@ -2939,7 +2931,6 @@ div.fbFooterBorder{
 	border:medium none;
 }
 
-
 .grey_button:hover{
 	text-decoration:none !important;
 	background-color:#8eaf32 !important;
@@ -2950,7 +2941,6 @@ div.fbFooterBorder{
 	background: -moz-linear-gradient(center bottom, #CECECE 22%, #CECECE 81%);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#CECECE, endColorStr=#CECECE);
 }
-
 
 .green_button{
 	text-align:center;
@@ -2972,14 +2962,13 @@ div.fbFooterBorder{
 
 .green_button:hover{
 	-moz-border-radius: 4px 4px 4px 4px;
-  -webkit-border-radius: 4px 4px 4px 4px;
+  	-webkit-border-radius: 4px 4px 4px 4px;
 	text-decoration:none !important;
 	background: -moz-linear-gradient(center bottom, #8eaf32 22%, #8eaf32 81%);
 	background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #8eaf32), color-stop(0.81, #8eaf32));
 	background: -moz-linear-gradient(center bottom, #8eaf32 22%, #8eaf32 81%);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#8eaf32, endColorStr=#8eaf32);
 }
-
 
 .buttons{
 	margin-top:11px !important;
@@ -3001,7 +2990,7 @@ div.fbFooterBorder{
 	width: 100%;
 	color:#AC7333 !important;
 	-moz-border-radius: 4px 4px 4px 4px;
-  -webkit-border-radius: 4px 4px 4px 4px;
+  	-webkit-border-radius: 4px 4px 4px 4px;
 }
 
 .user_name p{
@@ -3104,11 +3093,10 @@ div.fbFooterBorder{
 	text-decoration:underline !important;
 }
 
-
 .new_field{
- float:left;
- width:100%;
- height:50px;
+ 	float:left;
+ 	width:100%;
+ 	height:50px;
 }
 
 .sign_up_terms{
@@ -3125,7 +3113,7 @@ div.fbFooterBorder{
 	width: 181px;
 	margin-top:5px !important;
 	-moz-border-radius:5px;
- -webkit-border-radius:5px;
+ 	-webkit-border-radius:5px;
 }
 
 .sign_up_button input{
@@ -3138,7 +3126,7 @@ div.fbFooterBorder{
 }
 
 .new_field1 select{
-		float:left;
+	float:left;
     width:310px !important;
     height:28px !important;
     padding:5px !important;
@@ -3148,7 +3136,6 @@ div.fbFooterBorder{
 	float:left;
 	margin:20px 10px 10px 0;
 	-margin:10px 10px 10px 0;
-
 }
 
 .banner_sign_up_button input{
@@ -3196,21 +3183,20 @@ div.fbFooterBorder{
 
 .browse_tabs li.active{
 	-moz-border-radius-topleft: 10px !important;
-  -moz-border-radius-topright: 10px !important;
+  	-moz-border-radius-topright: 10px !important;
 	-webkit-border-top-right-radius: 10px !important;
 	-webkit-border-top-left-radius: 10px !important;
 	-moz-border-radius-bottomleft: 0px !important;
-  -moz-border-radius-bottomright: 0px !important;
+  	-moz-border-radius-bottomright: 0px !important;
 	-webkit-border-bottom-left-radius: 0px !important;
 	-webkit-border-bottom-right-radius: 0px !important;
 	margin:0 5px 0 0 !important;
 	background-color:#A7ACA3;
 }
 
-
 #left_content{
 	-moz-border-radius-topleft: 0px !important;
-  -moz-border-radius-topright: 0px !important;
+  	-moz-border-radius-topright: 0px !important;
 	-webkit-border-top-right-radius: 0px !important;
 	-webkit-border-top-left-radius: 0px !important;
 	width:615px;
@@ -3263,7 +3249,7 @@ div.fbFooterBorder{
 }
 
 .addthis_toolbox .custom_images a {
-		float:left;
+	float:left;
     margin: 0px 0px 0px 2px;
     padding: 0;
     color:#AC7333;
@@ -3279,8 +3265,8 @@ div.fbFooterBorder{
 }
 
 .addthis_toolbox .custom_images a:hover img {
-		text-decoration:underline;
-		float:left;
+	text-decoration:underline;
+	float:left;
 }
 
 .addthis_toolbox span{
@@ -3369,6 +3355,7 @@ div.fbFooterBorder{
 .user_profile_buttons a img:hover {
 	border:1px solid #CCC;
 }
+
 .web_links{
 	float:right;
 }
@@ -3439,9 +3426,9 @@ div.fbFooterBorder{
 .validation-advice{
 	float:left;
 	color: red;
-  margin-bottom: 2px;
-  margin-left: 111px;
-  margin-top: 4px;
+  	margin-bottom: 2px;
+  	margin-left: 111px;
+  	margin-top: 4px;
 }
 
 .about_field_text{
@@ -3595,9 +3582,9 @@ div.fbFooterBorder{
 }
 
 .author_name b{
-  margin-bottom: 0;
-  margin-left: 5px;
-  margin-top: 9px;
+  	margin-bottom: 0;
+  	margin-left: 5px;
+  	margin-top: 9px;
 }
 
 .author_name a:hover{
@@ -3632,11 +3619,11 @@ div.fbFooterBorder{
 	background-repeat:repeat-y;
 	border-radius:10px;
 	-moz-border-radius-topleft: 0px !important;
-  -moz-border-radius-topright: 10px !important;
+  	-moz-border-radius-topright: 10px !important;
 	-webkit-border-top-right-radius: 10px !important;
 	-webkit-border-top-left-radius: 0px !important;
 	-moz-border-radius-bottomleft: 10px !important;
-  -moz-border-radius-bottomright: 10px !important;
+  	-moz-border-radius-bottomright: 10px !important;
 	-webkit-border-bottom-right-radius: 10px !important;
 	-webkit-border-bottom-left-radius: 10px !important;
 	margin-left:80px;
@@ -3725,10 +3712,10 @@ div.fbFooterBorder{
 	padding:2px;
 }
 
-
 .download_image span{
     width:58px !important;
 }
+
 .fb_iframe_widget iframe {
 	height:160px !important;
 }
@@ -3747,6 +3734,7 @@ div.fbFooterBorder{
 	padding: 5px 0 0;
 	width: 964px;
 }
+
 .user_profile_tabs li{
 	display: inline !important;
 	font-size: 18px !important;
@@ -3766,7 +3754,6 @@ div.fbFooterBorder{
 	font-weight:bold;
 }
 
-
 .user_profile_tabs a:hover{
 	color:#8DAF2B !important;
 	text-decoration:underline;
@@ -3784,35 +3771,24 @@ div.fbFooterBorder{
 	font-size:14px;
 }
 
-
 .back_button:hover{
 	text-decoration:underline !important;
 }
 
 .create_link{
-	float: right;
-	margin-left:45px;
-	width: 100px !important;
+	float:right !important;
 	border:0px !important;
+	width:80px !important;
 }
 
-.create_link a{
-	color: #000000;
-	font-size: 12px;
-	background-color: #FED221;
-	-moz-border-radius:10px;
-	-webkit-border-radius:10px;
-	color:#000 !important;
-	margin-left:10px;
-	padding:5px;
-	width:80% !important;
-	margin-top:-5px;
+.buy_link{
+	width:60px !important;
 }
 
-.create_link a:hover{
-	text-decoration:none !important;
-	background-color:#FFE984;
+.sell_link{
+	width:70px !important;
 }
+
 
 .my_account{
 	float:left;
@@ -3823,6 +3799,7 @@ div.fbFooterBorder{
 	float:left;
 	width:380px;
 }
+
 .message p{
 	float:left;
 }
@@ -3831,10 +3808,12 @@ div.fbFooterBorder{
 	float:left;
 	margin-top:12px;
 }
+
 .altering_text{
 	float:left;
 	width:100%;
 }
+
 .altering_text span{
 	float:none !important;
 	width:auto;
@@ -3855,15 +3834,16 @@ div.fbFooterBorder{
 .Contact_us_button input{
 	padding:10px;
 }
+
 .main_page_content_container{
 	float:left;
 	margin-top:36px;
 }
 
 .purchase_error{
-   margin-bottom:2px !important;
-   margin-top:2px !important;
-   color:red;
+   	margin-bottom:2px !important;
+   	margin-top:2px !important;
+   	color:red;
 }
 
 .view_profile{
@@ -3903,6 +3883,7 @@ div.fbFooterBorder{
     font-weight:bold;
     color:#8DAF2B !important;
 }
+
 .total_price{
     float:left;
     width:100%;
@@ -3950,6 +3931,7 @@ div.fbFooterBorder{
     float:left;
     width:100px;
 }
+
 .paid-earnings-1-2011{
     float:left;
     width:20px;
@@ -3986,9 +3968,9 @@ div.fbFooterBorder{
 }
 
 .interests_tip {
-  float: left;
-  margin: 5px 8px 5px 5px;
-  width: 450px;
+  	float: left;
+  	margin: 5px 8px 5px 5px;
+  	width: 450px;
 }
 
 .user_image{
@@ -4031,11 +4013,12 @@ div.fbFooterBorder{
 
 .user_dasboard{
     float:left;
+	*width:140px !important;
 }
 
 .user_dasboard a{
     float:left;
-    width:100px !important;
+    width:120px !important;
 }
 
 .monthly-payments-header{
@@ -4092,4 +4075,9 @@ div.fbFooterBorder{
     background:none !important;
     color:#648310 !important;
     text-decoration:underline;
+}
+
+.document_box{
+	float:left;
+	width:100%;
 }

@@ -9,7 +9,7 @@
       <div class="sign_up_box">
         <h4 class="heading_color" style="margin-top:0px; border-top:0px;">Your Purchase</h4>
         <% @resource.attachments.original_files.each_with_index do |attachment,index| %>
-          <div>
+          <div class="document_box">
             <div class="download_image">
               <% extension = File.extname(attachment.original_file_name).downcase %>
               <a href="/download_file/<%=params[:url_slug]%>?attachment=<%= attachment.id%>" target="_blank">
