@@ -1,4 +1,4 @@
-var new_text = ["industry reports","survey results","poll results","growth projections","call transcripts","secondary research","data" ];
+var new_text = ["industry insights","company analytics","contact lists","datasets","financial projections","market studies","competitive analyses","datasets"];
 var counter = 0;
 jQuery(document).ready(function(){
 
