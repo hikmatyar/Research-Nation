@@ -20,10 +20,11 @@
           <td width="90"><span class="fixed">$<%= resource.selling_price %></span></td>
           <td width="85"><span class="fixed"><%= resource.created_at.strftime("%B %d") %></span></td>
           <td width="50"><span class="fixed"><%= resource.total_orders.count %></span></td>
-          <td width="70" class="user_profile_buttons"><%= link_to (( image_tag "edit.jpg"), { :controller => 'resources', :action => 'edit', :url_slug => resource.url_slug})%></td>
           <% unless resource.is_deleted? %>
+            <td width="70" class="user_profile_buttons"><%= link_to (( image_tag "edit.jpg"), { :controller => 'resources', :action => 'edit', :url_slug => resource.url_slug})%></td>
             <td width="50" class="user_profile_buttons"><%= link_to (( image_tag "delete.jpg"), { :controller => 'resources', :action => 'delete', :url_slug => resource.url_slug, :request => "user" }, :confirm => "Are you sure you want to delete this post?" )%></td>
           <% else %>
+            <td width="50">&nbsp;</td>
             <td width="50">Deleted</td>
           <% end %>
 		      </td>
