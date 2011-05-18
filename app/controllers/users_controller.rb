@@ -205,7 +205,8 @@ class UsersController < ApplicationController
   def monthly_paid_earnings
     user_id = (session[:admin] && !params[:user_id].blank?)?  params[:user_id] : session[:user]
     user = User.find user_id
-    render :partial => "/users/monthly_earnings", :locals => {:earnings => user.monthly_paid_earnings, :type => "paid"}, :layout => false
+    return render :partial => "/users/monthly_earnings", :locals => {:earnings => user.monthly_paid_earnings, :type => "paid"}, :layout => false if user.monthly_paid_earnings.size > 0
+    return render :text => '<i class="italicized_text">You have no prior earnings</i>'
   end
 
   def monthly_pending_earnings

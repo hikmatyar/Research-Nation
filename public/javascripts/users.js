@@ -1,5 +1,9 @@
 $('document').ready(function(){
 
+  $('#messages-link').click(function() {
+    $('#earnings-link').css("text-decoration","none");
+  });
+
   $('#purchase-link').click(function() {
     $.ajax({
       url: "/users/purchases",
@@ -8,6 +12,7 @@ $('document').ready(function(){
         $("#purchases").html(data);
       }
     })
+    $('#earnings-link').css("text-decoration","none");
   });
 
   $('#listings-link').click(function() {
@@ -18,6 +23,7 @@ $('document').ready(function(){
         $("#listings").show();
       }
     })
+    $('#earnings-link').css("text-decoration","none");
   });
 
   $('#current-earnings-link, #earnings-link').click(function() {
