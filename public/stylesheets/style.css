@@ -131,6 +131,10 @@ a:focus {
 	margin-right:170px;
 }
 
+.header a img{
+	margin-top:10px;	
+}
+
 
 .banner_text span{
     float:left;
@@ -231,7 +235,8 @@ a:focus {
 
 .facebook_like{
 	float:right;
-	width:50px;
+	width:95px;
+	*width:85px;
 }
 
 
@@ -368,7 +373,8 @@ a:focus {
 	-webkit-border-radius:10px;
 	background-color:#E5E5E5;
 	text-decoration:none;
-	list-style:none;	
+	list-style:none;
+	
 }
 
 .sign_up_box{
@@ -525,8 +531,9 @@ a:focus {
 }
 
 .field i{
-	float:right;
-	width:367px;
+	float:left;
+	width:260px;
+	margin-left:117px;
 	margin-top:3px;
 	font-size:11px;
 	position:static !important;
@@ -707,7 +714,6 @@ a:focus {
 	border-radius:10px;
 	-moz-border-radius:10px;
 	-webkit-border-radius:10px;
-	border:1px solid #999;
 }
 
 .profile_tabs{
@@ -889,6 +895,10 @@ a:focus {
 	border:1px solid #CCC;
 	overflow:hidden;
 	font-size:18px;
+}
+
+.view_sample object{
+	height:450px !important;
 }
 
 .summary{
@@ -1545,7 +1555,16 @@ background:#FFFFFF; border:1px solid #666666 !important; height:15px; width:15px
 
 .field select{
 	width:228px;
-	border:1px solid #CCC;
+	background: none repeat scroll 0 0 #FFFFFF;
+	border: 1px solid #BECFD6;
+	color:#525252;
+	font: 14px Arial,Helvetica,sans-serif;
+	height: 28px;
+	font-size:14px;
+	font-weight: normal !important;
+	margin-top:5px !important;
+	-moz-border-radius:5px;
+ 	-webkit-border-radius:5px;
 }
 
 .day{
@@ -2145,6 +2164,7 @@ html ul.tabs li.active, html ul.tabs li.active {
 	margin-right: 10px;
 	padding: 5px 5px 5px 10px;
 	width: 124px;
+	*width: 124px !important;
 	overflow:hidden;
 	height:16px;
 	margin-top:0px !important;
@@ -2176,6 +2196,7 @@ html ul.tabs li.active, html ul.tabs li.active {
 	margin-right: 10px;
 	padding: 5px 5px 5px 10px;
 	width: 124px;
+	*width: 124px !important;
 	overflow:hidden;
 	height:16px;
 	margin-top:0px !important;
@@ -2438,6 +2459,10 @@ html ul.tabs li.active, html ul.tabs li.active {
 	border-radius:10px;
 	-moz-border-radius:10px;
 	-webkit-border-radius:10px;
+	-moz-border-radius: 10px;
+ 	-webkit-border-radius: 10px;
+ 	border-radius: 10px;
+ 	behavior: url(../images/border-radius.htc);
 }
 
 .profile_left img{
@@ -2474,6 +2499,10 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 	background-color:#FFFFFF;
 	padding:10px;
 	width:660px;
+	-moz-border-radius: 10px;
+ 	-webkit-border-radius: 10px;
+ 	border-radius: 10px;
+ 	behavior: url(../images/border-radius.htc);
 }
 
 .new_field1{
@@ -2761,7 +2790,8 @@ div.fbFooterBorder{
 
 .footer_menu{
 	float:right;
-	width:450px;
+	width:455px;
+	margin-right:-10px;
 	margin-top:20px;
 }
 
@@ -2940,6 +2970,11 @@ div.fbFooterBorder{
 	background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #CECECE), color-stop(0.81, #CECECE));
 	background: -moz-linear-gradient(center bottom, #CECECE 22%, #CECECE 81%);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#CECECE, endColorStr=#CECECE);
+	
+	-moz-border-radius: 10px;
+ 	-webkit-border-radius: 10px;
+ 	border-radius: 10px;
+ 	behavior: url(../images/border-radius.htc);
 }
 
 .green_button{
@@ -3108,12 +3143,18 @@ div.fbFooterBorder{
 .field_container select{
 	background: none repeat scroll 0 0 #FFFFFF;
 	border: 1px solid #BECFD6;
+	color:#525252;
 	font: 14px Arial,Helvetica,sans-serif;
 	height: 20px;
 	width: 181px;
+	font-weight: normal !important;
 	margin-top:5px !important;
 	-moz-border-radius:5px;
  	-webkit-border-radius:5px;
+}
+
+.field_container select option{
+	font-weight: normal !important;
 }
 
 .sign_up_button input{
@@ -3309,15 +3350,23 @@ div.fbFooterBorder{
 
 .profile_fixed_box td{
     padding:0px;
+	margin:0px;
 }
 
-.profile_fixed_box tr{
+.profile_fixed_box table{
+	float:left;
+	padding:0px;
+	margin:0px;
+	width:100%;	
+}
+
+.profile_fixed_box table tr{
     float:left;
     border-bottom:1px dotted #CCC;
-}
-
-.profile_fixed_box tr:hover{
-    background:#F0F0F0;
+	*border-bottom:1px solid #CCC !important;
+	width:100%;
+	padding:0px;
+	margin:0px;
 }
 
 .forgit_password{
@@ -3391,6 +3440,7 @@ div.fbFooterBorder{
 .send_mail input{
 	float:left;
 	width:190px;
+	*margin-bottom:15px;
 }
 
 .text_field{
@@ -3497,7 +3547,7 @@ div.fbFooterBorder{
 	margin-right: 48px;
 	margin-top: 2px !important;
 	text-align: right !important;
-	width: 83px !important;
+	width: 35px !important;
 	color:#525252 !important;
 }
 
@@ -3782,17 +3832,34 @@ div.fbFooterBorder{
 }
 
 .buy_link{
-	width:60px !important;
+	width:90px !important;
 }
 
 .sell_link{
-	width:70px !important;
+	width:60px !important;
+	border-left:0px;
+	border-right:none !important;
+	margin-left:60px;
 }
 
+.sell_link a{
+	background-color: #FED221;
+	border: 1px solid #EDD469;
+	position:relative;
+	top:-7px;
+	margin-left:5px;
+	color:#000 !important;
+	cursor: pointer;
+	font-size: 12pt;
+	padding: 5px 1px 5px 1px;
+	text-align: center;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+}
 
-.my_account{
-	float:left;
-	width:100px !important;
+.sell_link a:hover{
+	background:#FED220;
 }
 
 .message{
@@ -3962,6 +4029,10 @@ div.fbFooterBorder{
     height:35px;
 }
 
+.earnings_title table{
+	width:100%;	
+}
+
 .received_messages{
     float:left;
     margin-top:30px;
@@ -4080,4 +4151,8 @@ div.fbFooterBorder{
 .document_box{
 	float:left;
 	width:100%;
+}
+
+#text_to_change{
+	color:#AC7333;
 }

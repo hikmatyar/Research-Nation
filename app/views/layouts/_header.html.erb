@@ -2,8 +2,9 @@
 	<%= link_to image_tag("logo.png"),:controller => "main", :action => "index" %>
 	<div class="main_menu_box">
 	  <ul class="main_menu">
+	  	<li class="sell_link"><%= link_to "Create", :controller => "resources", :action => "new" %></li>
 	    <% if logged_in? %>
-	    	<li class="create_link"><%= (link_to 'Logout', :controller => 'users', :action => 'logout')  %></li>
+	    	<li><%= (link_to 'Logout', :controller => 'users', :action => 'logout')  %></li>
         <% end %>
 		<% if is_admin? %>
 	      <li class="create_link"><%= (link_to "Admin", :controller => "admin", :action => "dashboard") %></li>
@@ -11,9 +12,8 @@
 	    <% unless logged_in? %>
           <li class="create_link"><%= (link_to 'Login', :controller => 'users', :action => 'register', :opt => 'login') %></li>
         <% end %>
-        <li class="sell_link"><%= link_to "Sell", :controller => "resources", :action => "new" %></li>
 	    <li class="buy_link" <%= "class='borderless'" unless logged_in?%> >
-          <%= (link_to 'Buy', :controller => 'resources', :action => 'view_posts') %>
+          <%= (link_to 'Browse', :controller => 'resources', :action => 'view_posts') %>
         </li>
         <% if logged_in? %>
           <li style="border-left:0px;" class="user_dasboard">

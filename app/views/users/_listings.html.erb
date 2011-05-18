@@ -3,10 +3,10 @@
     <table border="0" cellspacing="5" cellpadding="5" id=" resources_table" align="left">
 	    <tbody>
 		    <tr>
-			    <th width="260">Title</th>
-      		<th width="40">Price</th>
-	    		<th width="54">Date</th>
-	    		<th width="80">No. Sold</th>
+			    <th width="145">Title</th>
+      			<th width="10">Price</th>
+	    		<th width="20">Date</th>
+	    		<th width="100">No. Sold</th>
 	    	</tr>
 	    <tbody>
 	  </table>
@@ -16,8 +16,8 @@
 	    <tbody>
 		  <% resources.each do |resource|%>
 		    <tr>
-          <td width="270"><%= resource.is_deleted? ? truncate(resource.title, :omission => "...", :length => 30) : (link_to ( truncate(resource.title, :omission => "...", :length => 50), { :controller => 'resources', :action => 'seller_page', :url_slug => resource.url_slug}, { :class => 'fixed' } ))  %></td>
-          <td width="50"><span class="fixed">$<%= resource.selling_price %></span></td>
+          <td width="315"><%= resource.is_deleted? ? truncate(resource.title, :omission => "...", :length => 30) : (link_to ( truncate(resource.title, :omission => "...", :length => 50), { :controller => 'resources', :action => 'seller_page', :url_slug => resource.url_slug}, { :class => 'fixed' } ))  %></td>
+          <td width="90"><span class="fixed">$<%= resource.selling_price %></span></td>
           <td width="85"><span class="fixed"><%= resource.created_at.strftime("%B %d") %></span></td>
           <td width="50"><span class="fixed"><%= resource.total_orders.count %></span></td>
           <td width="70" class="user_profile_buttons"><%= link_to (( image_tag "edit.jpg"), { :controller => 'resources', :action => 'edit', :url_slug => resource.url_slug})%></td>

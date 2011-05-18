@@ -15,18 +15,18 @@
         <h4 class="heading_color" style="margin-top:5px; border-top:0px;">My Details</h4>
       <% form_for(@profile , :url => {:controller => "profiles", :action => "update"}, :html => { :multipart => true } ) do |f| %>
         <div class="field">
-          <label>My Name*</label>
+          <label>Name*</label>
           <%= f.text_field 'name', :class => 'required max_len', :max_length => 30%>
         </div>
         <div class="field">
-          <label>My Title</label>
+          <label>Title</label>
           <%= text_field 'key_individual', 'title', :class => 'text_width max_len', :max_length => 20 %>
-          <i class="italicized_text">Completing this field is highly recommended, please don't skip it.</i>
+          <i class="italicized_text">Please provide your current title</i>
         </div>
         <div class="field">
-          <label>My Company</label>
+          <label>Company</label>
           <%= text_field 'key_individual', 'name', :class => 'text_width' %>
-          <i class="italicized_text">Completing this field is highly recommended, please don't skip it.</i>
+          <i class="italicized_text">Please provide your company name</i>
         </div>
         <div class="field">
           <label>City*</label>
@@ -46,18 +46,18 @@
        </div>
         <div class="field">
           <label>About Me*</label>
-          <%= f.text_area 'description', :class => 'required max_len tip', :max_length => 2500, :title => "Take a minute to think about this before you start typing. Do:  (1) provide a summary of your experience (10 years of management consulting with McKinsey and BCG), and (2) highlight any industry or functional expertise (worked in 5 countries in Africa, and am an expert on biotech industry). If you are creating a post, then customize your 'About Me' for this (e.g. I created a post on key contacts in the location space in London, and I know this because I'm currently doing a PhD in location at Cambridge, and working on an internet starutp in the location space)." %>
-          <i class="italicized_text">Minimum recommended length is 300 characters.</i>
+          <%= f.text_area 'description', :class => 'required max_len tip', :max_length => 2500, :title => "Take a minute to think about this before you start typing. Do:  (1) provide a summary of your experience, and (2) highlight any industry or functional expertise. If you are creating a post, then customize your 'About Me' for this by highlighting experience that relates to your post." %>
+          <i class="italicized_text">Minimum recommended length is 300 characters</i>
         </div>
         <div class="field">
           <label>Picture</label>
           <%= f.file_field 'photo', :id => "user_image", :size => "23" %>
-          <i> Picture size should be less than 5 MB. </i>
+          <i> Picture size should be less than 5 MB</i>
         </div>
         <h4 class="heading_color">My Areas of Expertise</h4>
         <div class="field">
           <label>Optional</label>
-          <%= f.text_area 'humor_me', :class => 'max_len tip', :max_length => 2500, :title => "Please identify your areas of expertise. Use complete sentences, and back up your claims (e.g. I am an expert on Telecom) with examples (I spent over 10 years working at a Telecom company, and built 20 telecom company financial models)." %>
+          <%= f.text_area 'humor_me', :class => 'max_len tip', :max_length => 2500, :title => "Please identify your areas of expertise. This could be specific skills, or knowledge that you possess. Use complete sentences, and back up your claims with examples." %>
         </div>
         <%= f.hidden_field 'profile_type', :value => params[:profile_type] %>
         <%= f.hidden_field 'interested_in', :id => 'interested_in' %>
