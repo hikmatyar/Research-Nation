@@ -12,15 +12,7 @@
     <label>PT projects</label>
   </div>
   <div class="field" style="margin-bottom:0px;">
-    <input type="checkbox" value="Immediate start" name="interested_in" <%= "checked='checked'" if !fields.blank? && fields.split(",").include?("Immediate start") %> />
-    <label>Immediate start</label>
-  </div>
-  <div class="field" style="margin-bottom:0px;">
-    <input type="checkbox" value="Local only" name="interested_in" <%= "checked='checked'" if !fields.blank? && fields.split(",").include?("Local only") %> />
-    <label>Local only</label>
-  </div>
-  <div class="field" style="margin-bottom:0px;">
-    <input type="checkbox" value="30 mins phone consultation" name="interested_in" <%= "checked='checked'" if !fields.blank? && fields.split(",").include?("30 mins phone consultation") %> />
-    <label style="width:300px;">30 mins phone consultation</label>
+    <input type="checkbox" value="Expert Advisory" name="interested_in" <%= "checked='checked'" if !fields.blank? && fields.split(",").include?("Expert Advisory") %> />
+    <label>Expert Advisory</label>
   </div>
 </div>

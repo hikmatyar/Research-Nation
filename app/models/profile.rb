@@ -66,6 +66,6 @@ class Profile < ActiveRecord::Base
 
 private
   def set_interested_in
-    self.update_attributes :interested_in => "FT projects,PT projects,Immediate start,Local only,30 mins phone consultation"
+    self.update_attributes :interested_in => "FT projects,PT projects,Expert Advisory"
   end
 end

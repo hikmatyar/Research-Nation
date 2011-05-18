@@ -34,8 +34,8 @@ jQuery(document).ready(function(){
 	}
 
 		s = location.pathname.split("/").pop();
-    if (s == "posts" || s == "profiles") {
-      location_class = "."+s;
+    location_class = "."+s
+    if ($(location_class).length > 0) {
       jQuery(location_class).addClass("active");
       jQuery(location_class).addClass("pushed_button");
     }
