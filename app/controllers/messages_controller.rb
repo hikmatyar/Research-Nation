@@ -5,8 +5,11 @@ class MessagesController < ApplicationController
   before_filter :redirect_to_login
 
 	def view
-		@message = Message.find params[:id]
-		return redirect_to :controller => 'users', :action => 'profile' unless ( logged_in? || @message.recipient_id == current_user.id )
+		begin
+		  @message = Message.read(params[:id], current_user)
+    rescue
+      return render_404
+	  end
 	end
 
 	def delete

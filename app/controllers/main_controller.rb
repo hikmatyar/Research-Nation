@@ -25,7 +25,7 @@ class MainController < ApplicationController
 
   def send_message
     message = Message.new
-    message.subject = params["subject"]
+    message.subject = params[:subject]
     message.body = params[:message]
     message.sender = User.find session[:user]
     message.recipient = User.find params[:user_id]
