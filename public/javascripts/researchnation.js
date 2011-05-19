@@ -123,7 +123,7 @@ function showTab(value)
 
 function change_text(){
   if (jQuery("#text_to_change")) {
-		jQuery("#text_to_change").text(new_text[counter])
+		jQuery("#text_to_change").text("<a href='/browse/posts'>" + new_text[counter] + "</a>")
 		setTimeout('change_text()',2000);
 		if (counter >= new_text.length){
 			counter = 0;
