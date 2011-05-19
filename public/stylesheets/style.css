@@ -3849,10 +3849,9 @@ div.fbFooterBorder{
 }
 
 .sell_link{
-	width:60px !important;
+	width:110px !important;
 	border-left:0px;
 	border-right:none !important;
-	*border-left:1px solid #CCC !important;
 	margin-left:60px;
 	*margin-left:0px;
 	margin-left:10px\0/;
@@ -3864,12 +3863,12 @@ div.fbFooterBorder{
 	background-color: #FED221 !important;
 	border: 1px solid #EDD469;
 	position:relative;
-	top:-7px;
+	top:-5px;
 	margin-right:25px;
 	color:#000 !important;
 	cursor: pointer;
 	font-size: 12pt;
-	padding: 5px 1px 5px 1px;s
+	padding: 2px 1px 2px 1px;s
 	text-align: center;
 	border-radius:5px;
 	-moz-border-radius:5px;
@@ -3881,7 +3880,7 @@ div.fbFooterBorder{
 	*top:0px;
 	*margin-right:10px !important;
 	*color:#AC7333 !important;
-	*cursor: pointer;
+	cursor: pointer;
 	*font-size: 12px;
 	*padding:0px;
 	*text-align: center;
@@ -3893,7 +3892,7 @@ div.fbFooterBorder{
 	top:0px\0/;
 	margin-right:10px\0/ !important;
 	color:#AC7333\0/ !important;
-	cursor: pointer\0/;
+	cursor: pointer;
 	font-size: 12px\0/;
 	padding:0px\0/;
 	text-align: center\0/;
