@@ -2861,10 +2861,12 @@ div.fbFooterBorder{
 .check_box_text{
 	width:350px !important;
 	margin-top:0px !important;
+	margin-top:5px\0/ !important;
 }
 
 .Interested_field label{
-	margin-top:0px !important;	
+	margin-top:0px !important;
+	margin-top:5px\0/ !important;	
 }
 
 .conditions{
@@ -3130,6 +3132,7 @@ div.fbFooterBorder{
 .terms_and_conditions a:hover{
 	background:none !important;
 	color:#AC7333 !important;
+	cursor:pointer;
 	text-decoration:underline !important;
 }
 
@@ -3832,8 +3835,9 @@ div.fbFooterBorder{
 
 .create_link{
 	float:right !important;
-	border:0px !important;
 	width:80px !important;
+	border-left:0px !important;
+	border-right:1px solid #CCC;
 }
 
 .buy_link{
@@ -3848,8 +3852,12 @@ div.fbFooterBorder{
 	width:60px !important;
 	border-left:0px;
 	border-right:none !important;
+	*border-left:1px solid #CCC !important;
 	margin-left:60px;
+	*margin-left:0px;
+	margin-left:10px\0/;
 }
+
 
 
 .sell_link a{
@@ -3866,8 +3874,30 @@ div.fbFooterBorder{
 	border-radius:5px;
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
-	border-radius: 5px;
-	behavior:url(/images/border-radius.htc);
+	
+	*background:none !important;
+	*border:none;
+	*position:relative;
+	*top:0px;
+	*margin-right:10px !important;
+	*color:#AC7333 !important;
+	*cursor: pointer;
+	*font-size: 12px;
+	*padding:0px;
+	*text-align: center;
+	*border-radius:5px;
+	
+	background:none\0/ !important;
+	border:none\0/;
+	position:relative\0/;
+	top:0px\0/;
+	margin-right:10px\0/ !important;
+	color:#AC7333\0/ !important;
+	cursor: pointer\0/;
+	font-size: 12px\0/;
+	padding:0px\0/;
+	text-align: center\0/;
+	border-radius:5px\0/;
 }
 
 .sell_link a:hover{
@@ -4124,6 +4154,9 @@ div.fbFooterBorder{
     margin-right:20px;
 }
 
+.admin{
+	width:80px !important;
+}
 .paid-earnings-container{
     border-bottom: 1px dotted #CCCCCC;
     float: left;
@@ -4169,50 +4202,55 @@ div.fbFooterBorder{
 	color:#AC7333;
 }
 
-.resrives_message{
+.resrive_message{
 	float:left;
 	width:100%;
 }
 
-.resrives_message ul{
+.resrive_message ul{
+	float:left;
 	margin:0px;
 	padding:10px;
+	width:638px;
 	font-weight:bold;
+	border-bottom:1px dotted #CCC;
 }
 
 .messages_from{
 	float:left;
-	padding-top:5px;
 	width:60px;
 	text-align:left;
 }
 
 .messages_from img{
 	margin-top:-8px\8/;
-	margin-bottom:5px;
 }
 
 .messages_date{
 	float:left;
 	width:85px;
-	padding-top:5px;
 	text-align:left;
 }
 
 .messages_subject{
 	float:left;
-	width:370px;
-	padding-top:5px;
+	width:410px;
 	text-align:left;
 }
 
+.messages_subject a.bold{
+	font-weight:bold;
+}
+
 .messages_deleted{
-	width:80px;
+	float:left;
+	width:60px;
+	margin-top:5px;
+	margin-top:-10px\0/;
 }
 
 .position{
 	margin-top:8px;
-	margin-top:0px\0/;
 	font-weight:normal !important;
 }
 
@@ -4223,31 +4261,58 @@ div.fbFooterBorder{
 .post_listing{
 	float:left;
 	width:100%;
-	margin:5px 0px 5px 0px;
+	margin:0px;
 }
 
+.post_listing b{
+	color:#000;
+	margin:0px !important;
+}
+
+.post_bordder_less{
+	border:none !important;
+}
+
+.post_listing ul{
+	float:left;
+	width:638px;
+	margin:0px;
+	padding:10px;
+	border-bottom:1px dotted #CCC;
+}
+
+.post_listing li{
+	float:left;
+	list-style:none;	
+}
 
 .post_listing_title{
-	width:300px;
+	width:295px;
 	text-align:left;
+	margin-top:10px\0/;
 }
 
 .post_listing_price{
 	width:60px;
+	margin-top:10px\0/;
 }
 
 .post_listing_date{
 	width:70px;
 	text-align:left;
+	margin-top:10px\0/;
 }
 
 .post_listing_sold{
 	width:70px;
 	text-align:left;
+	margin-top:10px\0/;
 }
 
 .post_listing_edit, .post_listing_deleted{
+	float:left;
 	width:62px;
+	margin-top:-8px\0/;
 }
 
 .post_listing_title a, .post_listing_price span, .post_listing_date span, .post_listing_sold span{
