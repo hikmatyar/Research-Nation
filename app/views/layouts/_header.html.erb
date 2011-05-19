@@ -4,7 +4,7 @@
 	  <ul class="main_menu">
 	  	<li class="sell_link"><%= link_to "Create", :controller => "resources", :action => "new" %></li>
 	    <% if logged_in? %>
-	    	<li><%= (link_to 'Logout', :controller => 'users', :action => 'logout')  %></li>
+	    	<li class="logout"><%= (link_to 'Logout', :controller => 'users', :action => 'logout')  %></li>
         <% end %>
 		<% if is_admin? %>
 	      <li class="create_link"><%= (link_to "Admin", :controller => "admin", :action => "dashboard") %></li>
