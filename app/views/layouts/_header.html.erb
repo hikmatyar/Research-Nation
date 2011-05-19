@@ -7,7 +7,7 @@
 	    	<li class="logout"><%= (link_to 'Logout', :controller => 'users', :action => 'logout')  %></li>
         <% end %>
 		<% if is_admin? %>
-	      <li class="create_link"><%= (link_to "Admin", :controller => "admin", :action => "dashboard") %></li>
+	      <li class="admin"><%= (link_to "Admin", :controller => "admin", :action => "dashboard") %></li>
 	    <% end %>
 	    <% unless logged_in? %>
           <li class="create_link"><%= (link_to 'Login', :controller => 'users', :action => 'register', :opt => 'login') %></li>
