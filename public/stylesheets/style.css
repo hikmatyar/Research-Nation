@@ -2860,6 +2860,11 @@ div.fbFooterBorder{
 
 .check_box_text{
 	width:350px !important;
+	margin-top:0px !important;
+}
+
+.Interested_field label{
+	margin-top:0px !important;	
 }
 
 .conditions{
@@ -3389,7 +3394,7 @@ div.fbFooterBorder{
 }
 
 .user_profile_buttons a{
-	padding:5px 15px 5px 15px !important;
+	padding:0px 15px 5px 15px !important;
 	font-size:10px;
 	font-weight: normal;
 }
@@ -3832,7 +3837,11 @@ div.fbFooterBorder{
 }
 
 .buy_link{
-	width:90px !important;
+	width:70px !important;
+}
+
+.logout{
+	width:70px !important;
 }
 
 .sell_link{
@@ -3842,20 +3851,23 @@ div.fbFooterBorder{
 	margin-left:60px;
 }
 
+
 .sell_link a{
-	background-color: #FED221;
+	background-color: #FED221 !important;
 	border: 1px solid #EDD469;
 	position:relative;
 	top:-7px;
-	margin-left:5px;
+	margin-right:25px;
 	color:#000 !important;
 	cursor: pointer;
 	font-size: 12pt;
-	padding: 5px 1px 5px 1px;
+	padding: 5px 1px 5px 1px;s
 	text-align: center;
 	border-radius:5px;
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
+	border-radius: 5px;
+	behavior:url(/images/border-radius.htc);
 }
 
 .sell_link a:hover{
@@ -4155,4 +4167,89 @@ div.fbFooterBorder{
 
 #text_to_change{
 	color:#AC7333;
+}
+
+.resrives_message{
+	float:left;
+	width:100%;
+}
+
+.resrives_message ul{
+	margin:0px;
+	padding:10px;
+	font-weight:bold;
+}
+
+.messages_from{
+	float:left;
+	padding-top:5px;
+	width:60px;
+	text-align:left;
+}
+
+.messages_from img{
+	margin-top:-8px\8/;
+	margin-bottom:5px;
+}
+
+.messages_date{
+	float:left;
+	width:85px;
+	padding-top:5px;
+	text-align:left;
+}
+
+.messages_subject{
+	float:left;
+	width:370px;
+	padding-top:5px;
+	text-align:left;
+}
+
+.messages_deleted{
+	width:80px;
+}
+
+.position{
+	margin-top:8px;
+	margin-top:0px\0/;
+	font-weight:normal !important;
+}
+
+.position img{
+	margin-top:5px !important;	
+}
+
+.post_listing{
+	float:left;
+	width:100%;
+	margin:5px 0px 5px 0px;
+}
+
+
+.post_listing_title{
+	width:300px;
+	text-align:left;
+}
+
+.post_listing_price{
+	width:60px;
+}
+
+.post_listing_date{
+	width:70px;
+	text-align:left;
+}
+
+.post_listing_sold{
+	width:70px;
+	text-align:left;
+}
+
+.post_listing_edit, .post_listing_deleted{
+	width:62px;
+}
+
+.post_listing_title a, .post_listing_price span, .post_listing_date span, .post_listing_sold span{
+	font-weight:normal !important;
 }
