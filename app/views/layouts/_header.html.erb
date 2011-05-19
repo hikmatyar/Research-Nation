@@ -2,7 +2,7 @@
 	<%= link_to image_tag("logo.png"),:controller => "main", :action => "index" %>
 	<div class="main_menu_box">
 	  <ul class="main_menu">
-	  	<li class="sell_link"><%= link_to "Create", :controller => "resources", :action => "new" %></li>
+	  	<li class="sell_link"><%= link_to "Create a post", :controller => "resources", :action => "new" %></li>
 	    <% if logged_in? %>
 	    	<li class="logout"><%= (link_to 'Logout', :controller => 'users', :action => 'logout')  %></li>
         <% end %>
