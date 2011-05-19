@@ -4314,6 +4314,43 @@ div.fbFooterBorder{
 	margin-top:-8px\0/;
 }
 
+.post_listing_deleted1{
+	float:left;
+	width:62px;
+	margin-top:12px\0/;
+}
+
+
 .post_listing_title a, .post_listing_price span, .post_listing_date span, .post_listing_sold span{
 	font-weight:normal !important;
+}
+
+
+.purchases_title{
+	float:left;
+	width:100%;
+}
+
+.purchases_title ul{
+	float:left;
+	margin:0px;
+	padding:0px;	
+}
+
+.purchases_title li{
+	float:left;
+	list-style:none;	
+}
+
+
+.purchases_title title{
+	width:300px;	
+}
+
+.purchases_title price{
+	width:100px;	
+}
+
+.purchases_title date {
+	width:100px;	
 }
