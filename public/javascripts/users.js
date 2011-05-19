@@ -1,18 +1,18 @@
 $('document').ready(function(){
 
   $('#messages-link').click(function() {
-    $('#earnings-link').css("text-decoration","none");
+    remove_earnings_css();
   });
 
   $('#purchase-link').click(function() {
     $.ajax({
       url: "/users/purchases",
       success: function(data){
-        $("#purchases").show();
         $("#purchases").html(data);
+        $("#purchases").show();
       }
     })
-    $('#earnings-link').css("text-decoration","none");
+    remove_earnings_css();
   });
 
   $('#listings-link').click(function() {
@@ -23,12 +23,11 @@ $('document').ready(function(){
         $("#listings").show();
       }
     })
-    $('#earnings-link').css("text-decoration","none");
+    remove_earnings_css();
   });
 
   $('#current-earnings-link, #earnings-link').click(function() {
     $('#current-earnings-link').css("text-decoration","underline");
-
     $.ajax({
       url: "/users/pending_earnings",
       success: function(data){
@@ -109,7 +108,6 @@ function showTab(value)
 	}
 }
 
-
 function bind_functions() {
 
   $('#previous-earnings-link').bind('click', function() {
@@ -117,8 +115,6 @@ function bind_functions() {
     $('a[id*=earnings-link]').css("text-decoration","none");
     $(this).css("text-decoration","underline");
     $($(this).attr('href')).show();
-
-    $('#earnings-link').css("text-decoration","underline");
   });
 
   $('#preferences-link').bind('click', function() {
@@ -126,8 +122,6 @@ function bind_functions() {
     $('a[id*=earnings-link]').css("text-decoration","none");
     $(this).css("text-decoration","underline");
     $($(this).attr('href')).show();
-
-    $('#earnings-link').css("text-decoration","underline");
   });
 
   $('#current-earnings-link').bind('click', function() {
@@ -135,7 +129,12 @@ function bind_functions() {
     $('#preferences-link').css("text-decoration","none");
     $(this).css("text-decoration","underline");
     $($(this).attr('href')).show();
-
-    $('#earnings-link').css("text-decoration","underline");
   });
+  $('#earnings-link').css("text-decoration","underline");
 }
+
+function remove_earnings_css() {
+  $('#earnings-link').css("text-decoration","none");
+  $('a[id*=earnings-link]').css("text-decoration","none");
+}
+
