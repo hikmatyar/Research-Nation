@@ -1,9 +1,9 @@
-<% content_for :html_title, 'The best place to find information on emerging markets' %>
+<% content_for :html_title, 'We help you publish your insights, and make money.' %>
 <div class="banner">
   <% unless flash[:notice].blank? %><p class="flash"><%= flash[:notice] %></p><% end %>
 	<div class="banner_text">
 		<div class="content_back main_page_content_container">
-			<h2>The best place to find information on emerging markets</h2>
+			<h2>We help you publish your insights, and make money.</h2>
 		    <div class="altering_text"><span>You can use Research Nation to buy and sell</span><span id="text_to_change"></span></div>
 			<% unless logged_in? %>
 				<%= render :partial => 'users/errors' %>
