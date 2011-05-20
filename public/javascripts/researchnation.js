@@ -1,4 +1,4 @@
-var new_text = ["industry insights","company analytics","contact lists","datasets","financial projections","market studies","competitive analyses","datasets"];
+var new_text = ["industry insights","company analytics","contact lists","datasets","financial projections","market studies","competitive analyses"];
 var counter = 0;
 jQuery(document).ready(function(){
 
@@ -34,10 +34,12 @@ jQuery(document).ready(function(){
 	}
 
 		s = location.pathname.split("/").pop();
-    location_class = "."+s
-    if ($(location_class).length > 0) {
-      jQuery(location_class).addClass("active");
-      jQuery(location_class).addClass("pushed_button");
+    if (s.length > 1){
+      location_class = "."+s;
+      if ($(location_class).length > 0) {
+        jQuery(location_class).addClass("active");
+        jQuery(location_class).addClass("pushed_button");
+      }
     }
 
 	//When page loads...
@@ -123,7 +125,7 @@ function showTab(value)
 
 function change_text(){
   if (jQuery("#text_to_change")) {
-		jQuery("#text_to_change").text("<a href='/browse/posts'>" + new_text[counter] + "</a>")
+		jQuery("#text_to_change").html("<a href='/browse/posts'>" + new_text[counter] + "</a>")
 		setTimeout('change_text()',2000);
 		if (counter >= new_text.length){
 			counter = 0;
