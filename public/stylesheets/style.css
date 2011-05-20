@@ -4197,16 +4197,21 @@ div.fbFooterBorder{
 	width:100%;
 }
 
-#text_to_change{
+#text_to_change a{
 	color:#AC7333;
 }
 
-.resrive_message{
+#text_to_change a:hover{
+	margin-left:-10px;
+	text-decoration:underline;
+}
+
+.received_message{
 	float:left;
 	width:100%;
 }
 
-.resrive_message ul{
+.received_message ul{
 	float:left;
 	margin:0px;
 	padding:10px;
