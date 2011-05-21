@@ -1,10 +1,10 @@
-<% content_for :html_title, 'Everything you ever wanted to know about a topic. On one page.' %>
+<% content_for :html_title, 'Market Research, Simplified.' %>
 <div class="banner">
   <% unless flash[:notice].blank? %><p class="flash"><%= flash[:notice] %></p><% end %>
 	<div class="banner_text">
 		<div class="content_back main_page_content_container">
-			<h2>The 1-Page Revolution</h2>
-		    <div class="altering_text"><span>Everything you ever wanted to know about a topic. On one page. </div>
+			<h2>Market Research, Simplified.</h2>
+		    <div class="altering_text"><span>A quick, easy way to find people and posts</div>
 			<% unless logged_in? %>
 				<%= render :partial => 'users/errors' %>
 				<% form_for(@user , :url => {:controller => "users", :action => "create" } ) do |f| %>
