@@ -3,8 +3,8 @@
   <% unless flash[:notice].blank? %><p class="flash"><%= flash[:notice] %></p><% end %>
 	<div class="banner_text">
 		<div class="content_back main_page_content_container">
-			<h2>We help you publish your insights, and make money.</h2>
-		    <div class="altering_text"><span>You can use Research Nation to buy and sell</span><span id="text_to_change"></span></div>
+			<h2>The 1-Page Revolution</h2>
+		    <div class="altering_text"><span>Everything you ever wanted to know about a topic. On one page. </div>
 			<% unless logged_in? %>
 				<%= render :partial => 'users/errors' %>
 				<% form_for(@user , :url => {:controller => "users", :action => "create" } ) do |f| %>
@@ -22,7 +22,7 @@
 		      <%= render :partial => "/layouts/select_user_type", :locals => {:f => f} %>
 		    </div>
 				</div>
-				<div class="banner_sign_up_button" style="margin-left:0px !important;"><%= (f.submit "Sign Up for Premium Access", :class => "green_button")%></div>
+				<div class="banner_sign_up_button" style="margin-left:0px !important;"><%= (f.submit "Join the Revolution!", :class => "green_button")%></div>
 				<div class="main_terms_and_conditions">
 					<p>By signing up you agree to our </p><%= link_to "Terms of Service ", :controller => "main", :action => "privacy" %><p> and</p> <%= link_to "Privacy Policy", :controller => "main", :action => "privacy" %></div>
 				<% end %>
