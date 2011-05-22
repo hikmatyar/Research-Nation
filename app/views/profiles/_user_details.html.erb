@@ -12,12 +12,12 @@
         <p class="about_field_text"><%= @profile.humor_me.gsub("\n", "<br />") %></span>
       </div>
 <% end %>
-<% unless @profile.user.resources.blank? %>
+<% unless @profile.user.valid_resources.blank? %>
       <h4 class="heading_color">Posts Created</h4>
-      <% @profile.user.resources.each do |post| %>
-      <div class="field1 user_links">
-        <%= link_to (  post.title, { :controller => 'resources', :action => 'seller_page', :url_slug => post.url_slug },  { :class => "web_link" }) %>
-      </div>
+      <% @profile.user.valid_resources.each do |post| %>
+          <div class="field1 user_links">
+            <%= link_to (  post.title, { :controller => 'resources', :action => 'seller_page', :url_slug => post.url_slug },  { :class => "web_link" }) %>
+          </div>
       <% end %>
 <% end %>
 <% unless @profile.interested_in.blank? %>
