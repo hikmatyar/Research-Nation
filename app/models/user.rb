@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   has_many :requests
   has_many :resources
-  has_many :valid_resources, :conditions => {:is_deleted => false}
+  has_many :valid_resources, :conditions => {:is_deleted => false}, :class_name => "Resource"
   has_many :votes
   has_one :profile
   has_one :payment_preference
