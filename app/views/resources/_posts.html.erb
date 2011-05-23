@@ -13,7 +13,7 @@
             <% end %>
           </div>
           <div class="user_name">
-            <span><%= link_to ( truncate(resource.title, 30, "..."), :action => 'seller_page', :url_slug => resource.url_slug ) %></span>
+            <span><%= link_to ( truncate(resource.title, 40, "..."), :action => 'seller_page', :url_slug => resource.url_slug ) %></span>
             <p> <%= resource.user.profile.name unless resource.user.profile.blank? %> </p>
           </div>
           <div class="tags_box">

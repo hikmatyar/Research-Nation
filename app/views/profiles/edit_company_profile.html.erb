@@ -9,14 +9,14 @@
     <div class="seller_back">
       <div class="create_heading_box">
         <h1 style="margin-top:5px !important; margin-bottom:5px !important;">Company Profile.</h1>
-        <b>Please only create your profile if you want to be shown in our public listing, and possess expertise in the market research industry.
+        <b>You must possess expertise in the market research industry to fill out a profile. All profiles are publicly viewable and indexed on Google.
         </b>
       </div>
       <div style="min-height: 275px;" class="sign_up_box" id="tabOne">
         <h4 class="heading_color" style="margin-top:5px; border-top:0px;">Company Details</h4>
         <% form_for(@profile , :url => {:controller => "profiles", :action => "update" }, :html => { :multipart => true } ) do |f| %>
           <div class="field">
-            <label>Company*</label>
+            <label>Name*</label>
             <%= f.text_field 'name', :class => 'required max_len', :max_length => 30 %>
           </div>
           <div class="field">
@@ -32,7 +32,7 @@
             <%= f.text_field 'website', :class => 'text_width' %>
           </div>
           <div class="field">
-            <label>About Us*</label>
+            <label>Products & Services*</label>
             <%= f.text_area 'description', :class => 'required max_len tip', :max_length => 2500, :title => "Please use this section to highlight your capabilities and to 'sell' yourself. Try to personalize it and be genuine, don't just provide a checklist of services you can provide." %>
           </div>
           <div class="field">
@@ -44,11 +44,11 @@
             <%= f.text_field 'competitors', :class => 'text_width max_len tip', :max_length => 500, :title => "Please provide names of your two or three top competitors. We ask for this information so that we can keep you up to date on your competitors activities on Research Nation (for example, we can notify you any time your competitor adds a new document to sell)." %>
           </div>
           <div class="field">
-            <label>Company Type*</label>
+            <label>Company Size*</label>
             <%= ( f.select "company_type", @company_type, { :include_blank => true }, {:class => 'required select_list' }) %>
           </div>
           <div class="field">
-            <label>Services*</label>
+            <label>Company Type*</label>
             <%= ( f.select "services", @services, { :include_blank => true }, {:class => 'required select_list' }) %>
           </div>
           <h4 class="heading_color">Key Individual</h4>
@@ -64,10 +64,10 @@
             <label>LinkedIn</label>
             <%= text_field 'key_individual', 'linkedin', :class => 'text_width tip', :title => "Not sure what your LinkedIn website is? If you logon to LinkedIn and go to your profile page, it should be listed in the first paragraph." %>
           </div>
-          <h4 class="heading_color">Setting Expectations</h4>
+          <h4 class="heading_color">Work History (Clients, Projects)</h4>
           <div class="field">
             <label>Optional</label>
-            <%= f.text_area 'humor_me', :class => 'max_len tip', :max_length => 2500, :title => "Please describe how a typical client engagement would proceed. Give your prospective clients a feel for what it's like to work with you and your team. Try to structure your answer as best you can, and feel free to cite prior client experience to bring credibility to your words." %>
+            <%= f.text_area 'humor_me', :class => 'max_len tip', :max_length => 2500, :title => "Please provide details on your work history, and try to structure your answer to address one or all of the following: (1) past/current clients (names not necessary); (2) geographical expertise; (3) industry focus; (4) product focus" %>
           </div>
           <%= f.hidden_field 'profile_type', :value => params[:profile_type] %>
           <%= f.hidden_field 'interested_in', :id => 'interested_in' %>
