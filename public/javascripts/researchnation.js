@@ -1,4 +1,4 @@
-var new_text = ["industry insights","company analytics","due diligence","datasets","financial projections","market studies","competitive analyses", ];
+var new_text = ["industry insights","company analytics","due diligence","datasets","financial projections","market studies","competitive analyses"];
 var counter = 0;
 jQuery(document).ready(function(){
 
