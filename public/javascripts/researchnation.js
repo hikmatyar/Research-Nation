@@ -125,14 +125,12 @@ function showTab(value)
 
 function change_text(){
   if (jQuery("#text_to_change")) {
-		jQuery("#text_to_change").html("<a href='/browse/posts'>" + new_text[counter] + "</a>")
-		setTimeout('change_text()',2000);
-		if (counter >= new_text.length){
-			counter = 0;
-		}
-		else
-		{
-			counter++;
-		}
+    if(counter < new_text.length){
+      jQuery("#text_to_change").html("<a href='/browse/posts'>" + new_text[counter++] + "</a>");
+    }
+    else{
+      counter = 0;
+    }
+    setTimeout("change_text();",1000);
   }
 }
