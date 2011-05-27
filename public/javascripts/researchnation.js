@@ -1,4 +1,4 @@
-var new_text = ["industry insights","company analytics","due diligence","datasets","financial projections","market studies","competitive analyses"];
+var new_text = ["business","startups","travel","housing","investing","finding a job","anything else!"];
 var counter = 0;
 jQuery(document).ready(function(){
 
