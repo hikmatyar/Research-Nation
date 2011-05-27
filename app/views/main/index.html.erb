@@ -1,10 +1,10 @@
-<% content_for :html_title, 'Welcome to Research Nation!' %>
+<% content_for :html_title, 'Welcome!' %>
 <div class="banner">
   <% unless flash[:notice].blank? %><p class="flash"><%= flash[:notice] %></p><% end %>
 	<div class="banner_text">
 		<div class="content_back main_page_content_container">
-			<h2>The One Page Revolution.</h2>
-		    <div class="altering_text"><span>You can use Research Nation to buy and sell one pagers on</span><span id="text_to_change"></span></div>
+			<h2>Write a one-pager on a topic of your choice, and make money.</h2>
+		    <div class="altering_text"><span>You can use Research Nation to publish and sell one pagers on</span><span id="text_to_change"></span></div>
 		    <% unless logged_in? %>
 				<%= render :partial => 'users/errors' %>
 				<% form_for(@user , :url => {:controller => "users", :action => "create" } ) do |f| %>
@@ -31,7 +31,7 @@
 		</div>
 	</div>
 	<%= hidden_field_tag 'create_post', :value => false%>
-	<a href="http://researchnation.net/post/4-lessons-learned-from-a-travel-industry-startup"><img src="/images/banner.jpg" /></a>
+	<a href="http://researchnation.net/browse/posts"><img src="/images/banner.jpg" /></a>
 </div>
 <div class="facebook_like">
 	<iframe src="http://www.facebook.com/plugins/like.php?href=www.researchnation.net&amp;layout=button_count&amp;show_faces=true&amp;width=100&amp;action=like&amp;font&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe>

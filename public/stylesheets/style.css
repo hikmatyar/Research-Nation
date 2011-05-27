@@ -143,7 +143,7 @@ a:focus {
 }
 
 .banner_text h2 {
-    color: #525252;
+    color: #648310;
     float: left;
     font-weight:bold;
     font-size: 28px;
@@ -169,7 +169,7 @@ a:focus {
 
 .banner img {
     float: right;
-    margin-top:20px;
+    margin-top:40px;
     border:0px !important;
 }
 
@@ -3197,7 +3197,7 @@ div.fbFooterBorder{
 	width:314px !important;
 }
 
-.banner_text {
+.banner_text {   
     float: left;
     width: 360px;
 }
