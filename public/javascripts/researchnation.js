@@ -1,4 +1,4 @@
-var new_text = ["business","startups","travel","housing","investing","finding a job","anything else!"];
+var new_text = ["entrepreneurs","independent professionals","graduate students","anyone who has expertise to share!"];
 var counter = 0;
 jQuery(document).ready(function(){
 
