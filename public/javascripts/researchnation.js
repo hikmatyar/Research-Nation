@@ -131,6 +131,6 @@ function change_text(){
     else{
       counter = 0;
     }
-    setTimeout("change_text();",1000);
+    setTimeout("change_text();",5000);
   }
 }
