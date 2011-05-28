@@ -4,7 +4,7 @@
 	<div class="banner_text">
 		<div class="content_back main_page_content_container">
 			<h2>Write a one-pager on a topic of your choice, and make money.</h2>
-		    <div class="altering_text"><span>You can use Research Nation to publish and sell one pagers on</span><span id="text_to_change"></span></div>
+		    <div class="altering_text"><span>You can use Research Nation to publish one pagers on</span><span id="text_to_change"></span></div>
 		    <% unless logged_in? %>
 				<%= render :partial => 'users/errors' %>
 				<% form_for(@user , :url => {:controller => "users", :action => "create" } ) do |f| %>
