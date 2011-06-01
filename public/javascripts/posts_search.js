@@ -32,6 +32,21 @@ $('document').ready(function(){
     });
   });
 
+
+  // Changes to the select field of post type
+  $('.field select').change(function(){
+    populate_array_text();
+
+    url = "/resources/filter_results?industry="+ industries.join(",") +"&geography="+ geographies.join(",") +"&price=" + $(":range").val() +"&type=" + $("#post_type").val();
+
+    $.ajax({
+      url: url,
+      success: function(data){
+        $("#left_content").html(data);
+      }
+    });
+ });
+
   $(":range").rangeinput().change(function(){
       populate_array_text();
 

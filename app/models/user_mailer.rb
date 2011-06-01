@@ -32,6 +32,15 @@ class UserMailer < ActionMailer::Base
       sent_on Time.now
   end
 
+  def request_resource(resource)
+      recipients   resource.user.email
+      subject      "Research Nation - You have received a request for #{resource.title}"
+      from         "no-reply@researchnation.net"
+      content_type "text/html"
+      body         :user => resource.user,
+                   :resource => resource
+      sent_on Time.now
+  end
 
   def payment_sent_email(user, start_time, end_time, earnings)
       recipients   user.email

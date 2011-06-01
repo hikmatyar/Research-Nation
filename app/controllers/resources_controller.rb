@@ -34,6 +34,17 @@ class ResourcesController < ApplicationController
     @related_posts = Resource.find :all, :conditions => ['(industry =? or geography = ?) and (id != ?)', @resource.industry, @resource.geography, @resource.id ], :limit => 10, :order => "industry, geography and created_at"
   end
 
+  def request_resource
+    @resource = Resource.find_by_url_slug params[:url_slug], :conditions => {:is_deleted => false}
+    unless @resource.blank?
+      UserMailer.deliver_request_resource(@resource)
+      flash[:notice] = "Thank you, your request has been submitted to the author, and he will notify you directly as and when his publication is ready to be downloaded."
+    else
+      flash[:notice] = "Post not found."
+    end
+    return redirect_to :controller => "resources", :action => "seller_page", :url_slug => params[:url_slug]
+  end
+
   def view_posts
     @user = User.find(session[:user]) if logged_in?
     if params[:filter].blank?
@@ -51,14 +62,14 @@ class ResourcesController < ApplicationController
       user.update_attributes(session[:user_details])
       resource.user_id = user.id
     end
-    original_file_attachments = params[:attachment][:original]
+    original_file_attachments = params[:attachment][:original] unless params[:attachment].blank?
 
     if resource.save
       resource.update_url_slug
       profile = resource.user.profile
       profile.update_profile_information(params[:profile], params[:key_individual]) unless params[:profile].blank?
-      Attachment.add_file(params[:attachment][:sample], resource.id, "sample") unless params[:attachment][:sample].blank?
-      original_file_attachments.each do |key, file|
+      Attachment.add_file(params[:attachment][:sample], resource.id, "sample") unless params[:attachment].blank? || params[:attachment][:sample].blank?
+      original_file_attachments && original_file_attachments.each do |key, file|
         Attachment.add_file(file, resource.id, "original")
       end
       session[:user_details] = nil
@@ -117,6 +128,13 @@ class ResourcesController < ApplicationController
       conditions += " and industry IN (#{industry})"
     end
     @resources = Resource.find :all, :conditions => conditions, :order => 'selling_price ASC'
+    unless params[:type].blank?
+      if params[:type] == "offered"
+        @resources = @resources.select{|resource| resource.attachments.blank? == true}
+      elsif params[:type] == "published"
+        @resources = @resources.select{|resource| resource.attachments.blank? == false}
+      end
+    end
     render :partial => 'posts'
   end
 
