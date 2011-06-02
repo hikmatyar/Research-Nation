@@ -1,4 +1,4 @@
-<% content_for :html_title, 'Create A Post' %>
+<% content_for :html_title, 'Create a Post' %>
 <%= javascript_include_tag "upload_form" %>
 
 <div class="content">
@@ -15,9 +15,7 @@
           </div>
           <div class="create_heading_box">
             <h1 style="margin-top:5px !important; margin-bottom:5px !important;">Create a Post.</h1>
-            <b>You don't need to have a one-pager ready in order to offer it. Once your post is created, you can edit it any time (and attach/remove your one-pager). Get started below (or, fill out a profile first by clicking
-             <%= (link_to "here", :controller => 'profiles', :action => 'edit_individual_profile', :id => current_user.id) if current_user && current_user.individual? %>
-            <%= (link_to "here", :controller => 'profiles', :action => 'edit_company_profile', :id => current_user.id) if current_user && current_user.company? %>).
+            <b>It takes 60 seconds to create a post, and all you need to do is describe your knowledge/offering for now (buyers message you if they're interested). You can edit and/or delete your post at any time.
             </b>
           </div>
           <div class="sign_up_box">
