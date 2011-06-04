@@ -25,7 +25,7 @@
           <h2 style="margin-top:25px;"><%= @profile.name %></h2>
           <span><%= @profile.city %>, <%= @profile.country %></span>
           <% unless @profile.user.company? || @profile.key_individual.blank? %>
-            <span class="field_text"><%= @profile.key_individual.title %>, <%= @profile.key_individual.name %></span>
+            <span class="field_text"><%= @profile.key_individual.title %> <%= (", " + @profile.key_individual.name)  unless @profile.key_individual.name.blank? %></span>
           <% end %>
         </div>
         <div class="web_links">

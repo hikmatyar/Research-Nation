@@ -13,10 +13,12 @@
       <label>Title</label>
       <span class="field_text"><%= @profile.key_individual.title %></span>
     </div>
-    <div class="field1">
-      <label>LinkedIn</label>
-      <%= (link_to "#{@profile.key_individual.linkedin }", @profile.key_individual.linkedin, :target => "_blank", :class => 'web_link') %>
-    </div>
+    <% unless @profile.key_individual.linkedin.blank? %>
+      <div class="field1">
+        <label>LinkedIn</label>
+        <%= (link_to "#{@profile.key_individual.linkedin }", @profile.key_individual.linkedin, :target => "_blank", :class => 'web_link') %>
+      </div>
+    <% end %>
     <% unless @profile.humor_me.blank? %>
       <h4 class="heading_color">Setting Expectations</h4>
       <div class="field1">
