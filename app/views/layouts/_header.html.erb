@@ -13,7 +13,7 @@
           <li class="create_link"><%= (link_to 'Login', :controller => 'users', :action => 'register', :opt => 'login') %></li>
         <% end %>
 	    <li class="buy_link" <%= "class='borderless'" unless logged_in?%> >
-          <%= (link_to 'Browse', :controller => 'resources', :action => 'view_posts') %>
+          <%= (link_to 'Browse', :controller => 'profiles', :action => 'view_profile_list') %>
         </li>
         <% if logged_in? %>
           <li style="border-left:0px;" class="user_dasboard">
