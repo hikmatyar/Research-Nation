@@ -31,7 +31,7 @@ class ResourcesController < ApplicationController
     @resource = session[:admin].blank? ? (Resource.find_by_url_slug params[:url_slug], :conditions => {:is_deleted => false}) : (Resource.find_by_url_slug params[:url_slug])
     return render_404  if @resource.blank?
     @sample = @resource.attachments.sample.first unless @resource.attachments.sample.blank?
-    @related_posts = Resource.find :all, :conditions => ['(industry =? or geography = ?) and (id != ?)', @resource.industry, @resource.geography, @resource.id ], :limit => 10, :order => "industry, geography and created_at"
+    @related_posts = Resource.find :all, :conditions => ['(industry =? or geography = ?) and (id != ?) AND is_deleted =?', @resource.industry, @resource.geography, @resource.id, false ], :limit => 10, :order => "industry, geography and created_at"
   end
 
   def request_resource
