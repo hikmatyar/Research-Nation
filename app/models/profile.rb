@@ -17,7 +17,7 @@ class Profile < ActiveRecord::Base
 
 #  validates_attachment_size :photo, :less_than => 1.megabytes, :message => "Picture size should be less than 5 MB", :allow_nil => true
 
-  validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png', 'image/gif']
+  validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png', 'image/gif'], :message => "Please attach a picture which is of a valid file format, that is either JPG, PNG or GIF."
 
   named_scope :edited, :conditions => {:is_edited => true}, :order => "created_at DESC"
 

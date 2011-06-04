@@ -12,7 +12,6 @@ class UserMailer < ActionMailer::Base
   end
 
   def password_reset_email(user, token)
-
       recipients   user.email
       subject      "Research Nation - Password Reset"
       from         "no-reply@researchnation.net"
@@ -36,6 +35,7 @@ class UserMailer < ActionMailer::Base
       recipients   resource.user.email
       subject      "Research Nation - You have received a request for #{resource.title}"
       from         "no-reply@researchnation.net"
+      bcc           "admin@researchnation.net"
       content_type "text/html"
       body         :user => resource.user,
                    :resource => resource
