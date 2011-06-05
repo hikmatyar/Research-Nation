@@ -148,7 +148,7 @@ a:focus {
     font-weight:bold;
     font-size: 28px;
     margin-bottom:20px;
-    width: 95%;
+    width: 100%;
 }
 
 .banner_text ul{
@@ -4358,4 +4358,32 @@ div.fbFooterBorder{
 
 .purchases_title date {
 	width:100px;	
+}
+
+.green_button_mainpage{
+	text-align:center;
+	background: -moz-linear-gradient(center bottom, #8eaf32 22%, #aac84a 81%);
+	background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #8eaf32), color-stop(0.81, #aac84a));
+	background: -moz-linear-gradient(center bottom, #8eaf32 22%, #aac84a 81%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#aac84a, endColorStr=#8eaf32);
+	float:left;
+	color: #FFF !important;
+	font-size:16px;
+	font-weight:bold;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	cursor:pointer;
+	padding:10px;
+	margin-top:20px;
+	border:medium none;
+}
+
+.green_button_mainpage:hover{
+	-moz-border-radius: 4px 4px 4px 4px;
+  	-webkit-border-radius: 4px 4px 4px 4px;
+	text-decoration:none !important;
+	background: -moz-linear-gradient(center bottom, #8eaf32 22%, #8eaf32 81%);
+	background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #8eaf32), color-stop(0.81, #8eaf32));
+	background: -moz-linear-gradient(center bottom, #8eaf32 22%, #8eaf32 81%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#8eaf32, endColorStr=#8eaf32);
 }
