@@ -31,7 +31,7 @@
 					<p>By signing up you agree to our </p><%= link_to "Terms of Service ", :controller => "main", :action => "privacy" %><p> and</p> <%= link_to "Privacy Policy", :controller => "main", :action => "privacy" %></div>
 				<% end %>
 			<% end %>
-			<%= link_to ( "Sell Your Insights", { :controller => "resources", :action => "upload_docs"}, { :class => 'green_button'} ) if logged_in? %>
+			<%= link_to ( "Start Selling!", { :controller => "resources", :action => "upload_docs"}, { :class => 'green_button'} ) if logged_in? %>
 		</div>
 	</div>
 	<%= hidden_field_tag 'create_post', :value => false%>
