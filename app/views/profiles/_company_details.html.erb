@@ -2,7 +2,7 @@
   <div class="sign_up_box">
     <h4 class="heading_color" style="margin-top:0px; border-top:0px;">About Us</h4>
     <div class="field1">
-      <p class="about_field_text"><%= simple_format @profile.description %></p>
+      <p class="about_field_text"><%= @profile.description.gsub("\n", "<br />") %></p>
     </div>
     <h4 class="heading_color">Key Individual</h4>
     <div class="field1">
