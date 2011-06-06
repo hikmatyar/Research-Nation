@@ -1,4 +1,4 @@
-<% content_for :html_title, 'Create a Post' %>
+<% content_for :html_title, 'Create a Marketplace Listing' %>
 <%= javascript_include_tag "upload_form" %>
 
 <div class="content">
@@ -14,16 +14,16 @@
             <% end %>
           </div>
           <div class="create_heading_box">
-            <h1 style="margin-top:5px !important; margin-bottom:5px !important;">Create a Post.</h1>
-            <b>It takes 60 seconds to create a post, and all you need to do is describe your knowledge/offering for now (buyers message you if they're interested). You can edit and/or delete your post at any time.
+            <h1 style="margin-top:5px !important; margin-bottom:5px !important;">Create a Marketplace Listing.</h1>
+            <b>It takes 60 seconds to create a listing, and all you need to do is describe your data/report for now (buyers message you if they're interested). You can edit and/or delete your listing at any time.
             </b>
           </div>
           <div class="sign_up_box">
               <% form_for(@resource , :url => { :controller => 'resources', :action => 'create_post', :user => params[:user] }, :html => { :multipart => true } ) do |f| %>
-              <h4 class="heading_color" style="border-top:0px;">Your Post</h4>
+              <h4 class="heading_color" style="border-top:0px;">Describe What You're Selling</h4>
               <div class="field">
                   <label>Title*</label>
-                  <%= text_field 'resource', 'title', :class => 'field_width required max_len tip', :max_length => 100, :title => "Tell us what this post is about. Mention any geographic or industry focus." %>
+                  <%= text_field 'resource', 'title', :class => 'field_width required max_len tip', :max_length => 100, :title => "Tell us what this listing is about. Mention any geographic or industry focus." %>
               </div>
               <div class="field">
                   <label>Exec Summary*</label>
@@ -54,7 +54,7 @@
               </div>
               <div class="field">
                 <label>Seller Terms</label>
-                <%= text_area 'resource', 'terms_and_conditions', :class => 'max_len tip', :max_length => 3000, :title => "Use this field only if you want to add any special terms and conditions, or a license, to your post. Individuals need not worry about this - it's mostly useful for companies only. Your post will always be protected by our site's Terms and Conditions and Privacy Policy." %>
+                <%= text_area 'resource', 'terms_and_conditions', :class => 'max_len tip', :max_length => 3000, :title => "Use this field only if you want to add any special terms and conditions, or a license, to your listing. Individuals need not worry about this - it's mostly useful for companies only. Your listing will always be protected by our site's Terms and Conditions and Privacy Policy." %>
               </div>
               <% if logged_in? && (current_user.profile.blank? || !current_user.profile.is_edited) %>
                 <h4 class="heading_color">Your Details</h4>

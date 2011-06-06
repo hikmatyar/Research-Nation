@@ -1,5 +1,5 @@
 <%= javascript_include_tag "jquery.autocomplete"%>
-<% content_for :html_title, 'Browse Posts' %>
+<% content_for :html_title, 'Browse Marketplace' %>
 
 <%= stylesheet_link_tag 'autocomplete'%>
 <%= javascript_include_tag 'posts_search' %>
@@ -8,10 +8,10 @@
   <div class="profile_tabs">
     <ul class="tabs">
       <li style="-moz-border-radius-topright: 10px !important; -webkit-border-top-right-radius: 10px !important;">
-        <%= link_to 'Profiles', { :controller => 'profiles', :action => 'view_profile_list'}, { :class => 'profiles' }%>
+        <%= link_to 'Directory', { :controller => 'profiles', :action => 'view_profile_list'}, { :class => 'profiles' }%>
       </li>
       <li style="-moz-border-radius-topleft: 10px !important; -webkit-border-top-left-radius: 10px !important;">
-        <%= link_to 'Posts', { :controller => 'resources', :action => 'view_posts' }, { :class => 'posts' } %>
+        <%= link_to 'Marketplace', { :controller => 'resources', :action => 'view_posts' }, { :class => 'posts' } %>
       </li>
     </ul>
   </div>

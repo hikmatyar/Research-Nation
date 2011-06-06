@@ -6,8 +6,8 @@
 			<h2>For Market Researchers.</h2>
 		    <div class="altering_text"><span></span><br> 
 		    <span>- Sell your data and insights.</span><br>
-		    <span>- Find new projects to work on.</span><br>
-		    <span>- Build a reputation, and market yourself.</span>
+		    <span>- Get listed in our directory.</span><br>
+		    <span>- Find new projects to work on.</span>
 		    </div>
 		    <% unless logged_in? %>
 				<%= render :partial => 'users/errors' %>
@@ -31,7 +31,7 @@
 					<p>By signing up you agree to our </p><%= link_to "Terms of Service ", :controller => "main", :action => "privacy" %><p> and</p> <%= link_to "Privacy Policy", :controller => "main", :action => "privacy" %></div>
 				<% end %>
 			<% end %>
-			<%= link_to ( "Create a Post", { :controller => "resources", :action => "upload_docs"}, { :class => 'green_button'} ) if logged_in? %>
+			<%= link_to ( "Sell Your Insights", { :controller => "resources", :action => "upload_docs"}, { :class => 'green_button'} ) if logged_in? %>
 		</div>
 	</div>
 	<%= hidden_field_tag 'create_post', :value => false%>

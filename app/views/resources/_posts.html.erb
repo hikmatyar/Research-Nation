@@ -1,5 +1,5 @@
 <% if @resources.blank? %>
-<i>Sorry, no posts found that match your criteria.</i>
+<i>Sorry, no listings found that match your criteria.</i>
 <% else %>
   <% @resources.each do |resource| %>
     <div class="post">
@@ -18,7 +18,7 @@
           </div>
           <div class="tags_box">
             <p>$<%= resource.selling_price %></p>
-            <%= "<p>Deleted Post</p>" if resource.is_deleted? %>
+            <%= "<p>Deleted Listing</p>" if resource.is_deleted? %>
           </div>
         </div>
       </div>
