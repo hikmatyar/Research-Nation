@@ -2,24 +2,24 @@
 	<%= link_to image_tag("logo.png"),:controller => "main", :action => "index" %>
 	<div class="main_menu_box">
 	  <ul class="main_menu">
-	  	<li class="sell_link"><%= link_to "Sell Insights", :controller => "resources", :action => "new" %></li>
+      <li class="sell_link"><%= link_to "Start Selling!", :controller => "resources", :action => "new" %></li>
+      <li class="buy_link" <%= "class='borderless'" unless logged_in?%> >
+        <%= (link_to 'Search', :controller => 'profiles', :action => 'view_profile_list') %>
+      </li>
 	    <% if logged_in? %>
 	    	<li class="logout"><%= (link_to 'Logout', :controller => 'users', :action => 'logout')  %></li>
         <% end %>
-		<% if is_admin? %>
-	      <li class="admin"><%= (link_to "Admin", :controller => "admin", :action => "dashboard") %></li>
-	    <% end %>
-	    <% unless logged_in? %>
-          <li class="create_link"><%= (link_to 'Login', :controller => 'users', :action => 'register', :opt => 'login') %></li>
-        <% end %>
-	    <li class="buy_link" <%= "class='borderless'" unless logged_in?%> >
-          <%= (link_to 'Browse', :controller => 'profiles', :action => 'view_profile_list') %>
+		  <% if is_admin? %>
+        <li class="admin"><%= (link_to "Admin", :controller => "admin", :action => "dashboard") %></li>
+      <% end %>
+      <% unless logged_in? %>
+        <li class="create_link"><%= (link_to 'Login', :controller => 'users', :action => 'register', :opt => 'login') %></li>
+      <% end %>
+      <% if logged_in? %>
+        <li style="border-left:0px;" class="user_dasboard">
+          <%= (link_to 'My Dashboard', :controller => 'users', :action => 'profile' ) %>
         </li>
-        <% if logged_in? %>
-          <li style="border-left:0px;" class="user_dasboard">
-            <%= (link_to 'My Dashboard', :controller => 'users', :action => 'profile' ) %>
-          </li>
-		<% end %>
+      <% end %>
     </ul>
   </div>
 </div>
