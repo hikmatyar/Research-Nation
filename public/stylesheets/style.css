@@ -2452,6 +2452,7 @@ html ul.tabs li.active, html ul.tabs li.active {
 	width:242px;
 	padding:10px;
 	margin-top:20px;
+  height:378px;
 	background:#FFF;
 	box-shadow:5px -5px 20px #bebebe;
 	-webkit-box-shadow:0 0 20px #bebebe;
@@ -2490,6 +2491,7 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 
 .profile_right{
   	float:left;
+    height:378px;
 	box-shadow:5px -5px 20px #bebebe;
 	-webkit-box-shadow:0 0 20px #bebebe;
 	-moz-box-shadow:0 0 20px #bebebe;
