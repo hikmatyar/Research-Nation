@@ -1,4 +1,6 @@
-<% content_for :html_title, "#{@profile.name}\'s Profile" %>
+<% unless @profile.blank? %>
+  <% content_for :html_title, "#{@profile.name}\'s Profile" %>
+<% end %>
 <div class="content">
 <% unless flash[:notice].blank? %>
   <p class="flash"><%= flash[:notice] %></p>

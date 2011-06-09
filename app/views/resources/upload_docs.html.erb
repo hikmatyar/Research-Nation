@@ -58,7 +58,7 @@
               </div>
               <% if logged_in? && (current_user.profile.blank? || !current_user.profile.is_edited) %>
                 <h4 class="heading_color">Your Details</h4>
-                <% unless (@user.blank? || @user.email.blank? || @user.profile.is_edited)  %>
+                <% unless (@user.blank? || @user.email.blank? || (@user.profile && @user.profile.is_edited))  %>
                   <div class="field">
                     <label>About Me*</label>
                     <%= text_area 'profile', 'description', :class => 'required max_len', :max_length => 3000 %>
