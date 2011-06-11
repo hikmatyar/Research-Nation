@@ -3,11 +3,9 @@
   <% unless flash[:notice].blank? %><p class="flash"><%= flash[:notice] %></p><% end %>
 	<div class="banner_text">
 		<div class="content_back main_page_content_container">
-			<h2>For Market Researchers.</h2>
+			<h2>We are a marketplace for datasets and research reports.</h2>
 		    <div class="altering_text"><span></span><br> 
-		    <span>- Sell your data and insights.</span><br>
-		    <span>- Get listed in our directory.</span><br>
-		    <span>- Find new projects to work on.</span>
+		    <span>Sign up now to get paid and be featured in our seller directory. It's completely free!</span><br>
 		    </div>
 		    <% unless logged_in? %>
 				<%= render :partial => 'users/errors' %>
