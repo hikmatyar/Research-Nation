@@ -4389,3 +4389,7 @@ div.fbFooterBorder{
 	background: -moz-linear-gradient(center bottom, #8eaf32 22%, #8eaf32 81%);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#8eaf32, endColorStr=#8eaf32);
 }
+
+.ratings {
+  margin-top:20px;
+}

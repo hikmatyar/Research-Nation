@@ -138,6 +138,15 @@ class ResourcesController < ApplicationController
     render :partial => 'posts'
   end
 
+
+  def rate
+    @resource = Resource.find params[:id]
+    @resource.rate(params[:stars], current_user, params[:dimension])
+    render :update do |page|
+      page.replace_html @resource.wrapper_dom_id(params), ratings_for(@resource, params.merge(:wrap => false))
+    end
+  end
+
   def get_industries
     @industries = Resource.all(:select => 'distinct(industry)', :conditions => {:is_deleted => false}).collect(&:industry)
     render :text => @industries.join("\n")

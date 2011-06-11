@@ -50,7 +50,9 @@ ActionController::Routing::Routes.draw do |map|
   map.connect "/browse/profiles", :controller => "profiles", :action => "view_profile_list"
   map.connect "/create_a_post", :controller => "resources", :action => "upload_docs"
 
+  map.resources :resources, :member => {:rate => :post}
 
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
+
 end

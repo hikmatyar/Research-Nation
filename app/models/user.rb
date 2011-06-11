@@ -8,7 +8,9 @@ class User < ActiveRecord::Base
   has_many :votes
   has_one :profile
   has_one :payment_preference
+
   has_private_messages
+  ajaxful_rater
 
   validates_presence_of :password, :unless => Proc.new { |user| user.facebook_uid }
   validates_presence_of :email

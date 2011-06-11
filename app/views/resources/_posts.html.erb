@@ -20,6 +20,9 @@
             <p>$<%= resource.selling_price %></p>
             <%= "<p>Deleted Listing</p>" if resource.is_deleted? %>
           </div>
+          <div class="ratings">
+            <%= ratings_for resource, :static %>
+          </div>
         </div>
       </div>
     </div>

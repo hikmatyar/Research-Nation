@@ -10,6 +10,8 @@ class Resource < ActiveRecord::Base
   cattr_reader :per_page
   @@per_page = 25
 
+  ajaxful_rateable :stars => 5
+
   validates_presence_of :selling_price
   validates_presence_of :title
   validates_numericality_of :selling_price
