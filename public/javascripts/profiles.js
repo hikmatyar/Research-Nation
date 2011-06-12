@@ -24,19 +24,10 @@ $('document').ready(function(){
        });
      }
 
-  $(".interests input:checkbox").change(function(){
-    var interests = new Array();
-    $(".interests input:checkbox:checked").each(function(){
-      interests.push($(this).val());
-      $("#interested_in").val(interests.join(","));
-    });
-  });
-
   $("#user_image").change(function(){
     $("#picture_path").val($("#user_image").val());
   });
 
-  $(".interests input:checkbox").trigger('change');
 
   $("#user_image").trigger('change');
 
@@ -72,4 +63,12 @@ $('document').ready(function(){
 	  });
 	}
 
+});
+
+$(document).submit(function(){
+    var interests = new Array();
+    $(".interests input:checkbox:checked").each(function(){
+      interests.push($(this).val());
+    });
+    $("#interested_in").val(interests.join(","));
 });
