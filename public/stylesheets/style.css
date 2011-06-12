@@ -4391,5 +4391,8 @@ div.fbFooterBorder{
 }
 
 .ratings {
-  margin-top:20px;
+  width:125px;
+  float:right;
+  margin: 1px;
+  margin-top:-21px;
 }
