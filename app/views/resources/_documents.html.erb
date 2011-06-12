@@ -1,0 +1,13 @@
+<div class="purchase_box">
+  <div class="ratings_box">
+    <h4 class="box_heading">Document Details</h4>
+    <div class="sign_up_box">
+      <% @resource.attachments.original_files.each_with_index do |attachment,index| %>
+          <div class="seller_page_downloads_image">
+            <%= file_type_image(attachment)%>
+            <span><%= (attachment.original_file_size/1024).to_s + "KB"  %></span>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>

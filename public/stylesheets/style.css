@@ -1773,7 +1773,7 @@ html ul.tabs li.active, html ul.tabs li.active {
 	float: left; 
 	width: 814px;
 	font-size:14px !important;
-	min-height: 343px;
+	min-height: 378px;
 	text-align:left;
 	background: #fff;
 }
@@ -1921,17 +1921,28 @@ html ul.tabs li.active, html ul.tabs li.active {
 	margin:15px;
 }
 
-.download_image img{
+.seller_page_downloads_image{
+	float:left;
+	width:52px;
+	text-align:center;
+	margin:8px;
+}
+
+.seller_page_downloads_image img, .download_image img{
 	float:left;
 	width:42px;
 	height:42px;
 }
 
-.download_image i{
+.seller_page_downloads_image i, .download_image i{
 	text-align:center;
 	margin-top:8px;
 }
-
+.seller_page_downloads_image span{
+  font-size:11px;
+  padding:3px;
+  float:none;
+}
 .download_text{
 	float:left;
 	width:360px;
@@ -3348,7 +3359,7 @@ div.fbFooterBorder{
 	color:red;
 }
 .earnings_fixed_box{
-    max-height:312px;
+  max-height:375px;
 	width:658px;
 }
 

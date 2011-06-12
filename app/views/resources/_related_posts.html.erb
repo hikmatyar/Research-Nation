@@ -1,0 +1,12 @@
+<% unless @related_posts.blank? %>
+  <div class="purchase_box">
+    <div class="related_posts">
+      <h4 class="box_heading">Related Posts</h4>
+      <div class="sign_up_box">
+        <% @related_posts.each do |post| %>
+          <%= link_to(truncate(post.title, :omission => "...", :length => 30) , :action => 'resources', :action => 'seller_page', :url_slug => post.url_slug) %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
