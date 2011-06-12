@@ -20,9 +20,9 @@
       <div class="post_details">
         <h2 style="width:86%"><%= @resource.title %></h2>
         <% unless logged_in? %>
-          <%= ratings_for @resource, :static %>
+          <%= ratings_for @resource, :static, :remote_options => {:url => "/resources/rate/#{@resource.url_slug}"}%>
         <% else %>
-          <%= ratings_for @resource, :remote_options => {:url => "/resources/rate/#{@resource.url_slug}"} %>
+          <%= ratings_for @resource, :remote_options => {:url => "/resources/rate/#{@resource.url_slug}"}%>
         <% end %>
         <div class="Post_author_details">
           <% unless @resource.user.profile.name.blank? %>

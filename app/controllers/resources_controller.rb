@@ -140,10 +140,10 @@ class ResourcesController < ApplicationController
 
 
   def rate
-    @resource = Resource.find params[:id]
+    @resource = Resource.find_by_url_slug params[:id]
     @resource.rate(params[:stars], current_user, params[:dimension])
     render :update do |page|
-      page.replace_html @resource.wrapper_dom_id(params), ratings_for(@resource, params.merge(:wrap => false))
+      page.replace_html @resource.wrapper_dom_id(params), ratings_for(@resource, params.merge(:wrap => false), :remote_options => {:url => "/resources/rate/#{@resource.url_slug}"})
     end
   end
 
