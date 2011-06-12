@@ -11,18 +11,9 @@
         <% @resource.attachments.original_files.each_with_index do |attachment,index| %>
           <div class="document_box">
             <div class="download_image">
-              <% extension = File.extname(attachment.original_file_name).downcase %>
               <a href="/download_file/<%=params[:url_slug]%>?attachment=<%= attachment.id%>" target="_blank">
-              <% if [".doc", ".docx"].include?(extension) %>
-                <%= (image_tag "Word_Doc_Icon.png")  %>
-              <% elsif [".pdf"].include?(extension) %>
-                <%= (image_tag "pdf.png")%>
-              <% elsif [".xls", ".xlsx"].include?(extension) %>
-                <%= (image_tag "excel-2010-icon.1.png") %>
-              <% elsif [".ppt", ".pptx"].include?(extension) %>
-                <%= (image_tag "file-extension-pps-powerpoint_icon.png") %>
-              <% end %>
-            </a>
+                  <%= file_type_image(attachment)%>
+              </a>
             <span><%= (attachment.original_file_size/1024).to_s + "KB"  %></span>
             </div>
             <div class="download_text">

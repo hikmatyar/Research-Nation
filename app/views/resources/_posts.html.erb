@@ -13,12 +13,15 @@
             <% end %>
           </div>
           <div class="user_name">
-            <span><%= link_to ( truncate(resource.title, 50, ".."), :action => 'seller_page', :url_slug => resource.url_slug ) %></span>
+            <span><%= link_to(truncate(resource.title, 50, ".."), :action => 'seller_page', :url_slug => resource.url_slug ) %></span>
             <p> <%= resource.user.profile.name unless resource.user.profile.blank? %> </p>
           </div>
           <div class="tags_box">
             <p>$<%= resource.selling_price %></p>
             <%= "<p>Deleted Listing</p>" if resource.is_deleted? %>
+          </div>
+          <div class="ratings">
+            <%= ratings_for resource, :static , :remote_options => {:url => "/resources/rate/#{resource.url_slug}"}%>
           </div>
         </div>
       </div>

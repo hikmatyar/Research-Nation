@@ -1,4 +1,4 @@
-<% content_for :html_title, "#{ @resource.title }" %>
+<% content_for :html_title, "#{@resource.title}" %>
 <%= javascript_include_tag "seller" %>
 
 <div class="content">
@@ -18,7 +18,7 @@
     </div>
     <div class="author">
       <div class="post_details">
-        <h2><%= @resource.title %></h2>
+        <h2 style="width:86%"><%= @resource.title %></h2>
         <div class="Post_author_details">
           <% unless @resource.user.profile.name.blank? %>
           <b>By
@@ -92,47 +92,11 @@
           </div>
         </div>
       </div>
-
-      <div class="purchase_box">
-        <div class="purchase_price">
-          <b>US$<%= @resource.selling_price %></b>
-          <% unless @resource.attachments.blank? %>
-            <% if current_user && (current_user.is_admin? || current_user.id == @resource.user_id || @resource.selling_price == 0) %>
-              <%= (link_to 'Download', { :controller => "purchases", :action => 'download', :url_slug => @resource.url_slug }, { :class => "green_button"})  %>
-            <% else %>
-              <%= (link_to 'Purchase', { :controller => "purchases", :action => 'resource', :url_slug => @resource.url_slug }, { :class => "green_button"})  %>
-            <% end %>
-          <% else %>
-              <%= (link_to 'Request', { :controller => "resources", :action => 'request_resource', :url_slug => @resource.url_slug }, { :class => "green_button"})  %>
-          <% end %>
-          </div>
-      </div>
-      <div class="purchase_box">
-        <div class="author_image_box">
-          <%= (image_tag @resource.user.profile.photo.url(:seller)) unless (@resource.user.profile.blank? || @resource.user.profile.photo_file_name.blank?) %>
-        <%= (image_tag "avatar_70.png") if @resource.user.profile.blank? || @resource.user.profile.photo_file_name.blank?  %>
-        </div>
-        <div class="author_name">
-          <% unless @resource.user.profile.name.blank? %><b><%= (link_to ( truncate @resource.user.profile.name, :omission => "...", :length => 19), :controller => 'profiles', :action => 'profile_page', :url_slug => @resource.user.profile.url_slug) if @resource.user.profile.is_edited %><% end %></b>
-        </div>
-        <% unless (!current_user.blank? && current_user.id == @resource.user_id) %>
-          <div class="contact_button" style="padding-top:2px;">
-            <a class="grey_button" href="#message_form" id="message_link" >Send Message</a>
-          </div>
-        <% end %>
-      </div>
-      <% unless @related_posts.blank? %>
-      <div class="purchase_box">
-        <div class="related_posts">
-          <h4 class="box_heading">Related Posts</h4>
-          <div class="sign_up_box">
-            <% @related_posts.each do |post| %>
-              <%= link_to(truncate(post.title, :omission => "...", :length => 30) , :action => 'resources', :action => 'seller_page', :url_slug => post.url_slug) %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-      <% end %>
+      <%= render :partial => "download_box"%>
+      <%= render :partial => "seller_details"%>
+      <%= render :partial => "rating"%>
+      <%= render :partial => "documents"%>
+      <%= render :partial => "related_posts"%>
     </div>
   </div>
 <div style="display: none;">

@@ -4,15 +4,15 @@
     <i>Please indicate your availability for new projects by checking off the boxes below. You can check as many boxes as you want.</i>
   </div>
   <div class="field" style="margin-bottom:0px;">
-    <input type="checkbox" value="FT projects" name="interested_in" <%= "checked='checked'" if !fields.blank? && fields.split(",").include?("FT projects")  %> />
+    <input type="checkbox" value="FT projects"  <%= "checked='checked'" if !fields.blank? && fields.split(",").include?("FT projects")  %> />
     <label>FT projects</label>
   </div>
   <div class="field" style="margin-bottom:0px;">
-    <input type="checkbox" value="PT projects" name="interested_in" <%= "checked='checked'" if !fields.blank? &&  fields.split(",").include?("PT projects") %> />
+    <input type="checkbox" value="PT projects"  <%= "checked='checked'" if !fields.blank? &&  fields.split(",").include?("PT projects") %> />
     <label>PT projects</label>
   </div>
   <div class="field" style="margin-bottom:0px;">
-    <input type="checkbox" value="Expert Advisory" name="interested_in" <%= "checked='checked'" if !fields.blank? && fields.split(",").include?("Expert Advisory") %> />
+    <input type="checkbox" value="Expert Advisory" <%= "checked='checked'" if !fields.blank? && fields.split(",").include?("Expert Advisory") %> />
     <label>Expert Advisory</label>
   </div>
 </div>

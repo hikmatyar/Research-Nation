@@ -50,7 +50,7 @@ class ResourcesController < ApplicationController
     if params[:filter].blank?
       @resources = Resource.find :all, :order => 'created_at DESC', :conditions => {:is_deleted => false}
     else
-      @resources = Resource.find :all, :conditions => ['industry = ? OR geography = ? AND is_deleted = ?', params[:filter], params[:filter], false]
+      @resources = Resource.find :all, :conditions => ['(industry = ? OR geography = ?) AND is_deleted = ?', params[:filter], params[:filter],false]
     end
   end
 
@@ -136,6 +136,15 @@ class ResourcesController < ApplicationController
       end
     end
     render :partial => 'posts'
+  end
+
+
+  def rate
+    @resource = Resource.find_by_url_slug params[:id]
+    @resource.rate(params[:stars], current_user, params[:dimension])
+    render :update do |page|
+      page.replace_html @resource.wrapper_dom_id(params), ratings_for(@resource, params.merge(:wrap => false), :remote_options => {:url => "/resources/rate/#{@resource.url_slug}"})
+    end
   end
 
   def get_industries

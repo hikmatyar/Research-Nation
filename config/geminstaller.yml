@@ -25,3 +25,5 @@ gems:
     version: 1.14.0
   - name: bitly
     version: 0.6.1
+  - name: ajaxful_rating
+    version: 2.2.8.2

@@ -1,0 +1,14 @@
+<div class="purchase_box">
+  <div class="purchase_price">
+    <b>US$<%= @resource.selling_price %></b>
+    <% unless @resource.attachments.blank? %>
+      <% if current_user && (current_user.is_admin? || current_user.id == @resource.user_id || @resource.selling_price == 0) %>
+        <%= (link_to 'Download', { :controller => "purchases", :action => 'download', :url_slug => @resource.url_slug }, { :class => "green_button"})  %>
+      <% else %>
+        <%= (link_to 'Purchase', { :controller => "purchases", :action => 'resource', :url_slug => @resource.url_slug }, { :class => "green_button"})  %>
+      <% end %>
+    <% else %>
+        <%= (link_to 'Request', { :controller => "resources", :action => 'request_resource', :url_slug => @resource.url_slug }, { :class => "green_button"})  %>
+    <% end %>
+    </div>
+</div>

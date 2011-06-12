@@ -41,16 +41,19 @@ ActionController::Routing::Routes.draw do |map|
   # consider removing or commenting them out if you're using named routes and resources.
   map.connect "/post/:url_slug", :controller => "resources", :action => "seller_page"
   map.connect "/edit_post/:url_slug", :controller => "resources", :action => "edit"
-  map.connect "/profile/:url_slug", :controller => "profiles", :action => "profile_page"
-  map.connect "/purchases/:url_slug", :controller => "purchases", :action => "resource"
-  map.connect "/download/:url_slug", :controller => "purchases", :action => "download"
   map.connect "/request_resource/:url_slug", :controller => "resources", :action => "request_resource"
-  map.connect "/download_file/:url_slug", :controller => "purchases", :action => "download_file"
   map.connect "/browse/posts", :controller => "resources", :action => "view_posts"
-  map.connect "/browse/profiles", :controller => "profiles", :action => "view_profile_list"
   map.connect "/create_a_post", :controller => "resources", :action => "upload_docs"
 
+  map.connect "/profile/:url_slug", :controller => "profiles", :action => "profile_page"
+
+  map.connect "/purchases/:url_slug", :controller => "purchases", :action => "resource"
+  map.connect "/download/:url_slug", :controller => "purchases", :action => "download"
+  map.connect "/download_file/:url_slug", :controller => "purchases", :action => "download_file"
+
+  map.connect "/browse/profiles", :controller => "profiles", :action => "view_profile_list"
 
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
+
 end
