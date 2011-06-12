@@ -19,11 +19,6 @@
     <div class="author">
       <div class="post_details">
         <h2 style="width:86%"><%= @resource.title %></h2>
-        <% unless logged_in? %>
-          <%= ratings_for @resource, :static, :remote_options => {:url => "/resources/rate/#{@resource.url_slug}"}%>
-        <% else %>
-          <%= ratings_for @resource, :remote_options => {:url => "/resources/rate/#{@resource.url_slug}"}%>
-        <% end %>
         <div class="Post_author_details">
           <% unless @resource.user.profile.name.blank? %>
           <b>By
@@ -126,6 +121,19 @@
           </div>
         <% end %>
       </div>
+      <div class="purchase_box">
+        <div class="ratings_box">
+          <h4 class="box_heading">Rating</h4>
+          <div class="sign_up_box" style="text-align:center;width:50%;border:0px">
+            <% if !logged_in? || @resource.rated_by?(current_user)%>
+              <%= ratings_for @resource, :static, :remote_options => {:url => "/resources/rate/#{@resource.url_slug}"}%>
+            <% else %>
+              <%= ratings_for @resource, :remote_options => {:url => "/resources/rate/#{@resource.url_slug}"}%>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
       <% unless @related_posts.blank? %>
       <div class="purchase_box">
         <div class="related_posts">
