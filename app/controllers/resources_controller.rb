@@ -50,7 +50,7 @@ class ResourcesController < ApplicationController
     if params[:filter].blank?
       @resources = Resource.find :all, :order => 'created_at DESC', :conditions => {:is_deleted => false}
     else
-      @resources = Resource.find :all, :conditions => ['industry = ? OR geography = ? AND is_deleted = ?', params[:filter], params[:filter], false]
+      @resources = Resource.find :all, :conditions => ['(industry = ? OR geography = ?) AND is_deleted = ?', params[:filter], params[:filter],false]
     end
   end
 
