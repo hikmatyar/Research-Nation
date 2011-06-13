@@ -2802,10 +2802,10 @@ div.fbFooterBorder{
 /*--- footer_menu ----*/
 
 .footer_menu{
-	float:right;
-	width:495px;
-	margin-right:-1px;
-	margin-top:20px;
+ 	float:right;
+ 	width:510px;
+ 	margin-right:-1px;
+ 	margin-top:20px;
 }
 
 .footer_menu ul{
@@ -3926,8 +3926,9 @@ div.fbFooterBorder{
 }
 
 .field_container{
-	float:left;
-	margin-top:12px;
+ 	float:left;
+ 	margin-top:12px;
+	*margin-top:-6px;
 }
 
 .altering_text{
@@ -4401,9 +4402,13 @@ div.fbFooterBorder{
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#8eaf32, endColorStr=#8eaf32);
 }
 
-.ratings {
-  width:125px;
-  float:right;
-  margin: 1px;
-  margin-top:-21px;
+.ratings{
+  	width:125px;
+  	float:right;
+  	margin: 1px;
+  	margin-top:-21px;
+}
+
+.faq_heading{
+ margin-top:0px !important;
 }
