@@ -2,7 +2,7 @@
 	<%= link_to image_tag("logo.png"),:controller => "main", :action => "index" %>
 	<div class="main_menu_box">
 	  <ul class="main_menu">
-      <li class="sell_link"><%= link_to "Sell your documents!", :controller => "resources", :action => "new" %></li>
+      <li class="sell_link"><%= link_to "Sell", :controller => "resources", :action => "new" %></li>
       <li class="buy_link" <%= "class='borderless'" unless logged_in?%> >
         <%= (link_to 'Explore', :controller => 'profiles', :action => 'view_profile_list') %>
       </li>

@@ -3,27 +3,15 @@
   <% unless flash[:notice].blank? %><p class="flash"><%= flash[:notice] %></p><% end %>
 	<div class="banner_text">
 		<div class="content_back main_page_content_container">
-			<h2>We are a marketplace for datasets and research reports.</h2>
+			<h2>We're a unique, user-generated marketplace for market research.</h2>
 		    <div class="altering_text"><span></span><br> 
-		    <span>Sign up now to get paid and be featured in our seller directory. It's completely free!</span><br>
-		    </div>
+			<span>Why are we doing this? Because buying market research today <i>sucks.</i></span><br><br>
+		    <span>You pay <i>thousands</i> of dollars to buy research that has no reviews or ratings.</span><br><br>
+		    <span>This has to change - and we're going to do it. Sign up below to support our cause and get started!</span><br>
+		</div>
 		    <% unless logged_in? %>
 				<%= render :partial => 'users/errors' %>
 				<% form_for(@user , :url => {:controller => "users", :action => "create" } ) do |f| %>
-				<div class="new_field">
-					<label style="padding:0px;" for="email">Your Email</label>
-					<%= f.text_field 'email', :id => "email", :class => 'required email', :title => "Your Email"%>
-				</div>
-				<div class="new_field">
-					<label style="padding:0px;" for="password">Your Password</label>
-					<%= f.password_field 'password', :id => "password", :class => 'required password min_len', :min_length => "6" %>
-				</div>
-				<div class="new_field1 new_field ">
-		    <div class="field_container">
-		    <label></label>
-		      <%= render :partial => "/layouts/select_user_type", :locals => {:f => f} %>
-		    </div>
-				</div>
 				<div class="banner_sign_up_button" style="margin-left:0px !important;"><%= (f.submit "Get Started Now! It's Free", :class => "green_button")%></div>
 				<div class="main_terms_and_conditions">
 					<p>By signing up you agree to our </p><%= link_to "Terms of Service ", :controller => "main", :action => "privacy" %><p> and</p> <%= link_to "Privacy Policy", :controller => "main", :action => "privacy" %></div>
@@ -33,7 +21,6 @@
 		</div>
 	</div>
 	<%= hidden_field_tag 'create_post', :value => false%>
-	<a href="http://researchnation.net/browse/posts"><img src="/images/banner.jpg" /></a>
 </div>
 <div class="facebook_like">
 	<iframe src="http://www.facebook.com/plugins/like.php?href=www.researchnation.net&amp;layout=button_count&amp;show_faces=true&amp;width=100&amp;action=like&amp;font&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe>

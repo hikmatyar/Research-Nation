@@ -235,8 +235,9 @@ a:focus {
 
 .facebook_like{
 	float:right;
-	width:95px;
-	*width:85px;
+	width:400px;
+	*width:405px;
+	margin-top:10px;
 }
 
 
@@ -2525,25 +2526,28 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 }
 
 .new_field label{
- 	float:left;
- 	width:90px;
- 	margin-top:5px;
-	padding-left:8px;
-	text-align:left;
-	font-size:13px;
-	position:relative;
-	top:21px;
-	left:7px;
+	float: left;
+	width: 113px;
+	margin-top: 5px;
+	padding-left: 8px;
+	text-align: left;
+	font-size: 13px;
+	position: relative;
+	top: 15px;
+	left: 5px;
 }
 
 .new_field input{
-	 float:left;
-	 border:1px solid #CCC;
-	 padding:3px;
-	 font-size:13px;
-	 width:303px !important;
-	 -moz-border-radius:5px;
-	 -webkit-border-radius:5px;
+	float: left;
+	border: 1px solid #CCC;
+	padding: 3px;
+	font-size: 13px;
+	width: 303px !important;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	position: static;
+	margin-left: -113px;
+	margin-top: 15px;
 }
 
 .new_user{
@@ -3152,7 +3156,7 @@ div.fbFooterBorder{
 .new_field{
  	float:left;
  	width:100%;
- 	height:50px;
+ 	height:40px;
 }
 
 .sign_up_terms{
@@ -3162,16 +3166,18 @@ div.fbFooterBorder{
 }
 
 .field_container select{
-	background: none repeat scroll 0 0 #FFFFFF;
+	background: none repeat scroll 0 0 white;
 	border: 1px solid #BECFD6;
-	color:#525252;
+	color: #525252;
 	font: 14px Arial,Helvetica,sans-serif;
 	height: 20px;
 	width: 181px;
 	font-weight: normal !important;
-	margin-top:5px !important;
-	-moz-border-radius:5px;
- 	-webkit-border-radius:5px;
+	margin-top: 5px !important;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	position: static;
+	margin-left: -119px;
 }
 
 .field_container select option{
@@ -3201,18 +3207,19 @@ div.fbFooterBorder{
 }
 
 .banner_sign_up_button input{
-	width:314px;
+	width:470px;
 	text-align:center;
 	margin-top:-5px;
 }
 
 .banner_sign_up_button input:hover{
-	width:314px !important;
+	width:470px !important;
 }
 
 .banner_text {   
     float: left;
-    width: 360px;
+    width: 500px;
+	margin-left:200px;
 }
 
 .banner_text p {
@@ -3854,7 +3861,7 @@ div.fbFooterBorder{
 }
 
 .buy_link{
-	width:70px !important;
+	width:85px !important;
 }
 
 .logout{
@@ -3862,54 +3869,24 @@ div.fbFooterBorder{
 }
 
 .sell_link{
-	width:160px !important;
+	width:80px !important;
 	border-left:0px;
 	border-right:none !important;
-	margin-left:60px;
-	*margin-left:0px;
-	margin-left:10px\0/;
+	margin-left:0px;
 }
 
-
-
 .sell_link a{
-	background-color: #FED221 !important;
-	border: 1px solid #EDD469;
+	background:none !important;
+ 	border:none;
 	position:relative;
-	top:-5px;
-	margin-right:25px;
-	color:#000 !important;
-	cursor: pointer;
-	font-size: 12pt;
-	padding: 2px 1px 2px 1px;s
-	text-align: center;
-	border-radius:5px;
-	-moz-border-radius:5px;
-	-webkit-border-radius:5px;
-	
-	*background:none !important;
-	*border:none;
-	*position:relative;
-	*top:0px;
-	*margin-right:10px !important;
-	*color:#AC7333 !important;
-	cursor: pointer;
-	*font-size: 12px;
-	*padding:0px;
-	*text-align: center;
-	*border-radius:5px;
-	
-	background:none\0/ !important;
-	border:none\0/;
-	position:relative\0/;
-	top:0px\0/;
-	margin-right:10px\0/ !important;
-	color:#AC7333\0/ !important;
-	cursor: pointer;
-	font-size: 12px\0/;
-	padding:0px\0/;
-	text-align: center\0/;
-	border-radius:5px\0/;
+ 	top:0px;
+ 	margin-right:10px !important;
+ 	color:#AC7333 !important;
+ 	cursor: pointer;
+ 	font-size: 12px;
+ 	padding:0px;
+ 	text-align: center;
+ 	border-radius:5px;
 }
 
 .sell_link a:hover{
