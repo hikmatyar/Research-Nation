@@ -5,19 +5,19 @@
 		<div class="content_back main_page_content_container">
 			<h2>Find, buy and sell market research.</h2>
 			<div class="icons_main_page">
-			<span><img src="images/report.png" /><p>Reports</p></span>
-			<span><img src="images/chart.png" /><p>Charts</p></span>
-			<span><img src="images/graphs.png" /><p>Graphs</p></span>
-			<span><img src="images/chapter.png" /><p>Chapters</p></span>
-			<span><img src="images/model.png" /><p>Models</p></span>
-			<span><img src="images/survey.png" /><p>Surveys</p></span>
-			<span><img src="images/interview.png" /><p>Interviews</p></span>
-			<span><img src="images/others.png" /><p>Others</p></span>
+				<span><img src="images/report.png" /><p>Reports</p></span>
+				<span><img src="images/chart.png" /><p>Charts</p></span>
+				<span><img src="images/graphs.png" /><p>Graphs</p></span>
+				<span><img src="images/chapter.png" /><p>Chapters</p></span>
+				<span><img src="images/model.png" /><p>Models</p></span>
+				<span><img src="images/survey.png" /><p>Surveys</p></span>
+				<span><img src="images/interview.png" /><p>Interviews</p></span>
+				<span><img src="images/others.png" /><p>Others</p></span>
 			</div>
 		    <% unless logged_in? %>
 				<%= render :partial => 'users/errors' %>
 				<% form_for(@user , :url => {:controller => "users", :action => "create" } ) do |f| %>
-				<div class="banner_sign_up_button" style="margin-left:0px !important;"><%= (f.submit "Get Started Now! It's Free", :class => "green_button")%></div>
+				<div class="banner_sign_up_button" style="margin-left:0px !important;"><%= (f.submit "Sign Up as a Seller. It's Free.", :class => "green_button")%></div>
 				<% end %>
 			<% end %>
 			<%= link_to ( "Start Selling Now! There's No Listing Fee.", { :controller => "resources", :action => "upload_docs"}, { :class => 'green_button'} ) if logged_in? %>
