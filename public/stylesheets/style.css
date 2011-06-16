@@ -147,7 +147,7 @@ a:focus {
     float: left;
     font-weight:bold;
     font-size: 28px;
-    margin-bottom:20px;
+    margin-bottom:0px;
     width: 100%;
 }
 
@@ -238,16 +238,17 @@ a:focus {
 	width:400px;
 	*width:405px;
 	margin-top:10px;
+	margin-bottom:120px;
 }
 
 
 .banner_text a{
-	width:314px;
+	width:450px;
 }
 
 .banner_text a:hover{
 	padding:10px;
-	width:314px !important;
+	width:450px !important;
 }
 
 .content{
@@ -1774,7 +1775,7 @@ html ul.tabs li.active, html ul.tabs li.active {
 	float: left; 
 	width: 814px;
 	font-size:14px !important;
-	min-height: 378px;
+	min-height: 332px;
 	text-align:left;
 	background: #fff;
 }
@@ -2464,7 +2465,7 @@ html ul.tabs li.active, html ul.tabs li.active {
 	width:242px;
 	padding:10px;
 	margin-top:20px;
-  height:378px;
+  	height:335px;
 	background:#FFF;
 	box-shadow:5px -5px 20px #bebebe;
 	-webkit-box-shadow:0 0 20px #bebebe;
@@ -2503,7 +2504,7 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 
 .profile_right{
   	float:left;
-    height:378px;
+    height:335px;
 	box-shadow:5px -5px 20px #bebebe;
 	-webkit-box-shadow:0 0 20px #bebebe;
 	-moz-box-shadow:0 0 20px #bebebe;
@@ -3202,8 +3203,8 @@ div.fbFooterBorder{
 
 .banner_sign_up_button{
 	float:left;
-	margin:20px 10px 10px 0;
-	-margin:10px 10px 10px 0;
+	margin:20px 10px 0px 0;
+	-margin:10px 10px 0px 0;
 }
 
 .banner_sign_up_button input{
@@ -3937,6 +3938,7 @@ div.fbFooterBorder{
 .main_page_content_container{
 	float:left;
 	margin-top:36px;
+	border:1px solid #CCC;
 }
 
 .purchase_error{
@@ -4316,11 +4318,9 @@ div.fbFooterBorder{
 	margin-top:12px\0/;
 }
 
-
 .post_listing_title a, .post_listing_price span, .post_listing_date span, .post_listing_sold span{
 	font-weight:normal !important;
 }
-
 
 .purchases_title{
 	float:left;
@@ -4337,7 +4337,6 @@ div.fbFooterBorder{
 	float:left;
 	list-style:none;	
 }
-
 
 .purchases_title title{
 	width:300px;	
@@ -4387,5 +4386,35 @@ div.fbFooterBorder{
 }
 
 .faq_heading{
- margin-top:0px !important;
+ 	margin-top:0px !important;
+}
+
+.icons_main_page{
+ 	float:left;
+ 	width:100%;
+ 	margin-bottom:20px;
+	margin-top:-10px;
+	margin-left:10px;
+}
+
+.icons_main_page span{
+ 	float:left;
+ 	width:58px;
+ 	margin:0px;
+ 	list-style:none;
+}
+
+.icons_main_page img{
+	float:left;
+	width:32px;
+	height:32px;
+}
+
+.icons_main_page p{
+	float:left;
+	width:100%;
+	margin:0px;
+	padding:0px;
+	font-style:italic;
+	font-size:10px;
 }
