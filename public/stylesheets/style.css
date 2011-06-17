@@ -146,7 +146,7 @@ a:focus {
     color: #525252;
     float: left;
     font-weight:bold;
-    font-size: 28px;
+    font-size: 38px;
     margin-bottom:0px;
     width: 100%;
 }
@@ -235,8 +235,8 @@ a:focus {
 
 .facebook_like{
 	float:right;
-	width:400px;
-	*width:405px;
+	width:315px;
+	*width:320px;
 	margin-top:10px;
 	margin-bottom:120px;
 }
@@ -3208,19 +3208,19 @@ div.fbFooterBorder{
 }
 
 .banner_sign_up_button input{
-	width:470px;
+	width:650px;
 	text-align:center;
 	margin-top:-5px;
 }
 
 .banner_sign_up_button input:hover{
-	width:470px !important;
+	width:650px !important;
 }
 
 .banner_text {   
     float: left;
-    width: 500px;
-	margin-left:200px;
+    width: 700px;
+	margin-left:100px;
 }
 
 .banner_text p {
@@ -3917,7 +3917,7 @@ div.fbFooterBorder{
 .altering_text span{
 	float:none !important;
 	width:auto;
-	margin-right:5px;
+	margin-right:3px;
 	font-size:18px;
 }
 
@@ -4399,15 +4399,15 @@ div.fbFooterBorder{
 
 .icons_main_page span{
  	float:left;
- 	width:58px;
+ 	width:80px;
  	margin:0px;
  	list-style:none;
 }
 
 .icons_main_page img{
 	float:left;
-	width:32px;
-	height:32px;
+	width:48px;
+	height:48px;
 }
 
 .icons_main_page p{
