@@ -2,9 +2,7 @@
 <div class="banner">
   <% unless flash[:notice].blank? %><p class="flash"><%= flash[:notice] %></p><% end %>
 	<div class="banner_text">
-		<div class="content_back main_page_content_container">
-			<h2>Find, buy and sell market research.</h2>
-			<div style="margin-bottom: 5px ! important;" class="icons_main_page">
+			<div class="icons_main_page icon_box">
 				<span><img src="images/report.png" /><p>Reports</p></span>
 				<span><img src="images/chart.png" /><p>Charts</p></span>
 				<span><img src="images/graphs.png" /><p>Graphs</p></span>
@@ -14,8 +12,10 @@
 				<span><img src="images/interview.png" /><p>Interviews</p></span>
 				<span><img src="images/others.png" /><p>Others</p></span>
 			</div>
+		<div class="content_back main_page_content_container">
+			<h2>Find, buy and sell market research.</h2>
 		    <div style="margin-top:15px;" class="altering_text"> 
-		    	<span>Research Nation is a unique, user-generated marketplace for market research. We are currently in private beta, and are accepting submissions from sellers. To apply for inclusion in our marketplace, please sign up below. <u>Deadline is July 1, 2011</u>.</span><br>
+		    	<span>We are currently in private beta. Sign up by July 1 to be included in our marketplace.</span><br>
 		    </div>
 		    <% unless logged_in? %>
 				<%= render :partial => 'users/errors' %>

@@ -138,7 +138,7 @@ a:focus {
 
 .banner_text span{
     float:left;
-    width:100%;
+    width:335px;
     font-size:11px;
 }
 
@@ -147,8 +147,9 @@ a:focus {
     float: left;
     font-weight:bold;
     font-size: 38px;
+	line-height:42px;
     margin-bottom:0px;
-    width: 100%;
+    width: 335px;
 }
 
 .banner_text ul{
@@ -235,20 +236,19 @@ a:focus {
 
 .facebook_like{
 	float:right;
-	width:315px;
-	*width:320px;
+	width:293px;
+	*width:298px;
 	margin-top:10px;
 	margin-bottom:120px;
 }
 
-
 .banner_text a{
-	width:450px;
+	width:310px;
 }
 
 .banner_text a:hover{
 	padding:10px;
-	width:450px !important;
+	width:310px !important;
 }
 
 .content{
@@ -2995,10 +2995,9 @@ div.fbFooterBorder{
 	background: -webkit-gradient(linear,left bottom, left top, color-stop(0.22, #CECECE), color-stop(0.81, #CECECE));
 	background: -moz-linear-gradient(center bottom, #CECECE 22%, #CECECE 81%);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#CECECE, endColorStr=#CECECE);
-	
-	-moz-border-radius: 10px;
- 	-webkit-border-radius: 10px;
- 	border-radius: 10px;
+	-moz-border-radius: 4px;
+ 	-webkit-border-radius: 4px;
+ 	border-radius: 4px;
  	behavior: url(../images/border-radius.htc);
 }
 
@@ -3208,18 +3207,18 @@ div.fbFooterBorder{
 }
 
 .banner_sign_up_button input{
-	width:650px;
+	width:325px;
 	text-align:center;
 	margin-top:-5px;
 }
 
 .banner_sign_up_button input:hover{
-	width:650px !important;
+	width:325px !important;
 }
 
 .banner_text {   
     float: left;
-    width: 700px;
+    width: 900px;
 	margin-left:100px;
 }
 
@@ -3612,6 +3611,7 @@ div.fbFooterBorder{
 .author_image_box{
 	float:left;
 	width:70px;
+	height:65px;
 }
 
 .author_image_box img{
@@ -3911,12 +3911,12 @@ div.fbFooterBorder{
 
 .altering_text{
 	float:left;
-	width:100%;
+	width:335px;
 }
 
 .altering_text span{
 	float:none !important;
-	width:auto;
+	width:335px;
 	margin-right:3px;
 	font-size:18px;
 }
@@ -3936,9 +3936,11 @@ div.fbFooterBorder{
 }
 
 .main_page_content_container{
-	float:left;
+	float:right;
 	margin-top:36px;
-	border:1px solid #CCC;
+	border: none;
+	background: none !important;
+	width: 500px !important;
 }
 
 .purchase_error{
@@ -4389,32 +4391,41 @@ div.fbFooterBorder{
  	margin-top:0px !important;
 }
 
+.icon_box span{
+	float:left;
+	width:75px !important;
+	margin:0px;	
+}
+
+.icon_box{
+	float:left;
+	width:300px;
+}
+
 .icons_main_page{
- 	float:left;
- 	width:100%;
- 	margin-bottom:20px;
-	margin-top:-10px;
-	margin-left:10px;
+ 	margin-top:28px;
+ 	margin-left:42px;
 }
 
 .icons_main_page span{
- 	float:left;
- 	width:80px;
- 	margin:0px;
- 	list-style:none;
+ Ê	float:left;
+ Ê	width:60px !important;
+ Ê	margin:0px;
+ 	padding:0px;
+ Ê	list-style:none;
 }
 
 .icons_main_page img{
-	float:left;
-	width:48px;
-	height:48px;
+ 	float:left;
+ 	width:48px;
+ 	height:48px;
 }
 
 .icons_main_page p{
-	float:left;
-	width:100%;
-	margin:0px;
-	padding:0px;
-	font-style:italic;
-	font-size:10px;
+ 	float:left;
+ 	width:100%;
+ 	margin:0px;
+ 	padding:0px;
+ 	font-style:italic;
+ 	font-size:12px;
 }
