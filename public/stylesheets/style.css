@@ -4401,6 +4401,15 @@ div.fbFooterBorder{
 	width:300px;
 }
 
+
+.icon_box p{
+	color:#AC7333;
+}
+
+.icon_box p:hover{
+	text-decoration:underline;
+}
+
 .icons_main_page{
  	margin-top:28px;
  	margin-left:42px;
