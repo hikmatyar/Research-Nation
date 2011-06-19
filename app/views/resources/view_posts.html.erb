@@ -2,26 +2,40 @@
 <% content_for :html_title, 'Browse Marketplace' %>
 
 <%= stylesheet_link_tag 'autocomplete'%>
-<%= javascript_include_tag 'posts_search' %>
+<%#= javascript_include_tag 'posts_search' %>
 
 <div class="content">
   <div class="profile_tabs">
     <ul class="tabs">
+
+<!--
+Remove the comments to restore the source code for market place etc.
+
       <li style="-moz-border-radius-topright: 10px !important; -webkit-border-top-right-radius: 10px !important;">
-        <%= link_to 'Directory', { :controller => 'profiles', :action => 'view_profile_list'}, { :class => 'profiles' }%>
+        <%#= link_to 'Directory', { :controller => 'profiles', :action => 'view_profile_list'}, { :class => 'profiles' }%>
       </li>
+-->
       <li style="-moz-border-radius-topleft: 10px !important; -webkit-border-top-left-radius: 10px !important;">
         <%= link_to 'Marketplace', { :controller => 'resources', :action => 'view_posts' }, { :class => 'posts' } %>
       </li>
     </ul>
   </div>
+  <div class="search_contant" style="background-image:none !important">
+<!--
   <div class="search_contant">
+-->
     <div class="left_content" id="left_content">
-      <%= render :partial => 'posts'%>
+      <i>We are currently in private beta, and will be launching soon. Click <%= (link_to 'here', :controller => 'users', :action => 'register') %> if <br/><br/>you are a seller and want to list a document in our marketplace.</i>
+
+      <%#= render :partial => 'posts'%>
     </div>
+    <div style="height:300px;">
+<!--    
     <div class="search_right">
       <%= render :partial => 'right_content' %>
+-->
     </div>
+
   </div>
 </div>
 

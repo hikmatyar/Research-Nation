@@ -5,7 +5,6 @@ $(document).ready(function(){
     var pass_label  = "Your Password";
 
 	  $("#new_user").find(":input").focus(function(){
-      $('label[for='+$(this).attr('id')+']').css("padding","8px");
       $('label[for='+$(this).attr('id')+']').text("");
 
 	  });
