@@ -1,6 +1,5 @@
 <% unless @profile.blank? %>
   <% content_for :html_title, "#{@profile.name}\'s Profile" %>
-<% end %>
 <div class="content">
 <% unless flash[:notice].blank? %>
   <p class="flash"><%= flash[:notice] %></p>
@@ -10,7 +9,7 @@
     <div class="content_back">
       <div class="categories_box">
         <b>
-		      <% unless @profile.company_type.blank? %>
+  		    <% unless @profile.company_type.blank? %>
 		        <span><%= link_to ( @profile.company_type, :controller => "profiles", :action => "view_profile_list", :company_type => @profile.company_type ) unless @profile.company_type.blank? %></span>
 		      <% end %>
 		      <% unless @profile.services.blank? %>
@@ -60,3 +59,4 @@
   </div>
 </div>
 <%= render :partial => 'message_form'%>
+<% end %>

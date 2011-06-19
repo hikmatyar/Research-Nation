@@ -12,8 +12,8 @@
       <tr>
         <td><%= (@users_count - index ).to_s %></td>
         <td ><%= user.email %></td>
-        <td><%= user.user_type.capitalize %></td>
-        <td ><%= user.created_at.strftime("%B %d, %Y") %></td>
+        <td><%= user.user_type.capitalize unless user.user_type.blank?%></td>
+        <td ><%= user.created_at.strftime("%B %d, %Y") unless user.created_at.blank?%></td>
       </tr>
     <% end %>
   <tbody>
