@@ -30,7 +30,7 @@
       <% @profile.user.valid_resources.each do |post| %>
           <div class="field1 user_links">
             <%= link_to (  post.title, { :controller => 'resources', :action => 'seller_page', :url_slug => post.url_slug },  { :class => "web_link" }) %>
-          </div>>
+          </div>
       <% end %>
     <% end %>
     <% unless @profile.interested_in.blank? %>
