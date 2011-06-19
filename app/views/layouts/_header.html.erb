@@ -3,9 +3,6 @@
 	<div class="main_menu_box">
 	  <ul class="main_menu">
       <li class="sell_link"><%= link_to "Sell", :controller => "resources", :action => "new" %></li>
-      <li class="buy_link" <%= "class='borderless'" unless logged_in?%> >
-        <%= (link_to 'Explore', :controller => 'resources', :action => 'view_posts') %>
-      </li>
 	    <% if logged_in? %>
 	    	<li class="logout"><%= (link_to 'Logout', :controller => 'users', :action => 'logout')  %></li>
         <% end %>
@@ -13,7 +10,7 @@
         <li class="admin"><%= (link_to "Admin", :controller => "admin", :action => "dashboard") %></li>
       <% end %>
       <% unless logged_in? %>
-        <li class="create_link"><%= (link_to 'Signup', :controller => 'users', :action => 'register', :opt => 'signup') %></li>
+        <li class="create_link"><%= (link_to 'Sign Up', :controller => 'users', :action => 'register', :opt => 'signup') %></li>
         <li class="create_link"><%= (link_to 'Login', :controller => 'users', :action => 'register', :opt => 'login') %></li>
       <% end %>
       <% if logged_in? %>
