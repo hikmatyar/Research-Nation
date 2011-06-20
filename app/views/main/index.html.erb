@@ -17,29 +17,7 @@
 		    <div style="margin-top:15px;" class="altering_text"> 
 		    	<span>We are currently in private beta. Sign up by July 15 to be included in our marketplace.</span><br>
 		    </div>
-		    <% unless logged_in? %>
-				<%= render :partial => 'users/errors' %>
-				<% form_for(@user , :url => {:controller => "users", :action => "create" } ) do |f| %>
-				<div class="new_field">
-					<label style="padding:0px;" for="email">Your Email</label>
-					<%= f.text_field 'email', :id => "email", :class => 'required email', :title => "Your Email"%>
-				</div>
-				<div class="new_field">
-					<label style="padding:0px;" for="password">Your Password</label>
-					<%= f.password_field 'password', :id => "password", :class => 'required password min_len', :min_length => "6" %>
-				</div>
-				<div class="new_field1 new_field ">
-		    <div class="field_container">
-		    <label></label>
-		      <%= render :partial => "/layouts/select_user_type", :locals => {:f => f} %>
-		    </div>
-				</div>
-				<div class="banner_sign_up_button" style="margin-left:0px !important;"><%= (f.submit "Sign up as a Seller", :class => "green_button")%></div>
-				<div class="main_terms_and_conditions">
-					<p>By signing up you agree to our </p><%= link_to "Terms of Service ", :controller => "main", :action => "privacy" %><p> and</p> <%= link_to "Privacy Policy", :controller => "main", :action => "privacy" %></div>
-				<% end %>
-			<% end %>
-			<%= link_to ( "Start Selling Now! There's No Listing Fee.", { :controller => "resources", :action => "upload_docs"}, { :class => 'green_button'} ) if logged_in? %>
+			<%= link_to ( "Sign up as a Seller. It's Free.", { :controller => "users", :action => "register", :opt =>"signup"}, { :class => 'green_button'} ) unless logged_in? %>
 		</div>
 	</div>
 	<%= hidden_field_tag 'create_post', :value => false%>
