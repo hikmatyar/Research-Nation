@@ -750,6 +750,14 @@ a:focus {
 	font-size:18px;
 }
 
+.left_content a{
+	color:AC7333;
+}
+
+.left_content a:hover{
+	text-decoration:underline;;
+}
+
 .seller_left{
 	float:left;
 	width:704px;
@@ -4273,7 +4281,7 @@ div.fbFooterBorder{
 
 .post_listing ul{
 	float:left;
-	width:638px;
+	width:625px;
 	margin:0px;
 	padding:10px;
 	border-bottom:1px dotted #CCC;
