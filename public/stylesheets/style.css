@@ -3372,8 +3372,9 @@ div.fbFooterBorder{
 	font-size:12px;
 	color:red;
 }
+
 .earnings_fixed_box{
-  max-height:375px;
+ 	max-height:325px;
 	width:658px;
 }
 
@@ -3918,7 +3919,7 @@ div.fbFooterBorder{
 
 .altering_text{
 	float:left;
-	width:335px;
+	width:350px;
 }
 
 .altering_text span{
@@ -4281,7 +4282,7 @@ div.fbFooterBorder{
 
 .post_listing ul{
 	float:left;
-	width:625px;
+	width:620px;
 	margin:0px;
 	padding:10px;
 	border-bottom:1px dotted #CCC;
