@@ -751,11 +751,11 @@ a:focus {
 }
 
 .left_content a{
-	color:AC7333;
+	color:AC#7333;
 }
 
 .left_content a:hover{
-	text-decoration:underline;;
+	text-decoration:underline;
 }
 
 .seller_left{
