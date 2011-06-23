@@ -16,7 +16,7 @@ class Attachment < ActiveRecord::Base
                     :path => "originals/:id/:basename.:extension",
                     :bucket => DATA_BUCKET
 
-  validates_attachment_size :original, :less_than => 5.megabytes
+  validates_attachment_size :original, :less_than => 12.megabytes
 #  validates_attachment_content_type :original, :content_type => ['image/jpeg', 'image/png', 'image/gif']
 
 
