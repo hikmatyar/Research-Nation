@@ -83,13 +83,13 @@ p {
 a {}
 a:link,
 a:visited {
-  	color: #AC7333;
+  	color: #245a83;
   	text-decoration: none;
   	outline:none;
 }
 
 a:active {
-  	color: #AC7333;
+  	color: #113a5a;
 }
 
 a{
