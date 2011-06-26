@@ -37,7 +37,7 @@ class ResourcesController < ApplicationController
   def request_resource
     @resource = Resource.find_by_url_slug params[:url_slug], :conditions => {:is_deleted => false}
     unless @resource.blank?
-      UserMailer.deliver_request_resource(@resource)
+      UserMailer.deliver_request_resource(@resource, current_user)
       flash[:notice] = "Thank you, your request has been submitted to the author, and he will notify you directly as and when his publication is ready to be downloaded."
     else
       flash[:notice] = "Post not found."

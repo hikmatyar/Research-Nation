@@ -7,7 +7,7 @@
   <body>
     <p>Hi,</p>
 
-    <p>This is to let you know that someone has requested <br />
+    <p>This is to let you know that <%= link_to @requestor.name, {:controller => "profiles", :action => "profile_page", :host => "researchnation.net", :url_slug => @requestor.url_slug}%> has requested <br />
     the following offering of yours:</p>
 
     <p><b>"<%= @resource.title%>."</b></p>

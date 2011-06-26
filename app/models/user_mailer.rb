@@ -31,13 +31,14 @@ class UserMailer < ActionMailer::Base
       sent_on Time.now
   end
 
-  def request_resource(resource)
+  def request_resource(resource, current_user)
       recipients   resource.user.email
       subject      "Research Nation - You have received a request for #{resource.title}"
       from         "no-reply@researchnation.net"
       bcc           "admin@researchnation.net"
       content_type "text/html"
       body         :user => resource.user,
+                   :requestor => current_user.profile,
                    :resource => resource
       sent_on Time.now
   end
