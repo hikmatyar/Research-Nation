@@ -17,6 +17,7 @@
 		    <div style="margin-top:15px;" class="altering_text"> 
 		    	<span>We are currently in private beta. Sign up by July 15 to be included in our marketplace.</span><br>
 		    </div>
+      <%= link_to ( "Start Selling Now! It's Free.", { :controller => "resources", :action => "upload_docs"}, { :class => 'green_button'} ) if logged_in? %>
 			<%= link_to ( "Sign up as a Seller. It's Free.", { :controller => "users", :action => "register", :opt =>"signup"}, { :class => 'green_button'} ) unless logged_in? %>
 		</div>
 	</div>
