@@ -1,33 +1,34 @@
-<% unless @profile.description.blank? %>
-  <div class="facebook_back">
-    <div class="sign_up_box">
-      <h4 class="heading_color" style="border-top:0px; margin-top:0px;">About Me</h4>
-      <div class="field field1">
-        <p class="about_field_text"><%= @profile.description.gsub("\n", "<br />") unless @profile.description.blank? %></span>
-      </div>
-<% end %>
-<% unless @profile.humor_me.blank? %>
-      <h4 class="heading_color">Areas of Expertise</h4>
-      <div class="field field1">
-        <p class="about_field_text"><%= @profile.humor_me.gsub("\n", "<br />") %></span>
-      </div>
-<% end %>
-<% unless @profile.user.valid_resources.blank? %>
-      <h4 class="heading_color">Posts Created</h4>
-      <% @profile.user.valid_resources.each do |post| %>
-          <div class="field1 user_links">
-            <%= link_to (  post.title, { :controller => 'resources', :action => 'seller_page', :url_slug => post.url_slug },  { :class => "web_link" }) %>
-          </div>
-      <% end %>
-<% end %>
-<% unless @profile.interested_in.blank? %>
-      <h4 class="heading_color">Interested In</h4>
-      <% @interests.each do |i|%>
+<div class="facebook_back">
+  <div class="sign_up_box">
+      <% unless @profile.description.blank? %>
+        <h4 class="heading_color" style="border-top:0px; margin-top:0px;">About Me</h4>
         <div class="field field1">
-          <input type="checkbox" name="interests" checked="checked" disabled="disabled" />
-          <label class="check_box_text"><%= i %></label>
+          <p class="about_field_text"><%= @profile.description.gsub("\n", "<br />") unless @profile.description.blank? %></span>
         </div>
       <% end %>
-    </div>
+      <% unless @profile.humor_me.blank? %>
+        <h4 class="heading_color">Areas of Expertise</h4>
+        <div class="field field1">
+          <p class="about_field_text"><%= @profile.humor_me.gsub("\n", "<br />") %></span>
+        </div>
+      <% end %>
+      <% unless @profile.user.valid_resources.blank? %>
+        <h4 class="heading_color">Posts Created</h4>
+        <% @profile.user.valid_resources.each do |post| %>
+            <div class="field1 user_links">
+              <%= link_to (  post.title, { :controller => 'resources', :action => 'seller_page', :url_slug => post.url_slug },  { :class => "web_link" }) %>
+            </div>
+        <% end %>
+      <% end %>
+      <% unless @profile.interested_in.blank? %>
+        <h4 class="heading_color">Interested In</h4>
+        <% @interests.each do |i|%>
+          <div class="field field1">
+            <input type="checkbox" name="interests" checked="checked" disabled="disabled" />
+            <label class="check_box_text"><%= i %></label>
+          </div>
+        <% end %>
+      <% end %>
   </div>
-<% end %>
+</div>
+
