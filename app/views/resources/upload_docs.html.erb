@@ -44,7 +44,7 @@
                   <label>Price(US$)*</label>
                   <%= text_field 'resource', 'selling_price', :class => 'required valid_price tip', :title => "Price can be between US$0 to US$5,000" %>
               </div>
-              <div class="field"><label>Attachment(s)*: </label></div>
+              <div class="field"><label>Attachment(s): </label></div>
               <div class="field"><label>Sample Document</label><%= file_field  "attachment", 'sample', :class => 'file', :size => "22" %></div>
               <div class="field " id="documents"><label>Original File*</label><%= file_field "attachment", 'original[0]', :class => 'file', :size => "22" %></div>
               <%= link_to "(Add another file)", "#documents", :id => "add_another_file", :class => 'add_attachment_link', :size => "22" %>
