@@ -100,6 +100,10 @@ class ResourcesController < ApplicationController
       @resource.attachments.sample.first.destroy unless @resource.attachments.sample.blank?
       Attachment.add_file(params[:sample], @resource.id, "sample")
     end
+    original_file_attachments = params[:attachment][:original] unless params[:attachment].blank?
+    original_file_attachments && original_file_attachments.each do |key, file|
+      Attachment.add_file(file, resource.id, "original")
+    end
     if @resource.update_attributes(params[:resource])
       flash[:notice] = "Thank you! Your post has been updated"
     else

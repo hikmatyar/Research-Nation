@@ -1,4 +1,5 @@
 <% content_for :html_title, "Edit #{@resource.title}" %>
+<%= javascript_include_tag "upload_form" %>
 <div class="content">
   <div class="how_it_work_left_side">
     <div class="seller_back">
@@ -41,6 +42,10 @@
             <label for="terms">Sample</label>
             <%= file_field_tag 'sample', :class => 'text_field'%>
           </div>
+          <% if session[:admin] %>
+            <div class="field " id="documents"><label>Original File*</label><%= file_field "attachment", 'original[0]', :class => 'file', :size => "22" %></div>
+            <%= link_to "(Add another file)", "#documents", :id => "add_another_file", :class => 'add_attachment_link', :size => "22" %>
+          <% end %>
         <% unless @resource.attachments.sample.blank? %>
             <div class="sample">
               <%= link_to "Delete Sample", :controller => 'resources', :action => 'remove_sample', :url_slug => @resource.url_slug unless @resource.attachments.sample.blank? %>
