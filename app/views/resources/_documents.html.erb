@@ -6,7 +6,19 @@
         <% @resource.attachments.original_files.each_with_index do |attachment,index| %>
             <div class="seller_page_downloads_image">
               <%= file_type_image(attachment)%>
-              <span><%= (attachment.original_file_size/1024).to_s + "KB"  %></span>
+              <div class="attachment_details">
+                <span><%= (attachment.original_file_size/1024).to_s + "KB"  %></span>
+                <span><%= attachment.details%></span>
+              </div>
+              <% if session[:admin] %>
+                <a href="#" class="attachment_details_link">(edit)</a>
+                <% form_tag "/resources/add_attachment_details", {:class => "attachment_details_form"}  do %>
+                  <%= text_field :attachment, :details, :style => "width:200px;" %>
+                  <%= hidden_field_tag "url_slug",  @resource.url_slug %>
+                  <%= hidden_field :attachment, :id, :value => attachment.id %>
+                  <%= submit_tag "Submit"%>
+                <% end %>
+              <% end %>
             </div>
         <% end %>
       </div>

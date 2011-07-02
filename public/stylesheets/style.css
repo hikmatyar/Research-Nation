@@ -1949,6 +1949,13 @@ html ul.tabs li.active, html ul.tabs li.active {
   padding:3px;
   float:none;
 }
+
+.attachment_details_form{
+  display:none;
+  margin-top:100px;
+}
+
+
 .download_text{
 	float:left;
 	width:360px;
@@ -4421,11 +4428,11 @@ div.fbFooterBorder{
 }
 
 .icons_main_page span{
- Ê	float:left;
- Ê	width:60px !important;
- Ê	margin:0px;
+ 	float:left;
+ 	width:60px !important;
+ margin:0px;
  	padding:0px;
- Ê	list-style:none;
+ list-style:none;
 }
 
 .icons_main_page img{

@@ -1,35 +1,35 @@
 var new_text = ["make money.","share your expertise.","build a reputation."];
 var counter = 0;
-jQuery(document).ready(function(){
+$(document).ready(function(){
 
 
 	if(location.pathname == "/"){
 		change_text();
 	}
 
-	if(jQuery("#login-tab")){
-	  jQuery("#login-tab").addClass("active");
+	if($("#login-tab")){
+	  $("#login-tab").addClass("active");
   }
 
 	if (location.href.match("login")){
-		if(jQuery(".sign_up_terms")){
-			jQuery("#login-tab").addClass("active");
-			jQuery("#signup-tab").removeClass("active");
+		if($(".sign_up_terms")){
+			$("#login-tab").addClass("active");
+			$("#signup-tab").removeClass("active");
 		}
 		else
 		{
-			jQuery("#login-tab").removeClass("active");
-			jQuery("#signup-tab").addClass("active");
+			$("#login-tab").removeClass("active");
+			$("#signup-tab").addClass("active");
 		}
 	}
 
-	if(jQuery('.flash')){
+	if($('.flash')){
 
 		if (location.href.match("profile")){
-			setTimeout("jQuery('.flash').fadeOut(20000);",1000);
+			setTimeout("$('.flash').fadeOut(20000);",1000);
 		}
 		else{
-			setTimeout("jQuery('.flash').fadeOut(7500);",1000);
+			setTimeout("$('.flash').fadeOut(7500);",1000);
 		}
 	}
 
@@ -37,50 +37,56 @@ jQuery(document).ready(function(){
     if (s.length > 1){
       location_class = "."+s;
       if ($(location_class).length > 0) {
-        jQuery(location_class).addClass("active");
-        jQuery(location_class).addClass("pushed_button");
+        $(location_class).addClass("active");
+        $(location_class).addClass("pushed_button");
       }
     }
 
 	//When page loads...
 
-	if (jQuery(".tab_content")){
-		jQuery(".tab_content").hide(); //Hide all content
-		jQuery("ul.tabs li:first").addClass("active").show(); //Activate first tab
-		jQuery(".tab_content:first").show(); //Show first tab content
+	if ($(".tab_content")){
+		$(".tab_content").hide(); //Hide all content
+		$("ul.tabs li:first").addClass("active").show(); //Activate first tab
+		$(".tab_content:first").show(); //Show first tab content
 	}
 
 	//On Click Event
-	jQuery("ul.tabs li").click(function() {
-		jQuery("ul.tabs li").removeClass("active"); //Remove any "active" class
-		jQuery(this).addClass("active"); //Add "active" class to selected tab
-		jQuery(".active a").addClass("active");
-		jQuery(".tab_content").hide(); //Hide all tab content
+	$("ul.tabs li").click(function() {
+		$("ul.tabs li").removeClass("active"); //Remove any "active" class
+		$(this).addClass("active"); //Add "active" class to selected tab
+		$(".active a").addClass("active");
+		$(".tab_content").hide(); //Hide all tab content
 
-		var activeTab = jQuery(this).find("a").attr("href"); //Find the href attribute value to identify the active tab + content
-		jQuery(activeTab).fadeIn(); //Fade in the active ID content
+		var activeTab = $(this).find("a").attr("href"); //Find the href attribute value to identify the active tab + content
+		$(activeTab).fadeIn(); //Fade in the active ID content
 		return true;
 	});
 
-  if(jQuery('.email_address')){
-    jQuery('.email_address').blur(function(){
-    jQuery(this).removeClass("error_field");
+  if($('.email_address')){
+    $('.email_address').blur(function(){
+    $(this).removeClass("error_field");
 	});
 
-	jQuery('.email_address').click(function(){
-		jQuery(this).val("");
-		jQuery(this).css("color","#000");
+	$('.email_address').click(function(){
+		$(this).val("");
+		$(this).css("color","#000");
 	});
 
-	jQuery("form").submit(function(){
-      if (jQuery(".email_address").val()==""){
-        jQuery('.email_address').addClass("error_field");
+	$('.attachment_details_link').click(function(){
+    $(this).prev().hide();
+		$(this).hide();
+		$(this).next().show();
+	});
+
+	$("form").submit(function(){
+      if ($(".email_address").val()==""){
+        $('.email_address').addClass("error_field");
         return false;
 	    }
 	  });
 	}
 
-  if(jQuery("#edit_resource").length > 0){
+  if($("#edit_resource").length > 0){
     $("#resource_title").show_char_limit(140);
     $("#resource_description").show_char_limit(3000);
     $("#resource_industry").show_char_limit(25);
@@ -106,10 +112,10 @@ function showTab(value)
 	{
 		if(value == "signup")
 		{
-			jQuery("#signup-tab").addClass("active");
+			$("#signup-tab").addClass("active");
 			document.getElementById('signup-body').style.display = "block"
 
-			jQuery("#login-tab").removeClass("active");
+			$("#login-tab").removeClass("active");
 			document.getElementById('login-body').style.display = "none"
 			return true;
 		}
@@ -118,15 +124,15 @@ function showTab(value)
 			document.getElementById('signup-body').style.display = "none"
 			document.getElementById('login-body').style	.display = "block"
 
-			jQuery("#login-tab").addClass("active");
-			jQuery("#signup-tab").removeClass("active");
+			$("#login-tab").addClass("active");
+			$("#signup-tab").removeClass("active");
 		}
 	}
 
 function change_text(){
-  if (jQuery("#text_to_change")) {
+  if ($("#text_to_change")) {
     if(counter < new_text.length){
-      jQuery("#text_to_change").html("<a href='/browse/posts'>" + new_text[counter++] + "</a>");
+      $("#text_to_change").html("<a href='/browse/posts'>" + new_text[counter++] + "</a>");
     }
     else{
       counter = 0;

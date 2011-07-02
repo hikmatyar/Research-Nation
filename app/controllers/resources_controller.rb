@@ -86,6 +86,11 @@ class ResourcesController < ApplicationController
     return redirect_to :controller => 'resources', :action => 'edit', :url_slug => params[:url_slug]
   end
 
+  def add_attachment_details
+    attachment = Attachment.find(params[:attachment][:id])
+    attachment.update_attributes :details => params[:attachment][:details]
+    return redirect_to :controller => "resources", :action => "seller_page", :url_slug => params[:url_slug]
+  end
 
   def edit
   end

@@ -29,7 +29,7 @@
       <h4 class="heading_color">Posts Created</h4>
       <% @profile.user.valid_resources.each do |post| %>
           <div class="field1 user_links">
-            <%= link_to (  post.title, { :controller => 'resources', :action => 'seller_page', :url_slug => post.url_slug },  { :class => "web_link" }) %>
+            <%= link_to (post.title, {:controller => 'resources', :action => 'seller_page', :url_slug => post.url_slug },  { :class => "web_link" }) %>
           </div>
       <% end %>
     <% end %>
