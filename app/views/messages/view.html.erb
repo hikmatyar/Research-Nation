@@ -14,7 +14,7 @@
         <b><%= truncate(@message.sender.profile.name, :omission => "...", :length => 10) %></b>
       </div>
       <div class="message">
-        <p><%= @message.body %></p>
+        <p><%= @message.body.gsub("\n", "<br />") %></p>
       </div>
       <div class="sender">
         <div class="sender_image">
