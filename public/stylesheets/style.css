@@ -4428,11 +4428,7 @@ div.fbFooterBorder{
 }
 
 .icons_main_page span{
- 	float:left;
- 	width:60px !important;
- margin:0px;
  	padding:0px;
- list-style:none;
 }
 
 .icons_main_page img{
