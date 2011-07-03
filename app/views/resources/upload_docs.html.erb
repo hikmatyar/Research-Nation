@@ -1,4 +1,4 @@
-<% content_for :html_title, 'Create a Post - Start Selling Now!' %>
+<% content_for :html_title, 'Create a Post' %>
 <%= javascript_include_tag "upload_form" %>
 
 <div class="content">
@@ -15,7 +15,7 @@
           </div>
           <div class="create_heading_box">
             <h1 style="margin-top:5px !important; margin-bottom:5px !important;">Create a Post.</h1>
-            <b>Please fill out the form below. You can edit and/or delete it at any time, except for the price field.
+            <b>Please fill out the form below if you want to sell documents, or post an idea. You can edit and/or delete it at any time, except for the price field.
             </b>
           </div>
           <div class="sign_up_box">
@@ -46,7 +46,7 @@
               </div>
               <div class="field"><label>Attachment(s): </label></div>
               <div class="field"><label>Sample Document</label><%= file_field  "attachment", 'sample', :class => 'file', :size => "22" %></div>
-              <div class="field " id="documents"><label>Original File*</label><%= file_field "attachment", 'original[0]', :class => 'file', :size => "22" %></div>
+              <div class="field " id="documents"><label>Original File</label><%= file_field "attachment", 'original[0]', :class => 'file', :size => "22" %></div>
               <%= link_to "(Add another file)", "#documents", :id => "add_another_file", :class => 'add_attachment_link', :size => "22" %>
               <div class="field">
                 <label>Sources and Methodology*</label>
