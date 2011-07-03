@@ -5,7 +5,7 @@
   <% unless flash[:notice].blank? %><p class="flash"><%= flash[:notice] %></p><% end %>
   <div class="content_back post_back">
     <div class="categories_box">
-      <b><span><%= link_to @resource.industry, :controller => 'resources', :action => 'view_posts', :filter => @resource.industry %></span> <span><%= link_to @resource.geography, :controller => 'resources', :action => 'view_posts', :filter => @resource.geography %></span></b>
+      <b><span><%= link_to @resource.industry, :controller => 'resources', :action => 'view_posts', :filter => @resource.industry %></span> <span><%= link_to @resource.geography, :controller => 'resources', :action => 'view_posts', :filter => @resource.geography %></span><%= render :partial => "rating"%></b>
     </div>
     <div class="custom_images">
       <a href="" class="addthis_button_twitter">
@@ -38,7 +38,6 @@
             <% end %></span>
           </b>
         </div>
-        <%= render :partial => "rating"%>
       </div>
     </div>
     <div class="left_content">

@@ -1929,9 +1929,15 @@ html ul.tabs li.active, html ul.tabs li.active {
 
 .seller_page_downloads_image{
 	float:left;
-	width:52px;
-	text-align:center;
+	width:283px;
+	text-align:left;
 	margin:8px;
+}
+
+.attachment_detail{
+	float:left;
+	width:120px;
+	font-size:12px;
 }
 
 .seller_page_downloads_image img, .download_image img{
@@ -1955,6 +1961,12 @@ html ul.tabs li.active, html ul.tabs li.active {
   margin-top:100px;
 }
 
+,.attachment_details{
+	float:left;
+	width:120px;
+	font-size:14px;
+	text-align:left;
+}
 
 .download_text{
 	float:left;
