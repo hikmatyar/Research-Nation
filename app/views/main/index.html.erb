@@ -1,4 +1,4 @@
-<% content_for :html_title, 'Find, Buy and Sell Datasets, Research Reports, Charts, Graphs and More' %>
+<% content_for :html_title, 'Find, buy and sell datasets, research reports, charts, graphs and more.' %>
 <div class="banner">
   <% unless flash[:notice].blank? %><p class="flash"><%= flash[:notice] %></p><% end %>
 	<div class="banner_text">
@@ -13,11 +13,11 @@
 				<span><a href="http://researchnation.net/post/26-data-on-electricity-consumption-in-south-africa"><img src="images/others.png" /><p>Others</p></a></span>
 			</div>
 		<div class="content_back main_page_content_container">
-			<h2>Find, Buy and Sell Market Research.</h2>
+			<h2>A simple, free tool for growing sales.</h2>
 		    <div style="margin-top:15px;" class="altering_text"> 
-		    	<span>Sign up below to find out when we launch.</span><br>
+		    	<span>We help market research firms and data sellers gauge demand for their offerings.</span><br>
 		    </div>
-      <%= link_to ( "Start Selling Now! It's Free.", { :controller => "resources", :action => "upload_docs"}, { :class => 'green_button'} ) if logged_in? %>
+      <%= link_to ( "Get Started Now! It's Free.", { :controller => "resources", :action => "upload_docs"}, { :class => 'green_button'} ) if logged_in? %>
 			<%= link_to ( "Get Started Now! It's Free.", { :controller => "users", :action => "register", :opt =>"signup"}, { :class => 'green_button'} ) unless logged_in? %>
 		</div>
 	</div>
