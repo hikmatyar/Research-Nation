@@ -3819,7 +3819,7 @@ div.fbFooterBorder{
 }
 
 .fb_iframe_widget iframe {
-	height:160px !important;
+	height:auto; 
 }
 
 .banner_text .error{
