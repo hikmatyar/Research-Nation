@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
 
-  before_filter :set_tags, :only => ["company", "individual", "view_profile_list", "edit_individual_profile", "edit_company_profile"]
+  before_filter :set_tags, :only => ["view_profile_list", "edit_individual_profile", "edit_company_profile"]
 
   before_filter :redirect_to_login, :except => ["view_profile_list", "search_results", "profile_page"]
 
@@ -72,6 +72,7 @@ class ProfilesController < ApplicationController
         return redirect_to :controller => 'users', :action => 'profile'
       end
     end
+    set_tags
     return render :action => :edit_individual_profile if @profile.individual?
     return render :action => :edit_company_profile
   end
