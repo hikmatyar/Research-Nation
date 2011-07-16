@@ -45,6 +45,11 @@ class ResourcesController < ApplicationController
     return redirect_to :controller => "resources", :action => "seller_page", :url_slug => params[:url_slug]
   end
 
+  def fill_your_profile
+    flash[:notice] = "You need to create a profile before you can request for a resource. Please fill your profile below."
+    redirect_to :controller => "profiles", :action => "edit_#{current_user.user_type}_profile"
+  end
+
   def view_posts
     @user = User.find(session[:user]) if logged_in?
     if params[:filter].blank?

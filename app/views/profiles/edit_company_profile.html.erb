@@ -1,5 +1,6 @@
 <% content_for :html_title, 'Company Profile' %>
 <div class="content">
+  <% unless flash[:notice].blank? %><p class="flash"><%= flash[:notice] %></p><% end %>
   <div class="how_it_work_left_side">
     <div class="purchase_error">
       <% @profile.errors.each do |err| %>

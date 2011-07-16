@@ -7,8 +7,10 @@
       <% else %>
         <%= (link_to 'Purchase', { :controller => "purchases", :action => 'resource', :url_slug => @resource.url_slug }, { :class => "green_button"})  %>
       <% end %>
-    <% else %>
+    <% elsif !current_user.profile.url_slug.blank? %>
         <%= (link_to 'Request', { :controller => "resources", :action => 'request_resource', :url_slug => @resource.url_slug }, { :class => "green_button"})  %>
+    <% else %>
+        <%= (link_to 'Request', { :controller => "resources", :action => 'fill_your_profile'}, { :class => "green_button"})  %>
     <% end %>
     </div>
 </div>
