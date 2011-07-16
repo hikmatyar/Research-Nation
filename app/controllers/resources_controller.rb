@@ -7,6 +7,10 @@ class ResourcesController < ApplicationController
   def new
     if logged_in?
       @user = User.find(session[:user])
+      if session[:admin]
+        user_id = params[:user_id].blank? ? session[:user] : params[:user_id]
+        return redirect_to :action => 'upload_docs', :user_id => user_id
+      end
       return redirect_to :action => 'upload_docs'
     end
     session[:post] = true
@@ -61,7 +65,8 @@ class ResourcesController < ApplicationController
 
   def create_post
     resource = Resource.new(params[:resource])
-    user = User.find session[:user]
+    user_id = params[:user_id].blank? ? session[:user] : params[:user_id]
+    user = User.find user_id
     unless user.blank?
       user.update_attributes(:about_me => params[:user][:about_me]) if params[:user]
       user.update_attributes(session[:user_details])

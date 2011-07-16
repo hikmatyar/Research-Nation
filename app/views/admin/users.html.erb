@@ -14,6 +14,7 @@
         <td ><%= user.email %></td>
         <td><%= user.user_type.capitalize unless user.user_type.blank?%></td>
         <td ><%= user.created_at.strftime("%B %d, %Y") unless user.created_at.blank?%></td>
+        <td ><a href="/resources/new/?user_id=<%= user.id%>">create a post</a></td>
       </tr>
     <% end %>
   <tbody>

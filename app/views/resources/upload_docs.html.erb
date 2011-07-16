@@ -87,6 +87,9 @@
                   </div>
                 <% end %>
             </div>
+            <% unless params[:user_id].blank? %>
+              <input type="hidden" name="user_id" value="<%= params[:user_id]%>"/> 
+            <% end %>
             <div class="submit_button"><%= submit_tag "Submit", :class => "green_button" %></div>
           </div>
           <% end %>
