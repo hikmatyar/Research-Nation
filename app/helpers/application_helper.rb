@@ -11,6 +11,10 @@ module ApplicationHelper
        return (image_tag "excel-2010-icon.1.png")
      elsif [".ppt", ".pptx"].include?(extension)
        return (image_tag "file-extension-pps-powerpoint_icon.png")
+     elsif [".gif", ".jpeg", ".jpg", ".png"].include?(extension)
+       return (image_tag "image_file.png")
+     elsif [".csv"].include?(extension)
+       return (image_tag "csv_file.png")
      end
   end
 end
