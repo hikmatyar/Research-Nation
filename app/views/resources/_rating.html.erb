@@ -1,7 +1,7 @@
 <div style="float:left">
-  <% if !logged_in? || @resource.rated_by?(current_user)%>
-    <%= ratings_for @resource, :static, :remote_options => {:url => "/resources/rate/#{@resource.url_slug}"}%>
-  <% else %>
-    <%= ratings_for @resource, :remote_options => {:url => "/resources/rate/#{@resource.url_slug}"}%>
-  <% end %>
+<% if !logged_in? || @resource.rated_by?(current_user)%>
+  <%= ratings_for @resource, :static, :remote_options => {:url => "/resources/rate/#{@resource.url_slug}"}%>
+<% else %>
+  <%= ratings_for @resource, :remote_options => {:url => "/resources/rate/#{@resource.url_slug}"}%>
+<% end %>
 </div>
