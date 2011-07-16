@@ -91,8 +91,8 @@ class UsersController < ApplicationController
       else
         link = "<u><a href='/profiles/edit_individual_profile/#{profile.id}'>here</a></u>"
       end
-
-      flash[:notice] = "Please complete your profile by clicking #{link}"
+      link = "<u><a href='/create_a_post'>here</a></u>"
+      flash[:notice] = "Please create a post by clicking #{link}"
       return redirect_to :controller => 'users', :action => 'profile'
 
       return redirect_to :controller => "resources", :action => "view_posts"
