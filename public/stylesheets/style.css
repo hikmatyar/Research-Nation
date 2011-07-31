@@ -285,6 +285,21 @@ a:focus {
 	margin-bottom:20px;
 }
 
+.profile_back{
+	float:left;
+	width:100%;
+	margin-bottom:10px;
+}
+
+.profile_back a{
+	float:left;
+	color:#AC7333;
+}
+
+.profile_back a:hover{
+	text-decoration:underline;
+}
+
 /*---- Registration_page_css ------ */
 
 .content_back{
