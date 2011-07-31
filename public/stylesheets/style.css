@@ -127,7 +127,7 @@ a:focus {
 .header a{
 	float:left;
 	width:210px;
-	margin-right:170px;
+	margin-right:125px;
 }
 
 .header a img{
@@ -171,15 +171,19 @@ a:focus {
     border:0px !important;
 }
 
+.phone_number{
+	float:left !important;
+}
+
 .main_menu_box{
     float:left;
-    width:640px;
+    width:1024px;
 }
 
 .main_menu{
 	float:right;
-	margin:10px 0px 0px 0px;
-	width:100%;
+	margin:13px 0px 10px 0px;
+	width:420px;
 }
 
 .main_menu ul{
@@ -2843,14 +2847,17 @@ div.fbFooterBorder{
 
 /*--- footer_menu ----*/
 
+
+
 .footer_menu{
  	float:right;
- 	width:510px;
+ 	width:1024px;
  	margin-right:-1px;
  	margin-top:20px;
 }
 
 .footer_menu ul{
+	float:right;
 	margin:0px;
 	padding:0px;
 }
@@ -3931,6 +3938,40 @@ div.fbFooterBorder{
 	background:#FED220;
 }
 
+.top_menu{
+	float:left;
+	width:225px;
+	margin:14px 0px 10px 0px;
+	padding:0px;
+}
+
+.top_menu li{
+	float:left;
+	width:auto;
+	list-style:none;
+	border-left:1px solid #CCC;
+}
+
+.directory_link{
+	border-left:0px !important;
+}
+
+.directory_link a{
+	padding-left:0px !important;
+}
+
+.top_menu li a{
+	float:left;
+	padding:0px 15px;
+	color:#AC7333;
+	width:auto !important;
+	margin-right:0px !important;
+}
+
+.top_menu a:hover{
+	text-decoration:underline;
+}
+
 .message{
 	float:left;
 	width:380px;
@@ -4449,7 +4490,7 @@ div.fbFooterBorder{
 }
 
 .icons_main_page{
- 	margin-top:28px;
+ 	margin-top:70px;
  	margin-left:42px;
 }
 
@@ -4457,10 +4498,21 @@ div.fbFooterBorder{
  	padding:0px;
 }
 
+.icons_main_page b{
+	float: left;
+    width: 100%;
+    font-size:18px;
+    position: relative;
+    top: 5px;
+	font-style:italic;
+	font-weight:normal;
+}
+
 .icons_main_page img{
  	float:left;
  	width:48px;
  	height:48px;
+	margin-top:20px !important;
 }
 
 .icons_main_page p{
