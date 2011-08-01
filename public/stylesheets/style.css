@@ -175,6 +175,25 @@ a:focus {
 	float:left !important;
 }
 
+.sub_menu{
+	float:right;
+	width:100%;
+	margin:10px 0px 0px 0px !important;
+}
+
+.sub_menu li{
+	float:right;
+	border-left:1px solid #CCC;
+}
+
+.sub_menu .feedback a{
+	padding:0px 10px;
+}
+
+.sub_menu .upload_link a{
+	padding:0px 10px;
+	border-left:0px !important;
+}
 .main_menu_box{
     float:left;
     width:1024px;
@@ -183,7 +202,7 @@ a:focus {
 .main_menu{
 	float:right;
 	margin:13px 0px 10px 0px;
-	width:420px;
+	width:460px;
 }
 
 .main_menu ul{
@@ -193,7 +212,7 @@ a:focus {
 .main_menu li{
 	float:right;
 	list-style:none;
-	width:100px;
+	width:60px;
 	text-align:left;
 	list-style-type:none;
 	border-right:1px solid #bebebe;
@@ -3911,12 +3930,12 @@ div.fbFooterBorder{
 
 .logout{
 	width:70px !important;
+	border-right:0px !important;
 }
 
 .sell_link{
-	width:80px !important;
+	width:70px !important;
 	border-left:0px;
-	border-right:none !important;
 	margin-left:0px;
 }
 
@@ -3925,7 +3944,6 @@ div.fbFooterBorder{
  	border:none;
 	position:relative;
  	top:0px;
- 	margin-right:10px !important;
  	color:#AC7333 !important;
  	cursor: pointer;
  	font-size: 12px;
@@ -4203,7 +4221,7 @@ div.fbFooterBorder{
 
 .user_dasboard a{
     float:left;
-    width:120px !important;
+    width:80px !important;
 }
 
 .monthly-payments-header{
