@@ -5,8 +5,10 @@
       <div class="sign_up_box">
         <% @resource.attachments.original_files.each_with_index do |attachment,index| %>
             <div class="seller_page_downloads_image">
-              <%= file_type_image(attachment)%>
-              <span><%= (attachment.original_file_size/1024).to_s + "KB"  %></span>
+              <div class="seller_page_image_size">
+                <%= file_type_image(attachment)%>
+                <span><%= (attachment.original_file_size/1024).to_s + "KB"  %></span>
+              </div>
               <div class="attachment_details">
                 <span><%= attachment.details%></span>
               </div>
