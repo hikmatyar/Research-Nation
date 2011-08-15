@@ -147,7 +147,7 @@ a:focus {
     font-size: 38px;
 	line-height:42px;
     margin-bottom:0px;
-    width: 335px;
+    width: 420px;
 }
 
 .banner_text ul{
@@ -255,19 +255,19 @@ a:focus {
 
 .facebook_like{
 	float:right;
-	width:293px;
+	width:202px;
 	*width:298px;
 	margin-top:10px;
 	margin-bottom:120px;
 }
 
 .banner_text a{
-	width:310px;
+	width:395px;
 }
 
 .banner_text a:hover{
 	padding:10px;
-	width:310px !important;
+	width:395px !important;
 }
 
 .content{
@@ -1972,6 +1972,10 @@ html ul.tabs li.active, html ul.tabs li.active {
 	margin:8px;
 }
 
+.seller_page_downloads_image a{
+	float: left;
+}
+
 .attachment_detail{
 	float:left;
 	width:120px;
@@ -2965,22 +2969,29 @@ div.fbFooterBorder{
 	width: 70%;
 }
 
-.download_text span {
+.download_text span{
 	float: left;
 	font-size: 14px;
 	margin-left: 10px;
 	width: 70%;
 }
 
-.Post_author_details{
+.post_author_details{
 	float:left;
+	width: 530px;
 }
 
 .Post_author_details b{
-	float:left;
-	width:100%;
-	margin-bottom:0px;
-  	color: #333333 !important;
+	float: left;
+	width: 405px;
+	margin-bottom: 0px;
+	color: #333 !important;
+	overflow: hidden !important;
+}
+
+.ajaxful_rating_no-small_resource_20{
+	position: relative;
+	top:-10px;
 }
 
 .Post_author_details a{
@@ -2994,6 +3005,22 @@ div.fbFooterBorder{
 	color: #525252;
   	font-weight: normal;
   	width: auto;
+}
+
+.seller_page_image_size{
+	float: left;
+	width:65px;
+}
+
+.seller_page_image_size img{
+	margin_left:0px !important;
+}
+
+
+.attachment_details{
+	float: left;
+	width: 140px;
+	height: 40px;
 }
 
 .Post_author_details h2{
@@ -4007,7 +4034,7 @@ div.fbFooterBorder{
 
 .altering_text{
 	float:left;
-	width:350px;
+	width:380px;
 }
 
 .altering_text span{
