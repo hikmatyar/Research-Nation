@@ -1,4 +1,4 @@
-<% content_for :html_title, 'Reviews of datasets and research reports.' %>
+<% content_for :html_title, 'Find, read and write reviews of datasets and industry/company research reports.' %>
 <div class="banner">
   <% unless flash[:notice].blank? %><p class="flash"><%= flash[:notice] %></p><% end %>
 	<div class="banner_text">
@@ -14,12 +14,12 @@
 				<span><a href="http://researchnation.net/post/26-data-on-electricity-consumption-in-south-africa"><img src="images/others.png" /><p>Others</p></a></span>
 			</div>
 		<div class="content_back main_page_content_container">
-			<h2>Reviews of Datasets and Research Reports.</h2>
+			<h2>Reviews for research reports and datasets.</h2>
 		    <div style="margin-top:15px;" class="altering_text"> 
-		    	<span>You can use us to read or write reviews for any dataset or research report. Launching soon.</span><br>
+		    	<span>You can use us to find, read or write reviews of any industry or company research report, or dataset.</span><br>
 		    </div>
-      <%= link_to ( "Get Started Now! It's Free.", { :controller => "resources", :action => "upload_docs"}, { :class => 'green_button'} ) if logged_in? %>
-			<%= link_to ( "Get Started Now! It's Free.", { :controller => "users", :action => "register", :opt =>"signup"}, { :class => 'green_button'} ) unless logged_in? %>
+      <%= link_to ( "Sign-up to be notified when we launch!", { :controller => "resources", :action => "upload_docs"}, { :class => 'green_button'} ) if logged_in? %>
+			<%= link_to ( "Sign-up to be notified when we launch!", { :controller => "users", :action => "register", :opt =>"signup"}, { :class => 'green_button'} ) unless logged_in? %>
 		</div>
 	</div>
 	<%= hidden_field_tag 'create_post', :value => false%>
