@@ -2068,6 +2068,7 @@ html ul.tabs li.active, html ul.tabs li.active {
 	font-size: 72px;
 	text-align: left !important;
 	width: 100%;
+	margin-top: 50px;
 }
 
 .error_text h3 {
