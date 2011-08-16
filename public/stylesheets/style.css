@@ -1993,14 +1993,15 @@ html ul.tabs li.active, html ul.tabs li.active {
 	margin-top:8px;
 }
 .seller_page_downloads_image span{
-  font-size:11px;
-  padding:3px;
-  float:none;
+  	font-size:11px;
+  	padding:3px;
+  	float:none;
+  	margin-left: 0px !important;
 }
 
 .attachment_details_form{
-  display:none;
-  margin-top:100px;
+  	display:none;
+  	margin-top:100px;
 }
 
 ,.attachment_details{
@@ -3012,13 +3013,16 @@ div.fbFooterBorder{
 
 .seller_page_image_size{
 	float: left;
-	width:65px;
+	width:50px;
 }
 
 .seller_page_image_size img{
-	margin_left:0px !important;
+	padding-left:0px !important;
 }
 
+.seller_page_image_size span {
+	margin-left: 6px;
+}
 
 .attachment_details{
 	float: left;
