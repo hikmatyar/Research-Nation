@@ -2983,8 +2983,11 @@ div.fbFooterBorder{
 
 .Post_author_details b{
 	float: left;
-	width: 405px;
+	width: auto !important;
+	max-width: 405px;
+	margin-top: 4px !important;
 	margin-bottom: 0px;
+	height: 18px !important;
 	color: #333 !important;
 	overflow: hidden !important;
 }
