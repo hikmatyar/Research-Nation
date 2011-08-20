@@ -54,4 +54,13 @@ class Resource < ActiveRecord::Base
   def set_deleted
     self.update_attributes :is_deleted => true
   end
+
+  def self.create_posts_via_csv
+    require 'csv'
+    CSV.open('reports.csv', 'r').each do |row|
+      r = Resource.create(:sources => row[0], :selling_price => row[1], :title => row[3], :industry => row[4], :geography => row[5], :description => row[6], :user_id => 149)
+      r.update_url_slug
+      puts r.inspect
+    end
+  end
 end
