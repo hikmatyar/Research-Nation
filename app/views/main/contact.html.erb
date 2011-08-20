@@ -8,7 +8,7 @@
           <h1 style="margin-top:5px !important; margin-bottom:5px !important;">Get in touch!</h1>
           <p style="margin-left:0px;">You can reach us via email (faisal at researchnation.net), telephone (+442081443220) or through the contact form below.</p>
         </div>
-        <div style="padding:10px 0px" class="sign_up_box" id="tabOne">
+        <div style="padding:10px 0px" id="tabOne">
           <div>
             <%= form_tag :controller => 'main', :action => 'contact_us'%>
               <div class="field">
@@ -26,6 +26,12 @@
               <div class="field">
                 <label>Message</label>
                 <%= text_area_tag 'message', "" , :size => '30', :class => 'max_len', :max_length => 1000 %>
+              </div>
+              <div class="field recaptcha">
+                <label>Human</label>
+                <div>
+                  <%= recaptcha_tags %>
+                </div>
               </div>
           </div>
         <div class="Contact_us_button field" style="margin:10px 0px 0px 0px;">

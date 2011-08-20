@@ -13,6 +13,12 @@
 		  <%= render :partial => "/layouts/select_user_type", :locals => {:f => f} %>
     </div>
   </div>
+  <div class="field recaptcha">
+    <label>Human</label>
+    <div>
+      <%= recaptcha_tags %>
+    </div>
+  </div>
   <div class="terms_and_conditions1 sign_up_terms">
 			<p>By signing up you agree to our </p><%= link_to "Terms of Service ", :controller => "main", :action => "privacy" %><p> and</p> <%= link_to "Privacy Policy", :controller => "main", :action => "privacy" %>
 	</div>

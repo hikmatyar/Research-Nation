@@ -72,7 +72,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-    if @user.save
+    if verify_recaptcha && @user.save
       session[:user] = @user.id
       UserMailer.deliver_registration_email(@user.first_name, @user.last_name, @user.email)
       subscribe_to_newsletter @user if params["get_updates"]=="yes"
@@ -96,6 +96,8 @@ class UsersController < ApplicationController
       return redirect_to :controller => 'users', :action => 'profile'
 
       return redirect_to :controller => "resources", :action => "view_posts"
+    else
+      flash[:error] = "Oops! You didn't prove that you are a human!"
     end
     @user[:password] = ""
     return render :action => 'register', :opt => "signup"

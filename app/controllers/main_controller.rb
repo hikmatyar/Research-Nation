@@ -54,7 +54,11 @@ class MainController < ApplicationController
   end
 =end
   def contact_us
-    flash[:notice] = "Thank you for your submission" if ContactMailer.deliver_contact_us_email params[:name], params[:email], params[:subject], params[:message]
+    if verify_recaptcha && ContactMailer.deliver_contact_us_email(params[:name], params[:email], params[:subject], params[:message])
+      flash[:notice] = "Thank you for your submission"
+    else
+      flash[:notice] = "Oops! You didn't prove that you are a human!"
+    end
     return redirect_to :controller => 'main', :action => 'contact'
   end
 
