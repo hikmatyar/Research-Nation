@@ -2,7 +2,7 @@ class PurchasesController < ApplicationController
 
   include SslRequirement
   ssl_required :resource, :download, :download_file unless Rails.env.development?
-  before_filter :redirect_to_login
+  before_filter :redirect_to_login, :only => [:resource]
 
   before_filter :download_verify, :only => [:download, :download_file]
 
@@ -36,7 +36,7 @@ class PurchasesController < ApplicationController
 private
   def download_verify
     @resource = Resource.find_by_url_slug params[:url_slug], :conditions => {:is_deleted => false}
-    if !@resource.blank? && (current_user.is_admin? || (!@resource.is_deleted? && (current_user.own_resource?(@resource) || @resource.free? || Order.authorized_access?(current_user.id, params[:url_slug]))))
+    if !@resource.blank? && (@resource.free? || (current_user.is_admin? || (!@resource.is_deleted? && (current_user.own_resource?(@resource) || @resource.free? || Order.authorized_access?(current_user.id, params[:url_slug])))))
       return true
     else
       return render_404
