@@ -49,8 +49,8 @@
               <div class="field " id="documents"><label>Original File</label><%= file_field "attachment", 'original[0]', :class => 'file', :size => "22" %></div>
               <%= link_to "(Add another file)", "#documents", :id => "add_another_file", :class => 'add_attachment_link', :size => "22" %>
               <div class="field">
-                <label>Sources and Methodology*</label>
-                <%= text_area 'resource', 'sources', :class => 'required max_len tip', :max_length => 3000, :title => "Identify your information sources and methodology (where applicable)." %>
+                <label>Sources and Methodology</label>
+                <%= text_area 'resource', 'sources', :class => 'max_len tip', :max_length => 3000, :title => "Identify your information sources and methodology (where applicable)." %>
               </div>
               <div class="field">
                 <label>Seller Terms</label>
