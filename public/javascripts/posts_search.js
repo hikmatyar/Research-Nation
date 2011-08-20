@@ -153,6 +153,6 @@ $('document').ready(function(){
     $(this).val("");
   });
 
-  $(":range").val("$5000");
+  $(":range").val("$10000");
   $('.handle').css("left","183px");
 });
