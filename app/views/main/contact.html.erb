@@ -27,12 +27,14 @@
                 <label>Message</label>
                 <%= text_area_tag 'message', "" , :size => '30', :class => 'max_len', :max_length => 1000 %>
               </div>
+<!--
               <div class="field recaptcha">
                 <label>Human</label>
                 <div>
-                  <%= recaptcha_tags %>
+                  <%#= recaptcha_tags %>
                 </div>
               </div>
+-->
           </div>
         <div class="Contact_us_button field" style="margin:10px 0px 0px 0px;">
           <%= submit_tag 'Submit', :class => "green_button" %>

@@ -72,7 +72,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-    if verify_recaptcha && @user.save
+    if @user.save
       session[:user] = @user.id
       UserMailer.deliver_registration_email(@user.first_name, @user.last_name, @user.email)
       subscribe_to_newsletter @user if params["get_updates"]=="yes"
