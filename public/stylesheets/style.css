@@ -659,6 +659,62 @@ a:focus {
 	padding:10px;
 }
 
+.comments{
+  background-color: rgb(235, 235, 235);
+  padding: 10px;
+  margin: 10px 0;
+  box-shadow: 2px 2px 5px #bebebe;
+	-webkit-box-shadow: 2px 2px 5px #bebebe;
+	-moz-box-shadow: 2px 2px 5px #bebebe;
+	border-radius:10px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+}
+
+.comment_name{
+  float:left; 
+  padding: 5px 0 0 10px;
+  font-weight: bold;
+}
+
+.comment_date{
+  float: right;
+  color: #999;
+  padding-top: 5px;
+}
+
+.comment_area{
+  margin: 10px 10px;
+  width: 495px;
+  height: 40px;
+}
+
+.coment_content{
+  padding: 5px 0 0 4px;
+  color: #4d4d4d;
+}
+
+.review_report{
+  float: left;
+  font-weight: bold;
+  padding: 6px 10px 0px 10px;
+}
+
+#comment_user_name{
+  margin: 2px 10px 10px 10px ;
+  float: left;
+}
+
+#comment_comment__status{
+  display: inline-block;
+  margin: 0 11px 0 0;
+}
+
+#comment_err{
+  padding-left: 10px;
+  color: red;
+}
+
 .seller_back h2{
  	 background-color:#ebebeb;
 	-moz-border-radius-topleft: 10px;
@@ -4575,4 +4631,8 @@ div.fbFooterBorder{
  	padding:0px;
  	font-style:italic;
  	font-size:12px;
+}
+
+.clear{
+  clear: both;
 }
