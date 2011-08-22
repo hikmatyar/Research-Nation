@@ -32,7 +32,11 @@ class ResourcesController < ApplicationController
     else
       @user = User.new
     end
+    
     @resource = session[:admin].blank? ? (Resource.find_by_url_slug params[:url_slug], :conditions => {:is_deleted => false}) : (Resource.find_by_url_slug params[:url_slug])
+    @comments = @resource.comments
+    @comment = @resource.comments.new(params[:comment]) || @resource.comments.new
+
     return render_404  if @resource.blank?
     @sample = @resource.attachments.sample.first unless @resource.attachments.sample.blank?
     @related_posts = Resource.find :all, :conditions => ['(industry =? or geography = ?) and (id != ?) AND is_deleted =?', @resource.industry, @resource.geography, @resource.id, false ], :limit => 10, :order => "industry, geography and created_at"
