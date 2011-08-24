@@ -683,15 +683,33 @@ a:focus {
   padding-top: 5px;
 }
 
+.header_area{
+  float: left;
+  padding-right: 20px;
+}
+
 .comment_area{
-  margin: 10px 10px;
+  margin: 0px 10px 10px 10px;
   width: 495px;
   height: 40px;
+}
+
+.title_area{
+  margin: 0px 10px 10px 10px;
+  width: 170px;
+}
+
+.title{
+  padding-left: 10px;
 }
 
 .coment_content{
   padding: 5px 0 0 4px;
   color: #4d4d4d;
+}
+
+#leave_comment{
+  margin: 0 0 10px 10px;
 }
 
 .review_report{
@@ -710,7 +728,7 @@ a:focus {
   margin: 0 11px 0 0;
 }
 
-#comment_err{
+.comment_err{
   padding-left: 10px;
   color: red;
 }

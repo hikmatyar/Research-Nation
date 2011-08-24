@@ -58,6 +58,10 @@ class AdminController < ApplicationController
                             :page => params[:page])
   end
 
+  def comments
+    @comments = Comment.all
+  end
+
   def detailed_user_payments
     @user = User.find params[:user_id]
   end
@@ -99,6 +103,7 @@ private
     @members_count = session[:members_count]
     @profiles_count = Profile.edited.count
     @messages_count = (Message.find_all_by_recipient_id current_user.id).count
+    @comments_count = Comment.all.count
   end
 
 

@@ -6,6 +6,7 @@ class AddComments < ActiveRecord::Migration
       t.integer :resource_id
       t.integer :stars
       t.string :comment
+      t.string :title
       t.timestamps
     end
   end
