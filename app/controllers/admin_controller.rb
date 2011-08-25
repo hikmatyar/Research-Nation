@@ -59,7 +59,7 @@ class AdminController < ApplicationController
   end
 
   def comments
-    @comments = Comment.all
+    @comments = Comment.paginate :page => params[:page], :order => 'created_at DESC'
   end
 
   def detailed_user_payments

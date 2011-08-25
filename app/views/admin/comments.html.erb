@@ -1,5 +1,28 @@
 <div class="tab_container">
-  <% @comments.each do |comment| %>
-    <%= comment.comment %>
-  <% end %>
+	
+<table border="0" cellspacing="5px" cellpadding="5px" id="users_table" >
+  <tbody>
+    <tr>
+      <th width="100">Resource ID</th>
+      <th width="50">Title</th>
+      <th> Comment</th>
+      <th width="100">User</th>
+      <th width="50">Stars</th>
+      <th width="120">Date</th>
+    </tr>
+    <% @comments.each do |comment|%>
+      <tr>
+        <td><%= link_to comment.resource.id, {:controller => "resources", :action => "seller_page", :url_slug => comment.url_slug} %></td>
+        <td ><%= comment.title %></td>
+        <td><%= link_to comment.comment, edit_comment_path(comment) %></td>
+        <td><%= comment.user_name %></td>
+        <td><%= comment.stars %></td>
+        <td ><%= comment.created_at.strftime("%B %d, %Y") %></td>
+
+        <td ><%= link_to("Delete", {:controller => "comments", :action => "destroy", :id => comment }, :confirm => "Are you sure?", :method => :delete) %></td>
+      </tr>
+    <% end %>
+  <tbody>
+  </table>
+  <%= will_paginate @comments %>
 </div>

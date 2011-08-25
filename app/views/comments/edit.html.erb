@@ -1,0 +1,32 @@
+<% content_for :html_title, "Edit #{@comment.title}" %>
+
+<div class="content">
+  <div class="how_it_work_left_side">
+    <div class="seller_back">
+      <div class="create_heading_box">
+        <h1>Edit Comment.</h1>
+        <b>Please edit the comment.</b>
+        <% if @comment.errors %>
+        	<p><%= @comment.errors.full_messages %></p>
+        <% end %>
+		<% form_for @comment do |f| %>
+		  <div class="field">
+            <label for="title">Title*</label>
+            <%= f.text_field :title, :class => 'required text_field max_len', :max_length => 100 %>
+          </div>
+          <div class="field">
+            <label for="comment">Title*</label>
+            <%= f.text_area :comment, :class => 'required text_field max_len', :max_length => 100 %>
+          </div>
+          <div class="field">
+            <label for="name" style="width: 95px">Name</label>	
+            <%= f.text_field :user_name, :class => 'required text_field max_len', :max_length => 100 %>
+          </div>
+	        <div class="submit_button">
+	          <%= submit_tag 'Update', :class => "green_button" %>
+	        </div>      
+		<% end %>
+      </div>
+    </div>
+  </div>
+</div>
