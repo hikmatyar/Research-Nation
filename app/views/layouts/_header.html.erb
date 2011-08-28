@@ -13,8 +13,7 @@
                 <li class="create_link"><%= (link_to 'Login', :controller => 'users', :action => 'register', :opt => 'login') %></li>
               <% end %>
               <% if logged_in? %>
-		<li class="feedback"><%= link_to "Sell", :controller => "resources", :action => "new" %></li>
-		<li class="sell_link"><a href="http://researchnation.net/browse/posts">Buy</a></li>
+		<li class="sell_link"><a href="http://researchnation.net/browse/posts">Browse</a></li>
               <li style="border-left:0px;" class="user_dasboard">
                 <%= (link_to 'Home', :controller => 'users', :action => 'profile' ) %>
                </li>
