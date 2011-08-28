@@ -1,0 +1,53 @@
+<div class="facebook_back">
+  <h4 class="box_heading">Reviews (<span id="comment_count"><%= @comments.count %></span>)</h4>
+  <div class="clear"></div>
+  <div class="comment_holder">
+    <% @comments.each do |comment| %>
+      <%= render :partial => "comments/comment", :locals => {:comment => comment} if comment %>
+    <% end %>
+  </div>
+  
+  <% if logged_in? %> 
+    <%= render :partial => "comments/leave_comment" %>
+  <% else %>
+    <p>You must be loggen in to add reviews</p>
+  <% end %>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function() {
+    function select_rating(i){
+      $(".comment_star_" + i).live("click", function(){
+        $("#rating_" + i).attr("checked", true);
+        $(".comment_show").remove();
+        $(".comment-rating").append(
+          '<li class="show-value comment_show" id="comment_value_' + 
+          i + '" style="width:' + (i * 20) + '.0%"></li>');
+        return false;
+      });
+    }
+    
+    for (i=1;i<=5;i++){
+      select_rating(i);
+    }
+    
+    $(".comment_area").show_char_limit(500);
+    
+    $("#comment_submit_form").submit(function(e){
+      e.preventDefault();
+      
+      var comment = $(this).serialize();
+      var url = $(this).attr('action');
+    
+      var jqxhr = $.post( url, comment, function(data){
+        $(".comment_holder").append(data);
+        $("#comment_count").html($(".comments").length);
+        $(".comment_err").html("");
+        $(".comment_show").remove();
+        $("#comment_comment").val("");
+        $(".comment_radio_buttons").attr("checked", false);
+      })
+      .error(function() { $(".comment_err").html("Comment can't be blank");})
+    });
+  });  
+</script>

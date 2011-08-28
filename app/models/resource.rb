@@ -5,7 +5,7 @@ class Resource < ActiveRecord::Base
   has_many :votes
 
   has_many :orders
-
+  has_many :comments
 
   cattr_reader :per_page
   @@per_page = 25
