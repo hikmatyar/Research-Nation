@@ -2,9 +2,12 @@ class Profile < ActiveRecord::Base
 
   has_one :key_individual
   belongs_to :user
+  has_many :comments
 
   cattr_reader :per_page
   @@per_page = 25
+
+  ajaxful_rateable :stars => 5
 
   S3_SETTINGS = YAML::load(File.open("#{RAILS_ROOT}/config/s3.yml"))
   IMAGE_BUCKET = S3_SETTINGS[RAILS_ENV]['images_bucket']

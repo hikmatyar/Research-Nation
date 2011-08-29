@@ -1,16 +1,16 @@
 <div class="facebook_back">
-  <h4 class="box_heading">Reviews (<span id="comment_count"><%= @comments.count %></span>)</h4>
+  <h4 class="box_heading"><%= type_class.titlecase %> (<span id="comment_count"><%= @comments.count %></span>)</h4>
   <div class="clear"></div>
   <div class="comment_holder">
     <% @comments.each do |comment| %>
       <%= render :partial => "comments/comment", :locals => {:comment => comment} if comment %>
     <% end %>
   </div>
-  
+
   <% if logged_in? %> 
-    <%= render :partial => "comments/leave_comment" %>
+    <%= render :partial => "comments/leave_comment", :locals => {:type_text => type_text, :type_class => type_class } %>
   <% else %>
-    <p>You must be loggen in to add reviews</p>
+    <p class="login_msg">Please Log In or Sign Up to add a review</p>
   <% end %>
 </div>
 
@@ -45,9 +45,10 @@
         $(".comment_err").html("");
         $(".comment_show").remove();
         $("#comment_comment").val("");
+        $("#comment_title").val("");
         $(".comment_radio_buttons").attr("checked", false);
       })
-      .error(function() { $(".comment_err").html("Comment can't be blank");})
+      .error(function() { $(".comment_err").html("Please fill in all the fields");})
     });
   });  
 </script>

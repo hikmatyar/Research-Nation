@@ -56,6 +56,8 @@ class ProfilesController < ApplicationController
     @profile = Profile.find_by_url_slug params[:url_slug]
     @interests = @profile.interested_in.split(",") unless @profile.blank? || @profile.interested_in.blank?
     @user = User.new unless logged_in?
+    @comments = @profile.comments
+    @comment = @profile.comments.new(params[:comment]) || @profile.comments.new
   end
 
 
