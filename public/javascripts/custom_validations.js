@@ -28,9 +28,9 @@ function validate_form(){
 jQuery(".file").each(function(){
 		
 		file_name = jQuery(this).val();
-		if (file_name && !file_name.match(/^.*\.(doc|DOC|ppt|PPT|xls|xls|pdf|PDF|docx|DOCX|pptx|PPTX|xlsx|XLSX)/))
+		if (file_name && !file_name.match(/^.*\.(doc|ppt|xls|pdf|docx|pptx|xlsx|csv)/i))
 		{
-			jQuery(this).after("<span class='error'>Only PDF, Word, Excel and PowerPoint format is allowed</span>");
+			jQuery(this).after("<span class='error'>Only PDF, Word, Excel, CSV and PowerPoint format is allowed</span>");
 			jQuery(this).addClass("error_field");
 		}
 	});

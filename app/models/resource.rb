@@ -63,4 +63,14 @@ class Resource < ActiveRecord::Base
       puts r.inspect
     end
   end
+
+  def self.create_posts_via_csv_for_axis
+    require 'csv'
+    CSV.open('axis.csv', 'r').each do |row|
+      r = Resource.create(:selling_price => row[3], :title => row[0], :industry => row[1], :geography => row[2], :description => row[4], :user_id => 138)
+      r.update_url_slug
+      puts r.inspect
+    end
+  end
+
 end

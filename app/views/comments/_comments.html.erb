@@ -1,44 +1,18 @@
 <div class="facebook_back">
-  <h4 class="box_heading">Reviews (<span id="comment_count"><%= @comments.count %></span>)</h4>
+  <h4 class="box_heading"><%= type_class.titlecase %> (<span id="comment_count"><%= @comments.count %></span>)</h4>
   <div class="clear"></div>
   <div class="comment_holder">
     <% @comments.each do |comment| %>
       <%= render :partial => "comments/comment", :locals => {:comment => comment} if comment %>
     <% end %>
   </div>
-  
-  <div class="sign_up_box">
-    <% form_for :comment, :url => { :controller => "comments", :action => "create" },
-     :html => {:id => "comment_submit_form"}  do |f| %>
-      <div class="review_report">Rate this Report</div>
-            
-      <div class="ajaxful-rating comment-rating" style="float: left;">
-        <% 5.times do |i|  %>
-          <%=  radio_button :comment, :stars, i + 1, :id => "rating_#{i+1}",
-           :class => "comment_radio_buttons", :style => "visibility: hidden" %>
-          <a class="stars-<%= i+1 %> comment_star_<%= i+1 %>" href="#"></a>
-        <% end %>
-      </div>
-      
-      <div class='clear'></div>
-      
-      <div class="comment_err"></div>
-      
-      <%= f.text_area :comment, :class => "comment_area" %>
 
-      <% if @user.profile.name.present? %>
-        <%= f.text_field :user_name, :value => @user.profile.name %>
-      <% else %>
-        <%= f.text_field :user_name %>
-      <% end %>
-      
-      <%= hidden_field_tag :url_slug, @resource.url_slug %>
-      <%= hidden_field_tag :user_id, @user.id %>
-      <%= f.submit "Leave Comment", :style => "float: left", :id => "leave_comment" %>
-    <% end %>
-  </div>
+  <% if logged_in? %> 
+    <%= render :partial => "comments/leave_comment", :locals => {:type_text => type_text, :type_class => type_class } %>
+  <% else %>
+    <p class="login_msg">Please Log In or Sign Up to add a review</p>
+  <% end %>
 </div>
-
 
 <script type="text/javascript" charset="utf-8">
   $(document).ready(function() {
@@ -71,9 +45,10 @@
         $(".comment_err").html("");
         $(".comment_show").remove();
         $("#comment_comment").val("");
+        $("#comment_title").val("");
         $(".comment_radio_buttons").attr("checked", false);
       })
-      .error(function() { $(".comment_err").html("Comment can't be blank");})
+      .error(function() { $(".comment_err").html("Please fill in all the fields");})
     });
   });  
 </script>

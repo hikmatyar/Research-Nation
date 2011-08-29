@@ -84,9 +84,7 @@
           	</div>  
         	</div>
       	</div>
-      	
-      	<%= render :partial => "comments/comments" %>
-      	
+      	 <%= render :partial => "comments/comments", :locals => {:type_text => "Rate this Report", :type_class => "reviews" } %>
       </div>
       <%= render :partial => "download_box"%>
       <%= render :partial => "seller_details"%>

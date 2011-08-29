@@ -1,0 +1,45 @@
+<div class="sign_up_box">
+  <% form_for :comment, :url => { :controller => "comments", :action => "create" },
+   :html => {:id => "comment_submit_form"}  do |f| %>
+    <div class="review_report"><%= type_text %></div>
+          
+    <div class="ajaxful-rating comment-rating" style="float: left;">
+      <% 5.times do |i|  %>
+        <%=  radio_button :comment, :stars, i + 1, :id => "rating_#{i+1}",
+         :class => "comment_radio_buttons", :style => "visibility: hidden" %>
+        <a class="stars-<%= i+1 %> comment_star_<%= i+1 %>" href="#"></a>
+      <% end %>
+    </div>
+    
+    <div class='clear'></div>
+    <div class="comment_err"></div>
+    
+    <div class="header_area">
+      <p class="title">Title:</p>
+      <%= f.text_field :title, :class => "title_area" %>
+    </div>
+
+    <div class="header_area">
+      <p class="title">Your name:</p>
+      <% if @user && @user.profile.present? %>
+        <%= f.text_field :user_name, :value => @user.profile.name %>
+      <% else %>
+        <%= f.text_field :user_name %>
+      <% end %>
+    </div>
+    
+    <div class='clear'></div>
+    
+    <p class="title">Comment:</p>
+    <%= f.text_area :comment, :class => "comment_area" %>
+    
+    <% if @resource %>
+      <%= hidden_field_tag :url_slug, @resource.url_slug  %>
+    <% elsif @profile %>  
+      <%= hidden_field_tag :url_slug, @profile.url_slug  %>
+    <% end %>  
+    <%= hidden_field_tag :user_id, @user.id if @user %>
+    <%= hidden_field_tag :type_class, type_class  %>
+    <%= f.submit "Leave Comment", :id => "leave_comment" %>
+  <% end %>
+</div>

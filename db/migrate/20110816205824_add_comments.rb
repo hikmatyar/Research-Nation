@@ -4,8 +4,10 @@ class AddComments < ActiveRecord::Migration
       t.integer :user_id
       t.string :user_name
       t.integer :resource_id
+      t.integer :profile_id
       t.integer :stars
       t.string :comment
+      t.string :title
       t.timestamps
     end
   end
