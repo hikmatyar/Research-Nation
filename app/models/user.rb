@@ -35,6 +35,10 @@ class User < ActiveRecord::Base
     self.update_attributes :is_admin => !self.is_admin
   end
 
+  def update_last_login
+    self.update_attributes :last_login_at => Time.now
+  end
+
   def own_resource?(resource)
     self.id  == resource.user_id
   end

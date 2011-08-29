@@ -28,9 +28,9 @@ function validate_form(){
 jQuery(".file").each(function(){
 		
 		file_name = jQuery(this).val();
-		if (file_name && !file_name.match(/^.*\.(doc|DOC|ppt|PPT|xls|xls|pdf|PDF|docx|DOCX|pptx|PPTX|xlsx|XLSX)/))
+		if (file_name && !file_name.match(/^.*\.(doc|ppt|xls|pdf|docx|pptx|xlsx|csv)/i))
 		{
-			jQuery(this).after("<span class='error'>Only PDF, Word, Excel and PowerPoint format is allowed</span>");
+			jQuery(this).after("<span class='error'>Only PDF, Word, Excel, CSV and PowerPoint format is allowed</span>");
 			jQuery(this).addClass("error_field");
 		}
 	});
@@ -45,8 +45,8 @@ jQuery(".file").each(function(){
 
 	jQuery(".valid_price").each(function(){
 		price = Number(jQuery(this).val());
-		if(isNaN(price) || price < 0 || price > 5000){
-			jQuery(this).after("<span class='error'>Price should be between US$0 and US$5000</span>");
+		if(isNaN(price) || price < 0 || price > 10000){
+			jQuery(this).after("<span class='error'>Price should be between US$0 and US$10,000</span>");
 			jQuery(this).addClass("error_field");
 		}
 		if (String(price).match(/[.]/))

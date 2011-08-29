@@ -96,6 +96,8 @@ class UsersController < ApplicationController
       return redirect_to :controller => 'users', :action => 'profile'
 
       return redirect_to :controller => "resources", :action => "view_posts"
+    else
+      flash[:error] = "Oops! You didn't prove that you are a human!"
     end
     @user[:password] = ""
     return render :action => 'register', :opt => "signup"
@@ -106,6 +108,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:login])
     valid_user = User.find(:first,:conditions => ["email = ? and password = ?", @user.email, @user.password])
     if valid_user
+      valid_user.update_last_login
       session[:user] = valid_user.id
       session[:admin]= valid_user.id if valid_user.is_admin?
       return redirect_to :controller => 'resources', :action => 'upload_docs' if session[:post]

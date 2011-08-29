@@ -427,6 +427,23 @@ a:focus {
     width:80px;
     height:80px;
 }
+
+.sign_up_box span{
+	float:left;
+	font-size:12px;
+	width:310px !important;
+	padding:3px;
+}
+
+
+.recaptcha img{
+    clear:both;
+}
+
+.recaptcha span{
+  clear:both;
+}
+
 .heading_color{
 	color:#648310 !important;
 }
@@ -1656,13 +1673,6 @@ background:#FFFFFF; border:1px solid #666666 !important; height:15px; width:15px
 	width:100%;
 	font-size:12px !important;
 	margin:0px !important;
-}
-
-.sign_up_box span{
-	float:left;
-	font-size:12px;
-	width:310px !important;
-	padding:3px;
 }
 
 .payment_form, .paymeny_card_box{
