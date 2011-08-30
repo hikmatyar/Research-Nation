@@ -691,7 +691,6 @@ a:focus {
 .comment_name{
   float:left; 
   padding: 5px 0 0 10px;
-  font-weight: bold;
 }
 
 .comment_date{
@@ -701,7 +700,6 @@ a:focus {
 }
 
 .header_area{
-  float: left;
   padding-right: 20px;
 }
 
@@ -713,7 +711,7 @@ a:focus {
 
 .title_area{
   margin: 2px 10px 10px 10px;
-  width: 170px;
+  width: 50%;
 }
 
 .title{

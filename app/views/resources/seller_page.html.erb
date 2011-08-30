@@ -1,6 +1,6 @@
 <% content_for :html_title, "#{@resource.title}" %>
 <%= javascript_include_tag "seller" %>
-
+<% ratings_for @resource, :remote_options => {:url => "/resources/rate/#{@resource.url_slug}"}%>
 <div class="content">
   <% unless flash[:notice].blank? %><p class="flash"><%= flash[:notice] %></p><% end %>
   <div class="content_back post_back">
@@ -38,7 +38,9 @@
               <% end %>
             </span>
           </b>
-          <%= render :partial => "rating"%>
+          <div class="ajaxful-rating" style="float: left">
+            <li class="show-value" style="width:<%= (@resource_average_rating * 20) if @resource_average_rating.present? %>.0%; float left;"></li>
+          </div>
         </div>
       </div>
     </div>
@@ -84,7 +86,7 @@
           	</div>  
         	</div>
       	</div>
-      	 <%= render :partial => "comments/comments", :locals => {:type_text => "Rate this Report", :type_class => "reviews" } %>
+      	 <%= render :partial => "comments/comments", :locals => {:type_text => "Rate this Report", :type_class => "reviews", :title => "Title of your review" } %>
       </div>
       <%= render :partial => "download_box"%>
       <%= render :partial => "seller_details"%>

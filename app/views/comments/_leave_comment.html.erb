@@ -15,16 +15,16 @@
     <div class="comment_err"></div>
     
     <div class="header_area">
-      <p class="title">Title:</p>
+      <p class="title"><%= title %></p>
       <%= f.text_field :title, :class => "title_area" %>
     </div>
 
     <div class="header_area">
       <p class="title">Your name:</p>
       <% if @user && @user.profile.present? %>
-        <%= f.text_field :user_name, :value => @user.profile.name %>
+        <%= f.text_field :user_name, :value => @user.profile.name, :class => "title_area" %>
       <% else %>
-        <%= f.text_field :user_name %>
+        <%= f.text_field :user_name, :class => "title_area" %>
       <% end %>
     </div>
     

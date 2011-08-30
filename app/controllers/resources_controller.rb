@@ -36,6 +36,7 @@ class ResourcesController < ApplicationController
     @resource = session[:admin].blank? ? (Resource.find_by_url_slug params[:url_slug], :conditions => {:is_deleted => false}) : (Resource.find_by_url_slug params[:url_slug])
     @comments = @resource.comments
     @comment = @resource.comments.new(params[:comment]) || @resource.comments.new
+    @resource_average_rating = Comment.average_rating_for @resource
 
     return render_404  if @resource.blank?
     @sample = @resource.attachments.sample.first unless @resource.attachments.sample.blank?

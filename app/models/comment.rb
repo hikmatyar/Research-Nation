@@ -10,4 +10,13 @@ class Comment < ActiveRecord::Base
   
   delegate :url_slug, :to => :resource
 
+  def self.average_rating_for resource
+  	resources = all(:conditions => {:resource_id => resource.id})
+    if resources.present?
+    	comment_count = 0
+    	resources.each {|resource| comment_count += resource.stars }
+    	(comment_count.to_f / resources.count).round
+    end
+  end
+
 end
