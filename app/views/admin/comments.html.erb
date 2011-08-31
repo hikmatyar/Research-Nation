@@ -2,7 +2,7 @@
 <table border="0" cellspacing="5px" cellpadding="5px" id="users_table" >
   <tbody>
     <tr>
-      <th width="100">Resource ID</th>
+      <th width="100">Resource/Profile ID</th>
       <th width="50">Title</th>
       <th> Comment</th>
       <th width="100">User</th>
@@ -11,7 +11,11 @@
     </tr>
     <% @comments.each do |comment|%>
       <tr>
-        <td><%= link_to comment.resource.id, {:controller => "resources", :action => "seller_page", :url_slug => comment.url_slug} %></td>
+        <% if comment.resource.present? %>
+          <td><%= link_to comment.resource.id, {:controller => "resources", :action => "seller_page", :url_slug => comment.url_slug} %></td>
+        <% else %>
+          <td>0</td>
+        <% end %>
         <td ><%= comment.title %></td>
         <td><%= link_to comment.comment, edit_comment_path(comment) %></td>
         <td><%= comment.user_name %></td>
