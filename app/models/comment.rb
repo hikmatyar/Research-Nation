@@ -1,6 +1,7 @@
 class Comment < ActiveRecord::Base
   belongs_to :resource
   belongs_to :user  
+
   named_scope :recent, :order => "created_at DESC"
   
   validates_presence_of :comment, :title, :user_name
@@ -11,12 +12,16 @@ class Comment < ActiveRecord::Base
   delegate :url_slug, :to => :resource
 
   def self.average_rating_for resource
-  	resources = all(:conditions => {:resource_id => resource.id})
-    if resources.present?
-    	comment_count = 0
-    	resources.each {|resource| comment_count += resource.stars }
-    	(comment_count.to_f / resources.count).round
+    star_sum = 0.0
+    stars = comments_for(resource).map(&:stars)
+  	stars.each do |star|
+      star_sum += star
     end
+    (star_sum / stars.count).round
+  end
+
+  def self.comments_for resource
+    all(:conditions => {:resource_id => resource.id})
   end
 
 end
