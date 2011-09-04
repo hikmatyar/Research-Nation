@@ -8,7 +8,7 @@ $('document').ready(function(){
 		});
 
 // Changes to the select field of anytype
-   $('.field select').change(function(){
+   $('.field select').live("change" , function(){
       url = callback_url(choices);
       $.ajax({
         url: url,
@@ -20,7 +20,6 @@ $('document').ready(function(){
 
 // Changes to the checkboxes
    $(".field input:checkbox").change(function(){
-
      choices = new Array();
      $(".field input:checkbox:checked").each(function(){
        choices.push($(this).val());
@@ -36,10 +35,11 @@ $('document').ready(function(){
 	});
 
   var callback_url = function(choices){
-    var call_to_url = "/profiles/search_results?country="+ $("#location_country").val()+"&profile_type= "+$("#profile_type").val();
-		if (choices.length  > 0) {
+    var call_to_url = "/profiles/search_results?country="+ $("#location_country").val() + "&company_type=" + $("#company_type").val();
+    
+    if(choices.length  > 0) {
       return (call_to_url +"&choices="+choices);
-    }
+    }    
     return call_to_url;
   }
 

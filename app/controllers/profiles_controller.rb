@@ -4,52 +4,58 @@ class ProfilesController < ApplicationController
 
   before_filter :redirect_to_login, :except => ["view_profile_list", "search_results", "profile_page"]
 
-  before_filter :redirect_to_admin_login, :only => ["delete"]
+  before_filter :redirect_to_admin_login, :only => ["delete"]  
 
   def view_profile_list
     @profiles = []
     if !params[:company_type].blank?
-    @profiles = Profile.through_company_type(params[:company_type])
+      @profiles = Profile.through_company_type(params[:company_type])
     elsif !params[:services].blank?
       @profiles = Profile.through_services(params[:services])
     else
-      @profiles = Profile.edited.interested
+      @profiles = Profile.edited.interested.companies
     end
   end
 
+  # def search_results
+  #   choices = params[:choices].split(",") unless params[:choices].blank?
+  #   conditions = ''
+  #   conditions  = "country = '#{params[:country].strip}' " if params[:country].strip.downcase != "all"
+
+  #   if conditions.size > 0
+  #     conditions  += " AND is_edited = 1 "
+  #   else
+  #     conditions = "is_edited = 1"
+  #   end
+
+  #   conditions  +=  " AND profile_type = 'company'"
+
+  #   @profiles = []
+  #   profiles_list = Profile.find :all, :conditions => conditions, :order => 'created_at DESC'
+
+  #   unless choices.blank?
+  #     profiles_list.each do |profile|
+  #       choices.each do |choice|
+  #         if !profile.interested_in.blank? && profile.interested_in.split(",").include?(choice)
+  #           @profiles << profile
+  #           break
+  #         end
+  #       end
+  #     end
+  #   else
+  #     conditions  +=  " and interested_in IS NULL"
+  #     @profiles = (Profile.find :all, :conditions => conditions, :order => 'created_at DESC')
+  #   end
+  #   @profiles.flatten!
+  #   render :partial => 'profiles'
+  # end
+
   def search_results
-    choices = params[:choices].split(",") unless params[:choices].blank?
-    conditions = ''
-    conditions  = "country = '#{params[:country].strip}' " if params[:country].strip.downcase != "all"
-    if params[:profile_type].strip.downcase != "all" and conditions.size > 0
-      conditions  += " AND profile_type = '#{params[:profile_type].strip.downcase}' "
-    elsif params[:profile_type].strip.downcase != "all"
-      conditions  = "profile_type = '#{params[:profile_type].strip.downcase}' "
-    end
-    if conditions.size > 0
-      conditions  += " AND is_edited = 1 "
-    else
-      conditions = "is_edited = 1"
-    end
-
-    @profiles = []
-    profiles_list = Profile.find :all, :conditions => conditions, :order => 'created_at DESC'
-
-    unless choices.blank?
-      profiles_list.each do |profile|
-        choices.each do |choice|
-          if !profile.interested_in.blank? && profile.interested_in.split(",").include?(choice)
-            @profiles << profile
-            break
-          end
-        end
-      end
-    else
-      conditions  +=  " and interested_in IS NULL"
-      @profiles = (Profile.find :all, :conditions => conditions, :order => 'created_at DESC')
-    end
-    @profiles.flatten!
-   render :partial => 'profiles'
+    conditions = "profile_type = 'company'"
+    conditions += " AND country = '#{params[:country].strip}' " unless params[:country].strip.downcase == "all"
+    conditions += " AND company_type = '#{params[:company_type].strip}' " unless params[:company_type].strip.downcase == "any"
+    @profiles = Profile.all :conditions => [conditions], :order => 'created_at DESC'
+    render :partial => 'profiles'
   end
 
   def profile_page

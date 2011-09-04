@@ -28,6 +28,7 @@ class Profile < ActiveRecord::Base
 
   named_scope :through_company_type, (lambda do |company_type| {:conditions => {:is_edited => true, :company_type => company_type}, :order => "created_at DESC"} end)
   named_scope :through_services, (lambda do |services| {:conditions => {:is_edited => true, :services => services}, :order => "created_at DESC"} end)
+  named_scope :companies, :conditions => {:profile_type => "company"}  
 
   after_create :set_interested_in
 

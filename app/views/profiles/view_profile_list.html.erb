@@ -19,40 +19,27 @@
       <%= render :partial => 'profiles' %>
     </div>
     <div class="search_right">
+      
+      
+      <div class="field price_rang">
+        <h2>Location</h2>
+        <%= country_select("location", "country", ["All"], { :include_blank => false }) %>
+      </div>
+
       <div class="fixed_box">
         <div class="price_rang field">
-          <h2>Profile Type</h2>
+          <h2>Company Size</h2>
           <div class="field">
-          <select name="profile_type" id="profile_type">
-            <option value="All" selected="selected">All</option>
-            <option value="individual">Individual</option>
-            <option value="company">Company</option>
+          <select name="company_type" id="company_type">
+            <option value="any" selected="selected">Any</option>
+            <option value="Large Firm">Large Firm</option>
+            <option value="Medium-sized Firm">Medium-sized Firm</option>
+            <option value="Small Firm">Small Firm</option>
+            <option value="Internet Startup">Internet Startup</option>
           </select>
         </div>
       </div>
-      <div class="field result_count" id="profile_type_result"></div>
-        <div class="field price_rang">
-          <h2>Location</h2>
-          <%= country_select("location", "country", ["All"], { :include_blank => false }) %>
-        </div>
-        <div class="field result_count" id = "location_result" ></div>
-          <div class="field price_rang">
-          <h2>Interested In</h2>
-          <div class="field Interested_field">
-            <input type="checkbox" value="FT projects" name="ft_projects" checked="checked" />
-            <label>FT projects</label>
-          </div>
-          <div class="field Interested_field">
-            <input type="checkbox" value="PT projects" name="pt_projects" checked="checked" />
-            <label>PT projects</label>
-          </div>
-          <div class="field Interested_field">
-            <input type="checkbox" value="Expert Advisory" name="expert_advisory" checked="checked" />
-            <label>Expert Advisory</label>
-          </div>
-          <div class="field result_count" id="interested_result"></div>
-        </div>
-      </div>
+    
     </div>
   </div>
 </div>
