@@ -35,7 +35,9 @@ $('document').ready(function(){
 	});
 
   var callback_url = function(choices){
-    var call_to_url = "/profiles/search_results?country="+ $("#location_country").val() + "&company_type=" + $("#company_type").val();
+    var call_to_url = "/profiles/search_results?country=" + $("#location_country").val() + 
+    "&company_type=" + $("#company_type").val() +
+    "&company_services=" + $("#company_services").val() + "";
     
     if(choices.length  > 0) {
       return (call_to_url +"&choices="+choices);
