@@ -54,6 +54,7 @@ class ProfilesController < ApplicationController
     conditions = "profile_type = 'company'"
     conditions += " AND country = '#{params[:country].strip}' " unless params[:country].strip.downcase == "all"
     conditions += " AND company_type = '#{params[:company_type].strip}' " unless params[:company_type].strip.downcase == "any"
+    conditions += " AND services = '#{params[:company_services].strip}' " unless params[:company_services].strip.downcase == "any"
     @profiles = Profile.all :conditions => [conditions], :order => 'created_at DESC'
     render :partial => 'profiles'
   end
