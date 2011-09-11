@@ -3,6 +3,7 @@
 <% ratings_for @resource, :remote_options => {:url => "/resources/rate/#{@resource.url_slug}"}%>
 <div class="content">
   <% unless flash[:notice].blank? %><p class="flash"><%= flash[:notice] %></p><% end %>
+  <div class="profile_back"><a href="http://researchnation.net/browse/posts">< Back to Posts</a></div>
   <div class="content_back post_back">
     <div class="categories_box">
       <b><span><%= link_to @resource.industry, :controller => 'resources', :action => 'view_posts', :filter => @resource.industry %></span> <span><%= link_to @resource.geography, :controller => 'resources', :action => 'view_posts', :filter => @resource.geography %></span></b>

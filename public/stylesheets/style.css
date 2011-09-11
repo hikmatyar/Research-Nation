@@ -2180,6 +2180,17 @@ html ul.tabs li.active, html ul.tabs li.active {
 	width: 100%;
 }
 
+.error_text h5 {
+	float: left;
+	font-size: 45px;
+	font-weight: bold;
+	line-height: 0px !important;
+	margin-bottom: 0px;
+	margin-top: 40px;
+	text-align: left !important;
+	width: 100%;
+}
+
 .flash{
 	-webkit-border-radius:4px;
 	-moz-border-radius: 4px 4px 4px 4px;
@@ -2966,7 +2977,7 @@ div.fbFooterBorder{
  	float:right;
  	width:1024px;
  	margin-right:-1px;
- 	margin-top:20px;
+ 	margin-top:40px;
 }
 
 .footer_menu ul{
