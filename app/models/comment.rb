@@ -4,7 +4,7 @@ class Comment < ActiveRecord::Base
 
   named_scope :recent, :order => "created_at DESC"
   
-  validates_presence_of :comment, :title, :user_name
+  validates_presence_of :comment, :title, :user_name, :stars
 
   cattr_reader :per_page
   @@per_page = 25
