@@ -7,7 +7,7 @@ class Comment < ActiveRecord::Base
   named_scope :resources, :conditions => ["resource_id IS NOT NULL"]
   named_scope :profiles, :conditions => ["profile_id IS NOT NULL"]
   
-  validates_presence_of :comment, :title, :user_name
+  validates_presence_of :comment, :title, :user_name, :stars
 
   delegate :url_slug, :to => :resource
 
