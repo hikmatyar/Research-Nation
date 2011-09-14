@@ -9,5 +9,6 @@
   <li <%= 'class="active"' if controller.action_name == "messages" %> ><%= link_to "Message (#{@messages_count})", :controller => 'admin', :action => 'messages' %></li>
   <li <%= 'class="active"' if controller.action_name == "seller_payments" %> ><%= link_to "Sellers", :controller => 'admin', :action => 'seller_payments' %></li>
   <li <%= 'class="active"' if controller.action_name == "payment_items" %> ><%= link_to "Payment Items", :controller => 'admin', :action => 'payment_items' %></li>
-  <li <%= 'class="active"' if controller.action_name == "comments" %> ><%= link_to "Comments (#{@comments_count})", :controller => 'admin', :action => 'comments' %></li>
+  <li <%= 'class="active"' if controller.action_name == "resource_comments" %> ><%= link_to "RComments (#{@r_comments_count})", :controller => 'admin', :action => 'resource_comments' %></li>
+  <li <%= 'class="active"' if controller.action_name == "profile_comments" %> ><%= link_to "PComments (#{@p_comments_count})", :controller => 'admin', :action => 'profile_comments' %></li>
 </ul>

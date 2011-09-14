@@ -58,8 +58,12 @@ class AdminController < ApplicationController
                             :page => params[:page])
   end
 
-  def comments
-    @comments = Comment.paginate :page => params[:page], :order => 'created_at DESC'
+  def resource_comments
+    @comments = Comment.resources.recent.paginate :page => params[:page]
+  end
+
+  def profile_comments
+    @comments = Comment.profiles.recent.paginate :page => params[:page]
   end
 
   def detailed_user_payments
@@ -103,7 +107,8 @@ private
     @members_count = session[:members_count]
     @profiles_count = Profile.edited.count
     @messages_count = (Message.find_all_by_recipient_id current_user.id).count
-    @comments_count = Comment.all.count
+    @p_comments_count = Comment.profiles.count
+    @r_comments_count = Comment.resources.count
   end
 
 
