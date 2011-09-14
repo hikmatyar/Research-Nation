@@ -9,7 +9,11 @@ class Comment < ActiveRecord::Base
   
   validates_presence_of :comment, :title, :user_name, :stars
 
+
   delegate :url_slug, :to => :resource
+
+  validate :comment_must_not_contain_url
+
 
   cattr_reader :per_page
   @@per_page = 25
@@ -29,6 +33,14 @@ class Comment < ActiveRecord::Base
 
   def self.comments_for resource
     all(:conditions => {:resource_id => resource.id})
+  end
+
+  private
+
+  def comment_must_not_contain_url
+    if comment.match(/[a-z0-9\.\-]+[\.][a-z]{2,4}/)
+      errors.add("You comment must not contain any URL's and")
+    end
   end
 
 end

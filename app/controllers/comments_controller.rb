@@ -13,9 +13,8 @@ class CommentsController < ApplicationController
         render :show, :layout => false
       elsif @success
         redirect_to :controller => "resources", :action => "seller_page", :url_slug => params[:url_slug]
-      elsif !request.xhr && !@success
-        flash[:notice] = @comment.errors.full_messages.to_s
-        redirect_to :controller => "resources", :action => "seller_page", :url_slug => params[:url_slug]
+      elsif request.xhr? && !@success
+        render :text => @comment.errors.full_messages.to_s
       end
     else
       @resource = Profile.find_by_url_slug params[:url_slug]
@@ -25,9 +24,8 @@ class CommentsController < ApplicationController
         render :show, :layout => false
       elsif @success
         redirect_to :controller => "profiles", :action => "profile_page", :url_slug => params[:url_slug]
-      elsif !request.xhr && !@success
-        flash[:notice] = @comment.errors.full_messages.to_s
-        redirect_to :controller => "profiles", :action => "profile_page", :url_slug => params[:url_slug]
+      elsif request.xhr? && !@success
+        render :text => @comment.errors.full_messages.to_s
       end
     end
   end
