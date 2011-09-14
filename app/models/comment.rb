@@ -1,15 +1,22 @@
 class Comment < ActiveRecord::Base
   belongs_to :resource
+  belongs_to :profile
   belongs_to :user  
 
   named_scope :recent, :order => "created_at DESC"
+  named_scope :resources, :conditions => ["resource_id IS NOT NULL"]
+  named_scope :profiles, :conditions => ["profile_id IS NOT NULL"]
   
   validates_presence_of :comment, :title, :user_name
+
+  delegate :url_slug, :to => :resource
 
   cattr_reader :per_page
   @@per_page = 25
   
-  delegate :url_slug, :to => :resource
+  def profile_url_slug
+    profile.url_slug
+  end
 
   def self.average_rating_for resource
     star_sum = 0.0
