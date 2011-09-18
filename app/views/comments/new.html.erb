@@ -1,0 +1,152 @@
+<% content_for :html_title, 'Create a Post' %>
+<%= javascript_include_tag "upload_form" %>
+<% ratings_for @comment, :remote_options => {:url => "/resources/rate/"}%>
+<div class="content">
+    <div class="how_it_work_left_side">
+
+      <div class="seller_back">
+          <a id="login_link" href="#login_form" ></a>
+          <div style="display: none;">
+          <% unless logged_in? %>
+              <div id="login_form" style="width:700px;height:250px;overflow:hidden;left:-192px;bottom:20px;">
+                <%= render :partial => 'users/register'%>
+            </div>
+            <% end %>
+          </div>
+          <div class="create_heading_box">
+            <h1 style="margin-top:5px !important; margin-bottom:5px !important;">Add a Review</h1>
+            <b>By sharing your comments, you're helping other research buyers make better decisions, and avoid regret, Thank you.  
+            </b>
+          </div>
+          <div class="sign_up_box">
+              <% form_for(@comment , :url => { :controller => 'resources', :action => 'create_post', :user => params[:user] }, :html => { :multipart => true } ) do |f| %>
+              <h4 class="heading_color" style="border-top:0px;">What would you like to review?</h4>
+              <div class="field">
+                  <label>Review Type</label>
+                  <select name="type" id="type">
+                    <option value="resourse" selected="selected">Resource Report</option>
+                    <option value="profile">Resource Firm</option>
+                  </select>
+              </div>
+              <div class="resource">
+                <div class="field">
+                    <label>Enter publisher name</label>
+                    <%= text_field 'resource', 'industry', :class => 'required max_len publisher', :max_length => 25 %>
+                </div>
+                <div class="field">
+                    <label>Choose Report</label>
+                    <%= select("post", "report", Resource.all.map(&:description), {:include_blank => true}) %>
+                </div>
+              </div>
+
+              <div class="profile" style="display:none;">
+                <div class="field">
+                    <label>Enter company name</label>
+                    <%= text_field 'resource', 'industry', :class => 'required max_len publisher', :max_length => 25 %>
+                </div>
+              </div>
+
+              <h4 class="heading_color">Please provide your contact details</h4>
+
+              <div class="field">
+                  <label>Your name*</label>
+                  <%= text_field 'resource', 'industry', :class => 'required max_len', :max_length => 25 %>
+              </div>
+
+              <div class="field">
+                  <label>Your telephone*</label>
+                  <%= text_field 'resource', 'industry', :class => 'required max_len', :max_length => 25 %>
+              </div>
+
+              <div class="field">
+                  <label>Your Linkedin ID*</label>
+                  <%= text_field 'resource', 'industry', :class => 'required max_len', :max_length => 25 %>
+              </div>
+
+              <div class="resource">
+
+                <h4 class="heading_color">How would you rate this report</h4>
+
+                <div class="field">
+                    <label>Overall rating</label>  
+                    <div class="ajaxful-rating comment-rating" style="float: left;">
+                      <% 5.times do |i|  %>
+                        <%=  radio_button :comment, :stars, i + 1, :id => "rating_#{i+1}",
+                         :class => "comment_radio_buttons", :style => "visibility: hidden" %>
+                        <a class="stars-<%= i+1 %> comment_star_<%= i+1 %>" href="#"></a>
+                      <% end %>
+                    </div>
+                </div>
+                <h4 class="heading_color">Please provide your rating below</h4>
+                <div class="field">
+                    <label>Title of your review</label>
+                    <%= text_field 'resource', 'industry', :class => 'required max_len', :max_length => 50 %>
+                </div>
+                <div class="field">
+                    <label>Your review*</label>
+                    <%= text_area 'resource', 'description', :class => 'max_len required tip', :max_length => 3000, :title => "Please be as detailed as possible, and structure your answers properly, in paragraphs and with proper grammar." %>
+                </div>
+              </div>
+
+              <div class="profile" style="display:none;">
+
+                <h4 class="heading_color">Please add your recommendation below</h4>
+
+                <div class="field">
+                    <label>Title of your recommendation*</label>
+                    <%= text_field 'resource', 'industry', :class => 'required max_len', :max_length => 50 %>
+                </div>
+                <div class="field">
+                    <label>Describe your relationship*</label>
+                    <select name="relationship" id="relationship">
+                      <option value="customer" selected="selected">customer</option>
+                      <option value="friend">friend</option>
+                      <option value="other">other</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Your review*</label>
+                    <%= text_area 'resource', 'description', :class => 'max_len required tip', :max_length => 3000, :title => "Please be as detailed as possible, and structure your answers properly, in paragraphs and with proper grammar." %>
+                </div>
+
+              </div>
+
+            <div class="submit_button"><%= submit_tag "Submit", :class => "green_button" %></div>
+          </div>
+          <% end %>
+      </div>
+  </div>
+
+<%= javascript_include_tag "jquery.autocomplete.js" %>
+
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function() {
+    function select_rating(i){
+      $(".comment_star_" + i).live("click", function(){
+        $("#rating_" + i).attr("checked", true);
+        $(".comment_show").remove();
+        $(".comment-rating").append(
+          '<li class="show-value comment_show" id="comment_value_' + 
+          i + '" style="width:' + (i * 20) + '.0%"></li>');
+        return false;
+      });
+    }
+    
+    for (i=1;i<=5;i++){
+      select_rating(i);
+    }
+
+    $("#type").change(function(){
+      if($(this).val() == "profile"){
+        $(".profile").show();
+        $(".resource").hide();
+      }else{
+        $(".profile").hide();
+        $(".resource").show();
+      }
+    })
+
+    $('.publisher').autocomplete('/profiles/get_publishers', { autoFill : true});
+
+  });  
+</script>

@@ -1,8 +1,13 @@
 class CommentsController < ApplicationController
 
   before_filter :redirect_to_admin_login, :except => [:create]
-    
-  layout "admin", :except => [:create]
+  
+  layout "admin", :except => [:create, :new]
+
+  def new
+    @comment = Comment.new    
+    render :layout => 'resources'
+  end
 
   def create
     if params[:type_class] == "reviews"
