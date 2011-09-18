@@ -1,4 +1,4 @@
-<% content_for :html_title, 'Create a Post' %>
+<% content_for :html_title, 'Add a Review' %>
 <%= javascript_include_tag "upload_form" %>
 <% ratings_for @comment, :remote_options => {:url => "/resources/rate/"}%>
 <div class="content">
@@ -24,8 +24,8 @@
               <div class="field">
                   <label>Review Type</label>
                   <select name="type" id="type">
-                    <option value="resourse" selected="selected">Resource Report</option>
-                    <option value="profile">Resource Firm</option>
+                    <option value="resourse" selected="selected">Research Report</option>
+                    <option value="profile">Research Firm</option>
                   </select>
               </div>
               <div class="resource">
@@ -49,12 +49,12 @@
               <h4 class="heading_color">Please provide your contact details</h4>
 
               <div class="field">
-                  <label>Your name*</label>
+                  <label>Your Name*</label>
                   <%= text_field 'resource', 'industry', :class => 'required max_len', :max_length => 25 %>
               </div>
 
               <div class="field">
-                  <label>Your telephone*</label>
+                  <label>Your Telephone*</label>
                   <%= text_field 'resource', 'industry', :class => 'required max_len', :max_length => 25 %>
               </div>
 
