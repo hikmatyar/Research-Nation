@@ -28,7 +28,7 @@ class Comment < ActiveRecord::Base
   	stars.each do |star|
       star_sum += star
     end
-    (star_sum / stars.count).round
+    (star_sum / stars.count)
   end
 
   def self.comments_for resource
