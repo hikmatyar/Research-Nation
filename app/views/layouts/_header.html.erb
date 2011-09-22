@@ -3,8 +3,7 @@
 	  <%= link_to image_tag("logo.png"),:controller => "main", :action => "index" %>
 	  <ul class="main_menu">
 		<% if logged_in? %>
-	         <li class="logout"><%= (link_to 'Logout', :controller => 'users', :action => 'logout')  %></li>
-           
+	         <li class="logout"><%= (link_to 'Logout', :controller => 'users', :action => 'logout')  %></li>           
          	 <li class="create_link"><%= (link_to 'Add a Review', :controller => 'comments', :action => 'new')  %></li>
 
         <% end %>
