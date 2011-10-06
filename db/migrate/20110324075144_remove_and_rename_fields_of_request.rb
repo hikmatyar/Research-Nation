@@ -2,7 +2,7 @@ class RemoveAndRenameFieldsOfRequest < ActiveRecord::Migration
   def self.up
     rename_column :requests, :title, :description
     # change_column :requests, :budget, :float
-    change_column :requests, :deadline, :datetime
+    # change_column :requests, :deadline, :datetime
     remove_column :requests, :email
     remove_column :requests, :comment
 

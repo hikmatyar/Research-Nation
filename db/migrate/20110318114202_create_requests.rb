@@ -4,7 +4,7 @@ class CreateRequests < ActiveRecord::Migration
 
       t.string :title
       t.float :budget
-      t.string :deadline
+      t.datetime :deadline
       t.references :user
 
       t.timestamps
