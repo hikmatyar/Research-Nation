@@ -2,3 +2,4 @@ rails --version 2.3.8
 will_paginate --version 2.3.11
 ajaxful_rating --version  2.2.8.2
 activemerchant --version 1.14.0
+aws-s3
