@@ -35,6 +35,24 @@ class CommentsController < ApplicationController
     end
   end
 
+  def create_review
+    if params[:type] == "resource"
+      @resource = Resource.find(params[:post][:report]) || Resource.new
+      @comment = @resource.comments.build(params[:comment])
+    else
+      @profile = Profile.find_by_name(params[:profile][:name]) || Profile.new
+      @comment = @profile.comments.build(params[:comment])
+    end
+
+    if @comment.save(false)
+      flash[:notice] = "Comment saved succesfully"
+      redirect_to "/"
+    else
+      flash[:notice] = "Comment was not saved."
+      redirect_to "/comments/new"
+    end
+  end
+
   def edit
     @comment = Comment.find(params[:id])
   end

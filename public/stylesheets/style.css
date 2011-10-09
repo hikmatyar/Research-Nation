@@ -414,6 +414,10 @@ a:focus {
 	
 }
 
+.create_review .field label{
+  	width: 115px;
+}
+
 .sign_up_box{
 	float:left;
 	width:100%;

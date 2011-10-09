@@ -13,35 +13,36 @@
             </div>
             <% end %>
           </div>
+          <% unless flash[:notice].blank? %><p class="flash"><%= flash[:notice] %></p><% end %>
           <div class="create_heading_box">
             <h1 style="margin-top:5px !important; margin-bottom:5px !important;">Add a Review</h1>
             <b>By sharing your comments, you're helping other research buyers make better decisions, and avoid regret, Thank you.  
             </b>
           </div>
-          <div class="sign_up_box">
-              <% form_for(@comment , :url => { :controller => 'resources', :action => 'create_post', :user => params[:user] }, :html => { :multipart => true } ) do |f| %>
+          <div class="sign_up_box create_review">
+              <% form_for(@comment , :url => { :controller => 'comments', :action => 'create_review', :user => params[:user] }, :html => { :multipart => true } ) do |f| %>
               <h4 class="heading_color" style="border-top:0px;">What would you like to review?</h4>
               <div class="field">
                   <label>Review Type</label>
                   <select name="type" id="type">
-                    <option value="resourse" selected="selected">Research Report</option>
+                    <option value="resource" selected="selected">Research Report</option>
                     <option value="profile">Research Firm</option>
                   </select>
               </div>
               <div class="resource">
                 <div class="field">
-                    <label>Enter publisher name</label>
-                    <%= text_field 'resource', 'industry', :class => 'required max_len publisher', :max_length => 25 %>
+                    <label>Enter publisher name *</label>
+                    <%= text_field 'profile', 'name', :class => 'required max_len publisher', :max_length => 25 %>
                 </div>
                 <div class="field">
-                    <label>Choose Report</label>
-                    <%= select("post", "report", Resource.all.map(&:description), {:include_blank => true}) %>
+                    <label>Choose Report *</label>
+                    <%= select("post","report", Resource.all.map{|r| [r.description, r.id] }, {:include_blank => true, :class => "required"}) %>
                 </div>
               </div>
 
               <div class="profile" style="display:none;">
                 <div class="field">
-                    <label>Enter company name</label>
+                    <label>Enter company name *</label>
                     <%= text_field 'resource', 'industry', :class => 'required max_len publisher', :max_length => 25 %>
                 </div>
               </div>
@@ -50,17 +51,17 @@
 
               <div class="field">
                   <label>Your Name*</label>
-                  <%= text_field 'resource', 'industry', :class => 'required max_len', :max_length => 25 %>
+                  <%= text_field 'comment', 'user_name', :class => 'required max_len', :max_length => 25, :id => "user_name" %>
               </div>
 
               <div class="field">
-                  <label>Your Telephone*</label>
-                  <%= text_field 'resource', 'industry', :class => 'required max_len', :max_length => 25 %>
+                  <label>Your Telephone</label>
+                  <%= text_field 'comment', 'telephone', :class => 'max_len', :max_length => 25 %>
               </div>
 
               <div class="field">
-                  <label>Your Linkedin ID*</label>
-                  <%= text_field 'resource', 'industry', :class => 'required max_len', :max_length => 25 %>
+                  <label>Your Linkedin ID</label>
+                  <%= text_field 'comment', 'linkedin', :class => 'max_len', :max_length => 25 %>
               </div>
 
               <div class="resource">
@@ -68,48 +69,39 @@
                 <h4 class="heading_color">How would you rate this report</h4>
 
                 <div class="field">
-                    <label>Overall rating</label>  
+                    <label>Overall rating *</label>  
                     <div class="ajaxful-rating comment-rating" style="float: left;">
                       <% 5.times do |i|  %>
                         <%=  radio_button :comment, :stars, i + 1, :id => "rating_#{i+1}",
-                         :class => "comment_radio_buttons", :style => "visibility: hidden" %>
+                         :class => "comment_radio_buttons required", :style => "visibility: hidden" %>
                         <a class="stars-<%= i+1 %> comment_star_<%= i+1 %>" href="#"></a>
                       <% end %>
                     </div>
                 </div>
                 <h4 class="heading_color">Please provide your rating below</h4>
-                <div class="field">
-                    <label>Title of your review</label>
-                    <%= text_field 'resource', 'industry', :class => 'required max_len', :max_length => 50 %>
-                </div>
-                <div class="field">
-                    <label>Your review*</label>
-                    <%= text_area 'resource', 'description', :class => 'max_len required tip', :max_length => 3000, :title => "Please be as detailed as possible, and structure your answers properly, in paragraphs and with proper grammar." %>
-                </div>
               </div>
 
               <div class="profile" style="display:none;">
-
                 <h4 class="heading_color">Please add your recommendation below</h4>
-
-                <div class="field">
-                    <label>Title of your recommendation*</label>
-                    <%= text_field 'resource', 'industry', :class => 'required max_len', :max_length => 50 %>
-                </div>
                 <div class="field">
                     <label>Describe your relationship*</label>
-                    <select name="relationship" id="relationship">
+                    <select name="comment[relationship]" id="relationship">
                       <option value="customer" selected="selected">customer</option>
                       <option value="friend">friend</option>
                       <option value="other">other</option>
                     </select>
                 </div>
-                <div class="field">
-                    <label>Your review*</label>
-                    <%= text_area 'resource', 'description', :class => 'max_len required tip', :max_length => 3000, :title => "Please be as detailed as possible, and structure your answers properly, in paragraphs and with proper grammar." %>
-                </div>
-
               </div>
+
+              <div class="field">
+                  <label>Title of your recommendation*</label>
+                  <%= text_field :comment, :title, :class => 'required max_len', :max_length => 50 %>
+              </div>
+              <div class="field">
+                  <label>Your review*</label>
+                  <%= text_area :comment, :comment, :class => 'max_len required tip', :max_length => 500 %>
+              </div>
+
 
             <div class="submit_button"><%= submit_tag "Submit", :class => "green_button" %></div>
           </div>
@@ -118,6 +110,7 @@
   </div>
 
 <%= javascript_include_tag "jquery.autocomplete.js" %>
+<%= javascript_include_tag "jquery.validate.min.js" %>
 
 <script type="text/javascript" charset="utf-8">
   $(document).ready(function() {
@@ -147,6 +140,8 @@
     })
 
     $('.publisher').autocomplete('/profiles/get_publishers', { autoFill : true});
+
+    $("#new_comment").validate();
 
   });  
 </script>
