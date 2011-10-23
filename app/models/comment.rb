@@ -14,7 +14,7 @@ class Comment < ActiveRecord::Base
 
   validate :comment_must_not_contain_url
 
-
+  ajaxful_rateable :stars => 5
   cattr_reader :per_page
   @@per_page = 25
   
@@ -28,7 +28,7 @@ class Comment < ActiveRecord::Base
   	stars.each do |star|
       star_sum += star
     end
-    (star_sum / stars.count).round
+    (star_sum / stars.count)
   end
 
   def self.comments_for resource

@@ -15,11 +15,10 @@
 			</div>
 		<div class="content_back main_page_content_container">
 			<h2>We provide reviews for research reports.</h2>
-		    <div style="margin-top:15px;" class="altering_text"> 
+		    <div style="margin-top:15px;" class="altering_text">
 		    	<span>You can use us to find, read or write reviews of any industry research report, or research service provider.</span><br>
 		    </div>
-      <%= link_to ( "Sign-up to be notified when we launch!", { :controller => "resources", :action => "upload_docs"}, { :class => 'green_button'} ) if logged_in? %>
-			<%= link_to ( "Sign-up to be notified when we launch!", { :controller => "users", :action => "register", :opt =>"signup"}, { :class => 'green_button'} ) unless logged_in? %>
+      <%= link_to ("Get started now! Click here to add a review", { :controller => "comments", :action => "new"}, { :class => 'green_button'} )%>
 		</div>
 	</div>
 	<%= hidden_field_tag 'create_post', :value => false%>

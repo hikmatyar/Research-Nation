@@ -201,7 +201,7 @@ a:focus {
 
 .main_menu{
 	float:right;
-	margin:13px 0px 10px 0px;
+	margin:13px 90px 10px 0px;
 	width:460px;
 }
 
@@ -312,6 +312,7 @@ a:focus {
 	float:left;
 	width:100%;
 	margin-bottom:10px;
+	margin-left: 65px;
 }
 
 .profile_back a{
@@ -411,6 +412,10 @@ a:focus {
 	text-decoration:none;
 	list-style:none;
 	
+}
+
+.create_review .field label{
+  	width: 115px;
 }
 
 .sign_up_box{
@@ -2974,10 +2979,9 @@ div.fbFooterBorder{
 
 
 .footer_menu{
- 	float:right;
- 	width:1024px;
- 	margin-right:-1px;
- 	margin-top:40px;
+ 	width: 933px;
+ 	position: relative;
+ 	top: 35px;
 }
 
 .footer_menu ul{

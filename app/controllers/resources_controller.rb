@@ -34,7 +34,7 @@ class ResourcesController < ApplicationController
     end
     
     @resource = session[:admin].blank? ? (Resource.find_by_url_slug params[:url_slug], :conditions => {:is_deleted => false}) : (Resource.find_by_url_slug params[:url_slug])
-    @comments = @resource.comments
+    @comments = @resource.comments if @resource
     @comment = @resource.comments.new(params[:comment]) || @resource.comments.new
     @resource_average_rating = Comment.average_rating_for @resource
 

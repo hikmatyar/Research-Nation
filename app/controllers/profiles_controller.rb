@@ -121,6 +121,10 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def get_publishers
+    render :text => Profile.companies.map(&:name).join("\n")
+  end
+
 private
 
   def set_tags

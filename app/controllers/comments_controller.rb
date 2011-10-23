@@ -1,8 +1,13 @@
 class CommentsController < ApplicationController
 
   before_filter :redirect_to_admin_login, :except => [:create]
-    
-  layout "admin", :except => [:create]
+  
+  layout "admin", :except => [:create, :new]
+
+  def new
+    @comment = Comment.new    
+    render :layout => 'resources'
+  end
 
   def create
     if params[:type_class] == "reviews"
@@ -27,6 +32,24 @@ class CommentsController < ApplicationController
       elsif request.xhr? && !@success
         render :text => @comment.errors.full_messages.to_s
       end
+    end
+  end
+
+  def create_review
+    if params[:type] == "resource"
+      @resource = Resource.find(params[:post][:report]) || Resource.new
+      @comment = @resource.comments.build(params[:comment])
+    else
+      @profile = Profile.find_by_name(params[:profile][:name]) || Profile.new
+      @comment = @profile.comments.build(params[:comment])
+    end
+
+    if @comment.save(false)
+      flash[:notice] = "Comment saved succesfully"
+      redirect_to "/"
+    else
+      flash[:notice] = "Comment was not saved."
+      redirect_to "/comments/new"
     end
   end
 

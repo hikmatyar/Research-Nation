@@ -4,20 +4,27 @@
 	  <ul class="main_menu">
 		<% if logged_in? %>
 	         <li class="logout"><%= (link_to 'Logout', :controller => 'users', :action => 'logout')  %></li>
-              <% end %>
+        <% end %>
+
 		<% if is_admin? %>
                 <li class="admin"><%= (link_to "Admin", :controller => "admin", :action => "dashboard") %></li>
-              <% end %>
-              <% unless logged_in? %>
+        <% end %>
+
+
+
+        <% unless logged_in? %>
                 <li class="create_link" style="border-right:0px;"><%= (link_to 'Sign Up', :controller => 'users', :action => 'register', :opt => 'signup') %></li>
                 <li class="create_link"><%= (link_to 'Login', :controller => 'users', :action => 'register', :opt => 'login') %></li>
-              <% end %>
-              <% if logged_in? %>
-		<li class="sell_link"><a href="http://researchnation.net/browse/posts">Browse</a></li>
-              <li style="border-left:0px;" class="user_dasboard">
-                <%= (link_to 'Home', :controller => 'users', :action => 'profile' ) %>
-               </li>
-              <% end %>
+        <% end %>
+
+        <li class="create_link" style="width: 85px"><a href="/comments/new">Add a Review</a></li>
+
+        <% if logged_in? %>
+		      <li class="sell_link"><a href="browse/posts">Browse</a></li>
+          <li style="border-left:0px;" class="user_dasboard">
+            <%= (link_to 'Home', :controller => 'users', :action => 'profile' ) %>
+          </li>
+        <% end %>
 	   </ul>
       </div>
 </div>
