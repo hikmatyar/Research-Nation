@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
 
-  before_filter :redirect_to_admin_login, :except => [:create]
+  before_filter :redirect_to_admin_login, :except => [:create, :new]
   
   layout "admin", :except => [:create, :new]
 
