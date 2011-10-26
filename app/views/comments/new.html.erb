@@ -16,7 +16,7 @@
           <% unless flash[:notice].blank? %><p class="flash"><%= flash[:notice] %></p><% end %>
           <div class="create_heading_box">
             <h1 style="margin-top:5px !important; margin-bottom:5px !important;">Add a Review</h1>
-            <b>By sharing your comments, you're helping other research buyers make better decisions, and avoid regret, Thank you.  
+            <b>By sharing your comments, you're helping other research buyers make better decisions, and avoid regret. Thank you.  
             </b>
           </div>
           <div class="sign_up_box create_review">
@@ -31,18 +31,18 @@
               </div>
               <div class="resource">
                 <div class="field">
-                    <label>Enter publisher name *</label>
+                    <label>Enter publisher name*</label>
                     <%= text_field 'profile', 'name', :class => 'required max_len publisher', :max_length => 25 %>
                 </div>
                 <div class="field">
-                    <label>Choose Report *</label>
+                    <label>Choose Report*</label>
                     <%= select("post","report", Resource.all.map{|r| [r.description, r.id] }, {:include_blank => true, :class => "required"}) %>
                 </div>
               </div>
 
               <div class="profile" style="display:none;">
                 <div class="field">
-                    <label>Enter company name *</label>
+                    <label>Enter company name*</label>
                     <%= text_field 'resource', 'industry', :class => 'required max_len publisher', :max_length => 25 %>
                 </div>
               </div>
@@ -69,7 +69,7 @@
                 <h4 class="heading_color">How would you rate this report</h4>
 
                 <div class="field">
-                    <label>Overall rating *</label>  
+                    <label>Overall rating*</label>  
                     <div class="ajaxful-rating comment-rating" style="float: left;">
                       <% 5.times do |i|  %>
                         <%=  radio_button :comment, :stars, i + 1, :id => "rating_#{i+1}",
@@ -86,15 +86,15 @@
                 <div class="field">
                     <label>Describe your relationship*</label>
                     <select name="comment[relationship]" id="relationship">
-                      <option value="customer" selected="selected">customer</option>
-                      <option value="friend">friend</option>
-                      <option value="other">other</option>
+                      <option value="customer" selected="selected">Customer</option>
+                      <option value="friend">Friend</option>
+                      <option value="other">Other</option>
                     </select>
                 </div>
               </div>
 
               <div class="field">
-                  <label>Title of your recommendation*</label>
+                  <label>Title of your recommendation*</label> 
                   <%= text_field :comment, :title, :class => 'required max_len', :max_length => 50 %>
               </div>
               <div class="field">
