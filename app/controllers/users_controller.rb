@@ -91,8 +91,8 @@ class UsersController < ApplicationController
       else
         link = "<u><a href='/profiles/edit_individual_profile/#{profile.id}'>here</a></u>"
       end
-      link = "<u><a href='/create_a_post'>here</a></u>"
-      flash[:notice] = "Please create a post by clicking #{link}"
+      link = "<u><a href='/comments/new'>here</a></u>"
+      flash[:notice] = "Click #{link} to get started"
       return redirect_to :controller => 'users', :action => 'profile'
 
       return redirect_to :controller => "resources", :action => "view_posts"
@@ -113,6 +113,7 @@ class UsersController < ApplicationController
       session[:admin]= valid_user.id if valid_user.is_admin?
       return redirect_to :controller => 'resources', :action => 'upload_docs' if session[:post]
       return redirect_to :controller => 'profiles', :action => 'create' if session[:profile]
+      return redirect_to :controller => 'comments', :action => 'new' if session[:return_to]
       if !session[:seller_post].blank?
         return redirect_to :controller => 'resources', :action => 'seller_page', :url_slug => session[:seller_post]
       elsif !session[:profile_id].blank?

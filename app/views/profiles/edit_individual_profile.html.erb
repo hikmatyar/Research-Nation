@@ -61,8 +61,6 @@
           <%= f.text_area 'humor_me', :class => 'max_len tip', :max_length => 2500, :title => "Please identify your areas of expertise. This could be specific skills, or knowledge that you possess. Use complete sentences, and back up your claims with examples." %>
         </div>
         <%= f.hidden_field 'profile_type', :value => params[:profile_type] %>
-        <%= f.hidden_field 'interested_in', :id => 'interested_in' %>
-        <%= render :partial => "/profiles/interested_in_fields", :locals => {:fields => @profile.interested_in}%>
       </div>
       <div class="hidden">
         <%= hidden_field_tag 'user_id', params[:user_id]  if session[:admin] && !params[:user_id].blank?%>

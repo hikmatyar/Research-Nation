@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
 
   before_filter :redirect_to_admin_login, :except => [:create, :new]
+  before_filter :redirect_to_login_from_comments
   
   layout "admin", :except => [:create, :new]
 
@@ -70,5 +71,10 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @comment.delete
     redirect_to :controller => "admin", :action => "comments"
+  end
+
+  def redirect_to_login_from_comments
+    session[:return_to] ||= "/comments/new"
+    redirect_to ( :controller => "users", :action =>"register") unless logged_in?
   end
 end
