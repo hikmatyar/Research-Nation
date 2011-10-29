@@ -73,4 +73,23 @@ class Resource < ActiveRecord::Base
     end
   end
 
+  def self.create_posts_via_csv_for_report_buyer
+    require 'csv'
+    File.open("reports.txt", "r").each do |filename|
+      CSV.open("reports/" + filename.chomp("\n"), 'r').each_with_index do |row,index|
+        p = Profile.find_by_name row[1]
+        if p.blank?
+          u = User.create(:email => "reportbuyer_#{index}@test.com", :password => "test123", :user_type => "company")
+          p = Profile.new
+          p.user_id = u.id
+          p.name = row[1]
+          p.profile_type = "company"
+          p.save
+        end
+        r = Resource.create(:selling_price => row[5], :title => row[0], :industry => row[3], :geography => row[4], :description => "This report was published in #{row[7]}", :user_id => p.user.id)
+        r.update_url_slug
+        puts r.inspect
+      end
+    end
+  end
 end
