@@ -32,7 +32,7 @@
               <div class="resource">
                 <div class="field">
                     <label>Enter publisher name*</label>
-                    <%= text_field 'profile', 'name', :class => 'required max_len publisher', :max_length => 25 %>
+                    <%= text_field 'profile', 'name', :class => 'required max_len publisher suggestion', :max_length => 20, :value => "Start typing to begin"  %>
                 </div>
                 <div class="field">
                     <label>Choose Report*</label>
@@ -43,7 +43,7 @@
               <div class="profile" style="display:none;">
                 <div class="field">
                     <label>Enter company name*</label>
-                    <%= text_field 'resource', 'industry', :class => 'required max_len publisher', :max_length => 25 %>
+                    <%= text_field 'resource', 'industry', :class => 'required max_len publisher suggestion', :max_length => 25, :value => "Start typing to begin"  %>
                 </div>
               </div>
 
@@ -137,6 +137,16 @@
         $(".profile").hide();
         $(".resource").show();
       }
+    })
+
+    $("#profile_name").focus(function(){
+      $("#profile_name").val("");
+      $("#profile_name").removeClass("suggestion");
+    })
+
+    $("#resource_industry").focus(function(){
+      $("#resource_industry").val("");
+      $("#resource_industry").removeClass("suggestion");
     })
 
     $('.publisher').autocomplete('/profiles/get_publishers', { autoFill : true});
