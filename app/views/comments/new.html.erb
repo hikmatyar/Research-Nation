@@ -36,7 +36,7 @@
                 </div>
                 <div class="field">
                     <label>Choose Report*</label>
-                    <%= select("post","report", Resource.all.map{|r| [r.description, r.id] }, {:include_blank => true, :class => "required"}) %>
+                    <%= select("post","report", Resource.all.map{|r| [r.title, r.id] }, {:include_blank => true, :class => "required"}) %>
                 </div>
               </div>
 
