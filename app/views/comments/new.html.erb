@@ -32,7 +32,7 @@
               </div>
               <div class="resource">
                 <div class="field">
-                    <label>Enter publisher name*</label>
+                    <label>Enter Publisher Name*</label>
                     <%= text_field 'profile', 'name', :class => 'required max_len publisher suggestion', :max_length => 20, :value => "Start typing to begin" ,:id => "publisher_name" %>
                 </div>
                 <div class="field", id="report">
@@ -45,7 +45,7 @@
 
               <div class="profile" style="display:none;">
                 <div class="field">
-                    <label>Enter company name*</label>
+                    <label>Enter Company Name*</label>
                     <%= text_field 'resource', 'industry', :class => 'required max_len publisher suggestion', :max_length => 25, :value => "Start typing to begin"  %>
                 </div>
               </div>
@@ -85,7 +85,7 @@
               </div>
 
               <div class="profile" style="display:none;">
-                <h4 class="heading_color">Please add your recommendation below</h4>
+                <h4 class="heading_color">Please add your review below</h4>
                 <div class="field">
                     <label>Describe your relationship*</label>
                     <select name="comment[relationship]" id="relationship">
@@ -97,7 +97,7 @@
               </div>
 
               <div class="field">
-                  <label>Title of your recommendation*</label> 
+                  <label>Title of your review*</label> 
                   <%= text_field :comment, :title, :class => 'required max_len', :max_length => 50 %>
               </div>
               <div class="field">
