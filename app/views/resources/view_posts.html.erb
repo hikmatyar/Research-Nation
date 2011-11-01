@@ -21,6 +21,9 @@
     <div class="left_content" id="left_content">
 
       <%= render :partial => 'posts'%>
+      <div id="resource_pagination">
+        <%= will_paginate @resources %>
+      </div>
     </div>
     <div style="height:300px;">
     <div class="search_right">
