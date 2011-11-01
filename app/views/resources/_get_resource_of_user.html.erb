@@ -1,0 +1,5 @@
+<select name="test" id="test">
+	<% @resources.each do |resource| %>
+	 <option value="<%= resource.id %>"><%= resource.title %></option>
+	<% end %>
+</select>

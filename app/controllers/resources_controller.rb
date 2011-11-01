@@ -62,9 +62,9 @@ class ResourcesController < ApplicationController
   def view_posts
     @user = User.find(session[:user]) if logged_in?
     if params[:filter].blank?
-      @resources = Resource.find :all, :order => 'created_at DESC', :conditions => {:is_deleted => false}
+      @resources = Resource.paginate :page => params[:page], :per_page => 100, :order => 'created_at DESC', :conditions => {:is_deleted => false}
     else
-      @resources = Resource.find :all, :conditions => ['(industry = ? OR geography = ?) AND is_deleted = ?', params[:filter], params[:filter],false]
+      @resources = Resource.paginate :page => params[:page], :per_page => 100, :conditions => ['(industry = ? OR geography = ?) AND is_deleted = ?', params[:filter], params[:filter],false]
     end
   end
 
@@ -193,6 +193,12 @@ class ResourcesController < ApplicationController
   def user_terms_and_conditions
     @resource = Resource.find_by_id params[:id]
     render :layout => false
+  end
+
+  def get_resource_of_user
+    p = Profile.find_by_name(params[:name])
+    @resources = Resource.find_all_by_user_id(p.id)
+    render :partial => "get_resource_of_user"
   end
 
 private

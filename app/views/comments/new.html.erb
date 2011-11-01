@@ -1,6 +1,7 @@
 <% content_for :html_title, 'Add a Review' %>
 <%= javascript_include_tag "upload_form" %>
 <% ratings_for @comment, :remote_options => {:url => "/resources/rate/"}%>
+<%= stylesheet_link_tag 'autocomplete'%>
 <div class="content">
     <div class="how_it_work_left_side">
 
@@ -32,11 +33,13 @@
               <div class="resource">
                 <div class="field">
                     <label>Enter publisher name*</label>
-                    <%= text_field 'profile', 'name', :class => 'required max_len publisher suggestion', :max_length => 20, :value => "Start typing to begin"  %>
+                    <%= text_field 'profile', 'name', :class => 'required max_len publisher suggestion', :max_length => 20, :value => "Start typing to begin" ,:id => "publisher_name" %>
                 </div>
-                <div class="field">
+                <div class="field", id="report">
                     <label>Choose Report*</label>
-                    <%= select("post","report", Resource.all.map{|r| [r.title, r.id] }, {:include_blank => true, :class => "required"}) %>
+                    <div id="report_content"></div>
+                    <%# select("post","report", Resource.not_deleted.map{|r| [r.title, r.id] }, {:include_blank => true, :class => "required"}) %>
+
                 </div>
               </div>
 
@@ -139,6 +142,8 @@
       }
     })
 
+    $("#report").hide();
+
     $("#profile_name").focus(function(){
       $("#profile_name").val("");
       $("#profile_name").removeClass("suggestion");
@@ -149,7 +154,16 @@
       $("#resource_industry").removeClass("suggestion");
     })
 
-    $('.publisher').autocomplete('/profiles/get_publishers', { autoFill : true});
+    $('.publisher').autocomplete('/profiles/get_publishers', { autoFill : true}).result(function(event, item){
+      $("#report").show();
+      url = "/resources/get_resource_of_user?name="+ item;
+      $.ajax({
+        url: url,
+        success: function(data){
+          $("#report_content").html(data);
+        }
+      });
+    });
 
     $("#new_comment").validate();
 

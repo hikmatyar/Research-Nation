@@ -17,6 +17,7 @@ class Resource < ActiveRecord::Base
   validates_numericality_of :selling_price
 
   named_scope :sellers_with_paid_resources, :select => "DISTINCT user_id", :conditions => "selling_price > 0"
+  named_scope :not_deleted, :conditions => {:is_deleted => false}
 
   def self.create_resource resource_data
     resource = resource_data
