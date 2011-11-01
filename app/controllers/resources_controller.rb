@@ -197,7 +197,7 @@ class ResourcesController < ApplicationController
 
   def get_resource_of_user
     p = Profile.find_by_name(params[:name])
-    @resources = Resource.find_all_by_user_id(p.id)
+    @resources = Resource.find_all_by_user_id(p.user.id)
     render :partial => "get_resource_of_user"
   end
 

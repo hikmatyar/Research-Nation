@@ -4680,6 +4680,12 @@ div.fbFooterBorder{
  	font-size:12px;
 }
 
+#resource_pagination{
+	position: relative;
+	top: 5px;
+	right: 230px;
+}
+
 .clear{
   clear: both;
 }
