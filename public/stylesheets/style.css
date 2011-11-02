@@ -3469,6 +3469,7 @@ div.fbFooterBorder{
 	-webkit-border-top-right-radius: 0px !important;
 	-webkit-border-top-left-radius: 0px !important;
 	width:615px;
+	position: relative;
 }
 
 .profile_listing{
@@ -4681,9 +4682,15 @@ div.fbFooterBorder{
 }
 
 #resource_pagination{
-	position: relative;
-	top: 5px;
-	right: 230px;
+	position: absolute;
+	bottom: -34px;
+	right: 266px;
+}
+
+#resource_pagination .pagination{
+	width: auto;
+	text-align: right;
+	margin: 10px 0px 10px -10px;
 }
 
 .clear{
