@@ -122,7 +122,7 @@ class ProfilesController < ApplicationController
   end
 
   def get_publishers
-    render :text => Profile.companies.map(&:name).join("\n")
+    render :text => Profile.companies(:conditions => ["name like ?%", params[:q]]).map(&:name).join("\n")
   end
 
 private
