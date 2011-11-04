@@ -34,11 +34,15 @@ class ResourcesController < ApplicationController
     end
     
     @resource = session[:admin].blank? ? (Resource.find_by_url_slug params[:url_slug], :conditions => {:is_deleted => false}) : (Resource.find_by_url_slug params[:url_slug])
-    @comments = @resource.comments if @resource
-    @comment = @resource.comments.new(params[:comment]) || @resource.comments.new
-    @resource_average_rating = Comment.average_rating_for @resource
 
     return render_404  if @resource.blank?
+
+    if @resource
+      @comments = @resource.comments
+      @comment = @resource.comments.new(params[:comment]) || @resource.comments.new
+      @resource_average_rating = Comment.average_rating_for @resource
+    end
+    
     @sample = @resource.attachments.sample.first unless @resource.attachments.sample.blank?
     @related_posts = Resource.find :all, :conditions => ['(industry =? or geography = ?) and (id != ?) AND is_deleted =?', @resource.industry, @resource.geography, @resource.id, false ], :limit => 10, :order => "industry, geography and created_at"
   end
