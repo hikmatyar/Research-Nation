@@ -84,10 +84,12 @@ class Resource < ActiveRecord::Base
           p = Profile.new
           p.user_id = u.id
           p.name = row[1]
+          p.city = "London"
+          p.country = "United Kingdom"
           p.profile_type = "company"
           p.save
         end
-        r = Resource.create(:selling_price => row[5], :title => row[0], :industry => row[3], :geography => row[4], :description => "This report was published in #{row[7]}", :user_id => p.user.id)
+        r = Resource.create(:sources => row[6], :selling_price => row[5], :title => row[0], :industry => row[3], :geography => row[4], :description => "This report was published in #{row[7]}", :user_id => p.user.id)
         r.update_url_slug
         puts r.inspect
       end
