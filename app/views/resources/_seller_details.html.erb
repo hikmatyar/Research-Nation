@@ -1,8 +1,8 @@
-<% unless @resource.user.profile.name.blank? %>
+<% if @resource.user.profile.is_edited? %>
   <div class="purchase_box">
     <div class="author_image_box">
       <%= (image_tag @resource.user.profile.photo.url(:seller)) unless (@resource.user.profile.blank? || @resource.user.profile.photo_file_name.blank?) %>
-    <%= (image_tag "avatar_70.png") if @resource.user.profile.blank? || @resource.user.profile.photo_file_name.blank?  %>
+      <%= (image_tag "avatar_70.png") if @resource.user.profile.blank? || @resource.user.profile.photo_file_name.blank?  %>
     </div>
     <div class="author_name">
       <% unless @resource.user.profile.name.blank? %><b><%= (link_to ( truncate @resource.user.profile.name, :omission => "...", :length => 19), :controller => 'profiles', :action => 'profile_page', :url_slug => @resource.user.profile.url_slug) if @resource.user.profile.is_edited %><% end %></b>
