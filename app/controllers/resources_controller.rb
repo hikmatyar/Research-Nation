@@ -66,7 +66,7 @@ class ResourcesController < ApplicationController
   def view_posts
     @user = User.find(session[:user]) if logged_in?
     if params[:filter].blank?
-      @resources = Resource.paginate :page => params[:page], :per_page => 100, :order => 'created_at DESC', :conditions => {:is_deleted => false}
+      @resources = Resource.paginate :page => params[:page], :per_page => 100, :order => 'selling_price', :conditions => {:is_deleted => false}
     else
       @resources = Resource.paginate :page => params[:page], :per_page => 100, :conditions => ['(industry = ? OR geography = ?) AND is_deleted = ?', params[:filter], params[:filter],false]
     end
