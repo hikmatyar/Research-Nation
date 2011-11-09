@@ -21,7 +21,7 @@
       <div class="post_details">
         <h2 style="width:86%"><%= @resource.title %></h2>
         <div class="Post_author_details">
-          <% unless @resource.user.profile.name.blank? %>
+          <% unless @resource.user.profile.blank? || @resource.user.profile.name.blank? %>
           <b>By
             <% if @resource.user.profile && @resource.user.profile.is_edited %>
               <%=(link_to @resource.user.profile.name, :controller => 'profiles', :action => 'profile_page', :url_slug => @resource.user.profile.url_slug) %>
