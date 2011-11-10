@@ -52,7 +52,7 @@
         <div class="login_tab seller_tab">
           <%= link_to 'Summary','#Summary', :class => 'sign_up seller_links', :id => 'summary_link', :onclick => 'showTab("one");' %>
           <%= (link_to 'Sources','#Sources', :class => 'login seller_links', :id => 'sources_link', :onclick => 'showTab("four");') unless @resource.sources.blank? %>
-          <%= (link_to 'Seller','#Seller', :class => 'login seller_links', :id => 'seller_link', :onclick => 'showTab("two");') if @resource.user.profile && @resource.user.profile.is_edited? %>
+          <%= (link_to 'Seller','#Seller', :class => 'login seller_links', :id => 'seller_link', :onclick => 'showTab("two");') if @resource.user.profile && @resource.user.profile.is_edited? && !@resource.user.about_me.blank? %>
           <%= (link_to 'Sample','#Sample', :class => 'login seller_links', :id => 'sample_link', :onclick => 'showTab("three");') if @sample %>
 
           <div style="display: block;" class="sign_up_box seller_blocks" id="summary_details">
