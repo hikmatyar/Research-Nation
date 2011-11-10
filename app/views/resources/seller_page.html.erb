@@ -21,23 +21,25 @@
       <div class="post_details">
         <h2 style="width:86%"><%= @resource.title %></h2>
         <div class="Post_author_details">
+        <b>
           <% unless @resource.user.profile.blank? || @resource.user.profile.name.blank? %>
-          <b>By
-            <% if @resource.user.profile && @resource.user.profile.is_edited %>
-              <%=(link_to @resource.user.profile.name, :controller => 'profiles', :action => 'profile_page', :url_slug => @resource.user.profile.url_slug) %>
-            <% else %>
-              <%= @resource.user.profile.name %>
-            <% end%>
+              By
+              <% if @resource.user.profile && @resource.user.profile.is_edited %>
+                <%=(link_to @resource.user.profile.name, :controller => 'profiles', :action => 'profile_page', :url_slug => @resource.user.profile.url_slug) %>
+              <% else %>
+                <%= @resource.user.profile.name %>
+              <% end%>
           <% end %>
-            <span>
-              <% if @resource.user.company? %>
-                <% unless @resource.user.profile.city.blank? %><%= ",  #{@resource.user.profile.city}, #{@resource.user.profile.country}" %><% end %>
-              <% else%>
-                <% unless @resource.user.profile.key_individual.blank? %><%= ",  #{@resource.user.profile.key_individual.title}".strip unless  @resource.user.profile.key_individual.title.blank? %>
-                  <%= " at #{@resource.user.profile.key_individual.name}".strip unless @resource.user.profile.key_individual.name.blank? %>
+          <span>
+            <% if @resource.user.company? && !@resource.user.profile.blank? %>
+              <% unless @resource.user.profile.city.blank? %><%= ",  #{@resource.user.profile.city}, #{@resource.user.profile.country}" %><% end %>
+            <% else%>
+              <% unless @resource.user.profile.key_individual.blank? %>
+                <%= ",  #{@resource.user.profile.key_individual.title}".strip unless  @resource.user.profile.key_individual.title.blank? %>
+                <%= " at #{@resource.user.profile.key_individual.name}".strip unless @resource.user.profile.key_individual.name.blank? %>
               <% end %>
-              <% end %>
-            </span>
+            <% end %>
+          </span>
           </b>
           <div class="ajaxful-rating" style="float: left">
             <li class="show-value" style="width:<%= (@resource_average_rating * 20) if @resource_average_rating.present? %>.0%; float left;"></li>
