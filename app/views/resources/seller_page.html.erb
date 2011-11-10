@@ -34,7 +34,7 @@
             <% if @resource.user.company? && !@resource.user.profile.blank? %>
               <% unless @resource.user.profile.city.blank? %><%= ",  #{@resource.user.profile.city}, #{@resource.user.profile.country}" %><% end %>
             <% else%>
-              <% unless @resource.user.profile.key_individual.blank? %>
+              <% unless @resource.user.profile.blank? || @resource.user.profile.key_individual.blank? %>
                 <%= ",  #{@resource.user.profile.key_individual.title}".strip unless  @resource.user.profile.key_individual.title.blank? %>
                 <%= " at #{@resource.user.profile.key_individual.name}".strip unless @resource.user.profile.key_individual.name.blank? %>
               <% end %>
