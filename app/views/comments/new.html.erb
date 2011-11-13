@@ -38,6 +38,7 @@
                 <div class="field", id="report">
                     <label>Choose Report*</label>
                     <div id="report_content"></div>
+                    <div id="loadingDiv">Please wait while we load your selection...</div>
                     <%# select("post","report", Resource.not_deleted.map{|r| [r.title, r.id] }, {:include_blank => true, :class => "required"}) %>
 
                 </div>
@@ -160,17 +161,26 @@
     
 
     $('.publisher').autocomplete('/profiles/get_publishers', { autoFill : true}).result(function(event, item){
-      $("#report").show();
       url = "/resources/get_resource_of_user?name="+ item;
-        $.ajax({
-          url: url,
-          success: function(data){
-            $("#report_content").html(data);
-          }
-        });
+      $.ajax({
+        url: url,
+        success: function(data){
+          $("#report").show();
+          $("#report_content").html(data);
+        }
       });
+    });
 
     $("#new_comment").validate();
+
+    $('#loadingDiv')
+      .hide()  // hide it initially
+      .ajaxStart(function() {
+          $(this).show();
+      })
+      .ajaxStop(function() {
+          $(this).hide();
+    });
 
   });  
 </script>
