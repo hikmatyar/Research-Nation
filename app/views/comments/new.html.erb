@@ -1,5 +1,5 @@
 <% content_for :html_title, 'Add a Review' %>
-<%= javascript_include_tag "upload_form" %>
+
 <% ratings_for @comment, :remote_options => {:url => "/resources/rate/"}%>
 <%= stylesheet_link_tag 'autocomplete'%>
 <div class="content">
@@ -35,13 +35,7 @@
                     <label>Enter Publisher Name*</label>
                     <%= text_field 'profile', 'name', :class => 'required publisher suggestion', :value => "Start typing to begin" ,:id => "publisher_name" %>
                 </div>
-                <div class="field", id="report">
-                    <label>Choose Report*</label>
-                    <div id="report_content"></div>
-                    <div id="loadingDiv">Please wait while we load your selection...</div>
-                    <%# select("post","report", Resource.not_deleted.map{|r| [r.title, r.id] }, {:include_blank => true, :class => "required"}) %>
-
-                </div>
+                
               </div>
 
               <div class="profile" style="display:none;">
@@ -49,6 +43,16 @@
                     <label>Enter Company Name*</label>
                     <%= text_field 'resource', 'industry', :class => 'required publisher suggestion', :value => "Start typing to begin"  %>
                 </div>
+              </div>
+
+              <div class="field", id="report">
+                  <label>Choose Report*</label>
+                  <div id="report_content"></div>
+              </div>
+
+              <div class="field", id="loadingDiv">
+                <label>Choose Report*</label>
+                <div id="message" style="font-size: 14px; padding-top: 3px">Please wait while we load your selection...</div>
               </div>
 
               <h4 class="heading_color">Please provide your contact details</h4>
@@ -172,14 +176,13 @@
     });
 
     $("#new_comment").validate();
-
-    $('#loadingDiv')
-      .hide()  // hide it initially
-      .ajaxStart(function() {
-          $(this).show();
-      })
-      .ajaxStop(function() {
-          $(this).hide();
+    $('#loadingDiv').hide();
+    $('#loadingDiv').ajaxStart(function() {
+        $("#report").hide();
+        $(this).show();
+    }).ajaxStop(function() {
+      $("#report").show();
+        $(this).hide();
     });
 
   });  
