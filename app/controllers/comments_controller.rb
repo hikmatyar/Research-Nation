@@ -77,6 +77,6 @@ class CommentsController < ApplicationController
 
   def redirect_to_login_from_comments
     session[:return_to] ||= "/comments/new"
-    redirect_to ( :controller => "users", :action =>"register") unless logged_in?
+    redirect_to(:controller => "users", :action =>"register") unless logged_in?
   end
 end
